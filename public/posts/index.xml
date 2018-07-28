@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Bulma for Hugo</title>
+    <link>/posts/</link>
+    <description>Recent content in Posts on Bulma for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Mon, 03 Apr 2017 19:22:40 +0100</lastBuildDate>
+    
+	<atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>clipboard.js in hugo</title>
+      <link>/posts/clipboard/</link>
+      <pubDate>Mon, 03 Apr 2017 19:22:40 +0100</pubDate>
+      
+      <guid>/posts/clipboard/</guid>
+      <description>Clipboard.js in hugo clipboard.js lets you easily copy text to the clipboard. With no need for Flash, it&amp;rsquo;s a great lightweight way to allow your visitors to copy code snippets on your site.
+It&amp;rsquo;s a perfectly combination with a syntax highlighting library like rainbows or highlightjs.
+In this short tuto i implemented clipboard.js in my template bulma for hugo.
+Installation for hugo project Get the package from a third-party CDN provider and place the clipboard.</description>
+    </item>
+    
+    <item>
+      <title>Prototyping with markdown</title>
+      <link>/posts/prototyping/</link>
+      <pubDate>Sun, 02 Apr 2017 22:01:15 +0100</pubDate>
+      
+      <guid>/posts/prototyping/</guid>
+      <description>I have been working on a large set of documentation for a prototype that will eventually make it into a product. One issue with the publishing system at my company is that it makes doing prototypes, or really anything not within the rigidly and narrowly scoped model, difficult to set up. It takes a lot of work just to get to the point where you can begin writing.
+Since time was of the essence and writing is expensive, I decided to do the prototype outside of the publishing system.</description>
+    </item>
+    
+    <item>
+      <title>marxico</title>
+      <link>/posts/marxico/</link>
+      <pubDate>Sun, 02 Apr 2017 21:56:55 +0100</pubDate>
+      
+      <guid>/posts/marxico/</guid>
+      <description>Welcome to Marxico Marxico is a delicate Markdown editor for Evernote. With reliable storage and sync powered by Evernote, Marxico offers greate writing experience.
+ Versatile - supporting code highlight, LaTeX &amp;amp; flow charts, inserting images &amp;amp; attachments by all means. Exquisite - neat but powerful editor, featuring offline docs, live preview, and offering the desktop client and offline Chrome App. Sophisticated - deeply integrated with Evernote, supporting notebook &amp;amp; tags, two-way bind editing.</description>
+    </item>
+    
+  </channel>
+</rss>

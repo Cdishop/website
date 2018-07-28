@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Javascript on Bulma for Hugo</title>
+    <link>/tags/javascript/</link>
+    <description>Recent content in Javascript on Bulma for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Mon, 03 Apr 2017 19:22:40 +0100</lastBuildDate>
+    
+	<atom:link href="/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>clipboard.js in hugo</title>
+      <link>/posts/clipboard/</link>
+      <pubDate>Mon, 03 Apr 2017 19:22:40 +0100</pubDate>
+      
+      <guid>/posts/clipboard/</guid>
+      <description>Clipboard.js in hugo clipboard.js lets you easily copy text to the clipboard. With no need for Flash, it&amp;rsquo;s a great lightweight way to allow your visitors to copy code snippets on your site.
+It&amp;rsquo;s a perfectly combination with a syntax highlighting library like rainbows or highlightjs.
+In this short tuto i implemented clipboard.js in my template bulma for hugo.
+Installation for hugo project Get the package from a third-party CDN provider and place the clipboard.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -2,18 +2,26 @@
     <div class="container">
         <div class="content has-text-centered">
             <p>
-                This page is generated using 
-                <a href="https://gohugo.io/">Hugo</a>, with its design
-                incorporating the
+                I generated this site using 
+                <a href="https://gohugo.io/">Hugo</a> and the
                 <a href="https://themes.gohugo.io/bulma/">Bulma</a> theme.
                 {{ if .Site.Params.powered_by }}
                 Additional power is provided by
                   <strong>{{.Site.Params.powered_by}}</strong>.
+                  Michigan State University is not liable for any opinions on this website.
                 {{ end }}
-            </p>    
+            </p>
+            <p>
+              Michigan State University is not liable for any opinions on this website.
+
+            </p>
         </div>
     </div>
 </footer>
 
 <script src="//yihui.name/js/math-code.js"></script>
 <script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<link rel="stylesheet" href="{{"css/obsidian.css" | absURL}}" rel="stylesheet" id="theme-stylesheet">
+<script src="{{ "js/highlight.pack.js" | absURL }}"></script>
+<script>hljs.initHighlightingOnLoad();</script>

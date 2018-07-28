@@ -3,39 +3,77 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/bulma/</loc>
-    <lastmod>2017-04-01T14:19:25+01:00</lastmod>
+    <loc>/rec_reading/</loc>
   </url>
   
   <url>
-    <loc>/posts/clipboard/</loc>
-    <lastmod>2017-04-03T19:22:40+01:00</lastmod>
+    <loc>/computational_notes/longitudinal_plotting/</loc>
+    <lastmod>2018-07-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/posts/prototyping/</loc>
-    <lastmod>2017-04-02T22:01:15+01:00</lastmod>
+    <loc>/computational_notes/column_name_parameters/</loc>
+    <lastmod>2018-06-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/posts/marxico/</loc>
-    <lastmod>2017-04-02T21:56:55+01:00</lastmod>
+    <loc>/computational_notes/spline/</loc>
+    <lastmod>2018-05-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/2015-07-23-r-rmarkdown/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
+    <loc>/computational_notes/latent_growth/</loc>
+    <lastmod>2018-04-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/project/2008-12-30-password-protection-with-passkeeper/</loc>
-    <lastmod>2010-11-22T00:00:00+00:00</lastmod>
+    <loc>/computational_notes/social_trait_comp_model/</loc>
+    <lastmod>2018-03-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/</loc>
-    <lastmod>2017-04-01T14:19:25+01:00</lastmod>
-    <priority>0</priority>
+    <loc>/computational_notes/integration_optimization/</loc>
+    <lastmod>2018-02-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/computational_notes/random_walks/</loc>
+    <lastmod>2018-01-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/computational_notes/load_csv/</loc>
+    <lastmod>2018-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/computational_notes/formatting_qualtrics/</loc>
+    <lastmod>2018-01-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/computational_notes/interactions_fve/</loc>
+    <lastmod>2017-11-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/computational_notes/role_dynamics/</loc>
+    <lastmod>2017-08-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/computational_notes/convert_text/</loc>
+    <lastmod>2017-04-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/computational_notes/art_montecarlo/</loc>
+    <lastmod>2017-03-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/computational_notes/besd/</loc>
+    <lastmod>2017-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -44,104 +82,19 @@
   </url>
   
   <url>
-    <loc>/tags/clipboard/</loc>
-    <lastmod>2017-04-03T19:22:40+01:00</lastmod>
+    <loc>/</loc>
+    <lastmod>2018-07-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/design/</loc>
-    <lastmod>2017-04-02T22:01:15+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/editor/</loc>
-    <lastmod>2017-04-02T21:56:55+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/hugo/</loc>
-    <lastmod>2017-04-03T19:22:40+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/javascript/</loc>
-    <lastmod>2017-04-03T19:22:40+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/js/</loc>
-    <lastmod>2017-04-03T19:22:40+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/markdown/</loc>
-    <lastmod>2017-04-02T22:01:15+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/plot/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/posts/</loc>
-    <lastmod>2017-04-03T19:22:40+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/post/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/project/</loc>
-    <lastmod>2010-11-22T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/prototype/</loc>
-    <lastmod>2017-04-02T22:01:15+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/r/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/r-markdown/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/regression/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
+    <loc>/computational_notes/</loc>
+    <lastmod>2018-07-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/</loc>
-    <lastmod>2017-04-03T19:22:40+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/tools/</loc>
-    <lastmod>2017-04-02T21:56:55+01:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -1,0 +1,198 @@
+---
+title: 'Why Detecting Interactions is Easier in the Lab'
+date: "2017-11-15"
+output: pdf_document
+---
+
+
+
+<p>A fun simulation by McClelland and Judd (1993) in <em>Psychological Bulletin</em> that demonstrates why detecting interactions outside the lab (i.e., in field studies) is difficult. In experiments, scores on the independent variables are located at the extremes of their respective distributions because we manipulate conditions. The distribution of scores across all of the independent variables in field studies, conversely, is typically assumed to be normal. By creating “extreme groups” in experiments, therefore, it becomes easier to detect interactions.</p>
+<p>Imagine running an experiment where we randomly assign participants to one of two groups on an independent variable, goal difficulty. In one group the goal is challening, in the other group the goal is easy to accomplish. We are then interested in which group performs better on a task. After randomly assigning to groups, the distribution of scores on “goal difficulty” would be as follows:</p>
+<p><img src="/Computational_Notes/interactions_fve_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>where 50 people are assigned to each condition. In this case, the distribution of scores is aligned at the extremes (i.e., -1, or the hard goal, and 1, or the easy goal) because we manipulated that variable. In field studies, where we cannot manipulate goal difficulty, the distribution of scores would be as follows:</p>
+<p><img src="/Computational_Notes/interactions_fve_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>where scores about the independent variable (goal difficulty) are dispersed because we did not manipulate. The same distributional differences occur across other independent variables that we include in our design, and they are the reason behind fewer interaction detections in field studies.</p>
+<p>The cool part is that this happens even when the data generating mechanisms are exactly the same. The mechanism that causes <span class="math inline">\(y\)</span>, in both the experiments and field studies in this simulation, will be:</p>
+<p><span class="math display">\[\begin{equation}
+y_{i} = b_0{i} + b_1{x_i} + b_2{z_i} + b_3{zx_i} + e_{i}
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(y_{i}\)</span> is the value of the outcome (i.e., performance) for the <span class="math inline">\(i^\text{th}\)</span> person, <span class="math inline">\(x_i\)</span> is the value of one independent variable for the <span class="math inline">\(i^\text{th}\)</span> person (i.e., goal difficulty), <span class="math inline">\(z_i\)</span> is the value of another independent variable for the <span class="math inline">\(i^\text{th}\)</span> person (e.g., whatever variable you please), <span class="math inline">\(zx_i\)</span> represents the combination of values on <span class="math inline">\(x\)</span> and <span class="math inline">\(z\)</span> for the <span class="math inline">\(i^\text{th}\)</span> person (i.e., the interaction term), <span class="math inline">\(e_i\)</span> is a normally distributed error term for the <span class="math inline">\(i^\text{th}\)</span> person, and <span class="math inline">\(b_0\)</span>, <span class="math inline">\(b_1\)</span>, and <span class="math inline">\(b_2\)</span> represent the regression intercept and coefficients relating the predictors to the outcome.</p>
+<p>Again, the data generating equation, the thing that causes <span class="math inline">\(y\)</span>, is the same for both field studies and experiments. We are going to find differences, however, simply because the distribution on the independent variables are different.</p>
+<p>The values for <span class="math inline">\(b_0\)</span>, <span class="math inline">\(b_1\)</span>, and <span class="math inline">\(b_2\)</span> will be, respectively, 0, 0.20, 0.10, and 1.0 (see McClelland &amp; Judd, 1993). In other words, our interaction coefficient is gigantic.</p>
+<p>Each simulation will use the equation just presented to generate data across 100 individuals in the field and 100 individuals in the lab. The only difference between the two groups will be their initial distribution on <span class="math inline">\(x\)</span> and <span class="math inline">\(z\)</span>. For the lab group, their scores will be randomly assigned to -1 or 1, and in the field group scores will be randomly dispersed (normally) between -1 and 1. After generating the data I then estimate the coefficients using multiple regression and save the significance value in a vector. The process then interates 1000 times.</p>
+<div id="the-experiment-data" class="section level1">
+<h1>The Experiment Data</h1>
+<div id="the-distribution-of-x" class="section level2">
+<h2>The distribution of X:</h2>
+<p><img src="/Computational_Notes/interactions_fve_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="the-distribution-of-z" class="section level2">
+<h2>The distribution of Z:</h2>
+<p><img src="/Computational_Notes/interactions_fve_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+<div id="the-distribution-of-y-after-using-the-equation-above-to-generate-scores-on-y" class="section level2">
+<h2>The distribution of Y after using the equation above to generate scores on Y:</h2>
+<pre class="r"><code>y_values &lt;- b_0 + 0.20*x_values + 0.10*z_values + 
+            1.00*x_values*z_values + rnorm(100,0,4)
+
+hist(y_values)</code></pre>
+<p><img src="/Computational_Notes/interactions_fve_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
+<div id="now-estimate-the-parameters-using-regression" class="section level2">
+<h2>Now estimate the parameters using regression:</h2>
+<pre class="r"><code>exp_data &lt;- data.frame(&quot;X&quot; = c(x_values),
+                       &quot;Z&quot; = c(z_values),
+                       &quot;Y&quot; = c(y_values))
+
+exp_model &lt;- lm(Y ~ X + Z + X:Z, data = exp_data)
+summary(exp_model)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = Y ~ X + Z + X:Z, data = exp_data)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -10.8352  -2.2569  -0.2284   2.9157   9.7214 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)  
+## (Intercept)  0.07799    0.44671   0.175   0.8618  
+## X            0.43714    0.44671   0.979   0.3302  
+## Z            0.39918    0.44671   0.894   0.3738  
+## X:Z          1.01668    0.44671   2.276   0.0251 *
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 4.388 on 96 degrees of freedom
+## Multiple R-squared:  0.0638, Adjusted R-squared:  0.03455 
+## F-statistic: 2.181 on 3 and 96 DF,  p-value: 0.09528</code></pre>
+</div>
+</div>
+<div id="the-field-study-data" class="section level1">
+<h1>The Field Study Data</h1>
+<div id="the-distribution-of-x-1" class="section level2">
+<h2>The distribution of X:</h2>
+<p><img src="/Computational_Notes/interactions_fve_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
+<div id="the-distribution-of-z-1" class="section level2">
+<h2>The distribution of Z:</h2>
+<p><img src="/Computational_Notes/interactions_fve_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+</div>
+<div id="the-distribution-of-y-after-using-the-equation-above-to-generate-scores-on-y-1" class="section level2">
+<h2>The distribution of Y after using the equation above to generate scores on Y:</h2>
+<pre class="r"><code>f_y_values &lt;- b_0 + 0.20*f_x_values + 0.10*f_z_values + 
+              1.00*f_x_values*f_z_values + rnorm(100,0,4)
+
+hist(f_y_values)</code></pre>
+<p><img src="/Computational_Notes/interactions_fve_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+</div>
+<div id="now-estimate-the-parameters-using-regression-1" class="section level2">
+<h2>Now estimate the parameters using regression:</h2>
+<pre class="r"><code>field_data &lt;- data.frame(&quot;FX&quot; = c(f_x_values),
+                           &quot;FZ&quot; = c(f_z_values),
+                           &quot;FY&quot; = c(f_y_values))
+
+field_model &lt;- lm(FY ~ FX + FZ + FX:FZ, data = field_data)
+summary(field_model)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = FY ~ FX + FZ + FX:FZ, data = field_data)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -9.5937 -2.9039 -0.1549  2.5310 16.8469 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept) -0.299696   0.444655  -0.674    0.502
+## FX           0.418245   0.882925   0.474    0.637
+## FZ          -0.003376   0.949667  -0.004    0.997
+## FX:FZ        0.872302   1.813157   0.481    0.632
+## 
+## Residual standard error: 4.3 on 96 degrees of freedom
+## Multiple R-squared:  0.003914,   Adjusted R-squared:  -0.02721 
+## F-statistic: 0.1257 on 3 and 96 DF,  p-value: 0.9447</code></pre>
+</div>
+</div>
+<div id="putting-everything-into-monte-carlo" class="section level1">
+<h1>Putting Everything Into Monte Carlo</h1>
+<div id="replicate-the-process-above-1000-times-and-save-the-p-value-each-time" class="section level2">
+<h2>Replicate the process above 1000 times and save the p-value each time</h2>
+<pre class="r"><code>sims &lt;- 1000
+exp_results &lt;- numeric(1000)
+field_results &lt;- numeric(1000)
+
+
+X_coefficient &lt;- 0.20
+Z_coefficient &lt;- 0.10
+
+XZ_coefficient &lt;- 1.00
+Mu &lt;- 0
+
+xy_data &lt;- c(-1,1)
+
+library(MASS)
+
+for(i in 1:sims){
+  
+  # Experiment Data
+  
+  # X
+  x_values &lt;- sample(xy_data, 100, replace = T)
+  
+  # Z
+  z_values &lt;- sample(xy_data, 100, replace = T)
+  
+  # Y
+  y_values &lt;- Mu + X_coefficient * x_values + Z_coefficient * z_values + 
+              XZ_coefficient * x_values * z_values + rnorm(100,0,4)
+  
+  exp_data &lt;- data.frame(&quot;X&quot; = c(x_values),
+                         &quot;Z&quot; = c(z_values),
+                         &quot;Y&quot; = c(y_values))
+  
+  
+  # Field Data
+  
+  # X
+  f_x_values &lt;- rnorm(100, 0, 0.5)
+  
+  # Z
+  f_z_values &lt;- rnorm(100, 0, 0.5)
+  
+  # Y
+  f_y_values &lt;- Mu + X_coefficient * f_x_values + Z_coefficient * f_z_values + 
+                XZ_coefficient * f_x_values * f_z_values + rnorm(100,0,4)
+ 
+  
+  field_data &lt;- data.frame(&quot;FX&quot; = c(f_x_values),
+                           &quot;FZ&quot; = c(f_z_values),
+                           &quot;FY&quot; = c(f_y_values))
+  
+  
+  # Modeling
+  
+  
+  exp_model &lt;- lm(Y ~ X + Z + X:Z, data = exp_data)
+  exp_results[i] &lt;- summary(exp_model)$coefficients[4,4]
+  
+  field_model &lt;- lm(FY ~ FX + FZ + FX:FZ, data = field_data)
+  field_results[i] &lt;- summary(field_model)$coefficients[4,4]
+  
+}</code></pre>
+</div>
+</div>
+<div id="the-results" class="section level1">
+<h1>The Results</h1>
+<div id="what-proportion-of-experiments-find-significant-interaction-effects" class="section level2">
+<h2>What proportion of experiments find significant interaction effects?</h2>
+<pre class="r"><code>sum(exp_results &lt; 0.05) / 1000</code></pre>
+<pre><code>## [1] 0.686</code></pre>
+</div>
+<div id="what-proportion-of-field-studies-find-significant-interaction-effects" class="section level2">
+<h2>What proportion of field studies find significant interaction effects?</h2>
+<pre class="r"><code>sum(field_results &lt; 0.05) / 1000</code></pre>
+<pre><code>## [1] 0.089</code></pre>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>
+</div>
+</div>

@@ -1,0 +1,310 @@
+---
+title: "Social Trait Development Computational Model"
+Date: "2018-03-30"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
+```
+
+I built the following simple computational model for an individual differences class in the Spring of 2018 to demonstrate how to incorporate explantory elements for trait development into a computational framework. This model assumes that an individual's trait development depends on 1) the environment and 2) interactions with others inside and outside of the individual's social group. Moreover, the model assumes traits are somewhat stable and exhibit self-similarity across time. The main properties I am trying to capture, therefore, include:
+
+* The development of a stable trait through interactions with...
+
+    + a social group
+    
+    + random others
+    
+    + the environment
+    
+
+These properties do not represent what I think of as "true" aspects of trait development (although I think they are important). I use them, instead, to show the translation from verbal concepts to code representations. 
+
+Here is the pseudocode for the model:
+
+* Build agent
+
+    + Random initial trait value
+    
+    + Peer group holder (initially 0)
+    
+* Build global population of people with the trait (normally distributed)
+    
+* Time 1
+
+    + People in peer group?
+    
+        + If yes:
+        
+            + What is their average trait level?
+            
+            + Use that level to filter who the agent interacts with from the global population
+            
+        + If no:
+        
+            + Move to next step
+            
+    + Select person from the global population to interact with
+    
+        + Uniform (-1, 1) = quality of the interaction
+        
+            + If it goes well, agent's trait is influenced by this person
+            
+                + i.e., If uniform > 0
+                
+            + If it does not go well, agent keeps own trait
+            
+                + i.e., If uniform < 0
+                
+    + Environment
+    
+        + Random number that influences trait
+        
+
+* Update trait and peer holder
+
+    + If the interaction went well, the new person joins the agent's social group
+    
+* Iterate
+
+
+
+# The Incomplete Model
+
+First I present the model without a loop in very simple code. We begin with a distribution of the trait in the population.
+
+```{r}
+
+global_population <- data.frame(
+  "People" = c(1:1000),
+  "SDO" = c(rnorm(1000, 100, 10))
+)
+
+```
+
+Then I create the agent. I used SDO as my example in class, so that will be the "trait" here. The agent is given an initial value of the trait.
+
+```{r}
+
+agent <- list(
+  SDO = 0,
+  Peeps = NULL
+)
+
+
+initial_sdo_value <- rnorm(1, 100, 10)
+
+agent[[1]][1] <- initial_sdo_value
+
+agent
+
+```
+
+
+If the agent has a social group ('peeps'), then we would take the mean of their trait levels to inform who the agent interacts with from the global population. 
+
+
+```{r}
+
+# if peeps > 0, take the average of their trait level
+
+num_peeps <- length(agent$Peeps)
+
+trait_of_peeps <- mean(agent$Peeps)
+
+# use average to bias how I sample the population
+# use filter (+ or - 25 from average)
+
+```
+
+Because this is the first time point, however, the agent does not have a social group. Now we select a person from the global population for our agent to interact with. If our agent had a social group, the social group's average trait would inform who we select, but again in this case the interaction is random.
+
+```{r}
+
+other <- sample(global_population$SDO, 1)
+
+```
+
+The interaction is good or bad...
+
+```{r}
+
+interaction_quality <- runif(1, min = -1, max = 1)
+
+```
+
+If the interaction is good, our agent's trait is influenced by this new individual. 
+
+```{r}
+
+# quality good? interaction_quality > 0
+
+new_sdo <- agent$SDO + (other - agent$SDO)*interaction_quality
+
+# quality bad? interaction quality < 0
+
+new_sdo <- agent$SDO
+
+```
+
+Then we throw in some environmental disturbance for fun
+
+```{r}
+
+# Environment
+
+environment_sdo <- sample(c(-20:20), 1)
+
+new_sdo <- new_sdo + environment_sdo
+
+```
+
+and conclude by updating the agent
+
+```{r}
+
+# Update agent
+
+agent$SDO <- c(agent$SDO, new_sdo)
+
+# If the interaction went well, this person goes into friend group. If not, leave them out
+
+agent$Peeps <- c(agent$Peeps, other)
+
+agent
+
+```
+
+
+# The Full Model
+
+Here is the full model and a plot of the agent's trait over time.
+
+```{r, cache=TRUE}
+
+# - -----------------------------------------------------------------------
+
+
+# - -----------------------------------------------------------------------
+
+
+# - -----------------------------------------------------------------------
+
+
+# - -----------------------------------------------------------------------
+
+
+# - -----------------------------------------------------------------------
+
+
+# - -----------------------------------------------------------------------
+
+library(tidyverse)
+
+# Generate over time
+
+time_points <- 400
+
+
+global_population <- data.frame(
+  "People" = c(1:1000),
+  "SDO" = c(rnorm(1000, 100, 10))
+)
+
+
+agent <- list(
+  SDO = rep(0,time_points),
+  Peeps = rep(0,time_points)
+)
+
+
+initial_sdo_value <- rnorm(1, 100, 10)
+
+agent[[1]][1] <- initial_sdo_value
+
+other <- sample(global_population$SDO, 1)
+
+agent[[2]][1] <- other
+
+count <- 0
+
+for(i in 2:time_points){
+  
+    count <- count + 1
+    
+    
+    # sample global population and interact with them
+    # filter based on peeps average
+    
+    # need to change this to only use values that are not zero
+    
+    use_non_zero_values <- agent$Peeps[agent$Peeps > 0]
+    
+    use_vals <- mean(use_non_zero_values)
+    filter_top <- use_vals + 20
+    filter_lower <- use_vals - 20
+
+    new_df <- global_population %>%
+      filter(SDO < filter_top & SDO > filter_lower)
+    
+    other <- sample(new_df$SDO, 1)
+    
+    interaction_quality <- runif(1, min = -1, max = 1)
+    
+    # quality good or bad?
+    if(interaction_quality > 0){
+      new_sdo <- agent$SDO[i - 1] + (other - agent$SDO[i - 1])*interaction_quality
+    }else{
+      new_sdo <- agent$SDO[i - 1]
+    }
+    
+    
+    # Environment
+    
+    environment_sdo <- sample(c(-20:20), 1)
+    
+    new_sdo <- new_sdo + environment_sdo
+    
+    
+    # Update agent
+    
+    
+    agent$SDO[i] <- new_sdo
+    
+    if(interaction_quality > 0){
+      agent$Peeps[i] <- other
+    }else{
+      agent$Peeps <- agent$Peeps
+    }
+    
+    
+    
+    
+}
+
+
+library(ggplot2)
+plot_agent <- data.frame(
+  'Agent_SDO' = c(agent$SDO),
+  "Peeps_SDO" = c(agent$Peeps),
+  "Time" = c(1:time_points)
+)
+
+
+new_data <- plot_agent %>%
+  filter(Peeps_SDO > 0) %>%
+  gather(Agent_SDO, Peeps_SDO, key = 'variable', value = 'SDO')
+
+
+ggplot(new_data, aes(x = Time, y = SDO)) + 
+  geom_point() + 
+  geom_line(color = 'blue') + 
+  facet_wrap(~variable) + 
+  ylab("Level")
+
+
+
+```
+
+Bo$^2$m =)

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Computational_Notes on Christopher Dishop</title>
+    <link>/computational_notes/</link>
+    <description>Recent content in Computational_Notes on Christopher Dishop</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Wed, 04 Jul 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/computational_notes/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Longitudinal Plotting</title>
+      <link>/computational_notes/longitudinal_plotting/</link>
+      <pubDate>Wed, 04 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/longitudinal_plotting/</guid>
+      <description>A few random notes about plotting, describing, and thinking about trajectories.
+Plotting Trajectories Imagine we record “affect” (\(Y\)) for five people over 20 time points. ggplot2 produces poor longitudinal trajectories if you only specify time and affect as variables:
+library(ggplot2) library(tidyverse) plot1 &amp;lt;- ggplot(df1, aes(x = time, y = affect)) + geom_point() + geom_line() plot1 Instead, specify “id” either as the grouping variable:
+plot2 &amp;lt;- ggplot(df1, aes(x = time, y = affect, group = id)) + geom_point() + geom_line() plot2 or a color.</description>
+    </item>
+    
+    <item>
+      <title>Column Names As Parameters</title>
+      <link>/computational_notes/column_name_parameters/</link>
+      <pubDate>Sat, 02 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/column_name_parameters/</guid>
+      <description>I always forget how to use column names as function parameters, so here is an example.
+Function with no column name parameters Function:
+ Select columns
+ Replace the Jimmy and James ‘v_1’ values with 99
+  library(tidyverse) dish &amp;lt;- data.frame( &amp;#39;person&amp;#39; = c(&amp;#39;jimmy&amp;#39;, &amp;#39;james&amp;#39;, &amp;#39;johnny&amp;#39;), &amp;#39;v_1&amp;#39; = c(rnorm(3, 0, 1)), &amp;#39;v_2&amp;#39; = c(rnorm(3, 10, 5)), &amp;#39;v_3&amp;#39; = c(rnorm(3, 50, 10)), &amp;#39;v_4&amp;#39; = c(rnorm(3, 25, 15)) ) mini &amp;lt;- dish %&amp;gt;% select(person, v_1, v_2) mini[mini$person == &amp;#39;jimmy&amp;#39;, 2] &amp;lt;- 99 mini[mini$person == &amp;#39;james&amp;#39;, 2] &amp;lt;- 99 The original data:</description>
+    </item>
+    
+    <item>
+      <title>Spline Modeling</title>
+      <link>/computational_notes/spline/</link>
+      <pubDate>Sat, 05 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/spline/</guid>
+      <description>A few spline models (also known as piecewise models). As in previous posts, ‘affect’ is the name given to values of \(y\) throughout.
+1) Growth and Even More Growth A model that captures a process that increases initially and then increases at an even greater rate once it reaches time point 5. The data generating process:
+\[\begin{equation} y_{it} = \begin{cases} 4 + 0.3t + error_{t}, &amp;amp; \text{if time &amp;lt; 5}\\ 8 + 0.</description>
+    </item>
+    
+    <item>
+      <title>Latent Growth Curves</title>
+      <link>/computational_notes/latent_growth/</link>
+      <pubDate>Sun, 15 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/latent_growth/</guid>
+      <description>Latent Growth Curves I will progress through three models: linear, quadratic growth, and latent basis. In every example I use a sample of 400, 6 time points, and ‘affect’ as the variable of interest.
+Don’t forget that multiplying by time
+ \(0.6t\)  is different from describing over time
+ \(0.6_t\).  1) Linear The data generating process:
+\[\begin{equation} y_{it} = 4 - 0.6t + e_{t} \end{equation}\]
+library(tidyverse) library(ggplot2) library(MASS) N &amp;lt;- 400 time &amp;lt;- 6 intercept &amp;lt;- 4 linear_growth &amp;lt;- -0.</description>
+    </item>
+    
+    <item>
+      <title>Social Trait Development Computational Model</title>
+      <link>/computational_notes/social_trait_comp_model/</link>
+      <pubDate>Fri, 30 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/social_trait_comp_model/</guid>
+      <description>I built the following simple computational model for an individual differences class in the Spring of 2018 to demonstrate how to incorporate explantory elements for trait development into a computational framework. This model assumes that an individual’s trait development depends on 1) the environment and 2) interactions with others inside and outside of the individual’s social group. Moreover, the model assumes traits are somewhat stable and exhibit self-similarity across time. The main properties I am trying to capture, therefore, include:</description>
+    </item>
+    
+    <item>
+      <title>Numerical Integration and Optimization</title>
+      <link>/computational_notes/integration_optimization/</link>
+      <pubDate>Fri, 16 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/integration_optimization/</guid>
+      <description>Integration Trapezoid Rule
+To find the area under a curve we can generate a sequence of trapezoids that follow the rules of the curve (i.e., the data generating function for the curve) along the \(x\)-axis and then add all of the trapezoids together. To create a trapezoid we use the following equation:
+ let \(w\) equal the width of the trapezoid (along the \(x\)-axis), then
+ Area = (\(w/2\) * \(f(x_i)\)) + \(f(x_i+1)\)   for a single trapezoid.</description>
+    </item>
+    
+    <item>
+      <title>Random Walks</title>
+      <link>/computational_notes/random_walks/</link>
+      <pubDate>Thu, 11 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/random_walks/</guid>
+      <description>Some random walk fun. I use 400 steps in each example.
+One-Dimensional Random Walk A random walk using a recursive equation.
+# Empty vector to store the walk rw_1 &amp;lt;- numeric(400) # Initial value rw_1[1] &amp;lt;- 7 # The Random Walk equation in a for-loop for(i in 2:400){ rw_1[i] &amp;lt;- 1*rw_1[i - 1] + rnorm(1,0,2) } plot(rw_1) A random walk using R’s “cumsum” command. Here, I will generate a vector of randomly selected 1’s and -1’s.</description>
+    </item>
+    
+    <item>
+      <title>Combining CSV Files</title>
+      <link>/computational_notes/load_csv/</link>
+      <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/load_csv/</guid>
+      <description>A couple quick pieces of code to assist any time I need to work with many CSV files.
+Into List This first code chunk loads all of the CSV files in a folder, makes each into data frame, and stores each separately in a list.
+setwd(&amp;quot;enter path&amp;quot;) # A character vector of every file name files &amp;lt;- Sys.glob(&amp;quot;*.csv&amp;quot;) # A list of all CSV files in the respective folder as data.</description>
+    </item>
+    
+    <item>
+      <title>Formatting Qualtrics Responses</title>
+      <link>/computational_notes/formatting_qualtrics/</link>
+      <pubDate>Tue, 02 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/formatting_qualtrics/</guid>
+      <description>Here is a quick piece of code to create numeric response scores when data are read in as strings (e.g., “Strongly Agree, Agree, Neutral”).
+library(tidyverse) library(dplyr) library(plyr) df &amp;lt;- read.csv(&amp;quot;path&amp;quot;) labels_to_values1 &amp;lt;- function(x){ mapvalues(x, from = c(&amp;quot;Strongly Agree&amp;quot;, &amp;quot;Agree&amp;quot;, &amp;quot;Slightly Agree&amp;quot;, &amp;quot;Slightly Disagree&amp;quot;, &amp;quot;Disagree&amp;quot;, &amp;quot;Strongly Disagree&amp;quot;), to = c(6,5,4,3,2,1)) } recode_df &amp;lt;- df %&amp;gt;% select(column_to_modify1, column_to_modify2, column_to_modify2, etc) %&amp;gt;% apply(2, FUN = labels_to_values1) %&amp;gt;% data.frame() Note that R will throw you warnings if all of the response options are not used, but the code will still work.</description>
+    </item>
+    
+    <item>
+      <title>Why Detecting Interactions is Easier in the Lab</title>
+      <link>/computational_notes/interactions_fve/</link>
+      <pubDate>Wed, 15 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/interactions_fve/</guid>
+      <description>A fun simulation by McClelland and Judd (1993) in Psychological Bulletin that demonstrates why detecting interactions outside the lab (i.e., in field studies) is difficult. In experiments, scores on the independent variables are located at the extremes of their respective distributions because we manipulate conditions. The distribution of scores across all of the independent variables in field studies, conversely, is typically assumed to be normal. By creating “extreme groups” in experiments, therefore, it becomes easier to detect interactions.</description>
+    </item>
+    
+    <item>
+      <title>Workforce Dynamics</title>
+      <link>/computational_notes/role_dynamics/</link>
+      <pubDate>Tue, 22 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/role_dynamics/</guid>
+      <description>We can model the states of a system by applying a transition matrix to values represented in an initial distribution and repeating it until we reach an equilibrium.
+Suppose we want to model how job roles in a given company change over time. Let us assume the following:
+ There are three (hierarchical) positions in the company:
+ Analyst
+ Project Coordinator
+ Manager
+  30 new workers enter the company each year, and they all begin as analysts</description>
+    </item>
+    
+    <item>
+      <title>Convert Text File</title>
+      <link>/computational_notes/convert_text/</link>
+      <pubDate>Sun, 09 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/convert_text/</guid>
+      <description>A quick piece of code that reads a text file, changes something, saves a new text file, and iterates that process for every text file in that folder.
+setwd(&amp;quot;path to the text files&amp;quot;) library(readr) all_files = Sys.glob(&amp;quot;*.txt&amp;quot;) for(i in 1:length(all_files)){ data = all_files[i] mystring = read_file(paste(data)) new_data = gsub(&amp;quot;old piece of text&amp;quot;, &amp;quot;new piece of text&amp;quot;, mystring) write_file(new_data, path = paste(&amp;quot;something&amp;quot;, code, &amp;quot;.txt&amp;quot;, sep = &amp;quot;&amp;quot;) } Bo\(^2\)m =)</description>
+    </item>
+    
+    <item>
+      <title>Art With Monte Carlo</title>
+      <link>/computational_notes/art_montecarlo/</link>
+      <pubDate>Sat, 18 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/art_montecarlo/</guid>
+      <description>I like to think of Monte Carlo as a counting method. If a condition is satisfied we make a note (e.g., 1), and if the condition is not satisfied we make a different note (e.g., 0). We then iterate and evaluate the pattern of 1’s and 0’s to learn about our process. Art can be described in a similar way: if a condition is satisfied we use a color, and if a condition is not satisfied we use a different color.</description>
+    </item>
+    
+    <item>
+      <title>The Binomial Effect Size Display</title>
+      <link>/computational_notes/besd/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/besd/</guid>
+      <description>Effect sizes provide information about the magnitude of an effect. Unfortunately, they can be difficult to interpret or appear “small” to anyone unfamiliar with the typical effect sizes in a given research field. Rosenthal and Rubin (1992) provide an intuitive effect size, called the Binomial Effect Size Display, that captures the change in success rate due to a treatment.
+The calculation is simple:
+ Treamtment BESD = 0.50 + (r / 2)</description>
+    </item>
+    
+  </channel>
+</rss>

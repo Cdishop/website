@@ -1,0 +1,54 @@
+---
+title: "Combining CSV Files"
+date: "2018-01-03"
+output: pdf_document
+---
+
+A couple quick pieces of code to assist any time I need to work with many CSV files.
+
+# Into List
+
+This first code chunk loads all of the CSV files in a folder, makes each into data frame, and stores each separately in a list.
+
+```{r, eval = F}
+setwd("enter path")
+
+# A character vector of every file name
+
+files <- Sys.glob("*.csv")
+
+# A list of all CSV files in the respective folder as data.frames
+
+myfiles <- lapply(files, FUN = read.csv)
+
+# To load any single data set...
+
+data_set1 <- myfiles[[1]]
+
+```
+
+# Into Single Data Frame
+
+The code above stores each file into a list as a separate data frame. If I want to combine every CSV file into the same data frame I can do the following:
+
+```{r, eval = F}
+
+setwd("enter path")
+
+# A character vector of every file name
+
+files <- list.files(pattern = "*.csv")
+
+# Now the full command
+
+data_set <- do.call(cbind, 
+                    lapply(files, 
+                           function(x) read.csv(x, stringsAsFactors = FALSE)))
+
+```
+
+The code shown uses "cbind" so every variable within every CSV file will receive its own column in my "data_set." If every CSV file has the same variable names replace "cbind" with "rbind."
+
+
+Bo$^2$m =)
+

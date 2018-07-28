@@ -1,0 +1,1063 @@
+---
+title: "Spline Modeling"
+output: pdf_document
+date: "2018-05-05"
+---
+
+
+
+<p>A few spline models (also known as piecewise models). As in previous posts, ‘affect’ is the name given to values of <span class="math inline">\(y\)</span> throughout.</p>
+<div id="growth-and-even-more-growth" class="section level1">
+<h1>1) Growth and Even More Growth</h1>
+<p>A model that captures a process that increases initially and then increases at an even greater rate once it reaches time point 5. The data generating process:</p>
+<p><span class="math display">\[\begin{equation}
+y_{it} = 
+  \begin{cases}
+  4 + 0.3t + error_{t}, &amp; \text{if time &lt; 5}\\
+  8 + 0.9t + error_{t}, &amp; \text{otherwise}
+  \end{cases}
+\end{equation}\]</span></p>
+<p>The data generating code and plot</p>
+<pre class="r"><code>library(tidyverse)
+library(lavaan)
+library(ggplot2)
+library(MASS)
+
+N &lt;- 400
+time &lt;- 10
+
+intercept_1 &lt;- 4
+intercept_2 &lt;- 8
+
+growth1 &lt;- 0.3
+growth2 &lt;- 0.9
+
+
+df_matrix &lt;- matrix(, ncol = 3, nrow = N*time)
+
+
+count &lt;- 0
+
+for(i in 1:N){
+  
+  unob_het_y &lt;- rnorm(1,0,1)
+  
+  
+  for(j in 1:time){
+    
+    count &lt;- count + 1
+    
+    if(j &lt; 5){
+    df_matrix[count, 1] &lt;- i
+    df_matrix[count, 2] &lt;- j
+    df_matrix[count, 3] &lt;- intercept_1 + growth1*j + unob_het_y + rnorm(1,0,1)
+    
+    }else{
+      
+      df_matrix[count, 1] &lt;- i
+      df_matrix[count, 2] &lt;- j
+      df_matrix[count, 3] &lt;- intercept_2 + growth2*j + unob_het_y + rnorm(1,0,1)
+      
+      
+    }
+  }
+  
+}
+
+df &lt;- data.frame(df_matrix)
+
+names(df) &lt;- c(&#39;id&#39;, &#39;time&#39;, &#39;affect&#39;)
+
+df1 &lt;- df %&gt;%
+  filter(time &lt; 5)
+
+df2 &lt;- df %&gt;%
+  filter(time &gt;= 5)
+
+df_sum1 &lt;- df1 %&gt;%
+  group_by(time) %&gt;%
+  summarise(
+    affect = mean(affect)
+  )
+
+df_sum2 &lt;- df2 %&gt;%
+  group_by(time) %&gt;%
+  summarise(
+    affect = mean(affect)
+  )
+
+ggplot() + 
+  geom_point(data = df1, aes(x = time, y = affect, group = id), color = &#39;gray85&#39;) + 
+  geom_line(data = df1, aes(x = time, y = affect, group = id), color = &#39;gray85&#39;) + 
+  geom_point(data = df2, aes(x = time, y = affect, group = id), color = &#39;gray85&#39;) + 
+  geom_line(data = df2, aes(x = time, y = affect, group = id), color = &#39;gray85&#39;) + 
+  geom_line(data = df_sum1, aes(x = time, y = affect)) + 
+  geom_line(data = df_sum2, aes(x = time, y = affect))</code></pre>
+<p><img src="/Computational_Notes/spline_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>Estimating the parameters using SEM:</p>
+<pre class="r"><code>df_wide &lt;- reshape(df, idvar = &#39;id&#39;, timevar = &#39;time&#39;, direction = &#39;wide&#39;)
+
+
+spline_string &lt;- &#39;
+
+# latent intercept for first half
+
+level1_affect =~ 1*affect.1 + 1*affect.2 + 1*affect.3 + 1*affect.4 + 0*affect.5 + 0*affect.6 + 0*affect.7 + 0*affect.8 + 0*affect.9 + 0*affect.10
+
+# latent intercept for second half
+
+level2_affect =~ 0*affect.1 + 0*affect.2 + 0*affect.3 + 0*affect.4 + 1*affect.5 + 1*affect.6 + 1*affect.7 + 1*affect.8 + 1*affect.9 + 1*affect.10
+
+# latent slope for first half basis coefficients
+
+slope1_affect =~ 1*affect.1 + 2*affect.2 + 3*affect.3 + 4*affect.4 + 0*affect.5 + 0*affect.6 + 0*affect.7 + 0*affect.8 + 0*affect.9 + 0*affect.10
+
+# latent slope for second half basis coefficients
+
+slope2_affect =~ 0*affect.1 + 0*affect.2 + 0*affect.3 + 0*affect.4 + 5*affect.5 + 6*affect.6 + 7*affect.7 + 8*affect.8 + 9*affect.9 + 10*affect.10
+
+# means and variance of latent factors
+
+level1_affect ~~ level1_affect
+level2_affect ~~ level2_affect
+slope1_affect ~~ slope1_affect
+slope2_affect ~~ slope2_affect
+
+# covariance between latent factors
+
+level1_affect ~~ level2_affect
+level1_affect ~~ slope1_affect
+level1_affect ~~ slope2_affect
+
+level2_affect ~~ slope1_affect
+level2_affect ~~ slope2_affect
+
+slope1_affect ~~ slope2_affect
+
+# constrain means of indicators to zero across time
+
+affect.1 ~ 0
+affect.2 ~ 0
+affect.3 ~ 0
+affect.4 ~ 0
+affect.5 ~ 0
+affect.6 ~ 0
+affect.7 ~ 0
+affect.8 ~ 0
+affect.9 ~ 0
+affect.10 ~ 0
+
+# constrain residual variance to equality across time
+
+affect.1 ~~ res_var*affect.1
+affect.2 ~~ res_var*affect.2
+affect.3 ~~ res_var*affect.3
+affect.4 ~~ res_var*affect.4
+affect.5 ~~ res_var*affect.5
+affect.6 ~~ res_var*affect.6
+affect.7 ~~ res_var*affect.7
+affect.8 ~~ res_var*affect.8
+affect.9 ~~ res_var*affect.9
+affect.10 ~~ res_var*affect.10
+
+&#39;
+
+spline_model &lt;- growth(spline_string, data = df_wide)
+summary(spline_model, fit.measures = T)</code></pre>
+<pre><code>## lavaan 0.6-2 ended normally after 72 iterations
+## 
+##   Optimization method                           NLMINB
+##   Number of free parameters                         24
+##   Number of equality constraints                     9
+## 
+##   Number of observations                           400
+## 
+##   Estimator                                         ML
+##   Model Fit Test Statistic                      38.166
+##   Degrees of freedom                                50
+##   P-value (Chi-square)                           0.890
+## 
+## Model test baseline model:
+## 
+##   Minimum Function Test Statistic             1922.814
+##   Degrees of freedom                                45
+##   P-value                                        0.000
+## 
+## User model versus baseline model:
+## 
+##   Comparative Fit Index (CFI)                    1.000
+##   Tucker-Lewis Index (TLI)                       1.006
+## 
+## Loglikelihood and Information Criteria:
+## 
+##   Loglikelihood user model (H0)              -6175.128
+##   Loglikelihood unrestricted model (H1)      -6156.045
+## 
+##   Number of free parameters                         15
+##   Akaike (AIC)                               12380.255
+##   Bayesian (BIC)                             12440.127
+##   Sample-size adjusted Bayesian (BIC)        12392.531
+## 
+## Root Mean Square Error of Approximation:
+## 
+##   RMSEA                                          0.000
+##   90 Percent Confidence Interval          0.000  0.016
+##   P-value RMSEA &lt;= 0.05                          1.000
+## 
+## Standardized Root Mean Square Residual:
+## 
+##   SRMR                                           0.027
+## 
+## Parameter Estimates:
+## 
+##   Information                                 Expected
+##   Information saturated (h1) model          Structured
+##   Standard Errors                             Standard
+## 
+## Latent Variables:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##   level1_affect =~                                    
+##     affect.1          1.000                           
+##     affect.2          1.000                           
+##     affect.3          1.000                           
+##     affect.4          1.000                           
+##     affect.5          0.000                           
+##     affect.6          0.000                           
+##     affect.7          0.000                           
+##     affect.8          0.000                           
+##     affect.9          0.000                           
+##     affect.10         0.000                           
+##   level2_affect =~                                    
+##     affect.1          0.000                           
+##     affect.2          0.000                           
+##     affect.3          0.000                           
+##     affect.4          0.000                           
+##     affect.5          1.000                           
+##     affect.6          1.000                           
+##     affect.7          1.000                           
+##     affect.8          1.000                           
+##     affect.9          1.000                           
+##     affect.10         1.000                           
+##   slope1_affect =~                                    
+##     affect.1          1.000                           
+##     affect.2          2.000                           
+##     affect.3          3.000                           
+##     affect.4          4.000                           
+##     affect.5          0.000                           
+##     affect.6          0.000                           
+##     affect.7          0.000                           
+##     affect.8          0.000                           
+##     affect.9          0.000                           
+##     affect.10         0.000                           
+##   slope2_affect =~                                    
+##     affect.1          0.000                           
+##     affect.2          0.000                           
+##     affect.3          0.000                           
+##     affect.4          0.000                           
+##     affect.5          5.000                           
+##     affect.6          6.000                           
+##     affect.7          7.000                           
+##     affect.8          8.000                           
+##     affect.9          9.000                           
+##     affect.10        10.000                           
+## 
+## Covariances:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##   level1_affect ~~                                    
+##     level2_affect     1.076    0.168    6.398    0.000
+##     slope1_affect     0.033    0.044    0.740    0.459
+##     slope2_affect    -0.006    0.019   -0.312    0.755
+##   level2_affect ~~                                    
+##     slope1_affect    -0.030    0.046   -0.643    0.520
+##     slope2_affect     0.014    0.035    0.414    0.679
+##   slope1_affect ~~                                    
+##     slope2_affect     0.004    0.005    0.831    0.406
+## 
+## Intercepts:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##    .affect.1          0.000                           
+##    .affect.2          0.000                           
+##    .affect.3          0.000                           
+##    .affect.4          0.000                           
+##    .affect.5          0.000                           
+##    .affect.6          0.000                           
+##    .affect.7          0.000                           
+##    .affect.8          0.000                           
+##    .affect.9          0.000                           
+##    .affect.10         0.000                           
+##     level1_affect     3.974    0.077   51.390    0.000
+##     level2_affect     7.942    0.103   77.064    0.000
+##     slope1_affect     0.323    0.022   14.494    0.000
+##     slope2_affect     0.910    0.012   76.062    0.000
+## 
+## Variances:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##     lvl1_ff           0.888    0.175    5.084    0.000
+##     lvl2_ff           0.857    0.316    2.713    0.007
+##     slp1_ff          -0.002    0.015   -0.133    0.894
+##     slp2_ff          -0.000    0.004   -0.013    0.990
+##    .affct.1 (rs_v)    1.003    0.029   34.641    0.000
+##    .affct.2 (rs_v)    1.003    0.029   34.641    0.000
+##    .affct.3 (rs_v)    1.003    0.029   34.641    0.000
+##    .affct.4 (rs_v)    1.003    0.029   34.641    0.000
+##    .affct.5 (rs_v)    1.003    0.029   34.641    0.000
+##    .affct.6 (rs_v)    1.003    0.029   34.641    0.000
+##    .affct.7 (rs_v)    1.003    0.029   34.641    0.000
+##    .affct.8 (rs_v)    1.003    0.029   34.641    0.000
+##    .affct.9 (rs_v)    1.003    0.029   34.641    0.000
+##    .affc.10 (rs_v)    1.003    0.029   34.641    0.000</code></pre>
+<p>The structure of the basis coefficients is the important piece that allows us to capture the change in slope:</p>
+<pre class="r"><code>&#39;
+# latent slope for first half basis coefficients
+
+slope1_affect =~ 1*affect.1 + 2*affect.2 + 3*affect.3 + 4*affect.4 + 0*affect.5 + 0*affect.6 + 0*affect.7 + 0*affect.8 + 0*affect.9 + 0*affect.10
+
+# latent slope for second half basis coefficients
+
+slope2_affect =~ 0*affect.1 + 0*affect.2 + 0*affect.3 + 0*affect.4 + 5*affect.5 + 6*affect.6 + 7*affect.7 + 8*affect.8 + 9*affect.9 + 10*affect.10
+
+&#39;</code></pre>
+</div>
+<div id="growth-and-negative-growth" class="section level1">
+<h1>2) Growth and Negative Growth</h1>
+<p>A model that captures a process that goes up and then goes down. The data generating process:</p>
+<p><span class="math display">\[\begin{equation}
+y_{it} = 
+  \begin{cases}
+  4 + 0.5t + error_{t}, &amp; \text{if time &lt; 5}\\
+  4 - 0.5t + error_{t}, &amp; \text{otherwise}
+  \end{cases}
+\end{equation}\]</span></p>
+<p>The data generating code and plot</p>
+<pre class="r"><code>library(tidyverse)
+library(lavaan)
+library(ggplot2)
+library(MASS)
+
+N &lt;- 400
+time &lt;- 10
+
+intercept_1 &lt;- 4
+intercept_2 &lt;- 4
+
+growth1 &lt;- 0.8
+growth2 &lt;- -0.8
+
+df_matrix_b &lt;- matrix(, ncol = 3, nrow = N*time)
+
+
+count &lt;- 0
+
+for(i in 1:N){
+  
+  unob_het_y &lt;- rnorm(1,0,1)
+  
+  
+  for(j in 1:time){
+    
+    count &lt;- count + 1
+    
+    if(j &lt; 5){
+      df_matrix_b[count, 1] &lt;- i
+      df_matrix_b[count, 2] &lt;- j
+      df_matrix_b[count, 3] &lt;- intercept_1 + growth1*j + unob_het_y + rnorm(1,0,1)
+      
+    }else{
+      
+      df_matrix_b[count, 1] &lt;- i
+      df_matrix_b[count, 2] &lt;- j
+      df_matrix_b[count, 3] &lt;- intercept_2 + growth2*j + unob_het_y + rnorm(1,0,1)
+      
+      
+    }
+  }
+  
+}
+
+df_b &lt;- data.frame(df_matrix_b)
+
+names(df_b) &lt;- c(&#39;id&#39;, &#39;time&#39;, &#39;affect&#39;)
+
+df1_b &lt;- df_b %&gt;%
+  filter(time &lt; 5)
+
+df2_b &lt;- df_b %&gt;%
+  filter(time &gt;= 5)
+
+df_sum1_b &lt;- df1_b %&gt;%
+  group_by(time) %&gt;%
+  summarise(
+    affect = mean(affect)
+  )
+
+df_sum2_b &lt;- df2_b %&gt;%
+  group_by(time) %&gt;%
+  summarise(
+    affect = mean(affect)
+  )
+
+ggplot() + 
+  geom_point(data = df1_b, aes(x = time, y = affect, group = id), color = &#39;gray85&#39;) + 
+  geom_line(data = df1_b, aes(x = time, y = affect, group = id), color = &#39;gray85&#39;) + 
+  geom_point(data = df2_b, aes(x = time, y = affect, group = id), color = &#39;gray85&#39;) + 
+  geom_line(data = df2_b, aes(x = time, y = affect, group = id), color = &#39;gray85&#39;) + 
+  geom_line(data = df_sum1_b, aes(x = time, y = affect)) + 
+  geom_line(data = df_sum2_b, aes(x = time, y = affect))</code></pre>
+<p><img src="/Computational_Notes/spline_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Estimating the parameters using SEM:</p>
+<pre class="r"><code>df_wide_b &lt;- reshape(df_b, idvar = &#39;id&#39;, timevar = &#39;time&#39;, direction = &#39;wide&#39;)
+
+
+spline_string_b &lt;- &#39;
+
+# latent intercept for first half
+
+level1_affect =~ 1*affect.1 + 1*affect.2 + 1*affect.3 + 1*affect.4 + 0*affect.5 + 0*affect.6 + 0*affect.7 + 0*affect.8 + 0*affect.9 + 0*affect.10
+
+# latent intercept for second half
+
+level2_affect =~ 0*affect.1 + 0*affect.2 + 0*affect.3 + 0*affect.4 + 1*affect.5 + 1*affect.6 + 1*affect.7 + 1*affect.8 + 1*affect.9 + 1*affect.10
+
+# latent slope for first half basis coefficients
+
+slope1_affect =~ 1*affect.1 + 2*affect.2 + 3*affect.3 + 4*affect.4 + 0*affect.5 + 0*affect.6 + 0*affect.7 + 0*affect.8 + 0*affect.9 + 0*affect.10
+
+# latent slope for second half basis coefficients
+
+slope2_affect =~ 0*affect.1 + 0*affect.2 + 0*affect.3 + 0*affect.4 + 5*affect.5 + 6*affect.6 + 7*affect.7 + 8*affect.8 + 9*affect.9 + 10*affect.10
+
+# means and variance of latent factors
+
+level1_affect ~~ level1_affect
+level2_affect ~~ level2_affect
+slope1_affect ~~ slope1_affect
+slope2_affect ~~ slope2_affect
+
+# covariance between latent factors
+
+level1_affect ~~ level2_affect
+level1_affect ~~ slope1_affect
+level1_affect ~~ slope2_affect
+
+level2_affect ~~ slope1_affect
+level2_affect ~~ slope2_affect
+
+slope1_affect ~~ slope2_affect
+
+# constrain means of indicators to zero across time
+
+affect.1 ~ 0
+affect.2 ~ 0
+affect.3 ~ 0
+affect.4 ~ 0
+affect.5 ~ 0
+affect.6 ~ 0
+affect.7 ~ 0
+affect.8 ~ 0
+affect.9 ~ 0
+affect.10 ~ 0
+
+# constrain residual variance to equality across time
+
+affect.1 ~~ res_var*affect.1
+affect.2 ~~ res_var*affect.2
+affect.3 ~~ res_var*affect.3
+affect.4 ~~ res_var*affect.4
+affect.5 ~~ res_var*affect.5
+affect.6 ~~ res_var*affect.6
+affect.7 ~~ res_var*affect.7
+affect.8 ~~ res_var*affect.8
+affect.9 ~~ res_var*affect.9
+affect.10 ~~ res_var*affect.10
+
+&#39;
+
+spline_model_b &lt;- growth(spline_string_b, data = df_wide_b)
+summary(spline_model_b, fit.measures = T)</code></pre>
+<pre><code>## lavaan 0.6-2 ended normally after 72 iterations
+## 
+##   Optimization method                           NLMINB
+##   Number of free parameters                         24
+##   Number of equality constraints                     9
+## 
+##   Number of observations                           400
+## 
+##   Estimator                                         ML
+##   Model Fit Test Statistic                      35.384
+##   Degrees of freedom                                50
+##   P-value (Chi-square)                           0.941
+## 
+## Model test baseline model:
+## 
+##   Minimum Function Test Statistic             1845.419
+##   Degrees of freedom                                45
+##   P-value                                        0.000
+## 
+## User model versus baseline model:
+## 
+##   Comparative Fit Index (CFI)                    1.000
+##   Tucker-Lewis Index (TLI)                       1.007
+## 
+## Loglikelihood and Information Criteria:
+## 
+##   Loglikelihood user model (H0)              -6096.696
+##   Loglikelihood unrestricted model (H1)      -6079.004
+## 
+##   Number of free parameters                         15
+##   Akaike (AIC)                               12223.393
+##   Bayesian (BIC)                             12283.265
+##   Sample-size adjusted Bayesian (BIC)        12235.669
+## 
+## Root Mean Square Error of Approximation:
+## 
+##   RMSEA                                          0.000
+##   90 Percent Confidence Interval          0.000  0.007
+##   P-value RMSEA &lt;= 0.05                          1.000
+## 
+## Standardized Root Mean Square Residual:
+## 
+##   SRMR                                           0.029
+## 
+## Parameter Estimates:
+## 
+##   Information                                 Expected
+##   Information saturated (h1) model          Structured
+##   Standard Errors                             Standard
+## 
+## Latent Variables:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##   level1_affect =~                                    
+##     affect.1          1.000                           
+##     affect.2          1.000                           
+##     affect.3          1.000                           
+##     affect.4          1.000                           
+##     affect.5          0.000                           
+##     affect.6          0.000                           
+##     affect.7          0.000                           
+##     affect.8          0.000                           
+##     affect.9          0.000                           
+##     affect.10         0.000                           
+##   level2_affect =~                                    
+##     affect.1          0.000                           
+##     affect.2          0.000                           
+##     affect.3          0.000                           
+##     affect.4          0.000                           
+##     affect.5          1.000                           
+##     affect.6          1.000                           
+##     affect.7          1.000                           
+##     affect.8          1.000                           
+##     affect.9          1.000                           
+##     affect.10         1.000                           
+##   slope1_affect =~                                    
+##     affect.1          1.000                           
+##     affect.2          2.000                           
+##     affect.3          3.000                           
+##     affect.4          4.000                           
+##     affect.5          0.000                           
+##     affect.6          0.000                           
+##     affect.7          0.000                           
+##     affect.8          0.000                           
+##     affect.9          0.000                           
+##     affect.10         0.000                           
+##   slope2_affect =~                                    
+##     affect.1          0.000                           
+##     affect.2          0.000                           
+##     affect.3          0.000                           
+##     affect.4          0.000                           
+##     affect.5          5.000                           
+##     affect.6          6.000                           
+##     affect.7          7.000                           
+##     affect.8          8.000                           
+##     affect.9          9.000                           
+##     affect.10        10.000                           
+## 
+## Covariances:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##   level1_affect ~~                                    
+##     level2_affect     0.970    0.160    6.062    0.000
+##     slope1_affect     0.056    0.042    1.355    0.175
+##     slope2_affect    -0.009    0.017   -0.541    0.589
+##   level2_affect ~~                                    
+##     slope1_affect     0.047    0.044    1.077    0.281
+##     slope2_affect     0.038    0.032    1.191    0.234
+##   slope1_affect ~~                                    
+##     slope2_affect    -0.003    0.005   -0.599    0.549
+## 
+## Intercepts:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##    .affect.1          0.000                           
+##    .affect.2          0.000                           
+##    .affect.3          0.000                           
+##    .affect.4          0.000                           
+##    .affect.5          0.000                           
+##    .affect.6          0.000                           
+##    .affect.7          0.000                           
+##    .affect.8          0.000                           
+##    .affect.9          0.000                           
+##    .affect.10         0.000                           
+##     level1_affect     3.953    0.075   52.633    0.000
+##     level2_affect     3.922    0.102   38.625    0.000
+##     slope1_affect     0.806    0.022   37.370    0.000
+##     slope2_affect    -0.791    0.011  -71.099    0.000
+## 
+## Variances:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##     lvl1_ff           0.774    0.165    4.687    0.000
+##     lvl2_ff           0.783    0.307    2.550    0.011
+##     slp1_ff          -0.012    0.014   -0.814    0.416
+##     slp2_ff          -0.007    0.004   -1.789    0.074
+##    .affct.1 (rs_v)    0.988    0.029   34.641    0.000
+##    .affct.2 (rs_v)    0.988    0.029   34.641    0.000
+##    .affct.3 (rs_v)    0.988    0.029   34.641    0.000
+##    .affct.4 (rs_v)    0.988    0.029   34.641    0.000
+##    .affct.5 (rs_v)    0.988    0.029   34.641    0.000
+##    .affct.6 (rs_v)    0.988    0.029   34.641    0.000
+##    .affct.7 (rs_v)    0.988    0.029   34.641    0.000
+##    .affct.8 (rs_v)    0.988    0.029   34.641    0.000
+##    .affct.9 (rs_v)    0.988    0.029   34.641    0.000
+##    .affc.10 (rs_v)    0.988    0.029   34.641    0.000</code></pre>
+<p>Notice that the string syntax is the exact same because the process changes at the same point in time, it does not matter if the process changes to ‘more positive’ or ‘more negative.’</p>
+</div>
+<div id="negative-growth-growth-and-negative-growth" class="section level1">
+<h1>3) Negative Growth, Growth, and Negative Growth</h1>
+<p>Now a process that goes down, goes up, and then goes back down. The data generating process:</p>
+<p><span class="math display">\[\begin{equation}
+y_{it} = 
+  \begin{cases}
+  4 - 0.5t + error_{t}, &amp; \text{if time &lt; 5}\\
+  4 + 0.5t + error_{t}, &amp; \text{if 5 &lt; time &lt; 10}\\
+  4 - 0.5t + error_{t}, &amp; \text{otherwise}
+  \end{cases}
+\end{equation}\]</span></p>
+<p>The data generating code and plot</p>
+<pre class="r"><code>library(tidyverse)
+library(lavaan)
+library(ggplot2)
+library(MASS)
+
+N &lt;- 400
+time &lt;- 15
+
+intercept_1 &lt;- 4
+intercept_2 &lt;- 4
+intercept_3 &lt;- 4
+
+growth1 &lt;- -0.5
+growth2 &lt;- 0.5
+growth3 &lt;- -0.5
+
+
+df_matrix_c &lt;- matrix(, ncol = 3, nrow = N*time)
+
+
+count &lt;- 0
+
+for(i in 1:N){
+  
+  unob_het_y &lt;- rnorm(1,0,1)
+  
+  
+  for(j in 1:time){
+    
+    count &lt;- count + 1
+    
+    if(j &lt; 5){
+      df_matrix_c[count, 1] &lt;- i
+      df_matrix_c[count, 2] &lt;- j
+      df_matrix_c[count, 3] &lt;- intercept_1 + growth1*j + unob_het_y + rnorm(1,0,1)
+      
+    }else if(j &gt;= 5 &amp;&amp; j &lt; 10){
+      
+      df_matrix_c[count, 1] &lt;- i
+      df_matrix_c[count, 2] &lt;- j
+      df_matrix_c[count, 3] &lt;- intercept_2 + growth2*j + unob_het_y + rnorm(1,0,1)
+      
+      
+    }else{
+      
+      df_matrix_c[count, 1] &lt;- i
+      df_matrix_c[count, 2] &lt;- j
+      df_matrix_c[count, 3] &lt;- intercept_3 + growth3*j + unob_het_y + rnorm(1,0,1)
+      
+    }
+  }
+  
+}
+
+df_c &lt;- data.frame(df_matrix_c)
+
+names(df_c) &lt;- c(&#39;id&#39;, &#39;time&#39;, &#39;affect&#39;)
+
+df1_c &lt;- df_c %&gt;%
+  filter(time &lt; 5)
+
+df2_c &lt;- df_c %&gt;%
+  filter(time &gt;= 5 &amp; time &lt; 10)
+
+df3_c &lt;- df_c %&gt;%
+  filter(time &gt;= 10)
+
+df_sum1_c &lt;- df1_c %&gt;%
+  group_by(time) %&gt;%
+  summarise(
+    affect = mean(affect)
+  )
+
+df_sum2_c &lt;- df2_c %&gt;%
+  group_by(time) %&gt;%
+  summarise(
+    affect = mean(affect)
+  )
+
+df_sum3_c &lt;- df3_c %&gt;%
+  group_by(time) %&gt;%
+  summarise(
+    affect = mean(affect)
+  )
+
+ggplot() + 
+  geom_point(data = df1_c, aes(x = time, y = affect, group = id), color = &#39;gray85&#39;) + 
+  geom_line(data = df1_c, aes(x = time, y = affect, group = id), color = &#39;gray85&#39;) + 
+  geom_point(data = df2_c, aes(x = time, y = affect, group = id), color = &#39;gray85&#39;) + 
+  geom_line(data = df2_c, aes(x = time, y = affect, group = id), color = &#39;gray85&#39;) + 
+  geom_line(data = df_sum1_c, aes(x = time, y = affect)) + 
+  geom_line(data = df_sum2_c, aes(x = time, y = affect)) + 
+  geom_point(data = df3_c, aes(x = time, y = affect, group = id), color = &#39;gray85&#39;) + 
+  geom_line(data = df3_c, aes(x = time, y = affect, group = id), color = &#39;gray85&#39;) + 
+  geom_line(data = df_sum3_c, aes(x = time, y = affect))</code></pre>
+<p><img src="/Computational_Notes/spline_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>Now estimate the parameters using SEM:</p>
+<pre class="r"><code>df_wide_c &lt;- reshape(df_c, idvar = &#39;id&#39;, timevar = &#39;time&#39;, direction = &#39;wide&#39;)
+
+
+spline_string_c &lt;- &#39;
+
+# latent intercept for first third
+
+level1_affect =~ 1*affect.1 + 1*affect.2 + 1*affect.3 + 1*affect.4 + 0*affect.5 + 0*affect.6 + 0*affect.7 + 0*affect.8 + 0*affect.9 + 0*affect.10 + 0*affect.11 + 0*affect.12 + 0*affect.13 + 0*affect.14 + 0*affect.15
+
+# latent intercept for second third
+
+level2_affect =~ 0*affect.1 + 0*affect.2 + 0*affect.3 + 0*affect.4 + 1*affect.5 + 1*affect.6 + 1*affect.7 + 1*affect.8 + 1*affect.9 + 0*affect.10 + 0*affect.11 + 0*affect.12 + 0*affect.13 + 0*affect.14 + 0*affect.15
+
+# latent intercept for final third
+
+level3_affect =~ 0*affect.1 + 0*affect.2 + 0*affect.3 + 0*affect.4 + 0*affect.5 + 0*affect.6 + 0*affect.7 + 0*affect.8 + 0*affect.9 + 1*affect.10 + 1*affect.11 + 1*affect.12 + 1*affect.13 + 1*affect.14 + 1*affect.15
+
+
+# latent slope for first third basis coefficients
+
+slope1_affect =~ 1*affect.1 + 2*affect.2 + 3*affect.3 + 4*affect.4 + 0*affect.5 + 0*affect.6 + 0*affect.7 + 0*affect.8 + 0*affect.9 + 0*affect.10 + 0*affect.11 + 0*affect.12 + 0*affect.13 + 0*affect.14 + 0*affect.15
+
+# latent slope for second third basis coefficients
+
+slope2_affect =~ 0*affect.1 + 0*affect.2 + 0*affect.3 + 0*affect.4 + 5*affect.5 + 6*affect.6 + 7*affect.7 + 8*affect.8 + 9*affect.9 + 0*affect.10 + 0*affect.11 + 0*affect.12 + 0*affect.13 + 0*affect.14 + 0*affect.15
+
+# latent slope for final third basis coefficients
+
+slope3_affect =~ 0*affect.1 + 0*affect.2 + 0*affect.3 + 0*affect.4 + 0*affect.5 + 0*affect.6 + 0*affect.7 + 0*affect.8 + 0*affect.9 + 10*affect.10 + 11*affect.11 + 12*affect.12 + 13*affect.13 + 14*affect.14 + 15*affect.15
+
+
+
+# means and variance of latent factors
+
+level1_affect ~~ level1_affect
+level2_affect ~~ level2_affect
+level3_affect ~~ level3_affect
+slope1_affect ~~ slope1_affect
+slope2_affect ~~ slope2_affect
+slope3_affect ~~ slope3_affect
+
+# covariance between latent factors
+
+level1_affect ~~ level2_affect
+level1_affect ~~ level3_affect
+level1_affect ~~ slope1_affect
+level1_affect ~~ slope2_affect
+level1_affect ~~ slope3_affect
+
+level2_affect ~~ level3_affect
+level2_affect ~~ slope1_affect
+level2_affect ~~ slope2_affect
+level2_affect ~~ slope3_affect
+
+level3_affect ~~ slope1_affect
+level3_affect ~~ slope2_affect
+level3_affect ~~ slope3_affect
+
+slope1_affect ~~ slope2_affect
+slope1_affect ~~ slope3_affect
+
+slope2_affect ~~ slope3_affect
+
+# constrain means of indicators to zero across time
+
+affect.1 ~ 0
+affect.2 ~ 0
+affect.3 ~ 0
+affect.4 ~ 0
+affect.5 ~ 0
+affect.6 ~ 0
+affect.7 ~ 0
+affect.8 ~ 0
+affect.9 ~ 0
+affect.10 ~ 0
+
+# constrain residual variance to equality across time
+
+affect.1 ~~ res_var*affect.1
+affect.2 ~~ res_var*affect.2
+affect.3 ~~ res_var*affect.3
+affect.4 ~~ res_var*affect.4
+affect.5 ~~ res_var*affect.5
+affect.6 ~~ res_var*affect.6
+affect.7 ~~ res_var*affect.7
+affect.8 ~~ res_var*affect.8
+affect.9 ~~ res_var*affect.9
+affect.10 ~~ res_var*affect.10
+
+&#39;
+
+spline_model_c &lt;- growth(spline_string_c, data = df_wide_c)
+summary(spline_model_c, fit.measures = T)</code></pre>
+<pre><code>## lavaan 0.6-2 ended normally after 143 iterations
+## 
+##   Optimization method                           NLMINB
+##   Number of free parameters                         42
+##   Number of equality constraints                     9
+## 
+##   Number of observations                           400
+## 
+##   Estimator                                         ML
+##   Model Fit Test Statistic                      98.700
+##   Degrees of freedom                               102
+##   P-value (Chi-square)                           0.574
+## 
+## Model test baseline model:
+## 
+##   Minimum Function Test Statistic             3311.792
+##   Degrees of freedom                               105
+##   P-value                                        0.000
+## 
+## User model versus baseline model:
+## 
+##   Comparative Fit Index (CFI)                    1.000
+##   Tucker-Lewis Index (TLI)                       1.001
+## 
+## Loglikelihood and Information Criteria:
+## 
+##   Loglikelihood user model (H0)              -9093.399
+##   Loglikelihood unrestricted model (H1)      -9044.049
+## 
+##   Number of free parameters                         33
+##   Akaike (AIC)                               18252.797
+##   Bayesian (BIC)                             18384.516
+##   Sample-size adjusted Bayesian (BIC)        18279.804
+## 
+## Root Mean Square Error of Approximation:
+## 
+##   RMSEA                                          0.000
+##   90 Percent Confidence Interval          0.000  0.024
+##   P-value RMSEA &lt;= 0.05                          1.000
+## 
+## Standardized Root Mean Square Residual:
+## 
+##   SRMR                                           0.035
+## 
+## Parameter Estimates:
+## 
+##   Information                                 Expected
+##   Information saturated (h1) model          Structured
+##   Standard Errors                             Standard
+## 
+## Latent Variables:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##   level1_affect =~                                    
+##     affect.1          1.000                           
+##     affect.2          1.000                           
+##     affect.3          1.000                           
+##     affect.4          1.000                           
+##     affect.5          0.000                           
+##     affect.6          0.000                           
+##     affect.7          0.000                           
+##     affect.8          0.000                           
+##     affect.9          0.000                           
+##     affect.10         0.000                           
+##     affect.11         0.000                           
+##     affect.12         0.000                           
+##     affect.13         0.000                           
+##     affect.14         0.000                           
+##     affect.15         0.000                           
+##   level2_affect =~                                    
+##     affect.1          0.000                           
+##     affect.2          0.000                           
+##     affect.3          0.000                           
+##     affect.4          0.000                           
+##     affect.5          1.000                           
+##     affect.6          1.000                           
+##     affect.7          1.000                           
+##     affect.8          1.000                           
+##     affect.9          1.000                           
+##     affect.10         0.000                           
+##     affect.11         0.000                           
+##     affect.12         0.000                           
+##     affect.13         0.000                           
+##     affect.14         0.000                           
+##     affect.15         0.000                           
+##   level3_affect =~                                    
+##     affect.1          0.000                           
+##     affect.2          0.000                           
+##     affect.3          0.000                           
+##     affect.4          0.000                           
+##     affect.5          0.000                           
+##     affect.6          0.000                           
+##     affect.7          0.000                           
+##     affect.8          0.000                           
+##     affect.9          0.000                           
+##     affect.10         1.000                           
+##     affect.11         1.000                           
+##     affect.12         1.000                           
+##     affect.13         1.000                           
+##     affect.14         1.000                           
+##     affect.15         1.000                           
+##   slope1_affect =~                                    
+##     affect.1          1.000                           
+##     affect.2          2.000                           
+##     affect.3          3.000                           
+##     affect.4          4.000                           
+##     affect.5          0.000                           
+##     affect.6          0.000                           
+##     affect.7          0.000                           
+##     affect.8          0.000                           
+##     affect.9          0.000                           
+##     affect.10         0.000                           
+##     affect.11         0.000                           
+##     affect.12         0.000                           
+##     affect.13         0.000                           
+##     affect.14         0.000                           
+##     affect.15         0.000                           
+##   slope2_affect =~                                    
+##     affect.1          0.000                           
+##     affect.2          0.000                           
+##     affect.3          0.000                           
+##     affect.4          0.000                           
+##     affect.5          5.000                           
+##     affect.6          6.000                           
+##     affect.7          7.000                           
+##     affect.8          8.000                           
+##     affect.9          9.000                           
+##     affect.10         0.000                           
+##     affect.11         0.000                           
+##     affect.12         0.000                           
+##     affect.13         0.000                           
+##     affect.14         0.000                           
+##     affect.15         0.000                           
+##   slope3_affect =~                                    
+##     affect.1          0.000                           
+##     affect.2          0.000                           
+##     affect.3          0.000                           
+##     affect.4          0.000                           
+##     affect.5          0.000                           
+##     affect.6          0.000                           
+##     affect.7          0.000                           
+##     affect.8          0.000                           
+##     affect.9          0.000                           
+##     affect.10        10.000                           
+##     affect.11        11.000                           
+##     affect.12        12.000                           
+##     affect.13        13.000                           
+##     affect.14        14.000                           
+##     affect.15        15.000                           
+## 
+## Covariances:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##   level1_affect ~~                                    
+##     level2_affect     1.029    0.202    5.092    0.000
+##     level3_affect     0.539    0.261    2.064    0.039
+##     slope1_affect    -0.024    0.048   -0.494    0.621
+##     slope2_affect    -0.005    0.025   -0.211    0.833
+##     slope3_affect     0.039    0.020    1.990    0.047
+##   level2_affect ~~                                    
+##     level3_affect     0.663    0.382    1.734    0.083
+##     slope1_affect    -0.027    0.054   -0.502    0.616
+##     slope2_affect     0.073    0.052    1.391    0.164
+##     slope3_affect     0.034    0.029    1.169    0.242
+##   level3_affect ~~                                    
+##     slope1_affect     0.201    0.072    2.785    0.005
+##     slope2_affect     0.072    0.048    1.493    0.135
+##     slope3_affect     0.003    0.059    0.047    0.963
+##   slope1_affect ~~                                    
+##     slope2_affect     0.007    0.007    1.011    0.312
+##     slope3_affect    -0.015    0.005   -2.803    0.005
+##   slope2_affect ~~                                    
+##     slope3_affect    -0.006    0.004   -1.579    0.114
+## 
+## Intercepts:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##    .affect.1          0.000                           
+##    .affect.2          0.000                           
+##    .affect.3          0.000                           
+##    .affect.4          0.000                           
+##    .affect.5          0.000                           
+##    .affect.6          0.000                           
+##    .affect.7          0.000                           
+##    .affect.8          0.000                           
+##    .affect.9          0.000                           
+##    .affect.10         0.000                           
+##    .affect.11         0.000                           
+##    .affect.12         0.000                           
+##    .affect.13         0.000                           
+##    .affect.14         0.000                           
+##    .affect.15         0.000                           
+##     level1_affect     4.025    0.082   49.289    0.000
+##     level2_affect     3.951    0.120   33.029    0.000
+##     level3_affect     4.275    0.159   26.856    0.000
+##     slope1_affect    -0.506    0.022  -22.562    0.000
+##     slope2_affect     0.503    0.015   33.380    0.000
+##     slope3_affect    -0.530    0.012  -44.214    0.000
+## 
+## Variances:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##     lvl1_ff           1.148    0.194    5.919    0.000
+##     lvl2_ff           0.559    0.433    1.291    0.197
+##     lvl3_ff           0.988    0.782    1.263    0.207
+##     slp1_ff          -0.001    0.015   -0.069    0.945
+##     slp2_ff          -0.011    0.007   -1.499    0.134
+##     slp3_ff           0.000    0.005    0.032    0.974
+##    .affct.1 (rs_v)    1.013    0.030   33.698    0.000
+##    .affct.2 (rs_v)    1.013    0.030   33.698    0.000
+##    .affct.3 (rs_v)    1.013    0.030   33.698    0.000
+##    .affct.4 (rs_v)    1.013    0.030   33.698    0.000
+##    .affct.5 (rs_v)    1.013    0.030   33.698    0.000
+##    .affct.6 (rs_v)    1.013    0.030   33.698    0.000
+##    .affct.7 (rs_v)    1.013    0.030   33.698    0.000
+##    .affct.8 (rs_v)    1.013    0.030   33.698    0.000
+##    .affct.9 (rs_v)    1.013    0.030   33.698    0.000
+##    .affc.10 (rs_v)    1.013    0.030   33.698    0.000
+##    .affc.11           0.975    0.075   13.020    0.000
+##    .affc.12           1.206    0.090   13.438    0.000
+##    .affc.13           0.996    0.076   13.123    0.000
+##    .affc.14           1.102    0.086   12.805    0.000
+##    .affc.15           0.970    0.087   11.137    0.000</code></pre>
+<p>Again, the basis coefficients are the important piece here:</p>
+<pre class="r"><code>&#39;
+
+
+# latent slope for first third basis coefficients
+
+slope1_affect =~ 1*affect.1 + 2*affect.2 + 3*affect.3 + 4*affect.4 + 0*affect.5 + 0*affect.6 + 0*affect.7 + 0*affect.8 + 0*affect.9 + 0*affect.10 + 0*affect.11 + 0*affect.12 + 0*affect.13 + 0*affect.14 + 0*affect.15
+
+# latent slope for second third basis coefficients
+
+slope2_affect =~ 0*affect.1 + 0*affect.2 + 0*affect.3 + 0*affect.4 + 5*affect.5 + 6*affect.6 + 7*affect.7 + 8*affect.8 + 9*affect.9 + 0*affect.10 + 0*affect.11 + 0*affect.12 + 0*affect.13 + 0*affect.14 + 0*affect.15
+
+# latent slope for final third basis coefficients
+
+slope3_affect =~ 0*affect.1 + 0*affect.2 + 0*affect.3 + 0*affect.4 + 0*affect.5 + 0*affect.6 + 0*affect.7 + 0*affect.8 + 0*affect.9 + 10*affect.10 + 11*affect.11 + 12*affect.12 + 13*affect.13 + 14*affect.14 + 15*affect.15
+
+
+
+&#39;</code></pre>
+<pre><code>## [1] &quot;\n\n\n# latent slope for first third basis coefficients\n\nslope1_affect =~ 1*affect.1 + 2*affect.2 + 3*affect.3 + 4*affect.4 + 0*affect.5 + 0*affect.6 + 0*affect.7 + 0*affect.8 + 0*affect.9 + 0*affect.10 + 0*affect.11 + 0*affect.12 + 0*affect.13 + 0*affect.14 + 0*affect.15\n\n# latent slope for second third basis coefficients\n\nslope2_affect =~ 0*affect.1 + 0*affect.2 + 0*affect.3 + 0*affect.4 + 5*affect.5 + 6*affect.6 + 7*affect.7 + 8*affect.8 + 9*affect.9 + 0*affect.10 + 0*affect.11 + 0*affect.12 + 0*affect.13 + 0*affect.14 + 0*affect.15\n\n# latent slope for final third basis coefficients\n\nslope3_affect =~ 0*affect.1 + 0*affect.2 + 0*affect.3 + 0*affect.4 + 0*affect.5 + 0*affect.6 + 0*affect.7 + 0*affect.8 + 0*affect.9 + 10*affect.10 + 11*affect.11 + 12*affect.12 + 13*affect.13 + 14*affect.14 + 15*affect.15\n\n\n\n&quot;</code></pre>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>
+</div>

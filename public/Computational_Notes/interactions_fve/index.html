@@ -158,21 +158,21 @@ summary(exp_model)</code></pre>
 ## lm(formula = Y ~ X + Z + X:Z, data = exp_data)
 ## 
 ## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -10.8352  -2.2569  -0.2284   2.9157   9.7214 
+##     Min      1Q  Median      3Q     Max 
+## -9.6757 -2.8968 -0.0137  2.7998 12.5804 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)  
-## (Intercept)  0.07799    0.44671   0.175   0.8618  
-## X            0.43714    0.44671   0.979   0.3302  
-## Z            0.39918    0.44671   0.894   0.3738  
-## X:Z          1.01668    0.44671   2.276   0.0251 *
+## (Intercept)  0.03329    0.45716   0.073   0.9421  
+## X            0.88654    0.45716   1.939   0.0554 .
+## Z            0.42835    0.45716   0.937   0.3511  
+## X:Z          1.00634    0.45716   2.201   0.0301 *
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 4.388 on 96 degrees of freedom
-## Multiple R-squared:  0.0638, Adjusted R-squared:  0.03455 
-## F-statistic: 2.181 on 3 and 96 DF,  p-value: 0.09528</code></pre>
+## Residual standard error: 4.326 on 96 degrees of freedom
+## Multiple R-squared:  0.09377,    Adjusted R-squared:  0.06545 
+## F-statistic: 3.311 on 3 and 96 DF,  p-value: 0.02332</code></pre>
 </div>
 </div>
 <div id="the-field-study-data" class="section level1">
@@ -206,19 +206,21 @@ summary(field_model)</code></pre>
 ## lm(formula = FY ~ FX + FZ + FX:FZ, data = field_data)
 ## 
 ## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -9.5937 -2.9039 -0.1549  2.5310 16.8469 
+##      Min       1Q   Median       3Q      Max 
+## -10.7816  -2.2458   0.1667   2.5051   9.7078 
 ## 
 ## Coefficients:
-##              Estimate Std. Error t value Pr(&gt;|t|)
-## (Intercept) -0.299696   0.444655  -0.674    0.502
-## FX           0.418245   0.882925   0.474    0.637
-## FZ          -0.003376   0.949667  -0.004    0.997
-## FX:FZ        0.872302   1.813157   0.481    0.632
+##             Estimate Std. Error t value Pr(&gt;|t|)  
+## (Intercept)   0.2000     0.4162   0.481   0.6319  
+## FX           -0.1709     0.7764  -0.220   0.8262  
+## FZ            0.3394     0.8752   0.388   0.6991  
+## FX:FZ         3.8817     1.5524   2.500   0.0141 *
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 4.3 on 96 degrees of freedom
-## Multiple R-squared:  0.003914,   Adjusted R-squared:  -0.02721 
-## F-statistic: 0.1257 on 3 and 96 DF,  p-value: 0.9447</code></pre>
+## Residual standard error: 4.129 on 96 degrees of freedom
+## Multiple R-squared:  0.06123,    Adjusted R-squared:  0.0319 
+## F-statistic: 2.087 on 3 and 96 DF,  p-value: 0.107</code></pre>
 </div>
 </div>
 <div id="putting-everything-into-monte-carlo" class="section level1">
@@ -294,12 +296,12 @@ for(i in 1:sims){
 <div id="what-proportion-of-experiments-find-significant-interaction-effects" class="section level2">
 <h2>What proportion of experiments find significant interaction effects?</h2>
 <pre class="r"><code>sum(exp_results &lt; 0.05) / 1000</code></pre>
-<pre><code>## [1] 0.686</code></pre>
+<pre><code>## [1] 0.716</code></pre>
 </div>
 <div id="what-proportion-of-field-studies-find-significant-interaction-effects" class="section level2">
 <h2>What proportion of field studies find significant interaction effects?</h2>
 <pre class="r"><code>sum(field_results &lt; 0.05) / 1000</code></pre>
-<pre><code>## [1] 0.089</code></pre>
+<pre><code>## [1] 0.103</code></pre>
 <p>Bo<span class="math inline">\(^2\)</span>m =)</p>
 </div>
 </div>

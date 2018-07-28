@@ -164,7 +164,7 @@ affect.10 ~~ res_var*affect.10
 
 spline_model &lt;- growth(spline_string, data = df_wide)
 summary(spline_model, fit.measures = T)</code></pre>
-<pre><code>## lavaan 0.6-2 ended normally after 72 iterations
+<pre><code>## lavaan 0.6-2 ended normally after 84 iterations
 ## 
 ##   Optimization method                           NLMINB
 ##   Number of free parameters                         24
@@ -173,40 +173,40 @@ summary(spline_model, fit.measures = T)</code></pre>
 ##   Number of observations                           400
 ## 
 ##   Estimator                                         ML
-##   Model Fit Test Statistic                      38.166
+##   Model Fit Test Statistic                      46.125
 ##   Degrees of freedom                                50
-##   P-value (Chi-square)                           0.890
+##   P-value (Chi-square)                           0.630
 ## 
 ## Model test baseline model:
 ## 
-##   Minimum Function Test Statistic             1922.814
+##   Minimum Function Test Statistic             1868.923
 ##   Degrees of freedom                                45
 ##   P-value                                        0.000
 ## 
 ## User model versus baseline model:
 ## 
 ##   Comparative Fit Index (CFI)                    1.000
-##   Tucker-Lewis Index (TLI)                       1.006
+##   Tucker-Lewis Index (TLI)                       1.002
 ## 
 ## Loglikelihood and Information Criteria:
 ## 
-##   Loglikelihood user model (H0)              -6175.128
-##   Loglikelihood unrestricted model (H1)      -6156.045
+##   Loglikelihood user model (H0)              -6175.494
+##   Loglikelihood unrestricted model (H1)      -6152.432
 ## 
 ##   Number of free parameters                         15
-##   Akaike (AIC)                               12380.255
-##   Bayesian (BIC)                             12440.127
-##   Sample-size adjusted Bayesian (BIC)        12392.531
+##   Akaike (AIC)                               12380.988
+##   Bayesian (BIC)                             12440.860
+##   Sample-size adjusted Bayesian (BIC)        12393.264
 ## 
 ## Root Mean Square Error of Approximation:
 ## 
 ##   RMSEA                                          0.000
-##   90 Percent Confidence Interval          0.000  0.016
+##   90 Percent Confidence Interval          0.000  0.028
 ##   P-value RMSEA &lt;= 0.05                          1.000
 ## 
 ## Standardized Root Mean Square Residual:
 ## 
-##   SRMR                                           0.027
+##   SRMR                                           0.031
 ## 
 ## Parameter Estimates:
 ## 
@@ -264,14 +264,14 @@ summary(spline_model, fit.measures = T)</code></pre>
 ## Covariances:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
 ##   level1_affect ~~                                    
-##     level2_affect     1.076    0.168    6.398    0.000
-##     slope1_affect     0.033    0.044    0.740    0.459
-##     slope2_affect    -0.006    0.019   -0.312    0.755
+##     level2_affect     1.061    0.181    5.870    0.000
+##     slope1_affect     0.005    0.046    0.105    0.916
+##     slope2_affect    -0.003    0.020   -0.129    0.898
 ##   level2_affect ~~                                    
-##     slope1_affect    -0.030    0.046   -0.643    0.520
-##     slope2_affect     0.014    0.035    0.414    0.679
+##     slope1_affect     0.018    0.048    0.368    0.713
+##     slope2_affect    -0.053    0.039   -1.374    0.169
 ##   slope1_affect ~~                                    
-##     slope2_affect     0.004    0.005    0.831    0.406
+##     slope2_affect    -0.003    0.006   -0.587    0.557
 ## 
 ## Intercepts:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
@@ -285,27 +285,27 @@ summary(spline_model, fit.measures = T)</code></pre>
 ##    .affect.8          0.000                           
 ##    .affect.9          0.000                           
 ##    .affect.10         0.000                           
-##     level1_affect     3.974    0.077   51.390    0.000
-##     level2_affect     7.942    0.103   77.064    0.000
-##     slope1_affect     0.323    0.022   14.494    0.000
-##     slope2_affect     0.910    0.012   76.062    0.000
+##     level1_affect     4.050    0.080   50.730    0.000
+##     level2_affect     8.165    0.108   75.429    0.000
+##     slope1_affect     0.315    0.022   14.251    0.000
+##     slope2_affect     0.889    0.013   69.317    0.000
 ## 
 ## Variances:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
-##     lvl1_ff           0.888    0.175    5.084    0.000
-##     lvl2_ff           0.857    0.316    2.713    0.007
-##     slp1_ff          -0.002    0.015   -0.133    0.894
-##     slp2_ff          -0.000    0.004   -0.013    0.990
-##    .affct.1 (rs_v)    1.003    0.029   34.641    0.000
-##    .affct.2 (rs_v)    1.003    0.029   34.641    0.000
-##    .affct.3 (rs_v)    1.003    0.029   34.641    0.000
-##    .affct.4 (rs_v)    1.003    0.029   34.641    0.000
-##    .affct.5 (rs_v)    1.003    0.029   34.641    0.000
-##    .affct.6 (rs_v)    1.003    0.029   34.641    0.000
-##    .affct.7 (rs_v)    1.003    0.029   34.641    0.000
-##    .affct.8 (rs_v)    1.003    0.029   34.641    0.000
-##    .affct.9 (rs_v)    1.003    0.029   34.641    0.000
-##    .affc.10 (rs_v)    1.003    0.029   34.641    0.000</code></pre>
+##     lvl1_ff           1.049    0.185    5.658    0.000
+##     lvl2_ff           1.304    0.345    3.775    0.000
+##     slp1_ff          -0.004    0.015   -0.269    0.788
+##     slp2_ff           0.009    0.005    1.755    0.079
+##    .affct.1 (rs_v)    1.000    0.029   34.641    0.000
+##    .affct.2 (rs_v)    1.000    0.029   34.641    0.000
+##    .affct.3 (rs_v)    1.000    0.029   34.641    0.000
+##    .affct.4 (rs_v)    1.000    0.029   34.641    0.000
+##    .affct.5 (rs_v)    1.000    0.029   34.641    0.000
+##    .affct.6 (rs_v)    1.000    0.029   34.641    0.000
+##    .affct.7 (rs_v)    1.000    0.029   34.641    0.000
+##    .affct.8 (rs_v)    1.000    0.029   34.641    0.000
+##    .affct.9 (rs_v)    1.000    0.029   34.641    0.000
+##    .affc.10 (rs_v)    1.000    0.029   34.641    0.000</code></pre>
 <p>The structure of the basis coefficients is the important piece that allows us to capture the change in slope:</p>
 <pre class="r"><code>&#39;
 # latent slope for first half basis coefficients
@@ -474,7 +474,7 @@ affect.10 ~~ res_var*affect.10
 
 spline_model_b &lt;- growth(spline_string_b, data = df_wide_b)
 summary(spline_model_b, fit.measures = T)</code></pre>
-<pre><code>## lavaan 0.6-2 ended normally after 72 iterations
+<pre><code>## lavaan 0.6-2 ended normally after 68 iterations
 ## 
 ##   Optimization method                           NLMINB
 ##   Number of free parameters                         24
@@ -483,40 +483,40 @@ summary(spline_model_b, fit.measures = T)</code></pre>
 ##   Number of observations                           400
 ## 
 ##   Estimator                                         ML
-##   Model Fit Test Statistic                      35.384
+##   Model Fit Test Statistic                      57.374
 ##   Degrees of freedom                                50
-##   P-value (Chi-square)                           0.941
+##   P-value (Chi-square)                           0.221
 ## 
 ## Model test baseline model:
 ## 
-##   Minimum Function Test Statistic             1845.419
+##   Minimum Function Test Statistic             2053.910
 ##   Degrees of freedom                                45
 ##   P-value                                        0.000
 ## 
 ## User model versus baseline model:
 ## 
-##   Comparative Fit Index (CFI)                    1.000
-##   Tucker-Lewis Index (TLI)                       1.007
+##   Comparative Fit Index (CFI)                    0.996
+##   Tucker-Lewis Index (TLI)                       0.997
 ## 
 ## Loglikelihood and Information Criteria:
 ## 
-##   Loglikelihood user model (H0)              -6096.696
-##   Loglikelihood unrestricted model (H1)      -6079.004
+##   Loglikelihood user model (H0)              -6150.596
+##   Loglikelihood unrestricted model (H1)      -6121.909
 ## 
 ##   Number of free parameters                         15
-##   Akaike (AIC)                               12223.393
-##   Bayesian (BIC)                             12283.265
-##   Sample-size adjusted Bayesian (BIC)        12235.669
+##   Akaike (AIC)                               12331.193
+##   Bayesian (BIC)                             12391.065
+##   Sample-size adjusted Bayesian (BIC)        12343.469
 ## 
 ## Root Mean Square Error of Approximation:
 ## 
-##   RMSEA                                          0.000
-##   90 Percent Confidence Interval          0.000  0.007
-##   P-value RMSEA &lt;= 0.05                          1.000
+##   RMSEA                                          0.019
+##   90 Percent Confidence Interval          0.000  0.039
+##   P-value RMSEA &lt;= 0.05                          0.998
 ## 
 ## Standardized Root Mean Square Residual:
 ## 
-##   SRMR                                           0.029
+##   SRMR                                           0.028
 ## 
 ## Parameter Estimates:
 ## 
@@ -574,14 +574,14 @@ summary(spline_model_b, fit.measures = T)</code></pre>
 ## Covariances:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
 ##   level1_affect ~~                                    
-##     level2_affect     0.970    0.160    6.062    0.000
-##     slope1_affect     0.056    0.042    1.355    0.175
-##     slope2_affect    -0.009    0.017   -0.541    0.589
+##     level2_affect     1.067    0.175    6.087    0.000
+##     slope1_affect     0.057    0.042    1.358    0.174
+##     slope2_affect    -0.006    0.019   -0.323    0.746
 ##   level2_affect ~~                                    
-##     slope1_affect     0.047    0.044    1.077    0.281
-##     slope2_affect     0.038    0.032    1.191    0.234
+##     slope1_affect    -0.015    0.047   -0.327    0.743
+##     slope2_affect    -0.058    0.039   -1.508    0.131
 ##   slope1_affect ~~                                    
-##     slope2_affect    -0.003    0.005   -0.599    0.549
+##     slope2_affect     0.006    0.005    1.109    0.267
 ## 
 ## Intercepts:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
@@ -595,27 +595,27 @@ summary(spline_model_b, fit.measures = T)</code></pre>
 ##    .affect.8          0.000                           
 ##    .affect.9          0.000                           
 ##    .affect.10         0.000                           
-##     level1_affect     3.953    0.075   52.633    0.000
-##     level2_affect     3.922    0.102   38.625    0.000
-##     slope1_affect     0.806    0.022   37.370    0.000
-##     slope2_affect    -0.791    0.011  -71.099    0.000
+##     level1_affect     4.020    0.076   52.903    0.000
+##     level2_affect     3.858    0.110   35.124    0.000
+##     slope1_affect     0.774    0.022   35.974    0.000
+##     slope2_affect    -0.783    0.013  -61.697    0.000
 ## 
 ## Variances:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
-##     lvl1_ff           0.774    0.165    4.687    0.000
-##     lvl2_ff           0.783    0.307    2.550    0.011
-##     slp1_ff          -0.012    0.014   -0.814    0.416
-##     slp2_ff          -0.007    0.004   -1.789    0.074
-##    .affct.1 (rs_v)    0.988    0.029   34.641    0.000
-##    .affct.2 (rs_v)    0.988    0.029   34.641    0.000
-##    .affct.3 (rs_v)    0.988    0.029   34.641    0.000
-##    .affct.4 (rs_v)    0.988    0.029   34.641    0.000
-##    .affct.5 (rs_v)    0.988    0.029   34.641    0.000
-##    .affct.6 (rs_v)    0.988    0.029   34.641    0.000
-##    .affct.7 (rs_v)    0.988    0.029   34.641    0.000
-##    .affct.8 (rs_v)    0.988    0.029   34.641    0.000
-##    .affct.9 (rs_v)    0.988    0.029   34.641    0.000
-##    .affc.10 (rs_v)    0.988    0.029   34.641    0.000</code></pre>
+##     lvl1_ff           0.845    0.169    5.009    0.000
+##     lvl2_ff           1.525    0.354    4.304    0.000
+##     slp1_ff          -0.010    0.014   -0.714    0.475
+##     slp2_ff           0.009    0.005    1.782    0.075
+##    .affct.1 (rs_v)    0.976    0.028   34.641    0.000
+##    .affct.2 (rs_v)    0.976    0.028   34.641    0.000
+##    .affct.3 (rs_v)    0.976    0.028   34.641    0.000
+##    .affct.4 (rs_v)    0.976    0.028   34.641    0.000
+##    .affct.5 (rs_v)    0.976    0.028   34.641    0.000
+##    .affct.6 (rs_v)    0.976    0.028   34.641    0.000
+##    .affct.7 (rs_v)    0.976    0.028   34.641    0.000
+##    .affct.8 (rs_v)    0.976    0.028   34.641    0.000
+##    .affct.9 (rs_v)    0.976    0.028   34.641    0.000
+##    .affc.10 (rs_v)    0.976    0.028   34.641    0.000</code></pre>
 <p>Notice that the string syntax is the exact same because the process changes at the same point in time, it does not matter if the process changes to ‘more positive’ or ‘more negative.’</p>
 </div>
 <div id="negative-growth-growth-and-negative-growth" class="section level1">
@@ -820,7 +820,7 @@ affect.10 ~~ res_var*affect.10
 
 spline_model_c &lt;- growth(spline_string_c, data = df_wide_c)
 summary(spline_model_c, fit.measures = T)</code></pre>
-<pre><code>## lavaan 0.6-2 ended normally after 143 iterations
+<pre><code>## lavaan 0.6-2 ended normally after 141 iterations
 ## 
 ##   Optimization method                           NLMINB
 ##   Number of free parameters                         42
@@ -829,40 +829,40 @@ summary(spline_model_c, fit.measures = T)</code></pre>
 ##   Number of observations                           400
 ## 
 ##   Estimator                                         ML
-##   Model Fit Test Statistic                      98.700
+##   Model Fit Test Statistic                     120.300
 ##   Degrees of freedom                               102
-##   P-value (Chi-square)                           0.574
+##   P-value (Chi-square)                           0.104
 ## 
 ## Model test baseline model:
 ## 
-##   Minimum Function Test Statistic             3311.792
+##   Minimum Function Test Statistic             3120.637
 ##   Degrees of freedom                               105
 ##   P-value                                        0.000
 ## 
 ## User model versus baseline model:
 ## 
-##   Comparative Fit Index (CFI)                    1.000
-##   Tucker-Lewis Index (TLI)                       1.001
+##   Comparative Fit Index (CFI)                    0.994
+##   Tucker-Lewis Index (TLI)                       0.994
 ## 
 ## Loglikelihood and Information Criteria:
 ## 
-##   Loglikelihood user model (H0)              -9093.399
-##   Loglikelihood unrestricted model (H1)      -9044.049
+##   Loglikelihood user model (H0)              -9094.871
+##   Loglikelihood unrestricted model (H1)      -9034.722
 ## 
 ##   Number of free parameters                         33
-##   Akaike (AIC)                               18252.797
-##   Bayesian (BIC)                             18384.516
-##   Sample-size adjusted Bayesian (BIC)        18279.804
+##   Akaike (AIC)                               18255.743
+##   Bayesian (BIC)                             18387.461
+##   Sample-size adjusted Bayesian (BIC)        18282.750
 ## 
 ## Root Mean Square Error of Approximation:
 ## 
-##   RMSEA                                          0.000
-##   90 Percent Confidence Interval          0.000  0.024
+##   RMSEA                                          0.021
+##   90 Percent Confidence Interval          0.000  0.035
 ##   P-value RMSEA &lt;= 0.05                          1.000
 ## 
 ## Standardized Root Mean Square Residual:
 ## 
-##   SRMR                                           0.035
+##   SRMR                                           0.040
 ## 
 ## Parameter Estimates:
 ## 
@@ -972,25 +972,25 @@ summary(spline_model_c, fit.measures = T)</code></pre>
 ## Covariances:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
 ##   level1_affect ~~                                    
-##     level2_affect     1.029    0.202    5.092    0.000
-##     level3_affect     0.539    0.261    2.064    0.039
-##     slope1_affect    -0.024    0.048   -0.494    0.621
-##     slope2_affect    -0.005    0.025   -0.211    0.833
-##     slope3_affect     0.039    0.020    1.990    0.047
+##     level2_affect     1.238    0.206    6.001    0.000
+##     level3_affect     0.745    0.237    3.137    0.002
+##     slope1_affect     0.038    0.044    0.857    0.392
+##     slope2_affect    -0.032    0.025   -1.275    0.202
+##     slope3_affect     0.021    0.018    1.196    0.232
 ##   level2_affect ~~                                    
-##     level3_affect     0.663    0.382    1.734    0.083
-##     slope1_affect    -0.027    0.054   -0.502    0.616
-##     slope2_affect     0.073    0.052    1.391    0.164
-##     slope3_affect     0.034    0.029    1.169    0.242
+##     level3_affect     1.360    0.388    3.507    0.000
+##     slope1_affect    -0.020    0.056   -0.363    0.717
+##     slope2_affect    -0.006    0.058   -0.098    0.922
+##     slope3_affect    -0.015    0.029   -0.512    0.609
 ##   level3_affect ~~                                    
-##     slope1_affect     0.201    0.072    2.785    0.005
-##     slope2_affect     0.072    0.048    1.493    0.135
-##     slope3_affect     0.003    0.059    0.047    0.963
+##     slope1_affect    -0.002    0.066   -0.024    0.981
+##     slope2_affect    -0.090    0.048   -1.857    0.063
+##     slope3_affect     0.097    0.053    1.819    0.069
 ##   slope1_affect ~~                                    
-##     slope2_affect     0.007    0.007    1.011    0.312
-##     slope3_affect    -0.015    0.005   -2.803    0.005
+##     slope2_affect     0.002    0.007    0.275    0.783
+##     slope3_affect    -0.001    0.005   -0.204    0.838
 ##   slope2_affect ~~                                    
-##     slope3_affect    -0.006    0.004   -1.579    0.114
+##     slope3_affect     0.005    0.004    1.411    0.158
 ## 
 ## Intercepts:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
@@ -1009,36 +1009,36 @@ summary(spline_model_c, fit.measures = T)</code></pre>
 ##    .affect.13         0.000                           
 ##    .affect.14         0.000                           
 ##    .affect.15         0.000                           
-##     level1_affect     4.025    0.082   49.289    0.000
-##     level2_affect     3.951    0.120   33.029    0.000
-##     level3_affect     4.275    0.159   26.856    0.000
-##     slope1_affect    -0.506    0.022  -22.562    0.000
-##     slope2_affect     0.503    0.015   33.380    0.000
-##     slope3_affect    -0.530    0.012  -44.214    0.000
+##     level1_affect     3.978    0.078   51.181    0.000
+##     level2_affect     4.030    0.127   31.827    0.000
+##     level3_affect     4.034    0.151   26.752    0.000
+##     slope1_affect    -0.514    0.022  -23.449    0.000
+##     slope2_affect     0.490    0.016   30.764    0.000
+##     slope3_affect    -0.505    0.011  -44.201    0.000
 ## 
 ## Variances:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
-##     lvl1_ff           1.148    0.194    5.919    0.000
-##     lvl2_ff           0.559    0.433    1.291    0.197
-##     lvl3_ff           0.988    0.782    1.263    0.207
-##     slp1_ff          -0.001    0.015   -0.069    0.945
-##     slp2_ff          -0.011    0.007   -1.499    0.134
-##     slp3_ff           0.000    0.005    0.032    0.974
-##    .affct.1 (rs_v)    1.013    0.030   33.698    0.000
-##    .affct.2 (rs_v)    1.013    0.030   33.698    0.000
-##    .affct.3 (rs_v)    1.013    0.030   33.698    0.000
-##    .affct.4 (rs_v)    1.013    0.030   33.698    0.000
-##    .affct.5 (rs_v)    1.013    0.030   33.698    0.000
-##    .affct.6 (rs_v)    1.013    0.030   33.698    0.000
-##    .affct.7 (rs_v)    1.013    0.030   33.698    0.000
-##    .affct.8 (rs_v)    1.013    0.030   33.698    0.000
-##    .affct.9 (rs_v)    1.013    0.030   33.698    0.000
-##    .affc.10 (rs_v)    1.013    0.030   33.698    0.000
-##    .affc.11           0.975    0.075   13.020    0.000
-##    .affc.12           1.206    0.090   13.438    0.000
-##    .affc.13           0.996    0.076   13.123    0.000
-##    .affc.14           1.102    0.086   12.805    0.000
-##    .affc.15           0.970    0.087   11.137    0.000</code></pre>
+##     lvl1_ff           0.873    0.177    4.933    0.000
+##     lvl2_ff           1.163    0.479    2.426    0.015
+##     lvl3_ff          -0.323    0.710   -0.455    0.649
+##     slp1_ff          -0.014    0.015   -0.907    0.365
+##     slp2_ff          -0.001    0.008   -0.189    0.850
+##     slp3_ff          -0.007    0.004   -1.664    0.096
+##    .affct.1 (rs_v)    1.029    0.031   33.665    0.000
+##    .affct.2 (rs_v)    1.029    0.031   33.665    0.000
+##    .affct.3 (rs_v)    1.029    0.031   33.665    0.000
+##    .affct.4 (rs_v)    1.029    0.031   33.665    0.000
+##    .affct.5 (rs_v)    1.029    0.031   33.665    0.000
+##    .affct.6 (rs_v)    1.029    0.031   33.665    0.000
+##    .affct.7 (rs_v)    1.029    0.031   33.665    0.000
+##    .affct.8 (rs_v)    1.029    0.031   33.665    0.000
+##    .affct.9 (rs_v)    1.029    0.031   33.665    0.000
+##    .affc.10 (rs_v)    1.029    0.031   33.665    0.000
+##    .affc.11           0.993    0.078   12.746    0.000
+##    .affc.12           1.018    0.078   13.034    0.000
+##    .affc.13           1.023    0.078   13.168    0.000
+##    .affc.14           0.935    0.073   12.828    0.000
+##    .affc.15           1.112    0.091   12.255    0.000</code></pre>
 <p>Again, the basis coefficients are the important piece here:</p>
 <pre class="r"><code>&#39;
 

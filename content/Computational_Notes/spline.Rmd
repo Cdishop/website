@@ -603,15 +603,24 @@ Again, the basis coefficients are the important piece here:
 
 # latent slope for first third basis coefficients
 
-slope1_affect =~ 1*affect.1 + 2*affect.2 + 3*affect.3 + 4*affect.4 + 0*affect.5 + 0*affect.6 + 0*affect.7 + 0*affect.8 + 0*affect.9 + 0*affect.10 + 0*affect.11 + 0*affect.12 + 0*affect.13 + 0*affect.14 + 0*affect.15
+slope1_affect =~ 1*affect.1 + 2*affect.2 + 3*affect.3 + 4*affect.4 + 
+                 0*affect.5 + 0*affect.6 + 0*affect.7 + 0*affect.8 + 
+                 0*affect.9 + 0*affect.10 + 0*affect.11 + 0*affect.12 + 
+                 0*affect.13 + 0*affect.14 + 0*affect.15
 
 # latent slope for second third basis coefficients
 
-slope2_affect =~ 0*affect.1 + 0*affect.2 + 0*affect.3 + 0*affect.4 + 5*affect.5 + 6*affect.6 + 7*affect.7 + 8*affect.8 + 9*affect.9 + 0*affect.10 + 0*affect.11 + 0*affect.12 + 0*affect.13 + 0*affect.14 + 0*affect.15
+slope2_affect =~ 0*affect.1 + 0*affect.2 + 0*affect.3 + 0*affect.4 + 
+                 5*affect.5 + 6*affect.6 + 7*affect.7 + 8*affect.8 + 
+                 9*affect.9 + 0*affect.10 + 0*affect.11 + 0*affect.12 + 
+                 0*affect.13 + 0*affect.14 + 0*affect.15
 
 # latent slope for final third basis coefficients
 
-slope3_affect =~ 0*affect.1 + 0*affect.2 + 0*affect.3 + 0*affect.4 + 0*affect.5 + 0*affect.6 + 0*affect.7 + 0*affect.8 + 0*affect.9 + 10*affect.10 + 11*affect.11 + 12*affect.12 + 13*affect.13 + 14*affect.14 + 15*affect.15
+slope3_affect =~ 0*affect.1 + 0*affect.2 + 0*affect.3 + 0*affect.4 +
+                 0*affect.5 + 0*affect.6 + 0*affect.7 + 0*affect.8 + 
+                 0*affect.9 + 10*affect.10 + 11*affect.11 + 12*affect.12 + 
+                 13*affect.13 + 14*affect.14 + 15*affect.15
 
 
 

@@ -28,7 +28,7 @@
 
 
 
-<meta property="og:updated_time" content="2018-07-04T00:00:00&#43;00:00"/>
+<meta property="og:updated_time" content="2018-08-12T00:00:00&#43;00:00"/>
 
 
 
@@ -107,18 +107,21 @@
         
     </h1>
     <h1 class="title">
+        <a href="/computational_notes/mc_approximation/" itemprop="headline">Monte Carlo Approximation</a>
+    </h1>
+    
+    <h2 class="content" itemprop="description">
+    </h2>
+</div>  <div class="column is-full-desktop" itemscope itemtype="http://schema.org/CreativeWork">
+    <h1 class="blog-timestamp">
+        
+    </h1>
+    <h1 class="title">
         <a href="/computational_notes/longitudinal_plotting/" itemprop="headline">Longitudinal Plotting</a>
     </h1>
     
     <h2 class="content" itemprop="description">
-        A few random notes about plotting, describing, and thinking about trajectories.
-Plotting Trajectories Imagine we record “affect” (\(Y\)) for five people over 20 time points. ggplot2 produces poor longitudinal trajectories if you only specify time and affect as variables:
-library(ggplot2) library(tidyverse) plot1 &lt;- ggplot(df1, aes(x = time, y = affect)) + geom_point() + geom_line() plot1 Instead, specify “id” either as the grouping variable:
-plot2 &lt;- ggplot(df1, aes(x = time, y = affect, group = id)) + geom_point() + geom_line() plot2 or a color.
     </h2>
-</div>
-<div class="button">
-    <a href="/computational_notes/longitudinal_plotting/" itemprop="url">Read More…</a>
 </div>  <div class="column is-full-desktop" itemscope itemtype="http://schema.org/CreativeWork">
     <h1 class="blog-timestamp">
         
@@ -128,15 +131,7 @@ plot2 &lt;- ggplot(df1, aes(x = time, y = affect, group = id)) + geom_point() + 
     </h1>
     
     <h2 class="content" itemprop="description">
-        I always forget how to use column names as function parameters, so here is an example.
-Function with no column name parameters Function:
- Select columns
- Replace the Jimmy and James ‘v_1’ values with 99
-  library(tidyverse) dish &lt;- data.frame( &#39;person&#39; = c(&#39;jimmy&#39;, &#39;james&#39;, &#39;johnny&#39;), &#39;v_1&#39; = c(rnorm(3, 0, 1)), &#39;v_2&#39; = c(rnorm(3, 10, 5)), &#39;v_3&#39; = c(rnorm(3, 50, 10)), &#39;v_4&#39; = c(rnorm(3, 25, 15)) ) mini &lt;- dish %&gt;% select(person, v_1, v_2) mini[mini$person == &#39;jimmy&#39;, 2] &lt;- 99 mini[mini$person == &#39;james&#39;, 2] &lt;- 99 The original data:
     </h2>
-</div>
-<div class="button">
-    <a href="/computational_notes/column_name_parameters/" itemprop="url">Read More…</a>
 </div>  <div class="column is-full-desktop" itemscope itemtype="http://schema.org/CreativeWork">
     <h1 class="blog-timestamp">
         
@@ -146,13 +141,7 @@ Function with no column name parameters Function:
     </h1>
     
     <h2 class="content" itemprop="description">
-        A few spline models (also known as piecewise models). As in previous posts, ‘affect’ is the name given to values of \(y\) throughout.
-1) Growth and Even More Growth A model that captures a process that increases initially and then increases at an even greater rate once it reaches time point 5. The data generating process:
-\[\begin{equation} y_{it} = \begin{cases} 4 + 0.3t + error_{t}, &amp; \text{if time &lt; 5}\\ 8 + 0.
     </h2>
-</div>
-<div class="button">
-    <a href="/computational_notes/spline/" itemprop="url">Read More…</a>
 </div>  <div class="column is-full-desktop" itemscope itemtype="http://schema.org/CreativeWork">
     <h1 class="blog-timestamp">
         
@@ -162,16 +151,7 @@ Function with no column name parameters Function:
     </h1>
     
     <h2 class="content" itemprop="description">
-        Latent Growth Curves I will progress through three models: linear, quadratic growth, and latent basis. In every example I use a sample of 400, 6 time points, and ‘affect’ as the variable of interest.
-Don’t forget that multiplying by time
- \(0.6t\)  is different from describing over time
- \(0.6_t\).  1) Linear The data generating process:
-\[\begin{equation} y_{it} = 4 - 0.6t + e_{t} \end{equation}\]
-library(tidyverse) library(ggplot2) library(MASS) N &lt;- 400 time &lt;- 6 intercept &lt;- 4 linear_growth &lt;- -0.
     </h2>
-</div>
-<div class="button">
-    <a href="/computational_notes/latent_growth/" itemprop="url">Read More…</a>
 </div>  <div class="column is-full-desktop" itemscope itemtype="http://schema.org/CreativeWork">
     <h1 class="blog-timestamp">
         
@@ -181,11 +161,97 @@ library(tidyverse) library(ggplot2) library(MASS) N &lt;- 400 time &lt;- 6 inter
     </h1>
     
     <h2 class="content" itemprop="description">
-        I built the following simple computational model for an individual differences class in the Spring of 2018 to demonstrate how to incorporate explantory elements for trait development into a computational framework. This model assumes that an individual’s trait development depends on 1) the environment and 2) interactions with others inside and outside of the individual’s social group. Moreover, the model assumes traits are somewhat stable and exhibit self-similarity across time. The main properties I am trying to capture, therefore, include:
     </h2>
-</div>
-<div class="button">
-    <a href="/computational_notes/social_trait_comp_model/" itemprop="url">Read More…</a>
+</div>  <div class="column is-full-desktop" itemscope itemtype="http://schema.org/CreativeWork">
+    <h1 class="blog-timestamp">
+        
+    </h1>
+    <h1 class="title">
+        <a href="/computational_notes/integration_optimization/" itemprop="headline">Numerical Integration and Optimization</a>
+    </h1>
+    
+    <h2 class="content" itemprop="description">
+    </h2>
+</div>  <div class="column is-full-desktop" itemscope itemtype="http://schema.org/CreativeWork">
+    <h1 class="blog-timestamp">
+        
+    </h1>
+    <h1 class="title">
+        <a href="/computational_notes/random_walks/" itemprop="headline">Random Walks</a>
+    </h1>
+    
+    <h2 class="content" itemprop="description">
+    </h2>
+</div>  <div class="column is-full-desktop" itemscope itemtype="http://schema.org/CreativeWork">
+    <h1 class="blog-timestamp">
+        
+    </h1>
+    <h1 class="title">
+        <a href="/computational_notes/load_csv/" itemprop="headline">Combining CSV Files</a>
+    </h1>
+    
+    <h2 class="content" itemprop="description">
+    </h2>
+</div>  <div class="column is-full-desktop" itemscope itemtype="http://schema.org/CreativeWork">
+    <h1 class="blog-timestamp">
+        
+    </h1>
+    <h1 class="title">
+        <a href="/computational_notes/formatting_qualtrics/" itemprop="headline">Formatting Qualtrics Responses</a>
+    </h1>
+    
+    <h2 class="content" itemprop="description">
+    </h2>
+</div>  <div class="column is-full-desktop" itemscope itemtype="http://schema.org/CreativeWork">
+    <h1 class="blog-timestamp">
+        
+    </h1>
+    <h1 class="title">
+        <a href="/computational_notes/interactions_fve/" itemprop="headline">Why Detecting Interactions is Easier in the Lab</a>
+    </h1>
+    
+    <h2 class="content" itemprop="description">
+    </h2>
+</div>  <div class="column is-full-desktop" itemscope itemtype="http://schema.org/CreativeWork">
+    <h1 class="blog-timestamp">
+        
+    </h1>
+    <h1 class="title">
+        <a href="/computational_notes/role_dynamics/" itemprop="headline">Workforce Dynamics</a>
+    </h1>
+    
+    <h2 class="content" itemprop="description">
+    </h2>
+</div>  <div class="column is-full-desktop" itemscope itemtype="http://schema.org/CreativeWork">
+    <h1 class="blog-timestamp">
+        
+    </h1>
+    <h1 class="title">
+        <a href="/computational_notes/convert_text/" itemprop="headline">Convert Text File</a>
+    </h1>
+    
+    <h2 class="content" itemprop="description">
+    </h2>
+</div>  <div class="column is-full-desktop" itemscope itemtype="http://schema.org/CreativeWork">
+    <h1 class="blog-timestamp">
+        
+    </h1>
+    <h1 class="title">
+        <a href="/computational_notes/art_montecarlo/" itemprop="headline">Art With Monte Carlo</a>
+    </h1>
+    
+    <h2 class="content" itemprop="description">
+    </h2>
+</div>  <div class="column is-full-desktop" itemscope itemtype="http://schema.org/CreativeWork">
+    <h1 class="blog-timestamp">
+        
+    </h1>
+    <h1 class="title">
+        <a href="/computational_notes/besd/" itemprop="headline">The Binomial Effect Size Display</a>
+    </h1>
+    
+    <h2 class="content" itemprop="description">
+    </h2>
 </div> 
                 </div>
                 <br>
@@ -196,17 +262,10 @@ library(tidyverse) library(ggplot2) library(MASS) N &lt;- 400 time &lt;- 6 inter
     </p>
     <p class="control">
         <a class="button">
-           Page 1 of 3
+           Page 1 of 1
         </a>
     </p>
     <p class="control">
-        
-        <a class="button is-primary" href="/computational_notes/page/2/">
-            <span class=" icon is-small ">
-        <i class="fa fa-angle-double-right "></i>
-      </span>
-            <span>Next</span>
-        </a>
         
     </p>
 </div> 
@@ -223,7 +282,7 @@ library(tidyverse) library(ggplot2) library(MASS) N &lt;- 400 time &lt;- 6 inter
         <div class="content has-text-centered">
             <p>
                 I generated this site using 
-                <a href="https://gohugo.io/">Hugo</a> and the
+                <a href="https://gohugo.io/">Hugo</a> and Jeblister's
                 <a href="https://themes.gohugo.io/bulma/">Bulma</a> theme.
                 
             </p>

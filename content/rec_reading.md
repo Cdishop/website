@@ -1,5 +1,5 @@
 +++
-date = "2018-07-025T14:19:25+01:00"
+date = "2018-08-125T14:19:25+01:00"
 title = "Recommended Reading"
 draft = false
 menu = "main"
@@ -744,13 +744,109 @@ Hadley Wickham
 
 
 
+
+
+
+
+
+*Introduction to Computation and Programming Using Python*
+
+John V. Guttag
+
+[Click here for link](https://www.amazon.com/gp/product/0262529629/ref=oh_aui_detailpage_o03_s00?ie=UTF8&psc=1)
+
+![](https://github.com/Cdishop/bdown/raw/master/misc/books/computation_programming.png)
+
+
+
+
+
+
+*Ethics in the Real World: 82 Brief Essays on Things That Matter*
+
+Peter Singer
+
+[Click here for link](https://www.amazon.com/Ethics-Real-World-Essays-Things/dp/069117847X/ref=sr_1_1?ie=UTF8&qid=1534110030&sr=8-1&keywords=Peter+singer+82+brief&smid=ATVPDKIKX0DER)
+
+![](https://github.com/Cdishop/bdown/raw/master/misc/books/ethics_essays.png)
+
+
+
+
+
+
+*Reproducible Research with R and R Studio*
+
+Christopher Gandrud
+
+[Click here for link](https://www.amazon.com/Reproducible-Research-Studio-Chapman-Hall/dp/1498715370/ref=sr_1_1?ie=UTF8&qid=1534110087&sr=8-1&keywords=reproducible+research+with+r)
+
+![](https://github.com/Cdishop/bdown/raw/master/misc/books/reproducible_research.png)
+
+
+
+
+
+
+*Python Programming: An Introduction to Computer Science*
+
+John Zelle
+
+[Click here for link](https://www.amazon.com/gp/product/1590282418/ref=oh_aui_detailpage_o03_s00?ie=UTF8&psc=1)
+
+![](https://github.com/Cdishop/bdown/raw/master/misc/books/python_programming.png)
+
+
+
+
+
+
+*Dynamic Documents with R and Knitr*
+
+Yihui Xie
+
+[Click here for link](https://www.amazon.com/Dynamic-Documents-knitr-Chapman-Hall/dp/1498716962/ref=sr_1_1?ie=UTF8&qid=1534110095&sr=8-1&keywords=dynamic+documents+with+r)
+
+![](https://github.com/Cdishop/bdown/raw/master/misc/books/dynamic_documents.png)
+
+
+
+
+
+
+*Cooperation Under Anarchy*
+
+Kenneth A. Oye
+
+[Click here for link](https://www.amazon.com/Cooperation-under-Anarchy-Kenneth-Oye/dp/0691022402/ref=sr_1_1?ie=UTF8&qid=1534110079&sr=8-1&keywords=cooperation+under+anarchy)
+
+![](https://github.com/Cdishop/bdown/raw/master/misc/books/cooperation_anarchy.png)
+
+
+
+
+
+
+*The Nature of Code: Simulating Nature Systems with Processing*
+
+Daniel Shiffman
+
+[Click here for link](https://www.amazon.com/Nature-Code-Simulating-Natural-Processing/dp/0985930802/ref=sr_1_1?ie=UTF8&qid=1534109983&sr=8-1&keywords=the+nature+of+code)
+
+![](https://github.com/Cdishop/bdown/raw/master/misc/books/nature_code.png)
+
+
+
+
+
+
 *In Pursuit of the Unknown: 17 Equations That Changed the World*
 
 Ian Stewart
 
 [Click here for link](https://www.amazon.com/Pursuit-Equations-That-Changed-World/dp/0465085989/ref=sr_1_1?ie=UTF8&qid=1529323656&sr=8-1&keywords=17+equations+that+changed+the+world)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/unknown.png)
+![](https://github.com/Cdishop/bdown/raw/master/misc/books/unknown.png)
 
 
 
@@ -765,7 +861,7 @@ Herbert Gintis
 
 [Click here for link](https://www.amazon.com/Cooperative-Species-Human-Reciprocity-Evolution/dp/0691158169/ref=sr_1_1?ie=UTF8&qid=1529323666&sr=8-1&keywords=the+cooperative+species)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/cooperative_species.png)
+![](https://github.com/Cdishop/bdown/raw/master/misc/books/cooperative_species.png)
 
 
 
@@ -780,7 +876,7 @@ E. B. White
 
 [Click here for link](https://www.amazon.com/Elements-Style-Fourth-William-Strunk/dp/020530902X/ref=sr_1_3?ie=UTF8&qid=1529323689&sr=8-3&keywords=elements+of+style)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/elements_style.png)
+![](https://github.com/Cdishop/bdown/raw/master/misc/books/elements_style.png)
 
 
 
@@ -792,7 +888,18 @@ Jerry Muller
 
 [Click here for link](https://www.amazon.com/Tyranny-Metrics-Jerry-Muller/dp/0691174954/ref=sr_1_1?ie=UTF8&qid=1529323708&sr=8-1&keywords=the+tyranny+of+metrics)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/tyranny_metrics.png)
+![](https://github.com/Cdishop/bdown/raw/master/misc/books/tyranny_metrics.png)
+
+
+
+
+*The Briefest History of Time*
+
+Arieh Ben_Naim
+
+[Click here for link](https://www.amazon.com/Briefest-History-Time-Misconstrued-Association/dp/9814749850/ref=sr_1_1?ie=UTF8&qid=1534110135&sr=8-1&keywords=the+briefest+history+of+time)
+
+![](https://github.com/Cdishop/bdown/raw/master/misc/books/history_time.png)
 
 
 
@@ -804,7 +911,7 @@ Gordon Livingston
 
 [Click here for link](https://www.amazon.com/Too-Soon-Old-Late-Smart/dp/1569243735/ref=sr_1_1?ie=UTF8&qid=1527948162&sr=8-1&keywords=too+soon+old)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/too_soon_old.png)
+![](https://github.com/Cdishop/bdown/raw/master/misc/books/books/too_soon_old.png)
 
 
 
@@ -818,7 +925,7 @@ Jim Duggan
 
 [Click here for link](https://www.amazon.com/System-Dynamics-Modeling-Lecture-Networks/dp/3319340417/ref=sr_1_1?s=books&ie=UTF8&qid=1526429142&sr=1-1&keywords=system+dynamics+modeling+with+r)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/system_dynamics.png)
+![](https://github.com/Cdishop/bdown/raw/master/misc/books/books/system_dynamics.png)
 
 
 
@@ -834,7 +941,7 @@ Brian Skyrms
 
 [Click here for link](https://www.amazon.com/Ten-Great-Ideas-about-Chance/dp/0691174164/ref=sr_1_1?s=books&ie=UTF8&qid=1524679586&sr=1-1&keywords=ten+great+ideas+about+chance)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/tenchance.png)
+![](https://github.com/Cdishop/bdown/raw/master/misc/books/books/tenchance.png)
 
 
 
@@ -847,7 +954,7 @@ Gerd Gigerenzer
 
 [Click here for link](https://www.amazon.com/Risk-Savvy-Make-Good-Decisions/dp/0143127101/ref=sr_1_1?ie=UTF8&qid=1525549444&sr=8-1&keywords=risk+savvy)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/risk_savvy.png)
+![](https://github.com/Cdishop/bdown/raw/master/misc/books/books/risk_savvy.png)
 
 
 
@@ -860,7 +967,7 @@ Donella H. Meadows
 
 [Click here for link](https://www.amazon.com/Thinking-Systems-Donella-H-Meadows/dp/1603580557/ref=sr_1_2?ie=UTF8&qid=1524678135&sr=8-2&keywords=thinking+in+systems)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/thinking_systems.png)
+![](https://github.com/Cdishop/bdown/raw/master/misc/books/thinking_systems.png)
 
 
 
@@ -872,5 +979,5 @@ Edited by John Brockman
 
 [Click here for link](https://www.amazon.com/This-Idea-Must-Die-Scientific/dp/0062374346/ref=sr_1_1?s=books&ie=UTF8&qid=1524679604&sr=1-1&keywords=this+idea+must+die)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/brockmandie.png)
+![](https://github.com/Cdishop/bdown/raw/master/misc/books/brockmandie.png)
 

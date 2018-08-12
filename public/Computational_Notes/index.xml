@@ -6,10 +6,20 @@
     <description>Recent content in Computational_Notes on Christopher Dishop</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 04 Jul 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 12 Aug 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/computational_notes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Monte Carlo Approximation</title>
+      <link>/computational_notes/mc_approximation/</link>
+      <pubDate>Sun, 12 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/mc_approximation/</guid>
+      <description>Monte Carlo helps us understand processes that we can describe but don’t yet have analytic solutions for. Here are two examples: the birthday problem and the tasting tea problem.
+Birthday Problem If you are standing in a room with 25 other people, what is the probability that at least two people share the same birthday? This question has a mathematical solution, but if we don’t know it we can use Monte Carlo to help.</description>
+    </item>
     
     <item>
       <title>Longitudinal Plotting</title>

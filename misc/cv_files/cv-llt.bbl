@@ -1,0 +1,739 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.9 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{ymdnt/global//global/global}
+    \entry{dd9}{inproceedings}{}
+      \name{author}{6}{}{%
+        {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
+           family={Dishop},
+           familyi={D\bibinitperiod},
+           given={Christopher\bibnamedelima R},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=8d58749f6c2b413a7cd2a2f4df16e459}{%
+           family={Olenick},
+           familyi={O\bibinitperiod},
+           given={Jeffrey},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=0d0f194696f7688d14d1aadd931f8fda}{%
+           family={Webb},
+           familyi={W\bibinitperiod},
+           given={Jessica},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=6a6d645c0684c47ab2cbef1fd908d344}{%
+           family={Kozlowski},
+           familyi={K\bibinitperiod},
+           given={Steve\bibnamedelimb W\bibnamedelima J},
+           giveni={S\bibinitperiod\bibinitdelim W\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=b5a55efcd0be22ad89a42ab4b4445b00}{%
+           family={Chang},
+           familyi={C\bibinitperiod},
+           given={Chu-Hsiang},
+           giveni={C\bibinithyphendelim H\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=9491aac3f99817a36a3b2e36de02c12c}{%
+           family={Perry},
+           familyi={P\bibinitperiod},
+           given={Samantha},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Galveston, Texas}%
+      }
+      \strng{namehash}{550cf333fda10c2de7281ec7839e9a23}
+      \strng{fullhash}{550cf333fda10c2de7281ec7839e9a23}
+      \strng{bibnamehash}{550cf333fda10c2de7281ec7839e9a23}
+      \strng{authorbibnamehash}{550cf333fda10c2de7281ec7839e9a23}
+      \strng{authornamehash}{550cf333fda10c2de7281ec7839e9a23}
+      \strng{authorfullhash}{550cf333fda10c2de7281ec7839e9a23}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{NASA Human Research Program Investigators' Workshop}
+      \field{title}{Algorithm Validation in the Application of Sensor Data to Team Processes}
+      \field{year}{2018}
+    \endentry
+    \entry{dd1}{inproceedings}{}
+      \name{author}{7}{}{%
+        {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
+           family={Dishop},
+           familyi={D\bibinitperiod},
+           given={Christopher\bibnamedelima R},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=0d0f194696f7688d14d1aadd931f8fda}{%
+           family={Webb},
+           familyi={W\bibinitperiod},
+           given={Jessica},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=1896145fb6df95a14a5815db83068823}{%
+           family={Dixon},
+           familyi={D\bibinitperiod},
+           given={Aurora},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=8d58749f6c2b413a7cd2a2f4df16e459}{%
+           family={Olenick},
+           familyi={O\bibinitperiod},
+           given={Jeffrey},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=1c09fe5b51670c056f20977502512da8}{%
+           family={Binsted},
+           familyi={B\bibinitperiod},
+           given={Kim},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=b5a55efcd0be22ad89a42ab4b4445b00}{%
+           family={Chang},
+           familyi={C\bibinitperiod},
+           given={Chu-Hsiang},
+           giveni={C\bibinithyphendelim H\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=6a6d645c0684c47ab2cbef1fd908d344}{%
+           family={Kozlowski},
+           familyi={K\bibinitperiod},
+           given={Steve\bibnamedelimb W\bibnamedelima J},
+           giveni={S\bibinitperiod\bibinitdelim W\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Chicago, Illinois}%
+      }
+      \strng{namehash}{b0b59be8d95252003bf21f1aef566868}
+      \strng{fullhash}{b0b59be8d95252003bf21f1aef566868}
+      \strng{bibnamehash}{b0b59be8d95252003bf21f1aef566868}
+      \strng{authorbibnamehash}{b0b59be8d95252003bf21f1aef566868}
+      \strng{authornamehash}{b0b59be8d95252003bf21f1aef566868}
+      \strng{authorfullhash}{b0b59be8d95252003bf21f1aef566868}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Symposium at the Society for Industrial and Organizational Psychology}
+      \field{title}{Signals of Team Dynamics}
+      \field{year}{2018}
+    \endentry
+    \entry{dd2}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=6a6d645c0684c47ab2cbef1fd908d344}{%
+           family={Kozlowski},
+           familyi={K\bibinitperiod},
+           given={Steve\bibnamedelimb W\bibnamedelima J},
+           giveni={S\bibinitperiod\bibinitdelim W\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=b5a55efcd0be22ad89a42ab4b4445b00}{%
+           family={Chang},
+           familyi={C\bibinitperiod},
+           given={Chu-Hsiang},
+           giveni={C\bibinithyphendelim H\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
+           family={Dishop},
+           familyi={D\bibinitperiod},
+           given={Christopher\bibnamedelima R},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Chicago, Illinois}%
+      }
+      \strng{namehash}{5dbb69aa0c6b8ec553615db7ba5d148d}
+      \strng{fullhash}{5dbb69aa0c6b8ec553615db7ba5d148d}
+      \strng{bibnamehash}{5dbb69aa0c6b8ec553615db7ba5d148d}
+      \strng{authorbibnamehash}{5dbb69aa0c6b8ec553615db7ba5d148d}
+      \strng{authornamehash}{5dbb69aa0c6b8ec553615db7ba5d148d}
+      \strng{authorfullhash}{5dbb69aa0c6b8ec553615db7ba5d148d}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Symposium at the Society for Industrial and Organizational Psychology}
+      \field{title}{Targeted Big Data: Team Interaction Sensors}
+      \field{year}{2018}
+    \endentry
+    \entry{dd10}{inproceedings}{}
+      \name{author}{6}{}{%
+        {{uniquename=0,uniquepart=base,hash=8d58749f6c2b413a7cd2a2f4df16e459}{%
+           family={Olenick},
+           familyi={O\bibinitperiod},
+           given={Jeffrey},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=0d0f194696f7688d14d1aadd931f8fda}{%
+           family={Webb},
+           familyi={W\bibinitperiod},
+           given={Jessica},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
+           family={Dishop},
+           familyi={D\bibinitperiod},
+           given={Christopher\bibnamedelima R},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=1c09fe5b51670c056f20977502512da8}{%
+           family={Binsted},
+           familyi={B\bibinitperiod},
+           given={Kim},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=b5a55efcd0be22ad89a42ab4b4445b00}{%
+           family={Chang},
+           familyi={C\bibinitperiod},
+           given={Chu-Hsiang},
+           giveni={C\bibinithyphendelim H\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=6a6d645c0684c47ab2cbef1fd908d344}{%
+           family={Kozlowski},
+           familyi={K\bibinitperiod},
+           given={Steve\bibnamedelimb W\bibnamedelima J},
+           giveni={S\bibinitperiod\bibinitdelim W\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Galveston, Texas}%
+      }
+      \strng{namehash}{568a2812473592419ec4e108e32eedb1}
+      \strng{fullhash}{568a2812473592419ec4e108e32eedb1}
+      \strng{bibnamehash}{568a2812473592419ec4e108e32eedb1}
+      \strng{authorbibnamehash}{568a2812473592419ec4e108e32eedb1}
+      \strng{authornamehash}{568a2812473592419ec4e108e32eedb1}
+      \strng{authorfullhash}{568a2812473592419ec4e108e32eedb1}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{NASA Human Research Program Investigators' Workshop}
+      \field{title}{Team Dynamics and Granger Causality in a Long Duration Flight Analog}
+      \field{year}{2018}
+    \endentry
+    \entry{dd4}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
+           family={Dishop},
+           familyi={D\bibinitperiod},
+           given={Christopher\bibnamedelima R},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Michigan State University, Michigan}%
+      }
+      \strng{namehash}{c8fe28d689bd437108386244656b6e94}
+      \strng{fullhash}{c8fe28d689bd437108386244656b6e94}
+      \strng{bibnamehash}{c8fe28d689bd437108386244656b6e94}
+      \strng{authorbibnamehash}{c8fe28d689bd437108386244656b6e94}
+      \strng{authornamehash}{c8fe28d689bd437108386244656b6e94}
+      \strng{authorfullhash}{c8fe28d689bd437108386244656b6e94}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Symposium at the Council of Graduate Students Research Conference}
+      \field{title}{Applying Text Processing and Machine Learning to Behavioral Research}
+      \field{year}{2017}
+    \endentry
+    \entry{dd3}{inproceedings}{}
+      \name{author}{5}{}{%
+        {{uniquename=0,uniquepart=base,hash=8d58749f6c2b413a7cd2a2f4df16e459}{%
+           family={Olenick},
+           familyi={O\bibinitperiod},
+           given={Jeffrey},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=1896145fb6df95a14a5815db83068823}{%
+           family={Dixon},
+           familyi={D\bibinitperiod},
+           given={Aurora},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
+           family={Dishop},
+           familyi={D\bibinitperiod},
+           given={Christopher\bibnamedelima R},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=6a6d645c0684c47ab2cbef1fd908d344}{%
+           family={Kozlowski},
+           familyi={K\bibinitperiod},
+           given={Steve\bibnamedelimb W\bibnamedelima J},
+           giveni={S\bibinitperiod\bibinitdelim W\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=b5a55efcd0be22ad89a42ab4b4445b00}{%
+           family={Chang},
+           familyi={C\bibinitperiod},
+           given={Chu-Hsiang},
+           giveni={C\bibinithyphendelim H\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Orlando, Florida}%
+      }
+      \strng{namehash}{3b997cd8d72b1cf255d97c113ac6b81a}
+      \strng{fullhash}{3b997cd8d72b1cf255d97c113ac6b81a}
+      \strng{bibnamehash}{3b997cd8d72b1cf255d97c113ac6b81a}
+      \strng{authorbibnamehash}{3b997cd8d72b1cf255d97c113ac6b81a}
+      \strng{authornamehash}{3b997cd8d72b1cf255d97c113ac6b81a}
+      \strng{authorfullhash}{3b997cd8d72b1cf255d97c113ac6b81a}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Symposium at the Society for Industrial and Organizational Psychology}
+      \field{title}{Applying Linguistic Analysis to Isolated, and Confined, Extreme Environmental Teams}
+      \field{year}{2017}
+    \endentry
+    \entry{dd11}{inproceedings}{}
+      \name{author}{8}{}{%
+        {{uniquename=0,uniquepart=base,hash=8d58749f6c2b413a7cd2a2f4df16e459}{%
+           family={Olenick},
+           familyi={O\bibinitperiod},
+           given={Jeffrey},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=d6c21cf5fe7aa44552fb48b3f2f015a5}{%
+           family={Morrison},
+           familyi={M\bibinitperiod},
+           given={Mike},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=1896145fb6df95a14a5815db83068823}{%
+           family={Dixon},
+           familyi={D\bibinitperiod},
+           given={Aurora},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
+           family={Dishop},
+           familyi={D\bibinitperiod},
+           given={Christopher\bibnamedelima R},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=fff05d4745f63bff5eda834de0fbd232}{%
+           family={Harvey},
+           familyi={H\bibinitperiod},
+           given={Richard},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=0c7c3be8da3348abdbc2dbe9e9f0a6b1}{%
+           family={Kramer},
+           familyi={K\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=b5a55efcd0be22ad89a42ab4b4445b00}{%
+           family={Chang},
+           familyi={C\bibinitperiod},
+           given={Chu-Hsiang},
+           giveni={C\bibinithyphendelim H\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=6a6d645c0684c47ab2cbef1fd908d344}{%
+           family={Kozlowski},
+           familyi={K\bibinitperiod},
+           given={Steve\bibnamedelimb W\bibnamedelima J},
+           giveni={S\bibinitperiod\bibinitdelim W\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Galveston, Texas}%
+      }
+      \strng{namehash}{37e36821ae23e27447f65af63874ed8e}
+      \strng{fullhash}{b7d505664e5421320a0b6a7cf181dd9e}
+      \strng{bibnamehash}{e0f739206b5b9f50c776680375b65861}
+      \strng{authorbibnamehash}{e0f739206b5b9f50c776680375b65861}
+      \strng{authornamehash}{37e36821ae23e27447f65af63874ed8e}
+      \strng{authorfullhash}{b7d505664e5421320a0b6a7cf181dd9e}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{NASA Human Research Program Investigators' Workshop}
+      \field{title}{Using Linguistic Analysis Tools to Study Teams in Ice Environments}
+      \field{year}{2017}
+    \endentry
+    \entry{dd5}{inproceedings}{}
+      \name{author}{7}{}{%
+        {{uniquename=0,uniquepart=base,hash=0d0f194696f7688d14d1aadd931f8fda}{%
+           family={Webb},
+           familyi={W\bibinitperiod},
+           given={Jessica},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=8d58749f6c2b413a7cd2a2f4df16e459}{%
+           family={Olenick},
+           familyi={O\bibinitperiod},
+           given={Jeffrey},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=1896145fb6df95a14a5815db83068823}{%
+           family={Dixon},
+           familyi={D\bibinitperiod},
+           given={Aurora},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
+           family={Dishop},
+           familyi={D\bibinitperiod},
+           given={Christopher\bibnamedelima R},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=1c09fe5b51670c056f20977502512da8}{%
+           family={Binsted},
+           familyi={B\bibinitperiod},
+           given={Kim},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=b5a55efcd0be22ad89a42ab4b4445b00}{%
+           family={Chang},
+           familyi={C\bibinitperiod},
+           given={Chu-Hsiang},
+           giveni={C\bibinithyphendelim H\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=6a6d645c0684c47ab2cbef1fd908d344}{%
+           family={Kozlowski},
+           familyi={K\bibinitperiod},
+           given={Steve\bibnamedelimb W\bibnamedelima J},
+           giveni={S\bibinitperiod\bibinitdelim W\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Galveston, Texas}%
+      }
+      \strng{namehash}{b7c92524f2f10645ea1eaf4da634cada}
+      \strng{fullhash}{b7c92524f2f10645ea1eaf4da634cada}
+      \strng{bibnamehash}{b7c92524f2f10645ea1eaf4da634cada}
+      \strng{authorbibnamehash}{b7c92524f2f10645ea1eaf4da634cada}
+      \strng{authornamehash}{b7c92524f2f10645ea1eaf4da634cada}
+      \strng{authorfullhash}{b7c92524f2f10645ea1eaf4da634cada}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{NASA Human Research Program Investigators' Workshop}
+      \field{title}{Comparing Team Functioning of Three Teams Living in the Hawaii Space Exploration Analog and Simulation}
+      \field{year}{2017}
+    \endentry
+    \entry{dd6}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
+           family={Dishop},
+           familyi={D\bibinitperiod},
+           given={Christopher\bibnamedelima R},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {University of San Diego, California}%
+      }
+      \strng{namehash}{c8fe28d689bd437108386244656b6e94}
+      \strng{fullhash}{c8fe28d689bd437108386244656b6e94}
+      \strng{bibnamehash}{c8fe28d689bd437108386244656b6e94}
+      \strng{authorbibnamehash}{c8fe28d689bd437108386244656b6e94}
+      \strng{authornamehash}{c8fe28d689bd437108386244656b6e94}
+      \strng{authorfullhash}{c8fe28d689bd437108386244656b6e94}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{M. Harris Student Research Colloquium}
+      \field{title}{Retaining Favorable Mental Healthcare Providers: The Moderating Roles of Stressful and Functional Climates}
+      \field{year}{2016}
+    \endentry
+    \entry{dd7}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
+           family={Dishop},
+           familyi={D\bibinitperiod},
+           given={Christopher\bibnamedelima R},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {University of San Diego, California}%
+      }
+      \strng{namehash}{c8fe28d689bd437108386244656b6e94}
+      \strng{fullhash}{c8fe28d689bd437108386244656b6e94}
+      \strng{bibnamehash}{c8fe28d689bd437108386244656b6e94}
+      \strng{authorbibnamehash}{c8fe28d689bd437108386244656b6e94}
+      \strng{authornamehash}{c8fe28d689bd437108386244656b6e94}
+      \strng{authorfullhash}{c8fe28d689bd437108386244656b6e94}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Presentation for the Psychology Journal Club}
+      \field{title}{Why a Slap From Your Mother Hurts More Than a Slap From Your Brother: Research on Pain Perception}
+      \field{year}{2016}
+    \endentry
+    \entry{dd12}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
+           family={Dishop},
+           familyi={D\bibinitperiod},
+           given={Christopher\bibnamedelima R},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=4835e6ab241e82892ed7b7ecfd1dae4b}{%
+           family={Green},
+           familyi={G\bibinitperiod},
+           given={Amy\bibnamedelima E},
+           giveni={A\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=b3c31cee10a04620b8aa8c2d9ae3d888}{%
+           family={Aarons},
+           familyi={A\bibinitperiod},
+           given={Gregory\bibnamedelima A},
+           giveni={G\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {San Diego, California}%
+      }
+      \strng{namehash}{93acf7fdd713814e9da1ce6080cd58db}
+      \strng{fullhash}{93acf7fdd713814e9da1ce6080cd58db}
+      \strng{bibnamehash}{93acf7fdd713814e9da1ce6080cd58db}
+      \strng{authorbibnamehash}{93acf7fdd713814e9da1ce6080cd58db}
+      \strng{authornamehash}{93acf7fdd713814e9da1ce6080cd58db}
+      \strng{authorfullhash}{93acf7fdd713814e9da1ce6080cd58db}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Society for Personality and Social Psychology}
+      \field{title}{Organizational Stress Moderates Mental Health Provider Adaptability and Organizational Commitment}
+      \field{year}{2016}
+    \endentry
+    \entry{green2016organizational}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=4835e6ab241e82892ed7b7ecfd1dae4b}{%
+           family={Green},
+           familyi={G\bibinitperiod},
+           given={Amy\bibnamedelima E},
+           giveni={A\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
+           family={Dishop},
+           familyi={D\bibinitperiod},
+           given={Christopher\bibnamedelima R},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=b3c31cee10a04620b8aa8c2d9ae3d888}{%
+           family={Aarons},
+           familyi={A\bibinitperiod},
+           given={Gregory\bibnamedelima A},
+           giveni={G\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Am Psychiatric Assoc}%
+      }
+      \strng{namehash}{a2ffbdffcdbb95b7ae5cb5eaeb5f1033}
+      \strng{fullhash}{a2ffbdffcdbb95b7ae5cb5eaeb5f1033}
+      \strng{bibnamehash}{a2ffbdffcdbb95b7ae5cb5eaeb5f1033}
+      \strng{authorbibnamehash}{a2ffbdffcdbb95b7ae5cb5eaeb5f1033}
+      \strng{authornamehash}{a2ffbdffcdbb95b7ae5cb5eaeb5f1033}
+      \strng{authorfullhash}{a2ffbdffcdbb95b7ae5cb5eaeb5f1033}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Psychiatric Services}
+      \field{number}{10}
+      \field{title}{Organizational Stress as Moderator of Relationship Between Mental Health Provider Adaptability and Organizational Commitment}
+      \field{volume}{67}
+      \field{year}{2016}
+      \field{pages}{1103\bibrangedash 1108}
+      \range{pages}{6}
+    \endentry
+    \entry{dd8}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
+           family={Dishop},
+           familyi={D\bibinitperiod},
+           given={Christopher\bibnamedelima R},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {University of San Diego, California}%
+      }
+      \strng{namehash}{c8fe28d689bd437108386244656b6e94}
+      \strng{fullhash}{c8fe28d689bd437108386244656b6e94}
+      \strng{bibnamehash}{c8fe28d689bd437108386244656b6e94}
+      \strng{authorbibnamehash}{c8fe28d689bd437108386244656b6e94}
+      \strng{authornamehash}{c8fe28d689bd437108386244656b6e94}
+      \strng{authorfullhash}{c8fe28d689bd437108386244656b6e94}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Presentation for the Psychology Journal Club}
+      \field{title}{Forgiveness and Synchrony to Facilitate Well-being}
+      \field{year}{2015}
+    \endentry
+    \entry{dd13}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=651e03e2cb49ec5ffd38bfb64972033c}{%
+           family={Career},
+           familyi={C\bibinitperiod},
+           given={C},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
+           family={Dishop},
+           familyi={D\bibinitperiod},
+           given={Christopher\bibnamedelima R},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=101271759516d722a1679706defe4a06}{%
+           family={Galvan},
+           familyi={G\bibinitperiod},
+           given={Veronica},
+           giveni={V\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {University of California, Riverside}%
+      }
+      \strng{namehash}{c29889b21f83e0665f15eb521c6d8f47}
+      \strng{fullhash}{c29889b21f83e0665f15eb521c6d8f47}
+      \strng{bibnamehash}{c29889b21f83e0665f15eb521c6d8f47}
+      \strng{authorbibnamehash}{c29889b21f83e0665f15eb521c6d8f47}
+      \strng{authornamehash}{c29889b21f83e0665f15eb521c6d8f47}
+      \strng{authorfullhash}{c29889b21f83e0665f15eb521c6d8f47}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{AAAS Pacific Division}
+      \field{title}{The Effects of Differing Conversation Types on Bystanders}
+      \field{year}{2014}
+    \endentry
+    \entry{dishop2018}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
+           family={Dishop},
+           familyi={D\bibinitperiod},
+           given={Christopher\bibnamedelima R},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=640bff6bc37424ceb9a8ee580af99127}{%
+           family={DeShon},
+           familyi={D\bibinitperiod},
+           given={Richard\bibnamedelima P},
+           giveni={R\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{0cc09653fd796f3c830d5c6ddb3edba0}
+      \strng{fullhash}{0cc09653fd796f3c830d5c6ddb3edba0}
+      \strng{bibnamehash}{0cc09653fd796f3c830d5c6ddb3edba0}
+      \strng{authorbibnamehash}{0cc09653fd796f3c830d5c6ddb3edba0}
+      \strng{authornamehash}{0cc09653fd796f3c830d5c6ddb3edba0}
+      \strng{authorfullhash}{0cc09653fd796f3c830d5c6ddb3edba0}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{The Difficulty of Directionality with Longitudinal Data}
+      \field{year}{Under Review}
+    \endentry
+    \entry{dishop2017}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
+           family={Dishop},
+           familyi={D\bibinitperiod},
+           given={Christopher\bibnamedelima R},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=4835e6ab241e82892ed7b7ecfd1dae4b}{%
+           family={Green},
+           familyi={G\bibinitperiod},
+           given={Amy\bibnamedelima E},
+           giveni={A\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=b3c31cee10a04620b8aa8c2d9ae3d888}{%
+           family={Aarons},
+           familyi={A\bibinitperiod},
+           given={Gregory\bibnamedelima A},
+           giveni={G\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{93acf7fdd713814e9da1ce6080cd58db}
+      \strng{fullhash}{93acf7fdd713814e9da1ce6080cd58db}
+      \strng{bibnamehash}{93acf7fdd713814e9da1ce6080cd58db}
+      \strng{authorbibnamehash}{93acf7fdd713814e9da1ce6080cd58db}
+      \strng{authornamehash}{93acf7fdd713814e9da1ce6080cd58db}
+      \strng{authorfullhash}{93acf7fdd713814e9da1ce6080cd58db}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Predicting Turnover: The Moderating Effect of Functional Climates on Emotional Exhaustion and Work Attitudes}
+      \field{year}{Under Review}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  17 AUG 2018 10:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  18 AUG 2018 06:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1646,7 +1646,7 @@ Package logreq Info: Writing requests to 'cv-llt.run.xml'.
 Here is how much of TeX's memory you used:
  31028 strings out of 492649
  591758 string characters out of 6129622
- 1146295 words of memory out of 5000000
+ 1146294 words of memory out of 5000000
  34184 multiletter control sequences out of 15000+600000
  128346 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1663,7 +1663,7 @@ xmf-dist/fonts/type1/public/fontawesome/FontAwesome.pfb></usr/local/texlive/201
 xlive/2018/texmf-dist/fonts/type1/public/fbb/fbb-Bold.pfb></usr/local/texlive/2
 018/texmf-dist/fonts/type1/public/fbb/fbb-Italic.pfb></usr/local/texlive/2018/t
 exmf-dist/fonts/type1/public/fbb/fbb-Regular.pfb>
-Output written on cv-llt.pdf (3 pages, 212735 bytes).
+Output written on cv-llt.pdf (3 pages, 213124 bytes).
 PDF statistics:
  108 PDF objects out of 1000 (max. 8388607)
  78 compressed objects within 1 object stream

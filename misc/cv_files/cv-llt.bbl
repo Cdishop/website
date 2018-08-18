@@ -640,8 +640,8 @@
            given={Christopher\bibnamedelima R},
            giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
            givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=101271759516d722a1679706defe4a06}{%
-           family={Galvan},
+        {{uniquename=0,uniquepart=base,hash=c3846033e00627dc9aef812f7443f681}{%
+           family={Galván},
            familyi={G\bibinitperiod},
            given={Veronica},
            giveni={V\bibinitperiod},
@@ -650,12 +650,12 @@
       \list{location}{1}{%
         {University of California, Riverside}%
       }
-      \strng{namehash}{c29889b21f83e0665f15eb521c6d8f47}
-      \strng{fullhash}{c29889b21f83e0665f15eb521c6d8f47}
-      \strng{bibnamehash}{c29889b21f83e0665f15eb521c6d8f47}
-      \strng{authorbibnamehash}{c29889b21f83e0665f15eb521c6d8f47}
-      \strng{authornamehash}{c29889b21f83e0665f15eb521c6d8f47}
-      \strng{authorfullhash}{c29889b21f83e0665f15eb521c6d8f47}
+      \strng{namehash}{09bb5291b4f8de0f13be894ca5e9953d}
+      \strng{fullhash}{09bb5291b4f8de0f13be894ca5e9953d}
+      \strng{bibnamehash}{09bb5291b4f8de0f13be894ca5e9953d}
+      \strng{authorbibnamehash}{09bb5291b4f8de0f13be894ca5e9953d}
+      \strng{authornamehash}{09bb5291b4f8de0f13be894ca5e9953d}
+      \strng{authorfullhash}{09bb5291b4f8de0f13be894ca5e9953d}
       \field{sortinit}{2}
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{extradatescope}{labelyear}

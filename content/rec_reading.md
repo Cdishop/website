@@ -468,7 +468,7 @@ Edward R. Tufte
 
 [Click here for link](https://www.amazon.com/Visual-Display-Quantitative-Information/dp/B00A2RSEQI/ref=sr_1_2?ie=UTF8&qid=1535220474&sr=8-2&keywords=the+visual+display+of+quantitative+information)
 
-![]()https://github.com/Cdishop/website/raw/master/misc/books/visual_display.png)
+![](https://github.com/Cdishop/website/raw/master/misc/books/visual_display.png)
 
 
 

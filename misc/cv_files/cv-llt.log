@@ -1,12 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  18 AUG 2018 06:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.8.26)  1 SEP 2018 22:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
 **cv-llt.tex
 (./cv-llt.tex
-LaTeX2e <2018-04-01> patch level 2
-Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
+LaTeX2e <2018-04-01> patch level 5
 (/usr/local/texlive/2018/texmf-dist/tex/latex/curve/curve.cls
 Document Class: curve 2010/12/14 v1.16 Curriculum Vitae class for LaTeX2e
 (/usr/local/texlive/2018/texmf-dist/tex/latex/carlisle/ltxtable.sty
@@ -16,7 +15,7 @@ Package: ltxtable 1995/12/11 v0.2 longtable/tabularx merge (DPC)
 Package: tabularx 2016/02/03 v2.11b `tabularx' package (DPC)
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/tools/array.sty
-Package: array 2018/04/07 v2.4g Tabular extension package (FMi)
+Package: array 2018/04/30 v2.4h Tabular extension package (FMi)
 \col@sep=\dimen102
 \ar@mcellbox=\box26
 \extrarowheight=\dimen103
@@ -148,10 +147,10 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 (/usr/local/texlive/2018/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2018/02/14 3.18 The Babel package
+Package: babel 2018/06/05 3.22 The Babel package
 
 (/usr/local/texlive/2018/texmf-dist/tex/generic/babel/switch.def
-File: switch.def 2018/02/14 3.18 Babel switching mechanism
+File: switch.def 2018/06/05 3.22 Babel switching mechanism
 )
 (/usr/local/texlive/2018/texmf-dist/tex/generic/babel-english/british.ldf
 Language: british 2017/06/06 v3.3r English support from the babel system
@@ -160,7 +159,7 @@ Language: british 2017/06/06 v3.3r English support from the babel system
 Language: english 2017/06/06 v3.3r English support from the babel system
 
 (/usr/local/texlive/2018/texmf-dist/tex/generic/babel/babel.def
-File: babel.def 2018/02/14 3.18 Babel common definitions
+File: babel.def 2018/06/05 3.22 Babel common definitions
 \babel@savecnt=\count102
 \U@D=\dimen114
 
@@ -184,7 +183,7 @@ Package: fontawesome 2016/05/15 v4.6.3.1 font awesome icons
 neric.tex)
 (/usr/local/texlive/2018/texmf-dist/tex/latex/fontawesome/fontawesomesymbols-pd
 ftex.tex)) (/usr/local/texlive/2018/texmf-dist/tex/latex/geometry/geometry.sty
-Package: geometry 2018/03/24 v5.7 Page Geometry
+Package: geometry 2018/04/16 v5.8 Page Geometry
 
 (/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/ifpdf.sty
 Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
@@ -610,7 +609,7 @@ Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
 )
 (/usr/local/texlive/2018/texmf-dist/tex/latex/etoolbox/etoolbox.sty
-Package: etoolbox 2018/02/11 v2.5e e-TeX tools for LaTeX (JAW)
+Package: etoolbox 2018/08/19 v2.5f e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count126
 )
 (/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/kvoptions.sty
@@ -1315,7 +1314,7 @@ Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 )))
 (/usr/local/texlive/2018/texmf-dist/tex/latex/cabin/cabin.sty
-Package: cabin 2016/02/26 (Bob Tennent) Supports Cabin fonts for all LaTeX engi
+Package: cabin 2018/05/18 (Bob Tennent) Supports Cabin fonts for all LaTeX engi
 nes.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/fontenc.sty
@@ -1328,7 +1327,7 @@ Package: zi4 2017/01/04 v1.112
 \zifour@ocount=\count338
 )
 (/usr/local/texlive/2018/texmf-dist/tex/latex/csquotes/csquotes.sty
-Package: csquotes 2018/02/11 v5.2c context-sensitive quotations (JAW)
+Package: csquotes 2018/04/13 v5.2d context-sensitive quotations (JAW)
 \csq@reset=\count339
 \csq@gtype=\count340
 \csq@glevel=\count341
@@ -1340,7 +1339,7 @@ Package csquotes Info: The 'quote' environment appears to be undefined.
 (csquotes)             I'm defining a typical 'quote' environment now.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/csquotes/csquotes.def
-File: csquotes.def 2018/02/11 v5.2c csquotes generic definitions (JAW)
+File: csquotes.def 2018/04/13 v5.2d csquotes generic definitions (JAW)
 )
 Package csquotes Info: Trying to load configuration file 'csquotes.cfg'...
 Package csquotes Info: ... configuration file loaded successfully.
@@ -1559,7 +1558,7 @@ LaTeX Font Info:    Try loading font information for T1+Cabin-TLF on input line
  82.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/cabin/T1Cabin-TLF.fd
-File: T1Cabin-TLF.fd 2012/11/17 (autoinst) Font definitions for T1/Cabin-TLF.
+File: T1Cabin-TLF.fd 2018/05/18 (autoinst) Font definitions for T1/Cabin-TLF.
 )
 LaTeX Font Info:    Font shape `T1/Cabin-TLF/b/n' will be
 (Font)              scaled to size 17.28pt on input line 82.
@@ -1639,16 +1638,21 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 101.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 101.
 Package rerunfilecheck Info: File `cv-llt.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+
+
+Package biblatex Warning: Please rerun LaTeX.
+(biblatex)                Page breaks have changed.
+
 Package logreq Info: Writing requests to 'cv-llt.run.xml'.
 \openout1 = `cv-llt.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31028 strings out of 492649
- 591758 string characters out of 6129622
- 1146294 words of memory out of 5000000
- 34184 multiletter control sequences out of 15000+600000
- 128346 words of font info for 77 fonts, out of 8000000 for 9000
+ 31081 strings out of 492642
+ 592951 string characters out of 6129384
+ 1148782 words of memory out of 5000000
+ 34240 multiletter control sequences out of 15000+600000
+ 134748 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  100i,11n,163p,1151b,7066s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/fbb/fbb_5tchvx.enc}{/usr/
@@ -1656,17 +1660,17 @@ local/texlive/2018/texmf-dist/fonts/enc/dvips/fbb/fbb_ky4nvh.enc}{/usr/local/te
 xlive/2018/texmf-dist/fonts/enc/dvips/fbb/fbb_phk6jg.enc}{/usr/local/texlive/20
 18/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-5.enc}{/usr/local/texlive/2018/
 texmf-dist/fonts/enc/dvips/fontawesome/fontawesometwo.enc}{/usr/local/texlive/2
-018/texmf-dist/fonts/enc/dvips/cabin/cbn_aojlca.enc}</usr/local/texlive/2018/te
+018/texmf-dist/fonts/enc/dvips/cabin/cbn_e24joy.enc}</usr/local/texlive/2018/te
 xmf-dist/fonts/type1/impallari/cabin/Cabin-Bold.pfb></usr/local/texlive/2018/te
 xmf-dist/fonts/type1/public/fontawesome/FontAwesome.pfb></usr/local/texlive/201
 8/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/local/te
 xlive/2018/texmf-dist/fonts/type1/public/fbb/fbb-Bold.pfb></usr/local/texlive/2
 018/texmf-dist/fonts/type1/public/fbb/fbb-Italic.pfb></usr/local/texlive/2018/t
 exmf-dist/fonts/type1/public/fbb/fbb-Regular.pfb>
-Output written on cv-llt.pdf (3 pages, 213124 bytes).
+Output written on cv-llt.pdf (3 pages, 210105 bytes).
 PDF statistics:
- 108 PDF objects out of 1000 (max. 8388607)
- 78 compressed objects within 1 object stream
- 25 named destinations out of 1000 (max. 500000)
+ 109 PDF objects out of 1000 (max. 8388607)
+ 79 compressed objects within 1 object stream
+ 26 named destinations out of 1000 (max. 500000)
  22136 words of extra memory for PDF output out of 24883 (max. 10000000)
 

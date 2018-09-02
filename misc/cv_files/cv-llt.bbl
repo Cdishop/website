@@ -667,6 +667,30 @@
       \field{title}{The Effects of Differing Conversation Types on Bystanders}
       \field{year}{2014}
     \endentry
+    \entry{dishop2018b}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
+           family={Dishop},
+           familyi={D\bibinitperiod},
+           given={Christopher\bibnamedelima R},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{c8fe28d689bd437108386244656b6e94}
+      \strng{fullhash}{c8fe28d689bd437108386244656b6e94}
+      \strng{bibnamehash}{c8fe28d689bd437108386244656b6e94}
+      \strng{authorbibnamehash}{c8fe28d689bd437108386244656b6e94}
+      \strng{authornamehash}{c8fe28d689bd437108386244656b6e94}
+      \strng{authorfullhash}{c8fe28d689bd437108386244656b6e94}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Goal Sampling Theory}
+      \field{year}{Under Review}
+    \endentry
     \entry{dishop2018}{article}{}
       \name{author}{2}{}{%
         {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
@@ -698,7 +722,7 @@
       \field{year}{Under Review}
     \endentry
     \entry{dishop2017}{article}{}
-      \name{author}{3}{}{%
+      \name{author}{4}{}{%
         {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
            family={Dishop},
            familyi={D\bibinitperiod},
@@ -711,6 +735,12 @@
            given={Amy\bibnamedelima E},
            giveni={A\bibinitperiod\bibinitdelim E\bibinitperiod},
            givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=27729f2f5e83637d395ee636938e437a}{%
+           family={Torres},
+           familyi={T\bibinitperiod},
+           given={Eliza\bibnamedelima M},
+           giveni={E\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
         {{uniquename=0,uniquepart=base,hash=b3c31cee10a04620b8aa8c2d9ae3d888}{%
            family={Aarons},
            familyi={A\bibinitperiod},
@@ -718,12 +748,12 @@
            giveni={G\bibinitperiod\bibinitdelim A\bibinitperiod},
            givenun=0}}%
       }
-      \strng{namehash}{93acf7fdd713814e9da1ce6080cd58db}
-      \strng{fullhash}{93acf7fdd713814e9da1ce6080cd58db}
-      \strng{bibnamehash}{93acf7fdd713814e9da1ce6080cd58db}
-      \strng{authorbibnamehash}{93acf7fdd713814e9da1ce6080cd58db}
-      \strng{authornamehash}{93acf7fdd713814e9da1ce6080cd58db}
-      \strng{authorfullhash}{93acf7fdd713814e9da1ce6080cd58db}
+      \strng{namehash}{c5a3383103d2b50e3c8ddae33d590019}
+      \strng{fullhash}{c5a3383103d2b50e3c8ddae33d590019}
+      \strng{bibnamehash}{c5a3383103d2b50e3c8ddae33d590019}
+      \strng{authorbibnamehash}{c5a3383103d2b50e3c8ddae33d590019}
+      \strng{authornamehash}{c5a3383103d2b50e3c8ddae33d590019}
+      \strng{authorfullhash}{c5a3383103d2b50e3c8ddae33d590019}
       \field{sortinit}{1}
       \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{extradatescope}{labelyear}

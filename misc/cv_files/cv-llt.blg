@@ -1,20 +1,21 @@
 [0] Config.pm:302> INFO - This is Biber 2.11
 [0] Config.pm:305> INFO - Logfile is 'cv-llt.blg'
-[27] biber-darwin:313> INFO - === Sat Aug 18, 2018, 06:16:43
-[43] Biber.pm:371> INFO - Reading 'cv-llt.bcf'
-[111] Biber.pm:854> INFO - Using all citekeys in bib section 0
-[121] Biber.pm:3976> INFO - Processing section 0
-[128] Biber.pm:4136> INFO - Looking for bibtex format file 'own-bib.bib' for section 0
-[129] bibtex.pm:1500> INFO - LaTeX decoding ...
-[145] bibtex.pm:1316> INFO - Found BibTeX data source 'own-bib.bib'
-[154] Utils.pm:193> WARN - year field 'Under Review' in entry 'dishop2017' is not an integer - this will probably not sort properly.
-[200] Utils.pm:193> WARN - year field 'Under Review' in entry 'dishop2018' is not an integer - this will probably not sort properly.
-[221] Utils.pm:193> WARN - BibTeX subsystem: warning: comma(s) at end of name (removing)
-[221] Utils.pm:193> WARN - BibTeX subsystem: author, warning: comma(s) at end of name (removing)
-[248] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[248] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'variable = shifted' with 'variable = non-ignorable'
-[248] Biber.pm:3804> INFO - Sorting list 'ymdnt/global//global/global' of type 'entry' with template 'ymdnt' and locale 'en-GB'
-[248] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-GB'
-[262] bbl.pm:617> INFO - Writing 'cv-llt.bbl' with encoding 'UTF-8'
-[274] bbl.pm:720> INFO - Output to cv-llt.bbl
-[274] Biber.pm:110> INFO - WARNINGS: 4
+[27] biber-darwin:313> INFO - === Sat Sep  1, 2018, 22:34:43
+[42] Biber.pm:371> INFO - Reading 'cv-llt.bcf'
+[114] Biber.pm:854> INFO - Using all citekeys in bib section 0
+[124] Biber.pm:3976> INFO - Processing section 0
+[132] Biber.pm:4136> INFO - Looking for bibtex format file 'own-bib.bib' for section 0
+[133] bibtex.pm:1500> INFO - LaTeX decoding ...
+[149] bibtex.pm:1316> INFO - Found BibTeX data source 'own-bib.bib'
+[155] Utils.pm:193> WARN - year field 'Under Review' in entry 'dishop2018b' is not an integer - this will probably not sort properly.
+[206] Utils.pm:193> WARN - year field 'Under Review' in entry 'dishop2018' is not an integer - this will probably not sort properly.
+[211] Utils.pm:193> WARN - year field 'Under Review' in entry 'dishop2017' is not an integer - this will probably not sort properly.
+[228] Utils.pm:193> WARN - BibTeX subsystem: warning: comma(s) at end of name (removing)
+[228] Utils.pm:193> WARN - BibTeX subsystem: author, warning: comma(s) at end of name (removing)
+[258] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'variable = shifted' with 'variable = non-ignorable'
+[258] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[258] Biber.pm:3804> INFO - Sorting list 'ymdnt/global//global/global' of type 'entry' with template 'ymdnt' and locale 'en-GB'
+[259] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-GB'
+[274] bbl.pm:617> INFO - Writing 'cv-llt.bbl' with encoding 'UTF-8'
+[286] bbl.pm:720> INFO - Output to cv-llt.bbl
+[287] Biber.pm:110> INFO - WARNINGS: 5

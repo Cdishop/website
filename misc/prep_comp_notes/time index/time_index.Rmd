@@ -1,0 +1,55 @@
+---
+title: "Time Index"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
+```
+
+```{r, echo = F}
+
+df1 <- data.frame(
+  'id' = c(letters[1:3], letters[1:3], letters[1:3]),
+  'score' = c(rnorm(9, 20, 4)),
+  'time' = c(seq(from = 1, to = 3, each = 3)))
+
+
+df2 <- data.frame(
+  'id' = c(rep('a', 3), rep('b', 3), rep('c', 3)),
+  'score' = c(rnorm(9, 20, 4)),
+  'time' = c(rep(c(1:3), each = 3))
+)
+
+```
+
+There are two code variations I use to generate time indexes. If I need time cycles
+
+```{r, echo = F}
+
+df1
+
+```
+
+then I use a sequence command.
+
+```{r, eval = F}
+
+time <- seq(from = 1, to = 3, each = 3)
+```
+
+If I need time ordered
+
+```{r, echo = F}
+
+df2
+```
+
+then I use a replicate command.
+
+```{r}
+time <- rep(c(1:3), each = 3)
+```
+
+
+Bo$^2$m =)

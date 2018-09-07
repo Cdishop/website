@@ -1,7 +1,9 @@
 ---
 title: "Spline Modeling"
-output: pdf_document
-date: "2018-05-05"
+output:
+  html_document:
+    df_print: paged
+date: '2018-05-05'
 ---
 
 
@@ -95,7 +97,9 @@ ggplot() +
   geom_line(data = df_sum2, aes(x = time, y = affect))</code></pre>
 <p><img src="/Computational_Notes/spline_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 <p>Estimating the parameters using SEM:</p>
-<pre class="r"><code>df_wide &lt;- reshape(df, idvar = &#39;id&#39;, timevar = &#39;time&#39;, direction = &#39;wide&#39;)
+<pre class="r"><code>library(lavaan)
+
+df_wide &lt;- reshape(df, idvar = &#39;id&#39;, timevar = &#39;time&#39;, direction = &#39;wide&#39;)
 
 
 spline_string &lt;- &#39;
@@ -405,7 +409,10 @@ ggplot() +
   geom_line(data = df_sum2_b, aes(x = time, y = affect))</code></pre>
 <p><img src="/Computational_Notes/spline_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>Estimating the parameters using SEM:</p>
-<pre class="r"><code>df_wide_b &lt;- reshape(df_b, idvar = &#39;id&#39;, timevar = &#39;time&#39;, direction = &#39;wide&#39;)
+<pre class="r"><code>library(lavaan)
+
+
+df_wide_b &lt;- reshape(df_b, idvar = &#39;id&#39;, timevar = &#39;time&#39;, direction = &#39;wide&#39;)
 
 
 spline_string_b &lt;- &#39;
@@ -727,7 +734,9 @@ ggplot() +
   geom_line(data = df_sum3_c, aes(x = time, y = affect))</code></pre>
 <p><img src="/Computational_Notes/spline_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>Now estimate the parameters using SEM:</p>
-<pre class="r"><code>df_wide_c &lt;- reshape(df_c, idvar = &#39;id&#39;, timevar = &#39;time&#39;, direction = &#39;wide&#39;)
+<pre class="r"><code>library(lavaan)
+
+df_wide_c &lt;- reshape(df_c, idvar = &#39;id&#39;, timevar = &#39;time&#39;, direction = &#39;wide&#39;)
 
 
 spline_string_c &lt;- &#39;
@@ -1045,19 +1054,28 @@ summary(spline_model_c, fit.measures = T)</code></pre>
 
 # latent slope for first third basis coefficients
 
-slope1_affect =~ 1*affect.1 + 2*affect.2 + 3*affect.3 + 4*affect.4 + 0*affect.5 + 0*affect.6 + 0*affect.7 + 0*affect.8 + 0*affect.9 + 0*affect.10 + 0*affect.11 + 0*affect.12 + 0*affect.13 + 0*affect.14 + 0*affect.15
+slope1_affect =~ 1*affect.1 + 2*affect.2 + 3*affect.3 + 4*affect.4 + 
+                 0*affect.5 + 0*affect.6 + 0*affect.7 + 0*affect.8 + 
+                 0*affect.9 + 0*affect.10 + 0*affect.11 + 0*affect.12 + 
+                 0*affect.13 + 0*affect.14 + 0*affect.15
 
 # latent slope for second third basis coefficients
 
-slope2_affect =~ 0*affect.1 + 0*affect.2 + 0*affect.3 + 0*affect.4 + 5*affect.5 + 6*affect.6 + 7*affect.7 + 8*affect.8 + 9*affect.9 + 0*affect.10 + 0*affect.11 + 0*affect.12 + 0*affect.13 + 0*affect.14 + 0*affect.15
+slope2_affect =~ 0*affect.1 + 0*affect.2 + 0*affect.3 + 0*affect.4 + 
+                 5*affect.5 + 6*affect.6 + 7*affect.7 + 8*affect.8 + 
+                 9*affect.9 + 0*affect.10 + 0*affect.11 + 0*affect.12 + 
+                 0*affect.13 + 0*affect.14 + 0*affect.15
 
 # latent slope for final third basis coefficients
 
-slope3_affect =~ 0*affect.1 + 0*affect.2 + 0*affect.3 + 0*affect.4 + 0*affect.5 + 0*affect.6 + 0*affect.7 + 0*affect.8 + 0*affect.9 + 10*affect.10 + 11*affect.11 + 12*affect.12 + 13*affect.13 + 14*affect.14 + 15*affect.15
+slope3_affect =~ 0*affect.1 + 0*affect.2 + 0*affect.3 + 0*affect.4 +
+                 0*affect.5 + 0*affect.6 + 0*affect.7 + 0*affect.8 + 
+                 0*affect.9 + 10*affect.10 + 11*affect.11 + 12*affect.12 + 
+                 13*affect.13 + 14*affect.14 + 15*affect.15
 
 
 
 &#39;</code></pre>
-<pre><code>## [1] &quot;\n\n\n# latent slope for first third basis coefficients\n\nslope1_affect =~ 1*affect.1 + 2*affect.2 + 3*affect.3 + 4*affect.4 + 0*affect.5 + 0*affect.6 + 0*affect.7 + 0*affect.8 + 0*affect.9 + 0*affect.10 + 0*affect.11 + 0*affect.12 + 0*affect.13 + 0*affect.14 + 0*affect.15\n\n# latent slope for second third basis coefficients\n\nslope2_affect =~ 0*affect.1 + 0*affect.2 + 0*affect.3 + 0*affect.4 + 5*affect.5 + 6*affect.6 + 7*affect.7 + 8*affect.8 + 9*affect.9 + 0*affect.10 + 0*affect.11 + 0*affect.12 + 0*affect.13 + 0*affect.14 + 0*affect.15\n\n# latent slope for final third basis coefficients\n\nslope3_affect =~ 0*affect.1 + 0*affect.2 + 0*affect.3 + 0*affect.4 + 0*affect.5 + 0*affect.6 + 0*affect.7 + 0*affect.8 + 0*affect.9 + 10*affect.10 + 11*affect.11 + 12*affect.12 + 13*affect.13 + 14*affect.14 + 15*affect.15\n\n\n\n&quot;</code></pre>
+<pre><code>## [1] &quot;\n\n\n# latent slope for first third basis coefficients\n\nslope1_affect =~ 1*affect.1 + 2*affect.2 + 3*affect.3 + 4*affect.4 + \n                 0*affect.5 + 0*affect.6 + 0*affect.7 + 0*affect.8 + \n                 0*affect.9 + 0*affect.10 + 0*affect.11 + 0*affect.12 + \n                 0*affect.13 + 0*affect.14 + 0*affect.15\n\n# latent slope for second third basis coefficients\n\nslope2_affect =~ 0*affect.1 + 0*affect.2 + 0*affect.3 + 0*affect.4 + \n                 5*affect.5 + 6*affect.6 + 7*affect.7 + 8*affect.8 + \n                 9*affect.9 + 0*affect.10 + 0*affect.11 + 0*affect.12 + \n                 0*affect.13 + 0*affect.14 + 0*affect.15\n\n# latent slope for final third basis coefficients\n\nslope3_affect =~ 0*affect.1 + 0*affect.2 + 0*affect.3 + 0*affect.4 +\n                 0*affect.5 + 0*affect.6 + 0*affect.7 + 0*affect.8 + \n                 0*affect.9 + 10*affect.10 + 11*affect.11 + 12*affect.12 + \n                 13*affect.13 + 14*affect.14 + 15*affect.15\n\n\n\n&quot;</code></pre>
 <p>Bo<span class="math inline">\(^2\)</span>m =)</p>
 </div>

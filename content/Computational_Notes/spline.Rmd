@@ -1,11 +1,13 @@
 ---
 title: "Spline Modeling"
-output: pdf_document
-date: "2018-05-05"
+output:
+  html_document:
+    df_print: paged
+date: '2018-05-05'
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning = F, message = F)
+knitr::opts_chunk$set(echo = TRUE, warning = F, message = F, cache = T)
 ```
 
 A few spline models (also known as piecewise models). As in previous posts, 'affect' is the name given to values of $y$ throughout. 
@@ -24,7 +26,7 @@ y_{it} =
 
 The data generating code and plot
 
-```{r, cache= TRUE}
+```{r}
 
 
 library(tidyverse)
@@ -109,7 +111,7 @@ Estimating the parameters using SEM:
 
 
 ```{r}
-
+library(lavaan)
 
 df_wide <- reshape(df, idvar = 'id', timevar = 'time', direction = 'wide')
 
@@ -299,6 +301,7 @@ ggplot() +
 Estimating the parameters using SEM:
 
 ```{r}
+library(lavaan)
 
 
 df_wide_b <- reshape(df_b, idvar = 'id', timevar = 'time', direction = 'wide')
@@ -497,6 +500,7 @@ Now estimate the parameters using SEM:
 
 
 ```{r}
+library(lavaan)
 
 df_wide_c <- reshape(df_c, idvar = 'id', timevar = 'time', direction = 'wide')
 

@@ -1,0 +1,95 @@
+---
+title: "More on Column Names as Parameters"
+output: pdf_document
+date: "2018-09-06"
+---
+
+
+
+<p>Use <code>quo</code> or <code>enquo</code> when you want to include column names as parameters in a function. For example, a function like the following would not work:</p>
+<pre class="r"><code>bad_function &lt;- function(data, col_name){
+  
+  newdf &lt;- data %&gt;%
+    mutate(&#39;adjusted_column&#39; = col_name + 1)
+  
+  return(newdf)
+  
+}
+
+bad_function(df, column_i_care_about)</code></pre>
+<p>because <code>column_i_care_about</code> isn’t specified in a form that <code>mutate</code> can work with.</p>
+<div id="examples" class="section level1">
+<h1>Examples</h1>
+<p>The data are contained in <code>df1</code>.</p>
+<pre class="r"><code>df1 &lt;- data.frame(
+  a = c(1,2,NA),
+  b = c(NA,3,4)
+)
+
+df1</code></pre>
+<pre><code>##    a  b
+## 1  1 NA
+## 2  2  3
+## 3 NA  4</code></pre>
+<p>The function: take the column specified by the parameter and add one to every value. Then return the new data frame.</p>
+<pre class="r"><code>adder &lt;- function(col_use){
+  
+  newdf &lt;- df1 %&gt;%
+    mutate(&#39;adder&#39; = 
+             (!!col_use) + 1)  # correct form here using !!
+    
+  return(newdf)
+  
+}
+
+adder(quo(a))                 # correct form here using quo</code></pre>
+<pre><code>##    a  b adder
+## 1  1 NA     2
+## 2  2  3     3
+## 3 NA  4    NA</code></pre>
+<p>A more complicated function by incorporating <code>is.na</code>.</p>
+<pre class="r"><code>na_tagger &lt;- function(col_use){
+  
+  newdf &lt;- df1 %&gt;%
+    mutate(&#39;na_tag&#39; = 
+             ifelse(is.na((!!col_use)) == T, 1, 0))
+  
+  return(newdf)
+}
+
+na_tagger(quo(a))</code></pre>
+<pre><code>##    a  b na_tag
+## 1  1 NA      0
+## 2  2  3      0
+## 3 NA  4      1</code></pre>
+<p>In the examples above I used <code>quo</code> interactively. You get the same result by instead using <code>enquo</code> within the function.</p>
+<pre class="r"><code>adder2 &lt;- function(col_use){
+  
+  col_use &lt;- enquo(col_use)
+  
+  newdf &lt;- df1 %&gt;%
+    mutate(&#39;adder&#39; = 
+             (!!col_use) + 1)
+  
+  return(newdf)
+}
+
+adder2(a)</code></pre>
+<pre><code>##    a  b adder
+## 1  1 NA     2
+## 2  2  3     3
+## 3 NA  4    NA</code></pre>
+</div>
+<div id="one-more-note" class="section level1">
+<h1>One More Note</h1>
+<p>Sometimes I also need to specify the data set and column within a <code>dplyr</code> command and then use the parameter to select a specific row. The following format seems to work well: <code>data[['col_name']][row]</code>. Here is a function that is inefficient but demonstrates the point well:</p>
+<pre class="r"><code>selector2 &lt;- function(x, y){
+  
+  new &lt;- df1 %&gt;%
+    filter(robby == df1[[&#39;robby&#39;]][x]) %&gt;%
+    filter(ruddy == df1[[&#39;ruddy&#39;]][y])
+  
+  return(new)
+}</code></pre>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>
+</div>

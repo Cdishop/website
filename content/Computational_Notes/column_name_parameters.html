@@ -30,15 +30,15 @@ mini &lt;- dish %&gt;%
 mini[mini$person == &#39;jimmy&#39;, 2] &lt;- 99
 mini[mini$person == &#39;james&#39;, 2] &lt;- 99</code></pre>
 <p>The original data:</p>
-<pre><code>##   person          v_1       v_2      v_3       v_4
-## 1  jimmy -0.185875480  3.191068 30.35768  4.067477
-## 2  james -0.002193694 15.533174 33.02096 14.212347
-## 3 johnny -0.837310116 13.624996 44.75519 16.222705</code></pre>
+<pre><code>##   person         v_1       v_2      v_3      v_4
+## 1  jimmy  1.17217427 12.394220 54.74531 23.51137
+## 2  james -0.04355878  7.672349 44.15871 31.24079
+## 3 johnny  0.31721574  7.183470 36.02091 13.40221</code></pre>
 <p>What we changed it to:</p>
 <pre><code>##   person        v_1       v_2
-## 1  jimmy 99.0000000  3.191068
-## 2  james 99.0000000 15.533174
-## 3 johnny -0.8373101 13.624996</code></pre>
+## 1  jimmy 99.0000000 12.394220
+## 2  james 99.0000000  7.672349
+## 3 johnny  0.3172157  7.183470</code></pre>
 <p>Here is the function equivalent:</p>
 <pre class="r"><code>impute_99 &lt;- function(data){
   
@@ -57,9 +57,9 @@ mini[mini$person == &#39;james&#39;, 2] &lt;- 99</code></pre>
 <pre class="r"><code>adjusted_data &lt;- impute_99(dish)
 adjusted_data</code></pre>
 <pre><code>##   person        v_1       v_2
-## 1  jimmy 99.0000000  3.191068
-## 2  james 99.0000000 15.533174
-## 3 johnny -0.8373101 13.624996</code></pre>
+## 1  jimmy 99.0000000 12.394220
+## 2  james 99.0000000  7.672349
+## 3 johnny  0.3172157  7.183470</code></pre>
 </div>
 <div id="function-with-column-names-as-parameters" class="section level1">
 <h1>Function with column names as parameters</h1>
@@ -81,8 +81,8 @@ adjusted_data</code></pre>
 <pre class="r"><code>cool_data &lt;- impute_99_column_specific(dish, &#39;v_1&#39;, &#39;v_2&#39;)
 cool_data</code></pre>
 <pre><code>##   person        v_1       v_2
-## 1  jimmy 99.0000000  3.191068
-## 2  james 99.0000000 15.533174
-## 3 johnny -0.8373101 13.624996</code></pre>
+## 1  jimmy 99.0000000 12.394220
+## 2  james 99.0000000  7.672349
+## 3 johnny  0.3172157  7.183470</code></pre>
 <p>Bo<span class="math inline">\(^2\)</span>m =)</p>
 </div>

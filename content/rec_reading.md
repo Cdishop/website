@@ -187,18 +187,101 @@ John Fox
 
 
 
+*SuperCooperators: Altruism, Evolution, and Why We Need Each Other to Succeed*
+
+Martin A. Nowak
+
+Roger Highfield
+
+[Click here for link](https://www.amazon.com/SuperCooperators-Altruism-Evolution-Other-Succeed/dp/1451626630/ref=sr_1_1?ie=UTF8&qid=1541968376&sr=8-1&keywords=super+cooperators)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/super_coop.png)
 
 
 
-*Complex Adaptive Systems: An Introduction to Computational Models of Social Life*
+
+
+*A Crude Look at the Whole: The Science of Complex Systems in Business, Life, and Society*
 
 John H. Miller
 
-Scott E. Page
+[Click here for link](https://www.amazon.com/Crude-Look-Whole-Science-Business/dp/0465055699/ref=sr_1_1?s=books&ie=UTF8&qid=1524679795&sr=1-1&keywords=a+crude+look+at+the+whole)
 
-[Click here for link](https://www.amazon.com/Complex-Adaptive-Systems-Introduction-Computational/dp/0691127026/ref=sr_1_1?s=books&ie=UTF8&qid=1524678589&sr=1-1&keywords=complex+adaptive+systems)
+![](https://github.com/Cdishop/website/raw/master/misc/books/crude_whole.png)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/adaptive.png)
+
+
+
+
+
+
+*Math with Bad Drawings: Illuminating the Ideas That Shape Our Reality*
+
+Ben Orlin
+
+[Click here for link](https://www.amazon.com/Math-Bad-Drawings-Illuminating-Reality/dp/0316509035/ref=sr_1_1?ie=UTF8&qid=1541968483&sr=8-1&keywords=mathematics+with+bad+drawings&dpID=51EP1Orpx0L&preST=_SX258_BO1,204,203,200_QL70_&dpSrc=srch)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/math_draw.png)
+
+
+
+
+
+
+
+
+
+
+
+
+*Scale: The Universal Laws of Life, Growth, and Death in Organisms, Cities, and Companies*
+
+Geoffrey West
+
+[Click here for link](https://www.amazon.com/Scale-Universal-Growth-Organisms-Companies/dp/014311090X/ref=sr_1_1?ie=UTF8&qid=1541968528&sr=8-1&keywords=scale+west)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/scale.png)
+
+
+
+
+
+
+
+
+
+
+
+*How We Got to Now: Six Innovations That Made the Modern World*
+
+Steven Johnson
+
+[Click here for link](https://www.amazon.com/How-We-Got-Now-Innovations-ebook/dp/B00INIXU5I/ref=sr_1_1?ie=UTF8&qid=1541968591&sr=8-1&keywords=how+we+got+to+now+johnson&dpID=512mgCAgJQL&preST=_SY445_QL70_&dpSrc=srch)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/now.png)
+
+
+
+
+
+
+
+*Modeling Life: The Mathematics of Biological Systems*
+
+Alan Garfinkel
+
+Jane Shevtsov
+
+Yina Guo
+
+[Click here for link](https://www.amazon.com/Modeling-Life-Mathematics-Biological-Systems/dp/3319597302/ref=sr_1_1?ie=UTF8&qid=1541968444&sr=8-1&keywords=modeling+life)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/modeling_life.png)
+
+
+
+
+
 
 
 
@@ -435,15 +518,6 @@ Ronald L. Meek
 
 
 
-*A Crude Look at the Whole: The Science of Complex Systems in Business, Life, and Society*
-
-John H. Miller
-
-[Click here for link](https://www.amazon.com/Crude-Look-Whole-Science-Business/dp/0465055699/ref=sr_1_1?s=books&ie=UTF8&qid=1524679795&sr=1-1&keywords=a+crude+look+at+the+whole)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/crude_whole.png)
-
-
 
 
 
@@ -469,6 +543,30 @@ Edward R. Tufte
 [Click here for link](https://www.amazon.com/Visual-Display-Quantitative-Information/dp/B00A2RSEQI/ref=sr_1_2?ie=UTF8&qid=1535220474&sr=8-2&keywords=the+visual+display+of+quantitative+information)
 
 ![](https://github.com/Cdishop/website/raw/master/misc/books/visual_display.png)
+
+
+
+
+
+
+
+
+
+
+
+*Complex Adaptive Systems: An Introduction to Computational Models of Social Life*
+
+John H. Miller
+
+Scott E. Page
+
+[Click here for link](https://www.amazon.com/Complex-Adaptive-Systems-Introduction-Computational/dp/0691127026/ref=sr_1_1?s=books&ie=UTF8&qid=1524678589&sr=1-1&keywords=complex+adaptive+systems)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/adaptive.png)
+
+
+
+
 
 
 
@@ -645,6 +743,24 @@ Stephen M. Stigler
 [Click here for link](https://www.amazon.com/Seven-Pillars-Statistical-Wisdom/dp/0674088913/ref=sr_1_1?s=books&ie=UTF8&qid=1524679356&sr=1-1&keywords=the+seven+pillars+of+statistical)
 
 ![](https://github.com/Cdishop/website/raw/master/misc/books/sevenstats.png)
+
+
+
+
+
+
+
+
+*Life's Other Secret: The New Mathematics of the Living World*
+
+Ian Stewart
+
+[Click here for link](https://www.amazon.com/Lifes-Other-Secret-Mathematics-Living/dp/0471296511/ref=sr_1_1?ie=UTF8&qid=1541968410&sr=8-1&keywords=life%27s+other+secret+ian&dpID=31v8-5eNf-L&preST=_SY291_BO1,204,203,200_QL40_&dpSrc=srch)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/lifes_secret.png)
+
+
+
 
 
 

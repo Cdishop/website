@@ -26,6 +26,8 @@ Thomas Gilovich
 ![](https://github.com/Cdishop/website/raw/master/misc/books/how_we_know.png)
 
 
+
+
 *Complexity: A Guided Tour*
 
 Melanie Mitchell
@@ -54,8 +56,6 @@ Carlo Rovelli
 [Click here for link](https://www.amazon.com/Order-Time-Carlo-Rovelli/dp/073521610X/ref=sr_1_1?ie=UTF8&qid=1526429375&sr=8-1&keywords=the+order+of+time)
 
 ![](https://github.com/Cdishop/website/raw/master/misc/books/order_time.png)
-
-
 
 
 
@@ -118,6 +118,22 @@ Richard McElreath
 
 
 
+
+*Ethics in the Real World: 82 Brief Essays on Things That Matter*
+
+Peter Singer
+
+[Click here for link](https://www.amazon.com/Ethics-Real-World-Essays-Things/dp/069117847X/ref=sr_1_1?ie=UTF8&qid=1534110030&sr=8-1&keywords=Peter+singer+82+brief&smid=ATVPDKIKX0DER)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/ethics_essays.png)
+
+
+
+
+
+
+
+
 *The Lady Tasting Tea: How Statistics Revolutionized Science in the Twentieth Century*
 
 David Salsburg
@@ -129,6 +145,30 @@ David Salsburg
 
 
 
+
+
+
+
+
+*Why Don't Students Like School?*
+
+Daniel T. Willingham
+
+[Click here for link](https://www.amazon.com/Why-Dont-Students-Like-School/dp/047059196X/ref=sr_1_1_sspa?ie=UTF8&qid=1544905242&sr=8-1-spons&keywords=why+don%27t+student+like+school&psc=1)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/school.png)
+
+
+
+
+
+
+
+
+
+
+
+
 *Naked Statistics: Stripping The Dread From The Data*
 
 Charles Wheelan
@@ -136,6 +176,8 @@ Charles Wheelan
 [Click here for link](https://www.amazon.com/Naked-Statistics-Stripping-Dread-Data/dp/B00CH7FWWU/ref=sr_1_1?s=books&ie=UTF8&qid=1524678465&sr=1-1&keywords=naked+statistics)
 
 ![](https://github.com/Cdishop/website/raw/master/misc/books/nakedstats.png)
+
+
 
 
 
@@ -736,6 +778,27 @@ Dan Heath
 
 
 
+
+
+
+*Mathematical Modeling of Social Relationships*
+
+Urszula Strawinska-Zanko
+
+Larry S. Liebovitch
+
+Dan Heath
+
+[Click here for link](https://www.amazon.com/Mathematical-Modeling-Social-Relationships-Computational/dp/331976764X/ref=sr_1_1?ie=UTF8&qid=1544905847&sr=8-1&keywords=mathematical+modeling+of+social+relationships)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/math_relationships.png)
+
+
+
+
+
+
+
 *The Seven Pillars of Statistical Wisdom*
 
 Stephen M. Stigler
@@ -743,6 +806,23 @@ Stephen M. Stigler
 [Click here for link](https://www.amazon.com/Seven-Pillars-Statistical-Wisdom/dp/0674088913/ref=sr_1_1?s=books&ie=UTF8&qid=1524679356&sr=1-1&keywords=the+seven+pillars+of+statistical)
 
 ![](https://github.com/Cdishop/website/raw/master/misc/books/sevenstats.png)
+
+
+
+
+
+
+
+*A Grammar Book For You and I (Oops Me)*
+
+C. Edward Good
+
+[Click here for link](https://www.amazon.com/Grammar-Book-You-Oops-Me/dp/1892123231/ref=sr_1_2?ie=UTF8&qid=1544905575&sr=8-2&keywords=a+grammar+book+for+you+and+i)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/grammar.png)
+
+
+
 
 
 
@@ -883,6 +963,24 @@ Hadley Wickham
 
 
 
+*How Not to Be Wrong: The Power of Mathematical Thinking*
+
+Jordan Ellenberg
+
+[Click here for link](https://www.amazon.com/How-Not-Be-Wrong-Mathematical/dp/0143127535/ref=sr_1_2?ie=UTF8&qid=1544905443&sr=8-2&keywords=how+not+to+be+wrong)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/not_wrong.png)
+
+
+
+
+
+
+
+
+
+
+
 
 *Introduction to Computation and Programming Using Python*
 
@@ -891,23 +989,6 @@ John V. Guttag
 [Click here for link](https://www.amazon.com/gp/product/0262529629/ref=oh_aui_detailpage_o03_s00?ie=UTF8&psc=1)
 
 ![](https://github.com/Cdishop/website/raw/master/misc/books/computation_programming.png)
-
-
-
-
-
-
-
-
-*Ethics in the Real World: 82 Brief Essays on Things That Matter*
-
-Peter Singer
-
-[Click here for link](https://www.amazon.com/Ethics-Real-World-Essays-Things/dp/069117847X/ref=sr_1_1?ie=UTF8&qid=1534110030&sr=8-1&keywords=Peter+singer+82+brief&smid=ATVPDKIKX0DER)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/ethics_essays.png)
-
-
 
 
 

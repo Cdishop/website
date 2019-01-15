@@ -1,0 +1,17 @@
+
+# Include references after compiling:
+
+1) compile latex
+
+2) biber mainfile %notice you include the main file with no .something
+
+3) compile mainfile again
+
+
+# Bibtex reference types:
+
+https://verbosus.com/bibtex-style-examples.html
+
+# Bibtex blog post about things to watch out for:
+
+https://serialmentor.com/blog/2015/10/2/Bibtex

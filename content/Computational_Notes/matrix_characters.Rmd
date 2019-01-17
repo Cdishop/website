@@ -1,0 +1,65 @@
+---
+title: "Be Careful With Characters and Matrices"
+Date: "2019-01-23"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
+```
+
+If you fill a matrix cell with a character, R will convert the entire matrix into character values...so be careful = )
+
+```{r, cache = T}
+time <- c(1:4)
+numbers <- c(1:4)
+characters <- c('a', 'b', 'c', 'd')
+count <- 0
+
+df_mat <- matrix(, ncol = 3, nrow = length(time))
+
+for(i in 1:length(time)){
+  count <- count + 1
+  
+  df_mat[count, 1] <- time[i]
+  df_mat[count, 2] <- numbers[i]
+  df_mat[count, 3] <- characters[i]
+  
+}
+
+df_mat
+
+```
+
+Notice that all cells are now characters. Characters are a huge problem if you are calculating values to place into the cells. That is, I wouldn't be able to run code like this in a loop:
+
+```{r, eval = F}
+
+df_mat[count - 1, 2] <- df_mat[count - 1, 3] * 0.5
+
+```
+
+Instead, use numbers for everything and then change them to characters later. 
+
+```{r, cache = T}
+
+time <- c(1:4)
+numbers <- c(1:4)
+characters <- c(1, 2, 3, 4) # here is the change
+count <- 0
+
+df_mat <- matrix(, ncol = 3, nrow = length(time))
+
+for(i in 1:length(time)){
+  count <- count + 1
+  
+  df_mat[count, 1] <- time[i]
+  df_mat[count, 2] <- numbers[i]
+  df_mat[count, 3] <- characters[i]
+  
+}
+
+df_mat
+```
+
+Bo$^2$m =)

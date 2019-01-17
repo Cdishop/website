@@ -1,0 +1,290 @@
+---
+title: "The Premature Covariate"
+Date: "2019-01-20"
+output: pdf_document
+---
+
+
+
+<p>A replication of Patricia Cohen’s wonderful, “problem of the premature covariate” (chapter 2 in Collins &amp; Horn, 1991). Here is a simple version of the problem. Imagine that we want to know the influence of a life event, like meeting a friend, on happiness. We conduct a study where we measure people’s happiness at time one, wait two weeks, and then measure their happiness again along with whether or not they met a friend since we last observed them. To assess the relationship between meeting a friend and happiness, we regress post happiness on both pre happiness and whether or not they met a friend. That is, our regression takes the form:</p>
+<blockquote>
+<blockquote>
+<p>Happy<span class="math inline">\(_{post}\)</span> ~ Happy<span class="math inline">\(_{pre}\)</span> + Met_Friend.</p>
+</blockquote>
+</blockquote>
+<p>What Dr. Cohen draws attention to is that the coefficient relating “met friend” to happiness will be biased if (a) there is some non-zero probability of reverse causality and (b) we do not measure “met friend” exactly when it occurs. Remember, in our mock study we assessed both happiness and whether or not someone met a friend during our post-measure. Is that exactly when different people across the sample actually met a new friend? Perhaps, but most of our sample either did or did not meet a friend <em>at some unknown time within the past two weeks</em>; Dr. Cohen’s point is that this unknown is an issue to linger on.</p>
+<div id="simulation-explanation" class="section level2">
+<h2>Simulation Explanation</h2>
+<p>If Dr. Cohen’s issue is worthwhile, then, under a system where “met friend” truly does <em>not</em> influence happiness, we should be able to make “met friend” appear to influence happiness based on the points she raises. That is, when “met friend” does not influence happiness we should be able to make it appear so if we create a system where (1) happiness instead influences the probability of meeting a friend (reverse causality) and (2) we do not measure “met friend” exactly when it occurs. Below, we generate data where “met friend” does not influence happiness but the coefficient relating “met friend” to happiness will still be significant (and large) because of the issues raised.</p>
+<p>Here are the steps to the simulation:</p>
+<ol style="list-style-type: decimal">
+<li><p>Start with a random value for happiness (distributed normally across 600 people) at time one.</p></li>
+<li><p>Happiness at <span class="math inline">\(t+1\)</span> is its previous value plus one of the following, all with equal probability: +0.25, -0.25, or 0.</p></li>
+<li><p>At each time point, concurrent happiness influences the probability of meeting a friend. When happiness is low people are unlikely to meet a friend, whereas when happiness is high people are more likely to meet a friend. Meeting a friend is coded as 0 or 1 for each time point (i.e., no or yes).</p></li>
+<li><p>Continue for 25 time points.</p></li>
+<li><p>Assess the relationships between post happiness, pre happiness, and “met friend.” Pre happiness is always time one, whereas we will explore different post assesssments (e.g., post happiness is time 25 vs. post happiness is time 20). “Met friend” will always be whether the individual met a friend within 5 time points of the post happiness assessment. So, if we analyze post happiness as time 20, then “met friend” is whether the individual met a friend during times 15 through 20.</p></li>
+</ol>
+<p>Notice that the simulation captures the notions raised above: “met friend” does not influence happiness, instead the reverse happens. And after making a decision about the timing of our pre and post assessment we lose information about when “met friend” actually happened. We know <em>whether</em> it happened but not when; we also don’t retain information on the differences in timing across our sample.</p>
+</div>
+<div id="meeting-a-friend-or-not" class="section level2">
+<h2>Meeting a Friend or Not</h2>
+<p>The most difficult aspect of the simulation is specifying step 3: “met friend” is some function of concurrent happiness. Dr. Cohen’s original explanation is, “the probability of <span class="math inline">\(X\)</span> for each unit of time was determined by a Markov process, with probability increasing as a function of the level of contemporaneous <span class="math inline">\(Y\)</span>. Probabilities used increased from 0 for those with current <span class="math inline">\(Y\)</span> less than -1.00 to 0.25 for those with current scores of 1.5 or greater” (she uses different variables for x and y in her discussion). What does that mean? How do we specify a Markov process where the probability of “met friend” is between 0 and 0.25 with respect to happiness cutoffs like -1.00 and 1.5? I don’t know either. But we can make it easier by recognizing that, at its core, the idea is simply, “meeting a friend is more likely when people are happier,” which we can represent with a simple linear equation like <span class="math inline">\(y = mx + b\)</span>. All we need to do is to find the slope and y-intercept, then we’ll have an equation where we can plug in “happiness” and get “probability of meeting a friend.” Here is how.</p>
+<p>Remember that we can find the slope and y-intercept of a line if we know the location of two of its points. Here, we know that the probability of “met friend” needs to be between 0 and 0.25, and the happiness cutoffs need to be -1.00 and 1.5. If I want to relate happiness to “met friend,” then, I can put happiness on the x-axis and “met friend” on the y-axis and recognize that by combining these cutoffs I get the end-points of a line: (1.5, 0.25) is one point and (-1, 1.5) is the other. Computing rise-over-run and then solving for the intercept gives me the following:</p>
+<blockquote>
+<blockquote>
+<p>Probability of meeting a friend = 0.1*Happy + 0.01</p>
+</blockquote>
+</blockquote>
+<p>Now we have a way to compute the probability of meeting a friend based on happiness. It is not as precise as the Markov process but it will work just fine. (Note: I actuallly use the points (1.4999, 2.4999) and (-0.999, 1.4999) to calculate the slope and intercept in the simulation because I will also use if-statements for the cutoffs)</p>
+</div>
+<div id="simulate-one-person" class="section level2">
+<h2>Simulate One Person</h2>
+<p>It’s always helpful to make sure we can get a simulation to work on one person. In the simulation below, <span class="math inline">\(y\)</span> is happiness and <span class="math inline">\(x\)</span> is “met friend.”</p>
+<pre class="r"><code>time &lt;- 25
+y &lt;- numeric(time)
+x &lt;- numeric(time)
+
+count &lt;- 0
+
+for(i in 1:time){
+  count &lt;- count + 1
+  
+  if(i == 1){
+    
+    y[count] &lt;- rnorm(1, mean = 0.5, sd = 0.5)
+    x[count] &lt;- 0
+    
+  }else{
+    
+    
+    # y up or down with autoregression
+    
+    updownsame &lt;- sample(c(&#39;up&#39;, &#39;down&#39;, &#39;same&#39;), 1)
+    
+    if(updownsame == &#39;up&#39;){
+      
+      y[count] &lt;- y[count - 1] + 0.25
+      
+    }else if(updownsame == &#39;down&#39;){
+      
+      y[count] &lt;- y[count - 1] - 0.25
+      
+    }else{
+      
+      y[count] &lt;- y[count - 1]
+      
+    }
+    
+    # x is a function of y
+    
+    if(y[count] &lt;= -1.00){
+      
+      x_prob &lt;- 0
+      
+    }else if(y[count] &gt;= 1.5){
+      
+      x_prob &lt;- 0.25
+      
+    }else{
+      
+      x_prob &lt;- 0.10004*y[count] + 0.09994
+      
+      
+    }
+    
+    x[count] &lt;- rbinom(1, 1, x_prob)
+    
+  }
+  
+}</code></pre>
+</div>
+<div id="full-sample" class="section level2">
+<h2>Full Sample</h2>
+<p>That script worked, so now let’s update the code slightly and run it across 600 people.</p>
+<pre class="r"><code>people &lt;- 600
+time &lt;- 25
+df &lt;- matrix(, nrow = people*time, ncol = 4)
+
+count &lt;- 0
+
+for(j in 1:people){
+  
+  
+
+for(i in 1:time){
+  count &lt;- count + 1
+  
+  if(i == 1){
+    
+    df[count, 1] &lt;- j
+    df[count, 2] &lt;- i
+    df[count, 3] &lt;- rnorm(1, mean = 0.5, sd = 0.5)
+    df[count, 4] &lt;- 0
+    
+  }else{
+    
+    df[count, 1] &lt;- j
+    df[count, 2] &lt;- i
+    
+    # y up or down with autoregression
+    
+    updownsame &lt;- sample(c(&#39;up&#39;, &#39;down&#39;, &#39;same&#39;), 1)
+    
+    if(updownsame == &#39;up&#39;){
+      
+      df[count, 3] &lt;- df[count - 1, 3] + 0.25
+      
+    }else if(updownsame == &#39;down&#39;){
+      
+      df[count, 3] &lt;- df[count - 1, 3] - 0.25
+      
+    }else{
+      
+      df[count, 3] &lt;- df[count - 1, 3]
+      
+    }
+    
+    # x is a function of y
+    
+    if(df[count, 3] &lt;= -1.00){
+      
+      x_prob &lt;- 0
+      
+    }else if(df[count, 3] &gt;= 1.5){
+      
+      x_prob &lt;- 0.25
+      
+    }else{
+      
+      x_prob &lt;- 0.10004*df[count, 3] + 0.09994
+      
+    }
+    
+    df[count, 4] &lt;- rbinom(1, 1, x_prob)
+    
+  }
+  
+}
+
+  
+  
+}
+
+
+df &lt;- data.frame(df)
+names(df) &lt;- c(&#39;id&#39;, &#39;time&#39;, &#39;happy&#39;, &#39;met_friend&#39;)
+library(tidyverse)</code></pre>
+<div id="results" class="section level3">
+<h3>Results</h3>
+<p>Remember, we generated data where “met friend” did not influence happiness. Now we are going to assess the coefficient relating “met friend” to happiness to see if it differs from zero. First, let’s say our post-assessment happened at time 10.</p>
+<p>Trim down our data set to just that time frame.</p>
+<pre class="r"><code>happy10_sample &lt;- df %&gt;%
+  filter(time &lt; 11)</code></pre>
+<p>How many friends did each person meet between times 5 and 10?</p>
+<pre class="r"><code>friend_count &lt;- happy10_sample %&gt;%
+  filter(time &gt; 4) %&gt;%
+  group_by(id) %&gt;%
+  summarise(
+    friend_count = sum(met_friend)
+  )</code></pre>
+<p>Now change that to:</p>
+<ul>
+<li>0 = did not happen</li>
+<li>1 = happened at least once (meaning sum of friend_count is not equal to 0)</li>
+</ul>
+<pre class="r"><code>friend_count &lt;- friend_count %&gt;%
+  mutate(friend_event = case_when(
+    friend_count == 0 ~ 0,
+    friend_count != 0 ~ 1
+  ))</code></pre>
+<p>Merge that count back into the happy10 data set and prepare the data for regression.</p>
+<pre class="r"><code># Merge back into y10 df
+
+happy10_sample &lt;- left_join(happy10_sample, friend_count)
+
+# Filter down to what&#39;s needed for regression
+
+happy10_filter &lt;- happy10_sample %&gt;%
+  select(id, time, happy, friend_event) %&gt;%
+  filter(time == 1 | time == 10)
+
+library(reshape2)
+
+happy10_wide &lt;- reshape(happy10_filter, idvar = &#39;id&#39;, timevar = &#39;time&#39;, direction = &#39;wide&#39;)
+
+# The x columns are synonymous, so I can remove one 
+
+happy10_wide &lt;- happy10_wide[, c(&#39;id&#39;, &#39;happy.10&#39;, &#39;happy.1&#39;, &#39;friend_event.1&#39;)]
+names(happy10_wide) &lt;- c(&#39;id&#39;, &#39;happy_post&#39;, &#39;happy_pre&#39;, &#39;met_friend&#39;)</code></pre>
+<p>Now regress post happy on pre happy and whether or not they met a friend between times 5 and 10.</p>
+<pre class="r"><code>summary(lm(happy_post ~ happy_pre + met_friend,
+           data = happy10_wide))$coefficients</code></pre>
+<pre><code>##               Estimate Std. Error   t value     Pr(&gt;|t|)
+## (Intercept) -0.1773032 0.04361817 -4.064893 5.448757e-05
+## happy_pre    0.9807816 0.05008859 19.580937 2.565894e-66
+## met_friend   0.3138328 0.05188699  6.048391 2.581628e-09</code></pre>
+<p>The coefficient relating “met friend” to happiness is about 0.3 and it is significant (remember there was no influence from “met friend” to happiness).</p>
+<p>What about when we change the post assessment to time point 15?</p>
+<p>First create a function out of all the “tidying” steps above:</p>
+<pre class="r"><code>df_create &lt;- function(time1){
+  library(reshape2)
+  library(tidyverse)
+  time2 &lt;- time1 - 5
+  
+  y_sample &lt;- df %&gt;%
+    filter(time &lt;= time1)
+  
+  friend_count &lt;- y_sample %&gt;%
+    filter(time &gt;= time2) %&gt;%
+    group_by(id) %&gt;%
+    summarise(
+      friend_count = sum(met_friend)
+    )
+  
+  friend_count &lt;- friend_count %&gt;%
+    mutate(friend_event = case_when(
+      friend_count == 0 ~ 0,
+      friend_count != 0 ~ 1
+    ))
+  
+  y_sample &lt;- left_join(y_sample, friend_count)
+  y_filter &lt;- y_sample %&gt;%
+    select(id, time, happy, friend_event) %&gt;%
+    filter(time == 1 | time == time1)
+  
+  y_wide &lt;- reshape(y_filter, idvar = &#39;id&#39;, timevar = &#39;time&#39;, direction = &#39;wide&#39;)
+  
+  yname &lt;- paste(&#39;happy.&#39;, time1, sep = &#39;&#39;)
+  
+  y_wide &lt;- y_wide[, c(&#39;id&#39;, yname, &#39;happy.1&#39;, &#39;friend_event.1&#39;)]
+  names(y_wide) &lt;- c(&#39;id&#39;, &#39;happy_post&#39;, &#39;happy_pre&#39;, &#39;met_friend&#39;)
+  
+  return(y_wide)
+
+}</code></pre>
+<p>Here are the results:</p>
+<pre class="r"><code>happy15_wide &lt;- df_create(15)
+
+summary(lm(happy_post ~ happy_pre + met_friend,
+           data = happy15_wide))$coefficients</code></pre>
+<pre><code>##               Estimate Std. Error   t value     Pr(&gt;|t|)
+## (Intercept) -0.2513392 0.05262021 -4.776477 2.247535e-06
+## happy_pre    0.9768088 0.06328475 15.435138 1.784422e-45
+## met_friend   0.4602991 0.06522412  7.057191 4.730729e-12</code></pre>
+<p>What about when we select time 25 as our post assessment?</p>
+<pre class="r"><code>happy25_wide &lt;- df_create(25)
+
+summary(lm(happy_post ~ happy_pre + met_friend,
+           data = happy25_wide))$coefficients</code></pre>
+<pre><code>##               Estimate Std. Error   t value     Pr(&gt;|t|)
+## (Intercept) -0.3390847 0.06294610 -5.386905 1.032591e-07
+## happy_pre    0.8592073 0.07534882 11.403063 2.183997e-27
+## met_friend   0.7663461 0.07695046  9.958954 1.019702e-21</code></pre>
+<p>Notice how large the coefficient relating “met friend” to happiness is here: close to 0.9 – remember, there truly is no effect relating “met friend” to happiness.</p>
+</div>
+</div>
+<div id="conclusion" class="section level2">
+<h2>Conclusion</h2>
+<p>If there is some probability of reverse causality and we don’t measure the event exactly when it occurs then the estimate relating that event to our outcome will be biased. If many “event opportunities” occur between our pre and post measure then our estimate will be extremely biased.</p>
+<p>Bo<span class="math inline">\(^2\)</span>m = )</p>
+</div>

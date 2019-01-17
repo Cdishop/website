@@ -65,6 +65,8 @@ Carlo Rovelli
 
 Judea Pearl
 
+Dana Mackenzie
+
 [Click here for link](https://www.amazon.com/Book-Why-Science-Cause-Effect/dp/046509760X/ref=sr_1_1?ie=UTF8&qid=1527948151&sr=8-1&keywords=the+book+of+why)
 
 ![](https://github.com/Cdishop/website/raw/master/misc/books/book_why.png)
@@ -724,6 +726,72 @@ Max Tegmark
 [Click here for link](https://www.amazon.com/Our-Mathematical-Universe-Ultimate-Reality/dp/0307744256/ref=sr_1_1?s=books&ie=UTF8&qid=1524679253&sr=1-1&keywords=our+mathematical+universe)
 
 ![](https://github.com/Cdishop/website/raw/master/misc/books/maxmath.png)
+
+
+
+
+
+*The Checklist Manifesto: How to Get Things Right*
+
+Atul Gawande
+
+[Click here for link](https://www.amazon.com/Checklist-Manifesto-How-Things-Right/dp/0312430000/ref=sr_1_1?ie=UTF8&qid=1547762703&sr=8-1&keywords=the+checklist+manifesto+by+atul+gawande)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/checklist.png)
+
+
+
+
+
+
+
+
+
+*The Joy of x: A Guided Tour of Math, from One to Infinity*
+
+Steven Strogatz
+
+[Click here for link](https://www.amazon.com/Joy-Guided-Tour-Math-Infinity/dp/0544105850/ref=sr_1_1?ie=UTF8&qid=1547762739&sr=8-1&keywords=the+joy+of+x)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/joy_x.png)
+
+
+
+
+
+
+
+
+
+*10 1/2 Things No Commencement Speaker Has Ever Said*
+
+Charles Wheelan
+
+[Click here for link](https://www.amazon.com/Things-Commencement-Speaker-Ever-Said/dp/B00CL4IEAG/ref=sr_1_1?ie=UTF8&qid=1547762768&sr=8-1&keywords=10+1%2F2+things+no)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/no_speaker.png)
+
+
+
+
+
+
+
+
+
+
+*Thinking with Data: How to Turn Information into Insights*
+
+Max Shron
+
+[Click here for link](https://www.amazon.com/Thinking-Data-Turn-Information-Insights/dp/1449362931/ref=sr_1_1?ie=UTF8&qid=1547762669&sr=8-1&keywords=thinking+with+data)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/think_data.png)
+
+
+
+
+
 
 
 

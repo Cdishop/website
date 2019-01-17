@@ -1,0 +1,89 @@
+---
+title: "Reveal Hidden NA's in Longitudinal Data"
+Date: "2019-01-24"
+output: pdf_document
+---
+
+
+
+<p>Longitudinal data sets often have hidden NAs when they are in long-form. For example, in the data set below Zoe is missing on days 2 and 4, but it isn’t obvious because there are no specific “NA’s” within the data.</p>
+<pre><code>##    time   id q1 q2
+## 1     1  Jac  4  3
+## 2     1 Jess  5  2
+## 3     1  Zoe  3  4
+## 4     2  Jac  6  1
+## 5     2 Jess  7  2
+## 6     3  Jac  5  3
+## 7     3 Jess  4  4
+## 8     3  Zoe  3  2
+## 9     4  Jac  4  3
+## 10    4 Jess  5  4</code></pre>
+<p>Usually I recommend cleaning within the <code>tidyverse</code> package, but in this case I prefer <code>reshape</code>. Change the data frame to wide</p>
+<pre class="r"><code>library(reshape2)
+wide_cd &lt;- reshape(cd, timevar = &#39;time&#39;, idvar = &#39;id&#39;, direction = &#39;wide&#39;)</code></pre>
+<p>and then back to long to reveal the hidden NA’s.</p>
+<pre class="r"><code>cd_reveal &lt;- reshape(wide_cd, timevar = &#39;time&#39;, idvar = &#39;id&#39;, direction = &#39;long&#39;)
+cd_reveal</code></pre>
+<pre><code>##          id time q1.1 q2.1
+## Jac.1   Jac    1    4    3
+## Jess.1 Jess    1    5    2
+## Zoe.1   Zoe    1    3    4
+## Jac.2   Jac    2    6    1
+## Jess.2 Jess    2    7    2
+## Zoe.2   Zoe    2   NA   NA
+## Jac.3   Jac    3    5    3
+## Jess.3 Jess    3    4    4
+## Zoe.3   Zoe    3    3    2
+## Jac.4   Jac    4    4    3
+## Jess.4 Jess    4    5    4
+## Zoe.4   Zoe    4   NA   NA</code></pre>
+<p>It is possible to do all of this within <code>tidyverse</code>, but it’s tricky because the <code>spread</code> command only applies to one column (the value parameter only takes one entry), so anytime your data frame contains multiple columns to spread over (almost always the case) then <code>spread</code> does not work well.</p>
+<pre class="r"><code>library(tidyverse)
+cd %&gt;%
+ spread(key = time, value = q1)</code></pre>
+<pre><code>##     id q2  1  2  3  4
+## 1  Jac  1 NA  6 NA NA
+## 2  Jac  3  4 NA  5  4
+## 3 Jess  2  5  7 NA NA
+## 4 Jess  4 NA NA  4  5
+## 5  Zoe  2 NA NA  3 NA
+## 6  Zoe  4  3 NA NA NA</code></pre>
+<p>Notice how it only used q1. The proper way to go from long to wide and then back to long to reveal the NA’s using <code>tidyverse</code> is either of the following:</p>
+<pre class="r"><code>cd %&gt;%
+  select(time, id, q1) %&gt;%
+  spread(key = time, value = q1) %&gt;%
+  gather(key = time, value = &#39;q1&#39;, &#39;1&#39;,&#39;2&#39;,&#39;3&#39;,&#39;4&#39;) # string code needed</code></pre>
+<pre><code>##      id time q1
+## 1   Jac    1  4
+## 2  Jess    1  5
+## 3   Zoe    1  3
+## 4   Jac    2  6
+## 5  Jess    2  7
+## 6   Zoe    2 NA
+## 7   Jac    3  5
+## 8  Jess    3  4
+## 9   Zoe    3  3
+## 10  Jac    4  4
+## 11 Jess    4  5
+## 12  Zoe    4 NA</code></pre>
+<pre class="r"><code>time_string &lt;- as.character(unique(cd$time))
+
+cd %&gt;%
+  select(time, id, q1) %&gt;%
+  spread(key = time, value = q1) %&gt;%
+  gather(key = time, value = &#39;q1&#39;, time_string) # string code not needed due to pre-allocation</code></pre>
+<pre><code>##      id time q1
+## 1   Jac    1  4
+## 2  Jess    1  5
+## 3   Zoe    1  3
+## 4   Jac    2  6
+## 5  Jess    2  7
+## 6   Zoe    2 NA
+## 7   Jac    3  5
+## 8  Jess    3  4
+## 9   Zoe    3  3
+## 10  Jac    4  4
+## 11 Jess    4  5
+## 12  Zoe    4 NA</code></pre>
+<p>Again, I prefer <code>reshape</code> because the <code>spread</code> commands in <code>tidyverse</code> are not easy to read.</p>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>

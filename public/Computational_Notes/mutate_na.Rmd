@@ -1,6 +1,6 @@
 ---
 title: "Mutating Scale Items with NA"
-Date: "2019-01-28"
+date: "2019-01-05"
 output: pdf_document
 ---
 

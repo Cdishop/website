@@ -1,6 +1,6 @@
 ---
 title: "Only Store Successful Output - A Counter Placement Issue"
-Date: "2019-01-21"
+Date: "2019-01-13"
 output: pdf_document
 ---
 

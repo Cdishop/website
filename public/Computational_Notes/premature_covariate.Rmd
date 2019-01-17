@@ -1,6 +1,6 @@
 ---
 title: "The Premature Covariate"
-Date: "2019-01-20"
+Date: "2019-01-06"
 output: pdf_document
 ---
 

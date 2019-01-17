@@ -1,6 +1,6 @@
 ---
 title: "Be Careful With Characters and Matrices"
-Date: "2019-01-23"
+date: "2019-01-01"
 output: pdf_document
 ---
 

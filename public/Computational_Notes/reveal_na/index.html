@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta name="generator" content="Hugo 0.48" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Reveal Hidden NA&#39;s in Longitudinal Data | Christopher Dishop</title>
+
+     
+      
+    
+    
+    
+    
+    
+
+  <meta name="author" content="">
+
+ 
+    <meta property="og:title" content="Reveal Hidden NA&#39;s in Longitudinal Data" />
+<meta property="og:description" content="Longitudinal data sets often have hidden NAs when they are in long-form. For example, in the data set below Zoe is missing on days 2 and 4, but it isn’t obvious because there are no specific “NA’s” within the data.
+## time id q1 q2 ## 1 1 Jac 4 3 ## 2 1 Jess 5 2 ## 3 1 Zoe 3 4 ## 4 2 Jac 6 1 ## 5 2 Jess 7 2 ## 6 3 Jac 5 3 ## 7 3 Jess 4 4 ## 8 3 Zoe 3 2 ## 9 4 Jac 4 3 ## 10 4 Jess 5 4 Usually I recommend cleaning within the tidyverse package, but in this case I prefer reshape." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/computational_notes/reveal_na/" /><meta property="article:published_time" content="2019-01-10T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-01-10T00:00:00&#43;00:00"/> 
+    
+
+
+
+ 
+    
+     
+     
+    
+    
+    <link rel="canonical" href="/computational_notes/reveal_na/">   <link rel="shortcut icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABwlBMVEUAAAA/3MUK07UJ0rRk6NkC0rMAw5sAx6Ic1rs/3MYAlU0E0rQAhjMAyKIAiTkM07UJ07UAhC8m2L4o2L5O4Msn2L4AzKoAzq0128Mo2b8F0rQE0rMu2cAt2cAA0bI228MA0LAAy6kr2b8Q1LcF0rMH0rUAxp4t2b8c1ros2b8P1LcAzKsAzq4528Q02sIM07YAfyg93cUD0rMA0LEA0bFK4c0M1LcL07Uv2sEAzawY1rlJ4c0w2sEAzKkY1rqr+PQN07Yj170G0rQI07UF0bMt2cAF0rMC0bIL07UF0bMs2cAF0rMA0bIC0bIL07UF0rMA0bIA0bIA0bIO1LYr2b8N07Yp2L4F0rMF0rQJ07UA0bIC0bMA0bIH0rQK07UD0bMA0LAF0rMAyqYE0rMA0bIS1Lg228ID0bMM07YS1LcI07QL07UJ07UC0bMM07YG0rMS1Lc328IR1LcC0bIK07UM07Yo2L4P1LcL07UD0rMD0rMD0rMB0bIH0rQ23MMQ1LcD0rMN1LYB0LAJ0rQ33MMG0bMP1bgD0rMN07YH0rQH0rQ33MQF0rMD0rMN1LYo2L4F0rQG0rSA6tsA0bIB0bL////yxqscAAAAk3RSTlMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgnDXAUItvZKBAi6+vpMuf3++wEIAQcEBFn5AgR9UwMEoQLD/AEH4AIdAzha+UMEAQcc9AM4CAFSA9IC+4AEAc8yAwIEBAHOMQOBBLfLMAnFlAJNsa0LAAAAAWJLR0SVCGB6gwAAAAd0SU1FB+EBBBI4BduZ4woAAAF5SURBVDjLY2CAAUYmZgcWRydnVhc2dg4GTMAJlOdydZvs7sHtiU0FSJ7Hy3uyz2RfP24XNl4OLPJ8Xv5A+YBAsAo0M2DyQZMnY1fBL+AgCJXHrkIoWDgEJo9NhUioaBhCHqoiXExcAqZAMkIqckrU5MkoKqSjZeAmyMbIxSIZAFIRMCVOOl4epkAmQSERrwKOJMXkySl4rEhVSkufHDAZtyMzlDPdJweiyiN7UyRLIHsKQj5wMnowSIar5ExJQcjn5qnmqyFHlzqKL7EoQPMlphUaaL7EcGSBZiGKLzFUZGgVFSP5ElNFCVPpFORwhAeVto4uWEGwUJk3alSAVXhIR+tB7ShHTi5QkOIzpUKqEmKCPpODgReaipSUyVWl0tW6GEkWGhRBk2tq6wzrsSVqqPaGRqOmZmMTXWwqwNpbTFvbzMwtsGUMoPb2DqOmTksxK2xZLyhgck1XtzVIuw22zNszeXJvH0i7rR1G9gVlf/v+CRMnWaPYDgA74gwO0j2znAAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxNy0wMS0wNFQxODo1NjowNSswMTowME2yC4wAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTctMDEtMDRUMTg6NTY6MDUrMDE6MDA877MwAAAAV3pUWHRSYXcgcHJvZmlsZSB0eXBlIGlwdGMAAHic4/IMCHFWKCjKT8vMSeVSAAMjCy5jCxMjE0uTFAMTIESANMNkAyOzVCDL2NTIxMzEHMQHy4BIoEouAOoXEXTyQjWVAAAAAElFTkSuQmCC">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    <link rel="stylesheet" href="https://jenil.github.io/bulmaswatch/flatly/bulmaswatch.min.css"> 
+    <link rel="stylesheet" href="/css/landing.css">   
+    
+    
+</head>
+
+
+<body>
+    <header> <nav class="navbar is-transparent">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+      <img src="/img/bulma.png" alt="Bulma logo">
+    </a>
+  </div>
+  
+    
+    
+    
+    <span class="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </span>
+    
+    
+    
+    <div class="navbar-end">
+      <div class="navbar-item">
+        
+        
+          <a itemprop="url" class="navbar-item " href="https://github.com/Cdishop/website/raw/master/misc/CV.pdf"><span itemprop="name">CV</span></a>
+        
+          <a itemprop="url" class="navbar-item " href="/rec_reading/"><span itemprop="name">Recommended Reading</span></a>
+        
+          <a itemprop="url" class="navbar-item  is-active" href="/computational_notes/"><span itemprop="name">Computational_Notes</span></a>
+        
+      </div> 
+    </div>
+  </div>
+</nav>
+ </header>
+    <main>
+
+<div class="columns is-fullheight">
+    <div class="column">
+        <section class="hero is-default is-bold">
+            <div class="hero-body">
+                <div class="content container">
+                   <p>Longitudinal data sets often have hidden NAs when they are in long-form. For example, in the data set below Zoe is missing on days 2 and 4, but it isn’t obvious because there are no specific “NA’s” within the data.</p>
+<pre><code>##    time   id q1 q2
+## 1     1  Jac  4  3
+## 2     1 Jess  5  2
+## 3     1  Zoe  3  4
+## 4     2  Jac  6  1
+## 5     2 Jess  7  2
+## 6     3  Jac  5  3
+## 7     3 Jess  4  4
+## 8     3  Zoe  3  2
+## 9     4  Jac  4  3
+## 10    4 Jess  5  4</code></pre>
+<p>Usually I recommend cleaning within the <code>tidyverse</code> package, but in this case I prefer <code>reshape</code>. Change the data frame to wide</p>
+<pre class="r"><code>library(reshape2)
+wide_cd &lt;- reshape(cd, timevar = &#39;time&#39;, idvar = &#39;id&#39;, direction = &#39;wide&#39;)</code></pre>
+<p>and then back to long to reveal the hidden NA’s.</p>
+<pre class="r"><code>cd_reveal &lt;- reshape(wide_cd, timevar = &#39;time&#39;, idvar = &#39;id&#39;, direction = &#39;long&#39;)
+cd_reveal</code></pre>
+<pre><code>##          id time q1.1 q2.1
+## Jac.1   Jac    1    4    3
+## Jess.1 Jess    1    5    2
+## Zoe.1   Zoe    1    3    4
+## Jac.2   Jac    2    6    1
+## Jess.2 Jess    2    7    2
+## Zoe.2   Zoe    2   NA   NA
+## Jac.3   Jac    3    5    3
+## Jess.3 Jess    3    4    4
+## Zoe.3   Zoe    3    3    2
+## Jac.4   Jac    4    4    3
+## Jess.4 Jess    4    5    4
+## Zoe.4   Zoe    4   NA   NA</code></pre>
+<p>It is possible to do all of this within <code>tidyverse</code>, but it’s tricky because the <code>spread</code> command only applies to one column (the value parameter only takes one entry), so anytime your data frame contains multiple columns to spread over (almost always the case) then <code>spread</code> does not work well.</p>
+<pre class="r"><code>library(tidyverse)
+cd %&gt;%
+ spread(key = time, value = q1)</code></pre>
+<pre><code>##     id q2  1  2  3  4
+## 1  Jac  1 NA  6 NA NA
+## 2  Jac  3  4 NA  5  4
+## 3 Jess  2  5  7 NA NA
+## 4 Jess  4 NA NA  4  5
+## 5  Zoe  2 NA NA  3 NA
+## 6  Zoe  4  3 NA NA NA</code></pre>
+<p>Notice how it only used q1. The proper way to go from long to wide and then back to long to reveal the NA’s using <code>tidyverse</code> is either of the following:</p>
+<pre class="r"><code>cd %&gt;%
+  select(time, id, q1) %&gt;%
+  spread(key = time, value = q1) %&gt;%
+  gather(key = time, value = &#39;q1&#39;, &#39;1&#39;,&#39;2&#39;,&#39;3&#39;,&#39;4&#39;) # string code needed</code></pre>
+<pre><code>##      id time q1
+## 1   Jac    1  4
+## 2  Jess    1  5
+## 3   Zoe    1  3
+## 4   Jac    2  6
+## 5  Jess    2  7
+## 6   Zoe    2 NA
+## 7   Jac    3  5
+## 8  Jess    3  4
+## 9   Zoe    3  3
+## 10  Jac    4  4
+## 11 Jess    4  5
+## 12  Zoe    4 NA</code></pre>
+<pre class="r"><code>time_string &lt;- as.character(unique(cd$time))
+
+cd %&gt;%
+  select(time, id, q1) %&gt;%
+  spread(key = time, value = q1) %&gt;%
+  gather(key = time, value = &#39;q1&#39;, time_string) # string code not needed due to pre-allocation</code></pre>
+<pre><code>##      id time q1
+## 1   Jac    1  4
+## 2  Jess    1  5
+## 3   Zoe    1  3
+## 4   Jac    2  6
+## 5  Jess    2  7
+## 6   Zoe    2 NA
+## 7   Jac    3  5
+## 8  Jess    3  4
+## 9   Zoe    3  3
+## 10  Jac    4  4
+## 11 Jess    4  5
+## 12  Zoe    4 NA</code></pre>
+<p>Again, I prefer <code>reshape</code> because the <code>spread</code> commands in <code>tidyverse</code> are not easy to read.</p>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>
+
+                </div>
+                <br>
+            </div>
+        </section>
+    </div>
+</div>
+</main>
+    <footer> 
+  <footer class="footer">
+    <div class="container">
+        <div class="content has-text-centered">
+            <p>
+                I generated this site using 
+                <a href="https://gohugo.io/">Hugo</a> and Jeblister's
+                <a href="https://themes.gohugo.io/bulma/">Bulma</a> theme.
+                
+            </p>
+            <p>
+              Michigan State University is not liable for any opinions on this website.
+
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script src="//yihui.name/js/math-code.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<link rel="stylesheet" href="/css/obsidian.css" rel="stylesheet" id="theme-stylesheet">
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script> 
+</footer>
+
+    <script async type="text/javascript" src="/js/bulma.js"></script>
+    <script async type="text/javascript"  src="/js/clipboard.min.js"></script>
+    <script async type="text/javascript"  src="/js/clip.js"></script>
+</body>
+
+</html>

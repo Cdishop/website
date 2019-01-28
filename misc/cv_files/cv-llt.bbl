@@ -835,6 +835,37 @@
       \field{title}{Goal Sampling Theory}
       \field{year}{Under Review}
     \endentry
+    \entry{dishop_bbcoding}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
+           family={Dishop},
+           familyi={D\bibinitperiod},
+           given={Christopher\bibnamedelima R},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=640bff6bc37424ceb9a8ee580af99127}{%
+           family={DeShon},
+           familyi={D\bibinitperiod},
+           given={Richard\bibnamedelima P},
+           giveni={R\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{0cc09653fd796f3c830d5c6ddb3edba0}
+      \strng{fullhash}{0cc09653fd796f3c830d5c6ddb3edba0}
+      \strng{bibnamehash}{0cc09653fd796f3c830d5c6ddb3edba0}
+      \strng{authorbibnamehash}{0cc09653fd796f3c830d5c6ddb3edba0}
+      \strng{authornamehash}{0cc09653fd796f3c830d5c6ddb3edba0}
+      \strng{authorfullhash}{0cc09653fd796f3c830d5c6ddb3edba0}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Bollen and Brand's Approach to Modeling Dynamics While Attending to Dynamic Panel Bias}
+      \field{year}{Under Review}
+    \endentry
     \entry{dishop2018}{article}{}
       \name{author}{2}{}{%
         {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
@@ -858,6 +889,7 @@
       \strng{authorfullhash}{0cc09653fd796f3c830d5c6ddb3edba0}
       \field{sortinit}{1}
       \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{extradate}{2}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -905,6 +937,42 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Predicting Turnover: The Moderating Effect of Functional Climates on Emotional Exhaustion and Work Attitudes}
+      \field{year}{Under Review}
+    \endentry
+    \entry{dishop_dynamics}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
+           family={Dishop},
+           familyi={D\bibinitperiod},
+           given={Christopher\bibnamedelima R},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=8d58749f6c2b413a7cd2a2f4df16e459}{%
+           family={Olenick},
+           familyi={O\bibinitperiod},
+           given={Jeffrey},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=640bff6bc37424ceb9a8ee580af99127}{%
+           family={DeShon},
+           familyi={D\bibinitperiod},
+           given={Richard\bibnamedelima P},
+           giveni={R\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{d2ee1442fd944a3f2be3587bc7be3c2b}
+      \strng{fullhash}{d2ee1442fd944a3f2be3587bc7be3c2b}
+      \strng{bibnamehash}{d2ee1442fd944a3f2be3587bc7be3c2b}
+      \strng{authorbibnamehash}{d2ee1442fd944a3f2be3587bc7be3c2b}
+      \strng{authornamehash}{d2ee1442fd944a3f2be3587bc7be3c2b}
+      \strng{authorfullhash}{d2ee1442fd944a3f2be3587bc7be3c2b}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Principles for Taking a Dynamic Perspective}
       \field{year}{Under Review}
     \endentry
   \enddatalist

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.8.26)  15 JAN 2019 12:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.8.26)  28 JAN 2019 17:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1637,15 +1637,20 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 101.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 101.
 Package rerunfilecheck Info: File `cv-llt.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+
+
+Package biblatex Warning: Please rerun LaTeX.
+(biblatex)                Page breaks have changed.
+
 Package logreq Info: Writing requests to 'cv-llt.run.xml'.
 \openout1 = `cv-llt.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31086 strings out of 492642
- 592830 string characters out of 6129384
+ 31092 strings out of 492642
+ 593068 string characters out of 6129384
  1144788 words of memory out of 5000000
- 34240 multiletter control sequences out of 15000+600000
+ 34244 multiletter control sequences out of 15000+600000
  135232 words of font info for 78 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  100i,11n,163p,1151b,7066s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1661,10 +1666,10 @@ xmf-dist/fonts/type1/public/fontawesome/FontAwesome.pfb></usr/local/texlive/201
 xlive/2018/texmf-dist/fonts/type1/public/fbb/fbb-Bold.pfb></usr/local/texlive/2
 018/texmf-dist/fonts/type1/public/fbb/fbb-Italic.pfb></usr/local/texlive/2018/t
 exmf-dist/fonts/type1/public/fbb/fbb-Regular.pfb>
-Output written on cv-llt.pdf (3 pages, 213525 bytes).
+Output written on cv-llt.pdf (3 pages, 214078 bytes).
 PDF statistics:
- 113 PDF objects out of 1000 (max. 8388607)
- 83 compressed objects within 1 object stream
- 30 named destinations out of 1000 (max. 500000)
+ 116 PDF objects out of 1000 (max. 8388607)
+ 86 compressed objects within 1 object stream
+ 32 named destinations out of 1000 (max. 500000)
  22136 words of extra memory for PDF output out of 24883 (max. 10000000)
 

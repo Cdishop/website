@@ -1,7 +1,7 @@
 ---
 title: "Simulating a Moving Average Process"
-Date: "2019-01-29"
 output: pdf_document
+date: "2019-01-29"
 ---
 
 ```{r setup, include=FALSE}

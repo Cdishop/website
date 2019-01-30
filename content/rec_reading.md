@@ -855,8 +855,6 @@ Urszula Strawinska-Zanko
 
 Larry S. Liebovitch
 
-Dan Heath
-
 [Click here for link](https://www.amazon.com/Mathematical-Modeling-Social-Relationships-Computational/dp/331976764X/ref=sr_1_1?ie=UTF8&qid=1544905847&sr=8-1&keywords=mathematical+modeling+of+social+relationships)
 
 ![](https://github.com/Cdishop/website/raw/master/misc/books/math_relationships.png)

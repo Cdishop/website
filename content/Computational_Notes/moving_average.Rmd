@@ -1,0 +1,99 @@
+---
+title: "Simulating a Moving Average Process"
+Date: "2019-01-29"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F, message = F, cache = T)
+```
+
+Two ways to simulate a moving average process. A moving average is a linear combination of concurrent and historic noises:
+
+\begin{equation}
+y_t = z_t + z_{t-1} + z_{t-2}
+\end{equation}
+
+\noindent where $y_t$ is the outcome variable that is influenced by noise at this moment ($z_t$) and noise from the last two time points. MA(q) processes can occur at any lag, I will use a two lag version here.
+
+The first way to simulate this process is to generate all noise terms and then sample from that distribution throughout our recursive routine.
+
+```{r}
+set.seed(25)
+
+time <- 200
+noise <- rnorm(time)
+ma_2 <- NULL
+for(i in 3:time){
+  
+  ma_2[i] <- noise[i] + 0.7*noise[i-1] + 0.2*noise[i-2]
+  
+}
+
+```
+
+That simulation results in the following.
+
+```{r}
+
+library(tidyverse)
+library(ggplot2)
+
+df1 <- data.frame(
+  'time' = c(1:time),
+  'y' = c(ma_2)
+)
+
+ggplot(df1, aes(x = time, y = y)) + 
+  geom_point() + 
+  geom_line()
+```
+
+The second way to simulate it is to generate noise within the loop itself, store the noise, and then apply it to the outcome across time. 
+
+```{r}
+set.seed(15)
+
+yt <- numeric(time)
+zs <- numeric(time)
+
+for(i in 1:time){
+  
+  if(i == 1){
+    
+    zs[i] <- rnorm(1,0,1)
+    yt[i] <- zs[i]
+  
+  }else if(i == 2){
+    
+    zs[i] <- rnorm(1,0,1) 
+    yt[i] <- zs[i] + 0.7*zs[i-1]
+    
+    }else{
+  
+    zs[i] <- rnorm(1,0,1)
+    yt[i] <- zs[i] + 0.7*zs[i-1] + 0.2*zs[i-2]
+  
+    }
+  
+}
+
+```
+
+Here is the plot.
+
+```{r}
+df2 <- data.frame(
+  'time' = c(1:time),
+  'y' = c(yt)
+)
+
+ggplot(df2, aes(x = time, y = yt)) + 
+  geom_point() + 
+  geom_line()
+```
+
+The second simulation style takes more code but I find it more intuitive. It is difficult for me to wrap my head around simulating all of the noise first and then applying it to the process as if the two are independent components -- which is what the first simulation code mimics. To each their own.
+
+Bo$^2$m =)
+

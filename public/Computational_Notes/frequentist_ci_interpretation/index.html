@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta name="generator" content="Hugo 0.48" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Frequentist Confidence Intervals | Christopher Dishop</title>
+
+     
+      
+    
+    
+    
+    
+    
+
+  <meta name="author" content="">
+
+ 
+    <meta property="og:title" content="Frequentist Confidence Intervals" />
+<meta property="og:description" content="Purpose Imagine that you are interested in the relationship between stress and performance. To assess it, you observe 600 people at work and measure their stress via a self-report (e.g., “I feel stressed”) and their performance via objective performance scores for the day (e.g., number of sales). You regress performance on stress and find that the estimated coefficient relating to two is 0.45. You then build a 95% confidence interval using the standard error that the analysis spit out and find that the CI is 0." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/computational_notes/frequentist_ci_interpretation/" /><meta property="article:published_time" content="2019-01-04T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-01-04T00:00:00&#43;00:00"/> 
+    
+
+
+
+ 
+    
+     
+     
+    
+    
+    <link rel="canonical" href="/computational_notes/frequentist_ci_interpretation/">   <link rel="shortcut icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABwlBMVEUAAAA/3MUK07UJ0rRk6NkC0rMAw5sAx6Ic1rs/3MYAlU0E0rQAhjMAyKIAiTkM07UJ07UAhC8m2L4o2L5O4Msn2L4AzKoAzq0128Mo2b8F0rQE0rMu2cAt2cAA0bI228MA0LAAy6kr2b8Q1LcF0rMH0rUAxp4t2b8c1ros2b8P1LcAzKsAzq4528Q02sIM07YAfyg93cUD0rMA0LEA0bFK4c0M1LcL07Uv2sEAzawY1rlJ4c0w2sEAzKkY1rqr+PQN07Yj170G0rQI07UF0bMt2cAF0rMC0bIL07UF0bMs2cAF0rMA0bIC0bIL07UF0rMA0bIA0bIA0bIO1LYr2b8N07Yp2L4F0rMF0rQJ07UA0bIC0bMA0bIH0rQK07UD0bMA0LAF0rMAyqYE0rMA0bIS1Lg228ID0bMM07YS1LcI07QL07UJ07UC0bMM07YG0rMS1Lc328IR1LcC0bIK07UM07Yo2L4P1LcL07UD0rMD0rMD0rMB0bIH0rQ23MMQ1LcD0rMN1LYB0LAJ0rQ33MMG0bMP1bgD0rMN07YH0rQH0rQ33MQF0rMD0rMN1LYo2L4F0rQG0rSA6tsA0bIB0bL////yxqscAAAAk3RSTlMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgnDXAUItvZKBAi6+vpMuf3++wEIAQcEBFn5AgR9UwMEoQLD/AEH4AIdAzha+UMEAQcc9AM4CAFSA9IC+4AEAc8yAwIEBAHOMQOBBLfLMAnFlAJNsa0LAAAAAWJLR0SVCGB6gwAAAAd0SU1FB+EBBBI4BduZ4woAAAF5SURBVDjLY2CAAUYmZgcWRydnVhc2dg4GTMAJlOdydZvs7sHtiU0FSJ7Hy3uyz2RfP24XNl4OLPJ8Xv5A+YBAsAo0M2DyQZMnY1fBL+AgCJXHrkIoWDgEJo9NhUioaBhCHqoiXExcAqZAMkIqckrU5MkoKqSjZeAmyMbIxSIZAFIRMCVOOl4epkAmQSERrwKOJMXkySl4rEhVSkufHDAZtyMzlDPdJweiyiN7UyRLIHsKQj5wMnowSIar5ExJQcjn5qnmqyFHlzqKL7EoQPMlphUaaL7EcGSBZiGKLzFUZGgVFSP5ElNFCVPpFORwhAeVto4uWEGwUJk3alSAVXhIR+tB7ShHTi5QkOIzpUKqEmKCPpODgReaipSUyVWl0tW6GEkWGhRBk2tq6wzrsSVqqPaGRqOmZmMTXWwqwNpbTFvbzMwtsGUMoPb2DqOmTksxK2xZLyhgck1XtzVIuw22zNszeXJvH0i7rR1G9gVlf/v+CRMnWaPYDgA74gwO0j2znAAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxNy0wMS0wNFQxODo1NjowNSswMTowME2yC4wAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTctMDEtMDRUMTg6NTY6MDUrMDE6MDA877MwAAAAV3pUWHRSYXcgcHJvZmlsZSB0eXBlIGlwdGMAAHic4/IMCHFWKCjKT8vMSeVSAAMjCy5jCxMjE0uTFAMTIESANMNkAyOzVCDL2NTIxMzEHMQHy4BIoEouAOoXEXTyQjWVAAAAAElFTkSuQmCC">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    <link rel="stylesheet" href="https://jenil.github.io/bulmaswatch/flatly/bulmaswatch.min.css"> 
+    <link rel="stylesheet" href="/css/landing.css">   
+    
+    
+</head>
+
+
+<body>
+    <header> <nav class="navbar is-transparent">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+      <img src="/img/bulma.png" alt="Bulma logo">
+    </a>
+  </div>
+  
+    
+    
+    
+    <span class="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </span>
+    
+    
+    
+    <div class="navbar-end">
+      <div class="navbar-item">
+        
+        
+          <a itemprop="url" class="navbar-item " href="https://github.com/Cdishop/website/raw/master/misc/CV.pdf"><span itemprop="name">CV</span></a>
+        
+          <a itemprop="url" class="navbar-item " href="/rec_reading/"><span itemprop="name">Recommended Reading</span></a>
+        
+          <a itemprop="url" class="navbar-item  is-active" href="/computational_notes/"><span itemprop="name">Computational_Notes</span></a>
+        
+      </div> 
+    </div>
+  </div>
+</nav>
+ </header>
+    <main>
+
+<div class="columns is-fullheight">
+    <div class="column">
+        <section class="hero is-default is-bold">
+            <div class="hero-body">
+                <div class="content container">
+                   <div id="purpose" class="section level2">
+<h2>Purpose</h2>
+<p>Imagine that you are interested in the relationship between stress and performance. To assess it, you observe 600 people at work and measure their stress via a self-report (e.g., “I feel stressed”) and their performance via objective performance scores for the day (e.g., number of sales). You regress performance on stress and find that the estimated coefficient relating to two is 0.45. You then build a 95% confidence interval using the standard error that the analysis spit out and find that the CI is 0.45 +- 0.1.</p>
+<p>What does that confidence interval actually mean? The purpose of this exercise is to build intuition behind frequentist CIs.</p>
+</div>
+<div id="steps" class="section level2">
+<h2>Steps</h2>
+<ol style="list-style-type: decimal">
+<li><p>Generate the population</p></li>
+<li><p>Sample the population. On that sample…</p>
+<p>2a) Regress performance on stress</p>
+<p>2b) Calculate a CI</p>
+<p>2c) Does the CI contain the population parameter?</p></li>
+<li><p>Re-sample and repeat</p></li>
+</ol>
+</div>
+<div id="generate-the-population" class="section level2">
+<h2>1) Generate the population</h2>
+<p>Our population will contain 100,000 people</p>
+<pre class="r"><code>pop_number &lt;- 100000</code></pre>
+<p>with stress scores distributed about zero. The scale here doesn’t matter – we care about the relationship between stress and performance and less about (in this example) the distributions of stress and performance themselves.</p>
+<pre class="r"><code>population_stress &lt;- rnorm(pop_number, 0, 5)</code></pre>
+<p>The true relationship between stress and performance will be 0.45. Let’s set that parameter</p>
+<pre class="r"><code>stress_performance_coefficient &lt;- 0.45</code></pre>
+<p>and then generate performance.</p>
+<pre class="r"><code>population_performance &lt;- stress_performance_coefficient*population_stress + rnorm(pop_number, 0, 1)</code></pre>
+<p>Now plug everything into a data set. Remember, this is the population.</p>
+<pre class="r"><code>df &lt;- data.frame(
+  &#39;person&#39; = c(1:pop_number),
+  &#39;stress&#39; = c(population_stress),
+  &#39;performance&#39; = c(population_performance)
+)</code></pre>
+<p>What is the paramter relating stress to performance? 0.45, keep that in mind. Time to sample the population as if we conducted a study and run our regression.</p>
+</div>
+<div id="sample-the-population" class="section level2">
+<h2>2) Sample the population</h2>
+<p>Randomly select 600 people from our population. That is, pretend we ran a study on 600 subjects.</p>
+<pre class="r"><code>sample_size &lt;- 600
+random_numbers &lt;- sample(c(1:pop_number), sample_size)
+
+sample_df &lt;- df %&gt;%
+  filter(person %in% random_numbers)</code></pre>
+<div id="a-regress-performance-on-stress" class="section level3">
+<h3>2a) Regress Performance on Stress</h3>
+<p>Use the <code>lm</code> command for regression in <code>R</code>.</p>
+<pre class="r"><code>summary(lm(performance ~ stress,
+           data = sample_df))</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = performance ~ stress, data = sample_df)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.0846 -0.6800  0.0212  0.6377  4.1237 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -0.003677   0.040885   -0.09    0.928    
+## stress       0.450087   0.007646   58.87   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 1.001 on 598 degrees of freedom
+## Multiple R-squared:  0.8528, Adjusted R-squared:  0.8526 
+## F-statistic:  3465 on 1 and 598 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div id="b-compute-the-ci" class="section level3">
+<h3>2b) Compute the CI</h3>
+<p>Save the output of the regression in an object so we can pull out the specific coefficients that we are interested in.</p>
+<pre class="r"><code>output &lt;- summary(lm(performance ~ stress,
+                  data = sample_df))</code></pre>
+<p>Pull out the coefficient relating stress to performance</p>
+<pre class="r"><code>slope_coefficient &lt;- output$coefficients[2,1]</code></pre>
+<p>and use it along with the SEs to calculate the confidence interval.</p>
+<pre class="r"><code>se_upper &lt;- slope_coefficient + 1.96*output$coefficients[2,2]
+se_lower &lt;- slope_coefficient - 1.96*output$coefficients[2,2]</code></pre>
+</div>
+<div id="c-does-the-ci-contain-the-population-parameter" class="section level3">
+<h3>2c) Does the CI contain the population parameter?</h3>
+<p>Remember that the parameter is 0.45.</p>
+<pre class="r"><code>contain_parameter &lt;- NULL
+
+if(se_lower &lt;= stress_performance_coefficient &amp;&amp; se_upper &gt;= stress_performance_coefficient){
+  contain_parameter &lt;- &#39;yes&#39;
+}else{
+  contain_parameter &lt;- &#39;no&#39;
+}
+
+contain_parameter</code></pre>
+<pre><code>## [1] &quot;yes&quot;</code></pre>
+<p>What did we do? We sampled the population, ran a regression to relate stress to performance, and then calculated a CI on the slope term. The interpretation of a CI, however, is across infinite samples. Now we need to run through the sample, regress, and calculate CI procedure again and again and again – Monte Carlo.</p>
+</div>
+</div>
+<div id="re-sample-and-repeat" class="section level2">
+<h2>3) Re sample and repeat</h2>
+<p>I created a function that samples the population, runs a regression, calculates the CI, and then saves whether or not the interval contained 0.45 (‘yes’ or ‘no’). You can view that code in the raw rmarkdown file. For now, just know that the function is called <code>sample_regress_calc_ci</code>.</p>
+<p>We are going to re-run step 2 from above 900 times</p>
+<pre class="r"><code>sims &lt;- 900</code></pre>
+<p>and store the ‘yes’ or ‘no’ result in a vector.</p>
+<pre class="r"><code>all_ci_contains &lt;- numeric(sims)</code></pre>
+<p>Here is the full Monte Carlo code.</p>
+<pre class="r"><code>sims &lt;- 900
+all_ci_contains &lt;- numeric(sims)
+
+for(i in 1:sims){
+  
+  result &lt;- sample_regress_calc_ci()
+  all_ci_contains[i] &lt;- result
+  
+}</code></pre>
+</div>
+<div id="interpretation" class="section level2">
+<h2>Interpretation</h2>
+<p>How many computed intervals contain the population parameter?</p>
+<pre class="r"><code>sum(all_ci_contains == &#39;yes&#39;) / sims</code></pre>
+<pre><code>## [1] 0.9366667</code></pre>
+</div>
+
+                </div>
+                <br>
+            </div>
+        </section>
+    </div>
+</div>
+</main>
+    <footer> 
+  <footer class="footer">
+    <div class="container">
+        <div class="content has-text-centered">
+            <p>
+                I generated this site using 
+                <a href="https://gohugo.io/">Hugo</a> and Jeblister's
+                <a href="https://themes.gohugo.io/bulma/">Bulma</a> theme.
+                
+            </p>
+            <p>
+              Michigan State University is not liable for any opinions on this website.
+
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script src="//yihui.name/js/math-code.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<link rel="stylesheet" href="/css/obsidian.css" rel="stylesheet" id="theme-stylesheet">
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script> 
+</footer>
+
+    <script async type="text/javascript" src="/js/bulma.js"></script>
+    <script async type="text/javascript"  src="/js/clipboard.min.js"></script>
+    <script async type="text/javascript"  src="/js/clip.js"></script>
+</body>
+
+</html>

@@ -130,6 +130,15 @@ cd %&amp;gt;% mutate(cohesion = q1 + q2 + q3) ## q1 q2 q3 id cohesion ## 1 1 2 N
     </item>
     
     <item>
+      <title>Frequentist Confidence Intervals</title>
+      <link>/computational_notes/frequentist_ci_interpretation/</link>
+      <pubDate>Fri, 04 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/frequentist_ci_interpretation/</guid>
+      <description>Purpose Imagine that you are interested in the relationship between stress and performance. To assess it, you observe 600 people at work and measure their stress via a self-report (e.g., “I feel stressed”) and their performance via objective performance scores for the day (e.g., number of sales). You regress performance on stress and find that the estimated coefficient relating to two is 0.45. You then build a 95% confidence interval using the standard error that the analysis spit out and find that the CI is 0.</description>
+    </item>
+    
+    <item>
       <title>Be Careful With Characters and Matrices</title>
       <link>/computational_notes/matrix_characters/</link>
       <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>

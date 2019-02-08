@@ -183,24 +183,6 @@ Charles Wheelan
 
 
 
-*Wild Minds: What Animals Really Think*
-
-Marc D. Hauser
-
-[Click here for link](https://www.amazon.com/Wild-Minds-Animals-Really-Think/dp/080505670X/ref=sr_1_1?s=books&ie=UTF8&qid=1524678505&sr=1-1&keywords=wild+minds+marc)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/wildminds.png)
-
-*Sapiens: A Brief History of Humankind*
-
-Yuval Noah Harari
-
-[Click here for link](https://www.amazon.com/Sapiens-Humankind-Yuval-Noah-Harari/dp/0062316117/ref=sr_1_1?s=books&ie=UTF8&qid=1524678567&sr=1-1&keywords=sapiens)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/sapiens.png)
-
-
-
 
 
 

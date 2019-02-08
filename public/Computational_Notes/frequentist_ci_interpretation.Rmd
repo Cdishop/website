@@ -1,0 +1,214 @@
+---
+title: "Frequentist Confidence Intervals"
+output: pdf_document
+date: "2019-01-04"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
+library(tidyverse)
+library(MASS)
+library(ggplot2)
+```
+
+## Purpose 
+
+Imagine that you are interested in the relationship between stress and performance. To assess it, you observe 600 people at work and measure their stress via a self-report (e.g., "I feel stressed") and their performance via objective performance scores for the day (e.g., number of sales). You regress performance on stress and find that the estimated coefficient relating to two is 0.45. You then build a 95% confidence interval using the standard error that the analysis spit out and find that the CI is 0.45 +- 0.1. 
+
+What does that confidence interval actually mean? The purpose of this exercise is to build intuition behind frequentist CIs.
+
+## Steps
+
+1) Generate the population 
+
+2) Sample the population. On that sample...
+
+    2a) Regress performance on stress
+    
+    2b) Calculate a CI
+    
+    2c) Does the CI contain the population parameter?
+    
+3) Re-sample and repeat
+
+## 1) Generate the population
+
+Our population will contain 100,000 people
+
+```{r}
+pop_number <- 100000
+```
+
+\noindent with stress scores distributed about zero. The scale here doesn't matter -- we care about the relationship between stress and performance and less about (in this example) the distributions of stress and performance themselves.
+
+```{r}
+population_stress <- rnorm(pop_number, 0, 5)
+```
+
+The true relationship between stress and performance will be 0.45. Let's set that parameter
+
+```{r}
+stress_performance_coefficient <- 0.45
+```
+
+\noindent and then generate performance.
+
+```{r}
+
+population_performance <- stress_performance_coefficient*population_stress + rnorm(pop_number, 0, 1)
+
+```
+
+Now plug everything into a data set. Remember, this is the population.
+
+```{r}
+df <- data.frame(
+  'person' = c(1:pop_number),
+  'stress' = c(population_stress),
+  'performance' = c(population_performance)
+)
+
+```
+
+What is the paramter relating stress to performance? 0.45, keep that in mind. Time to sample the population as if we conducted a study and run our regression.
+
+## 2) Sample the population
+
+Randomly select 600 people from our population. That is, pretend we ran a study on 600 subjects.
+
+```{r}
+sample_size <- 600
+random_numbers <- sample(c(1:pop_number), sample_size)
+
+sample_df <- df %>%
+  filter(person %in% random_numbers)
+
+```
+
+### 2a) Regress Performance on Stress
+
+Use the `lm` command for regression in `R`.
+
+```{r}
+
+summary(lm(performance ~ stress,
+           data = sample_df))
+
+```
+
+### 2b) Compute the CI
+
+Save the output of the regression in an object so we can pull out the specific coefficients that we are interested in.
+
+```{r}
+
+output <- summary(lm(performance ~ stress,
+                  data = sample_df))
+
+```
+
+\noindent Pull out the coefficient relating stress to performance
+
+```{r}
+slope_coefficient <- output$coefficients[2,1]
+```
+
+\noindent and use it along with the SEs to calculate the confidence interval.
+
+```{r}
+se_upper <- slope_coefficient + 1.96*output$coefficients[2,2]
+se_lower <- slope_coefficient - 1.96*output$coefficients[2,2]
+```
+
+### 2c) Does the CI contain the population parameter?
+
+Remember that the parameter is 0.45.
+
+```{r}
+contain_parameter <- NULL
+
+if(se_lower <= stress_performance_coefficient && se_upper >= stress_performance_coefficient){
+  contain_parameter <- 'yes'
+}else{
+  contain_parameter <- 'no'
+}
+
+contain_parameter
+
+```
+
+What did we do? We sampled the population, ran a regression to relate stress to performance, and then calculated a CI on the slope term. The interpretation of a CI, however, is across infinite samples. Now we need to run through the sample, regress, and calculate CI procedure again and again and again -- Monte Carlo.
+
+## 3) Re sample and repeat
+
+I created a function that samples the population, runs a regression, calculates the CI, and then saves whether or not the interval contained 0.45 ('yes' or 'no'). You can view that code in the raw rmarkdown file. For now, just know that the function is called `sample_regress_calc_ci`.
+
+```{r, echo = F}
+
+sample_regress_calc_ci <- function(){
+  
+  sample_size <- 600
+  random_numbers <- sample(c(1:pop_number), sample_size)
+
+  sample_df <- df %>%
+    filter(person %in% random_numbers)
+  
+  output <- summary(lm(performance ~ stress,
+                  data = sample_df))
+  
+  
+  slope_coefficient <- output$coefficients[2,1]
+  se_upper <- slope_coefficient + 1.96*output$coefficients[2,2]
+  se_lower <- slope_coefficient - 1.96*output$coefficients[2,2]
+  contain_parameter <- NULL
+
+  if(se_lower <= stress_performance_coefficient && se_upper >= stress_performance_coefficient){
+    contain_parameter <- 'yes'
+  }else{
+    contain_parameter <- 'no'
+  }
+
+  return(contain_parameter)
+}
+
+```
+
+We are going to re-run step 2 from above 900 times
+
+```{r}
+sims <- 900
+```
+
+\noindent and store the 'yes' or 'no' result in a vector.
+
+```{r}
+all_ci_contains <- numeric(sims)
+```
+
+Here is the full Monte Carlo code.
+
+```{r}
+
+sims <- 900
+all_ci_contains <- numeric(sims)
+
+for(i in 1:sims){
+  
+  result <- sample_regress_calc_ci()
+  all_ci_contains[i] <- result
+  
+}
+
+```
+
+## Interpretation
+
+How many computed intervals contain the population parameter?
+
+```{r}
+
+sum(all_ci_contains == 'yes') / sims
+
+```
+
+

@@ -3,7 +3,7 @@ date = "2018-08-125T14:19:25+01:00"
 title = "Recommended Reading"
 draft = false
 menu = "main"
-weight = 3
+weight = 2
 +++
 
 

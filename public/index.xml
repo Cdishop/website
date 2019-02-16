@@ -12,33 +12,6 @@
     
     
     <item>
-      <title>R Resources</title>
-      <link>/r_resources/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/r_resources/</guid>
-      <description>Websites with many R resources All R books written with Bookdown
-[](https://bookdown.org)
-APS list of R resources
-[](https://www.psychologicalscience.org/observer/learning-to-work-with-r)
-Show Us Your R
-[](http://www.flutterbys.com.au/stats/index.html)
-Econometrics Simulations
-[](http://www.econometricsbysimulation.com/2012/10/using-simulations-to-maximize.html)
-People with helpful individual websites Jenny Bryan
-(teach =&amp;gt; purrr tutorial is excellent)
-Kristoffer Magnusson
-FOM academic
-Suzan Baert
-Hadley Wickham
-David Robinson
-B Rodriguez
-Nathaniel D. Phillips
-In-person courses posted on web Applied Statistical Computing Course
-Online courses Introduction to Bayes in DataCamp (free course)</description>
-    </item>
-    
-    <item>
       <title>Recommended Reading</title>
       <link>/rec_reading/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -59,6 +32,30 @@ Click here for link
 The Order Of Time
 Carlo Rovelli
 Click here for link</description>
+    </item>
+    
+    <item>
+      <title>R Resources</title>
+      <link>/r_resources/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/r_resources/</guid>
+      <description>Websites with many R resources All R books written with Bookdown
+APS list of R resources
+Show Us Your R
+Econometrics Simulations
+People with helpful individual websites Jenny Bryan
+(teach =&amp;gt; purrr tutorial is excellent)
+Kristoffer Magnusson
+FOM academic
+Suzan Baert
+Hadley Wickham
+David Robinson
+B Rodriguez
+Nathaniel D. Phillips
+In-person courses posted on web Applied Statistical Computing Course
+Online courses Introduction to Bayes in DataCamp (free course)
+Data Analysis and Statistical Inference on Data Camp</description>
     </item>
     
     <item>

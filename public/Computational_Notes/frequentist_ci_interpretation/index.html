@@ -70,9 +70,9 @@
         
           <a itemprop="url" class="navbar-item " href="https://github.com/Cdishop/website/raw/master/misc/CV.pdf"><span itemprop="name">CV</span></a>
         
-          <a itemprop="url" class="navbar-item " href="/r_resources/"><span itemprop="name">R Resources</span></a>
-        
           <a itemprop="url" class="navbar-item " href="/rec_reading/"><span itemprop="name">Recommended Reading</span></a>
+        
+          <a itemprop="url" class="navbar-item " href="/r_resources/"><span itemprop="name">R Resources</span></a>
         
           <a itemprop="url" class="navbar-item  is-active" href="/computational_notes/"><span itemprop="name">Computational_Notes</span></a>
         
@@ -140,19 +140,19 @@ sample_df &lt;- df %&gt;%
 ## lm(formula = performance ~ stress, data = sample_df)
 ## 
 ## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -3.5308 -0.6685 -0.0073  0.7180  3.0557 
+##      Min       1Q   Median       3Q      Max 
+## -3.15875 -0.60822  0.02102  0.63244  2.96199 
 ## 
 ## Coefficients:
-##              Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) -0.030587   0.041352   -0.74     0.46    
-## stress       0.436404   0.008287   52.66   &lt;2e-16 ***
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 0.028949   0.039161   0.739     0.46    
+## stress      0.441528   0.008266  53.416   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 1.013 on 598 degrees of freedom
-## Multiple R-squared:  0.8226, Adjusted R-squared:  0.8223 
-## F-statistic:  2773 on 1 and 598 DF,  p-value: &lt; 2.2e-16</code></pre>
+## Residual standard error: 0.959 on 598 degrees of freedom
+## Multiple R-squared:  0.8267, Adjusted R-squared:  0.8264 
+## F-statistic:  2853 on 1 and 598 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <div id="b-compute-the-ci" class="section level3">
 <h3>2b) Compute the CI</h3>
@@ -203,7 +203,7 @@ for(i in 1:sims){
 <h2>Interpretation</h2>
 <p>How many computed intervals contain the population parameter?</p>
 <pre class="r"><code>sum(all_ci_contains == &#39;yes&#39;) / sims</code></pre>
-<pre><code>## [1] 0.9611111</code></pre>
+<pre><code>## [1] 0.9444444</code></pre>
 </div>
 
                 </div>

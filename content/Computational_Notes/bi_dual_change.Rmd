@@ -18,20 +18,20 @@ Essentially, we have two dual change processes and a coupling parameter from the
 ## The DGP
 
 \begin{equation}
-y_t =  \alpha*constant_y + (1 + proportion_y)*y_{t-1} + coupling_xy*x_t{t-1} + e
+y_t =  constant_y + (1 + proportion_y)*y_{t-1} + coupling_xy*x_{t-1} + e
 \end{equation}
 
 \noindent where $constant_y$ is the change factor (or latent slope) on $y$, $proportion_y$ is the proportion change factor, and $coupling_xy$ is the coupling parameter relating $x$ to $y$. The DGP for $x$ is 
 
 \begin{equation}
-x_t =  \alpha*constant_x + (1 + proportion_x)*x_{t-1} + coupling_yx*y_t{t-1} + e
+x_t =  constant_x + (1 + proportion_x)*x_{t-1} + coupling_yx*y_{t-1} + e
 \end{equation}
 
 \noindent where the terms are similar but now applied to values of $x$. The true values used in the DGP are:
 
 \begin{align}
-y_t &=  \alpha*0.5 + (1 + -0.32)*y_{t-1} + 0.4*x_t{t-1} + e \\
-x_t &=  \alpha*0.5 + (1 + 0.22)*x_{t-1} - 0.4*y_t{t-1} + e
+y_t &=  0.5 + (1 + -0.32)y_{t-1} + 0.4x_{t-1} + e \\
+x_t &=  0.5 + (1 + 0.22)x_{t-1} - 0.4y_{t-1} + e
 \end{align}
 
 \noindent with initial values for both $x$ and $y$ sampled from $N$ ~ (10, 1).

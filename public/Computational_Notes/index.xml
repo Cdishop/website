@@ -6,21 +6,10 @@
     <description>Recent content in Computational_Notes on Christopher Dishop</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 18 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 01 Feb 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/computational_notes/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Bivariate Latent Dual Change Model</title>
-      <link>/computational_notes/bi_dual_change/</link>
-      <pubDate>Mon, 18 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/bi_dual_change/</guid>
-      <description>My last post demonstrated a dual change model for one variable, now I want to demonstrate a bivariate dual change model. A SEM path diagram for a bivariate dual change model is below, taken from Wang, Zhou, and Zhang (2016)
-(If you do not have access to that link you can view a similar path diagram in Jones, King, Gilrane, McCausland, Cortina, &amp;amp; Grimm, 2016)
-Essentially, we have two dual change processes and a coupling parameter from the latent true score on one variable to the latent change score on the other.</description>
-    </item>
     
     <item>
       <title>Latent Dual Change Models</title>

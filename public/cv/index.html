@@ -2,7 +2,7 @@
 <html lang="en-US">
 
 <head>
-    <meta name="generator" content="Hugo 0.45.1" />
+    <meta name="generator" content="Hugo 0.48" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,25 +20,9 @@
 
  
     <meta property="og:title" content="CV" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="This browser does not support PDFs. Please download the PDF to view it: Download PDF." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/cv/" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
+<meta property="og:url" content="/cv/" /> 
     
 
 
@@ -66,23 +50,12 @@
     <a class="navbar-item" href="/">
       <img src="/img/bulma.png" alt="Bulma logo">
     </a>
-    <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
   </div>
   
-  <div class="navbar-menu">
-    <div class="navbar-start">
-      
-
-      
-    </div>
     
     
     
-    <span class="navbar-burger">
+    <span class="nav-toggle">
         <span></span>
         <span></span>
         <span></span>
@@ -94,9 +67,11 @@
       <div class="navbar-item">
         
         
-          <a itemprop="url" class="navbar-item " href="https://github.com/Cdishop/website/raw/master/misc/CV.pdf"><span itemprop="name">CV</span></a>
+          <a itemprop="url" class="navbar-item  is-active" href="/cv/"><span itemprop="name">CV</span></a>
         
           <a itemprop="url" class="navbar-item " href="/rec_reading/"><span itemprop="name">Recommended Reading</span></a>
+        
+          <a itemprop="url" class="navbar-item " href="/r_resources/"><span itemprop="name">R Resources</span></a>
         
           <a itemprop="url" class="navbar-item " href="/computational_notes/"><span itemprop="name">Computational_Notes</span></a>
         
@@ -112,7 +87,11 @@
         <section class="hero is-default is-bold">
             <div class="hero-body">
                 <div class="content container">
-                   <p><img src="https://github.com/Cdishop/website/raw/master/misc/CV.pdf" alt="" /></p>
+                   <p><object data="https://raw.githubusercontent.com/Cdishop/website/master/misc/CV.pdf" type="application/pdf" width="1000px" height="900px">
+    <embed src="https://raw.githubusercontent.com/Cdishop/website/master/misc/CV.pdf">
+        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://raw.githubusercontent.com/Cdishop/website/master/misc/CV.pdf">Download PDF</a>.</p>
+    </embed>
+</object></p>
 
                 </div>
                 <br>
@@ -126,18 +105,25 @@
     <div class="container">
         <div class="content has-text-centered">
             <p>
-                This page is generated using 
-                <a href="https://gohugo.io/">Hugo</a>, with its design
-                incorporating the
+                I generated this site using 
+                <a href="https://gohugo.io/">Hugo</a> and Jeblister's
                 <a href="https://themes.gohugo.io/bulma/">Bulma</a> theme.
                 
-            </p>    
+            </p>
+            <p>
+              Michigan State University is not liable for any opinions on this website.
+
+            </p>
         </div>
     </div>
 </footer>
 
 <script src="//yihui.name/js/math-code.js"></script>
-<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script> 
+<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<link rel="stylesheet" href="/css/obsidian.css" rel="stylesheet" id="theme-stylesheet">
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script> 
 </footer>
 
     <script async type="text/javascript" src="/js/bulma.js"></script>

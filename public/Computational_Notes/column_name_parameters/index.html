@@ -72,7 +72,7 @@ Function with no column name parameters Function:
       <div class="navbar-item">
         
         
-          <a itemprop="url" class="navbar-item " href="https://github.com/Cdishop/website/raw/master/misc/CV.pdf"><span itemprop="name">CV</span></a>
+          <a itemprop="url" class="navbar-item " href="/cv/"><span itemprop="name">CV</span></a>
         
           <a itemprop="url" class="navbar-item " href="/rec_reading/"><span itemprop="name">Recommended Reading</span></a>
         
@@ -117,14 +117,14 @@ mini[mini$person == &#39;jimmy&#39;, 2] &lt;- 99
 mini[mini$person == &#39;james&#39;, 2] &lt;- 99</code></pre>
 <p>The original data:</p>
 <pre><code>##   person        v_1       v_2      v_3      v_4
-## 1  jimmy  0.1018421 15.239999 61.89523 51.10663
-## 2  james -1.2007294  2.424084 32.63006  9.83094
-## 3 johnny  0.1561420  5.006370 59.12262 35.04170</code></pre>
+## 1  jimmy  0.5653463  6.267762 63.78010 30.40825
+## 2  james -0.1397539 11.501767 58.97043 21.29227
+## 3 johnny  0.9160434  5.270670 41.40598 40.25328</code></pre>
 <p>What we changed it to:</p>
-<pre><code>##   person       v_1       v_2
-## 1  jimmy 99.000000 15.239999
-## 2  james 99.000000  2.424084
-## 3 johnny  0.156142  5.006370</code></pre>
+<pre><code>##   person        v_1       v_2
+## 1  jimmy 99.0000000  6.267762
+## 2  james 99.0000000 11.501767
+## 3 johnny  0.9160434  5.270670</code></pre>
 <p>Here is the function equivalent:</p>
 <pre class="r"><code>impute_99 &lt;- function(data){
   
@@ -142,10 +142,10 @@ mini[mini$person == &#39;james&#39;, 2] &lt;- 99</code></pre>
 <p>Our result:</p>
 <pre class="r"><code>adjusted_data &lt;- impute_99(dish)
 adjusted_data</code></pre>
-<pre><code>##   person       v_1       v_2
-## 1  jimmy 99.000000 15.239999
-## 2  james 99.000000  2.424084
-## 3 johnny  0.156142  5.006370</code></pre>
+<pre><code>##   person        v_1       v_2
+## 1  jimmy 99.0000000  6.267762
+## 2  james 99.0000000 11.501767
+## 3 johnny  0.9160434  5.270670</code></pre>
 </div>
 <div id="function-with-column-names-as-parameters" class="section level1">
 <h1>Function with column names as parameters</h1>
@@ -166,10 +166,10 @@ adjusted_data</code></pre>
 <p>Fortunately the correction is simple, just put quotes around the column names:</p>
 <pre class="r"><code>cool_data &lt;- impute_99_column_specific(dish, &#39;v_1&#39;, &#39;v_2&#39;)
 cool_data</code></pre>
-<pre><code>##   person       v_1       v_2
-## 1  jimmy 99.000000 15.239999
-## 2  james 99.000000  2.424084
-## 3 johnny  0.156142  5.006370</code></pre>
+<pre><code>##   person        v_1       v_2
+## 1  jimmy 99.0000000  6.267762
+## 2  james 99.0000000 11.501767
+## 3 johnny  0.9160434  5.270670</code></pre>
 <p>Bo<span class="math inline">\(^2\)</span>m =)</p>
 </div>
 

@@ -19,9 +19,5 @@ SectionPagesMenu = "main" # Enable menu system for lazy bloggers
   twitter = "" # Optional, to display link to twitter account in menu bar
 
 
-[[menu.main]]
-  name = "CV"
-  weight = 1
-	identifier = "CV"
-  url = "https://github.com/Cdishop/website/raw/master/misc/CV.pdf"
+
 

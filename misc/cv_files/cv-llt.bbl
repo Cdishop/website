@@ -835,13 +835,25 @@
       \field{title}{Goal Sampling Theory}
       \field{year}{Under Review}
     \endentry
-    \entry{dishop_bbcoding}{article}{}
-      \name{author}{2}{}{%
+    \entry{dishop_bu_inference}{article}{}
+      \name{author}{4}{}{%
         {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
            family={Dishop},
            familyi={D\bibinitperiod},
            given={Christopher\bibnamedelima R},
            giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=548fd787196b521649409b00f557bab3}{%
+           family={Braun},
+           familyi={B\bibinitperiod},
+           given={Michael\bibnamedelima T},
+           giveni={M\bibinitperiod\bibinitdelim T\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=79188ab8c9d801252e8f1b120df58f01}{%
+           family={Kuljanin},
+           familyi={K\bibinitperiod},
+           given={Goran},
+           giveni={G\bibinitperiod},
            givenun=0}}%
         {{uniquename=0,uniquepart=base,hash=640bff6bc37424ceb9a8ee580af99127}{%
            family={DeShon},
@@ -850,20 +862,19 @@
            giveni={R\bibinitperiod\bibinitdelim P\bibinitperiod},
            givenun=0}}%
       }
-      \strng{namehash}{0cc09653fd796f3c830d5c6ddb3edba0}
-      \strng{fullhash}{0cc09653fd796f3c830d5c6ddb3edba0}
-      \strng{bibnamehash}{0cc09653fd796f3c830d5c6ddb3edba0}
-      \strng{authorbibnamehash}{0cc09653fd796f3c830d5c6ddb3edba0}
-      \strng{authornamehash}{0cc09653fd796f3c830d5c6ddb3edba0}
-      \strng{authorfullhash}{0cc09653fd796f3c830d5c6ddb3edba0}
+      \strng{namehash}{79b053c2e62ab675556321a43a409c04}
+      \strng{fullhash}{79b053c2e62ab675556321a43a409c04}
+      \strng{bibnamehash}{79b053c2e62ab675556321a43a409c04}
+      \strng{authorbibnamehash}{79b053c2e62ab675556321a43a409c04}
+      \strng{authornamehash}{79b053c2e62ab675556321a43a409c04}
+      \strng{authorfullhash}{79b053c2e62ab675556321a43a409c04}
       \field{sortinit}{1}
       \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
-      \field{extradate}{1}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Bollen and Brand's Approach to Modeling Dynamics While Attending to Dynamic Panel Bias}
+      \field{title}{Between-Unit Inferences With Longitudinal Data}
       \field{year}{Under Review}
     \endentry
     \entry{dishop2018}{article}{}
@@ -889,7 +900,6 @@
       \strng{authorfullhash}{0cc09653fd796f3c830d5c6ddb3edba0}
       \field{sortinit}{1}
       \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
-      \field{extradate}{2}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -939,7 +949,7 @@
       \field{title}{Predicting Turnover: The Moderating Effect of Functional Climates on Emotional Exhaustion and Work Attitudes}
       \field{year}{Under Review}
     \endentry
-    \entry{dishop_dynamics}{article}{}
+    \entry{dishop_dynamics_principles}{article}{}
       \name{author}{3}{}{%
         {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
            family={Dishop},
@@ -972,7 +982,50 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Principles for Taking a Dynamic Perspective}
+      \field{title}{Principles For Taking A Dynamic Perspective}
+      \field{year}{Under Review}
+    \endentry
+    \entry{kuljanin_coding}{article}{}
+      \name{author}{4}{}{%
+        {{uniquename=0,uniquepart=base,hash=79188ab8c9d801252e8f1b120df58f01}{%
+           family={Kuljanin},
+           familyi={K\bibinitperiod},
+           given={Goran},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=548fd787196b521649409b00f557bab3}{%
+           family={Braun},
+           familyi={B\bibinitperiod},
+           given={Michael\bibnamedelima T},
+           giveni={M\bibinitperiod\bibinitdelim T\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
+           family={Dishop},
+           familyi={D\bibinitperiod},
+           given={Christopher\bibnamedelima R},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=640bff6bc37424ceb9a8ee580af99127}{%
+           family={DeShon},
+           familyi={D\bibinitperiod},
+           given={Richard\bibnamedelima P},
+           giveni={R\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{7c7810459f233917ee60b8bb90e9e180}
+      \strng{fullhash}{7c7810459f233917ee60b8bb90e9e180}
+      \strng{bibnamehash}{7c7810459f233917ee60b8bb90e9e180}
+      \strng{authorbibnamehash}{7c7810459f233917ee60b8bb90e9e180}
+      \strng{authornamehash}{7c7810459f233917ee60b8bb90e9e180}
+      \strng{authorfullhash}{7c7810459f233917ee60b8bb90e9e180}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{A Collection of Data Management Principles for Open, Transparent, and Reproducible Research}
       \field{year}{Under Review}
     \endentry
   \enddatalist

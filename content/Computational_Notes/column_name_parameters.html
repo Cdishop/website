@@ -31,14 +31,14 @@ mini[mini$person == &#39;jimmy&#39;, 2] &lt;- 99
 mini[mini$person == &#39;james&#39;, 2] &lt;- 99</code></pre>
 <p>The original data:</p>
 <pre><code>##   person        v_1       v_2      v_3      v_4
-## 1  jimmy  0.5653463  6.267762 63.78010 30.40825
-## 2  james -0.1397539 11.501767 58.97043 21.29227
-## 3 johnny  0.9160434  5.270670 41.40598 40.25328</code></pre>
+## 1  jimmy -2.4314703  8.843673 57.20151 56.59844
+## 2  james -0.1938491 10.049294 51.24960 10.17617
+## 3 johnny -0.3249808 15.816314 46.70954 18.88828</code></pre>
 <p>What we changed it to:</p>
 <pre><code>##   person        v_1       v_2
-## 1  jimmy 99.0000000  6.267762
-## 2  james 99.0000000 11.501767
-## 3 johnny  0.9160434  5.270670</code></pre>
+## 1  jimmy 99.0000000  8.843673
+## 2  james 99.0000000 10.049294
+## 3 johnny -0.3249808 15.816314</code></pre>
 <p>Here is the function equivalent:</p>
 <pre class="r"><code>impute_99 &lt;- function(data){
   
@@ -57,9 +57,9 @@ mini[mini$person == &#39;james&#39;, 2] &lt;- 99</code></pre>
 <pre class="r"><code>adjusted_data &lt;- impute_99(dish)
 adjusted_data</code></pre>
 <pre><code>##   person        v_1       v_2
-## 1  jimmy 99.0000000  6.267762
-## 2  james 99.0000000 11.501767
-## 3 johnny  0.9160434  5.270670</code></pre>
+## 1  jimmy 99.0000000  8.843673
+## 2  james 99.0000000 10.049294
+## 3 johnny -0.3249808 15.816314</code></pre>
 </div>
 <div id="function-with-column-names-as-parameters" class="section level1">
 <h1>Function with column names as parameters</h1>
@@ -81,8 +81,8 @@ adjusted_data</code></pre>
 <pre class="r"><code>cool_data &lt;- impute_99_column_specific(dish, &#39;v_1&#39;, &#39;v_2&#39;)
 cool_data</code></pre>
 <pre><code>##   person        v_1       v_2
-## 1  jimmy 99.0000000  6.267762
-## 2  james 99.0000000 11.501767
-## 3 johnny  0.9160434  5.270670</code></pre>
+## 1  jimmy 99.0000000  8.843673
+## 2  james 99.0000000 10.049294
+## 3 johnny -0.3249808 15.816314</code></pre>
 <p>Bo<span class="math inline">\(^2\)</span>m =)</p>
 </div>

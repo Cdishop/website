@@ -29,6 +29,9 @@
       <description>Quantifying Life: A Symbiosis of Computation, Mathematics, and Biology
 Dmitry A. Kondrashov
 Click here for link
+On Writing Well: The Classic Guide to Writing Nonfiction
+William Zinsser
+Click here for link
 How We Know What Isn&amp;rsquo;t So: The Fallibility of Human Reason in Everyday Life
 Thomas Gilovich
 Click here for link
@@ -36,11 +39,7 @@ Complexity: A Guided Tour
 Melanie Mitchell
 Click here for link
 The Drunkard&amp;rsquo;s Walk: How Randomness Rules Our Lives
-Leonard Mlodinow
-Click here for link
-The Order Of Time
-Carlo Rovelli
-Click here for link</description>
+Leonard Mlodinow</description>
     </item>
     
     <item>
@@ -50,6 +49,7 @@ Click here for link</description>
       
       <guid>/r_resources/</guid>
       <description>Websites with many R resources All R books written with Bookdown
+All R cheatsheets
 APS list of R resources
 Show Us Your R
 Econometrics Simulations
@@ -63,8 +63,7 @@ David Robinson
 B Rodriguez
 Nathaniel D. Phillips
 In-person courses posted on web Applied Statistical Computing Course
-Online courses Introduction to Bayes in DataCamp (free course)
-Data Analysis and Statistical Inference on Data Camp</description>
+Online courses Introduction to Bayes in DataCamp (free course)</description>
     </item>
     
     <item>

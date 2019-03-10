@@ -17,6 +17,32 @@ Dmitry A. Kondrashov
 
 
 
+
+
+
+
+
+
+
+*On Writing Well: The Classic Guide to Writing Nonfiction*
+
+William Zinsser
+
+[Click here for link](https://www.amazon.com/Writing-Well-Classic-Guide-Nonfiction/dp/0060891548/ref=sr_1_1?s=books&ie=UTF8&qid=1524679014&sr=1-1&keywords=on+writing+well)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/writingwell.png)
+
+
+
+
+
+
+
+
+
+
+
+
 *How We Know What Isn't So: The Fallibility of Human Reason in Everyday Life*
 
 Thomas Gilovich
@@ -24,6 +50,9 @@ Thomas Gilovich
 [Click here for link](https://www.amazon.com/How-Know-What-Isnt-Fallibility/dp/0029117062/ref=sr_1_3?s=books&ie=UTF8&qid=1524679970&sr=1-3&keywords=how+we+know+what+isn%27t+so)
 
 ![](https://github.com/Cdishop/website/raw/master/misc/books/how_we_know.png)
+
+
+
 
 
 
@@ -39,6 +68,10 @@ Melanie Mitchell
 
 
 
+
+
+
+
 *The Drunkard's Walk: How Randomness Rules Our Lives*
 
 Leonard Mlodinow
@@ -46,6 +79,10 @@ Leonard Mlodinow
 [Click here for link](https://www.amazon.com/Drunkards-Walk-Randomness-Rules-Lives/dp/0307275175/ref=sr_1_1?s=books&ie=UTF8&qid=1524678442&sr=1-1&keywords=the+drunkards+walk)
 
 ![](https://github.com/Cdishop/website/raw/master/misc/books/drunkwalk.png)
+
+
+
+
 
 
 
@@ -61,6 +98,9 @@ Carlo Rovelli
 
 
 
+
+
+
 *The Book of Why*
 
 Judea Pearl
@@ -70,18 +110,6 @@ Dana Mackenzie
 [Click here for link](https://www.amazon.com/Book-Why-Science-Cause-Effect/dp/046509760X/ref=sr_1_1?ie=UTF8&qid=1527948151&sr=8-1&keywords=the+book+of+why)
 
 ![](https://github.com/Cdishop/website/raw/master/misc/books/book_why.png)
-
-
-
-
-
-*On Writing Well: The Classic Guide to Writing Nonfiction*
-
-William Zinsser
-
-[Click here for link](https://www.amazon.com/Writing-Well-Classic-Guide-Nonfiction/dp/0060891548/ref=sr_1_1?s=books&ie=UTF8&qid=1524679014&sr=1-1&keywords=on+writing+well)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/writingwell.png)
 
 
 

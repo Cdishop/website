@@ -97,11 +97,11 @@ Essentially, we have two dual change processes and a coupling parameter from the
 <div id="the-dgp" class="section level2">
 <h2>The DGP</h2>
 <p><span class="math display">\[\begin{equation}
-y_t =  constant_y + (1 + proportion_y)*y_{t-1} + coupling_xy*x_{t-1} + e
+y_t =  constant_y + (1 + proportion_y)*y_{t-1} + coupling_{xy}*x_{t-1} + e
 \end{equation}\]</span></p>
 <p>where <span class="math inline">\(constant_y\)</span> is the change factor (or latent slope) on <span class="math inline">\(y\)</span>, <span class="math inline">\(proportion_y\)</span> is the proportion change factor, and <span class="math inline">\(coupling_xy\)</span> is the coupling parameter relating <span class="math inline">\(x\)</span> to <span class="math inline">\(y\)</span>. The DGP for <span class="math inline">\(x\)</span> is</p>
 <p><span class="math display">\[\begin{equation}
-x_t =  constant_x + (1 + proportion_x)*x_{t-1} + coupling_yx*y_{t-1} + e
+x_t =  constant_x + (1 + proportion_x)*x_{t-1} + coupling_{yx}*y_{t-1} + e
 \end{equation}\]</span></p>
 <p>where the terms are similar but now applied to values of <span class="math inline">\(x\)</span>. The true values used in the DGP are:</p>
 <p><span class="math display">\[\begin{align}

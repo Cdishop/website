@@ -10,6 +10,8 @@ weight = 3
 
 [All R books written with Bookdown](https://bookdown.org)
 
+[All R cheatsheets](https://www.rstudio.com/resources/cheatsheets/)
+
 [APS list of R resources](https://www.psychologicalscience.org/observer/learning-to-work-with-r)
 
 [Show Us Your R](http://www.flutterbys.com.au/stats/index.html)
@@ -55,6 +57,8 @@ weight = 3
 [ANOVA and MANOVA](https://www.statmethods.net/stats/anova.html)
 
 [Using R to extract data from web APIs](https://tclavelle.github.io/blog/r_and_apis/)
+
+[Handling date-times in R](http://biostat.mc.vanderbilt.edu/wiki/pub/Main/ColeBeck/datestimes.pdf)
 
 [Lesser Known Dplyr tricks](https://www.brodrigues.co/blog/2017-02-17-lesser_known_tricks/)
 

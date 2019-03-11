@@ -1,0 +1,589 @@
+---
+title: "Latent Dual Change Models"
+output: pdf_document
+date: "2019-02-01"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F, message = F)
+```
+
+```{r, echo = F}
+library(tidyverse)
+library(ggplot2)
+library(reshape2)
+library(MASS)
+```
+
+I begin with an intercept-only model in a latent change framework and then build to a full dual change model. SEM images in this post are taken from a lecture by [Amy Nuttall](https://hdfs.msu.edu/people/faculty/nuttall-amy-k-phd). Two notes about the models and code below. First, the initial models will not fit well because I use a DGP with both dual change components, the initial models purposefully exclude either constant or proportion change. Second, I use the `sem` command throughout rather than `growth` in the `lavaan` package because it forces me to specify the entire model. I do not like using commands that make automatic constraints for me -- you are much more likely to make a mistake or not know what your model is doing if you do.
+
+### DGP
+
+The underlying DGP will be the same throughout this exercise. Consistent with [Ghisletta and McArdle, 2012](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4259494/pdf/nihms412332.pdf), we have:
+
+\begin{equation}
+y_t =  \alpha*b_1 + (1 + b_2)*y_{t-1}
+\end{equation}
+
+\noindent where $b_1$ is the constant change (similar to the "slope" term in a basic growth model, in latent change frameworks it is called the "change factor") and $b_2$ is the proportion change, or the change from point to point. The values specified in the DGP are
+
+\begin{equation}
+y_t = 1*0.3 + (1 + -0.4)*y_{t-1}
+\end{equation}
+
+\noindent where $b_1$ is equal to 0.3 and $b_2$ is equal to -0.4. Let's generate data for 500 people across six time points.
+
+```{r, cache = T}
+
+constant <- 0.3
+proportion <- 0.6
+
+people <- 500
+time <- 6
+
+df <- matrix(, nrow = people*time, ncol = 3)
+count <- 0
+
+for(i in 1:people){
+  
+  y_het <- rnorm(1, 0, 2)
+  
+  for(j in 1:time){
+    count <- count + 1
+    
+    if(j == 1){
+      df[count, 1] <- i
+      df[count, 2] <- j
+      df[count, 3] <- y_het + rnorm(1,0,1)
+    }else{
+      df[count, 1] <- i
+      df[count, 2] <- j
+      df[count, 3] <- 1*constant + (1+proportion)*df[count - 1, 3] + y_het + rnorm(1,0,1)
+    }
+    
+    
+    
+  }
+  
+  
+  
+}
+
+df <- data.frame(df)
+names(df) <- c('id', 'time', 'y')
+random_ids <- sample(1:people, 5)
+sample_df <- df %>%
+  filter(id %in% random_ids)
+
+ggplot(df, aes(x = time, y = y, group = id)) + 
+  geom_point(color = 'grey85') + 
+  geom_line(color = 'grey85') + 
+  geom_point(data = sample_df, aes(x = time, y = y, group = id)) + 
+  geom_line(data = sample_df, aes(x = time, y = y, group = id))
+
+```
+
+Change the data to wide and load `lavaan` before we start modeling.
+
+```{r}
+df_wide <- reshape(df, idvar = 'id', timevar = 'time', direction = 'wide')
+library(lavaan)
+```
+
+# Intercept Only Model
+
+Similar to the intercept-only model in a "non-latent change" framework (i.e., a simple growth model), the intercept-only model here contains a latent variable over the first observation.
+
+![](https://github.com/Cdishop/website/raw/master/content/Computational_Notes/dual_change_photos/1.png)
+
+There are six observations of $y$ and each is predicted by its latent "true score." The first true score term is regressed on a latent intercept. The other true scores are regressed on additional latent variables that represent latent change. We don't have anything relating to those latent change score terms yet so they don't do much in this model. The autoregressive paths from true score to true score are constrained to 1. Here is how we estimate it.
+
+```{r, cache = T}
+
+int_only_string <- '
+
+# latent true scores over the observed y points
+l_y1 =~ 1*y.1
+l_y2 =~ 1*y.2
+l_y3 =~ 1*y.3
+l_y4 =~ 1*y.4
+l_y5 =~ 1*y.5
+l_y6 =~ 1*y.6
+
+# latent change scores over the latent true scores
+# y1 does not get one because it is the first time point
+lc_y2 =~ 1*l_y2
+lc_y3 =~ 1*l_y3
+lc_y4 =~ 1*l_y4
+lc_y5 =~ 1*l_y5
+lc_y6 =~ 1*l_y6
+
+# autoregression of the latent true scores
+l_y2 ~ 1*l_y1
+l_y3 ~ 1*l_y2
+l_y4 ~ 1*l_y3
+l_y5 ~ 1*l_y4
+l_y6 ~ 1*l_y5
+
+# latent intercept over the first true score of y
+latent_intercept =~ 1*l_y1
+
+# estimate mean and variance of latent intercept
+latent_intercept ~~ latent_intercept
+latent_intercept ~ 1
+
+# means and variances of latent factors set to zero
+
+l_y1 ~ 0
+l_y2 ~ 0
+l_y3 ~ 0
+l_y4 ~ 0
+l_y5 ~ 0
+l_y6 ~ 0
+
+l_y1 ~~ 0*l_y1
+l_y2 ~~ 0*l_y2
+l_y3 ~~ 0*l_y3
+l_y4 ~~ 0*l_y4
+l_y5 ~~ 0*l_y5
+l_y6 ~~ 0*l_y6
+
+lc_y2 ~ 0
+lc_y3 ~ 0
+lc_y4 ~ 0
+lc_y5 ~ 0
+lc_y6 ~ 0
+
+lc_y2 ~~ 0*lc_y2
+lc_y3 ~~ 0*lc_y3
+lc_y4 ~~ 0*lc_y4
+lc_y5 ~~ 0*lc_y5
+lc_y6 ~~ 0*lc_y6
+
+# means of indicators set to zero
+
+y.1 ~ 0
+y.2 ~ 0
+y.3 ~ 0
+y.4 ~ 0
+y.5 ~ 0
+y.6 ~ 0
+
+# residual variances constrained to be equal across time
+
+y.1 ~~ res_var*y.1
+y.2 ~~ res_var*y.2
+y.3 ~~ res_var*y.3
+y.4 ~~ res_var*y.4
+y.5 ~~ res_var*y.5
+y.6 ~~ res_var*y.6
+
+# Constrain latent change factors to not correlate with each other
+
+lc_y2 ~~ 0*lc_y3 + 0*lc_y4 + 0*lc_y5 + 0*lc_y6
+lc_y3 ~~ 0*lc_y4 + 0*lc_y5 + 0*lc_y6
+lc_y4 ~~ 0*lc_y5 + 0*lc_y6
+lc_y5 ~~ 0*lc_y6
+
+# constrain latent intercept not to correlate with the change factors
+latent_intercept ~~ 0*lc_y2 + 0*lc_y3 + 0*lc_y4 + 0*lc_y5 + 0*lc_y6
+
+'
+
+int_only_model <- sem(int_only_string, data = df_wide)
+summary(int_only_model, fit.measures = T)
+
+```
+
+# Proportion Change Model
+
+Now we include the proportion change along with the latent intercept. 
+
+![](https://github.com/Cdishop/website/raw/master/content/Computational_Notes/dual_change_photos/2.png)
+
+```{r, cache = T}
+
+proportion_string <- '
+
+# latent true scores over the observed y points
+l_y1 =~ 1*y.1
+l_y2 =~ 1*y.2
+l_y3 =~ 1*y.3
+l_y4 =~ 1*y.4
+l_y5 =~ 1*y.5
+l_y6 =~ 1*y.6
+
+# latent change scores over the latent true scores
+# y1 does not get one because it is the first time point
+lc_y2 =~ 1*l_y2
+lc_y3 =~ 1*l_y3
+lc_y4 =~ 1*l_y4
+lc_y5 =~ 1*l_y5
+lc_y6 =~ 1*l_y6
+
+# autoregression of the latent true scores
+l_y2 ~ 1*l_y1
+l_y3 ~ 1*l_y2
+l_y4 ~ 1*l_y3
+l_y5 ~ 1*l_y4
+l_y6 ~ 1*l_y5
+
+# latent intercept over the first true score of y
+latent_intercept =~ 1*l_y1
+
+# estimate mean and variance of latent intercept
+latent_intercept ~~ latent_intercept
+latent_intercept ~ 1
+
+# HERE IS THE CHANGE
+# proportion parameter estimate (estimate of b2)
+# regress latent change on latent true score from the last time point
+lc_y2 ~ b2*l_y1
+lc_y3 ~ b2*l_y2
+lc_y4 ~ b2*l_y3
+lc_y5 ~ b2*l_y4
+lc_y6 ~ b2*l_y5
+
+# means and variances of latent factors set to zero
+
+l_y1 ~ 0
+l_y2 ~ 0
+l_y3 ~ 0
+l_y4 ~ 0
+l_y5 ~ 0
+l_y6 ~ 0
+
+l_y1 ~~ 0*l_y1
+l_y2 ~~ 0*l_y2
+l_y3 ~~ 0*l_y3
+l_y4 ~~ 0*l_y4
+l_y5 ~~ 0*l_y5
+l_y6 ~~ 0*l_y6
+
+lc_y2 ~ 0
+lc_y3 ~ 0
+lc_y4 ~ 0
+lc_y5 ~ 0
+lc_y6 ~ 0
+
+lc_y2 ~~ 0*lc_y2
+lc_y3 ~~ 0*lc_y3
+lc_y4 ~~ 0*lc_y4
+lc_y5 ~~ 0*lc_y5
+lc_y6 ~~ 0*lc_y6
+
+# means of indicators set to zero
+
+y.1 ~ 0
+y.2 ~ 0
+y.3 ~ 0
+y.4 ~ 0
+y.5 ~ 0
+y.6 ~ 0
+
+# residual variances constrained to be equal across time
+
+y.1 ~~ res_var*y.1
+y.2 ~~ res_var*y.2
+y.3 ~~ res_var*y.3
+y.4 ~~ res_var*y.4
+y.5 ~~ res_var*y.5
+y.6 ~~ res_var*y.6
+
+# Constrain latent change factors to not correlate with each other
+
+lc_y2 ~~ 0*lc_y3 + 0*lc_y4 + 0*lc_y5 + 0*lc_y6
+lc_y3 ~~ 0*lc_y4 + 0*lc_y5 + 0*lc_y6
+lc_y4 ~~ 0*lc_y5 + 0*lc_y6
+lc_y5 ~~ 0*lc_y6
+
+# constrain latent intercept not to correlate with the change factors
+latent_intercept ~~ 0*lc_y2 + 0*lc_y3 + 0*lc_y4 + 0*lc_y5 + 0*lc_y6
+
+'
+
+proportion_model <- sem(proportion_string, data = df_wide)
+summary(proportion_model, fit.measures = T)
+
+```
+
+# Latent Constant Change
+
+This model is nearly identical to the basic linear growth curve model, it simply embodies it in the latent change framework. The basis coefficients from the constant change term to the latent change scores are constrained to one, then we estimate the mean of the constant change.
+
+![](https://github.com/Cdishop/website/raw/master/content/Computational_Notes/dual_change_photos/3.png)
+
+```{r, cache = T}
+
+constant_change_string <- '
+
+# latent true scores over the observed y points
+l_y1 =~ 1*y.1
+l_y2 =~ 1*y.2
+l_y3 =~ 1*y.3
+l_y4 =~ 1*y.4
+l_y5 =~ 1*y.5
+l_y6 =~ 1*y.6
+
+# latent change scores over the latent true scores
+# y1 does not get one because it is the first time point
+lc_y2 =~ 1*l_y2
+lc_y3 =~ 1*l_y3
+lc_y4 =~ 1*l_y4
+lc_y5 =~ 1*l_y5
+lc_y6 =~ 1*l_y6
+
+# autoregression of the latent true scores (the first level latent variables)
+l_y2 ~ 1*l_y1
+l_y3 ~ 1*l_y2
+l_y4 ~ 1*l_y3
+l_y5 ~ 1*l_y4
+l_y6 ~ 1*l_y5
+
+# latent intercept over the first true score of y
+latent_intercept =~ 1*l_y1
+
+# HERE IS THE CHANGE
+
+# latent slope over the change scores
+# this is called the change factor in dual change terminology...it is not really a slope term. It is the constant change factor
+latent_slope =~ 1*lc_y2 + 1*lc_y3 + 1*lc_y4 + 1*lc_y5 + 1*lc_y6
+
+# estimate covariance between latent intercept and slope (change factor)
+
+latent_intercept ~~ latent_slope
+
+# estimate mean and variance of intercept and slope (change factor)
+
+latent_intercept ~~ latent_intercept
+latent_slope ~~ latent_slope
+
+latent_intercept ~ 1
+latent_slope ~ 1
+
+# means and variances of latent factors set to zero
+
+l_y1 ~ 0
+l_y2 ~ 0
+l_y3 ~ 0
+l_y4 ~ 0
+l_y5 ~ 0
+l_y6 ~ 0
+
+l_y1 ~~ 0*l_y1
+l_y2 ~~ 0*l_y2
+l_y3 ~~ 0*l_y3
+l_y4 ~~ 0*l_y4
+l_y5 ~~ 0*l_y5
+l_y6 ~~ 0*l_y6
+
+lc_y2 ~ 0
+lc_y3 ~ 0
+lc_y4 ~ 0
+lc_y5 ~ 0
+lc_y6 ~ 0
+
+lc_y2 ~~ 0*lc_y2
+lc_y3 ~~ 0*lc_y3
+lc_y4 ~~ 0*lc_y4
+lc_y5 ~~ 0*lc_y5
+lc_y6 ~~ 0*lc_y6
+
+# means of indicators set to zero
+
+y.1 ~ 0
+y.2 ~ 0
+y.3 ~ 0
+y.4 ~ 0
+y.5 ~ 0
+y.6 ~ 0
+
+# residual variances constrained to be equal across time
+
+y.1 ~~ res_var*y.1
+y.2 ~~ res_var*y.2
+y.3 ~~ res_var*y.3
+y.4 ~~ res_var*y.4
+y.5 ~~ res_var*y.5
+y.6 ~~ res_var*y.6
+
+# Constrain latent change factors to not correlate with each other
+
+lc_y2 ~~ 0*lc_y3 + 0*lc_y4 + 0*lc_y5 + 0*lc_y6
+lc_y3 ~~ 0*lc_y4 + 0*lc_y5 + 0*lc_y6
+lc_y4 ~~ 0*lc_y5 + 0*lc_y6
+lc_y5 ~~ 0*lc_y6
+
+# constrain latent intercept not to correlate with the change factors
+latent_intercept ~~ 0*lc_y2 + 0*lc_y3 + 0*lc_y4 + 0*lc_y5 + 0*lc_y6
+
+'
+
+constant_change_model <- sem(constant_change_string, data = df_wide)
+summary(constant_change_model, fit.measures = T)
+```
+
+# Dual Change Model
+
+Now a full dual change model with both constant and proportion change parameters. 
+
+![](https://github.com/Cdishop/website/raw/master/content/Computational_Notes/dual_change_photos/4.png)
+
+```{r, cache = T}
+
+dual_c_string <- '
+
+# latent true scores over the observed y points
+l_y1 =~ 1*y.1
+l_y2 =~ 1*y.2
+l_y3 =~ 1*y.3
+l_y4 =~ 1*y.4
+l_y5 =~ 1*y.5
+l_y6 =~ 1*y.6
+
+# latent change scores over the latent true scores
+# y1 does not get one because it is the first time point
+lc_y2 =~ 1*l_y2
+lc_y3 =~ 1*l_y3
+lc_y4 =~ 1*l_y4
+lc_y5 =~ 1*l_y5
+lc_y6 =~ 1*l_y6
+
+# autoregression of the latent true scores (the first level latent variables)
+l_y2 ~ 1*l_y1
+l_y3 ~ 1*l_y2
+l_y4 ~ 1*l_y3
+l_y5 ~ 1*l_y4
+l_y6 ~ 1*l_y5
+
+# latent intercept over the first true score of y
+latent_intercept =~ 1*l_y1
+
+# CHANGE 1 OF THE DUAL CHANGE MODEL
+
+# latent slope over the change scores
+# this is called the change factor in dual change terminology...it is not really a slope term. It is the constant change factor
+latent_slope =~ 1*lc_y2 + 1*lc_y3 + 1*lc_y4 + 1*lc_y5 + 1*lc_y6
+
+# estimate covariance between latent intercept and slope (change factor)
+
+latent_intercept ~~ latent_slope
+
+# estimate mean and variance of intercept and slope (change factor)
+
+latent_intercept ~~ latent_intercept
+latent_slope ~~ latent_slope
+
+latent_intercept ~ 1
+latent_slope ~ 1
+
+# CHANGE 2 OF THE DUAL CHANGE MODEL
+
+# autoproportion change. Relationship between true score and latent change score at next time point
+# these are estimated
+lc_y2 ~ b*l_y1
+lc_y3 ~ b*l_y2
+lc_y4 ~ b*l_y3
+lc_y5 ~ b*l_y4
+lc_y6 ~ b*l_y5
+
+# means and variances of latent factors set to zero
+
+l_y1 ~ 0
+l_y2 ~ 0
+l_y3 ~ 0
+l_y4 ~ 0
+l_y5 ~ 0
+l_y6 ~ 0
+
+l_y1 ~~ 0*l_y1
+l_y2 ~~ 0*l_y2
+l_y3 ~~ 0*l_y3
+l_y4 ~~ 0*l_y4
+l_y5 ~~ 0*l_y5
+l_y6 ~~ 0*l_y6
+
+lc_y2 ~ 0
+lc_y3 ~ 0
+lc_y4 ~ 0
+lc_y5 ~ 0
+lc_y6 ~ 0
+
+lc_y2 ~~ 0*lc_y2
+lc_y3 ~~ 0*lc_y3
+lc_y4 ~~ 0*lc_y4
+lc_y5 ~~ 0*lc_y5
+lc_y6 ~~ 0*lc_y6
+
+# means of indicators set to zero
+
+y.1 ~ 0
+y.2 ~ 0
+y.3 ~ 0
+y.4 ~ 0
+y.5 ~ 0
+y.6 ~ 0
+
+# residual variances constrained to be equal across time
+
+y.1 ~~ res_var*y.1
+y.2 ~~ res_var*y.2
+y.3 ~~ res_var*y.3
+y.4 ~~ res_var*y.4
+y.5 ~~ res_var*y.5
+y.6 ~~ res_var*y.6
+
+# Constrain latent change factors to not correlate with each other
+
+lc_y2 ~~ 0*lc_y3 + 0*lc_y4 + 0*lc_y5 + 0*lc_y6
+lc_y3 ~~ 0*lc_y4 + 0*lc_y5 + 0*lc_y6
+lc_y4 ~~ 0*lc_y5 + 0*lc_y6
+lc_y5 ~~ 0*lc_y6
+
+
+'
+
+dual_change_model <- sem(dual_c_string, data = df_wide)
+summary(dual_change_model, fit.measures = T)
+```
+
+The estimate of the constant change (called "latent slope" in my string syntax; $b_1$) is close to 0.3 and the estimate of the proportion change ($b_2$) is close to -0.4. Not bad. 
+
+
+```{r}
+
+bb_string <- '
+
+eta_y =~ 1*y.1 + 1*y.2 + 1*y.3 + 1*y.4 + 1*y.5 + 1*y.6
+
+y.2 ~ rho*y.1
+y.3 ~ rho*y.2
+y.4 ~ rho*y.3 
+y.5 ~ rho*y.4 
+y.6 ~ rho*y.5
+
+y.2 ~ 1
+y.3 ~ 1
+y.4 ~ 1
+y.5 ~ 1
+y.6 ~ 1
+
+y.1 ~~ y.1
+eta_y ~~ eta_y
+y.1 ~~ eta_y
+
+
+'
+
+bb_model <- sem(bb_string, data = df_wide)
+summary(bb_model, fit.measures = T)
+
+
+```
+
+
+## A Note On Interpreting
+
+These models predict complex change patterns. It is difficult to know the expected curvilinear pattern that the models expect without computing expected scores and plotting them. I did not do that here.
+
+Bo$^2$m =)

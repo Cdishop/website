@@ -1,24 +1,25 @@
 [0] Config.pm:302> INFO - This is Biber 2.11
 [0] Config.pm:305> INFO - Logfile is 'cv-llt.blg'
-[27] biber-darwin:313> INFO - === Thu Feb 28, 2019, 13:32:46
+[27] biber-darwin:313> INFO - === Tue Mar 12, 2019, 12:26:53
 [43] Biber.pm:371> INFO - Reading 'cv-llt.bcf'
 [116] Biber.pm:854> INFO - Using all citekeys in bib section 0
 [126] Biber.pm:3976> INFO - Processing section 0
-[133] Biber.pm:4136> INFO - Looking for bibtex format file 'own-bib.bib' for section 0
-[136] bibtex.pm:1500> INFO - LaTeX decoding ...
-[154] bibtex.pm:1316> INFO - Found BibTeX data source 'own-bib.bib'
-[180] Utils.pm:193> WARN - year field 'Under Review' in entry 'dishop2017' is not an integer - this will probably not sort properly.
-[184] Utils.pm:193> WARN - year field 'Under Review' in entry 'dishop_dynamics_principles' is not an integer - this will probably not sort properly.
-[212] Utils.pm:193> WARN - year field 'Under Review' in entry 'dishop_bu_inference' is not an integer - this will probably not sort properly.
-[240] Utils.pm:193> WARN - year field 'Under Review' in entry 'kuljanin_coding' is not an integer - this will probably not sort properly.
-[243] Utils.pm:193> WARN - year field 'Under Review' in entry 'dishop2018' is not an integer - this will probably not sort properly.
-[251] Utils.pm:193> WARN - year field 'Under Review' in entry 'dishop2018b' is not an integer - this will probably not sort properly.
-[272] Utils.pm:193> WARN - BibTeX subsystem: warning: comma(s) at end of name (removing)
-[272] Utils.pm:193> WARN - BibTeX subsystem: author, warning: comma(s) at end of name (removing)
-[309] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'variable = shifted' with 'variable = non-ignorable'
-[309] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[309] Biber.pm:3804> INFO - Sorting list 'ymdnt/global//global/global' of type 'entry' with template 'ymdnt' and locale 'en-GB'
-[309] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-GB'
-[329] bbl.pm:617> INFO - Writing 'cv-llt.bbl' with encoding 'UTF-8'
-[348] bbl.pm:720> INFO - Output to cv-llt.bbl
-[348] Biber.pm:110> INFO - WARNINGS: 8
+[134] Biber.pm:4136> INFO - Looking for bibtex format file 'own-bib.bib' for section 0
+[135] bibtex.pm:1500> INFO - LaTeX decoding ...
+[156] bibtex.pm:1316> INFO - Found BibTeX data source 'own-bib.bib'
+[184] Utils.pm:193> WARN - year field 'In Press' in entry 'xu_dynamics' is not an integer - this will probably not sort properly.
+[203] Utils.pm:193> WARN - year field 'Under Review' in entry 'dishop2017' is not an integer - this will probably not sort properly.
+[220] Utils.pm:193> WARN - year field 'Under Review' in entry 'dishop_bu_inference' is not an integer - this will probably not sort properly.
+[227] Utils.pm:193> WARN - year field 'Under Review' in entry 'dishop2018b' is not an integer - this will probably not sort properly.
+[250] Utils.pm:193> WARN - year field 'Under Review' in entry 'dishop_dynamics_principles' is not an integer - this will probably not sort properly.
+[270] Utils.pm:193> WARN - year field 'Under Review' in entry 'kuljanin_coding' is not an integer - this will probably not sort properly.
+[273] Utils.pm:193> WARN - year field 'Under Review' in entry 'dishop2018' is not an integer - this will probably not sort properly.
+[279] Utils.pm:193> WARN - BibTeX subsystem: warning: comma(s) at end of name (removing)
+[279] Utils.pm:193> WARN - BibTeX subsystem: author, warning: comma(s) at end of name (removing)
+[319] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'variable = shifted' with 'variable = non-ignorable'
+[319] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[319] Biber.pm:3804> INFO - Sorting list 'ymdnt/global//global/global' of type 'entry' with template 'ymdnt' and locale 'en-GB'
+[319] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-GB'
+[340] bbl.pm:617> INFO - Writing 'cv-llt.bbl' with encoding 'UTF-8'
+[360] bbl.pm:720> INFO - Output to cv-llt.bbl
+[360] Biber.pm:110> INFO - WARNINGS: 9

@@ -59,18 +59,18 @@ sample_df &lt;- df %&gt;%
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -2.87711 -0.72689  0.04003  0.67465  2.72290 
+## -2.85451 -0.66562 -0.02489  0.72372  3.03794 
 ## 
 ## Coefficients:
-##              Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) -0.025447   0.040509  -0.628     0.53    
-## stress       0.458064   0.007888  58.073   &lt;2e-16 ***
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 0.049990   0.041190   1.214    0.225    
+## stress      0.433918   0.008203  52.897   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 0.9923 on 598 degrees of freedom
-## Multiple R-squared:  0.8494, Adjusted R-squared:  0.8491 
-## F-statistic:  3372 on 1 and 598 DF,  p-value: &lt; 2.2e-16</code></pre>
+## Residual standard error: 1.007 on 598 degrees of freedom
+## Multiple R-squared:  0.8239, Adjusted R-squared:  0.8236 
+## F-statistic:  2798 on 1 and 598 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <div id="b-compute-the-ci" class="section level3">
 <h3>2b) Compute the CI</h3>
@@ -95,7 +95,7 @@ if(se_lower &lt;= stress_performance_coefficient &amp;&amp; se_upper &gt;= stres
 }
 
 contain_parameter</code></pre>
-<pre><code>## [1] &quot;yes&quot;</code></pre>
+<pre><code>## [1] &quot;no&quot;</code></pre>
 <p>What did we do? We sampled the population, ran a regression to relate stress to performance, and then calculated a CI on the slope term. The interpretation of a CI, however, is across infinite samples. Now we need to run through the sample, regress, and calculate CI procedure again and again and again – Monte Carlo.</p>
 </div>
 </div>

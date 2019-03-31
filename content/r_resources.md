@@ -74,6 +74,8 @@ weight = 3
 
 [Growth models with lme and lmer](http://rpsychologist.com/r-guide-longitudinal-lme-lmer)
 
+[Purrr tutorial](https://emoriebeck.github.io/R-tutorials/purrr/)
+
 # Commands and help for non-R programming
 
 [Compress compiled pdf in terminal](https://raw.githubusercontent.com/Cdishop/alumn/master/newsletter/compress_pdf_syntax.txt)

@@ -849,7 +849,7 @@
       \field{title}{The Effects of Differing Conversation Types on Bystanders}
       \field{year}{2014}
     \endentry
-    \entry{bb_coding}{article}{}
+    \entry{bb_coding}{misc}{}
       \name{author}{2}{}{%
         {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
            family={Dishop},
@@ -876,34 +876,10 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Bollen and Brand's Approach to Modeling Dynamics While Attending to Dynamic Panel Bias}
+      \field{title}{[On dynamic modeling]}
       \field{year}{Under review}
     \endentry
-    \entry{dishop2018b}{article}{}
-      \name{author}{1}{}{%
-        {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
-           family={Dishop},
-           familyi={D\bibinitperiod},
-           given={Christopher\bibnamedelima R},
-           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
-           givenun=0}}%
-      }
-      \strng{namehash}{c8fe28d689bd437108386244656b6e94}
-      \strng{fullhash}{c8fe28d689bd437108386244656b6e94}
-      \strng{bibnamehash}{c8fe28d689bd437108386244656b6e94}
-      \strng{authorbibnamehash}{c8fe28d689bd437108386244656b6e94}
-      \strng{authornamehash}{c8fe28d689bd437108386244656b6e94}
-      \strng{authorfullhash}{c8fe28d689bd437108386244656b6e94}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Goal Sampling Theory}
-      \field{year}{Under Review}
-    \endentry
-    \entry{dishop_bu_inference}{article}{}
+    \entry{dishop_bu_inference}{misc}{}
       \name{author}{4}{}{%
         {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
            family={Dishop},
@@ -942,10 +918,10 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Between-Unit Inferences With Longitudinal Data}
+      \field{title}{[On inferences with longitudinal data]}
       \field{year}{Under Review}
     \endentry
-    \entry{dishop2018}{article}{}
+    \entry{dishop2018}{misc}{}
       \name{author}{2}{}{%
         {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
            family={Dishop},
@@ -972,10 +948,10 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{The Difficulty of Directionality with Longitudinal Data}
+      \field{title}{[On directional inferences]}
       \field{year}{Under Review}
     \endentry
-    \entry{dishop2017}{article}{}
+    \entry{dishop2017}{misc}{}
       \name{author}{4}{}{%
         {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
            family={Dishop},
@@ -1014,10 +990,10 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Predicting Turnover: The Moderating Effect of Functional Climates on Emotional Exhaustion and Work Attitudes}
+      \field{title}{[On turnover and work attitudes]}
       \field{year}{Under Review}
     \endentry
-    \entry{dishop_dynamics_principles}{article}{}
+    \entry{dishop_dynamics_principles}{misc}{}
       \name{author}{3}{}{%
         {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
            family={Dishop},
@@ -1050,10 +1026,10 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Principles For Taking A Dynamic Perspective}
+      \field{title}{[On dynamics as a set of ideas]}
       \field{year}{Under Review}
     \endentry
-    \entry{kuljanin_coding}{article}{}
+    \entry{kuljanin_coding}{misc}{}
       \name{author}{4}{}{%
         {{uniquename=0,uniquepart=base,hash=79188ab8c9d801252e8f1b120df58f01}{%
            family={Kuljanin},
@@ -1093,7 +1069,7 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{A Collection of Data Management Principles for Open, Transparent, and Reproducible Research}
+      \field{title}{[On data management]}
       \field{year}{Under Review}
     \endentry
   \enddatalist

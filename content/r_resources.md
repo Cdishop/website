@@ -38,6 +38,8 @@ weight = 3
 
 [Nathaniel D. Phillips](https://bookdown.org/ndphillips/YaRrr/)
 
+[The R Graph Gallery](https://www.r-graph-gallery.com/all-graphs/)
+
 # In-person courses posted on web
 
 [Applied Statistical Computing Course](http://had.co.nz/stat480.1.html)
@@ -75,6 +77,8 @@ weight = 3
 [Growth models with lme and lmer](http://rpsychologist.com/r-guide-longitudinal-lme-lmer)
 
 [Purrr tutorial](https://emoriebeck.github.io/R-tutorials/purrr/)
+
+[Top 50 ggplot2 Visualizations](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
 
 # Commands and help for non-R programming
 

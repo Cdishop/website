@@ -1,0 +1,11 @@
+---
+title: "Convert Multiple Columns to Numeric"
+output: pdf_document
+date: "2019-04-10"
+---
+
+
+
+<p>Quick piece of code that turns all selected columns to numeric in R.</p>
+<pre class="r"><code>df[, c(&#39;col1&#39;, &#39;col2&#39;)] &lt;- as.numeric(as.character(unlist(df[, c(&#39;col1&#39;, &#39;col2&#39;)])))</code></pre>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>

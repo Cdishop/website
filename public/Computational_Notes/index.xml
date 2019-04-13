@@ -6,10 +6,20 @@
     <description>Recent content in Computational_Notes on Christopher Dishop</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 18 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 10 Apr 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/computational_notes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Convert Multiple Columns to Numeric</title>
+      <link>/computational_notes/convert_numeric/</link>
+      <pubDate>Wed, 10 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/convert_numeric/</guid>
+      <description>Quick piece of code that turns all selected columns to numeric in R.
+df[, c(&amp;#39;col1&amp;#39;, &amp;#39;col2&amp;#39;)] &amp;lt;- as.numeric(as.character(unlist(df[, c(&amp;#39;col1&amp;#39;, &amp;#39;col2&amp;#39;)]))) Bo\(^2\)m =)</description>
+    </item>
     
     <item>
       <title>Bivariate Latent Dual Change Model</title>

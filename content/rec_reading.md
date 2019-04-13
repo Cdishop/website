@@ -608,6 +608,27 @@ Edward R. Tufte
 
 
 
+*The Most Good You Can Do*
+
+Peter Singer
+
+[Click here for link](https://www.amazon.com/Most-Good-You-Can-Effective/dp/0300180276/ref=sr_1_1?keywords=the+most+good+you+can+do&qid=1555122359&s=gateway&sr=8-1)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/good.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 *Complex Adaptive Systems: An Introduction to Computational Models of Social Life*
 
 John H. Miller
@@ -712,6 +733,31 @@ Bryan F.J. Manly
 [Click here for link](https://www.amazon.com/Randomization-Bootstrap-Methods-Biology-Statistical/dp/1584885416/ref=sr_1_sc_1?s=books&ie=UTF8&qid=1524679208&sr=1-1-spell&keywords=randomization+boostrap+monte+carlo)
 
 ![](https://github.com/Cdishop/website/raw/master/misc/books/randomization.png)
+
+
+
+
+
+
+
+
+
+
+*The Expanding Circle: Ethics, Evolution, and Moral Progress*
+
+Peter Singer
+
+[Click here for link](https://www.amazon.com/Expanding-Circle-Ethics-Evolution-Progress/dp/0691150699/ref=sr_1_1?keywords=the+expanding+circle&qid=1555122466&s=gateway&sr=8-1)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/expanding_circle.png)
+
+
+
+
+
+
+
+
 
 
 
@@ -1173,6 +1219,24 @@ E. B. White
 [Click here for link](https://www.amazon.com/Elements-Style-Fourth-William-Strunk/dp/020530902X/ref=sr_1_3?ie=UTF8&qid=1529323689&sr=8-3&keywords=elements+of+style)
 
 ![](https://github.com/Cdishop/website/raw/master/misc/books/elements_style.png)
+
+
+
+
+
+
+
+
+*The Life You Can Save*
+
+Peter Singer
+
+[Click here for link](https://www.amazon.com/Life-You-Can-Save-2010-09-14/dp/B01N3MESKP/ref=sr_1_2?keywords=the+life+you+can+save&qid=1555122514&s=gateway&sr=8-2)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/life_save.png)
+
+
+
 
 
 

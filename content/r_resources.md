@@ -40,6 +40,10 @@ weight = 3
 
 [The R Graph Gallery](https://www.r-graph-gallery.com/all-graphs/)
 
+[UC R Guide](http://uc-r.github.io/introduction)
+
+[Crump Lab](https://crumplab.github.io/Courses.html)
+
 # In-person courses posted on web
 
 [Applied Statistical Computing Course](http://had.co.nz/stat480.1.html)

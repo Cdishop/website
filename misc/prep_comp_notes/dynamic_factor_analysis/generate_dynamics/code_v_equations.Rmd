@@ -169,8 +169,12 @@ Remember, I have 6 manifest observations per time point (3 for affect, 3 for per
 $\textbf{V}_t$ is the shock and it follows a multivariate normal with means zero and #latent x #latent (qxq) covariance
 
 ```{r}
-shock[,i]=t(rmvnorm(1,c(0,0),latent_covariance))
+shock[,i]=t(rmvnorm(1,c(0,0),latent_covariance)) # on the "shock or dynamic noise"
 ```
+
+Latent covariance is when I sample my shock or dynamic noises. If I sampled those from a multivariate with a covariance I could do the same thing.
+
+
 
 $\textbf{f}_{t-l}$ is a #latent x 1 (qx1) vector of factors l occasions prior to occasion t. So a matrix of all factors that are lagged
 
@@ -183,8 +187,11 @@ latent_now[,i]=autos_crosslags%*%latent_prior+shock[,i]
 $\textbf{e}_t$ is a #manifest x 1 (px1) vector with measurement errors following a multivariate normal with mean zeros and #manifest x #manifest (pxp) covariance matrix
 
 ```{r}
-e[,i]=t(rmvnorm(1,c(0,0,0,0,0,0),manifest_covariance))
+e[,i]=t(rmvnorm(1,c(0,0,0,0,0,0),manifest_covariance)) # 'mesaurement error noise terms""
 ```
+
+Manifest covariance is the measurement error noise terms. If I sampled those from a multivariate normal I could get the same thing.
+
 
 $\omega$ is a #manifest x #latent (pxq) factor loading matrix. $\textbf{y}_t$ is a #manifest x 1 (px1) vector of manifest variables
 

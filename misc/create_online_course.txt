@@ -1,0 +1,23 @@
+# 1
+
+Create new repository with name.github.io
+
+# 2
+
+Clone
+
+# 3
+
+Copy over material from jebrynes:
+
+https://github.com/jebyrnes/semclass
+https://jebyrnes.github.io/semclass/
+
+https://github.com/biol607/biol607.github.io/
+https://biol607.github.io
+
+# git add and push back up
+
+# website might take some time to load
+
+# if issues, go to settings and check which branch the website is publishing from

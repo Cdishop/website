@@ -38,23 +38,25 @@ weight = 3
 
 [Nathaniel D. Phillips](https://bookdown.org/ndphillips/YaRrr/)
 
+[Simon Ejdemyr](https://sejdemyr.github.io)
+
 [The R Graph Gallery](https://www.r-graph-gallery.com/all-graphs/)
 
 [UC R Guide](http://uc-r.github.io/introduction)
 
 [Crump Lab](https://crumplab.github.io/Courses.html)
 
-# In-person courses posted on web
+# Courses
 
 [Applied Statistical Computing Course](http://had.co.nz/stat480.1.html)
 
-# Online courses
+[BioStates by Jarrett Byrnes](https://biol607.github.io/index.html)
 
 [Introduction to Bayes in DataCamp (free course)](https://www.datacamp.com/community/open-courses/beginning-bayes-in-r)
 
 [Data Analysis and Statistical Inference on Data Camp](https://www.datacamp.com/community/open-courses/statistical-inference-and-data-analysis)
 
-# Specific stuff on a website page
+# Random
 
 [R club](https://blogs.uoregon.edu/rclub/)
 
@@ -83,6 +85,30 @@ weight = 3
 [Purrr tutorial](https://emoriebeck.github.io/R-tutorials/purrr/)
 
 [Top 50 ggplot2 Visualizations](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
+
+# Structural Equations Modeling
+
+[lavaan homepage](http://lavaan.ugent.be)
+
+[Measurement Equivalence](https://groups.google.com/forum/#!topic/lavaan/oKwP0_6-i1g)
+
+# Progressing Through Stats with R
+
+[Basics of R and R Markdown](https://ismayc.github.io/rbasics-book/index.html)
+
+[Basics of Git and Github with R](https://happygitwithr.com)
+
+[R for Data Science](https://r4ds.had.co.nz)
+
+[Statistical Inference](https://leanpub.com/LittleInferenceBook/read)
+
+[Regression](https://leanpub.com/regmods/read)
+
+[Econometrics](https://bookdown.org/ccolonescu/RPoE4/)
+
+[Time series and forecasting](https://otexts.org/fpp2/)
+
+[Data Visualization](https://serialmentor.com/dataviz/)
 
 # Commands and help for non-R programming
 

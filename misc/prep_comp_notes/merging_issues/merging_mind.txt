@@ -1,0 +1,17 @@
+merging issues:
+
+# survey type indicator
+
+# same variable different sampling periods
+
+# not character joiner
+
+# dates are not identical
+
+# multiple date columns (e.g., date and mission day)
+
+
+
+merge mission day over to m5_weekly
+
+expand to include 

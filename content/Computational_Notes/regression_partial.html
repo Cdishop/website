@@ -7,21 +7,21 @@ date: "2019-04-19"
 
 
 <p>In regression, everything is partialled from everything. Let’s work through that notion with images and code. Imagine that emotion and ability cause an outcome, <span class="math inline">\(Y\)</span>.</p>
-<p><img src="https://github.com/Cdishop/website/raw/master/content/Computational_Notes/partial_images/partial_variance.png" /></p>
+<p><img src="https://github.com/Cdishop/website/raw/master/content/Computational_Notes/partial_images/partial_variance.png" width="200" /></p>
 <p>What this image represents is that <span class="math inline">\(Y\)</span> has variability (across people or time), and its variability is associated with variability in emotion and variability in ability. Notice that there is variability overlap between ability and <span class="math inline">\(Y\)</span>,</p>
-<p><img src="https://github.com/Cdishop/website/raw/master/content/Computational_Notes/partial_images/here1.png" /></p>
+<p><img src="https://github.com/Cdishop/website/raw/master/content/Computational_Notes/partial_images/here1.png" width="200" /></p>
 <p>emotion and <span class="math inline">\(Y\)</span>,</p>
-<p><img src="https://github.com/Cdishop/website/raw/master/content/Computational_Notes/partial_images/here2.png" /></p>
+<p><img src="https://github.com/Cdishop/website/raw/master/content/Computational_Notes/partial_images/here2.png" width="200" /></p>
 <p>emotion and ability,</p>
-<p><img src="https://github.com/Cdishop/website/raw/master/content/Computational_Notes/partial_images/here3.png" /></p>
+<p><img src="https://github.com/Cdishop/website/raw/master/content/Computational_Notes/partial_images/here3.png" width="200" /></p>
 <p>and all three variables.</p>
-<p><img src="https://github.com/Cdishop/website/raw/master/content/Computational_Notes/partial_images/here4.png" /></p>
+<p><img src="https://github.com/Cdishop/website/raw/master/content/Computational_Notes/partial_images/here4.png" width="200" /></p>
 <p>Once we regress <span class="math inline">\(Y\)</span> on emotion and ability, the regression coefficients represent the unique variance components of each predictor</p>
-<p><img src="https://github.com/Cdishop/website/raw/master/content/Computational_Notes/partial_images/partial_coefficients.png" /></p>
+<p><img src="https://github.com/Cdishop/website/raw/master/content/Computational_Notes/partial_images/partial_coefficients.png" width="200" /></p>
 <p>but the technique also removes outcome-relevant variance</p>
-<p><img src="https://github.com/Cdishop/website/raw/master/content/Computational_Notes/partial_images/partial_no_middle.png" /></p>
+<p><img src="https://github.com/Cdishop/website/raw/master/content/Computational_Notes/partial_images/partial_no_middle.png" width="200" /></p>
 <p>and overlapping variance in emotion and ability not related to the outcome.</p>
-<p><img src="https://github.com/Cdishop/website/raw/master/content/Computational_Notes/partial_images/partial_full_partial.png" /></p>
+<p><img src="https://github.com/Cdishop/website/raw/master/content/Computational_Notes/partial_images/partial_full_partial.png" width="200" /></p>
 <p>So, in regression we get coefficients that represent the unique variance contribution of each predictor while partialling overlapping, outcome-relevant variance and overlapping, non-relevant variance. Emotion and ability get to account for their own causal effects of <span class="math inline">\(Y\)</span>, but neither predictor gets the overlapping variance in <span class="math inline">\(Y\)</span>, and the emotion and ability coefficients are adjusted for the emotion-ability overlap situated outside <span class="math inline">\(Y\)</span>.</p>
 <p>Let’s do it with code.</p>
 <p>Our sample contains 500 people with correlated emotion and ability (<span class="math inline">\(r\)</span> = 0.4).</p>
@@ -39,47 +39,14 @@ Y &lt;- 2 + 0.5*ability + 0.38*emotion + error</code></pre>
 )
 
 summary(lm(y ~ ability + emotion,
-           data = df))</code></pre>
-<pre><code>## 
-## Call:
-## lm(formula = y ~ ability + emotion, data = df)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -3.0999 -0.6397  0.0183  0.6718  3.2326 
-## 
-## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)  2.00376    0.04376   45.79   &lt;2e-16 ***
-## ability      0.46385    0.04189   11.07   &lt;2e-16 ***
-## emotion      0.39235    0.01751   22.41   &lt;2e-16 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 0.9784 on 497 degrees of freedom
-## Multiple R-squared:  0.9705, Adjusted R-squared:  0.9704 
-## F-statistic:  8178 on 2 and 497 DF,  p-value: &lt; 2.2e-16</code></pre>
+           data = df))$coefficients[,1]</code></pre>
+<pre><code>## (Intercept)     ability     emotion 
+##   2.0037630   0.4638481   0.3923535</code></pre>
 <p>Remember, each coefficient is consistent with the “lightning bolt” variance components above. Outcome-relevant overlap is removed and overlap between emotion and ability is removed. Since emotion and ability are partialled from each other, we won’t recover the 0.38 parameter relating emotion to <span class="math inline">\(Y\)</span> if we remove ability from the equation.</p>
 <pre class="r"><code>summary(lm(y ~ emotion,
-           data = df))</code></pre>
-<pre><code>## 
-## Call:
-## lm(formula = y ~ emotion, data = df)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -3.1581 -0.6851 -0.0294  0.7663  3.8647 
-## 
-## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) 2.010911   0.048809    41.2   &lt;2e-16 ***
-## emotion     0.579582   0.005074   114.2   &lt;2e-16 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 1.091 on 498 degrees of freedom
-## Multiple R-squared:  0.9632, Adjusted R-squared:  0.9632 
-## F-statistic: 1.305e+04 on 1 and 498 DF,  p-value: &lt; 2.2e-16</code></pre>
+           data = df))$coefficients[,1]</code></pre>
+<pre><code>## (Intercept)     emotion 
+##   2.0109106   0.5795823</code></pre>
 <p>How can we modify our variables to represent the “partialled multiple regression coefficient” for emotion? Naively, it seems that if we remove ability from <span class="math inline">\(Y\)</span> and then regress <span class="math inline">\(Y\)</span> on emotion we will recover the appropriate 0.38 parameter. Let’s try.</p>
 <p>Regress <span class="math inline">\(Y\)</span> on just ability</p>
 <pre class="r"><code>just_ability &lt;- lm(y ~ ability,
@@ -89,27 +56,11 @@ summary(lm(y ~ ability + emotion,
 df$y_with_ability_removed &lt;- y_with_ability_removed
 
 summary(lm(y_with_ability_removed ~ emotion,
-           data = df))</code></pre>
-<pre><code>## 
-## Call:
-## lm(formula = y_with_ability_removed ~ emotion, data = df)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -3.9454 -0.9496  0.0409  0.8816  4.4719 
-## 
-## Coefficients:
-##              Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) -0.001691   0.060918  -0.028    0.978    
-## emotion      0.026478   0.006333   4.181 3.43e-05 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 1.362 on 498 degrees of freedom
-## Multiple R-squared:  0.03391,    Adjusted R-squared:  0.03197 
-## F-statistic: 17.48 on 1 and 498 DF,  p-value: 3.428e-05</code></pre>
+           data = df))$coefficients[,1]</code></pre>
+<pre><code>##  (Intercept)      emotion 
+## -0.001690945  0.026478181</code></pre>
 <p>Nope. Why not? Think back to the diagrams, what we just assessed was</p>
-<p><img src="https://github.com/Cdishop/website/raw/master/content/Computational_Notes/partial_images/remove_ability.png" /></p>
+<p><img src="https://github.com/Cdishop/website/raw/master/content/Computational_Notes/partial_images/remove_ability.png" width="200" /></p>
 <p>where the estimate accounts for the <span class="math inline">\(Y\)</span>-relevant overlap of emotion and ability, but it is wrong because it doesn’t account for the overlap between emotion and ability situated outside of <span class="math inline">\(Y\)</span>. In regression, everything is partialled from everything…we have not yet accounted for the overlap between emotion and ability in the space not in the <span class="math inline">\(Y\)</span> variance sphere. Now we will.</p>
 <p>Partial ability from emotion</p>
 <pre class="r"><code>emotion_with_ability_removed &lt;- resid(lm(emotion ~ ability,
@@ -118,28 +69,11 @@ summary(lm(y_with_ability_removed ~ emotion,
 df$emotion_with_ability_removed &lt;- emotion_with_ability_removed</code></pre>
 <p>and now when we regress “Y with ability removed” on “emotion with ability removed” we will recover the 0.38 parameter.</p>
 <pre class="r"><code>summary(lm(y_with_ability_removed ~ emotion_with_ability_removed,
-           data = df))</code></pre>
-<pre><code>## 
-## Call:
-## lm(formula = y_with_ability_removed ~ emotion_with_ability_removed, 
-##     data = df)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -3.0999 -0.6397  0.0183  0.6718  3.2326 
-## 
-## Coefficients:
-##                               Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)                  1.050e-16  4.371e-02    0.00        1    
-## emotion_with_ability_removed 3.924e-01  1.749e-02   22.43   &lt;2e-16 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 0.9775 on 498 degrees of freedom
-## Multiple R-squared:  0.5025, Adjusted R-squared:  0.5015 
-## F-statistic: 503.1 on 1 and 498 DF,  p-value: &lt; 2.2e-16</code></pre>
+           data = df))$coefficients[,1]</code></pre>
+<pre><code>##                  (Intercept) emotion_with_ability_removed 
+##                 1.050257e-16                 3.923535e-01</code></pre>
 <p>In regression, everything is partialled from everything.</p>
-<p><img src="https://github.com/Cdishop/website/raw/master/content/Computational_Notes/partial_images/partial_full_partial.png" /></p>
+<p><img src="https://github.com/Cdishop/website/raw/master/content/Computational_Notes/partial_images/partial_full_partial.png" width="200" /></p>
 <p>The technique partials overlapping predictor variance both within and outside of the <span class="math inline">\(Y\)</span> space. Neither predictor accounts for overlapping variance within <span class="math inline">\(Y\)</span>, and if an important predictor is excluded then it will artificially account for variance it shouldn’t be capturing.</p>
 <p>Note that all of this is relevant for III sums of squares…there are other approaches but III is by far the most common.</p>
 <p>Bo<span class="math inline">\(^2\)</span>m =)</p>

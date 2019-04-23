@@ -6,10 +6,23 @@
     <description>Recent content in Computational_Notes on Christopher Dishop</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 10 Apr 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 19 Apr 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/computational_notes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Everything Partialled From Everything in Regression</title>
+      <link>/computational_notes/regression_partial/</link>
+      <pubDate>Fri, 19 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/regression_partial/</guid>
+      <description>In regression, everything is partialled from everything. Let’s work through that notion with images and code. Imagine that emotion and ability cause an outcome, \(Y\).
+What this image represents is that \(Y\) has variability (across people or time), and its variability is associated with variability in emotion and variability in ability. Notice that there is variability overlap between ability and \(Y\),
+emotion and \(Y\),
+emotion and ability,
+and all three variables.</description>
+    </item>
     
     <item>
       <title>Convert Multiple Columns to Numeric</title>

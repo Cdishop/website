@@ -1,0 +1,140 @@
+---
+title: "Everything Partialled From Everything in Regression"
+output: pdf_document
+date: "2019-04-19"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F, message = F, cache = T)
+library(tidyverse)
+```
+
+In regression, everything is partialled from everything. Let's work through that notion with images and code. Imagine that emotion and ability cause an outcome, $Y$.
+
+![](partial_images/partial_variance.png)
+
+What this image represents is that $Y$ has variability (across people or time), and its variability is associated with variability in emotion and variability in ability. Notice that there is variability overlap between ability and $Y$,
+
+![](partial_images/here1.png)
+
+emotion and $Y$,
+
+
+![](partial_images/here2.png)
+
+emotion and ability,
+
+
+![](partial_images/here3.png)
+
+
+and all three variables. 
+
+![](partial_images/here4.png)
+
+Once we regress $Y$ on emotion and ability, the regression coefficients represent the unique variance components of each predictor
+
+![](partial_images/partial_coefficients.png)
+
+but the technique also removes outcome-relevant variance
+
+![](partial_images/partial_no_middle.png)
+
+and overlapping variance in emotion and ability not related to the outcome.
+
+![](partial_images/partial_full_partial.png)
+
+So, in regression we get coefficients that represent the unique variance contribution of each predictor while partialling overlapping, outcome-relevant variance and overlapping, non-relevant variance. Emotion and ability get to account for their own causal effects of $Y$, but neither predictor gets the overlapping variance in $Y$, and the emotion and ability coefficients are adjusted for the emotion-ability overlap situated outside $Y$. 
+
+Let's do it with code. 
+
+Our sample contains 500 people with correlated emotion and ability ($r$ = 0.4). 
+
+```{r}
+people <- 500
+emotion <- rnorm(people, 0, 10)
+ability <- 0.4*emotion + rnorm(people, 0, 1) # could also do it with MASS
+
+```
+
+Ability and emotion cause $Y$.
+
+```{r}
+error <- rnorm(people, 0, 1)
+Y <- 2 + 0.5*ability + 0.38*emotion + error
+```
+
+Regression will recover the parameters.
+
+```{r}
+df <- data.frame(
+  'emotion' = c(emotion),
+  'ability' = c(ability),
+  'y' = c(Y)
+)
+
+summary(lm(y ~ ability + emotion,
+           data = df))
+```
+
+Remember, each coefficient is consistent with the "lightning bolt" variance components above. Outcome-relevant overlap is removed and overlap between emotion and ability is removed. Since emotion and ability are partialled from each other, we won't recover the 0.38 parameter relating emotion to $Y$ if we remove ability from the equation.
+
+```{r}
+summary(lm(y ~ emotion,
+           data = df))
+```
+
+How can we modify our variables to represent the "partialled multiple regression coefficient" for emotion? Naively, it seems that if we remove ability from $Y$ and then regress $Y$ on emotion we will recover the appropriate 0.38 parameter. Let's try.
+
+Regress $Y$ on just ability
+
+```{r}
+just_ability <- lm(y ~ ability,
+               data = df)
+
+```
+
+and take the residuals, meaning that in our next regression we will examine the effect of emotion on "leftover $Y$" -- $Y$ with no influence from ability. 
+
+```{r}
+y_with_ability_removed <- resid(just_ability)
+df$y_with_ability_removed <- y_with_ability_removed
+
+summary(lm(y_with_ability_removed ~ emotion,
+           data = df))
+
+```
+
+Nope. Why not? Think back to the diagrams, what we just assessed was
+
+![](partial_images/remove_ability.png)
+
+
+where the estimate accounts for the $Y$-relevant overlap of emotion and ability, but it is wrong because it doesn't account for the overlap between emotion and ability situated outside of $Y$. In regression, everything is partialled from everything...we have not yet accounted for the overlap between emotion and ability in the space not in the $Y$ variance sphere. Now we will.
+
+Partial ability from emotion
+
+```{r}
+emotion_with_ability_removed <- resid(lm(emotion ~ ability,
+                                         data = df))
+
+df$emotion_with_ability_removed <- emotion_with_ability_removed
+```
+
+and now when we regress "Y with ability removed" on "emotion with ability removed" we will recover the 0.38 parameter.
+
+```{r}
+summary(lm(y_with_ability_removed ~ emotion_with_ability_removed,
+           data = df))
+```
+
+In regression, everything is partialled from everything. 
+
+![](partial_images/partial_full_partial.png)
+
+The technique partials overlapping predictor variance both within and outside of the $Y$ space. Neither predictor accounts for overlapping variance within $Y$, and if an important predictor is excluded then it will artificially account for variance it shouldn't be capturing. 
+
+Note that all of this is relevant for III sums of squares...there are other approaches but III is by far the most common.
+
+Bo$^2$m =)
+

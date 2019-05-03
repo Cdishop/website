@@ -126,7 +126,7 @@ ggplot(df2, aes(x = x, y = y, color = model)) +
   geom_line() + 
   theme_classic() + 
   theme(legend.position = 'non') + 
-  ggtitle('All equally plausible lines for y = mx + b') + 
+  ggtitle('All equally plausible lines for y = mx + 2') + 
   theme(axis.text = element_blank())
   
 

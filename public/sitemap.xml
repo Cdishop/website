@@ -115,6 +115,21 @@
   </url>
   
   <url>
+    <loc>/computational_notes/explaining_statistics/</loc>
+    <lastmod>2018-05-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/computational_notes/lavaan_mplus/</loc>
+    <lastmod>2018-05-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/computational_notes/degrees_freedom/</loc>
+    <lastmod>2018-05-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/computational_notes/latent_growth/</loc>
     <lastmod>2018-04-15T00:00:00+00:00</lastmod>
   </url>

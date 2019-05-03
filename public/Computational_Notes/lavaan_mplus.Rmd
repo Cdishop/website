@@ -1,0 +1,145 @@
+---
+title: "Lavaan MPLUS Reference Sheet"
+date: "2018-05-02"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F, warning = F, message = F)
+library(tidyverse)
+library(ggplot2)
+```
+
+A growth curve model written in lavaan and MPLUS as a syntax reference guide. Imagine a latent growth curve on affect across 4 time points. First, `lavaan` code:
+
+```{r, echo = F}
+
+library(tidyverse)
+library(ggplot2)
+library(MASS)
+
+N <- 400
+time <- 6
+
+intercept <- 4
+linear_growth <- -0.6
+
+df_matrix <- matrix(, nrow = N*time, ncol = 3)
+
+count <- 0
+
+for(i in 1:400){
+  
+  unob_het_affect <- rnorm(1,0,3)
+
+  
+  for(j in 1:6){
+    
+    count <- count + 1
+    
+    if(j == 1){
+      
+      df_matrix[count, 1] <- i
+      df_matrix[count, 2] <- j
+      df_matrix[count, 3] <- intercept + unob_het_affect + rnorm(1,0,1)
+    }else{
+      
+      
+      df_matrix[count, 1] <- i
+      df_matrix[count, 2] <- j
+      df_matrix[count, 3] <- intercept + linear_growth*j + unob_het_affect + rnorm(1,0,1)
+      
+    }
+    
+    
+    
+  }
+  
+  
+}
+
+df <- data.frame(df_matrix)
+names(df) <- c('id', 'time', 'affect')
+df_wide <- reshape(df, idvar = 'id', timevar = 'time', direction = 'wide')
+
+```
+
+```{r}
+
+lavaan_string <- '
+
+# Latent intercept and slope factors
+
+intercept_affect =~ 1*affect.1 + 1*affect.2 + 1*affect.3 + 1*affect.4
+slope_affect =~ 0*affect.1 + 1*affect.2 + 2*affect.3 + 3*affect.4
+
+# Mean and variance of latent factors
+
+intercept_affect ~~ intercept_affect
+slope_affect ~~ slope_affect
+
+# Covariance between latent factors
+
+intercept_affect ~~ slope_affect
+
+# Fix observed variable means to 0
+
+affect.1 ~ 0
+affect.2 ~ 0
+affect.3 ~ 0
+affect.4 ~ 0
+
+# Constrain residual (error) variance of observed variables to equality across time
+
+affect.1 ~~ res_var*affect.1
+affect.2 ~~ res_var*affect.2
+affect.3 ~~ res_var*affect.3
+affect.4 ~~ res_var*affect.4
+
+
+'
+```
+
+Now the same thing in MPLUS syntax:
+
+```{r}
+mplus_string <- '
+
+
+        ! Latent intercept and slope factors
+        intercept_affect BY affect.1@1 affect.2@1 affect.3@1 affect.4@1;
+        slope_affect BY affect.1@0 affect.2@1 affect.3@3 affect.4@5;
+
+
+        ! estimate mean of latent intercept
+        [intercept_affect];
+
+        ! estimate mean of latent slope
+        [slope_affect]
+
+        ! estimate variance of intercept
+        intercept_affect;
+
+        ! estimate variance of slope
+        slope_affect;
+
+        ! covariance between intercept and slope
+        intercept_affect WITH slope_affect;
+
+        ! Fix observed variable means to 0 so we can estimate a mean for the latent variable
+        [affect.1@0 affect.2@0 affect.3@0 affect.4@0];
+
+
+        ! constrain estimates of residual variances to be equivalent at each time point
+        affect.1(res_var); affect.2(res_var); affect.3(res_var); affect.4(res_var);
+
+
+
+'
+```
+
+
+
+
+Bo$^2$m =)
+

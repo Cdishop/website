@@ -27,8 +27,7 @@
       
       <guid>/computational_notes/lavaan_mplus/</guid>
       <description>A growth curve model written in lavaan and MPLUS as a syntax reference guide. Imagine a latent growth curve on affect across 4 time points. First, lavaan code:
-Now the same thing in MPLUS syntax:
-Bo\(^2\)m =)</description>
+lavaan_string &amp;lt;- &amp;#39; # Latent intercept and slope factors intercept_affect =~ 1*affect.1 + 1*affect.2 + 1*affect.3 + 1*affect.4 slope_affect =~ 0*affect.1 + 1*affect.2 + 2*affect.3 + 3*affect.4 # Mean and variance of latent factors intercept_affect ~~ intercept_affect slope_affect ~~ slope_affect # Covariance between latent factors intercept_affect ~~ slope_affect # Fix observed variable means to 0 affect.</description>
     </item>
     
     <item>
@@ -39,7 +38,7 @@ Bo\(^2\)m =)</description>
       <guid>/computational_notes/degrees_freedom/</guid>
       <description>This post is about building intuition for degrees of freedom. There are two ways to think about it, the “information” way and the “line” way.
 The Information Way The quantity, degrees of freedom, is the amount of information available in our data set minus the amount of information we want to pull from it. Here are a bunch of different ways of representing that idea:
-\[\begin{equation} \textremove{DF} = \textrm{Knowns} - \textrm{Unknowns} \end{equation}\]</description>
+\[\begin{equation} \textrm{DF} = \textrm{Knowns} - \textrm{Unknowns} \end{equation}\]</description>
     </item>
     
     <item>

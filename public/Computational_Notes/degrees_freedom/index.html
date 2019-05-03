@@ -22,7 +22,7 @@
     <meta property="og:title" content="Degrees of Freedom are Confusing" />
 <meta property="og:description" content="This post is about building intuition for degrees of freedom. There are two ways to think about it, the “information” way and the “line” way.
 The Information Way The quantity, degrees of freedom, is the amount of information available in our data set minus the amount of information we want to pull from it. Here are a bunch of different ways of representing that idea:
-\[\begin{equation} \textremove{DF} = \textrm{Knowns} - \textrm{Unknowns} \end{equation}\]" />
+\[\begin{equation} \textrm{DF} = \textrm{Knowns} - \textrm{Unknowns} \end{equation}\]" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/computational_notes/degrees_freedom/" /><meta property="article:published_time" content="2019-05-01T00:00:00&#43;00:00"/>
 <meta property="article:modified_time" content="2019-05-01T00:00:00&#43;00:00"/> 
@@ -95,19 +95,19 @@ The Information Way The quantity, degrees of freedom, is the amount of informati
 <h2>The Information Way</h2>
 <p>The quantity, degrees of freedom, is the amount of information available in our data set minus the amount of information we want to pull from it. Here are a bunch of different ways of representing that idea:</p>
 <p><span class="math display">\[\begin{equation}
-\textremove{DF} = \textrm{Knowns} - \textrm{Unknowns}
+\textrm{DF} = \textrm{Knowns} - \textrm{Unknowns}
 \end{equation}\]</span></p>
 <p><span class="math display">\[\begin{equation}
-\textremove{DF} = \textrm{Unique information} - \textrm{Used information}
+\textrm{DF} = \textrm{Unique information} - \textrm{Used information}
 \end{equation}\]</span></p>
 <p><span class="math display">\[\begin{equation}
-\textremove{DF} = \textrm{Unique information in observed data} - \textrm{Information we want to pull from our data}
+\textrm{DF} = \textrm{Unique information in observed data} - \textrm{Information we want to pull from our data}
 \end{equation}\]</span></p>
 <p><span class="math display">\[\begin{equation}
-\textremove{DF} = \textrm{Stuff in the correlation matrix} - \textrm{Stuff we want to use the correlation matrix for}
+\textrm{DF} = \textrm{Stuff in the correlation matrix} - \textrm{Stuff we want to use the correlation matrix for}
 \end{equation}\]</span></p>
 <p><span class="math display">\[\begin{equation}
-\textremove{DF} = \textrm{Unique entries in the variance/covariance matrix} - \textrm{Estimated parameters}
+\textrm{DF} = \textrm{Unique entries in the variance/covariance matrix} - \textrm{Estimated parameters}
 \end{equation}\]</span></p>
 <p>In a data set, information is (roughly) the unique variances and covariances that I can use. If I estimate too many parameters without enough information (i.e., without enough observed variables), then I loose DFs and I can’t estimate anything. I cannot estimate a super complicated function if I only observe one measurement of performance and one measurement of motivation.</p>
 </div>

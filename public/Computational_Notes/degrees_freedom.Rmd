@@ -17,23 +17,23 @@ This post is about building intuition for degrees of freedom. There are two ways
 The quantity, degrees of freedom, is the amount of information available in our data set minus the amount of information we want to pull from it. Here are a bunch of different ways of representing that idea:
 
 \begin{equation}
-\textremove{DF} = \textrm{Knowns} - \textrm{Unknowns}
+\textrm{DF} = \textrm{Knowns} - \textrm{Unknowns}
 \end{equation}
 
 \begin{equation}
-\textremove{DF} = \textrm{Unique information} - \textrm{Used information}
+\textrm{DF} = \textrm{Unique information} - \textrm{Used information}
 \end{equation}
 
 \begin{equation}
-\textremove{DF} = \textrm{Unique information in observed data} - \textrm{Information we want to pull from our data}
+\textrm{DF} = \textrm{Unique information in observed data} - \textrm{Information we want to pull from our data}
 \end{equation}
 
 \begin{equation}
-\textremove{DF} = \textrm{Stuff in the correlation matrix} - \textrm{Stuff we want to use the correlation matrix for}
+\textrm{DF} = \textrm{Stuff in the correlation matrix} - \textrm{Stuff we want to use the correlation matrix for}
 \end{equation}
 
 \begin{equation}
-\textremove{DF} = \textrm{Unique entries in the variance/covariance matrix} - \textrm{Estimated parameters}
+\textrm{DF} = \textrm{Unique entries in the variance/covariance matrix} - \textrm{Estimated parameters}
 \end{equation}
 
 In a data set, information is (roughly) the unique variances and covariances that I can use. If I estimate too many parameters without enough information (i.e., without enough observed variables), then I loose DFs and I can't estimate anything. I cannot estimate a super complicated function if I only observe one measurement of performance and one measurement of motivation. 

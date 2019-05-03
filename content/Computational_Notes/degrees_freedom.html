@@ -11,19 +11,19 @@ date: '2019-05-01'
 <h2>The Information Way</h2>
 <p>The quantity, degrees of freedom, is the amount of information available in our data set minus the amount of information we want to pull from it. Here are a bunch of different ways of representing that idea:</p>
 <p><span class="math display">\[\begin{equation}
-\textremove{DF} = \textrm{Knowns} - \textrm{Unknowns}
+\textrm{DF} = \textrm{Knowns} - \textrm{Unknowns}
 \end{equation}\]</span></p>
 <p><span class="math display">\[\begin{equation}
-\textremove{DF} = \textrm{Unique information} - \textrm{Used information}
+\textrm{DF} = \textrm{Unique information} - \textrm{Used information}
 \end{equation}\]</span></p>
 <p><span class="math display">\[\begin{equation}
-\textremove{DF} = \textrm{Unique information in observed data} - \textrm{Information we want to pull from our data}
+\textrm{DF} = \textrm{Unique information in observed data} - \textrm{Information we want to pull from our data}
 \end{equation}\]</span></p>
 <p><span class="math display">\[\begin{equation}
-\textremove{DF} = \textrm{Stuff in the correlation matrix} - \textrm{Stuff we want to use the correlation matrix for}
+\textrm{DF} = \textrm{Stuff in the correlation matrix} - \textrm{Stuff we want to use the correlation matrix for}
 \end{equation}\]</span></p>
 <p><span class="math display">\[\begin{equation}
-\textremove{DF} = \textrm{Unique entries in the variance/covariance matrix} - \textrm{Estimated parameters}
+\textrm{DF} = \textrm{Unique entries in the variance/covariance matrix} - \textrm{Estimated parameters}
 \end{equation}\]</span></p>
 <p>In a data set, information is (roughly) the unique variances and covariances that I can use. If I estimate too many parameters without enough information (i.e., without enough observed variables), then I loose DFs and I can’t estimate anything. I cannot estimate a super complicated function if I only observe one measurement of performance and one measurement of motivation.</p>
 </div>

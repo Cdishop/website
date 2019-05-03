@@ -5,7 +5,7 @@ output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = F, warning = F, message = F)
+knitr::opts_chunk$set(echo = T, warning = F, message = F)
 library(tidyverse)
 library(ggplot2)
 ```
@@ -64,7 +64,7 @@ df_wide <- reshape(df, idvar = 'id', timevar = 'time', direction = 'wide')
 
 ```
 
-```{r}
+```{r, eval = F}
 
 lavaan_string <- '
 
@@ -102,7 +102,7 @@ affect.4 ~~ res_var*affect.4
 
 Now the same thing in MPLUS syntax:
 
-```{r}
+```{r, eval = F}
 mplus_string <- '
 
 

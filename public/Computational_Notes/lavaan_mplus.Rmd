@@ -1,6 +1,6 @@
 ---
 title: "Lavaan MPLUS Reference Sheet"
-date: "2018-05-02"
+date: "2019-05-02"
 output: pdf_document
 ---
 

@@ -6,10 +6,41 @@
     <description>Recent content in Computational_Notes on Christopher Dishop</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 19 Apr 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 03 May 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/computational_notes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>What Explaining Means in Statistics</title>
+      <link>/computational_notes/explaining_statistics/</link>
+      <pubDate>Fri, 03 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/explaining_statistics/</guid>
+      <description>Think about what it would mean to explain something to a friend. How would you explain why the Patriot’s won the Superbowl? How would you explain why you are feeling happy or sad? How would you explain tying a shoe to a toddler? How would you explain why eating lots of donuts tends to increase a person’s weight? How would you explain the timeline of Game of Thrones to someone who hadn’t seen it?</description>
+    </item>
+    
+    <item>
+      <title>Lavaan MPLUS Reference Sheet</title>
+      <link>/computational_notes/lavaan_mplus/</link>
+      <pubDate>Thu, 02 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/lavaan_mplus/</guid>
+      <description>A growth curve model written in lavaan and MPLUS as a syntax reference guide. Imagine a latent growth curve on affect across 4 time points. First, lavaan code:
+Now the same thing in MPLUS syntax:
+Bo\(^2\)m =)</description>
+    </item>
+    
+    <item>
+      <title>Degrees of Freedom are Confusing</title>
+      <link>/computational_notes/degrees_freedom/</link>
+      <pubDate>Wed, 01 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/degrees_freedom/</guid>
+      <description>This post is about building intuition for degrees of freedom. There are two ways to think about it, the “information” way and the “line” way.
+The Information Way The quantity, degrees of freedom, is the amount of information available in our data set minus the amount of information we want to pull from it. Here are a bunch of different ways of representing that idea:
+\[\begin{equation} \textremove{DF} = \textrm{Knowns} - \textrm{Unknowns} \end{equation}\]</description>
+    </item>
     
     <item>
       <title>Everything Partialled From Everything in Regression</title>
@@ -224,37 +255,6 @@ Function with no column name parameters Function:
       <description>A few spline models (also known as piecewise models). As in previous posts, ‘affect’ is the name given to values of \(y\) throughout.
 1) Growth and Even More Growth A model that captures a process that increases initially and then increases at an even greater rate once it reaches time point 5. The data generating process:
 \[\begin{equation} y_{it} = \begin{cases} 4 + 0.3t + error_{t}, &amp;amp; \text{if time &amp;lt; 5}\\ 8 + 0.</description>
-    </item>
-    
-    <item>
-      <title>What Explaining Means in Statistics</title>
-      <link>/computational_notes/explaining_statistics/</link>
-      <pubDate>Thu, 03 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/explaining_statistics/</guid>
-      <description>Think about what it would mean to explain something to a friend. How would you explain why the Patriot’s won the Superbowl? How would you explain why you are feeling happy or sad? How would you explain tying a shoe to a toddler? How would you explain why eating lots of donuts tends to increase a person’s weight? How would you explain the timeline of Game of Thrones to someone who hadn’t seen it?</description>
-    </item>
-    
-    <item>
-      <title>Lavaan MPLUS Reference Sheet</title>
-      <link>/computational_notes/lavaan_mplus/</link>
-      <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/lavaan_mplus/</guid>
-      <description>A growth curve model written in lavaan and MPLUS as a syntax reference guide. Imagine a latent growth curve on affect across 4 time points. First, lavaan code:
-Now the same thing in MPLUS syntax:
-Bo\(^2\)m =)</description>
-    </item>
-    
-    <item>
-      <title>Degrees of Freedom are Confusing</title>
-      <link>/computational_notes/degrees_freedom/</link>
-      <pubDate>Tue, 01 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/degrees_freedom/</guid>
-      <description>This post is about building intuition for degrees of freedom. There are two ways to think about it, the “information” way and the “line” way.
-The Information Way The quantity, degrees of freedom, is the amount of information available in our data set minus the amount of information we want to pull from it. Here are a bunch of different ways of representing that idea:
-\[\begin{equation} \textremove{DF} = \textrm{Knowns} - \textrm{Unknowns} \end{equation}\]</description>
     </item>
     
     <item>

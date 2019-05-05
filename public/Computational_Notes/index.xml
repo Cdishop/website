@@ -31,7 +31,7 @@ lavaan_string &amp;lt;- &amp;#39; # Latent intercept and slope factors intercept
     </item>
     
     <item>
-      <title>Degrees of Freedom are Confusing</title>
+      <title>Degrees of Freedom Intuition</title>
       <link>/computational_notes/degrees_freedom/</link>
       <pubDate>Wed, 01 May 2019 00:00:00 +0000</pubDate>
       

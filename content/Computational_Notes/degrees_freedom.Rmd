@@ -1,5 +1,5 @@
 ---
-title: "Degrees of Freedom are Confusing"
+title: "Degrees of Freedom Intuition"
 output: pdf_document
 date: '2019-05-01'
 ---
@@ -135,14 +135,14 @@ ggplot(df2, aes(x = x, y = y, color = model)) +
 Now we can count our degrees of freedom. Let's say each example above had 10 pieces of information (10 observed variables).
 
 \begin{equation}
-y = mx + b \textrm{;} \textrm{with 10 pieces of information and 2 estimated parameters. DF = 10 - 2. DF = 8}
+y = mx + b \textrm{;} \textrm{ with 10 pieces of information and 2 estimated parameters. DF = 10 - 2. DF = 8}
 \end{equation}
 
 \begin{equation}
-y = mx + 2 \textrm{;} \textrm{with 10 pieces of information and 1 estimated parameter. DF = 10 - 1. DF = 9}
+y = mx + 2 \textrm{;} \textrm{ with 10 pieces of information and 1 estimated parameter. DF = 10 - 1. DF = 9}
 \end{equation}
 
-When you estimate an additional paramter you lose a degree of freedom. When you constrain things, you gain degrees of freedom. So, the second example has more degrees of freedom, even though it feels like we're not as "free" to draw our lines. Tricky.
+When you estimate an additional parameter you lose a degree of freedom. When you constrain things, you gain degrees of freedom. So, the second example has more degrees of freedom, even though it feels like we're not as "free" to draw our lines. Tricky.
 
 
 Bo$^2$m =)

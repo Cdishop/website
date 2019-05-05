@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Degrees of Freedom are Confusing | Christopher Dishop</title>
+    <title>Degrees of Freedom Intuition | Christopher Dishop</title>
 
      
       
@@ -19,7 +19,7 @@
   <meta name="author" content="">
 
  
-    <meta property="og:title" content="Degrees of Freedom are Confusing" />
+    <meta property="og:title" content="Degrees of Freedom Intuition" />
 <meta property="og:description" content="This post is about building intuition for degrees of freedom. There are two ways to think about it, the “information” way and the “line” way.
 The Information Way The quantity, degrees of freedom, is the amount of information available in our data set minus the amount of information we want to pull from it. Here are a bunch of different ways of representing that idea:
 \[\begin{equation} \textrm{DF} = \textrm{Knowns} - \textrm{Unknowns} \end{equation}\]" />
@@ -127,12 +127,12 @@ y = mx + 2.
 <p><img src="/Computational_Notes/degrees_freedom_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>Now we can count our degrees of freedom. Let’s say each example above had 10 pieces of information (10 observed variables).</p>
 <p><span class="math display">\[\begin{equation}
-y = mx + b \textrm{;} \textrm{with 10 pieces of information and 2 estimated parameters. DF = 10 - 2. DF = 8}
+y = mx + b \textrm{;} \textrm{ with 10 pieces of information and 2 estimated parameters. DF = 10 - 2. DF = 8}
 \end{equation}\]</span></p>
 <p><span class="math display">\[\begin{equation}
-y = mx + 2 \textrm{;} \textrm{with 10 pieces of information and 1 estimated parameter. DF = 10 - 1. DF = 9}
+y = mx + 2 \textrm{;} \textrm{ with 10 pieces of information and 1 estimated parameter. DF = 10 - 1. DF = 9}
 \end{equation}\]</span></p>
-<p>When you estimate an additional paramter you lose a degree of freedom. When you constrain things, you gain degrees of freedom. So, the second example has more degrees of freedom, even though it feels like we’re not as “free” to draw our lines. Tricky.</p>
+<p>When you estimate an additional parameter you lose a degree of freedom. When you constrain things, you gain degrees of freedom. So, the second example has more degrees of freedom, even though it feels like we’re not as “free” to draw our lines. Tricky.</p>
 <p>Bo<span class="math inline">\(^2\)</span>m =)</p>
 </div>
 

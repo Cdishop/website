@@ -1,5 +1,5 @@
 ---
-title: "Convert Multiple Columns to Numeric"
+title: "Convert Multiple Columns to Numeric or Character"
 output: pdf_document
 date: "2019-04-10"
 ---
@@ -14,6 +14,13 @@ Quick piece of code that turns all selected columns to numeric in R.
 
 df[, c('col1', 'col2')] <- as.numeric(as.character(unlist(df[, c('col1', 'col2')])))
 
+```
+
+Mutating within `tidyverse` is always a good options as well.
+
+```{r, eval = F}
+df %>%
+  mutate_at(vars('column1', 'column2'), as.character)
 ```
 
 

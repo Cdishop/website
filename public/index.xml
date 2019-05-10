@@ -113,13 +113,14 @@ and all three variables.</description>
     </item>
     
     <item>
-      <title>Convert Multiple Columns to Numeric</title>
+      <title>Convert Multiple Columns to Numeric or Character</title>
       <link>/computational_notes/convert_numeric/</link>
       <pubDate>Wed, 10 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>/computational_notes/convert_numeric/</guid>
       <description>Quick piece of code that turns all selected columns to numeric in R.
-df[, c(&amp;#39;col1&amp;#39;, &amp;#39;col2&amp;#39;)] &amp;lt;- as.numeric(as.character(unlist(df[, c(&amp;#39;col1&amp;#39;, &amp;#39;col2&amp;#39;)]))) Bo\(^2\)m =)</description>
+df[, c(&amp;#39;col1&amp;#39;, &amp;#39;col2&amp;#39;)] &amp;lt;- as.numeric(as.character(unlist(df[, c(&amp;#39;col1&amp;#39;, &amp;#39;col2&amp;#39;)]))) Mutating within tidyverse is always a good options as well.
+df %&amp;gt;% mutate_at(vars(&amp;#39;column1&amp;#39;, &amp;#39;column2&amp;#39;), as.character) Bo\(^2\)m =)</description>
     </item>
     
     <item>

@@ -19,6 +19,49 @@
 
 \refsection{0}
   \datalist[entry]{ymdnt/global//global/global}
+    \entry{dishop2017}{article}{}
+      \name{author}{4}{}{%
+        {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
+           family={Dishop},
+           familyi={D\bibinitperiod},
+           given={Christopher\bibnamedelima R},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=4835e6ab241e82892ed7b7ecfd1dae4b}{%
+           family={Green},
+           familyi={G\bibinitperiod},
+           given={Amy\bibnamedelima E},
+           giveni={A\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=27729f2f5e83637d395ee636938e437a}{%
+           family={Torres},
+           familyi={T\bibinitperiod},
+           given={Eliza\bibnamedelima M},
+           giveni={E\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=b3c31cee10a04620b8aa8c2d9ae3d888}{%
+           family={Aarons},
+           familyi={A\bibinitperiod},
+           given={Gregory\bibnamedelima A},
+           giveni={G\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{c5a3383103d2b50e3c8ddae33d590019}
+      \strng{fullhash}{c5a3383103d2b50e3c8ddae33d590019}
+      \strng{bibnamehash}{c5a3383103d2b50e3c8ddae33d590019}
+      \strng{authorbibnamehash}{c5a3383103d2b50e3c8ddae33d590019}
+      \strng{authornamehash}{c5a3383103d2b50e3c8ddae33d590019}
+      \strng{authorfullhash}{c5a3383103d2b50e3c8ddae33d590019}
+      \field{sortinit}{7}
+      \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Community Mental Health Journal}
+      \field{title}{Predicting Turnover: The Moderating Effect of Functional Climates on Emotional Exhaustion and Work Attitudes}
+      \field{year}{In Press}
+    \endentry
     \entry{xu_dynamics}{article}{}
       \name{author}{3}{}{%
         {{uniquename=0,uniquepart=base,hash=0ffff6c439a8f53ff7ba957ad15e6170}{%
@@ -949,48 +992,6 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{[On directional inferences]}
-      \field{year}{Under Review}
-    \endentry
-    \entry{dishop2017}{misc}{}
-      \name{author}{4}{}{%
-        {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
-           family={Dishop},
-           familyi={D\bibinitperiod},
-           given={Christopher\bibnamedelima R},
-           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=4835e6ab241e82892ed7b7ecfd1dae4b}{%
-           family={Green},
-           familyi={G\bibinitperiod},
-           given={Amy\bibnamedelima E},
-           giveni={A\bibinitperiod\bibinitdelim E\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=27729f2f5e83637d395ee636938e437a}{%
-           family={Torres},
-           familyi={T\bibinitperiod},
-           given={Eliza\bibnamedelima M},
-           giveni={E\bibinitperiod\bibinitdelim M\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=b3c31cee10a04620b8aa8c2d9ae3d888}{%
-           family={Aarons},
-           familyi={A\bibinitperiod},
-           given={Gregory\bibnamedelima A},
-           giveni={G\bibinitperiod\bibinitdelim A\bibinitperiod},
-           givenun=0}}%
-      }
-      \strng{namehash}{c5a3383103d2b50e3c8ddae33d590019}
-      \strng{fullhash}{c5a3383103d2b50e3c8ddae33d590019}
-      \strng{bibnamehash}{c5a3383103d2b50e3c8ddae33d590019}
-      \strng{authorbibnamehash}{c5a3383103d2b50e3c8ddae33d590019}
-      \strng{authornamehash}{c5a3383103d2b50e3c8ddae33d590019}
-      \strng{authorfullhash}{c5a3383103d2b50e3c8ddae33d590019}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{[On turnover and work attitudes]}
       \field{year}{Under Review}
     \endentry
     \entry{dishop_dynamics_principles}{misc}{}

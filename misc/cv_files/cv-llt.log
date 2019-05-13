@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.8.26)  31 MAR 2019 07:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.8.26)  13 MAY 2019 09:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1637,21 +1637,16 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 101.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 101.
 Package rerunfilecheck Info: File `cv-llt.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-
-
-Package biblatex Warning: Please rerun LaTeX.
-(biblatex)                Page breaks have changed.
-
 Package logreq Info: Writing requests to 'cv-llt.run.xml'.
 \openout1 = `cv-llt.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31105 strings out of 492642
- 593441 string characters out of 6129384
- 1145952 words of memory out of 5000000
- 34255 multiletter control sequences out of 15000+600000
- 135232 words of font info for 78 fonts, out of 8000000 for 9000
+ 31111 strings out of 492642
+ 593551 string characters out of 6129384
+ 1144908 words of memory out of 5000000
+ 34252 multiletter control sequences out of 15000+600000
+ 136327 words of font info for 84 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  100i,11n,163p,1151b,7066s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/fbb/fbb_5tchvx.enc}{/usr/
@@ -1666,7 +1661,7 @@ xmf-dist/fonts/type1/public/fontawesome/FontAwesome.pfb></usr/local/texlive/201
 xlive/2018/texmf-dist/fonts/type1/public/fbb/fbb-Bold.pfb></usr/local/texlive/2
 018/texmf-dist/fonts/type1/public/fbb/fbb-Italic.pfb></usr/local/texlive/2018/t
 exmf-dist/fonts/type1/public/fbb/fbb-Regular.pfb>
-Output written on cv-llt.pdf (3 pages, 214741 bytes).
+Output written on cv-llt.pdf (3 pages, 215460 bytes).
 PDF statistics:
  118 PDF objects out of 1000 (max. 8388607)
  88 compressed objects within 1 object stream

@@ -42,6 +42,10 @@ weight = 3
 
 [The R Graph Gallery](https://www.r-graph-gallery.com/all-graphs/)
 
+[Malcolm Barrett](https://malco.io)
+
+[John Flournoy](https://jflournoy.github.io)
+
 [UC R Guide](http://uc-r.github.io/introduction)
 
 [Crump Lab](https://crumplab.github.io/Courses.html)
@@ -55,6 +59,10 @@ weight = 3
 [Introduction to Bayes in DataCamp (free course)](https://www.datacamp.com/community/open-courses/beginning-bayes-in-r)
 
 [Data Analysis and Statistical Inference on Data Camp](https://www.datacamp.com/community/open-courses/statistical-inference-and-data-analysis)
+
+[Probability and Statistics with Simulations](https://github.com/jrgant/prob-stats)
+
+[Penn State Quant Developmental Systems](https://quantdev.ssri.psu.edu/resources)
 
 # Random
 
@@ -72,6 +80,8 @@ weight = 3
 
 [Rmarkdown](http://www.stat.cmu.edu/~cshalizi/rmarkdown/)
 
+[Power Simulations](https://github.com/jessiesunpsych/power-simulations)
+
 [Functions with columns as parameters 1](https://stackoverflow.com/questions/47494975/passing-column-name-as-parameter-to-a-function-using-dplyr)
 
 [Functions with columns as parameters 2](https://www.brodrigues.co/blog/2016-07-18-data-frame-columns-as-arguments-to-dplyr-functions/)
@@ -82,15 +92,33 @@ weight = 3
 
 [Growth models with lme and lmer](http://rpsychologist.com/r-guide-longitudinal-lme-lmer)
 
+[Cross-lagged Panel Models](https://threadreaderapp.com/thread/1073313224446009345.html)
+
+[Simulate Experiments](https://debruine.github.io/faux/index.html)
+
+[citr](https://github.com/jrgant/citr)
+
 [Purrr tutorial](https://emoriebeck.github.io/R-tutorials/purrr/)
 
 [Top 50 ggplot2 Visualizations](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
+
+# DAGS
+
+[Dags using LaTex](https://github.com/jrgant/causalgraphs_latex/blob/master/graphical-models-causal.pdf)
+
+[QuickDag](https://github.com/jrgant/quickdag)
+
+[DiagrammeR](https://rich-iannone.github.io/DiagrammeR/)
+
+[GGdag](https://ggdag.netlify.com)
 
 # Structural Equations Modeling
 
 [lavaan homepage](http://lavaan.ugent.be)
 
 [Measurement Equivalence](https://groups.google.com/forum/#!topic/lavaan/oKwP0_6-i1g)
+
+[sims package](https://github.com/osofr/simcausal)
 
 # Progressing Through Stats with R
 

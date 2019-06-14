@@ -6,10 +6,20 @@
     <description>Recent content in Computational_Notes on Christopher Dishop</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 03 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 14 Jun 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/computational_notes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Systems Thinking on Goons in the NHL</title>
+      <link>/computational_notes/system_goons/</link>
+      <pubDate>Fri, 14 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/system_goons/</guid>
+      <description>Inspired by Bill Burr’s Monday Morning Podcast, episode 6-6-19.
+He describes how people that do not understand hockey wanted to get fighting out of the NHL, so in the 2000’s they made greater efforts to remove goons (fighters). What people outside the NHL often do not understand, though, is that fighting is used to minimize dirty play. When a team is playing dirty, you – as a couch of the team that is not playing dirty – send out a goon to punch around a few of their players.</description>
+    </item>
     
     <item>
       <title>What Explaining Means in Statistics</title>

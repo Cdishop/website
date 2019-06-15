@@ -58,19 +58,19 @@ sample_df &lt;- df %&gt;%
 ## lm(formula = performance ~ stress, data = sample_df)
 ## 
 ## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -2.82649 -0.67668 -0.01307  0.73052  3.01937 
+##     Min      1Q  Median      3Q     Max 
+## -2.8818 -0.6815  0.0275  0.6737  3.5871 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) 0.092910   0.041616   2.233   0.0259 *  
-## stress      0.432720   0.008364  51.735   &lt;2e-16 ***
+## (Intercept) 0.020486   0.042108   0.487    0.627    
+## stress      0.437235   0.008645  50.576   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 1.018 on 598 degrees of freedom
-## Multiple R-squared:  0.8174, Adjusted R-squared:  0.8171 
-## F-statistic:  2676 on 1 and 598 DF,  p-value: &lt; 2.2e-16</code></pre>
+## Residual standard error: 1.031 on 598 degrees of freedom
+## Multiple R-squared:  0.8105, Adjusted R-squared:  0.8102 
+## F-statistic:  2558 on 1 and 598 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <div id="b-compute-the-ci" class="section level3">
 <h3>2b) Compute the CI</h3>
@@ -95,7 +95,7 @@ if(se_lower &lt;= stress_performance_coefficient &amp;&amp; se_upper &gt;= stres
 }
 
 contain_parameter</code></pre>
-<pre><code>## [1] &quot;no&quot;</code></pre>
+<pre><code>## [1] &quot;yes&quot;</code></pre>
 <p>What did we do? We sampled the population, ran a regression to relate stress to performance, and then calculated a CI on the slope term. The interpretation of a CI, however, is across infinite samples. Now we need to run through the sample, regress, and calculate CI procedure again and again and again – Monte Carlo.</p>
 </div>
 </div>
@@ -121,5 +121,5 @@ for(i in 1:sims){
 <h2>Interpretation</h2>
 <p>How many computed intervals contain the population parameter?</p>
 <pre class="r"><code>sum(all_ci_contains == &#39;yes&#39;) / sims</code></pre>
-<pre><code>## [1] 0.95</code></pre>
+<pre><code>## [1] 0.9444444</code></pre>
 </div>

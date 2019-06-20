@@ -120,6 +120,8 @@ weight = 3
 
 [sims package](https://github.com/osofr/simcausal)
 
+[Draw SEMs](https://www.draw.io/)
+
 # Progressing Through Stats with R
 
 [Basics of R and R Markdown](https://ismayc.github.io/rbasics-book/index.html)

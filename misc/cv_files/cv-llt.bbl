@@ -19,6 +19,31 @@
 
 \refsection{0}
   \datalist[entry]{ymdnt/global//global/global}
+    \entry{dc100}{booklet}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
+           family={Dishop},
+           familyi={D\bibinitperiod},
+           given={Christopher\bibnamedelima R},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{c8fe28d689bd437108386244656b6e94}
+      \strng{fullhash}{c8fe28d689bd437108386244656b6e94}
+      \strng{bibnamehash}{c8fe28d689bd437108386244656b6e94}
+      \strng{authorbibnamehash}{c8fe28d689bd437108386244656b6e94}
+      \strng{authornamehash}{c8fe28d689bd437108386244656b6e94}
+      \strng{authorfullhash}{c8fe28d689bd437108386244656b6e94}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Poster presentation at the Society for Industrial and Organizational Psychology, National Harbor, MD}
+      \field{title}{Perceiving the Trend: How Task Construal Shapes Performance Perceptions and Effort}
+      \field{year}{2019}
+    \endentry
     \entry{dishop2017}{article}{}
       \name{author}{4}{}{%
         {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
@@ -52,77 +77,14 @@
       \strng{authorbibnamehash}{c5a3383103d2b50e3c8ddae33d590019}
       \strng{authornamehash}{c5a3383103d2b50e3c8ddae33d590019}
       \strng{authorfullhash}{c5a3383103d2b50e3c8ddae33d590019}
-      \field{sortinit}{7}
-      \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Community Mental Health Journal}
-      \field{title}{Predicting Turnover: The Moderating Effect of Functional Climates on Emotional Exhaustion and Work Attitudes}
-      \field{year}{In Press}
-    \endentry
-    \entry{xu_dynamics}{article}{}
-      \name{author}{3}{}{%
-        {{uniquename=0,uniquepart=base,hash=0ffff6c439a8f53ff7ba957ad15e6170}{%
-           family={Xu},
-           familyi={X\bibinitperiod},
-           given={Ran},
-           giveni={R\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=640bff6bc37424ceb9a8ee580af99127}{%
-           family={DeShon},
-           familyi={D\bibinitperiod},
-           given={Richard\bibnamedelima P},
-           giveni={R\bibinitperiod\bibinitdelim P\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
-           family={Dishop},
-           familyi={D\bibinitperiod},
-           given={Christopher\bibnamedelima R},
-           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
-           givenun=0}}%
-      }
-      \strng{namehash}{4a15cb8000cd5634f8a071313d44c2b4}
-      \strng{fullhash}{4a15cb8000cd5634f8a071313d44c2b4}
-      \strng{bibnamehash}{4a15cb8000cd5634f8a071313d44c2b4}
-      \strng{authorbibnamehash}{4a15cb8000cd5634f8a071313d44c2b4}
-      \strng{authornamehash}{4a15cb8000cd5634f8a071313d44c2b4}
-      \strng{authorfullhash}{4a15cb8000cd5634f8a071313d44c2b4}
-      \field{sortinit}{7}
-      \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \true{uniqueprimaryauthor}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Organizational Research Methods}
-      \field{title}{Challenges and Opportunities in the Estimation of Dynamic Models}
-      \field{year}{In Press}
-    \endentry
-    \entry{dc100}{booklet}{}
-      \name{author}{1}{}{%
-        {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
-           family={Dishop},
-           familyi={D\bibinitperiod},
-           given={Christopher\bibnamedelima R},
-           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
-           givenun=0}}%
-      }
-      \strng{namehash}{c8fe28d689bd437108386244656b6e94}
-      \strng{fullhash}{c8fe28d689bd437108386244656b6e94}
-      \strng{bibnamehash}{c8fe28d689bd437108386244656b6e94}
-      \strng{authorbibnamehash}{c8fe28d689bd437108386244656b6e94}
-      \strng{authornamehash}{c8fe28d689bd437108386244656b6e94}
-      \strng{authorfullhash}{c8fe28d689bd437108386244656b6e94}
       \field{sortinit}{2}
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{howpublished}{Poster presentation at the Society for Industrial and Organizational Psychology, National Harbor, MD}
-      \field{title}{Perceiving the Trend: How Task Construal Shapes Performance Perceptions and Effort}
+      \field{journaltitle}{Community Mental Health Journal}
+      \field{title}{Predicting Turnover: The Moderating Effect of Functional Climates on Emotional Exhaustion and Work Attitudes}
       \field{year}{2019}
     \endentry
     \entry{dc99}{booklet}{}
@@ -282,6 +244,44 @@
       \field{labeltitlesource}{title}
       \field{howpublished}{Symposium presentation at the Academy of Management, Boston, MA}
       \field{title}{A Matter of Time: Advancing the Study of Team Processes in Extreme Environments}
+      \field{year}{2019}
+    \endentry
+    \entry{xu_dynamics}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=0ffff6c439a8f53ff7ba957ad15e6170}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={Ran},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=640bff6bc37424ceb9a8ee580af99127}{%
+           family={DeShon},
+           familyi={D\bibinitperiod},
+           given={Richard\bibnamedelima P},
+           giveni={R\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
+           family={Dishop},
+           familyi={D\bibinitperiod},
+           given={Christopher\bibnamedelima R},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{4a15cb8000cd5634f8a071313d44c2b4}
+      \strng{fullhash}{4a15cb8000cd5634f8a071313d44c2b4}
+      \strng{bibnamehash}{4a15cb8000cd5634f8a071313d44c2b4}
+      \strng{authorbibnamehash}{4a15cb8000cd5634f8a071313d44c2b4}
+      \strng{authornamehash}{4a15cb8000cd5634f8a071313d44c2b4}
+      \strng{authorfullhash}{4a15cb8000cd5634f8a071313d44c2b4}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Organizational Research Methods}
+      \field{title}{Challenges and Opportunities in the Estimation of Dynamic Models}
       \field{year}{2019}
     \endentry
     \entry{dd9}{booklet}{}

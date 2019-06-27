@@ -6,7 +6,7 @@
     <description>Recent content on Christopher Dishop</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 14 Jun 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 26 Jun 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
@@ -69,6 +69,15 @@ John Flournoy
 UC R Guide
 Crump Lab
 Courses Applied Statistical Computing Course</description>
+    </item>
+    
+    <item>
+      <title>Intuition for Correlated Errors and Third Variables</title>
+      <link>/computational_notes/cheating_cor_errors/</link>
+      <pubDate>Wed, 26 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/cheating_cor_errors/</guid>
+      <description>In many research methods or statistics courses you come across the idea that correlated errors signal a third variable. In other words, you have a missing, relevant variable that induces correlation among your residuals. That’s a tough idea to wrap your head around, but it is easier to consider with respect to a given topic: cheating on exams. This post builds intuition for “correlated errors with respect to missing third variables” in the context of college exams and cheating.</description>
     </item>
     
     <item>

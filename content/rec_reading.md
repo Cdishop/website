@@ -304,6 +304,46 @@ Geoffrey West
 
 
 
+*The Most Good You Can Do*
+
+Peter Singer
+
+[Click here for link](https://www.amazon.com/Most-Good-You-Can-Effective/dp/0300180276/ref=sr_1_1?keywords=the+most+good+you+can+do&qid=1555122359&s=gateway&sr=8-1)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/good.png)
+
+
+
+
+
+*Reproducible Research with R and R Studio*
+
+Christopher Gandrud
+
+[Click here for link](https://www.amazon.com/Reproducible-Research-Studio-Chapman-Hall/dp/1498715370/ref=sr_1_1?ie=UTF8&qid=1534110087&sr=8-1&keywords=reproducible+research+with+r)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/reproducible_research.png)
+
+
+
+
+
+
+
+*The Nature of Code: Simulating Natural Systems with Processing*
+
+Daniel Shiffman
+
+[Click here for link](https://www.amazon.com/Nature-Code-Simulating-Natural-Processing/dp/0985930802/ref=sr_1_1?ie=UTF8&qid=1534109983&sr=8-1&keywords=the+nature+of+code)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/nature_code.png)
+
+
+
+
+
+
+
 
 
 *How We Got to Now: Six Innovations That Made the Modern World*
@@ -599,22 +639,6 @@ Edward R. Tufte
 ![](https://github.com/Cdishop/website/raw/master/misc/books/visual_display.png)
 
 
-
-
-
-
-
-
-
-
-
-*The Most Good You Can Do*
-
-Peter Singer
-
-[Click here for link](https://www.amazon.com/Most-Good-You-Can-Effective/dp/0300180276/ref=sr_1_1?keywords=the+most+good+you+can+do&qid=1555122359&s=gateway&sr=8-1)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/good.png)
 
 
 
@@ -1116,16 +1140,6 @@ John V. Guttag
 
 
 
-*Reproducible Research with R and R Studio*
-
-Christopher Gandrud
-
-[Click here for link](https://www.amazon.com/Reproducible-Research-Studio-Chapman-Hall/dp/1498715370/ref=sr_1_1?ie=UTF8&qid=1534110087&sr=8-1&keywords=reproducible+research+with+r)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/reproducible_research.png)
-
-
-
 
 
 
@@ -1164,18 +1178,6 @@ Kenneth A. Oye
 
 ![](https://github.com/Cdishop/website/raw/master/misc/books/cooperation_anarchy.png)
 
-
-
-
-
-
-*The Nature of Code: Simulating Natural Systems with Processing*
-
-Daniel Shiffman
-
-[Click here for link](https://www.amazon.com/Nature-Code-Simulating-Natural-Processing/dp/0985930802/ref=sr_1_1?ie=UTF8&qid=1534109983&sr=8-1&keywords=the+nature+of+code)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/nature_code.png)
 
 
 

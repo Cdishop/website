@@ -15,7 +15,7 @@ library(reshape2)
 library(MASS)
 ```
 
-I begin with an intercept-only model in a latent change framework and then build to a full dual change model. SEM images in this post are taken from a lecture by [Amy Nuttall](https://hdfs.msu.edu/people/faculty/nuttall-amy-k-phd). Two notes about the models and code below. First, the initial models will not fit well because I use a DGP with both dual change components, the initial models purposefully exclude either constant or proportion change. Second, I use the `sem` command throughout rather than `growth` in the `lavaan` package because it forces me to specify the entire model. I do not like using commands that make automatic constraints for me -- you are much more likely to make a mistake or not know what your model is doing if you do.
+I begin with an intercept-only model in a latent change framework and then build to a full dual change model. SEM images in this post are taken from a lecture by [Amy Nuttall](https://hdfs.msu.edu/people/faculty/nuttall-amy-k-phd). Two notes about the models and code below. First, the initial models will not fit well because I use a DGP with both dual change components, the initial models purposefully exclude either constant or proportion change. Second, I use the `sem` command throughout rather than `growth` in the `lavaan` package because it forces me to specify the entire model. I do not like using commands that make automatic constraints for me -- if you do, you are much more likely to make a mistake or not know what your model is doing.
 
 ### DGP
 

@@ -44,7 +44,7 @@ n_goons_initial <- 30
 d_level_initial <- 15
 ```
 
-Now simulate the states across time (20 time points) according to the simulation set-up above. Alpha will be set to 0.7 for both states and beta will be set to 0.5. The forcing terms for goons and dirtiness will be, respectively, 25 and 20. 
+Now simulate the states across time (20 time points) according to the simulation set-up above. Alpha will be set to 0.7 for both states and beta will be set to 0.2. The forcing terms for goons and dirtiness will be, respectively, 25 and 20. 
 
 ```{r, cache = T}
 time <- 30

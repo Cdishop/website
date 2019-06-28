@@ -26,6 +26,8 @@ weight = 3
 
 [Kristoffer Magnusson](https://rpsychologist.com)
 
+[Sacha Epskamp](http://sachaepskamp.com)
+
 [FOM academic](https://data-se.netlify.com)
 
 [Suzan Baert](https://suzan.rbind.io)
@@ -100,6 +102,8 @@ weight = 3
 
 [Purrr tutorial](https://emoriebeck.github.io/R-tutorials/purrr/)
 
+[Psych Networks Winter School Resources](https://osf.io/2emja/)
+
 [Top 50 ggplot2 Visualizations](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
 
 # DAGS
@@ -111,6 +115,8 @@ weight = 3
 [DiagrammeR](https://rich-iannone.github.io/DiagrammeR/)
 
 [GGdag](https://ggdag.netlify.com)
+
+[All DAGS from Hernan and Robins - Sam Finlayson](https://sgfin.github.io/2019/06/19/Causal-Inference-Book-All-DAGs/)
 
 # Structural Equations Modeling
 

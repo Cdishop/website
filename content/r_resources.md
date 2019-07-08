@@ -156,13 +156,19 @@ weight = 3
 
 [Using word with Git](http://blog.martinfenner.org/2014/08/25/using-microsoft-word-with-git/)
 
+[Line numbering in LaTex](https://tex.stackexchange.com/questions/16010/number-every-line-of-pages)
+
 [Exporting .tex to word with pandoc](https://jabranham.com/blog/2016/11/using-pandoc-export-to-word/)
+
+[Word Count on PDF From Terminal](https://apple.stackexchange.com/questions/252362/how-do-i-count-words-in-a-pdf-file-on-os-x)
 
 # So helpful they deserve their own category
 
 [Math notation with Rmarkdown](https://www.calvin.edu/~rpruim/courses/s341/S17/from-class/MathinRmd.html)
 
 [Latex equations basics](http://moser-isi.ethz.ch/docs/typeset_equations.pdf)
+
+[Compile Rmarkdown and tex files from terminal](https://tex.stackexchange.com/questions/132704/how-to-build-knitr-document-from-the-command-line)
 
 [Newline breaks in Rmarkdown tables](https://haozhu233.github.io/kableExtra/best_practice_for_newline_in_latex_table.pdf)
 

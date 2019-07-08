@@ -22,7 +22,7 @@ df2 <- data.frame(
   'Response' = c('A', 'B', 'C', 'D', 'E')
 )
 ggplot(df2, aes(x = Response, y = Question)) + 
-  geom_point(color = 'purple', shape = 'plus', size = 2) + 
+  geom_point(color = 'purple', shape = 'plus', size = 9) + 
   theme_classic() + 
   scale_y_continuous(limits = c(0.8, 1), breaks = c(1))
 
@@ -41,7 +41,7 @@ df3 <- data.frame(
                  'A', 'B', 'C', 'D', 'E')
 )
 ggplot(df3, aes(x = Response, y = Question)) + 
-  geom_point(color = 'purple', shape = 'plus', size = 2) + 
+  geom_point(color = 'purple', shape = 'plus', size = 9) + 
   theme_classic() + 
   scale_y_reverse(breaks = c(1,2))
 
@@ -65,7 +65,7 @@ df4 <- data.frame(
                  'A', 'B', 'C', 'D', 'E')
 )
 ggplot(df4, aes(x = Response, y = Question)) + 
-  geom_point(color = 'purple', shape = 'plus', size = 2) + 
+  geom_point(color = 'purple', shape = 'plus', size = 3) + 
   theme_classic() + 
   scale_y_reverse(breaks = c(1,2,3,4,5))
 

@@ -166,9 +166,15 @@ weight = 3
 
 [Math notation with Rmarkdown](https://www.calvin.edu/~rpruim/courses/s341/S17/from-class/MathinRmd.html)
 
+[BibTex Examples](https://www.verbosus.com/bibtex-style-examples.html)
+
 [Latex equations basics](http://moser-isi.ethz.ch/docs/typeset_equations.pdf)
 
 [Compile Rmarkdown and tex files from terminal](https://tex.stackexchange.com/questions/132704/how-to-build-knitr-document-from-the-command-line)
+
+[Include LaTeX packages in YAML header](https://tex.stackexchange.com/questions/171711/how-to-include-latex-package-in-r-markdown)
+
+[Pimp Your Rmarkdown](https://holtzy.github.io/Pimp-my-rmd/#references)
 
 [Newline breaks in Rmarkdown tables](https://haozhu233.github.io/kableExtra/best_practice_for_newline_in_latex_table.pdf)
 

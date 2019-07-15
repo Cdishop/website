@@ -440,6 +440,24 @@ Brian Christian
 
 
 
+
+*Infinite Powers*
+
+Steve Strogatz
+
+[Click here for link](https://www.amazon.com/Infinite-Powers-Calculus-Reveals-Universe/dp/1328879984/ref=sr_1_1?keywords=infinite+powers&qid=1563232928&s=gateway&sr=8-1)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/infinite_powers.png)
+
+
+
+
+
+
+
+
+
+
 *Computational Modeling of Behavior in Organizations*
 
 Daniel R. Ilgen
@@ -1197,15 +1215,34 @@ Ian Stewart
 
 
 
-*A Cooperative Species: Human Reciprocity and Its Evolution*
 
-Samuel Bowles
 
-Herbert Gintis
 
-[Click here for link](https://www.amazon.com/Cooperative-Species-Human-Reciprocity-Evolution/dp/0691158169/ref=sr_1_1?ie=UTF8&qid=1529323666&sr=8-1&keywords=the+cooperative+species)
+*In Pursuit of the Unknown: 17 Equations That Changed the World*
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/cooperative_species.png)
+Ian Stewart
+
+[Click here for link](https://www.amazon.com/Pursuit-Equations-That-Changed-World/dp/0465085989/ref=sr_1_1?ie=UTF8&qid=1529323656&sr=8-1&keywords=17+equations+that+changed+the+world)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/unknown.png)
+
+
+
+
+
+
+
+
+
+
+
+*Vehicles: Experiments in Synthetic Psychology*
+
+Valentino Braitenberg
+
+[Click here for link](https://www.amazon.com/Vehicles-Experiments-Psychology-Valentino-Braitenberg/dp/0262521121/ref=sr_1_1?keywords=synthetic+psychology&qid=1563232952&s=gateway&sr=8-1)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/vehicles.png)
 
 
 

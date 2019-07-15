@@ -1202,19 +1202,6 @@ Kenneth A. Oye
 
 
 
-*In Pursuit of the Unknown: 17 Equations That Changed the World*
-
-Ian Stewart
-
-[Click here for link](https://www.amazon.com/Pursuit-Equations-That-Changed-World/dp/0465085989/ref=sr_1_1?ie=UTF8&qid=1529323656&sr=8-1&keywords=17+equations+that+changed+the+world)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/unknown.png)
-
-
-
-
-
-
 
 
 

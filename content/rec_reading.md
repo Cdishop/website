@@ -268,6 +268,19 @@ John H. Miller
 
 
 
+*Digital Minimalism*
+
+Cal Newport
+
+[Click here for link](https://www.amazon.com/Digital-Minimalism-Choosing-Focused-Noisy/dp/0525536515/ref=sr_1_1?keywords=digital+minimalism&qid=1565453149&s=gateway&sr=8-1)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/digital_min.png)
+
+
+
+
+
+
 
 *Math with Bad Drawings: Illuminating the Ideas That Shape Our Reality*
 
@@ -1219,6 +1232,26 @@ Ian Stewart
 
 
 
+*Reclaiming Conversation*
+
+Sherry Turkle
+
+[Click here for link](https://www.amazon.com/Reclaiming-Conversation-Power-Talk-Digital/dp/0143109790/ref=sr_1_1?keywords=reclaiming+conversation&qid=1565453094&s=gateway&sr=8-1)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/conversation.png)
+
+
+
+
+
+
+*Humble Pie: A Comedy of Maths Errors*
+
+Matt Parker
+
+[Click here for link](https://www.amazon.com/Humble-Pi-Comedy-Maths-Errors/dp/0241360234/ref=sr_1_fkmr0_1?keywords=humble+pie+maths+errors&qid=1565453048&s=gateway&sr=8-1-fkmr0)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/humble_pie.png)
 
 
 

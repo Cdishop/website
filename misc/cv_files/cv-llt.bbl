@@ -44,6 +44,78 @@
       \field{title}{Perceiving the Trend: How Task Construal Shapes Performance Perceptions and Effort}
       \field{year}{2019}
     \endentry
+    \entry{dishop_bu_inference}{incollection}{}
+      \name{author}{4}{}{%
+        {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
+           family={Dishop},
+           familyi={D\bibinitperiod},
+           given={Christopher\bibnamedelima R},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=548fd787196b521649409b00f557bab3}{%
+           family={Braun},
+           familyi={B\bibinitperiod},
+           given={Michael\bibnamedelima T},
+           giveni={M\bibinitperiod\bibinitdelim T\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=79188ab8c9d801252e8f1b120df58f01}{%
+           family={Kuljanin},
+           familyi={K\bibinitperiod},
+           given={Goran},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=640bff6bc37424ceb9a8ee580af99127}{%
+           family={DeShon},
+           familyi={D\bibinitperiod},
+           given={Richard\bibnamedelima P},
+           giveni={R\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+      }
+      \name{editor}{4}{}{%
+        {{hash=25980ae283db16e90e803837330ea46e}{%
+           family={Griep},
+           familyi={G\bibinitperiod},
+           given={Y},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=9937cc50dbb89b60ca3cfde9a54c5811}{%
+           family={Hansen},
+           familyi={H\bibinitperiod},
+           given={S\bibnamedelima D},
+           giveni={S\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=1da2fe5449c18ad43ee942d76a6e79c6}{%
+           family={Vantilborgh},
+           familyi={V\bibinitperiod},
+           given={T},
+           giveni={T\bibinitperiod}}}%
+        {{hash=8b7d5108514c4b41db9743f072223bf7}{%
+           family={Hoffmans},
+           familyi={H\bibinitperiod},
+           given={J},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Edward Elgar Publishing}%
+      }
+      \strng{namehash}{79b053c2e62ab675556321a43a409c04}
+      \strng{fullhash}{79b053c2e62ab675556321a43a409c04}
+      \strng{bibnamehash}{79b053c2e62ab675556321a43a409c04}
+      \strng{authorbibnamehash}{79b053c2e62ab675556321a43a409c04}
+      \strng{authornamehash}{79b053c2e62ab675556321a43a409c04}
+      \strng{authorfullhash}{79b053c2e62ab675556321a43a409c04}
+      \strng{editorbibnamehash}{069ed4993750142755ec010ba5927adb}
+      \strng{editornamehash}{069ed4993750142755ec010ba5927adb}
+      \strng{editorfullhash}{069ed4993750142755ec010ba5927adb}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Handbook of Dynamic Organizational Behavior}
+      \field{note}{\href{https://github.com/Cdishop/website/raw/master/misc/articles/dishop_etal_longitudinal.pdf}{\textcolor{aogreen}{Link}}}
+      \field{title}{Thinking Longitudinal: A Framework For Scientific Inferences with Temporal Data}
+      \field{year}{2019}
+    \endentry
     \entry{dishop2017}{article}{}
       \name{author}{4}{}{%
         {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
@@ -84,7 +156,74 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Community Mental Health Journal}
+      \field{note}{\href{https://github.com/Cdishop/website/raw/master/misc/articles/dishop_2019.pdf}{\textcolor{aogreen}{Link}}}
       \field{title}{Predicting Turnover: The Moderating Effect of Functional Climates on Emotional Exhaustion and Work Attitudes}
+      \field{year}{2019}
+    \endentry
+    \entry{dishop_dynamics_principles}{incollection}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
+           family={Dishop},
+           familyi={D\bibinitperiod},
+           given={Christopher\bibnamedelima R},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=8d58749f6c2b413a7cd2a2f4df16e459}{%
+           family={Olenick},
+           familyi={O\bibinitperiod},
+           given={Jeffrey},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=640bff6bc37424ceb9a8ee580af99127}{%
+           family={DeShon},
+           familyi={D\bibinitperiod},
+           given={Richard\bibnamedelima P},
+           giveni={R\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+      }
+      \name{editor}{4}{}{%
+        {{hash=25980ae283db16e90e803837330ea46e}{%
+           family={Griep},
+           familyi={G\bibinitperiod},
+           given={Y},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=9937cc50dbb89b60ca3cfde9a54c5811}{%
+           family={Hansen},
+           familyi={H\bibinitperiod},
+           given={S\bibnamedelima D},
+           giveni={S\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=1da2fe5449c18ad43ee942d76a6e79c6}{%
+           family={Vantilborgh},
+           familyi={V\bibinitperiod},
+           given={T},
+           giveni={T\bibinitperiod}}}%
+        {{hash=8b7d5108514c4b41db9743f072223bf7}{%
+           family={Hoffmans},
+           familyi={H\bibinitperiod},
+           given={J},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Edward Elgar Publishing}%
+      }
+      \strng{namehash}{d2ee1442fd944a3f2be3587bc7be3c2b}
+      \strng{fullhash}{d2ee1442fd944a3f2be3587bc7be3c2b}
+      \strng{bibnamehash}{d2ee1442fd944a3f2be3587bc7be3c2b}
+      \strng{authorbibnamehash}{d2ee1442fd944a3f2be3587bc7be3c2b}
+      \strng{authornamehash}{d2ee1442fd944a3f2be3587bc7be3c2b}
+      \strng{authorfullhash}{d2ee1442fd944a3f2be3587bc7be3c2b}
+      \strng{editorbibnamehash}{069ed4993750142755ec010ba5927adb}
+      \strng{editornamehash}{069ed4993750142755ec010ba5927adb}
+      \strng{editorfullhash}{069ed4993750142755ec010ba5927adb}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Handbook of Dynamic Organizational Behavior}
+      \field{note}{\href{https://github.com/Cdishop/website/raw/master/misc/articles/dishop_etal_principles.pdf}{\textcolor{aogreen}{Link}}}
+      \field{title}{Principles For Taking a Dynamic Perspective}
       \field{year}{2019}
     \endentry
     \entry{dc99}{booklet}{}
@@ -281,6 +420,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Organizational Research Methods}
+      \field{note}{\href{https://github.com/Cdishop/website/raw/master/misc/articles/xu_deshon_dishop.pdf}{\textcolor{aogreen}{Link}}}
       \field{title}{Challenges and Opportunities in the Estimation of Dynamic Models}
       \field{year}{2019}
     \endentry
@@ -822,6 +962,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Psychiatric Services}
+      \field{note}{\href{https://github.com/Cdishop/website/raw/master/misc/articles/green_2016.pdf}{\textcolor{aogreen}{Link}}}
       \field{number}{10}
       \field{title}{Organizational Stress as Moderator of Relationship Between Mental Health Provider Adaptability and Organizational Commitment}
       \field{volume}{67}
@@ -922,48 +1063,6 @@
       \field{title}{[On dynamic modeling]}
       \field{year}{Under review}
     \endentry
-    \entry{dishop_bu_inference}{misc}{}
-      \name{author}{4}{}{%
-        {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
-           family={Dishop},
-           familyi={D\bibinitperiod},
-           given={Christopher\bibnamedelima R},
-           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=548fd787196b521649409b00f557bab3}{%
-           family={Braun},
-           familyi={B\bibinitperiod},
-           given={Michael\bibnamedelima T},
-           giveni={M\bibinitperiod\bibinitdelim T\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=79188ab8c9d801252e8f1b120df58f01}{%
-           family={Kuljanin},
-           familyi={K\bibinitperiod},
-           given={Goran},
-           giveni={G\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=640bff6bc37424ceb9a8ee580af99127}{%
-           family={DeShon},
-           familyi={D\bibinitperiod},
-           given={Richard\bibnamedelima P},
-           giveni={R\bibinitperiod\bibinitdelim P\bibinitperiod},
-           givenun=0}}%
-      }
-      \strng{namehash}{79b053c2e62ab675556321a43a409c04}
-      \strng{fullhash}{79b053c2e62ab675556321a43a409c04}
-      \strng{bibnamehash}{79b053c2e62ab675556321a43a409c04}
-      \strng{authorbibnamehash}{79b053c2e62ab675556321a43a409c04}
-      \strng{authornamehash}{79b053c2e62ab675556321a43a409c04}
-      \strng{authorfullhash}{79b053c2e62ab675556321a43a409c04}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{[On inferences with longitudinal data]}
-      \field{year}{Under Review}
-    \endentry
     \entry{dishop2018}{misc}{}
       \name{author}{2}{}{%
         {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
@@ -992,42 +1091,6 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{[On directional inferences]}
-      \field{year}{Under Review}
-    \endentry
-    \entry{dishop_dynamics_principles}{misc}{}
-      \name{author}{3}{}{%
-        {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
-           family={Dishop},
-           familyi={D\bibinitperiod},
-           given={Christopher\bibnamedelima R},
-           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=8d58749f6c2b413a7cd2a2f4df16e459}{%
-           family={Olenick},
-           familyi={O\bibinitperiod},
-           given={Jeffrey},
-           giveni={J\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=640bff6bc37424ceb9a8ee580af99127}{%
-           family={DeShon},
-           familyi={D\bibinitperiod},
-           given={Richard\bibnamedelima P},
-           giveni={R\bibinitperiod\bibinitdelim P\bibinitperiod},
-           givenun=0}}%
-      }
-      \strng{namehash}{d2ee1442fd944a3f2be3587bc7be3c2b}
-      \strng{fullhash}{d2ee1442fd944a3f2be3587bc7be3c2b}
-      \strng{bibnamehash}{d2ee1442fd944a3f2be3587bc7be3c2b}
-      \strng{authorbibnamehash}{d2ee1442fd944a3f2be3587bc7be3c2b}
-      \strng{authornamehash}{d2ee1442fd944a3f2be3587bc7be3c2b}
-      \strng{authorfullhash}{d2ee1442fd944a3f2be3587bc7be3c2b}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{[On dynamics as a set of ideas]}
       \field{year}{Under Review}
     \endentry
     \entry{kuljanin_coding}{misc}{}

@@ -72,6 +72,8 @@ Function with no column name parameters Function:
       <div class="navbar-item">
         
         
+          <a itemprop="url" class="navbar-item " href="/cv/"><span itemprop="name">CV</span></a>
+        
           <a itemprop="url" class="navbar-item " href="/rec_reading/"><span itemprop="name">Recommended Reading</span></a>
         
           <a itemprop="url" class="navbar-item " href="/r_resources/"><span itemprop="name">R Resources</span></a>
@@ -114,15 +116,15 @@ mini &lt;- dish %&gt;%
 mini[mini$person == &#39;jimmy&#39;, 2] &lt;- 99
 mini[mini$person == &#39;james&#39;, 2] &lt;- 99</code></pre>
 <p>The original data:</p>
-<pre><code>##   person          v_1       v_2      v_3        v_4
-## 1  jimmy  0.005185079  8.377510 37.60852 -0.8445495
-## 2  james  0.338534557 18.392011 52.20796 29.8561021
-## 3 johnny -1.120765004  5.701527 52.20548 45.8719886</code></pre>
+<pre><code>##   person        v_1       v_2      v_3       v_4
+## 1  jimmy -0.8087373  9.422563 41.63705  1.482684
+## 2  james -0.9710565  4.611378 45.26993 20.996419
+## 3 johnny  0.8688013 10.367834 52.00365 41.435836</code></pre>
 <p>What we changed it to:</p>
-<pre><code>##   person       v_1       v_2
-## 1  jimmy 99.000000  8.377510
-## 2  james 99.000000 18.392011
-## 3 johnny -1.120765  5.701527</code></pre>
+<pre><code>##   person        v_1       v_2
+## 1  jimmy 99.0000000  9.422563
+## 2  james 99.0000000  4.611378
+## 3 johnny  0.8688013 10.367834</code></pre>
 <p>Here is the function equivalent:</p>
 <pre class="r"><code>impute_99 &lt;- function(data){
   
@@ -140,10 +142,10 @@ mini[mini$person == &#39;james&#39;, 2] &lt;- 99</code></pre>
 <p>Our result:</p>
 <pre class="r"><code>adjusted_data &lt;- impute_99(dish)
 adjusted_data</code></pre>
-<pre><code>##   person       v_1       v_2
-## 1  jimmy 99.000000  8.377510
-## 2  james 99.000000 18.392011
-## 3 johnny -1.120765  5.701527</code></pre>
+<pre><code>##   person        v_1       v_2
+## 1  jimmy 99.0000000  9.422563
+## 2  james 99.0000000  4.611378
+## 3 johnny  0.8688013 10.367834</code></pre>
 </div>
 <div id="function-with-column-names-as-parameters" class="section level1">
 <h1>Function with column names as parameters</h1>
@@ -164,10 +166,10 @@ adjusted_data</code></pre>
 <p>Fortunately the correction is simple, just put quotes around the column names:</p>
 <pre class="r"><code>cool_data &lt;- impute_99_column_specific(dish, &#39;v_1&#39;, &#39;v_2&#39;)
 cool_data</code></pre>
-<pre><code>##   person       v_1       v_2
-## 1  jimmy 99.000000  8.377510
-## 2  james 99.000000 18.392011
-## 3 johnny -1.120765  5.701527</code></pre>
+<pre><code>##   person        v_1       v_2
+## 1  jimmy 99.0000000  9.422563
+## 2  james 99.0000000  4.611378
+## 3 johnny  0.8688013 10.367834</code></pre>
 <p>Bo<span class="math inline">\(^2\)</span>m =)</p>
 </div>
 

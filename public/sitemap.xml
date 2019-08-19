@@ -3,6 +3,10 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/cv/</loc>
+  </url>
+  
+  <url>
     <loc>/rec_reading/</loc>
   </url>
   
@@ -188,10 +192,6 @@
   <url>
     <loc>/computational_notes/besd/</loc>
     <lastmod>2017-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/cv/</loc>
   </url>
   
   <url>

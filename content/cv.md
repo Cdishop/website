@@ -6,5 +6,5 @@ menu = "main"
 weight = 1
 +++
 
-\href{https://raw.githubusercontent.com/Cdishop/website/master/misc/CV.pdf}{\textcolor{green}{Download here}}
+[CV download](https://raw.githubusercontent.com/Cdishop/website/master/misc/CV.pdf)
 

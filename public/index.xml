@@ -12,17 +12,6 @@
     
     
     <item>
-      <title>CV</title>
-      <link>/cv/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/cv/</guid>
-      <description>This browser does not support PDFs. Please download the PDF to view it: Download PDF.
- 
-It appears you don&amp;rsquo;t have a PDF plugin for this browser. No biggie&amp;hellip; you can click here to download the PDF file.</description>
-    </item>
-    
-    <item>
       <title>Recommended Reading</title>
       <link>/rec_reading/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -457,6 +446,16 @@ setwd(&amp;quot;path to the text files&amp;quot;) library(readr) all_files = Sys
       <description>Effect sizes provide information about the magnitude of an effect. Unfortunately, they can be difficult to interpret or appear “small” to anyone unfamiliar with the typical effect sizes in a given research field. Rosenthal and Rubin (1992) provide an intuitive effect size, called the Binomial Effect Size Display, that captures the change in success rate due to a treatment.
 The calculation is simple:
  Treamtment BESD = 0.50 + (r / 2)</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/cv/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/cv/</guid>
+      <description>This browser does not support PDFs. Please download the PDF to view it: Download PDF.
+ </description>
     </item>
     
   </channel>

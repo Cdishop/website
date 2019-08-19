@@ -11,3 +11,10 @@ weight = 1
         <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://raw.githubusercontent.com/Cdishop/website/master/misc/CV.pdf">Download PDF</a>.</p>
     </embed>
 </object>
+
+
+<object data="https://raw.githubusercontent.com/Cdishop/website/master/misc/CV.pdf" type="application/pdf" width="100%" height="100%">
+    <p>It appears you don't have a PDF plugin for this browser.
+    No biggie... you can <a href="https://raw.githubusercontent.com/Cdishop/website/master/misc/CV.pdf">click here to
+    download the PDF file.</a></p>
+</object>

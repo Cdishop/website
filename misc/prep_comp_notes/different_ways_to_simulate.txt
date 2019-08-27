@@ -1,0 +1,2 @@
+Simulating using a dgp vs. a command called "simulate"
+- look at the power simulations link. You don't learn as much doing that

@@ -6,7 +6,7 @@
     <description>Recent content on Christopher Dishop</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 26 Jun 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 25 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
@@ -69,6 +69,17 @@ Malcolm Barrett
 John Flournoy
 UC R Guide
 Crump Lab</description>
+    </item>
+    
+    <item>
+      <title>Counting Degrees of Freedom</title>
+      <link>/computational_notes/dfs/</link>
+      <pubDate>Sun, 25 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/dfs/</guid>
+      <description>This post contains a bunch of examples where I practice counting dfs. In each example, I generate the data, estimate the parameters using SEM, count the dfs, and then compare my count to what the model spits back. To count dfs, I need to know the number of knowns and unknowns in my system:
+\[\begin{equation} \textrm{DFs} = \textrm{knowns - unknowns} \end{equation}\]
+To count the number of knowns, I need to know the number of observed variables, p:</description>
     </item>
     
     <item>

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  27 AUG 2019 11:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  18 SEP 2019 14:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1616,22 +1616,22 @@ LaTeX Font Info:    Font shape `T1/Cabin-TLF/regular/n' will be
 (Font)              scaled to size 8.0pt on input line 10.
 LaTeX Font Info:    Font shape `T1/Cabin-TLF/bold/n' will be
 (Font)              scaled to size 8.0pt on input line 10.
+[1
+
+{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./photo
+.jpg>]
 
 Package biblatex Warning: Type 'misc' not found on input line 14.
 
 
 LaTeX Warning: Empty bibliography on input line 14.
 
-[1
-
-{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./photo
-.jpg>] [2]) (./teaching.tex) (./teaching.tex) (./teaching.tex)
-(./teaching.tex) (./advised.tex) (./advised.tex) (./advised.tex) (./advised.tex
-) (./referee.tex) (./referee.tex) (./referee.tex) (./referee.tex) [3]
+[2]) (./teaching.tex) (./teaching.tex) (./teaching.tex) (./teaching.tex)
+(./advised.tex) (./advised.tex) (./advised.tex) (./advised.tex) (./referee.tex)
+(./referee.tex) (./referee.tex) (./referee.tex) [3]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 101.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 101.
-
-(./cv-llt.aux)
+ (./cv-llt.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 101.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 101.
 Package rerunfilecheck Info: File `cv-llt.out' has not changed.
@@ -1647,10 +1647,10 @@ Package logreq Info: Writing requests to 'cv-llt.run.xml'.
  ) 
 Here is how much of TeX's memory you used:
  31502 strings out of 492616
- 605365 string characters out of 6129482
- 1157881 words of memory out of 5000000
- 34678 multiletter control sequences out of 15000+600000
- 136298 words of font info for 84 fonts, out of 8000000 for 9000
+ 605299 string characters out of 6129482
+ 1157746 words of memory out of 5000000
+ 34671 multiletter control sequences out of 15000+600000
+ 137077 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,11n,165p,1151b,7101s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/fbb/fbb_5tchvx.enc}{/usr/
@@ -1665,10 +1665,10 @@ xmf-dist/fonts/type1/public/fontawesome/FontAwesome.pfb></usr/local/texlive/201
 xlive/2019/texmf-dist/fonts/type1/public/fbb/fbb-Bold.pfb></usr/local/texlive/2
 019/texmf-dist/fonts/type1/public/fbb/fbb-Italic.pfb></usr/local/texlive/2019/t
 exmf-dist/fonts/type1/public/fbb/fbb-Regular.pfb>
-Output written on cv-llt.pdf (3 pages, 219661 bytes).
+Output written on cv-llt.pdf (3 pages, 220175 bytes).
 PDF statistics:
- 170 PDF objects out of 1000 (max. 8388607)
- 100 compressed objects within 1 object stream
- 31 named destinations out of 1000 (max. 500000)
+ 173 PDF objects out of 1000 (max. 8388607)
+ 102 compressed objects within 2 object streams
+ 32 named destinations out of 1000 (max. 500000)
  20840 words of extra memory for PDF output out of 24883 (max. 10000000)
 

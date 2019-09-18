@@ -19,7 +19,7 @@
 
 \refsection{0}
   \datalist[entry]{ymdnt/global//global/global}
-    \entry{dc97}{booklet}{}
+    \entry{dishopgst}{article}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=9e2314d4a889faac7fecb5c0cf438576}{%
            family={Dishop},
@@ -38,6 +38,35 @@
       \field{sortinit}{2}
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Journal of Mathematical Sociologyl}
+      \field{note}{\href{https://github.com/Cdishop/website/raw/master/misc/articles/dishop_2019b.pdf}{\textcolor{aogreen}{Link}}}
+      \field{title}{A simple, dynamic extension of temporal motivation theory}
+      \field{year}{2019}
+      \true{nocite}
+    \endentry
+    \entry{dc97}{booklet}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=9e2314d4a889faac7fecb5c0cf438576}{%
+           family={Dishop},
+           familyi={D\bibinitperiod},
+           given={Christopher\bibnamedelima R},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{9e2314d4a889faac7fecb5c0cf438576}
+      \strng{fullhash}{9e2314d4a889faac7fecb5c0cf438576}
+      \strng{bibnamehash}{9e2314d4a889faac7fecb5c0cf438576}
+      \strng{authorbibnamehash}{9e2314d4a889faac7fecb5c0cf438576}
+      \strng{authornamehash}{9e2314d4a889faac7fecb5c0cf438576}
+      \strng{authorfullhash}{9e2314d4a889faac7fecb5c0cf438576}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{extradate}{2}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -62,10 +91,10 @@
       \strng{authorbibnamehash}{9e2314d4a889faac7fecb5c0cf438576}
       \strng{authornamehash}{9e2314d4a889faac7fecb5c0cf438576}
       \strng{authorfullhash}{9e2314d4a889faac7fecb5c0cf438576}
-      \field{extraname}{2}
+      \field{extraname}{3}
       \field{sortinit}{2}
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
-      \field{extradate}{2}
+      \field{extradate}{3}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -639,7 +668,7 @@
       \strng{authorbibnamehash}{9e2314d4a889faac7fecb5c0cf438576}
       \strng{authornamehash}{9e2314d4a889faac7fecb5c0cf438576}
       \strng{authorfullhash}{9e2314d4a889faac7fecb5c0cf438576}
-      \field{extraname}{3}
+      \field{extraname}{4}
       \field{sortinit}{2}
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{extradatescope}{labelyear}
@@ -847,7 +876,7 @@
       \strng{authorbibnamehash}{9e2314d4a889faac7fecb5c0cf438576}
       \strng{authornamehash}{9e2314d4a889faac7fecb5c0cf438576}
       \strng{authorfullhash}{9e2314d4a889faac7fecb5c0cf438576}
-      \field{extraname}{4}
+      \field{extraname}{5}
       \field{sortinit}{2}
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{extradate}{1}
@@ -875,7 +904,7 @@
       \strng{authorbibnamehash}{9e2314d4a889faac7fecb5c0cf438576}
       \strng{authornamehash}{9e2314d4a889faac7fecb5c0cf438576}
       \strng{authorfullhash}{9e2314d4a889faac7fecb5c0cf438576}
-      \field{extraname}{5}
+      \field{extraname}{6}
       \field{sortinit}{2}
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{extradate}{2}
@@ -988,7 +1017,7 @@
       \strng{authorbibnamehash}{9e2314d4a889faac7fecb5c0cf438576}
       \strng{authornamehash}{9e2314d4a889faac7fecb5c0cf438576}
       \strng{authorfullhash}{9e2314d4a889faac7fecb5c0cf438576}
-      \field{extraname}{6}
+      \field{extraname}{7}
       \field{sortinit}{2}
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{extradatescope}{labelyear}

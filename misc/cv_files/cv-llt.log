@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  18 SEP 2019 14:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  22 SEP 2019 11:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1636,20 +1636,15 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 101.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 101.
 Package rerunfilecheck Info: File `cv-llt.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-
-
-Package biblatex Warning: Please rerun LaTeX.
-(biblatex)                Page breaks have changed.
-
 Package logreq Info: Writing requests to 'cv-llt.run.xml'.
 \openout1 = `cv-llt.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31502 strings out of 492616
- 605299 string characters out of 6129482
- 1157746 words of memory out of 5000000
- 34671 multiletter control sequences out of 15000+600000
+ 31503 strings out of 492616
+ 605310 string characters out of 6129482
+ 1157779 words of memory out of 5000000
+ 34672 multiletter control sequences out of 15000+600000
  137077 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,11n,165p,1151b,7101s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1665,7 +1660,7 @@ xmf-dist/fonts/type1/public/fontawesome/FontAwesome.pfb></usr/local/texlive/201
 xlive/2019/texmf-dist/fonts/type1/public/fbb/fbb-Bold.pfb></usr/local/texlive/2
 019/texmf-dist/fonts/type1/public/fbb/fbb-Italic.pfb></usr/local/texlive/2019/t
 exmf-dist/fonts/type1/public/fbb/fbb-Regular.pfb>
-Output written on cv-llt.pdf (3 pages, 220175 bytes).
+Output written on cv-llt.pdf (3 pages, 220177 bytes).
 PDF statistics:
  173 PDF objects out of 1000 (max. 8388607)
  102 compressed objects within 2 object streams

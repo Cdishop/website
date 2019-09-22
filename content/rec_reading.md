@@ -241,6 +241,8 @@ John Fox
 
 
 
+
+
 *SuperCooperators: Altruism, Evolution, and Why We Need Each Other to Succeed*
 
 Martin A. Nowak
@@ -392,6 +394,38 @@ Yina Guo
 
 
 
+*Vehicles: Experiments in Synthetic Psychology*
+
+Valentino Braitenberg
+
+[Click here for link](https://www.amazon.com/Vehicles-Experiments-Psychology-Valentino-Braitenberg/dp/0262521121/ref=sr_1_1?keywords=synthetic+psychology&qid=1563232952&s=gateway&sr=8-1)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/vehicles.png)
+
+
+
+
+
+
+
+
+
+*The Life You Can Save*
+
+Peter Singer
+
+[Click here for link](https://www.amazon.com/Life-You-Can-Save-2010-09-14/dp/B01N3MESKP/ref=sr_1_2?keywords=the+life+you+can+save&qid=1555122514&s=gateway&sr=8-2)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/life_save.png)
+
+
+
+
+
+
+
+
+
 
 
 *Mathematics for the Life Sciences*
@@ -405,6 +439,8 @@ Louis J. Gross
 [Click here for link](https://www.amazon.com/Mathematics-Life-Sciences-Erin-Bodine/dp/0691150729/ref=sr_1_1?s=books&ie=UTF8&qid=1524678619&sr=1-1&keywords=mathematics+for+the+life+sciences)
 
 ![](https://github.com/Cdishop/website/raw/master/misc/books/mathlife.png)
+
+
 
 
 
@@ -426,15 +462,6 @@ Andrew Robinson
 
 
 
-*Scientific Reasoning: The Bayesian Approach*
-
-Colin Howson
-
-Peter Urbach
-
-[Click here for link](https://www.amazon.com/Scientific-Reasoning-Bayesian-Approach-Paperback/dp/B011W97X5W/ref=sr_1_2?s=books&ie=UTF8&qid=1524678920&sr=1-2&keywords=scientific+reasoning+bayesian+approach)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/bayesianreasoning.png)
 
 
 
@@ -471,15 +498,6 @@ Steve Strogatz
 
 
 
-*Computational Modeling of Behavior in Organizations*
-
-Daniel R. Ilgen
-
-Charles L. Hulin
-
-[Click here for link](https://www.amazon.com/Computational-Modeling-Behavior-Organizations-Scientific/dp/1557986398/ref=sr_1_2?s=books&ie=UTF8&qid=1524678695&sr=1-2&keywords=computational+modeling+organization)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/compmodeling.png)
 
 
 
@@ -531,47 +549,6 @@ Edited By John Brockman
 
 
 
-*Once Upon an Algorithm: How Stories Explain Computing*
-
-Martin Erwig
-
-[Click here for link](https://www.amazon.com/Once-Upon-Algorithm-Stories-Computing/dp/0262036630/ref=sr_1_1_sspa?s=books&ie=UTF8&qid=1524678863&sr=1-1-spons&keywords=once+upon+an+algorithm&psc=1)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/algorithm.png)
-
-
-
-
-
-
-*Predictably Irrational: The Hidden Forces That Shape Our Decisions*
-
-Dan Ariely
-
-[Click here for link](https://www.amazon.com/Predictably-Irrational-Revised-Expanded-Decisions/dp/0061353248/ref=sr_1_1?s=books&ie=UTF8&qid=1524678490&sr=1-1&keywords=predictably+irrational)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/irrational.png)
-
-
-
-
-
-
-
-*Big Data: A Revolution That Will Transform How We Live, Work, and Think*
-
-Viktor Mayer-Schonberger
-
-Kenneth Cukier
-
-[Click here for link](https://www.amazon.com/Big-Data-Revolution-Transform-Think/dp/1848547900/ref=sr_1_10?s=books&ie=UTF8&qid=1524678890&sr=1-10&keywords=big+data+a+revolution)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/bigdata.png)
-
-
-
-
-
 
 *Sex At Dawn: How We Mate, Why We Stay, and What It Means for Modern Relationships*
 
@@ -586,15 +563,6 @@ Cacilda Jetha
 
 
 
-
-
-*Statistical Regression and Classification: From Linear Models to Machine Learning*
-
-Norman Matloff
-
-[Click here for link](https://www.amazon.com/Statistical-Regression-Classification-Machine-Learning/dp/1498710913/ref=sr_1_1?s=books&ie=UTF8&qid=1524678977&sr=1-1&keywords=statistical+regression+and+classification)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/statregression.png)
 
 
 
@@ -623,6 +591,8 @@ Daniel Bor
 [Click here for link](https://www.amazon.com/Ravenous-Brain-Consciousness-Explains-Insatiable/dp/046502047X/ref=sr_1_1?s=books&ie=UTF8&qid=1524679052&sr=1-1&keywords=the+ravenous+brain)
 
 ![](https://github.com/Cdishop/website/raw/master/misc/books/ravenousbrain.png)
+
+
 
 
 
@@ -706,31 +676,6 @@ Scott E. Page
 
 
 
-
-*Mindsharing: The Art Of Crowdsourcing Everything*
-
-Lior Zoref
-
-[Click here for link](https://www.amazon.com/Mindsharing-Crowdsourcing-Everything-Lior-Zoref/dp/159184665X/ref=sr_1_1?s=books&ie=UTF8&qid=1524679111&sr=1-1&keywords=mindsharing+the+art)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/mindsharing.png)
-
-
-
-
-
-*Doing Bayesian Data Analysis: A Tutorial with R, Jags, and Stan*
-
-John K. Kruschke
-
-[Click here for link](https://www.amazon.com/Doing-Bayesian-Data-Analysis-Second/dp/0124058884/ref=sr_1_1?s=books&ie=UTF8&qid=1524679129&sr=1-1&keywords=doing+bayesian)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/kruschkebayesian.png)
-
-
-
-
-
 *Homo Deus: A Brief History of Tomorrow*
 
 Yuval Noah Harari
@@ -738,6 +683,8 @@ Yuval Noah Harari
 [Click here for link](https://www.amazon.com/Homo-Deus-Brief-History-Tomorrow/dp/0062464310/ref=sr_1_1?s=books&ie=UTF8&qid=1524679148&sr=1-1&keywords=homo+deus)
 
 ![](https://github.com/Cdishop/website/raw/master/misc/books/homodeus.png)
+
+
 
 
 
@@ -754,6 +701,8 @@ Sam Harris
 
 
 
+
+
 *Sick Societies: Challenging the Myth of Primitive Harmony*
 
 Robert B. Edgerton
@@ -764,30 +713,6 @@ Robert B. Edgerton
 
 
 
-
-
-*Work Motivation: Past, Present, and Future*
-
-Ruth Kanfer
-
-Gilad Chen
-
-Robert D. Pritchard
-
-[Click here for link](https://www.amazon.com/Work-Motivation-Present-Organizational-Frontiers/dp/0415653355/ref=sr_1_1?s=books&ie=UTF8&qid=1524679190&sr=1-1&keywords=work+motivation+past+present)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/workmotivation.png)
-
-
-
-
-*Randomization, Bootstrap, and Monte Carlo Methods in Biology*
-
-Bryan F.J. Manly
-
-[Click here for link](https://www.amazon.com/Randomization-Bootstrap-Methods-Biology-Statistical/dp/1584885416/ref=sr_1_sc_1?s=books&ie=UTF8&qid=1524679208&sr=1-1-spell&keywords=randomization+boostrap+monte+carlo)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/randomization.png)
 
 
 
@@ -810,33 +735,6 @@ Peter Singer
 
 
 
-
-
-
-
-
-
-
-*SuperFreakonomics*
-
-Steven D. Levitt
-
-Stephen J. Dubner
-
-[Click here for link](https://www.amazon.com/SuperFreakonomics-Cooling-Patriotic-Prostitutes-Insurance/dp/0060889586/ref=sr_1_1?s=books&ie=UTF8&qid=1524679232&sr=1-1&keywords=super+freakonomics)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/superfreaks.png)
-
-
-
-
-*Our Mathematical Universe: My Quest for the Ultimate Nature of Reality*
-
-Max Tegmark
-
-[Click here for link](https://www.amazon.com/Our-Mathematical-Universe-Ultimate-Reality/dp/0307744256/ref=sr_1_1?s=books&ie=UTF8&qid=1524679253&sr=1-1&keywords=our+mathematical+universe)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/maxmath.png)
 
 
 
@@ -907,32 +805,6 @@ Max Shron
 
 
 
-*Foundational and Applied Statistics for Biologists Using R*
-
-Ken A. Aho
-
-[Click here for link](https://www.amazon.com/Foundational-Applied-Statistics-Biologists-Using/dp/1439873380/ref=sr_1_2?s=books&ie=UTF8&qid=1524679275&sr=1-2&keywords=foundational+and+applied+statistics)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/rappliedbio.png)
-
-
-
-
-*Computational Social Psychology*
-
-Robin R. Vallacher
-
-Stephen J. Read
-
-Andrzej Nowak
-
-[Click here for link](https://www.amazon.com/Computational-Social-Psychology-Frontiers/dp/113895165X/ref=sr_1_1?s=books&ie=UTF8&qid=1524679295&sr=1-1&keywords=computational+social+psychology)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/compsocial.png)
-
-
-
-
 *Structural Equations With Latent Variables*
 
 Kenneth A. Bollen
@@ -940,6 +812,8 @@ Kenneth A. Bollen
 [Click here for link](https://www.amazon.com/Structural-Equations-Latent-Variables-Kenneth/dp/0471011711/ref=sr_1_1?s=books&ie=UTF8&qid=1524679315&sr=1-1&keywords=structural+equations+latent+variables)
 
 ![](https://github.com/Cdishop/website/raw/master/misc/books/SEM.png)
+
+
 
 
 
@@ -990,17 +864,6 @@ Stephen M. Stigler
 
 
 
-*A Grammar Book For You and I (Oops Me)*
-
-C. Edward Good
-
-[Click here for link](https://www.amazon.com/Grammar-Book-You-Oops-Me/dp/1892123231/ref=sr_1_2?ie=UTF8&qid=1544905575&sr=8-2&keywords=a+grammar+book+for+you+and+i)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/grammar.png)
-
-
-
-
 
 
 
@@ -1018,17 +881,6 @@ Ian Stewart
 
 
 
-
-
-
-
-*YaRrr: A Pirate's Guide to R*
-
-Nathaniel D. Phillips
-
-[Click here for link](https://bookdown.org/ndphillips/YaRrr/)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/yarrr.png)
 
 
 
@@ -1056,17 +908,6 @@ Daniel Gilbert
 
 
 
-
-
-*R for Data Science: Import, Tidy, Transform, Visualize, and Model Data*
-
-Hadley Wickham
-
-Garrett Grolemund
-
-[Click here for link](http://r4ds.had.co.nz/)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/rhadley.png)
 
 
 
@@ -1097,40 +938,6 @@ Kosuke Imai
 
 
 
-
-
-
-
-
-*The Empire of Chance: How Probability Changed Science and Everyday Life*
-
-Gerd Gigerenzer
-
-Zeno Swijtink
-
-Theodore Porter
-
-Lorraine Daston
-
-John Beatty
-
-Lorenz Kruger
-
-[Click here for link](https://www.amazon.com/Empire-Chance-Probability-Changed-Everyday/dp/052139838X/ref=sr_1_1?s=books&ie=UTF8&qid=1524679547&sr=1-1&keywords=the+empire+of+chance)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/empireofchance.png)
-
-
-
-
-
-*ggplot2: Elegant graphics for data analysis*
-
-Hadley Wickham
-
-[Click here for link](https://www.amazon.com/ggplot2-Elegant-Graphics-Data-Analysis/dp/331924275X/ref=sr_1_1?s=books&ie=UTF8&qid=1524679567&sr=1-1&keywords=ggplot2+hadley)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/ggplot2.png)
 
 
 
@@ -1175,31 +982,6 @@ John V. Guttag
 
 
 
-*Python Programming: An Introduction to Computer Science*
-
-John Zelle
-
-[Click here for link](https://www.amazon.com/gp/product/1590282418/ref=oh_aui_detailpage_o03_s00?ie=UTF8&psc=1)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/python_programming.png)
-
-
-
-
-
-
-*Dynamic Documents with R and Knitr*
-
-Yihui Xie
-
-[Click here for link](https://www.amazon.com/Dynamic-Documents-knitr-Chapman-Hall/dp/1498716962/ref=sr_1_1?ie=UTF8&qid=1534110095&sr=8-1&keywords=dynamic+documents+with+r)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/dynamic_documents.png)
-
-
-
-
-
 
 *Cooperation Under Anarchy*
 
@@ -1208,6 +990,39 @@ Kenneth A. Oye
 [Click here for link](https://www.amazon.com/Cooperation-under-Anarchy-Kenneth-Oye/dp/0691022402/ref=sr_1_1?ie=UTF8&qid=1534110079&sr=8-1&keywords=cooperation+under+anarchy)
 
 ![](https://github.com/Cdishop/website/raw/master/misc/books/cooperation_anarchy.png)
+
+
+
+
+
+
+
+
+
+
+*Predictably Irrational: The Hidden Forces That Shape Our Decisions*
+
+Dan Ariely
+
+[Click here for link](https://www.amazon.com/Predictably-Irrational-Revised-Expanded-Decisions/dp/0061353248/ref=sr_1_1?s=books&ie=UTF8&qid=1524678490&sr=1-1&keywords=predictably+irrational)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/irrational.png)
+
+
+
+
+
+
+
+*Big Data: A Revolution That Will Transform How We Live, Work, and Think*
+
+Viktor Mayer-Schonberger
+
+Kenneth Cukier
+
+[Click here for link](https://www.amazon.com/Big-Data-Revolution-Transform-Think/dp/1848547900/ref=sr_1_10?s=books&ie=UTF8&qid=1524678890&sr=1-10&keywords=big+data+a+revolution)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/bigdata.png)
 
 
 
@@ -1254,45 +1069,6 @@ Matt Parker
 ![](https://github.com/Cdishop/website/raw/master/misc/books/humble_pie.png)
 
 
-
-
-*Vehicles: Experiments in Synthetic Psychology*
-
-Valentino Braitenberg
-
-[Click here for link](https://www.amazon.com/Vehicles-Experiments-Psychology-Valentino-Braitenberg/dp/0262521121/ref=sr_1_1?keywords=synthetic+psychology&qid=1563232952&s=gateway&sr=8-1)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/vehicles.png)
-
-
-
-
-
-
-*The Elements of Style*
-
-William Strunk Jr.
-
-E. B. White
-
-[Click here for link](https://www.amazon.com/Elements-Style-Fourth-William-Strunk/dp/020530902X/ref=sr_1_3?ie=UTF8&qid=1529323689&sr=8-3&keywords=elements+of+style)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/elements_style.png)
-
-
-
-
-
-
-
-
-*The Life You Can Save*
-
-Peter Singer
-
-[Click here for link](https://www.amazon.com/Life-You-Can-Save-2010-09-14/dp/B01N3MESKP/ref=sr_1_2?keywords=the+life+you+can+save&qid=1555122514&s=gateway&sr=8-2)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/life_save.png)
 
 
 

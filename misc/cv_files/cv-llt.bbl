@@ -42,7 +42,7 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{The Journal of Mathematical Sociologyl}
+      \field{journaltitle}{The Journal of Mathematical Sociology}
       \field{note}{\href{https://github.com/Cdishop/website/raw/master/misc/articles/dishop_2019b.pdf}{\textcolor{aogreen}{Link}}}
       \field{title}{A simple, dynamic extension of temporal motivation theory}
       \field{year}{2019}
@@ -1031,8 +1031,8 @@
     \endentry
     \entry{dd13}{booklet}{}
       \name{author}{3}{}{%
-        {{uniquename=0,uniquepart=base,hash=651e03e2cb49ec5ffd38bfb64972033c}{%
-           family={Career},
+        {{uniquename=0,uniquepart=base,hash=67ee98940ca05e1e22f461f8b5e94649}{%
+           family={Carner},
            familyi={C\bibinitperiod},
            given={C},
            giveni={C\bibinitperiod},
@@ -1050,12 +1050,12 @@
            giveni={V\bibinitperiod},
            givenun=0}}%
       }
-      \strng{namehash}{1e289eac59107b06cae0ac76e917cf0f}
-      \strng{fullhash}{1e289eac59107b06cae0ac76e917cf0f}
-      \strng{bibnamehash}{1e289eac59107b06cae0ac76e917cf0f}
-      \strng{authorbibnamehash}{1e289eac59107b06cae0ac76e917cf0f}
-      \strng{authornamehash}{1e289eac59107b06cae0ac76e917cf0f}
-      \strng{authorfullhash}{1e289eac59107b06cae0ac76e917cf0f}
+      \strng{namehash}{018c6294764fc6a366d5591330237d56}
+      \strng{fullhash}{018c6294764fc6a366d5591330237d56}
+      \strng{bibnamehash}{018c6294764fc6a366d5591330237d56}
+      \strng{authorbibnamehash}{018c6294764fc6a366d5591330237d56}
+      \strng{authornamehash}{018c6294764fc6a366d5591330237d56}
+      \strng{authorfullhash}{018c6294764fc6a366d5591330237d56}
       \field{sortinit}{2}
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{extradatescope}{labelyear}

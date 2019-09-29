@@ -6,7 +6,7 @@
     <description>Recent content on Christopher Dishop</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Sun, 25 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 15 Sep 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
@@ -69,6 +69,18 @@ Malcolm Barrett
 John Flournoy
 UC R Guide
 Crump Lab</description>
+    </item>
+    
+    <item>
+      <title>Meta Analysis Comps Notes</title>
+      <link>/computational_notes/ma_compute/</link>
+      <pubDate>Sun, 15 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/ma_compute/</guid>
+      <description>I’m taking comps pretty soon so this is my summary document regarding meta-analysis.
+MAs give us an average estimate across settings, tests, and people after correcting for noise. In a bare-bones MA, we correct only for sampling error. In a full MA, we correct for sampling error, unreliability, and range restriction. I’ll demonstrate a full MA here where we assume direct (rather than indirect) range restriction.
+Steps Literature Review
+ Create inclusion criteria for how you are going to select studies Find relevant articles  Code Articles</description>
     </item>
     
     <item>

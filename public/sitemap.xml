@@ -15,6 +15,11 @@
   </url>
   
   <url>
+    <loc>/computational_notes/ma_compute/</loc>
+    <lastmod>2019-09-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/computational_notes/dfs/</loc>
     <lastmod>2019-08-25T00:00:00+00:00</lastmod>
   </url>
@@ -206,13 +211,13 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2019-08-25T00:00:00+00:00</lastmod>
+    <lastmod>2019-09-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/computational_notes/</loc>
-    <lastmod>2019-08-25T00:00:00+00:00</lastmod>
+    <lastmod>2019-09-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -445,6 +445,23 @@ Louis J. Gross
 
 
 
+
+*Nature's Nether Regions: What the Sex Lives of Bugs, Birds, and Beasts Tell Us About Evolution, Biodiversity, and Ourselves*
+
+Menno Schilthuizen
+
+[Click here for link](https://www.amazon.com/Natures-Nether-Regions-Schilthuizen-2015-04-28/dp/B01FKSKGY6/ref=sr_1_2?keywords=natures+nether+regions&qid=1569771217&s=gateway&sr=8-2)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/nature_nether.png)
+
+
+
+
+
+
+
+
+
 *Introduction To Scientific Programming and Simulation Using R*
 
 Owen Jones

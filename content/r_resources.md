@@ -18,6 +18,8 @@ weight = 3
 
 [Econometrics Simulations](http://www.econometricsbysimulation.com/2012/10/using-simulations-to-maximize.html)
 
+[UVA Data Science Resources](https://data.library.virginia.edu/statlab/data-science-resources/)
+
 # People with helpful individual websites
 
 [Jenny Bryan](https://jennybryan.org)  
@@ -98,6 +100,8 @@ weight = 3
 
 [Simulate Experiments](https://debruine.github.io/faux/index.html)
 
+[Maximum Likelihood](https://rpubs.com/YaRrr/MLTutorial)
+
 [citr](https://github.com/jrgant/citr)
 
 [Purrr tutorial](https://emoriebeck.github.io/R-tutorials/purrr/)
@@ -127,6 +131,8 @@ weight = 3
 [sims package](https://github.com/osofr/simcausal)
 
 [Draw SEMs](https://www.draw.io/)
+
+[onyxR for SEM diagrams with lavaan](https://github.com/brandmaier/onyxR)
 
 # Progressing Through Stats with R
 

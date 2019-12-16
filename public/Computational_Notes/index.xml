@@ -6,10 +6,45 @@
     <description>Recent content in Computational_Notes on Christopher Dishop</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Sun, 15 Sep 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 10 Dec 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/computational_notes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Simulations With Rcpp</title>
+      <link>/computational_notes/sims_rccp/</link>
+      <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/sims_rccp/</guid>
+      <description>Simulating dynamic processes is slow in R. Using the Rcpp function, we can incorporate C++ code to improve performance.
+My dad, Tim, wrote the C++ code you see here = ).
+Example 1 - Two states, single unit We’re going to simulate data goverened by the following equations:
+\[\begin{align*} x_t &amp;amp;= a1x_{t-1} + b1y_{t-1}\\ y_t &amp;amp;= a2y_{t-1} + b2x_{t-1}. \end{align*}\]
+Here it is in R:
+library(tidyverse) library(Rcpp) # Parameters a1 &amp;lt;- 0.</description>
+    </item>
+    
+    <item>
+      <title>Screwing Up A Mean Calculation</title>
+      <link>/computational_notes/mean_calculating/</link>
+      <pubDate>Mon, 02 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/mean_calculating/</guid>
+      <description>Quick note about calculating the mean of a column with dplyr in R. It’s surprisingly easy to screw up, and the culprit is forgetting to change the name of the column storing the new calculation.
+A simple dataframe.
+library(tidyverse) df &amp;lt;- data.frame( &amp;#39;books_read&amp;#39; = c(1,2,3,4,5,6), &amp;#39;intelligence&amp;#39; = c(4,5,6,7,8,8) ) df ## books_read intelligence ## 1 1 4 ## 2 2 5 ## 3 3 6 ## 4 4 7 ## 5 5 8 ## 6 6 8 I want to calculate the mean and standard deviation of the “books read” column.</description>
+    </item>
+    
+    <item>
+      <title>Regression Creates Weighted Linear Composites</title>
+      <link>/computational_notes/regression_composite/</link>
+      <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/regression_composite/</guid>
+      <description>One way to think about regression is as a tool that takes a set of predictors and creates a weighted, linear composite that maximally correlates with the response variable. It finds a way to combine multiple predictors into a single thing, using regression weights, and the weights are chosen such that, once the single composite is formed, it maximally correlates with the outcome.
+Here’s a simulation to punch that point home.</description>
+    </item>
     
     <item>
       <title>Meta Analysis Comps Notes</title>

@@ -375,17 +375,40 @@ Steven Johnson
 
 
 
-*Modeling Life: The Mathematics of Biological Systems*
 
-Alan Garfinkel
 
-Jane Shevtsov
 
-Yina Guo
 
-[Click here for link](https://www.amazon.com/Modeling-Life-Mathematics-Biological-Systems/dp/3319597302/ref=sr_1_1?ie=UTF8&qid=1541968444&sr=8-1&keywords=modeling+life)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/modeling_life.png)
+
+*How We Got to Now: Six Innovations That Made the Modern World*
+
+Steven Johnson
+
+[Click here for link](https://www.amazon.com/How-We-Got-Now-Innovations-ebook/dp/B00INIXU5I/ref=sr_1_1?ie=UTF8&qid=1541968591&sr=8-1&keywords=how+we+got+to+now+johnson&dpID=512mgCAgJQL&preST=_SY445_QL70_&dpSrc=srch)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/now.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*Stiff: The Curious Lives of Human Cadavers*
+
+Mary Roach
+
+[Click here for link](https://www.amazon.com/Stiff-Curious-Lives-Human-Cadavers/dp/B0001O356G/ref=sr_1_1?keywords=stiff&qid=1576539098&sr=8-1)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/stiff.png)
 
 
 
@@ -952,6 +975,23 @@ Kosuke Imai
 
 ![](https://github.com/Cdishop/website/raw/master/misc/books/quant_ss.png)
 
+
+
+
+
+
+
+
+
+
+
+*How to Do Nothing: Resisting the Attention Economy*
+
+Jenny Odell
+
+[Click here for link](https://www.amazon.com/How-Do-Nothing-Resisting-Attention/dp/1612197493/ref=tmm_hrd_swatch_0?_encoding=UTF8&qid=1576539107&sr=8-1)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/do_nothingpng)
 
 
 

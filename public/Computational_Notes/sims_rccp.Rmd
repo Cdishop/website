@@ -1,0 +1,262 @@
+---
+title: "Simulations With Rcpp"
+date: "2019-12-10"
+output: pdf_document
+---
+
+Simulating dynamic processes is slow in `R`. Using the `Rcpp` function, we can incorporate C++ code to improve performance.
+
+My dad, Tim, wrote the C++ code you see here = ). 
+
+# Example 1 - Two states, single unit
+
+We're going to simulate data goverened by the following equations:
+
+\begin{align*} 
+x_t &= a1x_{t-1} + b1y_{t-1}\\ 
+y_t &= a2y_{t-1} + b2x_{t-1}. 
+\end{align*}
+
+Here it is in `R`:
+
+```{r, cache = T, warning = F, message = F}
+library(tidyverse)
+library(Rcpp)
+# Parameters
+a1 <- 0.8
+a2 <- 0.2
+b1 <- -0.5
+b2 <- 0.5
+
+# Time points
+time <- 100
+
+# Initialize df to store the values
+df <- data.frame(
+  # a vector of length 100
+  'time' = c(numeric(time)),
+  # a vector of length 100
+  'x' = c(numeric(time)),
+  'y' = c(numeric(time))
+)
+
+# I always like to use a counter even though it isn't needed here
+count <- 1
+
+# First time point, x starts at 50 and y at 10
+df[1, 'time'] <- 1
+df[1, 'x'] <- 50
+df[1, 'y'] <- 10
+
+# For loop that iterates over the process
+for(i in 2:time){
+  count <- count + 1
+  
+    # store time
+    df[count, 'time'] <- i
+    # x
+    df[count, 'x'] <- a1*df[count - 1, 'x'] + b1*df[count - 1, 'y']
+    # y
+    df[count, 'y'] <- a2*df[count - 1, 'y'] + b2*df[count - 1, 'x']
+    
+}
+
+```
+
+Some of the output…
+
+```{r, cache = T}
+head(df)
+```
+
+Now, we can do the same thing but use a call to C++ that will improve performance.
+
+```{r, cache = T, warning = F, message = F}
+
+# C++ function
+cppFunction('DataFrame createTrajectory(int t, double x0, double y0, 
+             double a1, double a2, double b1, double b2) {
+             // create the columns
+             NumericVector x(t);
+             NumericVector y(t);
+             x[0]=x0;
+             y[0]=y0;
+             for(int i = 1; i < t; ++i) {
+             x[i] = a1*x[i-1]+b1*y[i-1];
+             y[i] = a2*y[i-1]+b2*x[i-1];
+             }
+             // return a new data frame
+             return DataFrame::create(_["x"] = x, _["y"] = y);
+             }
+             ')
+
+# Parameters
+a1 <- 0.8
+a2 <- 0.2
+b1 <- -0.5
+b2 <- 0.5
+
+# Time points
+time <- 100
+
+# Call the function and run it with 100 time points
+df <- createTrajectory(time, 50, 10, a1, a2, b1, b2)
+
+# Create a time column 
+df$time <- c(1:time)
+
+head(df)
+
+
+```
+
+# Example 2 - Two states, multiple units
+
+In the last example, we simulated $x$ and $y$ over a single unit (e.g., a person, cell, company, nation, etc.). Here, we'll incorporate multiple units and unobserved heterogeneity.
+
+The equations governing the system are:
+
+\begin{align*} 
+x_{it} &= a1x_{i(t-1)} + b1y_{i(t-1)} + u_i + e_{it}\\ 
+y_{it} &= a2y_{i(t-1)} + b2x_{i(t-1)} + m_i + e_{it} 
+\end{align*}
+
+Here is the simulation in base `R`:
+
+```{r, cache = T}
+# Parameters
+a1 <- 0.8
+a2 <- 0.2
+b1 <- -0.5
+b2 <- 0.5
+
+# Time points and people
+time <- 100
+people <- 500
+
+# Initialize df to store the values
+df <- data.frame(
+  'time' = c(numeric(time*people)),
+  'person' = c(numeric(time*people)),
+  'x' = c(numeric(time*people)),
+  'y' = c(numeric(time*people))
+)
+
+# counter
+count <- 0
+
+# For each person...
+for(i in 1:people){
+  
+  # draw his or her stable individual differences, u and m
+  # draw one value from a normal distribution with mean 0 and sd 2
+  ui <- rnorm(1, 0, 2)
+  # draw one value from a normal distribution with mean 0 and sd 2
+  mi <- rnorm(1, 0, 2)
+  
+  # now run this individual across time
+  for(j in 1:time){
+    count <- count + 1
+    
+    # first time point
+    if(j == 1){
+      df[count, 'time'] <- j
+      df[count, 'person'] <- i
+      # draw 1 value from a normal distribution with mean 50 and sd 5
+      df[count, 'x'] <- rnorm(1, 50, 5)
+      # draw 1 value from a normal distribution with mean 10 and sd 3
+      df[count, 'y'] <- rnorm(1, 10, 3)
+
+    }else{
+      
+    # all other time points
+      
+      df[count, 'time'] <- j
+      df[count, 'person'] <- i
+      df[count, 'x'] <- a1*df[count - 1, 'x'] + b1*df[count - 1, 'y'] + ui + rnorm(1, 0, 1)
+      df[count, 'y'] <- a2*df[count - 1, 'y'] + b2*df[count - 1, 'x'] + mi + rnorm(1, 0, 1)
+    }
+  }
+}
+
+head(df)
+```
+
+Here it is using the `Rccp` function to incorporate C++ code.
+
+```{r, cache = T}
+
+# C++ function
+cppFunction('
+    DataFrame createTrajectory2(
+        int timeSteps,
+        int peopleCount,
+        double a1,
+        double a2,
+        double b1,
+        double b2
+        )
+    {
+        // create the columns
+        NumericVector x(timeSteps * peopleCount);
+        NumericVector y(timeSteps * peopleCount);
+        NumericVector time(timeSteps * peopleCount);
+        NumericVector person(timeSteps * peopleCount);
+
+        int count = 0;
+        int previous = 0;
+        for (int i = 0; i < peopleCount; i++)
+        {
+            // set persons time 0 data
+            // draw 1 value from a normal distribution with mean 50 and sd 5
+            x[count] = R::rnorm(50, 5);
+            // draw 1 value from a normal distribution with mean 10 and sd 3
+            y[count] = R::rnorm(10, 3);
+            time[count] = 0;
+            person[count] = i;
+            previous = count;
+            count++;
+            
+            // draw his or her stable individual differences, u and m
+            // draw one value from a normal distribution with mean 0 and sd 2
+            double ui = R::rnorm(0, 2);
+            // draw one value from a normal distribution with mean 0 and sd 2
+            double mi = R::rnorm(0, 2);
+            
+            // now run this individual across time
+            for (int j = 1; j < timeSteps; j++)
+            {
+                // all other time points
+                x[count] = a1 * x[previous] + b1 * y[previous] + ui + R::rnorm(0, 1);
+                y[count] = a2 * y[previous] + b2 * x[previous] + mi + R::rnorm(0, 1);
+                time[count] = j;
+                person[count] = i;
+                previous = count;
+                count++;
+            }
+        }
+        
+        // return a new data frame
+        return DataFrame::create(_["x"] = x, _["y"] = y, _["time"] = time, _["person"] = person);
+    }
+')
+
+# Parameters
+a1 <- 0.8
+a2 <- 0.2
+b1 <- -0.5
+b2 <- 0.5
+
+# Time points
+time <- 100
+people <- 500
+
+# Call the function and run it with 100 time steps and 500 people
+df <- createTrajectory2(time, people, a1, a2, b1, b2)
+
+head(df)
+
+```
+
+
+Bo$^2$m =)

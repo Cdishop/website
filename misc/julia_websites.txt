@@ -1,0 +1,12 @@
+How to build the website:
+https://tlienart.github.io/JuDocWeb/
+
+List of layouts:
+https://tlienart.github.io/JuDocTemplates.jl/
+
+Templates
+https://github.com/tlienart/JuDocTemplates.jl
+
+Original github juldoc 
+https://github.com/tlienart/JuDoc.jl
+

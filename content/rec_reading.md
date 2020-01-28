@@ -101,22 +101,6 @@ Carlo Rovelli
 
 
 
-*The Book of Why*
-
-Judea Pearl
-
-Dana Mackenzie
-
-[Click here for link](https://www.amazon.com/Book-Why-Science-Cause-Effect/dp/046509760X/ref=sr_1_1?ie=UTF8&qid=1527948151&sr=8-1&keywords=the+book+of+why)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/book_why.png)
-
-
-
-
-
-
-
 
 *Style: Lessons in Clarity and Grace*
 
@@ -131,18 +115,6 @@ Joseph Bizup
 
 
 
-
-
-
-
-
-*Statistical Rethinking: A Bayesian Course with Examples in R and Stan*
-
-Richard McElreath
-
-[Click here for link](https://www.amazon.com/Statistical-Rethinking-Bayesian-Examples-Chapman/dp/1482253445/ref=sr_1_1?s=books&ie=UTF8&qid=1524678418&sr=1-1&keywords=statistical+rethinking)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/mcelreath_rethinking.png)
 
 
 
@@ -195,68 +167,6 @@ Daniel T. Willingham
 
 
 
-
-
-
-
-*Naked Statistics: Stripping The Dread From The Data*
-
-Charles Wheelan
-
-[Click here for link](https://www.amazon.com/Naked-Statistics-Stripping-Dread-Data/dp/B00CH7FWWU/ref=sr_1_1?s=books&ie=UTF8&qid=1524678465&sr=1-1&keywords=naked+statistics)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/nakedstats.png)
-
-
-
-
-
-
-
-
-
-*The Death of Expertise: The Campaign against Established Knowledge and Why it Matters*
-
-Thomas M Nichols
-
-[Click here for link](https://www.amazon.com/Death-Expertise-Campaign-Established-Knowledge/dp/0190469412/ref=sr_1_1?ie=UTF8&qid=1530631928&sr=8-1&keywords=the+death+of+expertise)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/death_expertise.png)
-
-
-
-
-
-
-
-
-*The Ball: Discovering the Object of the Game*
-
-John Fox
-
-[Click here for link](https://www.amazon.com/Ball-Discovering-Object-Game/dp/0061881791/ref=sr_1_1?s=books&ie=UTF8&qid=1524679032&sr=1-1&keywords=the+ball+discovering)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/theball.png)
-
-
-
-
-
-
-*SuperCooperators: Altruism, Evolution, and Why We Need Each Other to Succeed*
-
-Martin A. Nowak
-
-Roger Highfield
-
-[Click here for link](https://www.amazon.com/SuperCooperators-Altruism-Evolution-Other-Succeed/dp/1451626630/ref=sr_1_1?ie=UTF8&qid=1541968376&sr=8-1&keywords=super+cooperators)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/super_coop.png)
-
-
-
-
-
 *A Crude Look at the Whole: The Science of Complex Systems in Business, Life, and Society*
 
 John H. Miller
@@ -277,21 +187,6 @@ Cal Newport
 [Click here for link](https://www.amazon.com/Digital-Minimalism-Choosing-Focused-Noisy/dp/0525536515/ref=sr_1_1?keywords=digital+minimalism&qid=1565453149&s=gateway&sr=8-1)
 
 ![](https://github.com/Cdishop/website/raw/master/misc/books/digital_min.png)
-
-
-
-
-
-
-
-*Math with Bad Drawings: Illuminating the Ideas That Shape Our Reality*
-
-Ben Orlin
-
-[Click here for link](https://www.amazon.com/Math-Bad-Drawings-Illuminating-Reality/dp/0316509035/ref=sr_1_1?ie=UTF8&qid=1541968483&sr=8-1&keywords=mathematics+with+bad+drawings&dpID=51EP1Orpx0L&preST=_SX258_BO1,204,203,200_QL70_&dpSrc=srch)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/math_draw.png)
-
 
 
 
@@ -331,6 +226,10 @@ Peter Singer
 
 
 
+
+
+
+
 *Reproducible Research with R and R Studio*
 
 Christopher Gandrud
@@ -345,6 +244,9 @@ Christopher Gandrud
 
 
 
+
+
+
 *The Nature of Code: Simulating Natural Systems with Processing*
 
 Daniel Shiffman
@@ -352,43 +254,6 @@ Daniel Shiffman
 [Click here for link](https://www.amazon.com/Nature-Code-Simulating-Natural-Processing/dp/0985930802/ref=sr_1_1?ie=UTF8&qid=1534109983&sr=8-1&keywords=the+nature+of+code)
 
 ![](https://github.com/Cdishop/website/raw/master/misc/books/nature_code.png)
-
-
-
-
-
-
-
-
-
-*How We Got to Now: Six Innovations That Made the Modern World*
-
-Steven Johnson
-
-[Click here for link](https://www.amazon.com/How-We-Got-Now-Innovations-ebook/dp/B00INIXU5I/ref=sr_1_1?ie=UTF8&qid=1541968591&sr=8-1&keywords=how+we+got+to+now+johnson&dpID=512mgCAgJQL&preST=_SY445_QL70_&dpSrc=srch)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/now.png)
-
-
-
-
-
-
-
-
-
-
-
-
-
-*How We Got to Now: Six Innovations That Made the Modern World*
-
-Steven Johnson
-
-[Click here for link](https://www.amazon.com/How-We-Got-Now-Innovations-ebook/dp/B00INIXU5I/ref=sr_1_1?ie=UTF8&qid=1541968591&sr=8-1&keywords=how+we+got+to+now+johnson&dpID=512mgCAgJQL&preST=_SY445_QL70_&dpSrc=srch)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/now.png)
-
 
 
 
@@ -417,6 +282,9 @@ Mary Roach
 
 
 
+
+
+
 *Vehicles: Experiments in Synthetic Psychology*
 
 Valentino Braitenberg
@@ -424,6 +292,165 @@ Valentino Braitenberg
 [Click here for link](https://www.amazon.com/Vehicles-Experiments-Psychology-Valentino-Braitenberg/dp/0262521121/ref=sr_1_1?keywords=synthetic+psychology&qid=1563232952&s=gateway&sr=8-1)
 
 ![](https://github.com/Cdishop/website/raw/master/misc/books/vehicles.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*Statistical Rethinking: A Bayesian Course with Examples in R and Stan*
+
+Richard McElreath
+
+[Click here for link](https://www.amazon.com/Statistical-Rethinking-Bayesian-Examples-Chapman/dp/1482253445/ref=sr_1_1?s=books&ie=UTF8&qid=1524678418&sr=1-1&keywords=statistical+rethinking)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/mcelreath_rethinking.png)
+
+
+
+
+
+
+
+
+*The Death of Expertise: The Campaign against Established Knowledge and Why it Matters*
+
+Thomas M Nichols
+
+[Click here for link](https://www.amazon.com/Death-Expertise-Campaign-Established-Knowledge/dp/0190469412/ref=sr_1_1?ie=UTF8&qid=1530631928&sr=8-1&keywords=the+death+of+expertise)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/death_expertise.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*The Book of Why*
+
+Judea Pearl
+
+Dana Mackenzie
+
+[Click here for link](https://www.amazon.com/Book-Why-Science-Cause-Effect/dp/046509760X/ref=sr_1_1?ie=UTF8&qid=1527948151&sr=8-1&keywords=the+book+of+why)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/book_why.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*Naked Statistics: Stripping The Dread From The Data*
+
+Charles Wheelan
+
+[Click here for link](https://www.amazon.com/Naked-Statistics-Stripping-Dread-Data/dp/B00CH7FWWU/ref=sr_1_1?s=books&ie=UTF8&qid=1524678465&sr=1-1&keywords=naked+statistics)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/nakedstats.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*The Ball: Discovering the Object of the Game*
+
+John Fox
+
+[Click here for link](https://www.amazon.com/Ball-Discovering-Object-Game/dp/0061881791/ref=sr_1_1?s=books&ie=UTF8&qid=1524679032&sr=1-1&keywords=the+ball+discovering)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/theball.png)
+
+
+
+
+
+
+
+
+
+*SuperCooperators: Altruism, Evolution, and Why We Need Each Other to Succeed*
+
+Martin A. Nowak
+
+Roger Highfield
+
+[Click here for link](https://www.amazon.com/SuperCooperators-Altruism-Evolution-Other-Succeed/dp/1451626630/ref=sr_1_1?ie=UTF8&qid=1541968376&sr=8-1&keywords=super+cooperators)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/super_coop.png)
+
+
+
+
+
+
+
+
+
+*Math with Bad Drawings: Illuminating the Ideas That Shape Our Reality*
+
+Ben Orlin
+
+[Click here for link](https://www.amazon.com/Math-Bad-Drawings-Illuminating-Reality/dp/0316509035/ref=sr_1_1?ie=UTF8&qid=1541968483&sr=8-1&keywords=mathematics+with+bad+drawings&dpID=51EP1Orpx0L&preST=_SX258_BO1,204,203,200_QL70_&dpSrc=srch)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/math_draw.png)
+
+
+
+
+
+
+
+
+*How We Got to Now: Six Innovations That Made the Modern World*
+
+Steven Johnson
+
+[Click here for link](https://www.amazon.com/How-We-Got-Now-Innovations-ebook/dp/B00INIXU5I/ref=sr_1_1?ie=UTF8&qid=1541968591&sr=8-1&keywords=how+we+got+to+now+johnson&dpID=512mgCAgJQL&preST=_SY445_QL70_&dpSrc=srch)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/now.png)
+
+
+
+
+
+
+
 
 
 

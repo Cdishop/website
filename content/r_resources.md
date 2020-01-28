@@ -46,6 +46,8 @@ weight = 3
 
 [The R Graph Gallery](https://www.r-graph-gallery.com/all-graphs/)
 
+[Christian Burkhart](https://christianburkhart.de)
+
 [Malcolm Barrett](https://malco.io)
 
 [John Flournoy](https://jflournoy.github.io)
@@ -154,7 +156,7 @@ weight = 3
 
 # Commands and help for non-R programming
 
-[Compress compiled pdf in terminal](https://raw.githubusercontent.com/Cdishop/alumn/master/newsletter/compress_pdf_syntax.txt)
+[Compress pdf in terminal](https://www.markomedia.com.au/compress-pdf-on-os-x-in-terminal/)
 
 [Mac denying pushing/pulling due to git keychain](https://stackoverflow.com/questions/33636467/unable-to-click-always-allow-on-git-credential-osxkeychain-popup)
 

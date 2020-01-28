@@ -1,6 +1,6 @@
 ---
 title: "Screwing Up A Mean Calculation"
-date: "2019-12-02"
+date: "2019-05-02"
 output: pdf_document
 ---
 

@@ -20,11 +20,6 @@
   </url>
   
   <url>
-    <loc>/computational_notes/mean_calculating/</loc>
-    <lastmod>2019-12-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/computational_notes/regression_composite/</loc>
     <lastmod>2019-12-01T00:00:00+00:00</lastmod>
   </url>
@@ -56,6 +51,11 @@
   
   <url>
     <loc>/computational_notes/lavaan_mplus/</loc>
+    <lastmod>2019-05-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/computational_notes/mean_calculating/</loc>
     <lastmod>2019-05-02T00:00:00+00:00</lastmod>
   </url>
   

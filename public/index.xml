@@ -66,8 +66,8 @@ B Rodriguez
 Nathaniel D. Phillips
 Simon Ejdemyr
 The R Graph Gallery
-Malcolm Barrett
-John Flournoy</description>
+Christian Burkhart
+Malcolm Barrett</description>
     </item>
     
     <item>
@@ -82,17 +82,6 @@ Example 1 - Two states, single unit We’re going to simulate data goverened by 
 \[\begin{align*} x_t &amp;amp;= a1x_{t-1} + b1y_{t-1}\\ y_t &amp;amp;= a2y_{t-1} + b2x_{t-1}. \end{align*}\]
 Here it is in R:
 library(tidyverse) library(Rcpp) # Parameters a1 &amp;lt;- 0.</description>
-    </item>
-    
-    <item>
-      <title>Screwing Up A Mean Calculation</title>
-      <link>/computational_notes/mean_calculating/</link>
-      <pubDate>Mon, 02 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/mean_calculating/</guid>
-      <description>Quick note about calculating the mean of a column with dplyr in R. It’s surprisingly easy to screw up, and the culprit is forgetting to change the name of the column storing the new calculation.
-A simple dataframe.
-library(tidyverse) df &amp;lt;- data.frame( &amp;#39;books_read&amp;#39; = c(1,2,3,4,5,6), &amp;#39;intelligence&amp;#39; = c(4,5,6,7,8,8) ) df ## books_read intelligence ## 1 1 4 ## 2 2 5 ## 3 3 6 ## 4 4 7 ## 5 5 8 ## 6 6 8 I want to calculate the mean and standard deviation of the “books read” column.</description>
     </item>
     
     <item>
@@ -164,6 +153,17 @@ He describes how people that do not understand hockey wanted to get fighting out
       <guid>/computational_notes/lavaan_mplus/</guid>
       <description>A growth curve model written in lavaan and MPLUS as a syntax reference guide. Imagine a latent growth curve on affect across 4 time points. First, lavaan code:
 lavaan_string &amp;lt;- &amp;#39; # Latent intercept and slope factors intercept_affect =~ 1*affect.1 + 1*affect.2 + 1*affect.3 + 1*affect.4 slope_affect =~ 0*affect.1 + 1*affect.2 + 2*affect.3 + 3*affect.4 # Mean and variance of latent factors intercept_affect ~~ intercept_affect slope_affect ~~ slope_affect # Covariance between latent factors intercept_affect ~~ slope_affect # Fix observed variable means to 0 affect.</description>
+    </item>
+    
+    <item>
+      <title>Screwing Up A Mean Calculation</title>
+      <link>/computational_notes/mean_calculating/</link>
+      <pubDate>Thu, 02 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/mean_calculating/</guid>
+      <description>Quick note about calculating the mean of a column with dplyr in R. It’s surprisingly easy to screw up, and the culprit is forgetting to change the name of the column storing the new calculation.
+A simple dataframe.
+library(tidyverse) df &amp;lt;- data.frame( &amp;#39;books_read&amp;#39; = c(1,2,3,4,5,6), &amp;#39;intelligence&amp;#39; = c(4,5,6,7,8,8) ) df ## books_read intelligence ## 1 1 4 ## 2 2 5 ## 3 3 6 ## 4 4 7 ## 5 5 8 ## 6 6 8 I want to calculate the mean and standard deviation of the “books read” column.</description>
     </item>
     
     <item>

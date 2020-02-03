@@ -19,7 +19,7 @@
 
 \refsection{0}
   \datalist[entry]{ymdnt/global//global/global}
-    \entry{dishopgst}{article}{}
+    \entry{dc97}{booklet}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=9e2314d4a889faac7fecb5c0cf438576}{%
            family={Dishop},
@@ -37,71 +37,13 @@
       \field{extraname}{1}
       \field{sortinit}{2}
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
-      \field{extradate}{1}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{The Journal of Mathematical Sociology}
-      \field{note}{\href{https://github.com/Cdishop/website/raw/master/misc/articles/dishop_2019b.pdf}{\textcolor{aogreen}{Link}}}
-      \field{title}{A simple, dynamic extension of temporal motivation theory}
-      \field{year}{2019}
-      \true{nocite}
-    \endentry
-    \entry{dc97}{booklet}{}
-      \name{author}{1}{}{%
-        {{uniquename=0,uniquepart=base,hash=9e2314d4a889faac7fecb5c0cf438576}{%
-           family={Dishop},
-           familyi={D\bibinitperiod},
-           given={Christopher\bibnamedelima R},
-           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
-           givenun=0}}%
-      }
-      \strng{namehash}{9e2314d4a889faac7fecb5c0cf438576}
-      \strng{fullhash}{9e2314d4a889faac7fecb5c0cf438576}
-      \strng{bibnamehash}{9e2314d4a889faac7fecb5c0cf438576}
-      \strng{authorbibnamehash}{9e2314d4a889faac7fecb5c0cf438576}
-      \strng{authornamehash}{9e2314d4a889faac7fecb5c0cf438576}
-      \strng{authorfullhash}{9e2314d4a889faac7fecb5c0cf438576}
-      \field{extraname}{2}
-      \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
-      \field{extradate}{2}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{Invited talk for incoming graduate students at Michigan State University, East Lansing, MI}
       \field{title}{Modern Workflow}
-      \field{year}{2019}
-      \true{nocite}
-    \endentry
-    \entry{dc100}{booklet}{}
-      \name{author}{1}{}{%
-        {{uniquename=0,uniquepart=base,hash=9e2314d4a889faac7fecb5c0cf438576}{%
-           family={Dishop},
-           familyi={D\bibinitperiod},
-           given={Christopher\bibnamedelima R},
-           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
-           givenun=0}}%
-      }
-      \strng{namehash}{9e2314d4a889faac7fecb5c0cf438576}
-      \strng{fullhash}{9e2314d4a889faac7fecb5c0cf438576}
-      \strng{bibnamehash}{9e2314d4a889faac7fecb5c0cf438576}
-      \strng{authorbibnamehash}{9e2314d4a889faac7fecb5c0cf438576}
-      \strng{authornamehash}{9e2314d4a889faac7fecb5c0cf438576}
-      \strng{authorfullhash}{9e2314d4a889faac7fecb5c0cf438576}
-      \field{extraname}{3}
-      \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
-      \field{extradate}{3}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{Poster presentation at the Society for Industrial and Organizational Psychology, National Harbor, MD}
-      \field{title}{Perceiving the Trend: How Task Construal Shapes Performance Perceptions and Effort}
-      \field{year}{2019}
+      \field{year}{2020}
       \true{nocite}
     \endentry
     \entry{dishop_bu_inference}{incollection}{}
@@ -171,55 +113,10 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{booktitle}{Handbook of Dynamic Organizational Behavior}
+      \field{booktitle}{Handbook of Temporal Dynamic Organizational Behavior}
       \field{note}{\href{https://github.com/Cdishop/website/raw/master/misc/articles/dishop_etal_longitudinal.pdf}{\textcolor{aogreen}{Link}}}
       \field{title}{Thinking Longitudinal: A Framework For Scientific Inferences with Temporal Data}
-      \field{year}{2019}
-      \true{nocite}
-    \endentry
-    \entry{dishop2017}{article}{}
-      \name{author}{4}{}{%
-        {{uniquename=0,uniquepart=base,hash=9e2314d4a889faac7fecb5c0cf438576}{%
-           family={Dishop},
-           familyi={D\bibinitperiod},
-           given={Christopher\bibnamedelima R},
-           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=368cf72fc714ef03d09c77b50d3c272b}{%
-           family={Green},
-           familyi={G\bibinitperiod},
-           given={Amy\bibnamedelima E},
-           giveni={A\bibinitperiod\bibinitdelim E\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=3f141397f5fdd454ac1860e4cd7252e6}{%
-           family={Torres},
-           familyi={T\bibinitperiod},
-           given={Eliza\bibnamedelima M},
-           giveni={E\bibinitperiod\bibinitdelim M\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=cb93485b32e1a86390e68fd23e69afe9}{%
-           family={Aarons},
-           familyi={A\bibinitperiod},
-           given={Gregory\bibnamedelima A},
-           giveni={G\bibinitperiod\bibinitdelim A\bibinitperiod},
-           givenun=0}}%
-      }
-      \strng{namehash}{02b3e9462cb7020c760ed5e76a0269e5}
-      \strng{fullhash}{02b3e9462cb7020c760ed5e76a0269e5}
-      \strng{bibnamehash}{02b3e9462cb7020c760ed5e76a0269e5}
-      \strng{authorbibnamehash}{02b3e9462cb7020c760ed5e76a0269e5}
-      \strng{authornamehash}{02b3e9462cb7020c760ed5e76a0269e5}
-      \strng{authorfullhash}{02b3e9462cb7020c760ed5e76a0269e5}
-      \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Community Mental Health Journal}
-      \field{note}{\href{https://github.com/Cdishop/website/raw/master/misc/articles/dishop_2019.pdf}{\textcolor{aogreen}{Link}}}
-      \field{title}{Predicting Turnover: The Moderating Effect of Functional Climates on Emotional Exhaustion and Work Attitudes}
-      \field{year}{2019}
+      \field{year}{2020}
       \true{nocite}
     \endentry
     \entry{dishop_dynamics_principles}{incollection}{}
@@ -283,9 +180,126 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{booktitle}{Handbook of Dynamic Organizational Behavior}
+      \field{booktitle}{Handbook of Temporal Dynamic Organizational Behavior}
       \field{note}{\href{https://github.com/Cdishop/website/raw/master/misc/articles/dishop_etal_principles.pdf}{\textcolor{aogreen}{Link}}}
       \field{title}{Principles For Taking a Dynamic Perspective}
+      \field{year}{2020}
+      \true{nocite}
+    \endentry
+    \entry{dishopgst}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=9e2314d4a889faac7fecb5c0cf438576}{%
+           family={Dishop},
+           familyi={D\bibinitperiod},
+           given={Christopher\bibnamedelima R},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{9e2314d4a889faac7fecb5c0cf438576}
+      \strng{fullhash}{9e2314d4a889faac7fecb5c0cf438576}
+      \strng{bibnamehash}{9e2314d4a889faac7fecb5c0cf438576}
+      \strng{authorbibnamehash}{9e2314d4a889faac7fecb5c0cf438576}
+      \strng{authornamehash}{9e2314d4a889faac7fecb5c0cf438576}
+      \strng{authorfullhash}{9e2314d4a889faac7fecb5c0cf438576}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Journal of Mathematical Sociology}
+      \field{note}{\href{https://github.com/Cdishop/website/raw/master/misc/articles/dishop_2019b.pdf}{\textcolor{aogreen}{Link}}}
+      \field{title}{A simple, dynamic extension of temporal motivation theory}
+      \field{year}{2019}
+      \true{nocite}
+    \endentry
+    \entry{dc100}{booklet}{}
+      \name{author}{4}{}{%
+        {{uniquename=0,uniquepart=base,hash=9e2314d4a889faac7fecb5c0cf438576}{%
+           family={Dishop},
+           familyi={D\bibinitperiod},
+           given={Christopher\bibnamedelima R},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=e7ef4421bcc9b4302c719fc922b9d5b4}{%
+           family={DeShon},
+           familyi={D\bibinitperiod},
+           given={Richard\bibnamedelima P},
+           giveni={R\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=c555c1206964e7f0b1c49cdb76069b25}{%
+           family={Kozlowski},
+           familyi={K\bibinitperiod},
+           given={Steve\bibnamedelimb W\bibnamedelima J},
+           giveni={S\bibinitperiod\bibinitdelim W\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=dc35be9e292e9dc38e5029867beb3863}{%
+           family={Hays},
+           familyi={H\bibinitperiod},
+           given={Nicholas},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{3eb683a0db4b43e6bbc74c7d5fa9ee1a}
+      \strng{fullhash}{3eb683a0db4b43e6bbc74c7d5fa9ee1a}
+      \strng{bibnamehash}{3eb683a0db4b43e6bbc74c7d5fa9ee1a}
+      \strng{authorbibnamehash}{3eb683a0db4b43e6bbc74c7d5fa9ee1a}
+      \strng{authornamehash}{3eb683a0db4b43e6bbc74c7d5fa9ee1a}
+      \strng{authorfullhash}{3eb683a0db4b43e6bbc74c7d5fa9ee1a}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Poster presentation at the Society for Industrial and Organizational Psychology, National Harbor, MD}
+      \field{title}{Perceiving the Trend: How Task Construal Shapes Performance Perceptions and Effort}
+      \field{year}{2019}
+      \true{nocite}
+    \endentry
+    \entry{dishop2017}{article}{}
+      \name{author}{4}{}{%
+        {{uniquename=0,uniquepart=base,hash=9e2314d4a889faac7fecb5c0cf438576}{%
+           family={Dishop},
+           familyi={D\bibinitperiod},
+           given={Christopher\bibnamedelima R},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=368cf72fc714ef03d09c77b50d3c272b}{%
+           family={Green},
+           familyi={G\bibinitperiod},
+           given={Amy\bibnamedelima E},
+           giveni={A\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=3f141397f5fdd454ac1860e4cd7252e6}{%
+           family={Torres},
+           familyi={T\bibinitperiod},
+           given={Eliza\bibnamedelima M},
+           giveni={E\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=cb93485b32e1a86390e68fd23e69afe9}{%
+           family={Aarons},
+           familyi={A\bibinitperiod},
+           given={Gregory\bibnamedelima A},
+           giveni={G\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{02b3e9462cb7020c760ed5e76a0269e5}
+      \strng{fullhash}{02b3e9462cb7020c760ed5e76a0269e5}
+      \strng{bibnamehash}{02b3e9462cb7020c760ed5e76a0269e5}
+      \strng{authorbibnamehash}{02b3e9462cb7020c760ed5e76a0269e5}
+      \strng{authornamehash}{02b3e9462cb7020c760ed5e76a0269e5}
+      \strng{authorfullhash}{02b3e9462cb7020c760ed5e76a0269e5}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Community Mental Health Journal}
+      \field{note}{\href{https://github.com/Cdishop/website/raw/master/misc/articles/dishop_2019.pdf}{\textcolor{aogreen}{Link}}}
+      \field{title}{Predicting Turnover: The Moderating Effect of Functional Climates on Emotional Exhaustion and Work Attitudes}
       \field{year}{2019}
       \true{nocite}
     \endentry
@@ -668,7 +682,7 @@
       \strng{authorbibnamehash}{9e2314d4a889faac7fecb5c0cf438576}
       \strng{authornamehash}{9e2314d4a889faac7fecb5c0cf438576}
       \strng{authorfullhash}{9e2314d4a889faac7fecb5c0cf438576}
-      \field{extraname}{4}
+      \field{extraname}{3}
       \field{sortinit}{2}
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{extradatescope}{labelyear}
@@ -876,7 +890,7 @@
       \strng{authorbibnamehash}{9e2314d4a889faac7fecb5c0cf438576}
       \strng{authornamehash}{9e2314d4a889faac7fecb5c0cf438576}
       \strng{authorfullhash}{9e2314d4a889faac7fecb5c0cf438576}
-      \field{extraname}{5}
+      \field{extraname}{4}
       \field{sortinit}{2}
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{extradate}{1}
@@ -904,7 +918,7 @@
       \strng{authorbibnamehash}{9e2314d4a889faac7fecb5c0cf438576}
       \strng{authornamehash}{9e2314d4a889faac7fecb5c0cf438576}
       \strng{authorfullhash}{9e2314d4a889faac7fecb5c0cf438576}
-      \field{extraname}{6}
+      \field{extraname}{5}
       \field{sortinit}{2}
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{extradate}{2}
@@ -1017,7 +1031,7 @@
       \strng{authorbibnamehash}{9e2314d4a889faac7fecb5c0cf438576}
       \strng{authornamehash}{9e2314d4a889faac7fecb5c0cf438576}
       \strng{authorfullhash}{9e2314d4a889faac7fecb5c0cf438576}
-      \field{extraname}{7}
+      \field{extraname}{6}
       \field{sortinit}{2}
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{extradatescope}{labelyear}

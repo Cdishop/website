@@ -322,6 +322,9 @@ Richard McElreath
 
 
 
+
+
+
 *The Death of Expertise: The Campaign against Established Knowledge and Why it Matters*
 
 Thomas M Nichols

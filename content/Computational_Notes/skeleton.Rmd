@@ -1,0 +1,11 @@
+---
+title: "Course Skeleton"
+date: "2020-01-10"
+output: pdf_document
+---
+
+I recently created a course skeleton for a research methods or statistics course. The website allows you to incorporate Rmarkdown and dynamic documents to better demonstrate interactive coding. 
+
+You can find it on github [here](https://cdishop.github.io/course_skeleton/).
+
+Bo$^2$m =)

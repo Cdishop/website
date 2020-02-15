@@ -6,7 +6,7 @@
     <description>Recent content on Christopher Dishop</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Tue, 10 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 20 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
@@ -70,6 +70,28 @@ Simon Ejdemyr
 The R Graph Gallery
 Christian Burkhart
 Malcolm Barrett</description>
+    </item>
+    
+    <item>
+      <title>Julia Cheat Sheet</title>
+      <link>/computational_notes/julia_cheatsheet/</link>
+      <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/julia_cheatsheet/</guid>
+      <description>I started using Julia for my computational models and recently created a cheat sheet to house all of my common commands.
+You can find it on github here.
+Bo\(^2\)m =)</description>
+    </item>
+    
+    <item>
+      <title>Course Skeleton</title>
+      <link>/computational_notes/skeleton/</link>
+      <pubDate>Fri, 10 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/skeleton/</guid>
+      <description>I recently created a course skeleton for a research methods or statistics course. The website allows you to incorporate Rmarkdown and dynamic documents to better demonstrate interactive coding.
+You can find it on github here.
+Bo\(^2\)m =)</description>
     </item>
     
     <item>

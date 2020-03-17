@@ -12,12 +12,12 @@
     
     
     <item>
-      <title>R Presentation</title>
+      <title>Using Gentle Ggplot2 to Present</title>
       <link>/computational_notes/methods_others/</link>
       <pubDate>Wed, 04 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>/computational_notes/methods_others/</guid>
-      <description>I recently created my first slide deck using R. You can find the presentation here and the source code on my GitHub page.
+      <description>I recently created my first slide deck using Garrick Aden-Buie’s awesome template called “Gentle Ggplot2.” You can find the presentation here and the source code on my GitHub page.
 Bo\(^2\)m =)</description>
     </item>
     

@@ -1,10 +1,10 @@
 ---
-title: "R Presentation"
+title: "Using Gentle Ggplot2 to Present"
 date: "2020-03-04"
 output: pdf_document
 ---
 
-I recently created my first slide deck using R. You can find the presentation [here](https://cdishop.github.io/methods_with_others/#1) and the [source code on my GitHub page](https://github.com/Cdishop/methods_with_others).
+I recently created my first slide deck using [Garrick Aden-Buie](https://github.com/gadenbuie)'s awesome template called "Gentle Ggplot2." You can find the presentation [here](https://cdishop.github.io/methods_with_others/#1) and the [source code on my GitHub page](https://github.com/Cdishop/methods_with_others).
 
 
 Bo$^2$m =)

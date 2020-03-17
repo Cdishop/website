@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  3 FEB 2020 14:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  17 MAR 2020 11:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1596,7 +1596,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 82.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 82.
-<photo.jpg, id=32, 663.47874pt x 138.5175pt>
+<photo.jpg, id=31, 663.47874pt x 138.5175pt>
 File: photo.jpg Graphic file (type jpg)
 <use photo.jpg>
 Package pdftex.def Info: photo.jpg  used on input line 82.
@@ -1636,16 +1636,20 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 101.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 101.
 Package rerunfilecheck Info: File `cv-llt.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+
+
+Package biblatex Warning: Please rerun LaTeX.
+
 Package logreq Info: Writing requests to 'cv-llt.run.xml'.
 \openout1 = `cv-llt.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31497 strings out of 492616
- 605175 string characters out of 6129482
- 1157779 words of memory out of 5000000
- 34672 multiletter control sequences out of 15000+600000
- 136298 words of font info for 84 fonts, out of 8000000 for 9000
+ 31525 strings out of 492616
+ 605898 string characters out of 6129482
+ 1158530 words of memory out of 5000000
+ 34681 multiletter control sequences out of 15000+600000
+ 147061 words of font info for 96 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,11n,165p,1151b,7101s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/fbb/fbb_5tchvx.enc}{/usr/
@@ -1660,10 +1664,10 @@ xmf-dist/fonts/type1/public/fontawesome/FontAwesome.pfb></usr/local/texlive/201
 xlive/2019/texmf-dist/fonts/type1/public/fbb/fbb-Bold.pfb></usr/local/texlive/2
 019/texmf-dist/fonts/type1/public/fbb/fbb-Italic.pfb></usr/local/texlive/2019/t
 exmf-dist/fonts/type1/public/fbb/fbb-Regular.pfb>
-Output written on cv-llt.pdf (3 pages, 220198 bytes).
+Output written on cv-llt.pdf (3 pages, 222386 bytes).
 PDF statistics:
  173 PDF objects out of 1000 (max. 8388607)
  102 compressed objects within 2 object streams
- 32 named destinations out of 1000 (max. 500000)
- 20840 words of extra memory for PDF output out of 24883 (max. 10000000)
+ 33 named destinations out of 1000 (max. 500000)
+ 29032 words of extra memory for PDF output out of 29859 (max. 10000000)
 

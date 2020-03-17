@@ -19,7 +19,7 @@
 
 \refsection{0}
   \datalist[entry]{ymdnt/global//global/global}
-    \entry{dc97}{booklet}{}
+    \entry{dcxx7}{booklet}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=9e2314d4a889faac7fecb5c0cf438576}{%
            family={Dishop},
@@ -37,6 +37,35 @@
       \field{extraname}{1}
       \field{sortinit}{2}
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Invited talk for the methods discussion group at Michigan State University, East Lansing, MI}
+      \field{title}{Methods With Others In Mind: Cooperative Tools and Programming}
+      \field{year}{2020}
+      \true{nocite}
+    \endentry
+    \entry{dc97}{booklet}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=9e2314d4a889faac7fecb5c0cf438576}{%
+           family={Dishop},
+           familyi={D\bibinitperiod},
+           given={Christopher\bibnamedelima R},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{9e2314d4a889faac7fecb5c0cf438576}
+      \strng{fullhash}{9e2314d4a889faac7fecb5c0cf438576}
+      \strng{bibnamehash}{9e2314d4a889faac7fecb5c0cf438576}
+      \strng{authorbibnamehash}{9e2314d4a889faac7fecb5c0cf438576}
+      \strng{authornamehash}{9e2314d4a889faac7fecb5c0cf438576}
+      \strng{authorfullhash}{9e2314d4a889faac7fecb5c0cf438576}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{extradate}{2}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -186,6 +215,51 @@
       \field{year}{2020}
       \true{nocite}
     \endentry
+    \entry{dd3}{booklet}{}
+      \name{author}{4}{}{%
+        {{uniquename=0,uniquepart=base,hash=232568faaf435b090e8c967694c3fb6e}{%
+           family={Somaraju},
+           familyi={S\bibinitperiod},
+           given={A},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=37de90c252218a54c1e0b3f5c526295b}{%
+           family={Griffin},
+           familyi={G\bibinitperiod},
+           given={D},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=9e2314d4a889faac7fecb5c0cf438576}{%
+           family={Dishop},
+           familyi={D\bibinitperiod},
+           given={Christopher\bibnamedelima R},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=e7ef4421bcc9b4302c719fc922b9d5b4}{%
+           family={DeShon},
+           familyi={D\bibinitperiod},
+           given={Richard\bibnamedelima P},
+           giveni={R\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{0b42e48baa0a578316f9a56abe8ef03e}
+      \strng{fullhash}{0b42e48baa0a578316f9a56abe8ef03e}
+      \strng{bibnamehash}{0b42e48baa0a578316f9a56abe8ef03e}
+      \strng{authorbibnamehash}{0b42e48baa0a578316f9a56abe8ef03e}
+      \strng{authornamehash}{0b42e48baa0a578316f9a56abe8ef03e}
+      \strng{authorfullhash}{0b42e48baa0a578316f9a56abe8ef03e}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Symposium presentation at the Society for Industrial and Organizational Psychology, Austin, TX}
+      \field{title}{The Dynamics of Collective Performance}
+      \field{year}{2020}
+      \true{nocite}
+    \endentry
     \entry{dishopgst}{article}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=9e2314d4a889faac7fecb5c0cf438576}{%
@@ -201,7 +275,7 @@
       \strng{authorbibnamehash}{9e2314d4a889faac7fecb5c0cf438576}
       \strng{authornamehash}{9e2314d4a889faac7fecb5c0cf438576}
       \strng{authorfullhash}{9e2314d4a889faac7fecb5c0cf438576}
-      \field{extraname}{2}
+      \field{extraname}{3}
       \field{sortinit}{2}
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{extradatescope}{labelyear}
@@ -682,7 +756,7 @@
       \strng{authorbibnamehash}{9e2314d4a889faac7fecb5c0cf438576}
       \strng{authornamehash}{9e2314d4a889faac7fecb5c0cf438576}
       \strng{authorfullhash}{9e2314d4a889faac7fecb5c0cf438576}
-      \field{extraname}{3}
+      \field{extraname}{4}
       \field{sortinit}{2}
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{extradatescope}{labelyear}
@@ -691,56 +765,6 @@
       \field{labeltitlesource}{title}
       \field{howpublished}{Symposium presentation at the Council of Graduate Students Research Conference, Michigan State University, MI}
       \field{title}{Applying Text Processing and Machine Learning to Behavioral Research}
-      \field{year}{2017}
-      \true{nocite}
-    \endentry
-    \entry{dd3}{booklet}{}
-      \name{author}{5}{}{%
-        {{uniquename=0,uniquepart=base,hash=8d58749f6c2b413a7cd2a2f4df16e459}{%
-           family={Olenick},
-           familyi={O\bibinitperiod},
-           given={Jeffrey},
-           giveni={J\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=1896145fb6df95a14a5815db83068823}{%
-           family={Dixon},
-           familyi={D\bibinitperiod},
-           given={Aurora},
-           giveni={A\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=9e2314d4a889faac7fecb5c0cf438576}{%
-           family={Dishop},
-           familyi={D\bibinitperiod},
-           given={Christopher\bibnamedelima R},
-           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=c555c1206964e7f0b1c49cdb76069b25}{%
-           family={Kozlowski},
-           familyi={K\bibinitperiod},
-           given={Steve\bibnamedelimb W\bibnamedelima J},
-           giveni={S\bibinitperiod\bibinitdelim W\bibinitperiod\bibinitdelim J\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=b5a55efcd0be22ad89a42ab4b4445b00}{%
-           family={Chang},
-           familyi={C\bibinitperiod},
-           given={Chu-Hsiang},
-           giveni={C\bibinithyphendelim H\bibinitperiod},
-           givenun=0}}%
-      }
-      \strng{namehash}{ba6002d515c5ab806b1b1865d85d7903}
-      \strng{fullhash}{ba6002d515c5ab806b1b1865d85d7903}
-      \strng{bibnamehash}{ba6002d515c5ab806b1b1865d85d7903}
-      \strng{authorbibnamehash}{ba6002d515c5ab806b1b1865d85d7903}
-      \strng{authornamehash}{ba6002d515c5ab806b1b1865d85d7903}
-      \strng{authorfullhash}{ba6002d515c5ab806b1b1865d85d7903}
-      \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{Symposium presentation at the Society for Industrial and Organizational Psychology, Orlando, FL}
-      \field{title}{Applying Linguistic Analysis to Isolated, and Confined, Extreme Environmental Teams}
       \field{year}{2017}
       \true{nocite}
     \endentry
@@ -890,7 +914,7 @@
       \strng{authorbibnamehash}{9e2314d4a889faac7fecb5c0cf438576}
       \strng{authornamehash}{9e2314d4a889faac7fecb5c0cf438576}
       \strng{authorfullhash}{9e2314d4a889faac7fecb5c0cf438576}
-      \field{extraname}{4}
+      \field{extraname}{5}
       \field{sortinit}{2}
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{extradate}{1}
@@ -918,7 +942,7 @@
       \strng{authorbibnamehash}{9e2314d4a889faac7fecb5c0cf438576}
       \strng{authornamehash}{9e2314d4a889faac7fecb5c0cf438576}
       \strng{authorfullhash}{9e2314d4a889faac7fecb5c0cf438576}
-      \field{extraname}{5}
+      \field{extraname}{6}
       \field{sortinit}{2}
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{extradate}{2}
@@ -1031,7 +1055,7 @@
       \strng{authorbibnamehash}{9e2314d4a889faac7fecb5c0cf438576}
       \strng{authornamehash}{9e2314d4a889faac7fecb5c0cf438576}
       \strng{authorfullhash}{9e2314d4a889faac7fecb5c0cf438576}
-      \field{extraname}{6}
+      \field{extraname}{7}
       \field{sortinit}{2}
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{extradatescope}{labelyear}

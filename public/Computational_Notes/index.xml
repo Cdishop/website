@@ -6,10 +6,20 @@
     <description>Recent content in Computational_Notes on Christopher Dishop</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 20 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 04 Mar 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/computational_notes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>R Presentation</title>
+      <link>/computational_notes/methods_others/</link>
+      <pubDate>Wed, 04 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/methods_others/</guid>
+      <description>I recently created my first slide deck using R. You can find the presentation here and the source code on my GitHub page.
+Bo\(^2\)m =)</description>
+    </item>
     
     <item>
       <title>Julia Cheat Sheet</title>

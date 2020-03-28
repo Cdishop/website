@@ -1,0 +1,93 @@
+---
+title: "Scrape Numbered Pages"
+date: "2020-03-22"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F, message = F, cache = T)
+```
+
+Quick command to compile all links for a website that numbers its pages. Image I want to go to a website that contains 100 pages of reviews, the first 10 on page 1, the second 10 on page 2, the third 10 on page 3, etc. The first step is to create a vector or list of links to navigate to, one for each page. 
+
+The output I want is something like this...
+
+```{r, eval = F, echo = T}
+
+example_output <- '
+
+
+https://www.indeed.com/jobs?q=data+science&l=New+York%2C+NY
+https://www.indeed.com/jobs?q=data+science&l=New+York%2C+NY&start=10
+https://www.indeed.com/jobs?q=data+science&l=New+York%2C+NY&start=20
+...
+
+
+'
+
+```
+
+in which the first entry is page 1, the second page 2, and so on. There are three steps involved in this process:
+
+* find url for the first page
+
+* discover how the url changes for each subsequent number
+
+* use a string command to compile the url's.
+
+First, let's say I want to scrape data from [this website](https://www.trustpilot.com/review/www.amazon.com), which has reviews across multiple pages. If I copy the url from the first page, and then copy the url from the second page, and the third page, I get...
+
+```{r, eval = F, echo = T}
+
+'
+https://www.trustpilot.com/review/www.amazon.com
+https://www.trustpilot.com/review/www.amazon.com?page=2
+https://www.trustpilot.com/review/www.amazon.com?page=3
+
+'
+```
+
+So, the base url is the first link. Then, additional pages are coded as "?page=" and then the relevant number.
+
+Second, find the last number. Let's say it's 20 in this case.
+
+```{r}
+last_number <- 20
+```
+
+Third, create a vector that compiles all of the links.
+
+```{r}
+library(tidyverse)
+first_page <- "https://www.trustpilot.com/review/www.amazon.com"
+other_pages <- str_c(first_page, "?page=", 2:last_number)
+
+review_pages <- c(first_page, other_pages)
+head(review_pages)
+```
+
+Here's another example using Indeed. Notice that the values increase by 10 rather than 1.
+
+```{r}
+example_pages <- '
+
+https://www.indeed.com/jobs?q=data+science&l=New+York%2C+NY
+https://www.indeed.com/jobs?q=data+science&l=New+York%2C+NY&start=10
+https://www.indeed.com/jobs?q=data+science&l=New+York%2C+NY&start=20
+https://www.indeed.com/jobs?q=data+science&l=New+York%2C+NY&start=30
+
+
+'
+
+final_number <- 100
+all_vals <- seq(from = 10, to = final_number, by = 10)
+
+first_web <- "https://www.indeed.com/jobs?q=data+science&l=New+York%2C+NY"
+other_webs <- str_c(first_web, "$start=", all_vals)
+
+all_webs <- c(first_web, other_webs)
+head(all_webs)
+
+```
+
+Bo$^2$m =)

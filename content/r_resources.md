@@ -22,6 +22,8 @@ weight = 3
 
 # People with helpful individual websites
 
+[Emily C. Zabor](https://www.emilyzabor.com/tutorials/rmarkdown_websites_tutorial.html)
+
 [Jenny Bryan](https://jennybryan.org)  
 
 (teach => purrr tutorial is excellent)
@@ -142,6 +144,8 @@ weight = 3
 
 [Basics of Git and Github with R](https://happygitwithr.com)
 
+[Beginner Concepts for Reproducible Science](https://psyteachr.github.io/msc-data-skills/sim.html)
+
 [R for Data Science](https://r4ds.had.co.nz)
 
 [Statistical Inference](https://leanpub.com/LittleInferenceBook/read)
@@ -153,6 +157,12 @@ weight = 3
 [Time series and forecasting](https://otexts.org/fpp2/)
 
 [Data Visualization](https://serialmentor.com/dataviz/)
+
+[Text Analysis](https://www.tidytextmining.com/nasa.html)
+
+# Scraping Packages
+
+[Scrape Glass Door](https://github.com/mguideng/gdscrapeR)
 
 # Commands and help for non-R programming
 
@@ -183,6 +193,8 @@ weight = 3
 [Include LaTeX packages in YAML header](https://tex.stackexchange.com/questions/171711/how-to-include-latex-package-in-r-markdown)
 
 [Pimp Your Rmarkdown](https://holtzy.github.io/Pimp-my-rmd/#references)
+
+[Rebus Package](https://www.rdocumentation.org/packages/rebus/versions/0.1-3)
 
 [Newline breaks in Rmarkdown tables](https://haozhu233.github.io/kableExtra/best_practice_for_newline_in_latex_table.pdf)
 

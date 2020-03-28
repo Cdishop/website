@@ -6,10 +6,35 @@
     <description>Recent content in Computational_Notes on Christopher Dishop</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 04 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 22 Mar 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/computational_notes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Scrape Numbered Pages</title>
+      <link>/computational_notes/scraping_numb_pages/</link>
+      <pubDate>Sun, 22 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/scraping_numb_pages/</guid>
+      <description>Quick command to compile all links for a website that numbers its pages. Image I want to go to a website that contains 100 pages of reviews, the first 10 on page 1, the second 10 on page 2, the third 10 on page 3, etc. The first step is to create a vector or list of links to navigate to, one for each page.
+The output I want is something like this…</description>
+    </item>
+    
+    <item>
+      <title>First Web Scraping</title>
+      <link>/computational_notes/scraping_practice/</link>
+      <pubDate>Fri, 20 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/scraping_practice/</guid>
+      <description>Dipping my feet into the world of websraping using rvest. The first few examples are pulled from Alex Bradley’s and Richard James’ 2019 article.
+Exercise 1 - From Article Scrape a single page from the article’s practice website. There are three things I want to pull from the page:
+ header
+ image
+ text.
+  Then, put that information into a single data set.
+library(rvest) page_parse &amp;lt;- read_html(&amp;quot;https://practicewebscrapingsite.wordpress.com/example-1/&amp;quot;) headers &amp;lt;- html_nodes(page_parse, &amp;#39;.</description>
+    </item>
     
     <item>
       <title>Using Gentle Ggplot2 to Present</title>

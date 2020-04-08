@@ -6,10 +6,36 @@
     <description>Recent content in Computational_Notes on Christopher Dishop</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Sun, 22 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 03 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/computational_notes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Empirical Independence</title>
+      <link>/computational_notes/emp_dependence/</link>
+      <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/emp_dependence/</guid>
+      <description>Calculate the independence of two events using both analytic and empirical techniques. I’m trying to assess whether the probability of having a meal classified as “dinner” depends on whether that meal includes “chicken” as its main dish.
+The options for the main dish:
+ chicken, salmon, pork, chicken, pancakes, french toast  The options for the side dishes:
+ salad, salad, green beans, corn, carrots, bacon.  All possible combinations to create a meal:</description>
+    </item>
+    
+    <item>
+      <title>Independence Exercises</title>
+      <link>/computational_notes/prob_dependence/</link>
+      <pubDate>Thu, 02 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/prob_dependence/</guid>
+      <description>Some of my favorite, simple examples demonstrating how to evaluate whether two events are independent using Probability Theory.
+Example 1 - Product Rule
+ Example 2 - Conditionals &amp;amp; Intersection
+ Example 3 - Conditionals
+ Example 4 - Markov Chain
+  Example 1 - Product Rule If two events are independent, then the product rule states that their intersection should equal the product of each independent probability.</description>
+    </item>
     
     <item>
       <title>Scrape Numbered Pages</title>

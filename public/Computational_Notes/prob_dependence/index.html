@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta name="generator" content="Hugo 0.48" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Independence Exercises | Christopher Dishop</title>
+
+     
+      
+    
+    
+    
+    
+    
+
+  <meta name="author" content="">
+
+ 
+    <meta property="og:title" content="Independence Exercises" />
+<meta property="og:description" content="Some of my favorite, simple examples demonstrating how to evaluate whether two events are independent using Probability Theory.
+Example 1 - Product Rule
+ Example 2 - Conditionals &amp; Intersection
+ Example 3 - Conditionals
+ Example 4 - Markov Chain
+  Example 1 - Product Rule If two events are independent, then the product rule states that their intersection should equal the product of each independent probability." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/computational_notes/prob_dependence/" /><meta property="article:published_time" content="2020-04-02T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2020-04-02T00:00:00&#43;00:00"/> 
+    
+
+
+
+ 
+    
+     
+     
+    
+    
+    <link rel="canonical" href="/computational_notes/prob_dependence/">   <link rel="shortcut icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABwlBMVEUAAAA/3MUK07UJ0rRk6NkC0rMAw5sAx6Ic1rs/3MYAlU0E0rQAhjMAyKIAiTkM07UJ07UAhC8m2L4o2L5O4Msn2L4AzKoAzq0128Mo2b8F0rQE0rMu2cAt2cAA0bI228MA0LAAy6kr2b8Q1LcF0rMH0rUAxp4t2b8c1ros2b8P1LcAzKsAzq4528Q02sIM07YAfyg93cUD0rMA0LEA0bFK4c0M1LcL07Uv2sEAzawY1rlJ4c0w2sEAzKkY1rqr+PQN07Yj170G0rQI07UF0bMt2cAF0rMC0bIL07UF0bMs2cAF0rMA0bIC0bIL07UF0rMA0bIA0bIA0bIO1LYr2b8N07Yp2L4F0rMF0rQJ07UA0bIC0bMA0bIH0rQK07UD0bMA0LAF0rMAyqYE0rMA0bIS1Lg228ID0bMM07YS1LcI07QL07UJ07UC0bMM07YG0rMS1Lc328IR1LcC0bIK07UM07Yo2L4P1LcL07UD0rMD0rMD0rMB0bIH0rQ23MMQ1LcD0rMN1LYB0LAJ0rQ33MMG0bMP1bgD0rMN07YH0rQH0rQ33MQF0rMD0rMN1LYo2L4F0rQG0rSA6tsA0bIB0bL////yxqscAAAAk3RSTlMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgnDXAUItvZKBAi6+vpMuf3++wEIAQcEBFn5AgR9UwMEoQLD/AEH4AIdAzha+UMEAQcc9AM4CAFSA9IC+4AEAc8yAwIEBAHOMQOBBLfLMAnFlAJNsa0LAAAAAWJLR0SVCGB6gwAAAAd0SU1FB+EBBBI4BduZ4woAAAF5SURBVDjLY2CAAUYmZgcWRydnVhc2dg4GTMAJlOdydZvs7sHtiU0FSJ7Hy3uyz2RfP24XNl4OLPJ8Xv5A+YBAsAo0M2DyQZMnY1fBL+AgCJXHrkIoWDgEJo9NhUioaBhCHqoiXExcAqZAMkIqckrU5MkoKqSjZeAmyMbIxSIZAFIRMCVOOl4epkAmQSERrwKOJMXkySl4rEhVSkufHDAZtyMzlDPdJweiyiN7UyRLIHsKQj5wMnowSIar5ExJQcjn5qnmqyFHlzqKL7EoQPMlphUaaL7EcGSBZiGKLzFUZGgVFSP5ElNFCVPpFORwhAeVto4uWEGwUJk3alSAVXhIR+tB7ShHTi5QkOIzpUKqEmKCPpODgReaipSUyVWl0tW6GEkWGhRBk2tq6wzrsSVqqPaGRqOmZmMTXWwqwNpbTFvbzMwtsGUMoPb2DqOmTksxK2xZLyhgck1XtzVIuw22zNszeXJvH0i7rR1G9gVlf/v+CRMnWaPYDgA74gwO0j2znAAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxNy0wMS0wNFQxODo1NjowNSswMTowME2yC4wAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTctMDEtMDRUMTg6NTY6MDUrMDE6MDA877MwAAAAV3pUWHRSYXcgcHJvZmlsZSB0eXBlIGlwdGMAAHic4/IMCHFWKCjKT8vMSeVSAAMjCy5jCxMjE0uTFAMTIESANMNkAyOzVCDL2NTIxMzEHMQHy4BIoEouAOoXEXTyQjWVAAAAAElFTkSuQmCC">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    <link rel="stylesheet" href="https://jenil.github.io/bulmaswatch/flatly/bulmaswatch.min.css"> 
+    <link rel="stylesheet" href="/css/landing.css">   
+    
+    
+</head>
+
+
+<body>
+    <header> <nav class="navbar is-transparent">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+      <img src="/img/bulma.png" alt="Bulma logo">
+    </a>
+  </div>
+  
+    
+    
+    
+    <span class="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </span>
+    
+    
+    
+    <div class="navbar-end">
+      <div class="navbar-item">
+        
+        
+          <a itemprop="url" class="navbar-item " href="/cv/"><span itemprop="name">CV</span></a>
+        
+          <a itemprop="url" class="navbar-item " href="/rec_reading/"><span itemprop="name">Recommended Reading</span></a>
+        
+          <a itemprop="url" class="navbar-item " href="/r_resources/"><span itemprop="name">R Resources</span></a>
+        
+          <a itemprop="url" class="navbar-item  is-active" href="/computational_notes/"><span itemprop="name">Computational_Notes</span></a>
+        
+      </div> 
+    </div>
+  </div>
+</nav>
+ </header>
+    <main>
+
+<div class="columns is-fullheight">
+    <div class="column">
+        <section class="hero is-default is-bold">
+            <div class="hero-body">
+                <div class="content container">
+                   <script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+
+
+<p>Some of my favorite, simple examples demonstrating how to evaluate whether two events are independent using Probability Theory.</p>
+<ol style="list-style-type: decimal">
+<li><p>Example 1 - Product Rule</p></li>
+<li><p>Example 2 - Conditionals &amp; Intersection</p></li>
+<li><p>Example 3 - Conditionals</p></li>
+<li><p>Example 4 - Markov Chain</p></li>
+</ol>
+<div id="example-1---product-rule" class="section level2">
+<h2>Example 1 - Product Rule</h2>
+<p>If two events are independent, then the product rule states that their intersection should equal the product of each independent probability.</p>
+<ul>
+<li><code>p(a &amp; b) = p(a) * p(b)</code></li>
+</ul>
+<p>The World Values Survey is an ongoing worldwide survey that polls the world population about perceptions of life, work, family, politics, etc. The most recent phase of the survey that polled 77,882 people from 57 countries estimates that 36.2% of the world’s population agrees with the statement “Men should have more right to a job than women.” The survey also estimates that 13.8% of people have a university degree or higher, and that 3.5% of people fit both criteria.</p>
+<p>Does agreeing depend on level of degree? If <strong>a</strong> = “someone agrees with the statment” and <strong>b</strong> = “has a university degree or higher,” does <strong>a</strong> depend on <strong>b</strong>?</p>
+<ul>
+<li><p><code>p(agree) = 0.362</code></p></li>
+<li><p><code>p(univ degree) = 0.138</code></p></li>
+<li><p><code>p(agree &amp; univ degree) = 0.036</code></p></li>
+</ul>
+<p>If they are independent, then the product rule should hold.</p>
+<ul>
+<li><code>p(a &amp; b) = p(a) * p(b)</code></li>
+</ul>
+<p>Evaluate:</p>
+<ul>
+<li><code>0.036 = 0.362 * 0.138</code> (which does not hold)</li>
+</ul>
+<p>Therefore, the two are dependent.</p>
+<p>This example comes from a <a href="link">coursera class</a>.</p>
+</div>
+<div id="example-2---conditionals-intersection" class="section level2">
+<h2>Example 2 - Conditionals &amp; Intersection</h2>
+<p>If two events are independent, then the probability of one conditioning on the other should equal the probability of the original alone.</p>
+<ul>
+<li><p><code>p(b | a) = p(b &amp; a) / p(a)</code></p></li>
+<li><p>If <strong>a</strong> and <strong>b</strong> are independent, then <code>p(b | a) = p(b)</code>.</p></li>
+</ul>
+<p>Two players are each going to role a different die. Player 1’s die is six-sided and contains the numbers 5, 5, 5, 1, 1, 1, whereas player 2’s die contains the numbers 4, 4, 4, 4, 0, 0.</p>
+<p>Take <strong>a</strong> to be the event that the player 1’s die is 5, and take <strong>b</strong> to be the event that the sum of the dice is equal to 1.</p>
+<ul>
+<li><strong>a</strong> = player 1 rolls a 5</li>
+<li><strong>b</strong> = sum of both dice is 1</li>
+</ul>
+<p>Is <strong>b</strong> dependent on <strong>a</strong>?</p>
+<p><img src="https://github.com/Cdishop/website/raw/master/content/Computational_Notes/independence_images/calc_a.png" width="500" />
+We can also run the same procedure but with a different event for <strong>b</strong>.</p>
+<p><img src="https://github.com/Cdishop/website/raw/master/content/Computational_Notes/independence_images/calc_b.png" width="500" /></p>
+</div>
+<div id="example-3---conditionals" class="section level2">
+<h2>Example 3 - Conditionals</h2>
+<p>If two events are independent, then taking <strong>a</strong> and conditioning on other events (e.g., <strong>b</strong>, <strong>c</strong>, <strong>d</strong>, etc.) should not change the observed probability.</p>
+<p>In 2013, a research group interviewed a random sample of 500 NC residents asking them whether they think widespread gun ownership protects law abiding citizens from crime, or makes society more dangerous.</p>
+<ul>
+<li>58% of all respondents said it protects citizens</li>
+<li>67% of White respondents,</li>
+<li>28% of Black respondents,</li>
+<li>and 64% of Hispanic respondents shared this view.</li>
+</ul>
+<p>Are opinion on gun ownership and ethnicity dependent?</p>
+<ul>
+<li><p><code>p(agree) = 58%</code></p></li>
+<li><p><code>p(agree | white) = 67%</code></p></li>
+<li><p><code>p(agree | black) = 28%</code></p></li>
+<li><p><code>p(agree | hispanic) = 64%</code></p></li>
+</ul>
+<p>Notice that conditioning on the other variables changes the probability, so opinion and ethnicity are probably dependent.</p>
+<p>This example comes from a <a href="link">coursera class</a>.</p>
+</div>
+<div id="example-4---markov-chains" class="section level2">
+<h2>Example 4 - Markov Chains</h2>
+<p>If two events are independent, then the probability of observing one after the other should be <code>p(a) * p(a)</code>, similar to the notion of a coin flip such that the probability of observing two heads in a row is 0.5X0.5 = 0.25. If you calculate a transition matrix and observe probabilities that differ from that original number, then the sequence is probably dependent.</p>
+<p>Andrei Markov applied Markov chains to the poem <em>Eugene Onegin</em> by Alexander Pushkin. In the first 20,000 letters of the poem, he counted the number of vowels (8,638) and consonants (11,362).</p>
+<ul>
+<li><p><code>p(vowel) = 0.432</code></p></li>
+<li><p><code>p(consonant) = 0.568</code></p></li>
+</ul>
+<p>Then, he counted the transitions from vowel to consonant or consonant to vowel. For every vowel, the number of times the next letter was a vowel was 1,104 and the number of times the next letter was a consonant was 7,534. For every consonant, the number of times the next letter was a consonant was 3,827 and the number of times the next letter was a vowel was 7,535.</p>
+<ul>
+<li><p><code>p(vowel to vowel) = 1104 / 8638 = 0.175</code></p></li>
+<li><p><code>p(vowel to consonant) = 7534 / 8638 = 0.825</code></p></li>
+<li><p><code>p(consonant to vowel) = 7535 / 11362 = 0.526</code></p></li>
+<li><p><code>p(consonant to consonant) = 3827 / 11362 = 0.474</code></p></li>
+</ul>
+<p>So the transition matrix is…</p>
+<pre class="r"><code>transition_matrix &lt;- matrix(c(&#39;&#39;, &#39;v&#39;, &#39;c&#39;,
+                              &#39;v&#39;, &#39;0.175&#39;, &#39;0.825&#39;,
+                              &#39;c&#39;, &#39;0.526&#39;, &#39;0.474&#39;), 3, 3)
+
+transition_matrix %&gt;%
+  kable() %&gt;%
+  kable_styling(bootstrap_options = &quot;striped&quot;, full_width = F)</code></pre>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<tbody>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+v
+</td>
+<td style="text-align:left;">
+c
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+v
+</td>
+<td style="text-align:left;">
+0.175
+</td>
+<td style="text-align:left;">
+0.526
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+c
+</td>
+<td style="text-align:left;">
+0.825
+</td>
+<td style="text-align:left;">
+0.474
+</td>
+</tr>
+</tbody>
+</table>
+<p>If the letters were independent, then the probability of witnessing a vowel follow a vowel would be <code>p(vowel) * p(vowel)</code>, or <code>0.432 * 0.423</code> = 0.186624. However, the observed transition probability is 0.175, so the sequence is dependent.</p>
+<p>Note that you have to assume that the counts of vowels and consonants reflect their true propabilities (which follows from the law of large numbers). Markov showed that the law of large numbers applied to even dependent sequences.</p>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>
+</div>
+
+                </div>
+                <br>
+            </div>
+        </section>
+    </div>
+</div>
+</main>
+    <footer> 
+  <footer class="footer">
+    <div class="container">
+        <div class="content has-text-centered">
+            <p>
+                I generated this site using 
+                <a href="https://gohugo.io/">Hugo</a> and Jeblister's
+                <a href="https://themes.gohugo.io/bulma/">Bulma</a> theme.
+                
+            </p>
+            <p>
+              Michigan State University is not liable for any opinions on this website.
+
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script src="//yihui.name/js/math-code.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<link rel="stylesheet" href="/css/obsidian.css" rel="stylesheet" id="theme-stylesheet">
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script> 
+</footer>
+
+    <script async type="text/javascript" src="/js/bulma.js"></script>
+    <script async type="text/javascript"  src="/js/clipboard.min.js"></script>
+    <script async type="text/javascript"  src="/js/clip.js"></script>
+</body>
+
+</html>

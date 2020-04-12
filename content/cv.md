@@ -8,36 +8,8 @@ weight = 1
 
 
 
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <title>PDF</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script
-  src="https://code.jquery.com/jquery-2.2.4.min.js"
-  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-  crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-
-<body>
-    <div class="container">
-        <div class="embed-responsive embed-responsive-4by3">
-            <object data="https://raw.githubusercontent.com/Cdishop/website/master/misc/CV.pdf" type="application/pdf">
-                <p>
-                    Your browser does not support embedded PDF files.<br>
-                    <a href="test.pdf">Click here to
-                    download the PDF file.</a>
-                </p>
-            </object>
-        </div>
-    </div>
-</body>
-</html>
-
-
-<object data="https://raw.githubusercontent.com/Cdishop/website/master/misc/CV" width="700px" height="700px">
+<object data="https://raw.githubusercontent.com/Cdishop/website/master/misc/CV.pdf" width="1100px" height="900px">
     <embed src="https://raw.githubusercontent.com/Cdishop/website/master/misc/CV.pdf">
         <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://raw.githubusercontent.com/Cdishop/website/master/misc/CV.pdf">Download PDF</a>.</p>
     </embed>

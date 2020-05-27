@@ -6,7 +6,7 @@
     <description>Recent content on Christopher Dishop</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 03 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 27 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
@@ -71,6 +71,58 @@ Christian Burkhart</description>
     </item>
     
     <item>
+      <title>Counting Degrees of Freedom</title>
+      <link>/computational_notes/dfs/</link>
+      <pubDate>Wed, 27 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/dfs/</guid>
+      <description>This post contains a bunch of examples where I practice counting dfs. In each example, I generate the data, estimate the parameters using SEM, count the dfs, and then compare my count to what the model spits back. To count dfs, I need to know the number of knowns and unknowns in my system:
+\[\begin{equation} \textrm{DFs} = \textrm{knowns - unknowns} \end{equation}\]
+To count the number of knowns, I need to know the number of observed variables, p:</description>
+    </item>
+    
+    <item>
+      <title>Bivariate Latent Dual Change Model</title>
+      <link>/computational_notes/bi_dual_change/</link>
+      <pubDate>Tue, 26 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/bi_dual_change/</guid>
+      <description>My last post demonstrated a dual change model for one variable, now I want to demonstrate a bivariate dual change model. A SEM path diagram for a bivariate dual change model is below, taken from Wang, Zhou, and Zhang (2016)
+(If you do not have access to that link you can view a similar path diagram in Jones, King, Gilrane, McCausland, Cortina, &amp;amp; Grimm, 2016)
+Essentially, we have two dual change processes and a coupling parameter from the latent true score on one variable to the latent change score on the other.</description>
+    </item>
+    
+    <item>
+      <title>Latent Dual Change Models</title>
+      <link>/computational_notes/dual_change/</link>
+      <pubDate>Sun, 24 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/dual_change/</guid>
+      <description>I begin with an intercept-only model in a latent change framework and then build to a full dual change model. SEM images in this post are taken from a lecture by Amy Nuttall. Two notes about the models and code below. First, the initial models will not fit well because I use a DGP with both dual change components, the initial models purposefully exclude either constant or proportion change. Second, I use the sem command throughout rather than growth in the lavaan package because it forces me to specify the entire model.</description>
+    </item>
+    
+    <item>
+      <title>Julia Cheat Sheet</title>
+      <link>/computational_notes/julia_cheatsheet/</link>
+      <pubDate>Sat, 23 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/julia_cheatsheet/</guid>
+      <description>I started using Julia for my computational models and recently created a cheat sheet to house all of my common commands.
+You can find it on github here.
+Bo\(^2\)m =)</description>
+    </item>
+    
+    <item>
+      <title>Be Careful With Characters and Matrices</title>
+      <link>/computational_notes/matrix_characters/</link>
+      <pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/computational_notes/matrix_characters/</guid>
+      <description>If you fill a matrix cell with a character, R will convert the entire matrix into character values…so be careful = )
+time &amp;lt;- c(1:4) numbers &amp;lt;- c(1:4) characters &amp;lt;- c(&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;, &amp;#39;d&amp;#39;) count &amp;lt;- 0 df_mat &amp;lt;- matrix(, ncol = 3, nrow = length(time)) for(i in 1:length(time)){ count &amp;lt;- count + 1 df_mat[count, 1] &amp;lt;- time[i] df_mat[count, 2] &amp;lt;- numbers[i] df_mat[count, 3] &amp;lt;- characters[i] } df_mat ## [,1] [,2] [,3] ## [1,] &amp;quot;1&amp;quot; &amp;quot;1&amp;quot; &amp;quot;a&amp;quot; ## [2,] &amp;quot;2&amp;quot; &amp;quot;2&amp;quot; &amp;quot;b&amp;quot; ## [3,] &amp;quot;3&amp;quot; &amp;quot;3&amp;quot; &amp;quot;c&amp;quot; ## [4,] &amp;quot;4&amp;quot; &amp;quot;4&amp;quot; &amp;quot;d&amp;quot; Notice that all cells are now characters.</description>
+    </item>
+    
+    <item>
       <title>Empirical Independence</title>
       <link>/computational_notes/emp_dependence/</link>
       <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
@@ -132,17 +184,6 @@ Bo\(^2\)m =)</description>
     </item>
     
     <item>
-      <title>Julia Cheat Sheet</title>
-      <link>/computational_notes/julia_cheatsheet/</link>
-      <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/julia_cheatsheet/</guid>
-      <description>I started using Julia for my computational models and recently created a cheat sheet to house all of my common commands.
-You can find it on github here.
-Bo\(^2\)m =)</description>
-    </item>
-    
-    <item>
       <title>Course Skeleton</title>
       <link>/computational_notes/skeleton/</link>
       <pubDate>Fri, 10 Jan 2020 00:00:00 +0000</pubDate>
@@ -187,17 +228,6 @@ Here’s a simulation to punch that point home.</description>
 MAs give us an average estimate across settings, tests, and people after correcting for noise. In a bare-bones MA, we correct only for sampling error. In a full MA, we correct for sampling error, unreliability, and range restriction. I’ll demonstrate a full MA here where we assume direct (rather than indirect) range restriction.
 Steps Literature Review
  Create inclusion criteria for how you are going to select studies Find relevant articles  Code Articles</description>
-    </item>
-    
-    <item>
-      <title>Counting Degrees of Freedom</title>
-      <link>/computational_notes/dfs/</link>
-      <pubDate>Sun, 25 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/dfs/</guid>
-      <description>This post contains a bunch of examples where I practice counting dfs. In each example, I generate the data, estimate the parameters using SEM, count the dfs, and then compare my count to what the model spits back. To count dfs, I need to know the number of knowns and unknowns in my system:
-\[\begin{equation} \textrm{DFs} = \textrm{knowns - unknowns} \end{equation}\]
-To count the number of knowns, I need to know the number of observed variables, p:</description>
     </item>
     
     <item>
@@ -282,26 +312,6 @@ and all three variables.</description>
       <description>Quick piece of code that turns all selected columns to numeric in R.
 df[, c(&amp;#39;col1&amp;#39;, &amp;#39;col2&amp;#39;)] &amp;lt;- as.numeric(as.character(unlist(df[, c(&amp;#39;col1&amp;#39;, &amp;#39;col2&amp;#39;)]))) Mutating within tidyverse is always a good options as well.
 df %&amp;gt;% mutate_at(vars(&amp;#39;column1&amp;#39;, &amp;#39;column2&amp;#39;), as.character) Bo\(^2\)m =)</description>
-    </item>
-    
-    <item>
-      <title>Bivariate Latent Dual Change Model</title>
-      <link>/computational_notes/bi_dual_change/</link>
-      <pubDate>Mon, 18 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/bi_dual_change/</guid>
-      <description>My last post demonstrated a dual change model for one variable, now I want to demonstrate a bivariate dual change model. A SEM path diagram for a bivariate dual change model is below, taken from Wang, Zhou, and Zhang (2016)
-(If you do not have access to that link you can view a similar path diagram in Jones, King, Gilrane, McCausland, Cortina, &amp;amp; Grimm, 2016)
-Essentially, we have two dual change processes and a coupling parameter from the latent true score on one variable to the latent change score on the other.</description>
-    </item>
-    
-    <item>
-      <title>Latent Dual Change Models</title>
-      <link>/computational_notes/dual_change/</link>
-      <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/dual_change/</guid>
-      <description>I begin with an intercept-only model in a latent change framework and then build to a full dual change model. SEM images in this post are taken from a lecture by Amy Nuttall. Two notes about the models and code below. First, the initial models will not fit well because I use a DGP with both dual change components, the initial models purposefully exclude either constant or proportion change. Second, I use the sem command throughout rather than growth in the lavaan package because it forces me to specify the entire model.</description>
     </item>
     
     <item>
@@ -406,16 +416,6 @@ cd %&amp;gt;% mutate(cohesion = q1 + q2 + q3) ## q1 q2 q3 id cohesion ## 1 1 2 N
       
       <guid>/computational_notes/frequentist_ci_interpretation/</guid>
       <description>Purpose Imagine that you are interested in the relationship between stress and performance. To assess it, you observe 600 people at work and measure their stress via a self-report (e.g., “I feel stressed”) and their performance via objective performance scores for the day (e.g., number of sales). You regress performance on stress and find that the estimated coefficient relating to two is 0.45. You then build a 95% confidence interval using the standard error that the analysis spit out and find that the CI is 0.</description>
-    </item>
-    
-    <item>
-      <title>Be Careful With Characters and Matrices</title>
-      <link>/computational_notes/matrix_characters/</link>
-      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/matrix_characters/</guid>
-      <description>If you fill a matrix cell with a character, R will convert the entire matrix into character values…so be careful = )
-time &amp;lt;- c(1:4) numbers &amp;lt;- c(1:4) characters &amp;lt;- c(&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;, &amp;#39;d&amp;#39;) count &amp;lt;- 0 df_mat &amp;lt;- matrix(, ncol = 3, nrow = length(time)) for(i in 1:length(time)){ count &amp;lt;- count + 1 df_mat[count, 1] &amp;lt;- time[i] df_mat[count, 2] &amp;lt;- numbers[i] df_mat[count, 3] &amp;lt;- characters[i] } df_mat ## [,1] [,2] [,3] ## [1,] &amp;quot;1&amp;quot; &amp;quot;1&amp;quot; &amp;quot;a&amp;quot; ## [2,] &amp;quot;2&amp;quot; &amp;quot;2&amp;quot; &amp;quot;b&amp;quot; ## [3,] &amp;quot;3&amp;quot; &amp;quot;3&amp;quot; &amp;quot;c&amp;quot; ## [4,] &amp;quot;4&amp;quot; &amp;quot;4&amp;quot; &amp;quot;d&amp;quot; Notice that all cells are now characters.</description>
     </item>
     
     <item>

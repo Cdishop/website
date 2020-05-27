@@ -15,6 +15,31 @@
   </url>
   
   <url>
+    <loc>/computational_notes/dfs/</loc>
+    <lastmod>2020-05-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/computational_notes/bi_dual_change/</loc>
+    <lastmod>2020-05-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/computational_notes/dual_change/</loc>
+    <lastmod>2020-05-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/computational_notes/julia_cheatsheet/</loc>
+    <lastmod>2020-05-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/computational_notes/matrix_characters/</loc>
+    <lastmod>2020-05-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/computational_notes/emp_dependence/</loc>
     <lastmod>2020-04-03T00:00:00+00:00</lastmod>
   </url>
@@ -40,11 +65,6 @@
   </url>
   
   <url>
-    <loc>/computational_notes/julia_cheatsheet/</loc>
-    <lastmod>2020-01-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/computational_notes/skeleton/</loc>
     <lastmod>2020-01-10T00:00:00+00:00</lastmod>
   </url>
@@ -62,11 +82,6 @@
   <url>
     <loc>/computational_notes/ma_compute/</loc>
     <lastmod>2019-09-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/computational_notes/dfs/</loc>
-    <lastmod>2019-08-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -107,16 +122,6 @@
   <url>
     <loc>/computational_notes/convert_numeric/</loc>
     <lastmod>2019-04-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/computational_notes/bi_dual_change/</loc>
-    <lastmod>2019-02-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/computational_notes/dual_change/</loc>
-    <lastmod>2019-02-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -167,11 +172,6 @@
   <url>
     <loc>/computational_notes/frequentist_ci_interpretation/</loc>
     <lastmod>2019-01-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/computational_notes/matrix_characters/</loc>
-    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -261,13 +261,13 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2020-04-03T00:00:00+00:00</lastmod>
+    <lastmod>2020-05-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/computational_notes/</loc>
-    <lastmod>2020-04-03T00:00:00+00:00</lastmod>
+    <lastmod>2020-05-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -3,7 +3,7 @@ title: "Counting Degrees of Freedom"
 output:
   html_document:
     df_print: paged
-date: '2019-08-25'
+date: '2020-05-27'
 ---
 
 ```{r setup, include=FALSE}

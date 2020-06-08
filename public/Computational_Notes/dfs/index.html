@@ -152,15 +152,17 @@ ex1_model &lt;- sem(ex1_string, data = df)</code></pre>
 <li><p>6 - 6 = 0</p></li>
 </ul>
 <pre class="r"><code>show(ex1_model)</code></pre>
-<pre><code>## lavaan 0.6-3 ended normally after 13 iterations
-## 
-##   Optimization method                           NLMINB
-##   Number of free parameters                          3
-## 
-##   Number of observations                           400
+<pre><code>## lavaan 0.6-6 ended normally after 13 iterations
 ## 
 ##   Estimator                                         ML
-##   Model Fit Test Statistic                       0.000
+##   Optimization method                           NLMINB
+##   Number of free parameters                          3
+##                                                       
+##   Number of observations                           400
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 0.000
 ##   Degrees of freedom                                 0</code></pre>
 <p>Now if I restrict the covariance of trust and availability to be zero I should have 1 df</p>
 <pre class="r"><code>ex1_string_restrict &lt;- &#39;
@@ -172,17 +174,19 @@ trust ~~ 0*availability
 
 ex1_model_restrict &lt;- sem(ex1_string_restrict, data = df)
 show(ex1_model_restrict) # yup</code></pre>
-<pre><code>## lavaan 0.6-3 ended normally after 16 iterations
-## 
-##   Optimization method                           NLMINB
-##   Number of free parameters                          5
-## 
-##   Number of observations                           400
+<pre><code>## lavaan 0.6-6 ended normally after 16 iterations
 ## 
 ##   Estimator                                         ML
-##   Model Fit Test Statistic                       0.000
+##   Optimization method                           NLMINB
+##   Number of free parameters                          5
+##                                                       
+##   Number of observations                           400
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 4.918
 ##   Degrees of freedom                                 1
-##   P-value (Chi-square)                           0.987</code></pre>
+##   P-value (Chi-square)                           0.027</code></pre>
 </div>
 </div>
 </div>
@@ -248,17 +252,19 @@ ex2_model &lt;- sem(ex2_string, data = df_cf)</code></pre>
 <li><p>21 - 12 = 9</p></li>
 </ul>
 <pre class="r"><code>show(ex2_model)</code></pre>
-<pre><code>## lavaan 0.6-3 ended normally after 48 iterations
-## 
-##   Optimization method                           NLMINB
-##   Number of free parameters                         12
-## 
-##   Number of observations                           400
+<pre><code>## lavaan 0.6-6 ended normally after 45 iterations
 ## 
 ##   Estimator                                         ML
-##   Model Fit Test Statistic                       7.690
+##   Optimization method                           NLMINB
+##   Number of free parameters                         12
+##                                                       
+##   Number of observations                           400
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 7.442
 ##   Degrees of freedom                                 9
-##   P-value (Chi-square)                           0.566</code></pre>
+##   P-value (Chi-square)                           0.591</code></pre>
 </div>
 </div>
 </div>
@@ -336,17 +342,19 @@ ex3_model &lt;- sem(ex3_string, data = df_3)</code></pre>
 <li><p>15 - 13 = 2</p></li>
 </ul>
 <pre class="r"><code>show(ex3_model)</code></pre>
-<pre><code>## lavaan 0.6-3 ended normally after 165 iterations
-## 
-##   Optimization method                           NLMINB
-##   Number of free parameters                         12
-## 
-##   Number of observations                           400
+<pre><code>## lavaan 0.6-6 ended normally after 163 iterations
 ## 
 ##   Estimator                                         ML
-##   Model Fit Test Statistic                       7.941
+##   Optimization method                           NLMINB
+##   Number of free parameters                         12
+##                                                       
+##   Number of observations                           400
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 0.587
 ##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.047</code></pre>
+##   P-value (Chi-square)                           0.899</code></pre>
 <p>Nope. I’m one off, where did I go wrong?</p>
 <p>Ah, there is only 1 prediction error because productivity is being predicted. I counted 2 prediction errors because I gave one to both b1 and b2. So, the unknowns should be…</p>
 <ul>
@@ -364,17 +372,19 @@ ex3_model &lt;- sem(ex3_string, data = df_3)</code></pre>
 <li><p>15 - 12 = 3</p></li>
 </ul>
 <pre class="r"><code>show(ex3_model)</code></pre>
-<pre><code>## lavaan 0.6-3 ended normally after 165 iterations
-## 
-##   Optimization method                           NLMINB
-##   Number of free parameters                         12
-## 
-##   Number of observations                           400
+<pre><code>## lavaan 0.6-6 ended normally after 163 iterations
 ## 
 ##   Estimator                                         ML
-##   Model Fit Test Statistic                       7.941
+##   Optimization method                           NLMINB
+##   Number of free parameters                         12
+##                                                       
+##   Number of observations                           400
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 0.587
 ##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.047</code></pre>
+##   P-value (Chi-square)                           0.899</code></pre>
 </div>
 </div>
 </div>
@@ -429,17 +439,19 @@ ex4_model &lt;- sem(ex4_string, data = df_chain)</code></pre>
 <li><p>10 - 7 = 3</p></li>
 </ul>
 <pre class="r"><code>show(ex4_model)</code></pre>
-<pre><code>## lavaan 0.6-3 ended normally after 44 iterations
-## 
-##   Optimization method                           NLMINB
-##   Number of free parameters                          7
-## 
-##   Number of observations                           400
+<pre><code>## lavaan 0.6-6 ended normally after 69 iterations
 ## 
 ##   Estimator                                         ML
-##   Model Fit Test Statistic                       7.903
+##   Optimization method                           NLMINB
+##   Number of free parameters                          7
+##                                                       
+##   Number of observations                           400
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 1.131
 ##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.048</code></pre>
+##   P-value (Chi-square)                           0.770</code></pre>
 </div>
 </div>
 </div>
@@ -516,18 +528,20 @@ ex5_model &lt;- sem(ex5_string, data = df5_wide)</code></pre>
 <li><p>28 - 10 = 18</p></li>
 </ul>
 <pre class="r"><code>show(ex5_model)</code></pre>
-<pre><code>## lavaan 0.6-3 ended normally after 113 iterations
+<pre><code>## lavaan 0.6-6 ended normally after 103 iterations
 ## 
+##   Estimator                                         ML
 ##   Optimization method                           NLMINB
 ##   Number of free parameters                         15
 ##   Number of equality constraints                     5
-## 
+##                                                       
 ##   Number of observations                           400
-## 
-##   Estimator                                         ML
-##   Model Fit Test Statistic                      18.586
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                16.422
 ##   Degrees of freedom                                18
-##   P-value (Chi-square)                           0.418</code></pre>
+##   P-value (Chi-square)                           0.563</code></pre>
 <p>Why didn’t I estimate a mean for unobserved heterogeneity here? In all of the other examples I estimated the variance (1 parameter) and the mean (1 parameter) of the latent exogenous variable. In this case, unobserved heterogeneity is the latent exogenous variable but I only estimated its variance. That’s because in this model we don’t really care about the mean of unobserved heterogeneity, it’s just a latent variable that we incorporate to account for stable individual differences. In other words, when I estimate latent cog ability and assertiveness as IVs to predict an outcome, I care about their means. Here, unobserved heterogeneity is just an additional factor to account for, not a variable whose mean I really care to know. That said, if I wanted to estimate the mean of unobserved heterogeneity (which would result in one additional estimated parameter and one fewer df) then I would incorporate the following into the model string.</p>
 <pre class="r"><code>&#39;
 

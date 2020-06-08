@@ -58,6 +58,14 @@ weight = 3
 
 [Crump Lab](https://crumplab.github.io/Courses.html)
 
+[Richard N. Landers](http://datascience.tntlab.org/)
+
+[Mark Lai](https://quantscience.rbind.io/#posts)
+
+[Francis L. Huang](https://francish.netlify.app/#posts)
+
+
+
 # Courses
 
 [Applied Statistical Computing Course](http://had.co.nz/stat480.1.html)
@@ -149,6 +157,8 @@ weight = 3
 [R for Data Science](https://r4ds.had.co.nz)
 
 [Statistical Inference](https://leanpub.com/LittleInferenceBook/read)
+
+[Intro to Quant Methods](https://bookdown.org/ejvanholm/Textbook/)
 
 [Regression](https://leanpub.com/regmods/read)
 

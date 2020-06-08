@@ -505,26 +505,28 @@ cx5 ~~ 0*cx6
 
 dc_x_model &lt;- sem(dual_change_x_string, data = df_wide_x)
 summary(dc_x_model, fit.measures = T)</code></pre>
-<pre><code>## lavaan 0.6-3 ended normally after 55 iterations
+<pre><code>## lavaan 0.6-6 ended normally after 55 iterations
 ## 
+##   Estimator                                         ML
 ##   Optimization method                           NLMINB
 ##   Number of free parameters                         16
 ##   Number of equality constraints                     9
-## 
+##                                                       
 ##   Number of observations                           700
-## 
-##   Estimator                                         ML
-##   Model Fit Test Statistic                    4046.134
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                              4046.134
 ##   Degrees of freedom                                20
 ##   P-value (Chi-square)                           0.000
 ## 
-## Model test baseline model:
+## Model Test Baseline Model:
 ## 
-##   Minimum Function Test Statistic            11769.574
+##   Test statistic                             11769.574
 ##   Degrees of freedom                                15
 ##   P-value                                        0.000
 ## 
-## User model versus baseline model:
+## User Model versus Baseline Model:
 ## 
 ##   Comparative Fit Index (CFI)                    0.657
 ##   Tucker-Lewis Index (TLI)                       0.743
@@ -533,8 +535,7 @@ summary(dc_x_model, fit.measures = T)</code></pre>
 ## 
 ##   Loglikelihood user model (H0)             -10105.606
 ##   Loglikelihood unrestricted model (H1)      -8082.539
-## 
-##   Number of free parameters                          7
+##                                                       
 ##   Akaike (AIC)                               20225.212
 ##   Bayesian (BIC)                             20257.069
 ##   Sample-size adjusted Bayesian (BIC)        20234.843
@@ -542,7 +543,8 @@ summary(dc_x_model, fit.measures = T)</code></pre>
 ## Root Mean Square Error of Approximation:
 ## 
 ##   RMSEA                                          0.536
-##   90 Percent Confidence Interval          0.522  0.550
+##   90 Percent confidence interval - lower         0.522
+##   90 Percent confidence interval - upper         0.550
 ##   P-value RMSEA &lt;= 0.05                          0.000
 ## 
 ## Standardized Root Mean Square Residual:
@@ -551,9 +553,9 @@ summary(dc_x_model, fit.measures = T)</code></pre>
 ## 
 ## Parameter Estimates:
 ## 
+##   Standard errors                             Standard
 ##   Information                                 Expected
 ##   Information saturated (h1) model          Structured
-##   Standard Errors                             Standard
 ## 
 ## Latent Variables:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
@@ -634,7 +636,7 @@ summary(dc_x_model, fit.measures = T)</code></pre>
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
 ##     l_slope          -3.468    0.123  -28.161    0.000
 ##     l_intercept      10.332    0.077  134.910    0.000
-##     lx1               0.000                           
+##    .lx1               0.000                           
 ##    .lx2               0.000                           
 ##    .lx3               0.000                           
 ##    .lx4               0.000                           
@@ -656,7 +658,7 @@ summary(dc_x_model, fit.measures = T)</code></pre>
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
 ##     l_ntrcp           2.969    0.212   14.021    0.000
 ##     l_slope          10.023    0.574   17.467    0.000
-##     lx1               0.000                           
+##    .lx1               0.000                           
 ##    .lx2               0.000                           
 ##    .lx3               0.000                           
 ##    .lx4               0.000                           
@@ -920,26 +922,28 @@ df_both &lt;- df %&gt;%
 
 bi_dc_model &lt;- sem(bi_dc_string, data = df_both)
 summary(bi_dc_model, fit.measures = T)</code></pre>
-<pre><code>## lavaan 0.6-3 ended normally after 117 iterations
+<pre><code>## lavaan 0.6-6 ended normally after 117 iterations
 ## 
+##   Estimator                                         ML
 ##   Optimization method                           NLMINB
 ##   Number of free parameters                         46
 ##   Number of equality constraints                    26
-## 
+##                                                       
 ##   Number of observations                           700
-## 
-##   Estimator                                         ML
-##   Model Fit Test Statistic                    1422.723
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                              1422.723
 ##   Degrees of freedom                                70
 ##   P-value (Chi-square)                           0.000
 ## 
-## Model test baseline model:
+## Model Test Baseline Model:
 ## 
-##   Minimum Function Test Statistic            23848.355
+##   Test statistic                             23848.355
 ##   Degrees of freedom                                66
 ##   P-value                                        0.000
 ## 
-## User model versus baseline model:
+## User Model versus Baseline Model:
 ## 
 ##   Comparative Fit Index (CFI)                    0.943
 ##   Tucker-Lewis Index (TLI)                       0.946
@@ -948,8 +952,7 @@ summary(bi_dc_model, fit.measures = T)</code></pre>
 ## 
 ##   Loglikelihood user model (H0)             -15217.849
 ##   Loglikelihood unrestricted model (H1)     -14506.488
-## 
-##   Number of free parameters                         20
+##                                                       
 ##   Akaike (AIC)                               30475.699
 ##   Bayesian (BIC)                             30566.721
 ##   Sample-size adjusted Bayesian (BIC)        30503.217
@@ -957,7 +960,8 @@ summary(bi_dc_model, fit.measures = T)</code></pre>
 ## Root Mean Square Error of Approximation:
 ## 
 ##   RMSEA                                          0.166
-##   90 Percent Confidence Interval          0.159  0.174
+##   90 Percent confidence interval - lower         0.159
+##   90 Percent confidence interval - upper         0.174
 ##   P-value RMSEA &lt;= 0.05                          0.000
 ## 
 ## Standardized Root Mean Square Residual:
@@ -966,9 +970,9 @@ summary(bi_dc_model, fit.measures = T)</code></pre>
 ## 
 ## Parameter Estimates:
 ## 
+##   Standard errors                             Standard
 ##   Information                                 Expected
 ##   Information saturated (h1) model          Structured
-##   Standard Errors                             Standard
 ## 
 ## Latent Variables:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
@@ -1141,7 +1145,7 @@ summary(bi_dc_model, fit.measures = T)</code></pre>
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
 ##     l_slope           0.466    0.117    3.994    0.000
 ##     l_intercept       9.983    0.045  220.323    0.000
-##     ly1               0.000                           
+##    .ly1               0.000                           
 ##    .ly2               0.000                           
 ##    .ly3               0.000                           
 ##    .ly4               0.000                           
@@ -1160,7 +1164,7 @@ summary(bi_dc_model, fit.measures = T)</code></pre>
 ##    .y.6               0.000                           
 ##     lx_slope          0.664    0.122    5.441    0.000
 ##     lx_intercept      9.937    0.044  224.982    0.000
-##     lx1               0.000                           
+##    .lx1               0.000                           
 ##    .lx2               0.000                           
 ##    .lx3               0.000                           
 ##    .lx4               0.000                           
@@ -1182,7 +1186,7 @@ summary(bi_dc_model, fit.measures = T)</code></pre>
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
 ##     l_ntr             0.965    0.075   12.954    0.000
 ##     l_slp             8.201    0.454   18.047    0.000
-##     ly1               0.000                           
+##    .ly1               0.000                           
 ##    .ly2               0.000                           
 ##    .ly3               0.000                           
 ##    .ly4               0.000                           
@@ -1201,7 +1205,7 @@ summary(bi_dc_model, fit.measures = T)</code></pre>
 ##    .y.6   (res_vr)    0.726    0.019   37.348    0.000
 ##     lx_nt             1.140    0.071   16.062    0.000
 ##     lx_sl             9.056    0.494   18.318    0.000
-##     lx1               0.000                           
+##    .lx1               0.000                           
 ##    .lx2               0.000                           
 ##    .lx3               0.000                           
 ##    .lx4               0.000                           

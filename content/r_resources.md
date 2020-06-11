@@ -82,6 +82,8 @@ weight = 3
 
 # Random
 
+[R Markdown Themes](https://www.datadreaming.org/post/r-markdown-theme-gallery/)
+
 [R club](https://blogs.uoregon.edu/rclub/)
 
 [Various Linear Model Tests in R](https://www.zoology.ubc.ca/~schluter/R/fit-model/)

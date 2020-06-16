@@ -38,7 +38,6 @@ That simulation results in the following.
 
 library(tidyverse)
 library(ggplot2)
-library(ggthemes)
 
 df1 <- data.frame(
   'time' = c(1:time),
@@ -47,8 +46,7 @@ df1 <- data.frame(
 
 ggplot(df1, aes(x = time, y = y)) + 
   geom_point() + 
-  geom_line() + 
-  theme_wsj()
+  geom_line()
 ```
 
 The second way to simulate it is to generate noise within the loop itself, store the noise, and then apply it to the outcome across time. 
@@ -92,8 +90,7 @@ df2 <- data.frame(
 
 ggplot(df2, aes(x = time, y = yt)) + 
   geom_point() + 
-  geom_line() + 
-  theme_wsj()
+  geom_line()
 ```
 
 The second simulation style takes more code but I find it more intuitive. It is difficult for me to wrap my head around simulating all of the noise first and then applying it to the process as if the two are independent components -- which is what the first simulation code mimics. To each their own.

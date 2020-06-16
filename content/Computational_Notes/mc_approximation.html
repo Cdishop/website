@@ -38,7 +38,7 @@ for(i in 1:iterations){
 }</code></pre>
 <p>The probability of a shared birthday among a group of 15 is…</p>
 <pre class="r"><code>shared_birthdays_counter / iterations</code></pre>
-<pre><code>## [1] 0.2326</code></pre>
+<pre><code>## [1] 0.2116</code></pre>
 <p>The probability of a shared birthday as we increase group size…</p>
 <pre class="r"><code>sizes &lt;- 2:25
 prob_store &lt;- numeric(length(sizes))
@@ -100,14 +100,14 @@ true_pours &lt;- sample(possible_pours, size = 8)
 # The true first pours
 
 true_pours</code></pre>
-<pre><code>## [1] &quot;M&quot; &quot;T&quot; &quot;M&quot; &quot;M&quot; &quot;T&quot; &quot;M&quot; &quot;T&quot; &quot;T&quot;</code></pre>
+<pre><code>## [1] &quot;T&quot; &quot;M&quot; &quot;T&quot; &quot;M&quot; &quot;T&quot; &quot;T&quot; &quot;M&quot; &quot;M&quot;</code></pre>
 <p>Then you make a guess for each cup.</p>
 <pre class="r"><code>guess &lt;- c(&#39;M&#39;, &#39;T&#39;, &#39;T&#39;, &#39;M&#39;, &#39;T&#39;, &#39;T&#39;, &#39;M&#39;, &#39;M&#39;)</code></pre>
 <p>In this case, you guessed that I poured milk first for cup 1 and tea first for cup 2. How many of your guesses are correct?</p>
 <pre class="r"><code>correct &lt;- sum(true_pours == guess)
 
 correct</code></pre>
-<pre><code>## [1] 4</code></pre>
+<pre><code>## [1] 6</code></pre>
 <p>Now we can put all of that into a Monte Carlo loop.</p>
 <pre class="r"><code>iterations &lt;- 5000
 correct_store &lt;- numeric(iterations)
@@ -129,7 +129,7 @@ for(i in 1:iterations){
 <pre class="r"><code>prop.table(table(correct_store))</code></pre>
 <pre><code>## correct_store
 ##      0      2      4      6      8 
-## 0.0112 0.2358 0.5096 0.2290 0.0144</code></pre>
+## 0.0154 0.2250 0.5194 0.2270 0.0132</code></pre>
 <p>Just like the birthday problem, there are equations that govern this “tea problem.” We don’t know what they are, but we can still learn about the process by using Monte Carlo approximation.</p>
 <p>These examples can be found with greater discussion in <em>Quantitative Social Science</em> by Kosuke Imai.</p>
 <p>Bo<span class="math inline">\(^2\)</span>m =)</p>

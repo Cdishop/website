@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Home</title>
-    <link>http://christopherdishop.netlify.app/</link>
-    <description>Recent content on Home</description>
+    <title>Christopher Dishop</title>
+    <link>/</link>
+    <description>Recent content on Christopher Dishop</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    <language>en-US</language>
     <lastBuildDate>Wed, 27 May 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://christopherdishop.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Recommended Reading</title>
-      <link>http://christopherdishop.netlify.app/rec_reading/</link>
+      <title>CV</title>
+      <link>/cv/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/rec_reading/</guid>
+      <guid>/cv/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Recommended Reading</title>
+      <link>/rec_reading/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/rec_reading/</guid>
       <description>Quantifying Life: A Symbiosis of Computation, Mathematics, and Biology
 Dmitry A. Kondrashov
 Click here for link
@@ -35,10 +44,10 @@ Leonard Mlodinow</description>
     
     <item>
       <title>R Resources</title>
-      <link>http://christopherdishop.netlify.app/r_resources/</link>
+      <link>/r_resources/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/r_resources/</guid>
+      <guid>/r_resources/</guid>
       <description>Websites with many R resources All R books written with Bookdown
 All R cheatsheets
 APS list of R resources
@@ -47,6 +56,7 @@ Econometrics Simulations
 UVA Data Science Resources
 People with helpful individual websites Emily C. Zabor
 Jenny Bryan
+(teach =&amp;gt; purrr tutorial is excellent)
 Kristoffer Magnusson
 Sacha Epskamp
 FOM academic
@@ -57,18 +67,15 @@ B Rodriguez
 Nathaniel D. Phillips
 Simon Ejdemyr
 The R Graph Gallery
-Christian Burkhart
-Malcolm Barrett
-John Flournoy
-UC R Guide</description>
+Christian Burkhart</description>
     </item>
     
     <item>
       <title>Counting Degrees of Freedom</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/dfs/</link>
+      <link>/computational_notes/dfs/</link>
       <pubDate>Wed, 27 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/dfs/</guid>
+      <guid>/computational_notes/dfs/</guid>
       <description>This post contains a bunch of examples where I practice counting dfs. In each example, I generate the data, estimate the parameters using SEM, count the dfs, and then compare my count to what the model spits back. To count dfs, I need to know the number of knowns and unknowns in my system:
 \[\begin{equation} \textrm{DFs} = \textrm{knowns - unknowns} \end{equation}\]
 To count the number of knowns, I need to know the number of observed variables, p:</description>
@@ -76,41 +83,30 @@ To count the number of knowns, I need to know the number of observed variables, 
     
     <item>
       <title>Bivariate Latent Dual Change Model</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/bi_dual_change/</link>
+      <link>/computational_notes/bi_dual_change/</link>
       <pubDate>Tue, 26 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/bi_dual_change/</guid>
+      <guid>/computational_notes/bi_dual_change/</guid>
       <description>My last post demonstrated a dual change model for one variable, now I want to demonstrate a bivariate dual change model. A SEM path diagram for a bivariate dual change model is below, taken from Wang, Zhou, and Zhang (2016)
 (If you do not have access to that link you can view a similar path diagram in Jones, King, Gilrane, McCausland, Cortina, &amp;amp; Grimm, 2016)
 Essentially, we have two dual change processes and a coupling parameter from the latent true score on one variable to the latent change score on the other.</description>
     </item>
     
     <item>
-      <title>Twemoji Support 🤩</title>
-      <link>http://christopherdishop.netlify.app/posts/twemoji-support/</link>
-      <pubDate>Mon, 25 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://christopherdishop.netlify.app/posts/twemoji-support/</guid>
-      <description>If you want to use Twitter&amp;rsquo;s Twemoji across your website, enable it in your config.toml
-[params] enableTwemoji = true This will not only give your website unified emojis across all platforms. It will also give you the latest Unicode 13 emoji set, such as 🧋🫕🛻🪗🪞.
-Emoji size changes with text size 🤩 Emoji size changes with text size 🤩 Emoji size changes with text size 🤩 Emoji size changes with text size 🤩 Emoji size changes with text size 🤩 Emoji size changes with text size 🤩  </description>
-    </item>
-    
-    <item>
       <title>Latent Dual Change Models</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/dual_change/</link>
+      <link>/computational_notes/dual_change/</link>
       <pubDate>Sun, 24 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/dual_change/</guid>
+      <guid>/computational_notes/dual_change/</guid>
       <description>I begin with an intercept-only model in a latent change framework and then build to a full dual change model. SEM images in this post are taken from a lecture by Amy Nuttall. Two notes about the models and code below. First, the initial models will not fit well because I use a DGP with both dual change components, the initial models purposefully exclude either constant or proportion change. Second, I use the sem command throughout rather than growth in the lavaan package because it forces me to specify the entire model.</description>
     </item>
     
     <item>
       <title>Julia Cheat Sheet</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/julia_cheatsheet/</link>
+      <link>/computational_notes/julia_cheatsheet/</link>
       <pubDate>Sat, 23 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/julia_cheatsheet/</guid>
+      <guid>/computational_notes/julia_cheatsheet/</guid>
       <description>I started using Julia for my computational models and recently created a cheat sheet to house all of my common commands.
 You can find it on github here.
 Bo\(^2\)m =)</description>
@@ -118,20 +114,20 @@ Bo\(^2\)m =)</description>
     
     <item>
       <title>Be Careful With Characters and Matrices</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/matrix_characters/</link>
+      <link>/computational_notes/matrix_characters/</link>
       <pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/matrix_characters/</guid>
+      <guid>/computational_notes/matrix_characters/</guid>
       <description>If you fill a matrix cell with a character, R will convert the entire matrix into character values…so be careful = )
 time &amp;lt;- c(1:4) numbers &amp;lt;- c(1:4) characters &amp;lt;- c(&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;, &amp;#39;d&amp;#39;) count &amp;lt;- 0 df_mat &amp;lt;- matrix(, ncol = 3, nrow = length(time)) for(i in 1:length(time)){ count &amp;lt;- count + 1 df_mat[count, 1] &amp;lt;- time[i] df_mat[count, 2] &amp;lt;- numbers[i] df_mat[count, 3] &amp;lt;- characters[i] } df_mat ## [,1] [,2] [,3] ## [1,] &amp;quot;1&amp;quot; &amp;quot;1&amp;quot; &amp;quot;a&amp;quot; ## [2,] &amp;quot;2&amp;quot; &amp;quot;2&amp;quot; &amp;quot;b&amp;quot; ## [3,] &amp;quot;3&amp;quot; &amp;quot;3&amp;quot; &amp;quot;c&amp;quot; ## [4,] &amp;quot;4&amp;quot; &amp;quot;4&amp;quot; &amp;quot;d&amp;quot; Notice that all cells are now characters.</description>
     </item>
     
     <item>
       <title>Empirical Independence</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/emp_dependence/</link>
+      <link>/computational_notes/emp_dependence/</link>
       <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/emp_dependence/</guid>
+      <guid>/computational_notes/emp_dependence/</guid>
       <description>Calculate the independence of two events using both analytic and empirical techniques. I’m trying to assess whether the probability of having a meal classified as “dinner” depends on whether that meal includes “chicken” as its main dish.
 The options for the main dish:
  chicken, salmon, pork, chicken, pancakes, french toast  The options for the side dishes:
@@ -140,10 +136,10 @@ The options for the main dish:
     
     <item>
       <title>Independence Exercises</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/prob_dependence/</link>
+      <link>/computational_notes/prob_dependence/</link>
       <pubDate>Thu, 02 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/prob_dependence/</guid>
+      <guid>/computational_notes/prob_dependence/</guid>
       <description>Some of my favorite, simple examples demonstrating how to evaluate whether two events are independent using Probability Theory.
 Example 1 - Product Rule
  Example 2 - Conditionals &amp;amp; Intersection
@@ -154,20 +150,20 @@ Example 1 - Product Rule
     
     <item>
       <title>Scrape Numbered Pages</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/scraping_numb_pages/</link>
+      <link>/computational_notes/scraping_numb_pages/</link>
       <pubDate>Sun, 22 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/scraping_numb_pages/</guid>
+      <guid>/computational_notes/scraping_numb_pages/</guid>
       <description>Quick command to compile all links for a website that numbers its pages. Image I want to go to a website that contains 100 pages of reviews, the first 10 on page 1, the second 10 on page 2, the third 10 on page 3, etc. The first step is to create a vector or list of links to navigate to, one for each page.
 The output I want is something like this…</description>
     </item>
     
     <item>
       <title>First Web Scraping</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/scraping_practice/</link>
+      <link>/computational_notes/scraping_practice/</link>
       <pubDate>Fri, 20 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/scraping_practice/</guid>
+      <guid>/computational_notes/scraping_practice/</guid>
       <description>Dipping my feet into the world of websraping using rvest. The first few examples are pulled from Alex Bradley’s and Richard James’ 2019 article.
 Exercise 1 - From Article Scrape a single page from the article’s practice website. There are three things I want to pull from the page:
  header
@@ -179,20 +175,20 @@ library(rvest) page_parse &amp;lt;- read_html(&amp;quot;https://practicewebscrap
     
     <item>
       <title>Using Gentle Ggplot2 to Present</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/methods_others/</link>
+      <link>/computational_notes/methods_others/</link>
       <pubDate>Wed, 04 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/methods_others/</guid>
+      <guid>/computational_notes/methods_others/</guid>
       <description>I recently created my first slide deck using Garrick Aden-Buie’s awesome template called “Gentle Ggplot2.” You can find the presentation here and the source code on my GitHub page.
 Bo\(^2\)m =)</description>
     </item>
     
     <item>
       <title>Course Skeleton</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/skeleton/</link>
+      <link>/computational_notes/skeleton/</link>
       <pubDate>Fri, 10 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/skeleton/</guid>
+      <guid>/computational_notes/skeleton/</guid>
       <description>I recently created a course skeleton for a research methods or statistics course. The website allows you to incorporate Rmarkdown and dynamic documents to better demonstrate interactive coding.
 You can find it on github here.
 Bo\(^2\)m =)</description>
@@ -200,10 +196,10 @@ Bo\(^2\)m =)</description>
     
     <item>
       <title>Simulations With Rcpp</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/sims_rccp/</link>
+      <link>/computational_notes/sims_rccp/</link>
       <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/sims_rccp/</guid>
+      <guid>/computational_notes/sims_rccp/</guid>
       <description>Simulating dynamic processes is slow in R. Using the Rcpp function, we can incorporate C++ code to improve performance.
 My dad, Tim, wrote the C++ code you see here = ).
 Example 1 - Two states, single unit We’re going to simulate data goverened by the following equations:
@@ -214,20 +210,20 @@ library(tidyverse) library(Rcpp) # Parameters a1 &amp;lt;- 0.</description>
     
     <item>
       <title>Regression Creates Weighted Linear Composites</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/regression_composite/</link>
+      <link>/computational_notes/regression_composite/</link>
       <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/regression_composite/</guid>
+      <guid>/computational_notes/regression_composite/</guid>
       <description>One way to think about regression is as a tool that takes a set of predictors and creates a weighted, linear composite that maximally correlates with the response variable. It finds a way to combine multiple predictors into a single thing, using regression weights, and the weights are chosen such that, once the single composite is formed, it maximally correlates with the outcome.
 Here’s a simulation to punch that point home.</description>
     </item>
     
     <item>
       <title>Meta Analysis Comps Notes</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/ma_compute/</link>
+      <link>/computational_notes/ma_compute/</link>
       <pubDate>Sun, 15 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/ma_compute/</guid>
+      <guid>/computational_notes/ma_compute/</guid>
       <description>I’m taking comps pretty soon so this is my summary document regarding meta-analysis.
 MAs give us an average estimate across settings, tests, and people after correcting for noise. In a bare-bones MA, we correct only for sampling error. In a full MA, we correct for sampling error, unreliability, and range restriction. I’ll demonstrate a full MA here where we assume direct (rather than indirect) range restriction.
 Steps Literature Review</description>
@@ -235,48 +231,48 @@ Steps Literature Review</description>
     
     <item>
       <title>Intuition for Correlated Errors and Third Variables</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/cheating_cor_errors/</link>
+      <link>/computational_notes/cheating_cor_errors/</link>
       <pubDate>Wed, 26 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/cheating_cor_errors/</guid>
+      <guid>/computational_notes/cheating_cor_errors/</guid>
       <description>In many research methods or statistics courses you come across the idea that correlated errors signal a third variable. In other words, you have a missing, relevant variable that induces correlation among your residuals. That’s a tough idea to wrap your head around, but it is easier to consider with respect to a given topic: cheating on exams. This post builds intuition for “correlated errors with respect to missing third variables” in the context of college exams and cheating.</description>
     </item>
     
     <item>
       <title>Systems Thinking on Goons in the NHL</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/system_goons/</link>
+      <link>/computational_notes/system_goons/</link>
       <pubDate>Fri, 14 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/system_goons/</guid>
+      <guid>/computational_notes/system_goons/</guid>
       <description>Inspired by Bill Burr’s Monday Morning Podcast, episode 6-6-19.
 He describes how people that do not understand hockey wanted to get fighting out of the NHL, so in the 2000’s they made greater efforts to remove goons (fighters). What people outside the NHL often do not understand, though, is that fighting is used to minimize dirty play. When a team is playing dirty, you – as a couch of the team that is not playing dirty – send out a goon to punch around a few of their players.</description>
     </item>
     
     <item>
       <title>What Explaining Means in Statistics</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/explaining_statistics/</link>
+      <link>/computational_notes/explaining_statistics/</link>
       <pubDate>Fri, 03 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/explaining_statistics/</guid>
+      <guid>/computational_notes/explaining_statistics/</guid>
       <description>Think about what it would mean to explain something to a friend. How would you explain why the Patriot’s won the Superbowl? How would you explain why you are feeling happy or sad? How would you explain tying a shoe to a toddler? How would you explain why eating lots of donuts tends to increase a person’s weight? How would you explain the timeline of Game of Thrones to someone who hadn’t seen it?</description>
     </item>
     
     <item>
       <title>Lavaan MPLUS Reference Sheet</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/lavaan_mplus/</link>
+      <link>/computational_notes/lavaan_mplus/</link>
       <pubDate>Thu, 02 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/lavaan_mplus/</guid>
+      <guid>/computational_notes/lavaan_mplus/</guid>
       <description>A growth curve model written in lavaan and MPLUS as a syntax reference guide. Imagine a latent growth curve on affect across 4 time points. First, lavaan code:
 lavaan_string &amp;lt;- &amp;#39; # Latent intercept and slope factors intercept_affect =~ 1*affect.1 + 1*affect.2 + 1*affect.3 + 1*affect.4 slope_affect =~ 0*affect.1 + 1*affect.2 + 2*affect.3 + 3*affect.4 # Mean and variance of latent factors intercept_affect ~~ intercept_affect slope_affect ~~ slope_affect # Covariance between latent factors intercept_affect ~~ slope_affect # Fix observed variable means to 0 affect.</description>
     </item>
     
     <item>
       <title>Screwing Up A Mean Calculation</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/mean_calculating/</link>
+      <link>/computational_notes/mean_calculating/</link>
       <pubDate>Thu, 02 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/mean_calculating/</guid>
+      <guid>/computational_notes/mean_calculating/</guid>
       <description>Quick note about calculating the mean of a column with dplyr in R. It’s surprisingly easy to screw up, and the culprit is forgetting to change the name of the column storing the new calculation.
 A simple dataframe.
 library(tidyverse) df &amp;lt;- data.frame( &amp;#39;books_read&amp;#39; = c(1,2,3,4,5,6), &amp;#39;intelligence&amp;#39; = c(4,5,6,7,8,8) ) df ## books_read intelligence ## 1 1 4 ## 2 2 5 ## 3 3 6 ## 4 4 7 ## 5 5 8 ## 6 6 8 I want to calculate the mean and standard deviation of the “books read” column.</description>
@@ -284,10 +280,10 @@ library(tidyverse) df &amp;lt;- data.frame( &amp;#39;books_read&amp;#39; = c(1,2
     
     <item>
       <title>Degrees of Freedom Intuition</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/degrees_freedom/</link>
+      <link>/computational_notes/degrees_freedom/</link>
       <pubDate>Wed, 01 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/degrees_freedom/</guid>
+      <guid>/computational_notes/degrees_freedom/</guid>
       <description>This post is about building intuition for degrees of freedom. There are two ways to think about it, the “information” way and the “line” way.
 The Information Way The quantity, degrees of freedom, is the amount of information available in our data set minus the amount of information we want to pull from it. Here are a bunch of different ways of representing that idea:
 \[\begin{equation} \textrm{DF} = \textrm{Knowns} - \textrm{Unknowns} \end{equation}\]</description>
@@ -295,10 +291,10 @@ The Information Way The quantity, degrees of freedom, is the amount of informati
     
     <item>
       <title>Everything Partialled From Everything in Regression</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/regression_partial/</link>
+      <link>/computational_notes/regression_partial/</link>
       <pubDate>Fri, 19 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/regression_partial/</guid>
+      <guid>/computational_notes/regression_partial/</guid>
       <description>In regression, everything is partialled from everything. Let’s work through that notion with images and code. Imagine that emotion and ability cause an outcome, \(Y\).
 What this image represents is that \(Y\) has variability (across people or time), and its variability is associated with variability in emotion and variability in ability. Notice that there is variability overlap between ability and \(Y\),
 emotion and \(Y\),
@@ -308,34 +304,21 @@ and all three variables.</description>
     
     <item>
       <title>Convert Multiple Columns to Numeric or Character</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/convert_numeric/</link>
+      <link>/computational_notes/convert_numeric/</link>
       <pubDate>Wed, 10 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/convert_numeric/</guid>
+      <guid>/computational_notes/convert_numeric/</guid>
       <description>Quick piece of code that turns all selected columns to numeric in R.
 df[, c(&amp;#39;col1&amp;#39;, &amp;#39;col2&amp;#39;)] &amp;lt;- as.numeric(as.character(unlist(df[, c(&amp;#39;col1&amp;#39;, &amp;#39;col2&amp;#39;)]))) Mutating within tidyverse is always a good options as well.
 df %&amp;gt;% mutate_at(vars(&amp;#39;column1&amp;#39;, &amp;#39;column2&amp;#39;), as.character) Bo\(^2\)m =)</description>
     </item>
     
     <item>
-      <title>Render LaTeX using KaTeX</title>
-      <link>http://christopherdishop.netlify.app/posts/render-latex-using-katex/</link>
-      <pubDate>Wed, 20 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://christopherdishop.netlify.app/posts/render-latex-using-katex/</guid>
-      <description>Enable katex by adding katex = &amp;quot;true&amp;quot; to the front matter
-+++ katex = &amp;#34;true&amp;#34; +++ If you want to enable KaTeX or MathJax for all post, add katex = ture or math = true in config.toml in [params] section.
-It&amp;rsquo;s almost a dropin alternative to the mathjax solution,you should just choose one of them.
-Inline math looks like this
-This is text with inline math $\sum_{n=1}^{\infty} 2^{-n} =1$ This is text with inline math $\sum_{n=1}^{\infty} 2^{-n} = 1$</description>
-    </item>
-    
-    <item>
       <title>Simulating a Moving Average Process</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/moving_average/</link>
+      <link>/computational_notes/moving_average/</link>
       <pubDate>Tue, 29 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/moving_average/</guid>
+      <guid>/computational_notes/moving_average/</guid>
       <description>Two ways to simulate a moving average process. A moving average is a linear combination of concurrent and historic noises:
 \[\begin{equation} y_t = z_t + z_{t-1} + z_{t-2} \end{equation}\]
 where \(y_t\) is the outcome variable that is influenced by noise at this moment (\(z_t\)) and noise from the last two time points. MA(q) processes can occur at any lag, I will use a two lag version here.
@@ -343,51 +326,42 @@ The first way to simulate this process is to generate all noise terms and then s
     </item>
     
     <item>
-      <title>Hugo coder wiki</title>
-      <link>http://christopherdishop.netlify.app/posts/hugo-coder-wiki/</link>
-      <pubDate>Thu, 17 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://christopherdishop.netlify.app/posts/hugo-coder-wiki/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Turning Unequal Dates into Days</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/uneven_time/</link>
+      <link>/computational_notes/uneven_time/</link>
       <pubDate>Tue, 15 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/uneven_time/</guid>
+      <guid>/computational_notes/uneven_time/</guid>
       <description>Longitudinal data of a group or team often have missing days. For example, only Bob reports a stress score on January 3rd even though Joe and Sam are also part of the sample.
 ## id date stress ## 1 bob 2019-01-01 4 ## 2 joe 2019-01-01 5 ## 3 sam 2019-01-01 6 ## 4 bob 2019-01-02 6 ## 5 joe 2019-01-02 5 ## 6 bob 2019-01-03 4 ## 7 bob 2019-01-04 5 ## 8 joe 2019-01-04 6 ## 9 sam 2019-01-04 7 We want to create an additional column called “day” and use integers rather than dates to make plotting easier/prettier.</description>
     </item>
     
     <item>
       <title>Generating Time in a Data Frame</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/time_index/</link>
+      <link>/computational_notes/time_index/</link>
       <pubDate>Mon, 14 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/time_index/</guid>
+      <guid>/computational_notes/time_index/</guid>
       <description>There are two code variations I use to generate time indexes. If I need time cycles
-## id score time ## 1 a 19.02649 1 ## 2 b 22.25877 2 ## 3 c 20.93711 3 ## 4 a 29.49510 1 ## 5 b 15.34409 2 ## 6 c 19.38187 3 ## 7 a 15.42013 1 ## 8 b 21.72485 2 ## 9 c 20.10647 3 then I use a sequence command.</description>
+## id score time ## 1 a 15.62265 1 ## 2 b 21.73583 2 ## 3 c 13.21569 3 ## 4 a 13.96619 1 ## 5 b 16.67478 2 ## 6 c 18.14021 3 ## 7 a 22.91621 1 ## 8 b 15.42282 2 ## 9 c 24.37991 3 then I use a sequence command.</description>
     </item>
     
     <item>
       <title>Only Store Successful Output - A Counter Placement Issue</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/successful_output/</link>
+      <link>/computational_notes/successful_output/</link>
       <pubDate>Sun, 13 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/successful_output/</guid>
+      <guid>/computational_notes/successful_output/</guid>
       <description>Sometimes I store every result in my initialized vector/matrix.
 Here is the data.
-## people values day ## 1 john 10.912092 1 ## 2 teddy 8.886991 1 ## 3 clare 10.271121 1 ## 4 john 9.692805 2 ## 5 teddy 10.502313 2 ## 6 john 10.323292 3 ## 7 teddy 10.285536 3 ## 8 clare 11.302021 3 Now the code. I want to find the days where I have responses from John, Teddy, and Clare (as you can tell, I only have responses from all three of them on days 1 and 3).</description>
+## people values day ## 1 john 8.125192 1 ## 2 teddy 10.624786 1 ## 3 clare 9.755946 1 ## 4 john 8.320525 2 ## 5 teddy 8.758530 2 ## 6 john 9.597217 3 ## 7 teddy 10.947977 3 ## 8 clare 9.416608 3 Now the code. I want to find the days where I have responses from John, Teddy, and Clare (as you can tell, I only have responses from all three of them on days 1 and 3).</description>
     </item>
     
     <item>
       <title>Row Labels Needed to Spread</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/row_labels_spread/</link>
+      <link>/computational_notes/row_labels_spread/</link>
       <pubDate>Fri, 11 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/row_labels_spread/</guid>
+      <guid>/computational_notes/row_labels_spread/</guid>
       <description>No explanation for this set of notes, just a few reminders when spreading and gathering.
 ## b_partial b_wo_partial se_partial se_wo_partial ## 1 1 4 6 3 ## 2 2 5 7 2 ## 3 3 6 8 1 We want the columns to be “model,” “result,” and “value.”
 Here is my incorrect attempt.
@@ -396,67 +370,58 @@ cd_try &amp;lt;- cd_try %&amp;gt;% gather(b_partial, b_wo_partial, key = &amp;#3
     
     <item>
       <title>Reveal Hidden NA&#39;s in Longitudinal Data</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/reveal_na/</link>
+      <link>/computational_notes/reveal_na/</link>
       <pubDate>Thu, 10 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/reveal_na/</guid>
+      <guid>/computational_notes/reveal_na/</guid>
       <description>Longitudinal data sets often have hidden NAs when they are in long-form. For example, in the data set below Zoe is missing on days 2 and 4, but it isn’t obvious because there are no specific “NA’s” within the data.
 ## time id q1 q2 ## 1 1 Jac 4 3 ## 2 1 Jess 5 2 ## 3 1 Zoe 3 4 ## 4 2 Jac 6 1 ## 5 2 Jess 7 2 ## 6 3 Jac 5 3 ## 7 3 Jess 4 4 ## 8 3 Zoe 3 2 ## 9 4 Jac 4 3 ## 10 4 Jess 5 4 Usually I recommend cleaning within the tidyverse package, but in this case I prefer reshape.</description>
     </item>
     
     <item>
       <title>Column Names As Parameters with GGplot2</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/ggplot_column_parameters/</link>
+      <link>/computational_notes/ggplot_column_parameters/</link>
       <pubDate>Sun, 06 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/ggplot_column_parameters/</guid>
+      <guid>/computational_notes/ggplot_column_parameters/</guid>
       <description>Another example of using column names as parameters with quo, this time within ggplot2. A snippet of the data:
-## day id stress performance ## 1 1 Josh 9 7 ## 2 2 Josh 9 10 ## 3 3 Josh 5 12 ## 4 4 Josh 8 16 ## 5 5 Josh 8 14 ## 6 6 Josh 4 8 Let’s say we want to plot each person’s stress over time: three time-series trajectories.</description>
+## day id stress performance ## 1 1 Josh 9 18 ## 2 2 Josh 5 7 ## 3 3 Josh 6 7 ## 4 4 Josh 5 6 ## 5 5 Josh 4 11 ## 6 6 Josh 4 15 Let’s say we want to plot each person’s stress over time: three time-series trajectories.</description>
     </item>
     
     <item>
       <title>The Premature Covariate</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/premature_covariate/</link>
+      <link>/computational_notes/premature_covariate/</link>
       <pubDate>Sun, 06 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/premature_covariate/</guid>
+      <guid>/computational_notes/premature_covariate/</guid>
       <description>A replication of Patricia Cohen’s wonderful, “problem of the premature covariate” (chapter 2 in Collins &amp;amp; Horn, 1991). Here is a simple version of the problem. Imagine that we want to know the influence of a life event, like meeting a friend, on happiness. We conduct a study where we measure people’s happiness at time one, wait two weeks, and then measure their happiness again along with whether or not they met a friend since we last observed them.</description>
     </item>
     
     <item>
       <title>Mutating Scale Items with NA</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/mutate_na/</link>
+      <link>/computational_notes/mutate_na/</link>
       <pubDate>Sat, 05 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/mutate_na/</guid>
+      <guid>/computational_notes/mutate_na/</guid>
       <description>Creating item totals with a data set containing NAs is surprisingly difficult. Here is the data.
 library(tidyverse) cd &amp;lt;- data.frame( &amp;quot;q1&amp;quot; = c(1,2,NA), &amp;quot;q2&amp;quot; = c(2,2,2), &amp;#39;q3&amp;#39; = c(NA, NA,2), &amp;#39;id&amp;#39; = c(&amp;#39;201&amp;#39;, &amp;#39;202&amp;#39;, &amp;#39;203&amp;#39;) ) cd ## q1 q2 q3 id ## 1 1 2 NA 201 ## 2 2 2 NA 202 ## 3 NA 2 2 203 Mutating directly over columns with NA does not work.</description>
     </item>
     
     <item>
       <title>Frequentist Confidence Intervals</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/frequentist_ci_interpretation/</link>
+      <link>/computational_notes/frequentist_ci_interpretation/</link>
       <pubDate>Fri, 04 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/frequentist_ci_interpretation/</guid>
+      <guid>/computational_notes/frequentist_ci_interpretation/</guid>
       <description>Purpose Imagine that you are interested in the relationship between stress and performance. To assess it, you observe 600 people at work and measure their stress via a self-report (e.g., “I feel stressed”) and their performance via objective performance scores for the day (e.g., number of sales). You regress performance on stress and find that the estimated coefficient relating to two is 0.45. You then build a 95% confidence interval using the standard error that the analysis spit out and find that the CI is 0.</description>
     </item>
     
     <item>
-      <title>Dummy</title>
-      <link>http://christopherdishop.netlify.app/posts/dummy/</link>
-      <pubDate>Mon, 31 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://christopherdishop.netlify.app/posts/dummy/</guid>
-      <description>Nada para ver aqui!</description>
-    </item>
-    
-    <item>
       <title>More on Column Names as Parameters</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/col_names_parameters_quo/</link>
+      <link>/computational_notes/col_names_parameters_quo/</link>
       <pubDate>Thu, 06 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/col_names_parameters_quo/</guid>
+      <guid>/computational_notes/col_names_parameters_quo/</guid>
       <description>Use quo or enquo when you want to include column names as parameters in a function. For example, a function like the following would not work:
 bad_function &amp;lt;- function(data, col_name){ newdf &amp;lt;- data %&amp;gt;% mutate(&amp;#39;adjusted_column&amp;#39; = col_name + 1) return(newdf) } bad_function(df, column_i_care_about) because column_i_care_about isn’t specified in a form that mutate can work with.
 Examples The data are contained in df1.
@@ -465,20 +430,20 @@ df1 &amp;lt;- data.frame( a = c(1,2,NA), b = c(NA,3,4) ) df1 ## a b ## 1 1 NA ##
     
     <item>
       <title>Monte Carlo Approximation</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/mc_approximation/</link>
+      <link>/computational_notes/mc_approximation/</link>
       <pubDate>Sun, 12 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/mc_approximation/</guid>
+      <guid>/computational_notes/mc_approximation/</guid>
       <description>Monte Carlo helps us understand processes that we can describe but don’t yet have analytic solutions for. Here are two examples: the birthday problem and the tasting tea problem.
 Birthday Problem If you are standing in a room with 25 other people, what is the probability that at least two people share the same birthday? This question has a mathematical solution, but if we don’t know it we can use Monte Carlo to help.</description>
     </item>
     
     <item>
       <title>Longitudinal Plotting</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/longitudinal_plotting/</link>
+      <link>/computational_notes/longitudinal_plotting/</link>
       <pubDate>Wed, 04 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/longitudinal_plotting/</guid>
+      <guid>/computational_notes/longitudinal_plotting/</guid>
       <description>A few random notes about plotting, describing, and thinking about trajectories.
 Plotting Trajectories Imagine we record “affect” (\(Y\)) for five people over 20 time points. ggplot2 produces poor longitudinal trajectories if you only specify time and affect as variables:
 library(ggplot2) library(tidyverse) plot1 &amp;lt;- ggplot(df1, aes(x = time, y = affect)) + geom_point() + geom_line() plot1 Instead, specify “id” either as the grouping variable:
@@ -487,10 +452,10 @@ plot2 &amp;lt;- ggplot(df1, aes(x = time, y = affect, group = id)) + geom_point(
     
     <item>
       <title>Column Names As Parameters</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/column_name_parameters/</link>
+      <link>/computational_notes/column_name_parameters/</link>
       <pubDate>Sat, 02 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/column_name_parameters/</guid>
+      <guid>/computational_notes/column_name_parameters/</guid>
       <description>I always forget how to use column names as function parameters, so here is an example.
 Function with no column name parameters Function:
  Select columns
@@ -500,10 +465,10 @@ Function with no column name parameters Function:
     
     <item>
       <title>Spline Modeling</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/spline/</link>
+      <link>/computational_notes/spline/</link>
       <pubDate>Sat, 05 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/spline/</guid>
+      <guid>/computational_notes/spline/</guid>
       <description>A few spline models (also known as piecewise models). As in previous posts, ‘affect’ is the name given to values of \(y\) throughout.
 1) Growth and Even More Growth A model that captures a process that increases initially and then increases at an even greater rate once it reaches time point 5. The data generating process:
 \[\begin{equation} y_{it} = \begin{cases} 4 + 0.3t + error_{t}, &amp;amp; \text{if time &amp;lt; 5}\\ 8 + 0.</description>
@@ -511,10 +476,10 @@ Function with no column name parameters Function:
     
     <item>
       <title>Latent Growth Curves</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/latent_growth/</link>
+      <link>/computational_notes/latent_growth/</link>
       <pubDate>Sun, 15 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/latent_growth/</guid>
+      <guid>/computational_notes/latent_growth/</guid>
       <description>Latent Growth Curves I will progress through three models: linear, quadratic growth, and latent basis. In every example I use a sample of 400, 6 time points, and ‘affect’ as the variable of interest.
 Don’t forget that multiplying by time
  \(0.6t\)  is different from describing over time
@@ -525,19 +490,19 @@ library(tidyverse) library(ggplot2) library(MASS) N &amp;lt;- 400 time &amp;lt;-
     
     <item>
       <title>Social Trait Development Computational Model</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/social_trait_comp_model/</link>
+      <link>/computational_notes/social_trait_comp_model/</link>
       <pubDate>Fri, 30 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/social_trait_comp_model/</guid>
+      <guid>/computational_notes/social_trait_comp_model/</guid>
       <description>I built the following simple computational model for an individual differences class in the Spring of 2018 to demonstrate how to incorporate explantory elements for trait development into a computational framework. This model assumes that an individual’s trait development depends on 1) the environment and 2) interactions with others inside and outside of the individual’s social group. Moreover, the model assumes traits are somewhat stable and exhibit self-similarity across time.</description>
     </item>
     
     <item>
       <title>Numerical Integration and Optimization</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/integration_optimization/</link>
+      <link>/computational_notes/integration_optimization/</link>
       <pubDate>Fri, 16 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/integration_optimization/</guid>
+      <guid>/computational_notes/integration_optimization/</guid>
       <description>Integration Trapezoid Rule
 To find the area under a curve we can generate a sequence of trapezoids that follow the rules of the curve (i.e., the data generating function for the curve) along the \(x\)-axis and then add all of the trapezoids together. To create a trapezoid we use the following equation:
  let \(w\) equal the width of the trapezoid (along the \(x\)-axis), then
@@ -546,10 +511,10 @@ To find the area under a curve we can generate a sequence of trapezoids that fol
     
     <item>
       <title>Random Walks</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/random_walks/</link>
+      <link>/computational_notes/random_walks/</link>
       <pubDate>Thu, 11 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/random_walks/</guid>
+      <guid>/computational_notes/random_walks/</guid>
       <description>Some random walk fun. I use 400 steps in each example.
 One-Dimensional Random Walk A random walk using a recursive equation.
 # Empty vector to store the walk rw_1 &amp;lt;- numeric(400) # Initial value rw_1[1] &amp;lt;- 7 # The Random Walk equation in a for-loop for(i in 2:400){ rw_1[i] &amp;lt;- 1*rw_1[i - 1] + rnorm(1,0,2) } plot(rw_1) A random walk using R’s “cumsum” command.</description>
@@ -557,10 +522,10 @@ One-Dimensional Random Walk A random walk using a recursive equation.
     
     <item>
       <title>Combining CSV Files</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/load_csv/</link>
+      <link>/computational_notes/load_csv/</link>
       <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/load_csv/</guid>
+      <guid>/computational_notes/load_csv/</guid>
       <description>A couple quick pieces of code to assist any time I need to work with many CSV files.
 Into List This first code chunk loads all of the CSV files in a folder, makes each into data frame, and stores each separately in a list.
 setwd(&amp;quot;enter path&amp;quot;) # A character vector of every file name files &amp;lt;- Sys.glob(&amp;quot;*.csv&amp;quot;) # A list of all CSV files in the respective folder as data.</description>
@@ -568,29 +533,29 @@ setwd(&amp;quot;enter path&amp;quot;) # A character vector of every file name fi
     
     <item>
       <title>Formatting Qualtrics Responses</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/formatting_qualtrics/</link>
+      <link>/computational_notes/formatting_qualtrics/</link>
       <pubDate>Tue, 02 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/formatting_qualtrics/</guid>
+      <guid>/computational_notes/formatting_qualtrics/</guid>
       <description>Here is a quick piece of code to create numeric response scores when data are read in as strings (e.g., “Strongly Agree, Agree, Neutral”).
 library(tidyverse) library(dplyr) library(plyr) df &amp;lt;- read.csv(&amp;quot;path&amp;quot;) labels_to_values1 &amp;lt;- function(x){ mapvalues(x, from = c(&amp;quot;Strongly Agree&amp;quot;, &amp;quot;Agree&amp;quot;, &amp;quot;Slightly Agree&amp;quot;, &amp;quot;Slightly Disagree&amp;quot;, &amp;quot;Disagree&amp;quot;, &amp;quot;Strongly Disagree&amp;quot;), to = c(6,5,4,3,2,1)) } recode_df &amp;lt;- df %&amp;gt;% select(column_to_modify1, column_to_modify2, column_to_modify2, etc) %&amp;gt;% apply(2, FUN = labels_to_values1) %&amp;gt;% data.frame() Note that R will throw you warnings if all of the response options are not used, but the code will still work.</description>
     </item>
     
     <item>
       <title>Why Detecting Interactions is Easier in the Lab</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/interactions_fve/</link>
+      <link>/computational_notes/interactions_fve/</link>
       <pubDate>Wed, 15 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/interactions_fve/</guid>
+      <guid>/computational_notes/interactions_fve/</guid>
       <description>A fun simulation by McClelland and Judd (1993) in Psychological Bulletin that demonstrates why detecting interactions outside the lab (i.e., in field studies) is difficult. In experiments, scores on the independent variables are located at the extremes of their respective distributions because we manipulate conditions. The distribution of scores across all of the independent variables in field studies, conversely, is typically assumed to be normal. By creating “extreme groups” in experiments, therefore, it becomes easier to detect interactions.</description>
     </item>
     
     <item>
       <title>Workforce Dynamics</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/role_dynamics/</link>
+      <link>/computational_notes/role_dynamics/</link>
       <pubDate>Tue, 22 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/role_dynamics/</guid>
+      <guid>/computational_notes/role_dynamics/</guid>
       <description>We can model the states of a system by applying a transition matrix to values represented in an initial distribution and repeating it until we reach an equilibrium.
 Suppose we want to model how job roles in a given company change over time. Let us assume the following:
  There are three (hierarchical) positions in the company:
@@ -602,104 +567,32 @@ Suppose we want to model how job roles in a given company change over time. Let 
     
     <item>
       <title>Convert Text File</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/convert_text/</link>
+      <link>/computational_notes/convert_text/</link>
       <pubDate>Sun, 09 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/convert_text/</guid>
+      <guid>/computational_notes/convert_text/</guid>
       <description>A quick piece of code that reads a text file, changes something, saves a new text file, and iterates that process for every text file in that folder.
 setwd(&amp;quot;path to the text files&amp;quot;) library(readr) all_files = Sys.glob(&amp;quot;*.txt&amp;quot;) for(i in 1:length(all_files)){ data = all_files[i] mystring = read_file(paste(data)) new_data = gsub(&amp;quot;old piece of text&amp;quot;, &amp;quot;new piece of text&amp;quot;, mystring) write_file(new_data, path = paste(&amp;quot;something&amp;quot;, code, &amp;quot;.txt&amp;quot;, sep = &amp;quot;&amp;quot;) } Bo\(^2\)m =)</description>
     </item>
     
     <item>
       <title>Art With Monte Carlo</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/art_montecarlo/</link>
+      <link>/computational_notes/art_montecarlo/</link>
       <pubDate>Sat, 18 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/art_montecarlo/</guid>
+      <guid>/computational_notes/art_montecarlo/</guid>
       <description>I like to think of Monte Carlo as a counting method. If a condition is satisfied we make a note (e.g., 1), and if the condition is not satisfied we make a different note (e.g., 0). We then iterate and evaluate the pattern of 1’s and 0’s to learn about our process. Art can be described in a similar way: if a condition is satisfied we use a color, and if a condition is not satisfied we use a different color.</description>
     </item>
     
     <item>
-      <title>Theme Demo</title>
-      <link>http://christopherdishop.netlify.app/posts/theme-demo/</link>
-      <pubDate>Sun, 08 Jan 2017 00:00:00 +0000</pubDate>
-      
-      <guid>http://christopherdishop.netlify.app/posts/theme-demo/</guid>
-      <description>Style Demo h1 Heading h2 Heading h3 Heading h4 Heading h5 Heading h6 Heading  This is bold text
-This is bold text
-This is italic text
-This is italic text
-Deleted text
-This is text with inline math $\sum_{n=1}^{\infty} 2^{-n} = 1$ and with math blocks:
-$$ \sum_{n=1}^{\infty} 2^{-n} = 1 $$
-   Heading Another heading     text text   text text   text text     Block quotes are written like so.</description>
-    </item>
-    
-    <item>
       <title>The Binomial Effect Size Display</title>
-      <link>http://christopherdishop.netlify.app/computational_notes/besd/</link>
+      <link>/computational_notes/besd/</link>
       <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://christopherdishop.netlify.app/computational_notes/besd/</guid>
+      <guid>/computational_notes/besd/</guid>
       <description>Effect sizes provide information about the magnitude of an effect. Unfortunately, they can be difficult to interpret or appear “small” to anyone unfamiliar with the typical effect sizes in a given research field. Rosenthal and Rubin (1992) provide an intuitive effect size, called the Binomial Effect Size Display, that captures the change in success rate due to a treatment.
 The calculation is simple:
  Treamtment BESD = 0.50 + (r / 2)</description>
-    </item>
-    
-    <item>
-      <title>Creating a New Theme</title>
-      <link>http://christopherdishop.netlify.app/posts/creating-a-new-theme/</link>
-      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
-      
-      <guid>http://christopherdishop.netlify.app/posts/creating-a-new-theme/</guid>
-      <description>Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.
-We&amp;rsquo;ll start with creating a new site with a very basic template.</description>
-    </item>
-    
-    <item>
-      <title>(Hu)go Template Primer</title>
-      <link>http://christopherdishop.netlify.app/posts/hugo-template-primer/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>http://christopherdishop.netlify.app/posts/hugo-template-primer/</guid>
-      <description>Hugo uses the excellent go html/template library for its template engine. It is an extremely lightweight engine that provides a very small amount of logic. In our experience that it is just the right amount of logic to be able to create a good static website. If you have used other template systems from different languages or frameworks you will find a lot of similarities in go templates.
-This document is a brief primer on using go templates.</description>
-    </item>
-    
-    <item>
-      <title>Getting Started with Hugo</title>
-      <link>http://christopherdishop.netlify.app/posts/hugoisforlovers/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>http://christopherdishop.netlify.app/posts/hugoisforlovers/</guid>
-      <description>Step 1. Install Hugo Goto hugo releases and download the appropriate version for your os and architecture.
-Save it somewhere specific as we will be using it in the next step.
-More complete instructions are available at installing hugo
-Step 2. Build the Docs Hugo has its own example site which happens to also be the documentation site you are reading right now.
-Follow the following steps:
- Clone the hugo repository Go into the repo Run hugo in server mode and build the docs Open your browser to http://localhost:1313  Corresponding pseudo commands:</description>
-    </item>
-    
-    <item>
-      <title>Migrate to Hugo from Jekyll</title>
-      <link>http://christopherdishop.netlify.app/posts/migrate-from-jekyll/</link>
-      <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
-      
-      <guid>http://christopherdishop.netlify.app/posts/migrate-from-jekyll/</guid>
-      <description>Table of Contents  Move static content to static Create your Hugo configuration file Set your configuration publish folder to site Convert Jekyll templates to Hugo templates Convert Jekyll plugins to Hugo shortcodes  Implementation Usage   Finishing Touches  Fix Content Clean Up   A practical example in a diff  Move static content to static Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output.</description>
-    </item>
-    
-    <item>
-      <title>About Hugo</title>
-      <link>http://christopherdishop.netlify.app/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://christopherdishop.netlify.app/about/</guid>
-      <description>Hugo is a static site engine written in Go.
-It makes use of a variety of open source projects including:
- Cobra Viper J Walter Weatherman Cast  Learn more and contribute on GitHub.
-Setup Some fun facts about Hugo:
- Built in Go Loosely inspired by Jekyll Primarily developed by spf13 on the train while commuting to and from Manhattan. Coded in Vim using spf13-vim  Have questions or suggestions?</description>
     </item>
     
   </channel>

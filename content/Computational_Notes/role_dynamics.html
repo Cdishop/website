@@ -76,18 +76,14 @@ data_f &lt;- left_join(data_f, total_value)
 data_f &lt;- data_f %&gt;%
   mutate(Proportion = Num_People / total)</code></pre>
 <p>The proportion of people in each position:</p>
-<pre class="r"><code>library(ggthemes)
-
-ggplot(data_f, aes(x = Time, y = Proportion, color = Position)) + 
+<pre class="r"><code>ggplot(data_f, aes(x = Time, y = Proportion, color = Position)) + 
   geom_point() + 
-  geom_line() + 
-  theme_wsj()</code></pre>
+  geom_line()</code></pre>
 <p><img src="/Computational_Notes/role_dynamics_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>The amount of people in the company overall:</p>
 <pre class="r"><code>ggplot(data_f, aes(x = Time, y = Num_People, color = Position)) + 
   geom_point() + 
-  geom_line() + 
-  theme_wsj()</code></pre>
+  geom_line()</code></pre>
 <p><img src="/Computational_Notes/role_dynamics_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>As you can tell, this is unrealistic =)</p>
 <p>Bo<span class="math inline">\(^2\)</span>m =)</p>

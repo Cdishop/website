@@ -9,5 +9,5 @@ dplyr
 stringr
 forcats
 MASS
+bindrcpp
 lavaan
-ggthemes

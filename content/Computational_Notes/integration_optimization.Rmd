@@ -33,7 +33,6 @@ f_x <- 8 + cos(x^3)
 # Plot
 
 library(ggplot2)
-library(ggthemes)
 
 ex_plot <- data.frame(
   "x" = c(x),
@@ -43,8 +42,7 @@ ex_plot <- data.frame(
 g_plot <- ggplot(ex_plot, aes(x = x, y = y)) + 
   geom_point() + 
   geom_smooth(se = F, span = 0.2) + 
-  scale_x_continuous(breaks = c(1:10)) + 
-  theme_wsj()
+  scale_x_continuous(breaks = c(1:10))
 
 g_plot
 
@@ -173,8 +171,7 @@ ex_plot_2 <- data.frame(
 
 g_plot_2 <- ggplot(ex_plot_2, aes(x = x, y = y)) + 
   geom_point() + 
-  geom_smooth(se = F) + 
-  theme_wsj()
+  geom_smooth(se = F)
 
 g_plot_2
 

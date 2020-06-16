@@ -10,7 +10,7 @@ A replication of Patricia Cohen's wonderful, "problem of the premature covariate
 
 \noindent What Dr. Cohen draws attention to is that the coefficient relating "met friend" to happiness will be biased if (a) there is some non-zero probability of reverse causality and (b) we do not measure "met friend" exactly when it occurs. Remember, in our mock study we assessed both happiness and whether or not someone met a friend during our post-measure. Is that exactly when different people across the sample actually met a new friend? Perhaps, but most of our sample either did or did not meet a friend *at some unknown time within the past two weeks*; Dr. Cohen's point is that this unknown is an issue to linger on. 
 
-# Simulation Explanation
+## Simulation Explanation
 
 If Dr. Cohen's issue is worthwhile, then, under a system where "met friend" truly does *not* influence happiness, we should be able to make "met friend" appear to influence happiness based on the points she raises. That is, when "met friend" does not influence happiness we should be able to make it appear so if we create a system where (1) happiness instead influences the probability of meeting a friend (reverse causality) and (2) we do not measure "met friend" exactly when it occurs. Below, we generate data where "met friend" does not influence happiness but the coefficient relating "met friend" to happiness will still be significant (and large) because of the issues raised.
 
@@ -28,7 +28,7 @@ Here are the steps to the simulation:
 
 Notice that the simulation captures the notions raised above: "met friend" does not influence happiness, instead the reverse happens. And after making a decision about the timing of our pre and post assessment we lose information about when "met friend" actually happened. We know *whether* it happened but not when; we also don't retain information on the differences in timing across our sample. 
 
-# Meeting a Friend or Not
+## Meeting a Friend or Not
 
 The most difficult aspect of the simulation is specifying step 3: "met friend" is some function of concurrent happiness. Dr. Cohen's original explanation is, "the probability of $X$ for each unit of time was determined by a Markov process, with probability increasing as a function of the level of contemporaneous $Y$. Probabilities used increased from 0 for those with current $Y$ less than -1.00 to 0.25 for those with current scores of 1.5 or greater" (she uses different variables for x and y in her discussion). What does that mean? How do we specify a Markov process where the probability of "met friend" is between 0 and 0.25 with respect to happiness cutoffs like -1.00 and 1.5? I don't know either. But we can make it easier by recognizing that, at its core, the idea is simply, "meeting a friend is more likely when people are happier," which we can represent with a simple linear equation like $y = mx + b$. All we need to do is to find the slope and y-intercept, then we'll have an equation where we can plug in "happiness" and get "probability of meeting a friend." Here is how.
 
@@ -38,7 +38,7 @@ Remember that we can find the slope and y-intercept of a line if we know the loc
 
 Now we have a way to compute the probability of meeting a friend based on happiness. It is not as precise as the Markov process but it will work just fine. (Note: I actuallly use the points (1.4999, 2.4999) and (-0.999, 1.4999) to calculate the slope and intercept in the simulation because I will also use if-statements for the cutoffs)
 
-# Simulate One Person
+## Simulate One Person
 
 It's always helpful to make sure we can get a simulation to work on one person. In the simulation below, $y$ is happiness and $x$ is "met friend."
 
@@ -105,7 +105,7 @@ for(i in 1:time){
 ```
 
 
-# Full Sample
+## Full Sample
 
 That script worked, so now let's update the code slightly and run it across 600 people.
 
@@ -331,7 +331,7 @@ summary(lm(happy_post ~ happy_pre + met_friend,
 
 Notice how large the coefficient relating "met friend" to happiness is here: close to 0.9 -- remember, there truly is no effect relating "met friend" to happiness.
 
-# Conclusion
+## Conclusion
 
 If there is some probability of reverse causality and we don't measure the event exactly when it occurs then the estimate relating that event to our outcome will be biased. If many "event opportunities" occur between our pre and post measure then our estimate will be extremely biased. 
 

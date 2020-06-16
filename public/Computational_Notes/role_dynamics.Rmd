@@ -110,12 +110,11 @@ data_f <- data_f %>%
 The proportion of people in each position:
 
 ```{r, cache=TRUE}
-library(ggthemes)
+
 
 ggplot(data_f, aes(x = Time, y = Proportion, color = Position)) + 
   geom_point() + 
-  geom_line() + 
-  theme_wsj()
+  geom_line()
 
 ```
 
@@ -125,8 +124,7 @@ The amount of people in the company overall:
 
 ggplot(data_f, aes(x = Time, y = Num_People, color = Position)) + 
   geom_point() + 
-  geom_line() + 
-  theme_wsj()
+  geom_line()
 
 ```
 

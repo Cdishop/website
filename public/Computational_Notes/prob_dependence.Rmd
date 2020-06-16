@@ -20,7 +20,7 @@ Some of my favorite, simple examples demonstrating how to evaluate whether two e
 
 4) Example 4 - Markov Chain
 
-# Example 1 - Product Rule
+## Example 1 - Product Rule
 
 If two events are independent, then the product rule states that their intersection should equal the product of each independent probability. 
 
@@ -48,7 +48,7 @@ Therefore, the two are dependent.
 
 This example comes from a [coursera class](link).
 
-# Example 2 - Conditionals & Intersection
+## Example 2 - Conditionals & Intersection
 
 If two events are independent, then the probability of one conditioning on the other should equal the probability of the original alone. 
 
@@ -65,20 +65,20 @@ Take **a** to be the event that the player 1's die is 5, and take **b** to be th
 
 Is **b** dependent on **a**?
 
-![](https://github.com/Cdishop/homepage/raw/master/content/Computational_Notes/independence_images/calc_a.png){width=500px}
+![](https://github.com/Cdishop/website/raw/master/content/Computational_Notes/independence_images/calc_a.png){width=500px}
 
 
 We can also run the same procedure but with a different event for **b**.
 
 
-![](https://github.com/Cdishop/homepage/raw/master/content/Computational_Notes/independence_images/calc_b.png){width=500px}
+![](https://github.com/Cdishop/website/raw/master/content/Computational_Notes/independence_images/calc_b.png){width=500px}
 
 
 
 
 
 
-# Example 3 - Conditionals
+## Example 3 - Conditionals
 
 If two events are independent, then taking **a** and conditioning on other events (e.g., **b**, **c**, **d**, etc.) should not change the observed probability. 
 
@@ -103,7 +103,7 @@ Notice that conditioning on the other variables changes the probability, so opin
 
 This example comes from a [coursera class](link).
 
-# Example 4 - Markov Chains
+## Example 4 - Markov Chains
 
 If two events are independent, then the probability of observing one after the other should be `p(a) * p(a)`, similar to the notion of a coin flip such that the probability of observing two heads in a row is 0.5X0.5 = `r 0.5 * 0.5`. If you calculate a transition matrix and observe probabilities that differ from that original number, then the sequence is probably dependent. 
 

@@ -1,78 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Home</title>
-    <link>http://christopherdishop.netlify.app/tags/</link>
-    <description>Recent content in Tags on Home</description>
+    <title>Tags on Christopher Dishop</title>
+    <link>/tags/</link>
+    <description>Recent content in Tags on Christopher Dishop</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Thu, 17 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <language>en-US</language>
     
-	<atom:link href="http://christopherdishop.netlify.app/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>development</title>
-      <link>http://christopherdishop.netlify.app/tags/development/</link>
-      <pubDate>Thu, 17 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://christopherdishop.netlify.app/tags/development/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>hugo</title>
-      <link>http://christopherdishop.netlify.app/tags/hugo/</link>
-      <pubDate>Thu, 17 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://christopherdishop.netlify.app/tags/hugo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>themes</title>
-      <link>http://christopherdishop.netlify.app/tags/themes/</link>
-      <pubDate>Thu, 17 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://christopherdishop.netlify.app/tags/themes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>i18n</title>
-      <link>http://christopherdishop.netlify.app/tags/i18n/</link>
-      <pubDate>Mon, 31 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://christopherdishop.netlify.app/tags/i18n/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>go</title>
-      <link>http://christopherdishop.netlify.app/tags/go/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>http://christopherdishop.netlify.app/tags/go/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>golang</title>
-      <link>http://christopherdishop.netlify.app/tags/golang/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>http://christopherdishop.netlify.app/tags/golang/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>templates</title>
-      <link>http://christopherdishop.netlify.app/tags/templates/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>http://christopherdishop.netlify.app/tags/templates/</guid>
-      <description></description>
-    </item>
     
   </channel>
 </rss>

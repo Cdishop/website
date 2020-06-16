@@ -17,8 +17,8 @@ output: pdf_document
 <ul>
 <li><span class="math inline">\(0.6_t\)</span>.</li>
 </ul>
-<div id="linear" class="section level3">
-<h3>1) Linear</h3>
+<div id="linear" class="section level2">
+<h2>1) Linear</h2>
 <p><em>The data generating process:</em></p>
 <p><span class="math display">\[\begin{equation}
 y_{it} = 4 - 0.6t + e_{t}
@@ -80,8 +80,7 @@ ggplot(df, aes(x = time, y = affect, group = id)) +
   geom_point(color = &#39;gray85&#39;) + 
   geom_line(color = &#39;gray85&#39;) + 
   geom_point(data = random_df, aes(x = time, y = affect, group = id), color = &#39;blue&#39;) + 
-  geom_line(data = random_df, aes(x = time, y = affect, group = id), color = &#39;blue&#39;) + 
-  theme_wsj()</code></pre>
+  geom_line(data = random_df, aes(x = time, y = affect, group = id), color = &#39;blue&#39;)</code></pre>
 <p><img src="/Computational_Notes/latent_growth_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 <p><em>Estimating the model:</em></p>
 <p>Formatting the data:</p>
@@ -122,46 +121,44 @@ affect.6 ~~ res_var*affect.6
 
 no_change_model &lt;- growth(no_change_string, data = df_wide)
 summary(no_change_model, fit.measures = T)</code></pre>
-<pre><code>## lavaan 0.6-6 ended normally after 19 iterations
+<pre><code>## lavaan 0.6-2 ended normally after 20 iterations
 ## 
-##   Estimator                                         ML
 ##   Optimization method                           NLMINB
 ##   Number of free parameters                          8
 ##   Number of equality constraints                     5
-##                                                       
+## 
 ##   Number of observations                           400
-##                                                       
-## Model Test User Model:
-##                                                       
-##   Test statistic                              2048.324
+## 
+##   Estimator                                         ML
+##   Model Fit Test Statistic                    2107.318
 ##   Degrees of freedom                                24
 ##   P-value (Chi-square)                           0.000
 ## 
-## Model Test Baseline Model:
+## Model test baseline model:
 ## 
-##   Test statistic                              3882.838
+##   Minimum Function Test Statistic             4004.779
 ##   Degrees of freedom                                15
 ##   P-value                                        0.000
 ## 
-## User Model versus Baseline Model:
+## User model versus baseline model:
 ## 
-##   Comparative Fit Index (CFI)                    0.477
-##   Tucker-Lewis Index (TLI)                       0.673
+##   Comparative Fit Index (CFI)                    0.478
+##   Tucker-Lewis Index (TLI)                       0.674
 ## 
 ## Loglikelihood and Information Criteria:
 ## 
-##   Loglikelihood user model (H0)              -5218.978
-##   Loglikelihood unrestricted model (H1)      -4194.816
-##                                                       
-##   Akaike (AIC)                               10443.956
-##   Bayesian (BIC)                             10455.930
-##   Sample-size adjusted Bayesian (BIC)        10446.411
+##   Loglikelihood user model (H0)              -5202.480
+##   Loglikelihood unrestricted model (H1)      -4148.821
+## 
+##   Number of free parameters                          3
+##   Akaike (AIC)                               10410.961
+##   Bayesian (BIC)                             10422.935
+##   Sample-size adjusted Bayesian (BIC)        10413.416
 ## 
 ## Root Mean Square Error of Approximation:
 ## 
-##   RMSEA                                          0.459
-##   90 Percent confidence interval - lower         0.442
-##   90 Percent confidence interval - upper         0.476
+##   RMSEA                                          0.466
+##   90 Percent Confidence Interval          0.449  0.483
 ##   P-value RMSEA &lt;= 0.05                          0.000
 ## 
 ## Standardized Root Mean Square Residual:
@@ -170,9 +167,9 @@ summary(no_change_model, fit.measures = T)</code></pre>
 ## 
 ## Parameter Estimates:
 ## 
-##   Standard errors                             Standard
 ##   Information                                 Expected
 ##   Information saturated (h1) model          Structured
+##   Standard Errors                             Standard
 ## 
 ## Latent Variables:
 ##                       Estimate  Std.Err  z-value  P(&gt;|z|)
@@ -192,17 +189,17 @@ summary(no_change_model, fit.measures = T)</code></pre>
 ##    .affect.4          0.000                           
 ##    .affect.5          0.000                           
 ##    .affect.6          0.000                           
-##     intercept_ffct    2.278    0.149   15.271    0.000
+##     intercept_ffct    2.075    0.151   13.779    0.000
 ## 
 ## Variances:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
-##     intrcp_           8.438    0.629   13.406    0.000
-##    .affct.1 (rs_v)    2.768    0.088   31.623    0.000
-##    .affct.2 (rs_v)    2.768    0.088   31.623    0.000
-##    .affct.3 (rs_v)    2.768    0.088   31.623    0.000
-##    .affct.4 (rs_v)    2.768    0.088   31.623    0.000
-##    .affct.5 (rs_v)    2.768    0.088   31.623    0.000
-##    .affct.6 (rs_v)    2.768    0.088   31.623    0.000</code></pre>
+##     intrcp_           8.615    0.641   13.434    0.000
+##    .affct.1 (rs_v)    2.712    0.086   31.623    0.000
+##    .affct.2 (rs_v)    2.712    0.086   31.623    0.000
+##    .affct.3 (rs_v)    2.712    0.086   31.623    0.000
+##    .affct.4 (rs_v)    2.712    0.086   31.623    0.000
+##    .affct.5 (rs_v)    2.712    0.086   31.623    0.000
+##    .affct.6 (rs_v)    2.712    0.086   31.623    0.000</code></pre>
 <p>Now, a linear growth model centered at time point 1. The intercept factor estimate, therefore, is the estimated average affect at time 1.</p>
 <pre class="r"><code>library(lavaan)
 
@@ -245,57 +242,55 @@ affect.6 ~~ res_var*affect.6
 
 linear_change_model &lt;- growth(linear_change_string, data = df_wide)
 summary(linear_change_model, fit.measures = T)</code></pre>
-<pre><code>## lavaan 0.6-6 ended normally after 35 iterations
+<pre><code>## lavaan 0.6-2 ended normally after 37 iterations
 ## 
-##   Estimator                                         ML
 ##   Optimization method                           NLMINB
 ##   Number of free parameters                         11
 ##   Number of equality constraints                     5
-##                                                       
+## 
 ##   Number of observations                           400
-##                                                       
-## Model Test User Model:
-##                                                       
-##   Test statistic                                86.153
+## 
+##   Estimator                                         ML
+##   Model Fit Test Statistic                      99.847
 ##   Degrees of freedom                                21
 ##   P-value (Chi-square)                           0.000
 ## 
-## Model Test Baseline Model:
+## Model test baseline model:
 ## 
-##   Test statistic                              3882.838
+##   Minimum Function Test Statistic             4004.779
 ##   Degrees of freedom                                15
 ##   P-value                                        0.000
 ## 
-## User Model versus Baseline Model:
+## User model versus baseline model:
 ## 
-##   Comparative Fit Index (CFI)                    0.983
-##   Tucker-Lewis Index (TLI)                       0.988
+##   Comparative Fit Index (CFI)                    0.980
+##   Tucker-Lewis Index (TLI)                       0.986
 ## 
 ## Loglikelihood and Information Criteria:
 ## 
-##   Loglikelihood user model (H0)              -4237.893
-##   Loglikelihood unrestricted model (H1)      -4194.816
-##                                                       
-##   Akaike (AIC)                                8487.786
-##   Bayesian (BIC)                              8511.734
-##   Sample-size adjusted Bayesian (BIC)         8492.696
+##   Loglikelihood user model (H0)              -4198.745
+##   Loglikelihood unrestricted model (H1)      -4148.821
+## 
+##   Number of free parameters                          6
+##   Akaike (AIC)                                8409.489
+##   Bayesian (BIC)                              8433.438
+##   Sample-size adjusted Bayesian (BIC)         8414.400
 ## 
 ## Root Mean Square Error of Approximation:
 ## 
-##   RMSEA                                          0.088
-##   90 Percent confidence interval - lower         0.069
-##   90 Percent confidence interval - upper         0.108
-##   P-value RMSEA &lt;= 0.05                          0.001
+##   RMSEA                                          0.097
+##   90 Percent Confidence Interval          0.078  0.116
+##   P-value RMSEA &lt;= 0.05                          0.000
 ## 
 ## Standardized Root Mean Square Residual:
 ## 
-##   SRMR                                           0.029
+##   SRMR                                           0.036
 ## 
 ## Parameter Estimates:
 ## 
-##   Standard errors                             Standard
 ##   Information                                 Expected
 ##   Information saturated (h1) model          Structured
+##   Standard Errors                             Standard
 ## 
 ## Latent Variables:
 ##                       Estimate  Std.Err  z-value  P(&gt;|z|)
@@ -317,7 +312,7 @@ summary(linear_change_model, fit.measures = T)</code></pre>
 ## Covariances:
 ##                       Estimate  Std.Err  z-value  P(&gt;|z|)
 ##   intercept_affect ~~                                    
-##     slope_affect         0.002    0.036    0.049    0.961
+##     slope_affect         0.016    0.037    0.432    0.666
 ## 
 ## Intercepts:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
@@ -327,23 +322,23 @@ summary(linear_change_model, fit.measures = T)</code></pre>
 ##    .affect.4          0.000                           
 ##    .affect.5          0.000                           
 ##    .affect.6          0.000                           
-##     intercept_ffct    4.034    0.153   26.405    0.000
-##     slope_affect     -0.703    0.011  -61.911    0.000
+##     intercept_ffct    3.826    0.153   25.006    0.000
+##     slope_affect     -0.701    0.012  -60.023    0.000
 ## 
 ## Variances:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
-##     intrcp_           8.773    0.661   13.283    0.000
-##     slp_ffc          -0.010    0.004   -2.342    0.019
-##    .affct.1 (rs_v)    1.075    0.038   28.284    0.000
-##    .affct.2 (rs_v)    1.075    0.038   28.284    0.000
-##    .affct.3 (rs_v)    1.075    0.038   28.284    0.000
-##    .affct.4 (rs_v)    1.075    0.038   28.284    0.000
-##    .affct.5 (rs_v)    1.075    0.038   28.284    0.000
-##    .affct.6 (rs_v)    1.075    0.038   28.284    0.000</code></pre>
+##     intrcp_           8.838    0.662   13.342    0.000
+##     slp_ffc          -0.003    0.004   -0.666    0.505
+##    .affct.1 (rs_v)    1.004    0.036   28.284    0.000
+##    .affct.2 (rs_v)    1.004    0.036   28.284    0.000
+##    .affct.3 (rs_v)    1.004    0.036   28.284    0.000
+##    .affct.4 (rs_v)    1.004    0.036   28.284    0.000
+##    .affct.5 (rs_v)    1.004    0.036   28.284    0.000
+##    .affct.6 (rs_v)    1.004    0.036   28.284    0.000</code></pre>
 <pre class="r"><code>inspect(linear_change_model, &#39;cov.lv&#39;)</code></pre>
 <pre><code>##                  intrc_ slp_ff
-## intercept_affect  8.773       
-## slope_affect      0.002 -0.010</code></pre>
+## intercept_affect  8.838       
+## slope_affect      0.016 -0.003</code></pre>
 <p>This model does an adequate job recovering the intercept and slope parameters.</p>
 <p>If I wanted to center the model at time point 3 the latent intercept term would be interpreted as the estimated average affect at time 3 and the syntax would change to:</p>
 <pre class="r"><code>&#39;
@@ -351,8 +346,8 @@ slope_affect =~ -2*affect.1 + -1*affect.2 + 0*affect.3 + 1*affect.4 + 2*affect.5
 
 &#39;</code></pre>
 </div>
-<div id="quadratic" class="section level3">
-<h3>2) Quadratic</h3>
+<div id="quadratic" class="section level2">
+<h2>2) Quadratic</h2>
 <p><em>The data generating process:</em></p>
 <p><span class="math display">\[\begin{equation}
 y_{it} = 4 + 0.2t + 0.7t^2 + e_{t}
@@ -417,8 +412,7 @@ ggplot(df2, aes(x = time, y = affect, group = id)) +
   geom_point(color = &#39;gray85&#39;) + 
   geom_line(color = &#39;gray85&#39;) + 
   geom_point(data = random_df2, aes(x = time, y = affect, group = id), color = &#39;blue&#39;) + 
-  geom_line(data = random_df2, aes(x = time, y = affect, group = id), color = &#39;blue&#39;) + 
-  theme_wsj()</code></pre>
+  geom_line(data = random_df2, aes(x = time, y = affect, group = id), color = &#39;blue&#39;)</code></pre>
 <p><img src="/Computational_Notes/latent_growth_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p><em>Estimating the model:</em></p>
 <p>Quadratic growth model:</p>
@@ -470,7 +464,7 @@ affect.6 ~~ res_var*affect.6
 
 quad_change_model &lt;- growth(quad_change_string, data = df_wide2)
 summary(quad_change_model, fit.measures = T)</code></pre>
-<pre><code>## lavaan 0.6-6 ended normally after 104 iterations
+<pre><code>## lavaan 0.6-6 ended normally after 106 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -481,40 +475,40 @@ summary(quad_change_model, fit.measures = T)</code></pre>
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                               585.572
+##   Test statistic                               575.327
 ##   Degrees of freedom                                17
 ##   P-value (Chi-square)                           0.000
 ## 
 ## Model Test Baseline Model:
 ## 
-##   Test statistic                              3053.276
+##   Test statistic                              3109.033
 ##   Degrees of freedom                                15
 ##   P-value                                        0.000
 ## 
 ## User Model versus Baseline Model:
 ## 
-##   Comparative Fit Index (CFI)                    0.813
-##   Tucker-Lewis Index (TLI)                       0.835
+##   Comparative Fit Index (CFI)                    0.820
+##   Tucker-Lewis Index (TLI)                       0.841
 ## 
 ## Loglikelihood and Information Criteria:
 ## 
-##   Loglikelihood user model (H0)              -4572.514
-##   Loglikelihood unrestricted model (H1)      -4279.729
+##   Loglikelihood user model (H0)              -4578.013
+##   Loglikelihood unrestricted model (H1)      -4290.350
 ##                                                       
-##   Akaike (AIC)                                9165.029
-##   Bayesian (BIC)                              9204.944
-##   Sample-size adjusted Bayesian (BIC)         9173.213
+##   Akaike (AIC)                                9176.026
+##   Bayesian (BIC)                              9215.941
+##   Sample-size adjusted Bayesian (BIC)         9184.210
 ## 
 ## Root Mean Square Error of Approximation:
 ## 
-##   RMSEA                                          0.289
-##   90 Percent confidence interval - lower         0.269
-##   90 Percent confidence interval - upper         0.309
+##   RMSEA                                          0.287
+##   90 Percent confidence interval - lower         0.267
+##   90 Percent confidence interval - upper         0.307
 ##   P-value RMSEA &lt;= 0.05                          0.000
 ## 
 ## Standardized Root Mean Square Residual:
 ## 
-##   SRMR                                           0.238
+##   SRMR                                           0.235
 ## 
 ## Parameter Estimates:
 ## 
@@ -549,10 +543,10 @@ summary(quad_change_model, fit.measures = T)</code></pre>
 ## Covariances:
 ##                       Estimate  Std.Err  z-value  P(&gt;|z|)
 ##   intercept_affect ~~                                    
-##     slope_affect         0.896    0.139    6.455    0.000
-##     quad_slop_ffct      -0.131    0.022   -5.912    0.000
+##     slope_affect         0.969    0.141    6.874    0.000
+##     quad_slop_ffct      -0.150    0.023   -6.644    0.000
 ##   slope_affect ~~                                        
-##     quad_slop_ffct      -0.382    0.044   -8.740    0.000
+##     quad_slop_ffct      -0.467    0.050   -9.372    0.000
 ## 
 ## Intercepts:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
@@ -562,25 +556,25 @@ summary(quad_change_model, fit.measures = T)</code></pre>
 ##    .affect.4          0.000                           
 ##    .affect.5          0.000                           
 ##    .affect.6          0.000                           
-##     intercept_ffct    4.126    0.068   60.498    0.000
-##     slope_affect      2.166    0.098   22.194    0.000
-##     quad_slop_ffct    0.613    0.016   39.281    0.000
+##     intercept_ffct    4.171    0.065   64.146    0.000
+##     slope_affect      2.181    0.104   20.975    0.000
+##     quad_slop_ffct    0.610    0.017   36.403    0.000
 ## 
 ## Variances:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
-##     intrcp_           0.522    0.142    3.662    0.000
-##     slp_ffc           2.626    0.274    9.593    0.000
-##     qd_slp_           0.054    0.007    7.546    0.000
-##    .affct.1 (rs_v)    1.630    0.067   24.495    0.000
-##    .affct.2 (rs_v)    1.630    0.067   24.495    0.000
-##    .affct.3 (rs_v)    1.630    0.067   24.495    0.000
-##    .affct.4 (rs_v)    1.630    0.067   24.495    0.000
-##    .affct.5 (rs_v)    1.630    0.067   24.495    0.000
-##    .affct.6 (rs_v)    1.630    0.067   24.495    0.000</code></pre>
+##     intrcp_           0.333    0.132    2.524    0.012
+##     slp_ffc           3.122    0.310   10.083    0.000
+##     qd_slp_           0.068    0.008    8.344    0.000
+##    .affct.1 (rs_v)    1.653    0.068   24.495    0.000
+##    .affct.2 (rs_v)    1.653    0.068   24.495    0.000
+##    .affct.3 (rs_v)    1.653    0.068   24.495    0.000
+##    .affct.4 (rs_v)    1.653    0.068   24.495    0.000
+##    .affct.5 (rs_v)    1.653    0.068   24.495    0.000
+##    .affct.6 (rs_v)    1.653    0.068   24.495    0.000</code></pre>
 <p>This model recovers the intercept and quadratic parameters but not the linear growth parameter.</p>
 </div>
-<div id="latent-basis" class="section level3">
-<h3>3) Latent Basis</h3>
+<div id="latent-basis" class="section level2">
+<h2>3) Latent Basis</h2>
 <p>This model allows us to see where a majority of the change occurs in the process. For example, does more change occur between time points 2 and 3 or 5 and 6? In this model we are not trying to recover the parameters, but describe the change process in detail.</p>
 <p><em>Data generating process:</em></p>
 <p>Time 1 - Time 3:
@@ -652,8 +646,7 @@ ggplot(df3, aes(x = time, y = affect, group = id)) +
   geom_point(color = &#39;gray85&#39;) + 
   geom_line(color = &#39;gray85&#39;) + 
   geom_point(data = random_df3, aes(x = time, y = affect, group = id), color = &#39;blue&#39;) + 
-  geom_line(data = random_df3, aes(x = time, y = affect, group = id), color = &#39;blue&#39;) + 
-  theme_wsj()</code></pre>
+  geom_line(data = random_df3, aes(x = time, y = affect, group = id), color = &#39;blue&#39;)</code></pre>
 <p><img src="/Computational_Notes/latent_growth_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p><em>Estimating the model:</em></p>
 <p>Latent basis:</p>
@@ -702,7 +695,7 @@ affect.6 ~~ res_var*affect.6
 
 lb_model &lt;- growth(lb_string, data = df_wide3)
 summary(lb_model, fit.measures = T)</code></pre>
-<pre><code>## lavaan 0.6-6 ended normally after 70 iterations
+<pre><code>## lavaan 0.6-6 ended normally after 55 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -713,13 +706,13 @@ summary(lb_model, fit.measures = T)</code></pre>
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 7.046
+##   Test statistic                                 9.055
 ##   Degrees of freedom                                17
-##   P-value (Chi-square)                           0.983
+##   P-value (Chi-square)                           0.939
 ## 
 ## Model Test Baseline Model:
 ## 
-##   Test statistic                              3960.476
+##   Test statistic                              4006.479
 ##   Degrees of freedom                                15
 ##   P-value                                        0.000
 ## 
@@ -730,23 +723,23 @@ summary(lb_model, fit.measures = T)</code></pre>
 ## 
 ## Loglikelihood and Information Criteria:
 ## 
-##   Loglikelihood user model (H0)              -4259.391
-##   Loglikelihood unrestricted model (H1)      -4255.868
+##   Loglikelihood user model (H0)              -4197.926
+##   Loglikelihood unrestricted model (H1)      -4193.398
 ##                                                       
-##   Akaike (AIC)                                8538.782
-##   Bayesian (BIC)                              8578.697
-##   Sample-size adjusted Bayesian (BIC)         8546.966
+##   Akaike (AIC)                                8415.852
+##   Bayesian (BIC)                              8455.767
+##   Sample-size adjusted Bayesian (BIC)         8424.036
 ## 
 ## Root Mean Square Error of Approximation:
 ## 
 ##   RMSEA                                          0.000
 ##   90 Percent confidence interval - lower         0.000
-##   90 Percent confidence interval - upper         0.000
+##   90 Percent confidence interval - upper         0.010
 ##   P-value RMSEA &lt;= 0.05                          1.000
 ## 
 ## Standardized Root Mean Square Residual:
 ## 
-##   SRMR                                           0.009
+##   SRMR                                           0.012
 ## 
 ## Parameter Estimates:
 ## 
@@ -765,16 +758,16 @@ summary(lb_model, fit.measures = T)</code></pre>
 ##     affect.6             1.000                           
 ##   slope_affect =~                                        
 ##     affect.1             0.000                           
-##     affect.2 (bc1)       0.050    0.015    3.364    0.001
-##     affect.3 (bc2)       0.101    0.015    6.885    0.000
-##     affect.4 (bc3)       0.672    0.014   49.677    0.000
-##     affect.5 (bc4)       0.826    0.014   58.253    0.000
+##     affect.2 (bc1)       0.026    0.015    1.795    0.073
+##     affect.3 (bc2)       0.095    0.014    6.641    0.000
+##     affect.4 (bc3)       0.628    0.013   48.088    0.000
+##     affect.5 (bc4)       0.788    0.014   57.862    0.000
 ##     affect.6             1.000                           
 ## 
 ## Covariances:
 ##                       Estimate  Std.Err  z-value  P(&gt;|z|)
 ##   intercept_affect ~~                                    
-##     slope_affect         0.105    0.168    0.622    0.534
+##     slope_affect        -0.236    0.164   -1.437    0.151
 ## 
 ## Intercepts:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
@@ -784,19 +777,19 @@ summary(lb_model, fit.measures = T)</code></pre>
 ##    .affect.4          0.000                           
 ##    .affect.5          0.000                           
 ##    .affect.6          0.000                           
-##     intercept_ffct    4.051    0.162   25.049    0.000
-##     slope_affect      4.677    0.073   64.038    0.000
+##     intercept_ffct    4.042    0.162   25.022    0.000
+##     slope_affect      4.701    0.070   66.840    0.000
 ## 
 ## Variances:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
-##     intrcp_           9.433    0.694   13.597    0.000
-##     slp_ffc           0.080    0.088    0.902    0.367
-##    .affct.1 (rs_v)    1.027    0.036   28.284    0.000
-##    .affct.2 (rs_v)    1.027    0.036   28.284    0.000
-##    .affct.3 (rs_v)    1.027    0.036   28.284    0.000
-##    .affct.4 (rs_v)    1.027    0.036   28.284    0.000
-##    .affct.5 (rs_v)    1.027    0.036   28.284    0.000
-##    .affct.6 (rs_v)    1.027    0.036   28.284    0.000</code></pre>
+##     intrcp_           9.451    0.693   13.636    0.000
+##     slp_ffc           0.009    0.082    0.106    0.916
+##    .affct.1 (rs_v)    0.985    0.035   28.284    0.000
+##    .affct.2 (rs_v)    0.985    0.035   28.284    0.000
+##    .affct.3 (rs_v)    0.985    0.035   28.284    0.000
+##    .affct.4 (rs_v)    0.985    0.035   28.284    0.000
+##    .affct.5 (rs_v)    0.985    0.035   28.284    0.000
+##    .affct.6 (rs_v)    0.985    0.035   28.284    0.000</code></pre>
 <p><code>bc1</code> represents the percentage of change for the average individual between time 1 and 2. <code>bc2</code> represents the percentage change betwen time 1 and 3, <code>bc4</code> is the percentage change between time 1 and 5, etc.</p>
 <p>Bo<span class="math inline">\(^2\)</span>m =)</p>
 </div>

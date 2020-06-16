@@ -1,134 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 
-  <head>
+<head>
+    <meta name="generator" content="Hugo 0.72.0" />
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bivariate Latent Dual Change Model | Christopher Dishop</title>
 
-    <meta name="author" content="Christopher R. Dishop">
-    <meta name="description" content="My last post demonstrated a dual change model for one variable, now I want to demonstrate a bivariate dual change model. A SEM path diagram for a bivariate dual change model is below, taken from Wang, Zhou, and Zhang (2016)
-(If you do not have access to that link you can view a similar path diagram in Jones, King, Gilrane, McCausland, Cortina, &amp; Grimm, 2016)
-Essentially, we have two dual change processes and a coupling parameter from the latent true score on one variable to the latent change score on the other.">
-    <meta name="keywords" content="blog,developer,personal">
-
+     
+      
     
-      <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+    
+    
+    
     
 
-    <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Bivariate Latent Dual Change Model"/>
-<meta name="twitter:description" content="My last post demonstrated a dual change model for one variable, now I want to demonstrate a bivariate dual change model. A SEM path diagram for a bivariate dual change model is below, taken from Wang, Zhou, and Zhang (2016)
-(If you do not have access to that link you can view a similar path diagram in Jones, King, Gilrane, McCausland, Cortina, &amp; Grimm, 2016)
-Essentially, we have two dual change processes and a coupling parameter from the latent true score on one variable to the latent change score on the other."/>
+  <meta name="author" content="">
 
+ 
     <meta property="og:title" content="Bivariate Latent Dual Change Model" />
 <meta property="og:description" content="My last post demonstrated a dual change model for one variable, now I want to demonstrate a bivariate dual change model. A SEM path diagram for a bivariate dual change model is below, taken from Wang, Zhou, and Zhang (2016)
 (If you do not have access to that link you can view a similar path diagram in Jones, King, Gilrane, McCausland, Cortina, &amp; Grimm, 2016)
 Essentially, we have two dual change processes and a coupling parameter from the latent true score on one variable to the latent change score on the other." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://christopherdishop.netlify.app/computational_notes/bi_dual_change/" />
+<meta property="og:url" content="/computational_notes/bi_dual_change/" />
 <meta property="article:published_time" content="2020-05-26T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-05-26T00:00:00+00:00" />
-
-
-    
-      <base href="http://christopherdishop.netlify.app/computational_notes/bi_dual_change/">
-    
-    <title>
-  Bivariate Latent Dual Change Model · Home
-</title>
-
-    
-      <link rel="canonical" href="http://christopherdishop.netlify.app/computational_notes/bi_dual_change/">
+ 
     
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
 
+
+ 
     
-      
-      
-      <link rel="stylesheet" href="http://christopherdishop.netlify.app/css/coder.min.aca465d1e362e89828cbd890adff660455d93a2703dbede119b5859a41672c49.css" integrity="sha256-rKRl0eNi6Jgoy9iQrf9mBFXZOicD2&#43;3hGbWFmkFnLEk=" crossorigin="anonymous" media="screen" />
+     
+     
     
-
     
+    <link rel="canonical" href="/computational_notes/bi_dual_change/">   <link rel="shortcut icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABwlBMVEUAAAA/3MUK07UJ0rRk6NkC0rMAw5sAx6Ic1rs/3MYAlU0E0rQAhjMAyKIAiTkM07UJ07UAhC8m2L4o2L5O4Msn2L4AzKoAzq0128Mo2b8F0rQE0rMu2cAt2cAA0bI228MA0LAAy6kr2b8Q1LcF0rMH0rUAxp4t2b8c1ros2b8P1LcAzKsAzq4528Q02sIM07YAfyg93cUD0rMA0LEA0bFK4c0M1LcL07Uv2sEAzawY1rlJ4c0w2sEAzKkY1rqr+PQN07Yj170G0rQI07UF0bMt2cAF0rMC0bIL07UF0bMs2cAF0rMA0bIC0bIL07UF0rMA0bIA0bIA0bIO1LYr2b8N07Yp2L4F0rMF0rQJ07UA0bIC0bMA0bIH0rQK07UD0bMA0LAF0rMAyqYE0rMA0bIS1Lg228ID0bMM07YS1LcI07QL07UJ07UC0bMM07YG0rMS1Lc328IR1LcC0bIK07UM07Yo2L4P1LcL07UD0rMD0rMD0rMB0bIH0rQ23MMQ1LcD0rMN1LYB0LAJ0rQ33MMG0bMP1bgD0rMN07YH0rQH0rQ33MQF0rMD0rMN1LYo2L4F0rQG0rSA6tsA0bIB0bL////yxqscAAAAk3RSTlMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgnDXAUItvZKBAi6+vpMuf3++wEIAQcEBFn5AgR9UwMEoQLD/AEH4AIdAzha+UMEAQcc9AM4CAFSA9IC+4AEAc8yAwIEBAHOMQOBBLfLMAnFlAJNsa0LAAAAAWJLR0SVCGB6gwAAAAd0SU1FB+EBBBI4BduZ4woAAAF5SURBVDjLY2CAAUYmZgcWRydnVhc2dg4GTMAJlOdydZvs7sHtiU0FSJ7Hy3uyz2RfP24XNl4OLPJ8Xv5A+YBAsAo0M2DyQZMnY1fBL+AgCJXHrkIoWDgEJo9NhUioaBhCHqoiXExcAqZAMkIqckrU5MkoKqSjZeAmyMbIxSIZAFIRMCVOOl4epkAmQSERrwKOJMXkySl4rEhVSkufHDAZtyMzlDPdJweiyiN7UyRLIHsKQj5wMnowSIar5ExJQcjn5qnmqyFHlzqKL7EoQPMlphUaaL7EcGSBZiGKLzFUZGgVFSP5ElNFCVPpFORwhAeVto4uWEGwUJk3alSAVXhIR+tB7ShHTi5QkOIzpUKqEmKCPpODgReaipSUyVWl0tW6GEkWGhRBk2tq6wzrsSVqqPaGRqOmZmMTXWwqwNpbTFvbzMwtsGUMoPb2DqOmTksxK2xZLyhgck1XtzVIuw22zNszeXJvH0i7rR1G9gVlf/v+CRMnWaPYDgA74gwO0j2znAAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxNy0wMS0wNFQxODo1NjowNSswMTowME2yC4wAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTctMDEtMDRUMTg6NTY6MDUrMDE6MDA877MwAAAAV3pUWHRSYXcgcHJvZmlsZSB0eXBlIGlwdGMAAHic4/IMCHFWKCjKT8vMSeVSAAMjCy5jCxMjE0uTFAMTIESANMNkAyOzVCDL2NTIxMzEHMQHy4BIoEouAOoXEXTyQjWVAAAAAElFTkSuQmCC">
 
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    <link rel="stylesheet" href="https://jenil.github.io/bulmaswatch/flatly/bulmaswatch.min.css"> 
+    <link rel="stylesheet" href="/css/landing.css">   
     
-
     
+</head>
 
-    
 
-    <link rel="icon" type="image/png" href="http://christopherdishop.netlify.app/images/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="http://christopherdishop.netlify.app/images/favicon-16x16.png" sizes="16x16">
-
-    <meta name="generator" content="Hugo 0.72.0" />
-  </head>
-
-  
-  
-  <body class="colorscheme-light"
-        onload=" twemoji.parse(document.body); "
-  >
-    <main class="wrapper">
-      <nav class="navigation">
-  <section class="container">
-    <a class="navigation-title" href="http://christopherdishop.netlify.app/">
-      Home
+<body>
+    <header> <nav class="navbar is-transparent">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+      <img src="/img/bulma.png" alt="Bulma logo">
     </a>
+  </div>
+  
     
-    <input type="checkbox" id="menu-toggle" />
-    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
-    <ul class="navigation-list">
-      
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="http://christopherdishop.netlify.app/about/">About</a>
-          </li>
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://raw.githubusercontent.com/Cdishop/homepage/master/misc/CV.pdf">CV</a>
-          </li>
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="http://christopherdishop.netlify.app/Computational_Notes/">Computational Notes</a>
-          </li>
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="http://christopherdishop.netlify.app/r_resources/">R Resources</a>
-          </li>
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="http://christopherdishop.netlify.app/rec_reading/">Recommended Reading</a>
-          </li>
-        
-      
-      
-    </ul>
     
-  </section>
+    
+    <span class="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </span>
+    
+    
+    
+    <div class="navbar-end">
+      <div class="navbar-item">
+        
+        
+          <a itemprop="url" class="navbar-item " href="/cv/"><span itemprop="name">CV</span></a>
+        
+          <a itemprop="url" class="navbar-item " href="/rec_reading/"><span itemprop="name">Recommended Reading</span></a>
+        
+          <a itemprop="url" class="navbar-item " href="/r_resources/"><span itemprop="name">R Resources</span></a>
+        
+          <a itemprop="url" class="navbar-item " href="/computational_notes/"><span itemprop="name">Computational_Notes</span></a>
+        
+      </div> 
+    </div>
+  </div>
 </nav>
+ </header>
+    <main>
 
-
-      <div class="content">
-        
-  <section class="container page">
-  <article>
-    <header>
-      <h1>Bivariate Latent Dual Change Model</h1>
-    </header>
-
-    
+<div class="columns is-fullheight">
+    <div class="column">
+        <section class="hero is-default is-bold">
+            <div class="hero-body">
+                <div class="content container">
+                   
 
 
 <p>My last post demonstrated a dual change model for one variable, now I want to demonstrate a bivariate dual change model. A SEM path diagram for a bivariate dual change model is below, taken from <a href="https://www-annualreviews-org.proxy2.cl.msu.edu/doi/pdf/10.1146%2Fannurev-orgpsych-041015-062553">Wang, Zhou, and Zhang (2016)</a></p>
-<p><img src="https://github.com/Cdishop/homepage/raw/master/content/Computational_Notes/dual_change_photos/bdc.png" />
+<p><img src="https://github.com/Cdishop/website/raw/master/content/Computational_Notes/dual_change_photos/bdc.png" />
 (If you do not have access to that link you can view a similar path diagram in <a href="https://journals.sagepub.com/doi/pdf/10.1177/0149206313503012">Jones, King, Gilrane, McCausland, Cortina, &amp; Grimm, 2016</a>)</p>
 <p>Essentially, we have two dual change processes and a coupling parameter from the latent true score on one variable to the latent change score on the other.</p>
-<div id="the-dgp" class="section level1">
-<h1>The DGP</h1>
+<div id="the-dgp" class="section level2">
+<h2>The DGP</h2>
 <p><span class="math display">\[\begin{equation}
 y_t =  constant_y + (1 + proportion_y)*y_{t-1} + coupling_{xy}*x_{t-1} + e
 \end{equation}\]</span></p>
@@ -198,7 +170,7 @@ ggplot(df, aes(x = time, y = y, group = id)) +
   geom_line(color = &#39;grey85&#39;) + 
   geom_point(data = df_sample, aes(x = time, y = y, group = id)) + 
   geom_line(data = df_sample, aes(x = time, y = y, group = id))</code></pre>
-<p><img src="http://christopherdishop.netlify.app/Computational_Notes/bi_dual_change_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="/Computational_Notes/bi_dual_change_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>Values of <span class="math inline">\(x\)</span> over time.</p>
 <pre class="r"><code>plot_single_response &lt;- function(y_axis){
   
@@ -212,7 +184,7 @@ ggplot(df, aes(x = time, y = y, group = id)) +
 }
 
 plot_single_response(quo(x))</code></pre>
-<p><img src="http://christopherdishop.netlify.app/Computational_Notes/bi_dual_change_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="/Computational_Notes/bi_dual_change_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>Three randomly selected individuals with <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> plotted simultaneously.</p>
 <pre class="r"><code>three_cases &lt;- df %&gt;%
   filter(id == 4 | id == 500 | id == 322) %&gt;%
@@ -222,10 +194,10 @@ ggplot(three_cases, aes(x = time, y = response, color = variable)) +
   geom_point() + 
   geom_line() + 
   facet_wrap(~id)</code></pre>
-<p><img src="http://christopherdishop.netlify.app/Computational_Notes/bi_dual_change_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="/Computational_Notes/bi_dual_change_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 </div>
-<div id="dual-change-model-on-y" class="section level1">
-<h1>Dual Change Model on Y</h1>
+<div id="dual-change-model-on-y" class="section level2">
+<h2>Dual Change Model on Y</h2>
 <pre class="r"><code>df_wide_y &lt;- df %&gt;%
   select(id, time, y) %&gt;%
   reshape(idvar = &#39;id&#39;, timevar = &#39;time&#39;, direction = &#39;wide&#39;)
@@ -335,57 +307,55 @@ cy5 ~~ 0*cy6
 
 dc_y_model &lt;- sem(dual_change_y_string, data = df_wide_y)
 summary(dc_y_model, fit.measures = T)</code></pre>
-<pre><code>## lavaan 0.6-6 ended normally after 57 iterations
+<pre><code>## lavaan 0.6-3 ended normally after 70 iterations
 ## 
-##   Estimator                                         ML
 ##   Optimization method                           NLMINB
 ##   Number of free parameters                         16
 ##   Number of equality constraints                     9
-##                                                       
+## 
 ##   Number of observations                           700
-##                                                       
-## Model Test User Model:
-##                                                       
-##   Test statistic                              6042.570
+## 
+##   Estimator                                         ML
+##   Model Fit Test Statistic                    6067.310
 ##   Degrees of freedom                                20
 ##   P-value (Chi-square)                           0.000
 ## 
-## Model Test Baseline Model:
+## Model test baseline model:
 ## 
-##   Test statistic                              8078.703
+##   Minimum Function Test Statistic             7955.551
 ##   Degrees of freedom                                15
 ##   P-value                                        0.000
 ## 
-## User Model versus Baseline Model:
+## User model versus baseline model:
 ## 
-##   Comparative Fit Index (CFI)                    0.253
-##   Tucker-Lewis Index (TLI)                       0.440
+##   Comparative Fit Index (CFI)                    0.238
+##   Tucker-Lewis Index (TLI)                       0.429
 ## 
 ## Loglikelihood and Information Criteria:
 ## 
-##   Loglikelihood user model (H0)             -11669.884
-##   Loglikelihood unrestricted model (H1)      -8648.599
-##                                                       
-##   Akaike (AIC)                               23353.768
-##   Bayesian (BIC)                             23385.625
-##   Sample-size adjusted Bayesian (BIC)        23363.399
+##   Loglikelihood user model (H0)             -11519.219
+##   Loglikelihood unrestricted model (H1)      -8485.564
+## 
+##   Number of free parameters                          7
+##   Akaike (AIC)                               23052.438
+##   Bayesian (BIC)                             23084.296
+##   Sample-size adjusted Bayesian (BIC)        23062.069
 ## 
 ## Root Mean Square Error of Approximation:
 ## 
-##   RMSEA                                          0.656
-##   90 Percent confidence interval - lower         0.642
-##   90 Percent confidence interval - upper         0.670
+##   RMSEA                                          0.657
+##   90 Percent Confidence Interval          0.643  0.671
 ##   P-value RMSEA &lt;= 0.05                          0.000
 ## 
 ## Standardized Root Mean Square Residual:
 ## 
-##   SRMR                                           2.161
+##   SRMR                                           2.258
 ## 
 ## Parameter Estimates:
 ## 
-##   Standard errors                             Standard
 ##   Information                                 Expected
 ##   Information saturated (h1) model          Structured
+##   Standard Errors                             Standard
 ## 
 ## Latent Variables:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
@@ -433,20 +403,20 @@ summary(dc_y_model, fit.measures = T)</code></pre>
 ##   ly6 ~                                               
 ##     ly5               1.000                           
 ##   cy2 ~                                               
-##     ly1     (prop)    0.260    0.018   14.741    0.000
+##     ly1     (prop)    0.313    0.019   16.735    0.000
 ##   cy3 ~                                               
-##     ly2     (prop)    0.260    0.018   14.741    0.000
+##     ly2     (prop)    0.313    0.019   16.735    0.000
 ##   cy4 ~                                               
-##     ly3     (prop)    0.260    0.018   14.741    0.000
+##     ly3     (prop)    0.313    0.019   16.735    0.000
 ##   cy5 ~                                               
-##     ly4     (prop)    0.260    0.018   14.741    0.000
+##     ly4     (prop)    0.313    0.019   16.735    0.000
 ##   cy6 ~                                               
-##     ly5     (prop)    0.260    0.018   14.741    0.000
+##     ly5     (prop)    0.313    0.019   16.735    0.000
 ## 
 ## Covariances:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
 ##   l_intercept ~~                                      
-##     l_slope          -1.480    0.221   -6.698    0.000
+##     l_slope          -1.656    0.210   -7.881    0.000
 ##  .cy2 ~~                                              
 ##    .cy3               0.000                           
 ##    .cy4               0.000                           
@@ -464,9 +434,9 @@ summary(dc_y_model, fit.measures = T)</code></pre>
 ## 
 ## Intercepts:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
-##     l_slope          -3.377    0.196  -17.252    0.000
-##     l_intercept      11.456    0.111  103.339    0.000
-##    .ly1               0.000                           
+##     l_slope          -3.976    0.207  -19.164    0.000
+##     l_intercept      11.536    0.107  107.690    0.000
+##     ly1               0.000                           
 ##    .ly2               0.000                           
 ##    .ly3               0.000                           
 ##    .ly4               0.000                           
@@ -486,9 +456,9 @@ summary(dc_y_model, fit.measures = T)</code></pre>
 ## 
 ## Variances:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
-##     l_ntrcp           5.532    0.458   12.079    0.000
-##     l_slope           2.454    0.210   11.663    0.000
-##    .ly1               0.000                           
+##     l_ntrcp           5.263    0.427   12.341    0.000
+##     l_slope           2.069    0.171   12.095    0.000
+##     ly1               0.000                           
 ##    .ly2               0.000                           
 ##    .ly3               0.000                           
 ##    .ly4               0.000                           
@@ -499,12 +469,12 @@ summary(dc_y_model, fit.measures = T)</code></pre>
 ##    .cy4               0.000                           
 ##    .cy5               0.000                           
 ##    .cy6               0.000                           
-##    .y.1     (rs_v)    6.889    0.184   37.417    0.000
-##    .y.2     (rs_v)    6.889    0.184   37.417    0.000
-##    .y.3     (rs_v)    6.889    0.184   37.417    0.000
-##    .y.4     (rs_v)    6.889    0.184   37.417    0.000
-##    .y.5     (rs_v)    6.889    0.184   37.417    0.000
-##    .y.6     (rs_v)    6.889    0.184   37.417    0.000</code></pre>
+##    .y.1     (rs_v)    6.411    0.171   37.417    0.000
+##    .y.2     (rs_v)    6.411    0.171   37.417    0.000
+##    .y.3     (rs_v)    6.411    0.171   37.417    0.000
+##    .y.4     (rs_v)    6.411    0.171   37.417    0.000
+##    .y.5     (rs_v)    6.411    0.171   37.417    0.000
+##    .y.6     (rs_v)    6.411    0.171   37.417    0.000</code></pre>
 <p>Code to change the <span class="math inline">\(y\)</span>’s in the string to <span class="math inline">\(x\)</span>’s without manually deleting and inserting <span class="math inline">\(x\)</span> into the string above. All you have to do is paste the string into a .txt document and save the file as “y_file.txt”</p>
 <pre class="r"><code>library(readr)
 
@@ -512,8 +482,8 @@ mystring &lt;- read_file(&#39;y_file.txt&#39;)
 new_data &lt;- gsub(&#39;y&#39;, &#39;x&#39;, mystring)
 # write_file(new_data, path = &#39;x_file.txt&#39;) # not executed but will work</code></pre>
 </div>
-<div id="dual-change-model-on-x" class="section level1">
-<h1>Dual Change Model on X</h1>
+<div id="dual-change-model-on-x" class="section level2">
+<h2>Dual Change Model on X</h2>
 <pre class="r"><code>df_wide_x &lt;- df %&gt;%
   select(id, time, x) %&gt;%
   reshape(idvar = &#39;id&#39;, timevar = &#39;time&#39;, direction = &#39;wide&#39;)
@@ -624,7 +594,7 @@ cx5 ~~ 0*cx6
 
 dc_x_model &lt;- sem(dual_change_x_string, data = df_wide_x)
 summary(dc_x_model, fit.measures = T)</code></pre>
-<pre><code>## lavaan 0.6-6 ended normally after 52 iterations
+<pre><code>## lavaan 0.6-6 ended normally after 55 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -635,40 +605,40 @@ summary(dc_x_model, fit.measures = T)</code></pre>
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                              4399.507
+##   Test statistic                              4046.134
 ##   Degrees of freedom                                20
 ##   P-value (Chi-square)                           0.000
 ## 
 ## Model Test Baseline Model:
 ## 
-##   Test statistic                             11909.380
+##   Test statistic                             11769.574
 ##   Degrees of freedom                                15
 ##   P-value                                        0.000
 ## 
 ## User Model versus Baseline Model:
 ## 
-##   Comparative Fit Index (CFI)                    0.632
-##   Tucker-Lewis Index (TLI)                       0.724
+##   Comparative Fit Index (CFI)                    0.657
+##   Tucker-Lewis Index (TLI)                       0.743
 ## 
 ## Loglikelihood and Information Criteria:
 ## 
-##   Loglikelihood user model (H0)             -10288.461
-##   Loglikelihood unrestricted model (H1)      -8088.708
+##   Loglikelihood user model (H0)             -10105.606
+##   Loglikelihood unrestricted model (H1)      -8082.539
 ##                                                       
-##   Akaike (AIC)                               20590.923
-##   Bayesian (BIC)                             20622.780
-##   Sample-size adjusted Bayesian (BIC)        20600.554
+##   Akaike (AIC)                               20225.212
+##   Bayesian (BIC)                             20257.069
+##   Sample-size adjusted Bayesian (BIC)        20234.843
 ## 
 ## Root Mean Square Error of Approximation:
 ## 
-##   RMSEA                                          0.559
-##   90 Percent confidence interval - lower         0.545
-##   90 Percent confidence interval - upper         0.573
+##   RMSEA                                          0.536
+##   90 Percent confidence interval - lower         0.522
+##   90 Percent confidence interval - upper         0.550
 ##   P-value RMSEA &lt;= 0.05                          0.000
 ## 
 ## Standardized Root Mean Square Residual:
 ## 
-##   SRMR                                           0.907
+##   SRMR                                           0.723
 ## 
 ## Parameter Estimates:
 ## 
@@ -722,20 +692,20 @@ summary(dc_x_model, fit.measures = T)</code></pre>
 ##   lx6 ~                                               
 ##     lx5               1.000                           
 ##   cx2 ~                                               
-##     lx1     (prop)    0.147    0.004   33.793    0.000
+##     lx1     (prop)    0.150    0.004   35.444    0.000
 ##   cx3 ~                                               
-##     lx2     (prop)    0.147    0.004   33.793    0.000
+##     lx2     (prop)    0.150    0.004   35.444    0.000
 ##   cx4 ~                                               
-##     lx3     (prop)    0.147    0.004   33.793    0.000
+##     lx3     (prop)    0.150    0.004   35.444    0.000
 ##   cx5 ~                                               
-##     lx4     (prop)    0.147    0.004   33.793    0.000
+##     lx4     (prop)    0.150    0.004   35.444    0.000
 ##   cx6 ~                                               
-##     lx5     (prop)    0.147    0.004   33.793    0.000
+##     lx5     (prop)    0.150    0.004   35.444    0.000
 ## 
 ## Covariances:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
 ##   l_intercept ~~                                      
-##     l_slope          -1.120    0.275   -4.068    0.000
+##     l_slope          -0.928    0.255   -3.641    0.000
 ##  .cx2 ~~                                              
 ##    .cx3               0.000                           
 ##    .cx4               0.000                           
@@ -753,8 +723,8 @@ summary(dc_x_model, fit.measures = T)</code></pre>
 ## 
 ## Intercepts:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
-##     l_slope          -3.382    0.129  -26.182    0.000
-##     l_intercept      10.328    0.078  132.629    0.000
+##     l_slope          -3.468    0.123  -28.161    0.000
+##     l_intercept      10.332    0.077  134.910    0.000
 ##    .lx1               0.000                           
 ##    .lx2               0.000                           
 ##    .lx3               0.000                           
@@ -775,8 +745,8 @@ summary(dc_x_model, fit.measures = T)</code></pre>
 ## 
 ## Variances:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
-##     l_ntrcp           3.002    0.220   13.664    0.000
-##     l_slope          11.030    0.633   17.431    0.000
+##     l_ntrcp           2.969    0.212   14.021    0.000
+##     l_slope          10.023    0.574   17.467    0.000
 ##    .lx1               0.000                           
 ##    .lx2               0.000                           
 ##    .lx3               0.000                           
@@ -788,12 +758,12 @@ summary(dc_x_model, fit.measures = T)</code></pre>
 ##    .cx4               0.000                           
 ##    .cx5               0.000                           
 ##    .cx6               0.000                           
-##    .x.1     (rs_v)    2.315    0.062   37.417    0.000
-##    .x.2     (rs_v)    2.315    0.062   37.417    0.000
-##    .x.3     (rs_v)    2.315    0.062   37.417    0.000
-##    .x.4     (rs_v)    2.315    0.062   37.417    0.000
-##    .x.5     (rs_v)    2.315    0.062   37.417    0.000
-##    .x.6     (rs_v)    2.315    0.062   37.417    0.000</code></pre>
+##    .x.1     (rs_v)    2.088    0.056   37.417    0.000
+##    .x.2     (rs_v)    2.088    0.056   37.417    0.000
+##    .x.3     (rs_v)    2.088    0.056   37.417    0.000
+##    .x.4     (rs_v)    2.088    0.056   37.417    0.000
+##    .x.5     (rs_v)    2.088    0.056   37.417    0.000
+##    .x.6     (rs_v)    2.088    0.056   37.417    0.000</code></pre>
 </div>
 <div id="bivariate-dual-change-model" class="section level1">
 <h1>Bivariate Dual Change Model</h1>
@@ -1041,7 +1011,7 @@ df_both &lt;- df %&gt;%
 
 bi_dc_model &lt;- sem(bi_dc_string, data = df_both)
 summary(bi_dc_model, fit.measures = T)</code></pre>
-<pre><code>## lavaan 0.6-6 ended normally after 129 iterations
+<pre><code>## lavaan 0.6-6 ended normally after 117 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -1052,40 +1022,40 @@ summary(bi_dc_model, fit.measures = T)</code></pre>
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                              1462.026
+##   Test statistic                              1422.723
 ##   Degrees of freedom                                70
 ##   P-value (Chi-square)                           0.000
 ## 
 ## Model Test Baseline Model:
 ## 
-##   Test statistic                             24212.744
+##   Test statistic                             23848.355
 ##   Degrees of freedom                                66
 ##   P-value                                        0.000
 ## 
 ## User Model versus Baseline Model:
 ## 
-##   Comparative Fit Index (CFI)                    0.942
+##   Comparative Fit Index (CFI)                    0.943
 ##   Tucker-Lewis Index (TLI)                       0.946
 ## 
 ## Loglikelihood and Information Criteria:
 ## 
-##   Loglikelihood user model (H0)             -15355.990
-##   Loglikelihood unrestricted model (H1)     -14624.977
+##   Loglikelihood user model (H0)             -15217.849
+##   Loglikelihood unrestricted model (H1)     -14506.488
 ##                                                       
-##   Akaike (AIC)                               30751.979
-##   Bayesian (BIC)                             30843.001
-##   Sample-size adjusted Bayesian (BIC)        30779.497
+##   Akaike (AIC)                               30475.699
+##   Bayesian (BIC)                             30566.721
+##   Sample-size adjusted Bayesian (BIC)        30503.217
 ## 
 ## Root Mean Square Error of Approximation:
 ## 
-##   RMSEA                                          0.169
-##   90 Percent confidence interval - lower         0.161
-##   90 Percent confidence interval - upper         0.176
+##   RMSEA                                          0.166
+##   90 Percent confidence interval - lower         0.159
+##   90 Percent confidence interval - upper         0.174
 ##   P-value RMSEA &lt;= 0.05                          0.000
 ## 
 ## Standardized Root Mean Square Residual:
 ## 
-##   SRMR                                           0.100
+##   SRMR                                           0.098
 ## 
 ## Parameter Estimates:
 ## 
@@ -1169,15 +1139,15 @@ summary(bi_dc_model, fit.measures = T)</code></pre>
 ##   ly6 ~                                               
 ##     ly5               1.000                           
 ##   cy2 ~                                               
-##     ly1     (prop)   -0.317    0.004  -77.986    0.000
+##     ly1     (prop)   -0.315    0.004  -74.218    0.000
 ##   cy3 ~                                               
-##     ly2     (prop)   -0.317    0.004  -77.986    0.000
+##     ly2     (prop)   -0.315    0.004  -74.218    0.000
 ##   cy4 ~                                               
-##     ly3     (prop)   -0.317    0.004  -77.986    0.000
+##     ly3     (prop)   -0.315    0.004  -74.218    0.000
 ##   cy5 ~                                               
-##     ly4     (prop)   -0.317    0.004  -77.986    0.000
+##     ly4     (prop)   -0.315    0.004  -74.218    0.000
 ##   cy6 ~                                               
-##     ly5     (prop)   -0.317    0.004  -77.986    0.000
+##     ly5     (prop)   -0.315    0.004  -74.218    0.000
 ##   lx2 ~                                               
 ##     lx1               1.000                           
 ##   lx3 ~                                               
@@ -1189,40 +1159,40 @@ summary(bi_dc_model, fit.measures = T)</code></pre>
 ##   lx6 ~                                               
 ##     lx5               1.000                           
 ##   cx2 ~                                               
-##     lx1     (prpx)    0.224    0.002  101.812    0.000
+##     lx1     (prpx)    0.225    0.002  101.044    0.000
 ##   cx3 ~                                               
-##     lx2     (prpx)    0.224    0.002  101.812    0.000
+##     lx2     (prpx)    0.225    0.002  101.044    0.000
 ##   cx4 ~                                               
-##     lx3     (prpx)    0.224    0.002  101.812    0.000
+##     lx3     (prpx)    0.225    0.002  101.044    0.000
 ##   cx5 ~                                               
-##     lx4     (prpx)    0.224    0.002  101.812    0.000
+##     lx4     (prpx)    0.225    0.002  101.044    0.000
 ##   cx6 ~                                               
-##     lx5     (prpx)    0.224    0.002  101.812    0.000
+##     lx5     (prpx)    0.225    0.002  101.044    0.000
 ##   cy2 ~                                               
-##     lx1       (xy)    0.400    0.002  186.369    0.000
+##     lx1       (xy)    0.403    0.002  184.708    0.000
 ##   cy3 ~                                               
-##     lx2       (xy)    0.400    0.002  186.369    0.000
+##     lx2       (xy)    0.403    0.002  184.708    0.000
 ##   cy4 ~                                               
-##     lx3       (xy)    0.400    0.002  186.369    0.000
+##     lx3       (xy)    0.403    0.002  184.708    0.000
 ##   cy5 ~                                               
-##     lx4       (xy)    0.400    0.002  186.369    0.000
+##     lx4       (xy)    0.403    0.002  184.708    0.000
 ##   cy6 ~                                               
-##     lx5       (xy)    0.400    0.002  186.369    0.000
+##     lx5       (xy)    0.403    0.002  184.708    0.000
 ##   cx2 ~                                               
-##     ly1       (yx)   -0.423    0.004 -100.977    0.000
+##     ly1       (yx)   -0.420    0.004  -96.376    0.000
 ##   cx3 ~                                               
-##     ly2       (yx)   -0.423    0.004 -100.977    0.000
+##     ly2       (yx)   -0.420    0.004  -96.376    0.000
 ##   cx4 ~                                               
-##     ly3       (yx)   -0.423    0.004 -100.977    0.000
+##     ly3       (yx)   -0.420    0.004  -96.376    0.000
 ##   cx5 ~                                               
-##     ly4       (yx)   -0.423    0.004 -100.977    0.000
+##     ly4       (yx)   -0.420    0.004  -96.376    0.000
 ##   cx6 ~                                               
-##     ly5       (yx)   -0.423    0.004 -100.977    0.000
+##     ly5       (yx)   -0.420    0.004  -96.376    0.000
 ## 
 ## Covariances:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
 ##   l_intercept ~~                                      
-##     l_slope          -0.159    0.152   -1.044    0.296
+##     l_slope          -0.134    0.136   -0.985    0.324
 ##  .cy2 ~~                                              
 ##    .cy3               0.000                           
 ##    .cy4               0.000                           
@@ -1238,7 +1208,7 @@ summary(bi_dc_model, fit.measures = T)</code></pre>
 ##  .cy5 ~~                                              
 ##    .cy6               0.000                           
 ##   lx_intercept ~~                                     
-##     lx_slope         -0.097    0.136   -0.714    0.475
+##     lx_slope         -0.033    0.135   -0.244    0.807
 ##  .cx2 ~~                                              
 ##    .cx3               0.000                           
 ##    .cx4               0.000                           
@@ -1254,16 +1224,16 @@ summary(bi_dc_model, fit.measures = T)</code></pre>
 ##  .cx5 ~~                                              
 ##    .cx6               0.000                           
 ##   l_intercept ~~                                      
-##     lx_intercept     -0.203    0.052   -3.941    0.000
-##     lx_slope          0.067    0.153    0.438    0.661
+##     lx_intercept     -0.130    0.051   -2.526    0.012
+##     lx_slope          0.001    0.140    0.009    0.993
 ##   l_slope ~~                                          
-##     lx_intercept     -0.083    0.135   -0.616    0.538
-##     lx_slope          0.453    0.376    1.204    0.229
+##     lx_intercept     -0.051    0.131   -0.393    0.695
+##     lx_slope          0.213    0.336    0.635    0.526
 ## 
 ## Intercepts:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
-##     l_slope           0.394    0.123    3.200    0.001
-##     l_intercept      10.010    0.047  212.082    0.000
+##     l_slope           0.466    0.117    3.994    0.000
+##     l_intercept       9.983    0.045  220.323    0.000
 ##    .ly1               0.000                           
 ##    .ly2               0.000                           
 ##    .ly3               0.000                           
@@ -1281,8 +1251,8 @@ summary(bi_dc_model, fit.measures = T)</code></pre>
 ##    .y.4               0.000                           
 ##    .y.5               0.000                           
 ##    .y.6               0.000                           
-##     lx_slope          0.717    0.126    5.677    0.000
-##     lx_intercept      9.971    0.042  236.004    0.000
+##     lx_slope          0.664    0.122    5.441    0.000
+##     lx_intercept      9.937    0.044  224.982    0.000
 ##    .lx1               0.000                           
 ##    .lx2               0.000                           
 ##    .lx3               0.000                           
@@ -1303,8 +1273,8 @@ summary(bi_dc_model, fit.measures = T)</code></pre>
 ## 
 ## Variances:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
-##     l_ntr             1.088    0.081   13.351    0.000
-##     l_slp             9.427    0.521   18.101    0.000
+##     l_ntr             0.965    0.075   12.954    0.000
+##     l_slp             8.201    0.454   18.047    0.000
 ##    .ly1               0.000                           
 ##    .ly2               0.000                           
 ##    .ly3               0.000                           
@@ -1316,14 +1286,14 @@ summary(bi_dc_model, fit.measures = T)</code></pre>
 ##    .cy4               0.000                           
 ##    .cy5               0.000                           
 ##    .cy6               0.000                           
-##    .y.1   (res_vr)    0.740    0.020   37.353    0.000
-##    .y.2   (res_vr)    0.740    0.020   37.353    0.000
-##    .y.3   (res_vr)    0.740    0.020   37.353    0.000
-##    .y.4   (res_vr)    0.740    0.020   37.353    0.000
-##    .y.5   (res_vr)    0.740    0.020   37.353    0.000
-##    .y.6   (res_vr)    0.740    0.020   37.353    0.000
-##     lx_nt             1.024    0.065   15.743    0.000
-##     lx_sl             9.922    0.541   18.334    0.000
+##    .y.1   (res_vr)    0.726    0.019   37.348    0.000
+##    .y.2   (res_vr)    0.726    0.019   37.348    0.000
+##    .y.3   (res_vr)    0.726    0.019   37.348    0.000
+##    .y.4   (res_vr)    0.726    0.019   37.348    0.000
+##    .y.5   (res_vr)    0.726    0.019   37.348    0.000
+##    .y.6   (res_vr)    0.726    0.019   37.348    0.000
+##     lx_nt             1.140    0.071   16.062    0.000
+##     lx_sl             9.056    0.494   18.318    0.000
 ##    .lx1               0.000                           
 ##    .lx2               0.000                           
 ##    .lx3               0.000                           
@@ -1335,97 +1305,51 @@ summary(bi_dc_model, fit.measures = T)</code></pre>
 ##    .cx4               0.000                           
 ##    .cx5               0.000                           
 ##    .cx6               0.000                           
-##    .x.1   (rs_vrx)    0.428    0.012   36.451    0.000
-##    .x.2   (rs_vrx)    0.428    0.012   36.451    0.000
-##    .x.3   (rs_vrx)    0.428    0.012   36.451    0.000
-##    .x.4   (rs_vrx)    0.428    0.012   36.451    0.000
-##    .x.5   (rs_vrx)    0.428    0.012   36.451    0.000
-##    .x.6   (rs_vrx)    0.428    0.012   36.451    0.000</code></pre>
+##    .x.1   (rs_vrx)    0.417    0.011   36.461    0.000
+##    .x.2   (rs_vrx)    0.417    0.011   36.461    0.000
+##    .x.3   (rs_vrx)    0.417    0.011   36.461    0.000
+##    .x.4   (rs_vrx)    0.417    0.011   36.461    0.000
+##    .x.5   (rs_vrx)    0.417    0.011   36.461    0.000
+##    .x.6   (rs_vrx)    0.417    0.011   36.461    0.000</code></pre>
 <p>Bo<span class="math inline">\(^2\)</span>m =)</p>
 </div>
 
-  </article>
-</section>
-
-  
-
-      </div>
-
-      
+                </div>
+                <br>
+            </div>
+        </section>
+    </div>
+</div>
+</main>
+    <footer> 
   <footer class="footer">
-    <section class="container">
-      
-      
-        ©
-        
-          2016 -
-        
-        2020
-         Christopher R. Dishop 
-      
-      
-         · 
-        Generated with <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
-      
-      
-        
-      
+    <div class="container">
+        <div class="content has-text-centered">
+            <p>
+                I generated this site using 
+                <a href="https://gohugo.io/">Hugo</a> and Jeblister's
+                <a href="https://themes.gohugo.io/bulma/">Bulma</a> theme.
+                
+            </p>
+            <p>
+              Michigan State University is not liable for any opinions on this website.
 
+            </p>
+        </div>
+    </div>
+</footer>
 
-      
+<script src="//yihui.name/js/math-code.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
-    
-    <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-            processEscapes: true,
-            processEnvironments: true
-        },
-        // Center justify equations in code and markdown cells. Elsewhere
-        // we use CSS to left justify single line equations in code cells.
-        displayAlign: 'center',
-        "HTML-CSS": {
-            styles: {'.MathJax_Display': {"margin": 0}},
-            linebreaks: { automatic: true }
-        }
-    });
-    </script>
-    
-    </section>
-  </footer>
+<link rel="stylesheet" href="/css/obsidian.css" rel="stylesheet" id="theme-stylesheet">
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script> 
+</footer>
 
-
-    </main>
-
-    
-
-    
-
-    <script>
-(function(f, a, t, h, o, m){
-	a[h]=a[h]||function(){
-		(a[h].q=a[h].q||[]).push(arguments)
-	};
-	o=f.createElement('script'),
-	m=f.getElementsByTagName('script')[0];
-	o.async=1; o.src=t; o.id='fathom-script';
-	m.parentNode.insertBefore(o,m)
-})(document, window, '//analytics.example.com/tracker.js', 'fathom');
-fathom('set', 'siteId', 'ABCDE');
-fathom('trackPageview');
-</script>
-
-
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/atom-one-dark.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-
-
-  </body>
-
-
+    <script async type="text/javascript" src="/js/bulma.js"></script>
+    <script async type="text/javascript"  src="/js/clipboard.min.js"></script>
+    <script async type="text/javascript"  src="/js/clip.js"></script>
+</body>
 
 </html>

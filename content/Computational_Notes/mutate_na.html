@@ -42,10 +42,12 @@ cd</code></pre>
 <pre class="r"><code>cd %&gt;%
   rowwise() %&gt;%
   mutate(mean = mean(q1, q2, q3, na.rm = T))</code></pre>
-<pre><code>## # A tibble: 3 x 5
-## # Rowwise: 
+<pre><code>## Source: local data frame [3 x 5]
+## Groups: &lt;by row&gt;
+## 
+## # A tibble: 3 x 5
 ##      q1    q2    q3 id     mean
-##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt; &lt;dbl&gt;
 ## 1     1     2    NA 201       1
 ## 2     2     2    NA 202       2
 ## 3    NA     2     2 203     NaN</code></pre>
@@ -53,10 +55,12 @@ cd</code></pre>
 <pre class="r"><code>cd %&gt;%
   rowwise() %&gt;%
   mutate(mean = mean(c(q1, q2, q3), na.rm = T))</code></pre>
-<pre><code>## # A tibble: 3 x 5
-## # Rowwise: 
+<pre><code>## Source: local data frame [3 x 5]
+## Groups: &lt;by row&gt;
+## 
+## # A tibble: 3 x 5
 ##      q1    q2    q3 id     mean
-##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt; &lt;dbl&gt;
 ## 1     1     2    NA 201     1.5
 ## 2     2     2    NA 202     2  
 ## 3    NA     2     2 203     2</code></pre>

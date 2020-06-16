@@ -62,8 +62,7 @@ ggplot(df, aes(x = time, y = y, group = id)) +
   geom_point(color = &#39;grey85&#39;) + 
   geom_line(color = &#39;grey85&#39;) + 
   geom_point(data = sample_df, aes(x = time, y = y, group = id)) + 
-  geom_line(data = sample_df, aes(x = time, y = y, group = id)) + 
-  theme_wsj()</code></pre>
+  geom_line(data = sample_df, aes(x = time, y = y, group = id))</code></pre>
 <p><img src="/Computational_Notes/dual_change_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>Change the data to wide and load <code>lavaan</code> before we start modeling.</p>
 <pre class="r"><code>df_wide &lt;- reshape(df, idvar = &#39;id&#39;, timevar = &#39;time&#39;, direction = &#39;wide&#39;)
@@ -72,7 +71,7 @@ library(lavaan)</code></pre>
 <div id="intercept-only-model" class="section level1">
 <h1>Intercept Only Model</h1>
 <p>Similar to the intercept-only model in a “non-latent change” framework (i.e., a simple growth model), the intercept-only model here contains a latent variable over the first observation.</p>
-<p><img src="https://github.com/Cdishop/homepage/raw/master/content/Computational_Notes/dual_change_photos/1.png" /></p>
+<p><img src="https://github.com/Cdishop/website/raw/master/content/Computational_Notes/dual_change_photos/1.png" /></p>
 <p>There are six observations of <span class="math inline">\(y\)</span> and each is predicted by its latent “true score.” The first true score term is regressed on a latent intercept. The other true scores are regressed on additional latent variables that represent latent change. We don’t have anything relating to those latent change score terms yet so they don’t do much in this model. The autoregressive paths from true score to true score are constrained to 1. Here is how we estimate it.</p>
 <pre class="r"><code>int_only_string &lt;- &#39;
 
@@ -166,57 +165,55 @@ latent_intercept ~~ 0*lc_y2 + 0*lc_y3 + 0*lc_y4 + 0*lc_y5 + 0*lc_y6
 
 int_only_model &lt;- sem(int_only_string, data = df_wide)
 summary(int_only_model, fit.measures = T)</code></pre>
-<pre><code>## lavaan 0.6-6 ended normally after 21 iterations
+<pre><code>## lavaan 0.6-3 ended normally after 17 iterations
 ## 
-##   Estimator                                         ML
 ##   Optimization method                           NLMINB
 ##   Number of free parameters                          8
 ##   Number of equality constraints                     5
-##                                                       
+## 
 ##   Number of observations                           500
-##                                                       
-## Model Test User Model:
-##                                                       
-##   Test statistic                              2328.767
+## 
+##   Estimator                                         ML
+##   Model Fit Test Statistic                    2488.894
 ##   Degrees of freedom                                24
 ##   P-value (Chi-square)                           0.000
 ## 
-## Model Test Baseline Model:
+## Model test baseline model:
 ## 
-##   Test statistic                              6268.849
+##   Minimum Function Test Statistic             6352.195
 ##   Degrees of freedom                                15
 ##   P-value                                        0.000
 ## 
-## User Model versus Baseline Model:
+## User model versus baseline model:
 ## 
-##   Comparative Fit Index (CFI)                    0.631
-##   Tucker-Lewis Index (TLI)                       0.770
+##   Comparative Fit Index (CFI)                    0.611
+##   Tucker-Lewis Index (TLI)                       0.757
 ## 
 ## Loglikelihood and Information Criteria:
 ## 
-##   Loglikelihood user model (H0)              -6218.910
-##   Loglikelihood unrestricted model (H1)      -5054.526
-##                                                       
-##   Akaike (AIC)                               12443.819
-##   Bayesian (BIC)                             12456.463
-##   Sample-size adjusted Bayesian (BIC)        12446.941
+##   Loglikelihood user model (H0)              -6300.904
+##   Loglikelihood unrestricted model (H1)      -5056.457
+## 
+##   Number of free parameters                          3
+##   Akaike (AIC)                               12607.808
+##   Bayesian (BIC)                             12620.452
+##   Sample-size adjusted Bayesian (BIC)        12610.930
 ## 
 ## Root Mean Square Error of Approximation:
 ## 
-##   RMSEA                                          0.438
-##   90 Percent confidence interval - lower         0.423
-##   90 Percent confidence interval - upper         0.453
+##   RMSEA                                          0.453
+##   90 Percent Confidence Interval          0.438  0.468
 ##   P-value RMSEA &lt;= 0.05                          0.000
 ## 
 ## Standardized Root Mean Square Residual:
 ## 
-##   SRMR                                           0.530
+##   SRMR                                           0.572
 ## 
 ## Parameter Estimates:
 ## 
-##   Standard errors                             Standard
 ##   Information                                 Expected
 ##   Information saturated (h1) model          Structured
+##   Standard Errors                             Standard
 ## 
 ## Latent Variables:
 ##                       Estimate  Std.Err  z-value  P(&gt;|z|)
@@ -287,8 +284,8 @@ summary(int_only_model, fit.measures = T)</code></pre>
 ## 
 ## Intercepts:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
-##     latent_intrcpt    0.674    0.166    4.060    0.000
-##    .l_y1              0.000                           
+##     latent_intrcpt    0.580    0.169    3.427    0.001
+##     l_y1              0.000                           
 ##    .l_y2              0.000                           
 ##    .l_y3              0.000                           
 ##    .l_y4              0.000                           
@@ -308,8 +305,8 @@ summary(int_only_model, fit.measures = T)</code></pre>
 ## 
 ## Variances:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
-##     ltnt_nt          13.466    0.873   15.431    0.000
-##    .l_y1              0.000                           
+##     ltnt_nt          13.970    0.906   15.423    0.000
+##     l_y1              0.000                           
 ##    .l_y2              0.000                           
 ##    .l_y3              0.000                           
 ##    .l_y4              0.000                           
@@ -320,17 +317,17 @@ summary(int_only_model, fit.measures = T)</code></pre>
 ##     lc_y4             0.000                           
 ##     lc_y5             0.000                           
 ##     lc_y6             0.000                           
-##    .y.1     (rs_v)    1.987    0.056   35.355    0.000
-##    .y.2     (rs_v)    1.987    0.056   35.355    0.000
-##    .y.3     (rs_v)    1.987    0.056   35.355    0.000
-##    .y.4     (rs_v)    1.987    0.056   35.355    0.000
-##    .y.5     (rs_v)    1.987    0.056   35.355    0.000
-##    .y.6     (rs_v)    1.987    0.056   35.355    0.000</code></pre>
+##    .y.1     (rs_v)    2.106    0.060   35.355    0.000
+##    .y.2     (rs_v)    2.106    0.060   35.355    0.000
+##    .y.3     (rs_v)    2.106    0.060   35.355    0.000
+##    .y.4     (rs_v)    2.106    0.060   35.355    0.000
+##    .y.5     (rs_v)    2.106    0.060   35.355    0.000
+##    .y.6     (rs_v)    2.106    0.060   35.355    0.000</code></pre>
 </div>
 <div id="proportion-change-model" class="section level1">
 <h1>Proportion Change Model</h1>
 <p>Now we include the proportion change along with the latent intercept.</p>
-<p><img src="https://github.com/Cdishop/homepage/raw/master/content/Computational_Notes/dual_change_photos/2.png" /></p>
+<p><img src="https://github.com/Cdishop/website/raw/master/content/Computational_Notes/dual_change_photos/2.png" /></p>
 <pre class="r"><code>proportion_string &lt;- &#39;
 
 # latent true scores over the observed y points
@@ -432,57 +429,55 @@ latent_intercept ~~ 0*lc_y2 + 0*lc_y3 + 0*lc_y4 + 0*lc_y5 + 0*lc_y6
 
 proportion_model &lt;- sem(proportion_string, data = df_wide)
 summary(proportion_model, fit.measures = T)</code></pre>
-<pre><code>## lavaan 0.6-6 ended normally after 25 iterations
+<pre><code>## lavaan 0.6-3 ended normally after 22 iterations
 ## 
-##   Estimator                                         ML
 ##   Optimization method                           NLMINB
 ##   Number of free parameters                         13
 ##   Number of equality constraints                     9
-##                                                       
+## 
 ##   Number of observations                           500
-##                                                       
-## Model Test User Model:
-##                                                       
-##   Test statistic                               930.512
+## 
+##   Estimator                                         ML
+##   Model Fit Test Statistic                    1007.678
 ##   Degrees of freedom                                23
 ##   P-value (Chi-square)                           0.000
 ## 
-## Model Test Baseline Model:
+## Model test baseline model:
 ## 
-##   Test statistic                              6268.849
+##   Minimum Function Test Statistic             6352.195
 ##   Degrees of freedom                                15
 ##   P-value                                        0.000
 ## 
-## User Model versus Baseline Model:
+## User model versus baseline model:
 ## 
-##   Comparative Fit Index (CFI)                    0.855
-##   Tucker-Lewis Index (TLI)                       0.905
+##   Comparative Fit Index (CFI)                    0.845
+##   Tucker-Lewis Index (TLI)                       0.899
 ## 
 ## Loglikelihood and Information Criteria:
 ## 
-##   Loglikelihood user model (H0)              -5519.782
-##   Loglikelihood unrestricted model (H1)      -5054.526
-##                                                       
-##   Akaike (AIC)                               11047.564
-##   Bayesian (BIC)                             11064.422
-##   Sample-size adjusted Bayesian (BIC)        11051.726
+##   Loglikelihood user model (H0)              -5560.296
+##   Loglikelihood unrestricted model (H1)      -5056.457
+## 
+##   Number of free parameters                          4
+##   Akaike (AIC)                               11128.592
+##   Bayesian (BIC)                             11145.450
+##   Sample-size adjusted Bayesian (BIC)        11132.754
 ## 
 ## Root Mean Square Error of Approximation:
 ## 
-##   RMSEA                                          0.281
-##   90 Percent confidence interval - lower         0.266
-##   90 Percent confidence interval - upper         0.296
+##   RMSEA                                          0.293
+##   90 Percent Confidence Interval          0.277  0.308
 ##   P-value RMSEA &lt;= 0.05                          0.000
 ## 
 ## Standardized Root Mean Square Residual:
 ## 
-##   SRMR                                           0.186
+##   SRMR                                           0.197
 ## 
 ## Parameter Estimates:
 ## 
-##   Standard errors                             Standard
 ##   Information                                 Expected
 ##   Information saturated (h1) model          Structured
+##   Standard Errors                             Standard
 ## 
 ## Latent Variables:
 ##                       Estimate  Std.Err  z-value  P(&gt;|z|)
@@ -524,15 +519,15 @@ summary(proportion_model, fit.measures = T)</code></pre>
 ##   l_y6 ~                                              
 ##     l_y5              1.000                           
 ##   lc_y2 ~                                             
-##     l_y1      (b2)    0.136    0.004   38.126    0.000
+##     l_y1      (b2)    0.141    0.004   39.369    0.000
 ##   lc_y3 ~                                             
-##     l_y2      (b2)    0.136    0.004   38.126    0.000
+##     l_y2      (b2)    0.141    0.004   39.369    0.000
 ##   lc_y4 ~                                             
-##     l_y3      (b2)    0.136    0.004   38.126    0.000
+##     l_y3      (b2)    0.141    0.004   39.369    0.000
 ##   lc_y5 ~                                             
-##     l_y4      (b2)    0.136    0.004   38.126    0.000
+##     l_y4      (b2)    0.141    0.004   39.369    0.000
 ##   lc_y6 ~                                             
-##     l_y5      (b2)    0.136    0.004   38.126    0.000
+##     l_y5      (b2)    0.141    0.004   39.369    0.000
 ## 
 ## Covariances:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
@@ -563,8 +558,8 @@ summary(proportion_model, fit.measures = T)</code></pre>
 ## 
 ## Intercepts:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
-##     latent_intrcpt    0.494    0.118    4.189    0.000
-##    .l_y1              0.000                           
+##     latent_intrcpt    0.423    0.119    3.565    0.000
+##     l_y1              0.000                           
 ##    .l_y2              0.000                           
 ##    .l_y3              0.000                           
 ##    .l_y4              0.000                           
@@ -584,8 +579,8 @@ summary(proportion_model, fit.measures = T)</code></pre>
 ## 
 ## Variances:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
-##     ltnt_nt           6.863    0.461   14.881    0.000
-##    .l_y1              0.000                           
+##     ltnt_nt           6.948    0.467   14.874    0.000
+##     l_y1              0.000                           
 ##    .l_y2              0.000                           
 ##    .l_y3              0.000                           
 ##    .l_y4              0.000                           
@@ -596,17 +591,17 @@ summary(proportion_model, fit.measures = T)</code></pre>
 ##    .lc_y4             0.000                           
 ##    .lc_y5             0.000                           
 ##    .lc_y6             0.000                           
-##    .y.1     (rs_v)    1.125    0.032   35.355    0.000
-##    .y.2     (rs_v)    1.125    0.032   35.355    0.000
-##    .y.3     (rs_v)    1.125    0.032   35.355    0.000
-##    .y.4     (rs_v)    1.125    0.032   35.355    0.000
-##    .y.5     (rs_v)    1.125    0.032   35.355    0.000
-##    .y.6     (rs_v)    1.125    0.032   35.355    0.000</code></pre>
+##    .y.1     (rs_v)    1.152    0.033   35.355    0.000
+##    .y.2     (rs_v)    1.152    0.033   35.355    0.000
+##    .y.3     (rs_v)    1.152    0.033   35.355    0.000
+##    .y.4     (rs_v)    1.152    0.033   35.355    0.000
+##    .y.5     (rs_v)    1.152    0.033   35.355    0.000
+##    .y.6     (rs_v)    1.152    0.033   35.355    0.000</code></pre>
 </div>
 <div id="latent-constant-change" class="section level1">
 <h1>Latent Constant Change</h1>
 <p>This model is nearly identical to the basic linear growth curve model, it simply embodies it in the latent change framework. The basis coefficients from the constant change term to the latent change scores are constrained to one, then we estimate the mean of the constant change.</p>
-<p><img src="https://github.com/Cdishop/homepage/raw/master/content/Computational_Notes/dual_change_photos/3.png" /></p>
+<p><img src="https://github.com/Cdishop/website/raw/master/content/Computational_Notes/dual_change_photos/3.png" /></p>
 <pre class="r"><code>constant_change_string &lt;- &#39;
 
 # latent true scores over the observed y points
@@ -713,57 +708,55 @@ latent_intercept ~~ 0*lc_y2 + 0*lc_y3 + 0*lc_y4 + 0*lc_y5 + 0*lc_y6
 
 constant_change_model &lt;- sem(constant_change_string, data = df_wide)
 summary(constant_change_model, fit.measures = T)</code></pre>
-<pre><code>## lavaan 0.6-6 ended normally after 35 iterations
+<pre><code>## lavaan 0.6-3 ended normally after 37 iterations
 ## 
-##   Estimator                                         ML
 ##   Optimization method                           NLMINB
 ##   Number of free parameters                         11
 ##   Number of equality constraints                     5
-##                                                       
+## 
 ##   Number of observations                           500
-##                                                       
-## Model Test User Model:
-##                                                       
-##   Test statistic                               630.743
+## 
+##   Estimator                                         ML
+##   Model Fit Test Statistic                     682.182
 ##   Degrees of freedom                                21
 ##   P-value (Chi-square)                           0.000
 ## 
-## Model Test Baseline Model:
+## Model test baseline model:
 ## 
-##   Test statistic                              6268.849
+##   Minimum Function Test Statistic             6352.195
 ##   Degrees of freedom                                15
 ##   P-value                                        0.000
 ## 
-## User Model versus Baseline Model:
+## User model versus baseline model:
 ## 
-##   Comparative Fit Index (CFI)                    0.903
-##   Tucker-Lewis Index (TLI)                       0.930
+##   Comparative Fit Index (CFI)                    0.896
+##   Tucker-Lewis Index (TLI)                       0.925
 ## 
 ## Loglikelihood and Information Criteria:
 ## 
-##   Loglikelihood user model (H0)              -5369.897
-##   Loglikelihood unrestricted model (H1)      -5054.526
-##                                                       
-##   Akaike (AIC)                               10751.795
-##   Bayesian (BIC)                             10777.082
-##   Sample-size adjusted Bayesian (BIC)        10758.038
+##   Loglikelihood user model (H0)              -5397.548
+##   Loglikelihood unrestricted model (H1)      -5056.457
+## 
+##   Number of free parameters                          6
+##   Akaike (AIC)                               10807.096
+##   Bayesian (BIC)                             10832.384
+##   Sample-size adjusted Bayesian (BIC)        10813.339
 ## 
 ## Root Mean Square Error of Approximation:
 ## 
-##   RMSEA                                          0.241
-##   90 Percent confidence interval - lower         0.225
-##   90 Percent confidence interval - upper         0.257
+##   RMSEA                                          0.251
+##   90 Percent Confidence Interval          0.235  0.267
 ##   P-value RMSEA &lt;= 0.05                          0.000
 ## 
 ## Standardized Root Mean Square Residual:
 ## 
-##   SRMR                                           0.143
+##   SRMR                                           0.148
 ## 
 ## Parameter Estimates:
 ## 
-##   Standard errors                             Standard
 ##   Information                                 Expected
 ##   Information saturated (h1) model          Structured
+##   Standard Errors                             Standard
 ## 
 ## Latent Variables:
 ##                       Estimate  Std.Err  z-value  P(&gt;|z|)
@@ -814,47 +807,47 @@ summary(constant_change_model, fit.measures = T)</code></pre>
 ## Covariances:
 ##                       Estimate  Std.Err  z-value  P(&gt;|z|)
 ##   latent_intercept ~~                                    
-##     latent_slope         1.083    0.081   13.351    0.000
-##  .lc_y2 ~~                                               
-##    .lc_y3                0.000                           
-##    .lc_y4                0.000                           
-##    .lc_y5                0.000                           
-##    .lc_y6                0.000                           
-##  .lc_y3 ~~                                               
-##    .lc_y4                0.000                           
-##    .lc_y5                0.000                           
-##    .lc_y6                0.000                           
-##  .lc_y4 ~~                                               
-##    .lc_y5                0.000                           
-##    .lc_y6                0.000                           
-##  .lc_y5 ~~                                               
-##    .lc_y6                0.000                           
-##  .lc_y2 ~~                                               
+##     latent_slope         1.151    0.085   13.481    0.000
+##   lc_y2 ~~                                               
+##     lc_y3                0.000                           
+##     lc_y4                0.000                           
+##     lc_y5                0.000                           
+##     lc_y6                0.000                           
+##   lc_y3 ~~                                               
+##     lc_y4                0.000                           
+##     lc_y5                0.000                           
+##     lc_y6                0.000                           
+##   lc_y4 ~~                                               
+##     lc_y5                0.000                           
+##     lc_y6                0.000                           
+##   lc_y5 ~~                                               
+##     lc_y6                0.000                           
+##   lc_y2 ~~                                               
 ##     latent_intrcpt       0.000                           
-##  .lc_y3 ~~                                               
+##   lc_y3 ~~                                               
 ##     latent_intrcpt       0.000                           
-##  .lc_y4 ~~                                               
+##   lc_y4 ~~                                               
 ##     latent_intrcpt       0.000                           
-##  .lc_y5 ~~                                               
+##   lc_y5 ~~                                               
 ##     latent_intrcpt       0.000                           
-##  .lc_y6 ~~                                               
+##   lc_y6 ~~                                               
 ##     latent_intrcpt       0.000                           
 ## 
 ## Intercepts:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
-##     latent_intrcpt    0.287    0.117    2.455    0.014
-##     latent_slope      0.155    0.026    5.893    0.000
-##    .l_y1              0.000                           
+##     latent_intrcpt    0.210    0.117    1.800    0.072
+##     latent_slope      0.148    0.028    5.371    0.000
+##     l_y1              0.000                           
 ##    .l_y2              0.000                           
 ##    .l_y3              0.000                           
 ##    .l_y4              0.000                           
 ##    .l_y5              0.000                           
 ##    .l_y6              0.000                           
-##    .lc_y2             0.000                           
-##    .lc_y3             0.000                           
-##    .lc_y4             0.000                           
-##    .lc_y5             0.000                           
-##    .lc_y6             0.000                           
+##     lc_y2             0.000                           
+##     lc_y3             0.000                           
+##     lc_y4             0.000                           
+##     lc_y5             0.000                           
+##     lc_y6             0.000                           
 ##    .y.1               0.000                           
 ##    .y.2               0.000                           
 ##    .y.3               0.000                           
@@ -864,30 +857,30 @@ summary(constant_change_model, fit.measures = T)</code></pre>
 ## 
 ## Variances:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
-##     ltnt_nt           6.388    0.433   14.753    0.000
-##     ltnt_sl           0.296    0.022   13.507    0.000
-##    .l_y1              0.000                           
+##     ltnt_nt           6.364    0.432   14.737    0.000
+##     ltnt_sl           0.329    0.024   13.687    0.000
+##     l_y1              0.000                           
 ##    .l_y2              0.000                           
 ##    .l_y3              0.000                           
 ##    .l_y4              0.000                           
 ##    .l_y5              0.000                           
 ##    .l_y6              0.000                           
-##    .lc_y2             0.000                           
-##    .lc_y3             0.000                           
-##    .lc_y4             0.000                           
-##    .lc_y5             0.000                           
-##    .lc_y6             0.000                           
-##    .y.1     (rs_v)    0.868    0.027   31.623    0.000
-##    .y.2     (rs_v)    0.868    0.027   31.623    0.000
-##    .y.3     (rs_v)    0.868    0.027   31.623    0.000
-##    .y.4     (rs_v)    0.868    0.027   31.623    0.000
-##    .y.5     (rs_v)    0.868    0.027   31.623    0.000
-##    .y.6     (rs_v)    0.868    0.027   31.623    0.000</code></pre>
+##     lc_y2             0.000                           
+##     lc_y3             0.000                           
+##     lc_y4             0.000                           
+##     lc_y5             0.000                           
+##     lc_y6             0.000                           
+##    .y.1     (rs_v)    0.878    0.028   31.623    0.000
+##    .y.2     (rs_v)    0.878    0.028   31.623    0.000
+##    .y.3     (rs_v)    0.878    0.028   31.623    0.000
+##    .y.4     (rs_v)    0.878    0.028   31.623    0.000
+##    .y.5     (rs_v)    0.878    0.028   31.623    0.000
+##    .y.6     (rs_v)    0.878    0.028   31.623    0.000</code></pre>
 </div>
 <div id="dual-change-model" class="section level1">
 <h1>Dual Change Model</h1>
 <p>Now a full dual change model with both constant and proportion change parameters.</p>
-<p><img src="https://github.com/Cdishop/homepage/raw/master/content/Computational_Notes/dual_change_photos/4.png" /></p>
+<p><img src="https://github.com/Cdishop/website/raw/master/content/Computational_Notes/dual_change_photos/4.png" /></p>
 <pre class="r"><code>dual_c_string &lt;- &#39;
 
 # latent true scores over the observed y points
@@ -1002,57 +995,55 @@ lc_y5 ~~ 0*lc_y6
 
 dual_change_model &lt;- sem(dual_c_string, data = df_wide)
 summary(dual_change_model, fit.measures = T)</code></pre>
-<pre><code>## lavaan 0.6-6 ended normally after 36 iterations
+<pre><code>## lavaan 0.6-3 ended normally after 58 iterations
 ## 
-##   Estimator                                         ML
 ##   Optimization method                           NLMINB
 ##   Number of free parameters                         16
 ##   Number of equality constraints                     9
-##                                                       
+## 
 ##   Number of observations                           500
-##                                                       
-## Model Test User Model:
-##                                                       
-##   Test statistic                               323.100
+## 
+##   Estimator                                         ML
+##   Model Fit Test Statistic                     367.182
 ##   Degrees of freedom                                20
 ##   P-value (Chi-square)                           0.000
 ## 
-## Model Test Baseline Model:
+## Model test baseline model:
 ## 
-##   Test statistic                              6268.849
+##   Minimum Function Test Statistic             6352.195
 ##   Degrees of freedom                                15
 ##   P-value                                        0.000
 ## 
-## User Model versus Baseline Model:
+## User model versus baseline model:
 ## 
-##   Comparative Fit Index (CFI)                    0.952
-##   Tucker-Lewis Index (TLI)                       0.964
+##   Comparative Fit Index (CFI)                    0.945
+##   Tucker-Lewis Index (TLI)                       0.959
 ## 
 ## Loglikelihood and Information Criteria:
 ## 
-##   Loglikelihood user model (H0)              -5216.076
-##   Loglikelihood unrestricted model (H1)      -5054.526
-##                                                       
-##   Akaike (AIC)                               10446.152
-##   Bayesian (BIC)                             10475.654
-##   Sample-size adjusted Bayesian (BIC)        10453.436
+##   Loglikelihood user model (H0)              -5240.048
+##   Loglikelihood unrestricted model (H1)      -5056.457
+## 
+##   Number of free parameters                          7
+##   Akaike (AIC)                               10494.096
+##   Bayesian (BIC)                             10523.598
+##   Sample-size adjusted Bayesian (BIC)        10501.380
 ## 
 ## Root Mean Square Error of Approximation:
 ## 
-##   RMSEA                                          0.174
-##   90 Percent confidence interval - lower         0.158
-##   90 Percent confidence interval - upper         0.191
+##   RMSEA                                          0.186
+##   90 Percent Confidence Interval          0.170  0.203
 ##   P-value RMSEA &lt;= 0.05                          0.000
 ## 
 ## Standardized Root Mean Square Residual:
 ## 
-##   SRMR                                           0.028
+##   SRMR                                           0.029
 ## 
 ## Parameter Estimates:
 ## 
-##   Standard errors                             Standard
 ##   Information                                 Expected
 ##   Information saturated (h1) model          Structured
+##   Standard Errors                             Standard
 ## 
 ## Latent Variables:
 ##                       Estimate  Std.Err  z-value  P(&gt;|z|)
@@ -1100,20 +1091,20 @@ summary(dual_change_model, fit.measures = T)</code></pre>
 ##   l_y6 ~                                              
 ##     l_y5              1.000                           
 ##   lc_y2 ~                                             
-##     l_y1       (b)   -0.357    0.017  -20.738    0.000
+##     l_y1       (b)   -0.347    0.017  -20.850    0.000
 ##   lc_y3 ~                                             
-##     l_y2       (b)   -0.357    0.017  -20.738    0.000
+##     l_y2       (b)   -0.347    0.017  -20.850    0.000
 ##   lc_y4 ~                                             
-##     l_y3       (b)   -0.357    0.017  -20.738    0.000
+##     l_y3       (b)   -0.347    0.017  -20.850    0.000
 ##   lc_y5 ~                                             
-##     l_y4       (b)   -0.357    0.017  -20.738    0.000
+##     l_y4       (b)   -0.347    0.017  -20.850    0.000
 ##   lc_y6 ~                                             
-##     l_y5       (b)   -0.357    0.017  -20.738    0.000
+##     l_y5       (b)   -0.347    0.017  -20.850    0.000
 ## 
 ## Covariances:
 ##                       Estimate  Std.Err  z-value  P(&gt;|z|)
 ##   latent_intercept ~~                                    
-##     latent_slope         3.499    0.257   13.603    0.000
+##     latent_slope         3.504    0.256   13.712    0.000
 ##  .lc_y2 ~~                                               
 ##    .lc_y3                0.000                           
 ##    .lc_y4                0.000                           
@@ -1131,9 +1122,9 @@ summary(dual_change_model, fit.measures = T)</code></pre>
 ## 
 ## Intercepts:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
-##     latent_intrcpt    0.157    0.102    1.539    0.124
-##     latent_slope      0.382    0.081    4.721    0.000
-##    .l_y1              0.000                           
+##     latent_intrcpt    0.094    0.101    0.927    0.354
+##     latent_slope      0.336    0.082    4.117    0.000
+##     l_y1              0.000                           
 ##    .l_y2              0.000                           
 ##    .l_y3              0.000                           
 ##    .l_y4              0.000                           
@@ -1153,9 +1144,9 @@ summary(dual_change_model, fit.measures = T)</code></pre>
 ## 
 ## Variances:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
-##     ltnt_nt           4.652    0.335   13.878    0.000
-##     ltnt_sl           3.168    0.297   10.675    0.000
-##    .l_y1              0.000                           
+##     ltnt_nt           4.532    0.328   13.797    0.000
+##     ltnt_sl           3.236    0.299   10.821    0.000
+##     l_y1              0.000                           
 ##    .l_y2              0.000                           
 ##    .l_y3              0.000                           
 ##    .l_y4              0.000                           
@@ -1166,12 +1157,12 @@ summary(dual_change_model, fit.measures = T)</code></pre>
 ##    .lc_y4             0.000                           
 ##    .lc_y5             0.000                           
 ##    .lc_y6             0.000                           
-##    .y.1     (rs_v)    0.766    0.024   31.623    0.000
-##    .y.2     (rs_v)    0.766    0.024   31.623    0.000
-##    .y.3     (rs_v)    0.766    0.024   31.623    0.000
-##    .y.4     (rs_v)    0.766    0.024   31.623    0.000
-##    .y.5     (rs_v)    0.766    0.024   31.623    0.000
-##    .y.6     (rs_v)    0.766    0.024   31.623    0.000</code></pre>
+##    .y.1     (rs_v)    0.780    0.025   31.623    0.000
+##    .y.2     (rs_v)    0.780    0.025   31.623    0.000
+##    .y.3     (rs_v)    0.780    0.025   31.623    0.000
+##    .y.4     (rs_v)    0.780    0.025   31.623    0.000
+##    .y.5     (rs_v)    0.780    0.025   31.623    0.000
+##    .y.6     (rs_v)    0.780    0.025   31.623    0.000</code></pre>
 <p>The estimate of the constant change (called “latent slope” in my string syntax; <span class="math inline">\(b_1\)</span>) is close to 0.3 and the estimate of the proportion change (<span class="math inline">\(b_2\)</span>) is close to -0.4. Not bad.</p>
 <div id="a-note-on-interpreting" class="section level2">
 <h2>A Note On Interpreting</h2>

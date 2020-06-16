@@ -6,13 +6,13 @@ date: "2019-01-04"
 
 
 
-<div id="purpose" class="section level3">
-<h3>Purpose</h3>
+<div id="purpose" class="section level2">
+<h2>Purpose</h2>
 <p>Imagine that you are interested in the relationship between stress and performance. To assess it, you observe 600 people at work and measure their stress via a self-report (e.g., “I feel stressed”) and their performance via objective performance scores for the day (e.g., number of sales). You regress performance on stress and find that the estimated coefficient relating to two is 0.45. You then build a 95% confidence interval using the standard error that the analysis spit out and find that the CI is 0.45 +- 0.1.</p>
 <p>What does that confidence interval actually mean? The purpose of this exercise is to build intuition behind frequentist CIs.</p>
 </div>
-<div id="steps" class="section level3">
-<h3>Steps</h3>
+<div id="steps" class="section level2">
+<h2>Steps</h2>
 <ol style="list-style-type: decimal">
 <li><p>Generate the population</p></li>
 <li><p>Sample the population. On that sample…</p>
@@ -22,8 +22,8 @@ date: "2019-01-04"
 <li><p>Re-sample and repeat</p></li>
 </ol>
 </div>
-<div id="generate-the-population" class="section level3">
-<h3>1) Generate the population</h3>
+<div id="generate-the-population" class="section level2">
+<h2>1) Generate the population</h2>
 <p>Our population will contain 100,000 people</p>
 <pre class="r"><code>pop_number &lt;- 100000</code></pre>
 <p>with stress scores distributed about zero. The scale here doesn’t matter – we care about the relationship between stress and performance and less about (in this example) the distributions of stress and performance themselves.</p>
@@ -40,15 +40,14 @@ date: "2019-01-04"
 )</code></pre>
 <p>What is the paramter relating stress to performance? 0.45, keep that in mind. Time to sample the population as if we conducted a study and run our regression.</p>
 </div>
-<div id="sample-the-population" class="section level3">
-<h3>2) Sample the population</h3>
+<div id="sample-the-population" class="section level2">
+<h2>2) Sample the population</h2>
 <p>Randomly select 600 people from our population. That is, pretend we ran a study on 600 subjects.</p>
 <pre class="r"><code>sample_size &lt;- 600
 random_numbers &lt;- sample(c(1:pop_number), sample_size)
 
 sample_df &lt;- df %&gt;%
   filter(person %in% random_numbers)</code></pre>
-</div>
 <div id="a-regress-performance-on-stress" class="section level3">
 <h3>2a) Regress Performance on Stress</h3>
 <p>Use the <code>lm</code> command for regression in <code>R</code>.</p>
@@ -59,19 +58,19 @@ sample_df &lt;- df %&gt;%
 ## lm(formula = performance ~ stress, data = sample_df)
 ## 
 ## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -3.4175 -0.7510  0.0050  0.7208  3.3817 
+##      Min       1Q   Median       3Q      Max 
+## -3.09130 -0.68005 -0.00408  0.68790  3.06485 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) 0.045177   0.042678   1.059     0.29    
-## stress      0.449785   0.008756  51.370   &lt;2e-16 ***
+## (Intercept) 0.035398   0.040599   0.872    0.384    
+## stress      0.450944   0.007983  56.488   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 1.045 on 598 degrees of freedom
-## Multiple R-squared:  0.8153, Adjusted R-squared:  0.8149 
-## F-statistic:  2639 on 1 and 598 DF,  p-value: &lt; 2.2e-16</code></pre>
+## Residual standard error: 0.9945 on 598 degrees of freedom
+## Multiple R-squared:  0.8422, Adjusted R-squared:  0.8419 
+## F-statistic:  3191 on 1 and 598 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <div id="b-compute-the-ci" class="section level3">
 <h3>2b) Compute the CI</h3>
@@ -99,8 +98,9 @@ contain_parameter</code></pre>
 <pre><code>## [1] &quot;yes&quot;</code></pre>
 <p>What did we do? We sampled the population, ran a regression to relate stress to performance, and then calculated a CI on the slope term. The interpretation of a CI, however, is across infinite samples. Now we need to run through the sample, regress, and calculate CI procedure again and again and again – Monte Carlo.</p>
 </div>
-<div id="re-sample-and-repeat" class="section level3">
-<h3>3) Re sample and repeat</h3>
+</div>
+<div id="re-sample-and-repeat" class="section level2">
+<h2>3) Re sample and repeat</h2>
 <p>I created a function that samples the population, runs a regression, calculates the CI, and then saves whether or not the interval contained 0.45 (‘yes’ or ‘no’). You can view that code in the raw rmarkdown file. For now, just know that the function is called <code>sample_regress_calc_ci</code>.</p>
 <p>We are going to re-run step 2 from above 900 times</p>
 <pre class="r"><code>sims &lt;- 900</code></pre>
@@ -117,9 +117,9 @@ for(i in 1:sims){
   
 }</code></pre>
 </div>
-<div id="interpretation" class="section level3">
-<h3>Interpretation</h3>
+<div id="interpretation" class="section level2">
+<h2>Interpretation</h2>
 <p>How many computed intervals contain the population parameter?</p>
 <pre class="r"><code>sum(all_ci_contains == &#39;yes&#39;) / sims</code></pre>
-<pre><code>## [1] 0.94</code></pre>
+<pre><code>## [1] 0.9511111</code></pre>
 </div>

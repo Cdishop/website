@@ -1,65 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 
-  <head>
+<head>
+    <meta name="generator" content="Hugo 0.72.0" />
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>R Resources | Christopher Dishop</title>
 
-    <meta name="author" content="Christopher R. Dishop">
-    <meta name="description" content="Websites with many R resources All R books written with Bookdown
-All R cheatsheets
-APS list of R resources
-Show Us Your R
-Econometrics Simulations
-UVA Data Science Resources
-People with helpful individual websites Emily C. Zabor
-Jenny Bryan
-Kristoffer Magnusson
-Sacha Epskamp
-FOM academic
-Suzan Baert
-Hadley Wickham
-David Robinson
-B Rodriguez
-Nathaniel D. Phillips
-Simon Ejdemyr
-The R Graph Gallery
-Christian Burkhart
-Malcolm Barrett
-John Flournoy
-UC R Guide">
-    <meta name="keywords" content="blog,developer,personal">
-
+     
+      
     
-      <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+    
+    
+    
     
 
-    <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="R Resources"/>
-<meta name="twitter:description" content="Websites with many R resources All R books written with Bookdown
-All R cheatsheets
-APS list of R resources
-Show Us Your R
-Econometrics Simulations
-UVA Data Science Resources
-People with helpful individual websites Emily C. Zabor
-Jenny Bryan
-Kristoffer Magnusson
-Sacha Epskamp
-FOM academic
-Suzan Baert
-Hadley Wickham
-David Robinson
-B Rodriguez
-Nathaniel D. Phillips
-Simon Ejdemyr
-The R Graph Gallery
-Christian Burkhart
-Malcolm Barrett
-John Flournoy
-UC R Guide"/>
+  <meta name="author" content="">
 
+ 
     <meta property="og:title" content="R Resources" />
 <meta property="og:description" content="Websites with many R resources All R books written with Bookdown
 All R cheatsheets
@@ -69,6 +28,7 @@ Econometrics Simulations
 UVA Data Science Resources
 People with helpful individual websites Emily C. Zabor
 Jenny Bryan
+(teach =&gt; purrr tutorial is excellent)
 Kristoffer Magnusson
 Sacha Epskamp
 FOM academic
@@ -79,104 +39,76 @@ B Rodriguez
 Nathaniel D. Phillips
 Simon Ejdemyr
 The R Graph Gallery
-Christian Burkhart
-Malcolm Barrett
-John Flournoy
-UC R Guide" />
+Christian Burkhart" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://christopherdishop.netlify.app/r_resources/" />
+<meta property="og:url" content="/r_resources/" />
 
-
-
-    
-      <base href="http://christopherdishop.netlify.app/r_resources/">
-    
-    <title>
-  R Resources · Home
-</title>
-
-    
-      <link rel="canonical" href="http://christopherdishop.netlify.app/r_resources/">
+ 
     
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
 
+
+ 
     
-      
-      
-      <link rel="stylesheet" href="http://christopherdishop.netlify.app/css/coder.min.aca465d1e362e89828cbd890adff660455d93a2703dbede119b5859a41672c49.css" integrity="sha256-rKRl0eNi6Jgoy9iQrf9mBFXZOicD2&#43;3hGbWFmkFnLEk=" crossorigin="anonymous" media="screen" />
+     
+     
     
-
     
+    <link rel="canonical" href="/r_resources/">   <link rel="shortcut icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABwlBMVEUAAAA/3MUK07UJ0rRk6NkC0rMAw5sAx6Ic1rs/3MYAlU0E0rQAhjMAyKIAiTkM07UJ07UAhC8m2L4o2L5O4Msn2L4AzKoAzq0128Mo2b8F0rQE0rMu2cAt2cAA0bI228MA0LAAy6kr2b8Q1LcF0rMH0rUAxp4t2b8c1ros2b8P1LcAzKsAzq4528Q02sIM07YAfyg93cUD0rMA0LEA0bFK4c0M1LcL07Uv2sEAzawY1rlJ4c0w2sEAzKkY1rqr+PQN07Yj170G0rQI07UF0bMt2cAF0rMC0bIL07UF0bMs2cAF0rMA0bIC0bIL07UF0rMA0bIA0bIA0bIO1LYr2b8N07Yp2L4F0rMF0rQJ07UA0bIC0bMA0bIH0rQK07UD0bMA0LAF0rMAyqYE0rMA0bIS1Lg228ID0bMM07YS1LcI07QL07UJ07UC0bMM07YG0rMS1Lc328IR1LcC0bIK07UM07Yo2L4P1LcL07UD0rMD0rMD0rMB0bIH0rQ23MMQ1LcD0rMN1LYB0LAJ0rQ33MMG0bMP1bgD0rMN07YH0rQH0rQ33MQF0rMD0rMN1LYo2L4F0rQG0rSA6tsA0bIB0bL////yxqscAAAAk3RSTlMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgnDXAUItvZKBAi6+vpMuf3++wEIAQcEBFn5AgR9UwMEoQLD/AEH4AIdAzha+UMEAQcc9AM4CAFSA9IC+4AEAc8yAwIEBAHOMQOBBLfLMAnFlAJNsa0LAAAAAWJLR0SVCGB6gwAAAAd0SU1FB+EBBBI4BduZ4woAAAF5SURBVDjLY2CAAUYmZgcWRydnVhc2dg4GTMAJlOdydZvs7sHtiU0FSJ7Hy3uyz2RfP24XNl4OLPJ8Xv5A+YBAsAo0M2DyQZMnY1fBL+AgCJXHrkIoWDgEJo9NhUioaBhCHqoiXExcAqZAMkIqckrU5MkoKqSjZeAmyMbIxSIZAFIRMCVOOl4epkAmQSERrwKOJMXkySl4rEhVSkufHDAZtyMzlDPdJweiyiN7UyRLIHsKQj5wMnowSIar5ExJQcjn5qnmqyFHlzqKL7EoQPMlphUaaL7EcGSBZiGKLzFUZGgVFSP5ElNFCVPpFORwhAeVto4uWEGwUJk3alSAVXhIR+tB7ShHTi5QkOIzpUKqEmKCPpODgReaipSUyVWl0tW6GEkWGhRBk2tq6wzrsSVqqPaGRqOmZmMTXWwqwNpbTFvbzMwtsGUMoPb2DqOmTksxK2xZLyhgck1XtzVIuw22zNszeXJvH0i7rR1G9gVlf/v+CRMnWaPYDgA74gwO0j2znAAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxNy0wMS0wNFQxODo1NjowNSswMTowME2yC4wAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTctMDEtMDRUMTg6NTY6MDUrMDE6MDA877MwAAAAV3pUWHRSYXcgcHJvZmlsZSB0eXBlIGlwdGMAAHic4/IMCHFWKCjKT8vMSeVSAAMjCy5jCxMjE0uTFAMTIESANMNkAyOzVCDL2NTIxMzEHMQHy4BIoEouAOoXEXTyQjWVAAAAAElFTkSuQmCC">
 
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    <link rel="stylesheet" href="https://jenil.github.io/bulmaswatch/flatly/bulmaswatch.min.css"> 
+    <link rel="stylesheet" href="/css/landing.css">   
     
-
     
+</head>
 
-    
 
-    <link rel="icon" type="image/png" href="http://christopherdishop.netlify.app/images/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="http://christopherdishop.netlify.app/images/favicon-16x16.png" sizes="16x16">
-
-    <meta name="generator" content="Hugo 0.72.0" />
-  </head>
-
-  
-  
-  <body class="colorscheme-light"
-        onload=" twemoji.parse(document.body); "
-  >
-    <main class="wrapper">
-      <nav class="navigation">
-  <section class="container">
-    <a class="navigation-title" href="http://christopherdishop.netlify.app/">
-      Home
+<body>
+    <header> <nav class="navbar is-transparent">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+      <img src="/img/bulma.png" alt="Bulma logo">
     </a>
+  </div>
+  
     
-    <input type="checkbox" id="menu-toggle" />
-    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
-    <ul class="navigation-list">
-      
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="http://christopherdishop.netlify.app/about/">About</a>
-          </li>
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://raw.githubusercontent.com/Cdishop/homepage/master/misc/CV.pdf">CV</a>
-          </li>
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="http://christopherdishop.netlify.app/Computational_Notes/">Computational Notes</a>
-          </li>
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="http://christopherdishop.netlify.app/r_resources/">R Resources</a>
-          </li>
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="http://christopherdishop.netlify.app/rec_reading/">Recommended Reading</a>
-          </li>
-        
-      
-      
-    </ul>
     
-  </section>
+    
+    <span class="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </span>
+    
+    
+    
+    <div class="navbar-end">
+      <div class="navbar-item">
+        
+        
+          <a itemprop="url" class="navbar-item " href="/cv/"><span itemprop="name">CV</span></a>
+        
+          <a itemprop="url" class="navbar-item " href="/rec_reading/"><span itemprop="name">Recommended Reading</span></a>
+        
+          <a itemprop="url" class="navbar-item  is-active" href="/r_resources/"><span itemprop="name">R Resources</span></a>
+        
+          <a itemprop="url" class="navbar-item " href="/computational_notes/"><span itemprop="name">Computational_Notes</span></a>
+        
+      </div> 
+    </div>
+  </div>
 </nav>
+ </header>
+    <main>
 
-
-      <div class="content">
-        
-  <section class="container page">
-  <article>
-    <header>
-      <h1>R Resources</h1>
-    </header>
-
-    <h1 id="websites-with-many-r-resources">Websites with many R resources</h1>
+<div class="columns is-fullheight">
+    <div class="column">
+        <section class="hero is-default is-bold">
+            <div class="hero-body">
+                <div class="content container">
+                   <h1 id="websites-with-many-r-resources">Websites with many R resources</h1>
 <p><a href="https://bookdown.org">All R books written with Bookdown</a></p>
 <p><a href="https://www.rstudio.com/resources/cheatsheets/">All R cheatsheets</a></p>
 <p><a href="https://www.psychologicalscience.org/observer/learning-to-work-with-r">APS list of R resources</a></p>
@@ -186,6 +118,7 @@ UC R Guide" />
 <h1 id="people-with-helpful-individual-websites">People with helpful individual websites</h1>
 <p><a href="https://www.emilyzabor.com/tutorials/rmarkdown_websites_tutorial.html">Emily C. Zabor</a></p>
 <p><a href="https://jennybryan.org">Jenny Bryan</a></p>
+<p>(teach =&gt; purrr tutorial is excellent)</p>
 <p><a href="https://rpsychologist.com">Kristoffer Magnusson</a></p>
 <p><a href="http://sachaepskamp.com">Sacha Epskamp</a></p>
 <p><a href="https://data-se.netlify.com">FOM academic</a></p>
@@ -277,88 +210,42 @@ UC R Guide" />
 <p><a href="https://www.rdocumentation.org/packages/rebus/versions/0.1-3">Rebus Package</a></p>
 <p><a href="https://haozhu233.github.io/kableExtra/best_practice_for_newline_in_latex_table.pdf">Newline breaks in Rmarkdown tables</a></p>
 
-  </article>
-</section>
-
-  
-
-      </div>
-
-      
+                </div>
+                <br>
+            </div>
+        </section>
+    </div>
+</div>
+</main>
+    <footer> 
   <footer class="footer">
-    <section class="container">
-      
-      
-        ©
-        
-          2016 -
-        
-        2020
-         Christopher R. Dishop 
-      
-      
-         · 
-        Generated with <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
-      
-      
-        
-      
+    <div class="container">
+        <div class="content has-text-centered">
+            <p>
+                I generated this site using 
+                <a href="https://gohugo.io/">Hugo</a> and Jeblister's
+                <a href="https://themes.gohugo.io/bulma/">Bulma</a> theme.
+                
+            </p>
+            <p>
+              Michigan State University is not liable for any opinions on this website.
 
+            </p>
+        </div>
+    </div>
+</footer>
 
-      
+<script src="//yihui.name/js/math-code.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
-    
-    <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-            processEscapes: true,
-            processEnvironments: true
-        },
-        // Center justify equations in code and markdown cells. Elsewhere
-        // we use CSS to left justify single line equations in code cells.
-        displayAlign: 'center',
-        "HTML-CSS": {
-            styles: {'.MathJax_Display': {"margin": 0}},
-            linebreaks: { automatic: true }
-        }
-    });
-    </script>
-    
-    </section>
-  </footer>
+<link rel="stylesheet" href="/css/obsidian.css" rel="stylesheet" id="theme-stylesheet">
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script> 
+</footer>
 
-
-    </main>
-
-    
-
-    
-
-    <script>
-(function(f, a, t, h, o, m){
-	a[h]=a[h]||function(){
-		(a[h].q=a[h].q||[]).push(arguments)
-	};
-	o=f.createElement('script'),
-	m=f.getElementsByTagName('script')[0];
-	o.async=1; o.src=t; o.id='fathom-script';
-	m.parentNode.insertBefore(o,m)
-})(document, window, '//analytics.example.com/tracker.js', 'fathom');
-fathom('set', 'siteId', 'ABCDE');
-fathom('trackPageview');
-</script>
-
-
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/atom-one-dark.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-
-
-  </body>
-
-
+    <script async type="text/javascript" src="/js/bulma.js"></script>
+    <script async type="text/javascript"  src="/js/clipboard.min.js"></script>
+    <script async type="text/javascript"  src="/js/clip.js"></script>
+</body>
 
 </html>

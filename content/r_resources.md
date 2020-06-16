@@ -26,6 +26,8 @@ weight = 3
 
 [Jenny Bryan](https://jennybryan.org)  
 
+(teach => purrr tutorial is excellent)
+
 [Kristoffer Magnusson](https://rpsychologist.com)
 
 [Sacha Epskamp](http://sachaepskamp.com)

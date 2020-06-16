@@ -1,51 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on Home</title>
-    <link>http://christopherdishop.netlify.app/categories/</link>
-    <description>Recent content in Categories on Home</description>
+    <title>Categories on Christopher Dishop</title>
+    <link>/categories/</link>
+    <description>Recent content in Categories on Christopher Dishop</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Thu, 17 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <language>en-US</language>
     
-	<atom:link href="http://christopherdishop.netlify.app/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Development</title>
-      <link>http://christopherdishop.netlify.app/categories/development/</link>
-      <pubDate>Thu, 17 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://christopherdishop.netlify.app/categories/development/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>blog</title>
-      <link>http://christopherdishop.netlify.app/categories/blog/</link>
-      <pubDate>Mon, 31 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://christopherdishop.netlify.app/categories/blog/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>R</title>
-      <link>http://christopherdishop.netlify.app/categories/r/</link>
-      <pubDate>Sat, 18 Mar 2017 00:00:00 +0000</pubDate>
-      
-      <guid>http://christopherdishop.netlify.app/categories/r/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>golang</title>
-      <link>http://christopherdishop.netlify.app/categories/golang/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>http://christopherdishop.netlify.app/categories/golang/</guid>
-      <description></description>
-    </item>
     
   </channel>
 </rss>

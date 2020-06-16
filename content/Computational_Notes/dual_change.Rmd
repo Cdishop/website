@@ -13,7 +13,6 @@ library(tidyverse)
 library(ggplot2)
 library(reshape2)
 library(MASS)
-library(ggthemes)
 ```
 
 I begin with an intercept-only model in a latent change framework and then build to a full dual change model. SEM images in this post are taken from a lecture by [Amy Nuttall](https://hdfs.msu.edu/people/faculty/nuttall-amy-k-phd). Two notes about the models and code below. First, the initial models will not fit well because I use a DGP with both dual change components, the initial models purposefully exclude either constant or proportion change. Second, I use the `sem` command throughout rather than `growth` in the `lavaan` package because it forces me to specify the entire model. I do not like using commands that make automatic constraints for me -- if you do, you are much more likely to make a mistake or not know what your model is doing.
@@ -80,8 +79,7 @@ ggplot(df, aes(x = time, y = y, group = id)) +
   geom_point(color = 'grey85') + 
   geom_line(color = 'grey85') + 
   geom_point(data = sample_df, aes(x = time, y = y, group = id)) + 
-  geom_line(data = sample_df, aes(x = time, y = y, group = id)) + 
-  theme_wsj()
+  geom_line(data = sample_df, aes(x = time, y = y, group = id))
 
 ```
 
@@ -96,7 +94,7 @@ library(lavaan)
 
 Similar to the intercept-only model in a "non-latent change" framework (i.e., a simple growth model), the intercept-only model here contains a latent variable over the first observation.
 
-![](https://github.com/Cdishop/homepage/raw/master/content/Computational_Notes/dual_change_photos/1.png)
+![](https://github.com/Cdishop/website/raw/master/content/Computational_Notes/dual_change_photos/1.png)
 
 There are six observations of $y$ and each is predicted by its latent "true score." The first true score term is regressed on a latent intercept. The other true scores are regressed on additional latent variables that represent latent change. We don't have anything relating to those latent change score terms yet so they don't do much in this model. The autoregressive paths from true score to true score are constrained to 1. Here is how we estimate it.
 
@@ -201,7 +199,7 @@ summary(int_only_model, fit.measures = T)
 
 Now we include the proportion change along with the latent intercept. 
 
-![](https://github.com/Cdishop/homepage/raw/master/content/Computational_Notes/dual_change_photos/2.png)
+![](https://github.com/Cdishop/website/raw/master/content/Computational_Notes/dual_change_photos/2.png)
 
 ```{r, cache = T}
 
@@ -313,7 +311,7 @@ summary(proportion_model, fit.measures = T)
 
 This model is nearly identical to the basic linear growth curve model, it simply embodies it in the latent change framework. The basis coefficients from the constant change term to the latent change scores are constrained to one, then we estimate the mean of the constant change.
 
-![](https://github.com/Cdishop/homepage/raw/master/content/Computational_Notes/dual_change_photos/3.png)
+![](https://github.com/Cdishop/website/raw/master/content/Computational_Notes/dual_change_photos/3.png)
 
 ```{r, cache = T}
 
@@ -429,7 +427,7 @@ summary(constant_change_model, fit.measures = T)
 
 Now a full dual change model with both constant and proportion change parameters. 
 
-![](https://github.com/Cdishop/homepage/raw/master/content/Computational_Notes/dual_change_photos/4.png)
+![](https://github.com/Cdishop/website/raw/master/content/Computational_Notes/dual_change_photos/4.png)
 
 ```{r, cache = T}
 

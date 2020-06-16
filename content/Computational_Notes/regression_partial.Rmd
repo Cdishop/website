@@ -14,38 +14,38 @@ library(tidyverse)
 In regression, everything is partialled from everything. Let's work through that notion with images and code. Imagine that emotion and ability cause an outcome, $Y$.
 
 
-![](https://github.com/Cdishop/homepage/raw/master/content/Computational_Notes/partial_images/partial_variance.png){width=500px}
+![](https://github.com/Cdishop/website/raw/master/content/Computational_Notes/partial_images/partial_variance.png){width=500px}
 
 What this image represents is that $Y$ has variability (across people or time), and its variability is associated with variability in emotion and variability in ability. Notice that there is variability overlap between ability and $Y$,
 
-![](https://github.com/Cdishop/homepage/raw/master/content/Computational_Notes/partial_images/here1.png){width=500px}
+![](https://github.com/Cdishop/website/raw/master/content/Computational_Notes/partial_images/here1.png){width=500px}
 
 emotion and $Y$,
 
 
-![](https://github.com/Cdishop/homepage/raw/master/content/Computational_Notes/partial_images/here2.png){width=500px}
+![](https://github.com/Cdishop/website/raw/master/content/Computational_Notes/partial_images/here2.png){width=500px}
 
 emotion and ability,
 
 
-![](https://github.com/Cdishop/homepage/raw/master/content/Computational_Notes/partial_images/here3.png){width=500px}
+![](https://github.com/Cdishop/website/raw/master/content/Computational_Notes/partial_images/here3.png){width=500px}
 
 
 and all three variables. 
 
-![](https://github.com/Cdishop/homepage/raw/master/content/Computational_Notes/partial_images/here4.png){width=500px}
+![](https://github.com/Cdishop/website/raw/master/content/Computational_Notes/partial_images/here4.png){width=500px}
 
 Once we regress $Y$ on emotion and ability, the regression coefficients represent the unique variance components of each predictor
 
-![](https://github.com/Cdishop/homepage/raw/master/content/Computational_Notes/partial_images/partial_coefficients.png){width=500px}
+![](https://github.com/Cdishop/website/raw/master/content/Computational_Notes/partial_images/partial_coefficients.png){width=500px}
 
 but the technique also removes outcome-relevant variance
 
-![](https://github.com/Cdishop/homepage/raw/master/content/Computational_Notes/partial_images/partial_no_middle.png){width=500px}
+![](https://github.com/Cdishop/website/raw/master/content/Computational_Notes/partial_images/partial_no_middle.png){width=500px}
 
 and overlapping variance in emotion and ability not related to the outcome.
 
-![](https://github.com/Cdishop/homepage/raw/master/content/Computational_Notes/partial_images/partial_full_partial.png){width=500px}
+![](https://github.com/Cdishop/website/raw/master/content/Computational_Notes/partial_images/partial_full_partial.png){width=500px}
 
 So, in regression we get coefficients that represent the unique variance contribution of each predictor while partialling overlapping, outcome-relevant variance and overlapping, non-relevant variance. Emotion and ability get to account for their own causal effects of $Y$, but neither predictor gets the overlapping variance in $Y$, and the emotion and ability coefficients are adjusted for the emotion-ability overlap situated outside $Y$. 
 
@@ -110,7 +110,7 @@ summary(lm(y_with_ability_removed ~ emotion,
 
 Nope. Why not? Think back to the diagrams, what we just assessed was
 
-![](https://github.com/Cdishop/homepage/raw/master/content/Computational_Notes/partial_images/remove_ability.png){width=500px}
+![](https://github.com/Cdishop/website/raw/master/content/Computational_Notes/partial_images/remove_ability.png){width=500px}
 
 
 where the estimate accounts for the $Y$-relevant overlap of emotion and ability, but it is wrong because it doesn't account for the overlap between emotion and ability situated outside of $Y$. In regression, everything is partialled from everything...we have not yet accounted for the overlap between emotion and ability in the space not in the $Y$ variance sphere. Now we will.
@@ -133,7 +133,7 @@ summary(lm(y_with_ability_removed ~ emotion_with_ability_removed,
 
 In regression, everything is partialled from everything. 
 
-![](https://github.com/Cdishop/homepage/raw/master/content/Computational_Notes/partial_images/partial_full_partial.png){width=500px}
+![](https://github.com/Cdishop/website/raw/master/content/Computational_Notes/partial_images/partial_full_partial.png){width=500px}
 
 The technique partials overlapping predictor variance both within and outside of the $Y$ space. Neither predictor accounts for overlapping variance within $Y$, and if an important predictor is excluded then it will artificially account for variance it shouldn't be capturing. 
 

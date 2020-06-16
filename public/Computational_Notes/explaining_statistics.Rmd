@@ -8,7 +8,6 @@ date: '2019-05-03'
 knitr::opts_chunk$set(echo = F, warning = F, message = F)
 library(tidyverse)
 library(ggplot2)
-library(ggthemes)
 ```
 
 Think about what it would mean to explain something to a friend. How would you explain why the Patriot's won the Superbowl? How would you explain why you are feeling happy or sad? How would you explain tying a shoe to a toddler? How would you explain why eating lots of donuts tends to increase a person's weight? How would you explain the timeline of Game of Thrones to someone who hadn't seen it?
@@ -26,8 +25,8 @@ no_df <- data.frame(
 )
 
 ggplot(no_df, aes(x = ability, y = performance, color = person)) + 
-  theme_wsj() + 
-  geom_point() 
+  theme_classic() + 
+  geom_point()
 
 ```
 
@@ -46,8 +45,7 @@ ggplot() +
   geom_point(data = no_df, aes(x = ability, y = performance)) + 
   geom_line(data = mean_df, aes(x = ability, y = mean_performance, color = legend)) + 
   theme_classic() + 
-  theme(legend.title = element_blank()) + 
-  theme_wsj()
+  theme(legend.title = element_blank())
 
 ```
 
@@ -66,8 +64,7 @@ ggplot(no_df, aes(x = ability, y = performance)) +
   geom_line(data = mean_df, aes(x = ability, y = mean_performance, color = legend)) + 
   theme_classic() + 
   theme(legend.title = element_blank()) + 
-  geom_segment(data = mean_df, aes(xend = ability, yend = mean_performance, color = resid_legend)) + 
-  theme_wsj()
+  geom_segment(data = mean_df, aes(xend = ability, yend = mean_performance, color = resid_legend))
 
 ```
 
@@ -89,8 +86,7 @@ ggplot(no_df, aes(x = ability, y = performance)) +
   geom_line(data = mean_df, aes(x = ability, y = mean_performance, color = legend)) + 
   theme_classic() + 
   theme(legend.title = element_blank()) + 
-  geom_line() + 
-  theme_wsj()
+  geom_line()
 
 
 ```
@@ -104,8 +100,7 @@ ggplot(no_df, aes(x = ability, y = performance)) +
   geom_line(data = mean_df, aes(x = ability, y = mean_performance, color = legend)) + 
   theme_classic() + 
   theme(legend.title = element_blank()) + 
-  geom_line() + 
-  theme_wsj()
+  geom_line()
 
 ```
 
@@ -119,8 +114,7 @@ ggplot(no_df, aes(x = ability, y = performance)) +
   theme_classic() + 
   theme(legend.title = element_blank()) + 
   geom_line() + 
-  geom_segment(data = mean_df, aes(xend = ability, yend = mean_performance, color = resid_legend)) + 
-  theme_wsj()
+  geom_segment(data = mean_df, aes(xend = ability, yend = mean_performance, color = resid_legend))
 
 
 
@@ -137,7 +131,7 @@ That is what explaining means in research and statistics (technically, "explaini
 
 Now return to the notion that we opened with, to what extent does explaining variation reflect how you explain things in everyday life?
 
-### Connecting to Causality
+## Connecting to Causality
 
 How does all of this connect to causality? Knowing about cause helps you "explain variation," but explaining more or less variation does not give you information about cause. Said differently, knowledge about cause, or the data generating process, or truth, will influence your ability to explain variation, but improving your ability to explain variation will not necessarily produce insights about the DGP. If you know the true process -- i.e., the DGP, the underlying structure of effects and variables, the causal system -- then you will be able to (almost perfectly) explain variation in the sense that I described in this post. If you know the true process, then you will be able to explain why Bob's score is different from Julie's, why some variables correlate with the outcome and others don't, and why Monte's score is different from time 1 versus time 2. Full knowledge of the DGP means you can predict what happens next, there are no unknowns left to make your ESS different from your TSS. 
 

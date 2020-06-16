@@ -23,7 +23,7 @@ interests:
 name: Christopher R. Dishop
 organizations:
 - name: Michigan State University
-  url: https://psychology.msu.edu/directory/dishop-christopher.html/
+  url: https://psychology.msu.edu/
 role: PhD Candidate
 social:
 - icon: github

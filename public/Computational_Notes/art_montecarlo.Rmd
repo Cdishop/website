@@ -1,7 +1,7 @@
 ---
 title: "Art With Monte Carlo"
 Date: "2017-03-18"
-output: pdf_document
+categories: ["R"]
 ---
 
 ```{r setup, include=FALSE}
@@ -14,6 +14,7 @@ Here is a simulation that "draws" a process, inspired by Caleb Madrigal (link [h
 
 # The Data Generating Process
 
+
 ```{r}
 
 f <- function(x){
@@ -21,6 +22,7 @@ f <- function(x){
 }
 
 ```
+
 
 # Some Initial Values
 

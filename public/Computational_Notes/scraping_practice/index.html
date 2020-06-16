@@ -1,24 +1,35 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
 
-<head>
-    <meta name="generator" content="Hugo 0.48" />
+  <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>First Web Scraping | Christopher Dishop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
 
-     
-      
+    <meta name="author" content="Christopher R. Dishop">
+    <meta name="description" content="Dipping my feet into the world of websraping using rvest. The first few examples are pulled from Alex Bradley’s and Richard James’ 2019 article.
+Exercise 1 - From Article Scrape a single page from the article’s practice website. There are three things I want to pull from the page:
+ header
+ image
+ text.
+  Then, put that information into a single data set.
+library(rvest) page_parse &lt;- read_html(&quot;https://practicewebscrapingsite.">
+    <meta name="keywords" content="blog,developer,personal">
+
     
-    
-    
-    
+      <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
     
 
-  <meta name="author" content="">
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="First Web Scraping"/>
+<meta name="twitter:description" content="Dipping my feet into the world of websraping using rvest. The first few examples are pulled from Alex Bradley’s and Richard James’ 2019 article.
+Exercise 1 - From Article Scrape a single page from the article’s practice website. There are three things I want to pull from the page:
+ header
+ image
+ text.
+  Then, put that information into a single data set.
+library(rvest) page_parse &lt;- read_html(&quot;https://practicewebscrapingsite."/>
 
- 
     <meta property="og:title" content="First Web Scraping" />
 <meta property="og:description" content="Dipping my feet into the world of websraping using rvest. The first few examples are pulled from Alex Bradley’s and Richard James’ 2019 article.
 Exercise 1 - From Article Scrape a single page from the article’s practice website. There are three things I want to pull from the page:
@@ -26,77 +37,107 @@ Exercise 1 - From Article Scrape a single page from the article’s practice web
  image
  text.
   Then, put that information into a single data set.
-library(rvest) page_parse &lt;- read_html(&quot;https://practicewebscrapingsite.wordpress.com/example-1/&quot;) headers &lt;- html_nodes(page_parse, &#39;." />
+library(rvest) page_parse &lt;- read_html(&quot;https://practicewebscrapingsite." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/computational_notes/scraping_practice/" /><meta property="article:published_time" content="2020-03-20T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2020-03-20T00:00:00&#43;00:00"/> 
+<meta property="og:url" content="http://christopherdishop.netlify.app/computational_notes/scraping_practice/" />
+<meta property="article:published_time" content="2020-03-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-03-20T00:00:00+00:00" />
+
+
+    
+      <base href="http://christopherdishop.netlify.app/computational_notes/scraping_practice/">
+    
+    <title>
+  First Web Scraping · Home
+</title>
+
+    
+      <link rel="canonical" href="http://christopherdishop.netlify.app/computational_notes/scraping_practice/">
     
 
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
 
-
- 
     
-     
-     
+      
+      
+      <link rel="stylesheet" href="http://christopherdishop.netlify.app/css/coder.min.aca465d1e362e89828cbd890adff660455d93a2703dbede119b5859a41672c49.css" integrity="sha256-rKRl0eNi6Jgoy9iQrf9mBFXZOicD2&#43;3hGbWFmkFnLEk=" crossorigin="anonymous" media="screen" />
     
+
     
-    <link rel="canonical" href="/computational_notes/scraping_practice/">   <link rel="shortcut icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABwlBMVEUAAAA/3MUK07UJ0rRk6NkC0rMAw5sAx6Ic1rs/3MYAlU0E0rQAhjMAyKIAiTkM07UJ07UAhC8m2L4o2L5O4Msn2L4AzKoAzq0128Mo2b8F0rQE0rMu2cAt2cAA0bI228MA0LAAy6kr2b8Q1LcF0rMH0rUAxp4t2b8c1ros2b8P1LcAzKsAzq4528Q02sIM07YAfyg93cUD0rMA0LEA0bFK4c0M1LcL07Uv2sEAzawY1rlJ4c0w2sEAzKkY1rqr+PQN07Yj170G0rQI07UF0bMt2cAF0rMC0bIL07UF0bMs2cAF0rMA0bIC0bIL07UF0rMA0bIA0bIA0bIO1LYr2b8N07Yp2L4F0rMF0rQJ07UA0bIC0bMA0bIH0rQK07UD0bMA0LAF0rMAyqYE0rMA0bIS1Lg228ID0bMM07YS1LcI07QL07UJ07UC0bMM07YG0rMS1Lc328IR1LcC0bIK07UM07Yo2L4P1LcL07UD0rMD0rMD0rMB0bIH0rQ23MMQ1LcD0rMN1LYB0LAJ0rQ33MMG0bMP1bgD0rMN07YH0rQH0rQ33MQF0rMD0rMN1LYo2L4F0rQG0rSA6tsA0bIB0bL////yxqscAAAAk3RSTlMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgnDXAUItvZKBAi6+vpMuf3++wEIAQcEBFn5AgR9UwMEoQLD/AEH4AIdAzha+UMEAQcc9AM4CAFSA9IC+4AEAc8yAwIEBAHOMQOBBLfLMAnFlAJNsa0LAAAAAWJLR0SVCGB6gwAAAAd0SU1FB+EBBBI4BduZ4woAAAF5SURBVDjLY2CAAUYmZgcWRydnVhc2dg4GTMAJlOdydZvs7sHtiU0FSJ7Hy3uyz2RfP24XNl4OLPJ8Xv5A+YBAsAo0M2DyQZMnY1fBL+AgCJXHrkIoWDgEJo9NhUioaBhCHqoiXExcAqZAMkIqckrU5MkoKqSjZeAmyMbIxSIZAFIRMCVOOl4epkAmQSERrwKOJMXkySl4rEhVSkufHDAZtyMzlDPdJweiyiN7UyRLIHsKQj5wMnowSIar5ExJQcjn5qnmqyFHlzqKL7EoQPMlphUaaL7EcGSBZiGKLzFUZGgVFSP5ElNFCVPpFORwhAeVto4uWEGwUJk3alSAVXhIR+tB7ShHTi5QkOIzpUKqEmKCPpODgReaipSUyVWl0tW6GEkWGhRBk2tq6wzrsSVqqPaGRqOmZmMTXWwqwNpbTFvbzMwtsGUMoPb2DqOmTksxK2xZLyhgck1XtzVIuw22zNszeXJvH0i7rR1G9gVlf/v+CRMnWaPYDgA74gwO0j2znAAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxNy0wMS0wNFQxODo1NjowNSswMTowME2yC4wAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTctMDEtMDRUMTg6NTY6MDUrMDE6MDA877MwAAAAV3pUWHRSYXcgcHJvZmlsZSB0eXBlIGlwdGMAAHic4/IMCHFWKCjKT8vMSeVSAAMjCy5jCxMjE0uTFAMTIESANMNkAyOzVCDL2NTIxMzEHMQHy4BIoEouAOoXEXTyQjWVAAAAAElFTkSuQmCC">
 
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
-    <link rel="stylesheet" href="https://jenil.github.io/bulmaswatch/flatly/bulmaswatch.min.css"> 
-    <link rel="stylesheet" href="/css/landing.css">   
     
+
     
-</head>
 
+    
 
-<body>
-    <header> <nav class="navbar is-transparent">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="/">
-      <img src="/img/bulma.png" alt="Bulma logo">
-    </a>
-  </div>
+    <link rel="icon" type="image/png" href="http://christopherdishop.netlify.app/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="http://christopherdishop.netlify.app/images/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.72.0" />
+  </head>
+
   
+  
+  <body class="colorscheme-light"
+        onload=" twemoji.parse(document.body); "
+  >
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="http://christopherdishop.netlify.app/">
+      Home
+    </a>
     
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://christopherdishop.netlify.app/about/">About</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://raw.githubusercontent.com/Cdishop/homepage/master/misc/CV.pdf">CV</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://christopherdishop.netlify.app/Computational_Notes/">Computational Notes</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://christopherdishop.netlify.app/r_resources/">R Resources</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://christopherdishop.netlify.app/rec_reading/">Recommended Reading</a>
+          </li>
+        
+      
+      
+    </ul>
     
-    
-    <span class="nav-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
-    </span>
-    
-    
-    
-    <div class="navbar-end">
-      <div class="navbar-item">
-        
-        
-          <a itemprop="url" class="navbar-item " href="/cv/"><span itemprop="name">CV</span></a>
-        
-          <a itemprop="url" class="navbar-item " href="/rec_reading/"><span itemprop="name">Recommended Reading</span></a>
-        
-          <a itemprop="url" class="navbar-item " href="/r_resources/"><span itemprop="name">R Resources</span></a>
-        
-          <a itemprop="url" class="navbar-item  is-active" href="/computational_notes/"><span itemprop="name">Computational_Notes</span></a>
-        
-      </div> 
-    </div>
-  </div>
+  </section>
 </nav>
- </header>
-    <main>
 
-<div class="columns is-fullheight">
-    <div class="column">
-        <section class="hero is-default is-bold">
-            <div class="hero-body">
-                <div class="content container">
-                   <p>Dipping my feet into the world of websraping using <code>rvest</code>. The first few examples are pulled from <a href="https://journals.sagepub.com/doi/abs/10.1177/2515245919859535">Alex Bradley’s and Richard James’ 2019 article</a>.</p>
-<div id="exercise-1---from-article" class="section level2">
-<h2>Exercise 1 - From Article</h2>
+
+      <div class="content">
+        
+  <section class="container page">
+  <article>
+    <header>
+      <h1>First Web Scraping</h1>
+    </header>
+
+    
+
+
+<p>Dipping my feet into the world of websraping using <code>rvest</code>. The first few examples are pulled from <a href="https://journals.sagepub.com/doi/abs/10.1177/2515245919859535">Alex Bradley’s and Richard James’ 2019 article</a>.</p>
+<div id="exercise-1---from-article" class="section level1">
+<h1>Exercise 1 - From Article</h1>
 <p>Scrape a single page from the article’s practice website. There are three things I want to pull from the page:</p>
 <ul>
 <li><p>header</p></li>
@@ -139,8 +180,8 @@ ex1_df</code></pre>
 ## 2 He moonlight difficult engrossed an it sportsmen. Interested has all devonshire difficulty gay assistance joy. Unaffected at ye of compliment alteration to. Place voice no arise along to. Parlors waiting so against me no. Wishing calling are warrant settled was luckily. Express besides it present if at an opinion visitor. \n\nPaid was hill sir high. For him precaution any advantages dissimilar comparison few terminated projecting. Prevailed discovery immediate objection of ye at. Repair summer one winter living feebly pretty his. In so sense am known these since. Shortly respect ask cousins brought add tedious nay. Expect relied do we genius is. On as around spirit of hearts genius. Is raptures daughter branched laughter peculiar in settling. \n\nIs post each that just leaf no. He connection interested so we an sympathize advantages. To said is it shed want do. Occasional middletons everything so to. Have spot part for his quit may. Enable it is square my an regard. Often merit stuff first oh up hills as he. Servants contempt as although addition dashwood is procured. Interest in yourself an do of numerous feelings cheerful confined. \n\nWhy painful the sixteen how minuter looking nor. Subject but why ten earnest husband imagine sixteen brandon. Are unpleasing occasional celebrated motionless unaffected conviction out. Evil make to no five they. Stuff at avoid of sense small fully it whose an. Ten scarcely distance moreover handsome age although. As when have find fine or said no mile. He in dispatched in imprudence dissimilar be possession unreserved insensible. She evil face fine calm have now. Separate screened he outweigh of distance landlord. \n\nIt real sent your at. Amounted all shy set why followed declared. Repeated of endeavor mr position kindness offering ignorant so up. Simplicity are melancholy preference considered saw companions. Disposal on outweigh do speedily in on. Him ham although thoughts entirely drawings. Acceptance unreserved old admiration projection nay yet him. Lasted am so before on esteem vanity oh. \n\nStarted his hearted any civilly. So me by marianne admitted speaking. Men bred fine call ask. Cease one miles truth day above seven. Suspicion sportsmen provision suffering mrs saw engrossed something. Snug soon he on plan in be dine some. \n\nGive lady of they such they sure it. Me contained explained my education. Vulgar as hearts by garret. Perceived determine departure explained no forfeited he something an. Contrasted dissimilar get joy you instrument out reasonably. Again keeps at no meant stuff. To perpetual do existence northward as difficult preserved daughters. Continued at up to zealously necessary breakfast. Surrounded sir motionless she end literature. Gay direction neglected but supported yet her. \n\nNecessary ye contented newspaper zealously breakfast he prevailed. Melancholy middletons yet understood decisively boy law she. Answer him easily are its barton little. Oh no though mother be things simple itself. Dashwood horrible he strictly on as. Home fine in so am good body this hope. \n\nCause dried no solid no an small so still widen. Ten weather evident smiling bed against she examine its. Rendered far opinions two yet moderate sex striking. Sufficient motionless compliment by stimulated assistance at. Convinced resolving extensive agreeable in it on as remainder. Cordially say affection met who propriety him. Are man she towards private weather pleased. In more part he lose need so want rank no. At bringing or he sensible pleasure. Prevent he parlors do waiting be females an message society. \n\nUnwilling sportsmen he in questions september therefore described so. Attacks may set few believe moments was. Reasonably how possession shy way introduced age inquietude. Missed he engage no exeter of. Still tried means we aware order among on. Eldest father can design tastes did joy settle. Roused future he ye an marked. Arose mr rapid in so vexed words. Gay welcome led add lasting chiefly say looking. \n\n
 ## 3                                                                                                                                                                                                                                                                                                                                                                                      Received the likewise law graceful his. Nor might set along charm now equal green. Pleased yet equally correct colonel not one. Say anxious carried compact conduct sex general nay certain. Mrs for recommend exquisite household eagerness preserved now. My improved honoured he am ecstatic quitting greatest formerly.\n\n\n\nAssure polite his really and others figure though. Day age advantages end sufficient eat expression travelling. Of on am father by agreed supply rather either. Own handsome delicate its property mistress her end appetite. Mean are sons too sold nor said. Son share three men power boy you. Now merits wonder effect garret own.\n\n\n\nDepart do be so he enough talent. Sociable formerly six but handsome. Up do view time they shot. He concluded disposing provision by questions as situation. Its estimating are motionless day sentiments end. Calling an imagine at forbade. At name no an what like spot. Pressed my by do affixed he studied.\n\n\n\nImproved own provided blessing may peculiar domestic. Sight house has sex never. No visited raising gravity outward subject my cottage mr be. Hold do at tore in park feet near my case. Invitation at understood occasional sentiments insipidity inhabiting in. Off melancholy alteration principles old. Is do speedily kindness properly oh. Respect article painted cottage he is offices parlors.\n\n\n\nVillage did removed enjoyed explain nor ham saw calling talking. Securing as informed declared or margaret. Joy horrible moreover man feelings own shy. Request norland neither mistake for yet. Between the for morning assured country believe. On even feet time have an no at. Relation so in confined smallest children unpacked delicate. Why sir end believe uncivil respect. Always get adieus nature day course for common. My little garret repair to desire he esteem.\n\n\n\nUnpleasant astonished an diminution up partiality. Noisy an their of meant. Death means up civil do an offer wound of. Called square an in afraid direct. Resolution diminution conviction so mr at unpleasing simplicity no. No it as breakfast up conveying earnestly immediate principle. Him son disposed produced humoured overcame she bachelor improved. Studied however out wishing but inhabit fortune windows.\n\n\n\nExtremely we promotion remainder eagerness enjoyment an. Ham her demands removal brought minuter raising invited gay. Contented consisted continual curiosity contained get sex. Forth child dried in in aware do. You had met they song how feel lain evil near. Small she avoid six yet table china. And bed make say been then dine mrs. To household rapturous fulfilled attempted on so.\n\n\n\nIs allowance instantly strangers applauded discourse so. Separate entrance welcomed sensible laughing why one moderate shy. We seeing piqued garden he. As in merry at forth least ye stood. And cold sons yet with. Delivered middleton therefore me at. Attachment companions man way excellence how her pianoforte.\n\n\n\nOn am we offices expense thought. Its hence ten smile age means. Seven chief sight far point any. Of so high into easy. Dashwoods eagerness oh extensive as discourse sportsman frankness. Husbands see disposed surprise likewise humoured yet pleasure. Fifteen no inquiry cordial so resolve garrets as. Impression was estimating surrounded solicitude indulgence son shy.\n\n\n\nWrote water woman of heart it total other. By in entirely securing suitable graceful at families improved. Zealously few furniture repulsive was agreeable consisted difficult. Collected breakfast estimable questions in to favourite it. Known he place worth words it as to. Spoke now noise off smart her ready.</code></pre>
 </div>
-<div id="example-2---from-article" class="section level2">
-<h2>Example 2 - From Article</h2>
+<div id="example-2---from-article" class="section level1">
+<h1>Example 2 - From Article</h1>
 <p>Next, navigate to several different pages and scrape relevant information. First, compile all of the relevant links. Then, navigate to each page using one of the links and pull…</p>
 <ul>
 <li><p>header</p></li>
@@ -212,8 +253,8 @@ head(df_ex2)</code></pre>
 ## 4 By Walter Singsong
 ## 5   By Wilbert Wonde</code></pre>
 </div>
-<div id="example-3---scrape-my-website" class="section level2">
-<h2>Example 3 - Scrape My Website</h2>
+<div id="example-3---scrape-my-website" class="section level1">
+<h1>Example 3 - Scrape My Website</h1>
 <p>What if I want to scrape the computational notes on my own website? I need a for-loop to iterate over each page, and I’d like to end up with a data set containing the following for each page:</p>
 <ul>
 <li><p>title</p></li>
@@ -221,8 +262,8 @@ head(df_ex2)</code></pre>
 </ul>
 <p>My website gets tripped up when it tries to scrape itself while rendering. So, I’ll post this example on github. Here is the <a href="https://cdishop.github.io/Cdishop.github.io.own_scrape/">link</a>.</p>
 </div>
-<div id="example-4---scrape-imdb" class="section level2">
-<h2>Example 4 - Scrape IMDB</h2>
+<div id="example-4---scrape-imdb" class="section level1">
+<h1>Example 4 - Scrape IMDB</h1>
 <p>In the prior examples, I scraped text. What if I want to scrape a movie rating from IMDB?</p>
 <pre class="r"><code># scrape the score for &#39;there will be blood&#39;
 movie_page &lt;- read_html(&quot;https://www.imdb.com/title/tt0469494/?ref_=fn_al_tt_1&quot;)
@@ -236,42 +277,88 @@ review</code></pre>
 <p>Bo<span class="math inline">\(^2\)</span>m =)</p>
 </div>
 
-                </div>
-                <br>
-            </div>
-        </section>
-    </div>
-</div>
-</main>
-    <footer> 
+  </article>
+</section>
+
+  
+
+      </div>
+
+      
   <footer class="footer">
-    <div class="container">
-        <div class="content has-text-centered">
-            <p>
-                I generated this site using 
-                <a href="https://gohugo.io/">Hugo</a> and Jeblister's
-                <a href="https://themes.gohugo.io/bulma/">Bulma</a> theme.
-                
-            </p>
-            <p>
-              Michigan State University is not liable for any opinions on this website.
+    <section class="container">
+      
+      
+        ©
+        
+          2016 -
+        
+        2020
+         Christopher R. Dishop 
+      
+      
+         · 
+        Generated with <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+      
+      
+        
+      
 
-            </p>
-        </div>
-    </div>
-</footer>
 
-<script src="//yihui.name/js/math-code.js"></script>
-<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
 
-<link rel="stylesheet" href="/css/obsidian.css" rel="stylesheet" id="theme-stylesheet">
-<script src="/js/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script> 
-</footer>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: true }
+        }
+    });
+    </script>
+    
+    </section>
+  </footer>
 
-    <script async type="text/javascript" src="/js/bulma.js"></script>
-    <script async type="text/javascript"  src="/js/clipboard.min.js"></script>
-    <script async type="text/javascript"  src="/js/clip.js"></script>
-</body>
+
+    </main>
+
+    
+
+    
+
+    <script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//analytics.example.com/tracker.js', 'fathom');
+fathom('set', 'siteId', 'ABCDE');
+fathom('trackPageview');
+</script>
+
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/atom-one-dark.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+  </body>
+
+
 
 </html>

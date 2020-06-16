@@ -6,6 +6,7 @@ output: pdf_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = F, message = F)
+library(ggthemes)
 ```
 
 A fun simulation by McClelland and Judd (1993) in *Psychological Bulletin* that demonstrates why detecting interactions outside the lab (i.e., in field studies) is difficult. In experiments, scores on the independent variables are located at the extremes of their respective distributions because we manipulate conditions. The distribution of scores across all of the independent variables in field studies, conversely, is typically assumed to be normal. By creating "extreme groups" in experiments, therefore, it becomes easier to detect interactions.
@@ -29,7 +30,8 @@ df <- data.frame("experiment_x_values" = c(exp_x_values),
 
 ggplot(df) + geom_bar(aes(x = experiment_x_values)) + 
   xlab("Values on the IV") + 
-  ylab("Number of People")
+  ylab("Number of People") + 
+  theme_wsj()
 
 ```
 
@@ -39,7 +41,8 @@ where 50 people are assigned to each condition. In this case, the distribution o
 
 ggplot(df) + geom_histogram(aes(x = field_x_values)) + 
   xlab("Values on the IV") + 
-  ylab("Number of People")
+  ylab("Number of People") + 
+  theme_wsj()
 
 ```
 
@@ -61,7 +64,7 @@ Each simulation will use the equation just presented to generate data across 100
 
 # The Experiment Data
 
-## The distribution of X:
+### The distribution of X:
 
 ```{r, echo = F, cache=TRUE}
 xy_data <- c(-1,1)
@@ -72,7 +75,7 @@ b_0 <- 0
 hist(x_values)
 ```
 
-## The distribution of Z:
+### The distribution of Z:
 
 ```{r, echo = F, cache=TRUE}
 xy_data <- c(-1,1)
@@ -81,7 +84,7 @@ z_values <- sample(xy_data, 100, replace = T)
 hist(z_values)
 ```
 
-## The distribution of Y after using the equation above to generate scores on Y:
+### The distribution of Y after using the equation above to generate scores on Y:
 
 ```{r, cache=TRUE}
 
@@ -93,7 +96,7 @@ hist(y_values)
 
 ```
 
-## Now estimate the parameters using regression:
+### Now estimate the parameters using regression:
 
 ```{r}
 
@@ -109,7 +112,7 @@ summary(exp_model)
 
 # The Field Study Data
 
-## The distribution of X:
+### The distribution of X:
 
 ```{r, echo = F, cache=TRUE}
 
@@ -119,7 +122,7 @@ hist(f_x_values)
 
 ```
 
-## The distribution of Z:
+### The distribution of Z:
 
 ```{r, echo = F, cache=TRUE}
 
@@ -128,7 +131,7 @@ f_z_values <- rnorm(100, 0, 0.5)
 hist(f_z_values)
 ```
 
-## The distribution of Y after using the equation above to generate scores on Y:
+### The distribution of Y after using the equation above to generate scores on Y:
 
 ```{r, cache=TRUE}
 
@@ -140,7 +143,7 @@ hist(f_y_values)
 
 ```
 
-## Now estimate the parameters using regression:
+### Now estimate the parameters using regression:
 
 ```{r}
 
@@ -156,7 +159,7 @@ summary(field_model)
 
 # Putting Everything Into Monte Carlo
 
-## Replicate the process above 1000 times and save the p-value each time
+### Replicate the process above 1000 times and save the p-value each time
 
 ```{r, echo = T, cache=TRUE}
 
@@ -227,14 +230,14 @@ for(i in 1:sims){
 
 # The Results
 
-## What proportion of experiments find significant interaction effects?
+### What proportion of experiments find significant interaction effects?
 
 ```{r}
 
 sum(exp_results < 0.05) / 1000
 ```
 
-## What proportion of field studies find significant interaction effects?
+### What proportion of field studies find significant interaction effects?
 
 ```{r}
 

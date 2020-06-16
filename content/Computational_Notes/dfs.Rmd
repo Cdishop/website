@@ -24,7 +24,7 @@ To count the number of knowns, I need to know the number of observed variables, 
 
 To count the number of unknowns, I count the number of parameters that my model estimates. Now for the examples.
 
-## Example 1 - Trust and availability cause helping
+# Example 1 - Trust and availability cause helping
 
 ### DGP
 
@@ -60,7 +60,7 @@ helping ~ b1*trust + b2*availability
 ex1_model <- sem(ex1_string, data = df)
 ```
 
-### Count dfs
+# Count dfs
 
 #### Knowns (count the observed variables)
 
@@ -101,7 +101,7 @@ ex1_model_restrict <- sem(ex1_string_restrict, data = df)
 show(ex1_model_restrict) # yup
 ```
 
-## Example 2 - Common factor underlying 6 observed items
+# Example 2 - Common factor underlying 6 observed items
 
 ### DGP
 
@@ -173,7 +173,7 @@ ex2_model <- sem(ex2_string, data = df_cf)
 show(ex2_model)
 ```
 
-## Example 3 - Two latent variables predict one observed outcome
+# Example 3 - Two latent variables predict one observed outcome
 
 Cognitive ability (latent variable 1) and assertiveness (latent variable 2) predict productivity. Cognitive ability and assertiveness are both captured with 2 manifest items/variables. 
 
@@ -279,7 +279,7 @@ Ah, there is only 1 prediction error because productivity is being predicted. I 
 show(ex3_model)
 ```
 
-## Example 4 - a causes b, which causes c, which causes d
+# Example 4 - a causes b, which causes c, which causes d
 
 ### DGP
 
@@ -339,7 +339,7 @@ ex4_model <- sem(ex4_string, data = df_chain)
 show(ex4_model)
 ```
 
-## Example 5 - Observed affect over 7 time points
+# Example 5 - Observed affect over 7 time points
 
 ### DGP
 

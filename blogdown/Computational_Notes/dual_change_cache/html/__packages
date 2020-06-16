@@ -10,5 +10,5 @@ stringr
 forcats
 reshape2
 MASS
-bindrcpp
 lavaan
+ggthemes

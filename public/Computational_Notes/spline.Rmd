@@ -33,6 +33,7 @@ library(tidyverse)
 library(lavaan)
 library(ggplot2)
 library(MASS)
+library(ggthemes)
 
 N <- 400
 time <- 10
@@ -103,7 +104,8 @@ ggplot() +
   geom_point(data = df2, aes(x = time, y = affect, group = id), color = 'gray85') + 
   geom_line(data = df2, aes(x = time, y = affect, group = id), color = 'gray85') + 
   geom_line(data = df_sum1, aes(x = time, y = affect)) + 
-  geom_line(data = df_sum2, aes(x = time, y = affect))
+  geom_line(data = df_sum2, aes(x = time, y = affect)) + 
+  theme_wsj()
 
 ```
 
@@ -293,7 +295,8 @@ ggplot() +
   geom_point(data = df2_b, aes(x = time, y = affect, group = id), color = 'gray85') + 
   geom_line(data = df2_b, aes(x = time, y = affect, group = id), color = 'gray85') + 
   geom_line(data = df_sum1_b, aes(x = time, y = affect)) + 
-  geom_line(data = df_sum2_b, aes(x = time, y = affect))
+  geom_line(data = df_sum2_b, aes(x = time, y = affect)) + 
+  theme_wsj()
 
 ```
 
@@ -492,7 +495,8 @@ ggplot() +
   geom_line(data = df_sum2_c, aes(x = time, y = affect)) + 
   geom_point(data = df3_c, aes(x = time, y = affect, group = id), color = 'gray85') + 
   geom_line(data = df3_c, aes(x = time, y = affect, group = id), color = 'gray85') + 
-  geom_line(data = df_sum3_c, aes(x = time, y = affect))
+  geom_line(data = df_sum3_c, aes(x = time, y = affect)) + 
+  theme_wsj()
 
 ```
 

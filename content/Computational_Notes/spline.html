@@ -24,6 +24,7 @@ y_{it} =
 library(lavaan)
 library(ggplot2)
 library(MASS)
+library(ggthemes)
 
 N &lt;- 400
 time &lt;- 10
@@ -94,7 +95,8 @@ ggplot() +
   geom_point(data = df2, aes(x = time, y = affect, group = id), color = &#39;gray85&#39;) + 
   geom_line(data = df2, aes(x = time, y = affect, group = id), color = &#39;gray85&#39;) + 
   geom_line(data = df_sum1, aes(x = time, y = affect)) + 
-  geom_line(data = df_sum2, aes(x = time, y = affect))</code></pre>
+  geom_line(data = df_sum2, aes(x = time, y = affect)) + 
+  theme_wsj()</code></pre>
 <p><img src="/Computational_Notes/spline_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 <p>Estimating the parameters using SEM:</p>
 <pre class="r"><code>library(lavaan)
@@ -168,55 +170,57 @@ affect.10 ~~ res_var*affect.10
 
 spline_model &lt;- growth(spline_string, data = df_wide)
 summary(spline_model, fit.measures = T)</code></pre>
-<pre><code>## lavaan 0.6-2 ended normally after 84 iterations
+<pre><code>## lavaan 0.6-6 ended normally after 86 iterations
 ## 
+##   Estimator                                         ML
 ##   Optimization method                           NLMINB
 ##   Number of free parameters                         24
 ##   Number of equality constraints                     9
-## 
+##                                                       
 ##   Number of observations                           400
-## 
-##   Estimator                                         ML
-##   Model Fit Test Statistic                      46.125
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                50.748
 ##   Degrees of freedom                                50
-##   P-value (Chi-square)                           0.630
+##   P-value (Chi-square)                           0.444
 ## 
-## Model test baseline model:
+## Model Test Baseline Model:
 ## 
-##   Minimum Function Test Statistic             1868.923
+##   Test statistic                              1927.541
 ##   Degrees of freedom                                45
 ##   P-value                                        0.000
 ## 
-## User model versus baseline model:
+## User Model versus Baseline Model:
 ## 
 ##   Comparative Fit Index (CFI)                    1.000
-##   Tucker-Lewis Index (TLI)                       1.002
+##   Tucker-Lewis Index (TLI)                       1.000
 ## 
 ## Loglikelihood and Information Criteria:
 ## 
-##   Loglikelihood user model (H0)              -6175.494
-##   Loglikelihood unrestricted model (H1)      -6152.432
-## 
-##   Number of free parameters                         15
-##   Akaike (AIC)                               12380.988
-##   Bayesian (BIC)                             12440.860
-##   Sample-size adjusted Bayesian (BIC)        12393.264
+##   Loglikelihood user model (H0)              -6057.519
+##   Loglikelihood unrestricted model (H1)      -6032.145
+##                                                       
+##   Akaike (AIC)                               12145.039
+##   Bayesian (BIC)                             12204.911
+##   Sample-size adjusted Bayesian (BIC)        12157.315
 ## 
 ## Root Mean Square Error of Approximation:
 ## 
-##   RMSEA                                          0.000
-##   90 Percent Confidence Interval          0.000  0.028
+##   RMSEA                                          0.006
+##   90 Percent confidence interval - lower         0.000
+##   90 Percent confidence interval - upper         0.033
 ##   P-value RMSEA &lt;= 0.05                          1.000
 ## 
 ## Standardized Root Mean Square Residual:
 ## 
-##   SRMR                                           0.031
+##   SRMR                                           0.045
 ## 
 ## Parameter Estimates:
 ## 
+##   Standard errors                             Standard
 ##   Information                                 Expected
 ##   Information saturated (h1) model          Structured
-##   Standard Errors                             Standard
 ## 
 ## Latent Variables:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
@@ -268,14 +272,14 @@ summary(spline_model, fit.measures = T)</code></pre>
 ## Covariances:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
 ##   level1_affect ~~                                    
-##     level2_affect     1.061    0.181    5.870    0.000
-##     slope1_affect     0.005    0.046    0.105    0.916
-##     slope2_affect    -0.003    0.020   -0.129    0.898
+##     level2_affect     1.252    0.166    7.521    0.000
+##     slope1_affect     0.029    0.043    0.688    0.491
+##     slope2_affect    -0.034    0.017   -2.005    0.045
 ##   level2_affect ~~                                    
-##     slope1_affect     0.018    0.048    0.368    0.713
-##     slope2_affect    -0.053    0.039   -1.374    0.169
+##     slope1_affect    -0.074    0.043   -1.731    0.083
+##     slope2_affect     0.053    0.031    1.699    0.089
 ##   slope1_affect ~~                                    
-##     slope2_affect    -0.003    0.006   -0.587    0.557
+##     slope2_affect     0.009    0.005    2.014    0.044
 ## 
 ## Intercepts:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
@@ -289,27 +293,27 @@ summary(spline_model, fit.measures = T)</code></pre>
 ##    .affect.8          0.000                           
 ##    .affect.9          0.000                           
 ##    .affect.10         0.000                           
-##     level1_affect     4.050    0.080   50.730    0.000
-##     level2_affect     8.165    0.108   75.429    0.000
-##     slope1_affect     0.315    0.022   14.251    0.000
-##     slope2_affect     0.889    0.013   69.317    0.000
+##     level1_affect     3.920    0.077   50.867    0.000
+##     level2_affect     7.849    0.100   78.463    0.000
+##     slope1_affect     0.315    0.021   14.801    0.000
+##     slope2_affect     0.913    0.011   83.276    0.000
 ## 
 ## Variances:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
-##     lvl1_ff           1.049    0.185    5.658    0.000
-##     lvl2_ff           1.304    0.345    3.775    0.000
-##     slp1_ff          -0.004    0.015   -0.269    0.788
-##     slp2_ff           0.009    0.005    1.755    0.079
-##    .affct.1 (rs_v)    1.000    0.029   34.641    0.000
-##    .affct.2 (rs_v)    1.000    0.029   34.641    0.000
-##    .affct.3 (rs_v)    1.000    0.029   34.641    0.000
-##    .affct.4 (rs_v)    1.000    0.029   34.641    0.000
-##    .affct.5 (rs_v)    1.000    0.029   34.641    0.000
-##    .affct.6 (rs_v)    1.000    0.029   34.641    0.000
-##    .affct.7 (rs_v)    1.000    0.029   34.641    0.000
-##    .affct.8 (rs_v)    1.000    0.029   34.641    0.000
-##    .affct.9 (rs_v)    1.000    0.029   34.641    0.000
-##    .affc.10 (rs_v)    1.000    0.029   34.641    0.000</code></pre>
+##     lvl1_ff           0.899    0.173    5.184    0.000
+##     lvl2_ff           0.673    0.299    2.251    0.024
+##     slp1_ff          -0.016    0.014   -1.169    0.243
+##     slp2_ff          -0.008    0.004   -2.191    0.028
+##    .affct.1 (rs_v)    0.985    0.028   34.641    0.000
+##    .affct.2 (rs_v)    0.985    0.028   34.641    0.000
+##    .affct.3 (rs_v)    0.985    0.028   34.641    0.000
+##    .affct.4 (rs_v)    0.985    0.028   34.641    0.000
+##    .affct.5 (rs_v)    0.985    0.028   34.641    0.000
+##    .affct.6 (rs_v)    0.985    0.028   34.641    0.000
+##    .affct.7 (rs_v)    0.985    0.028   34.641    0.000
+##    .affct.8 (rs_v)    0.985    0.028   34.641    0.000
+##    .affct.9 (rs_v)    0.985    0.028   34.641    0.000
+##    .affc.10 (rs_v)    0.985    0.028   34.641    0.000</code></pre>
 <p>The structure of the basis coefficients is the important piece that allows us to capture the change in slope:</p>
 <pre class="r"><code>&#39;
 # latent slope for first half basis coefficients
@@ -406,7 +410,8 @@ ggplot() +
   geom_point(data = df2_b, aes(x = time, y = affect, group = id), color = &#39;gray85&#39;) + 
   geom_line(data = df2_b, aes(x = time, y = affect, group = id), color = &#39;gray85&#39;) + 
   geom_line(data = df_sum1_b, aes(x = time, y = affect)) + 
-  geom_line(data = df_sum2_b, aes(x = time, y = affect))</code></pre>
+  geom_line(data = df_sum2_b, aes(x = time, y = affect)) + 
+  theme_wsj()</code></pre>
 <p><img src="/Computational_Notes/spline_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>Estimating the parameters using SEM:</p>
 <pre class="r"><code>library(lavaan)
@@ -481,55 +486,57 @@ affect.10 ~~ res_var*affect.10
 
 spline_model_b &lt;- growth(spline_string_b, data = df_wide_b)
 summary(spline_model_b, fit.measures = T)</code></pre>
-<pre><code>## lavaan 0.6-2 ended normally after 68 iterations
+<pre><code>## lavaan 0.6-6 ended normally after 72 iterations
 ## 
+##   Estimator                                         ML
 ##   Optimization method                           NLMINB
 ##   Number of free parameters                         24
 ##   Number of equality constraints                     9
-## 
+##                                                       
 ##   Number of observations                           400
-## 
-##   Estimator                                         ML
-##   Model Fit Test Statistic                      57.374
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                62.857
 ##   Degrees of freedom                                50
-##   P-value (Chi-square)                           0.221
+##   P-value (Chi-square)                           0.105
 ## 
-## Model test baseline model:
+## Model Test Baseline Model:
 ## 
-##   Minimum Function Test Statistic             2053.910
+##   Test statistic                              1520.301
 ##   Degrees of freedom                                45
 ##   P-value                                        0.000
 ## 
-## User model versus baseline model:
+## User Model versus Baseline Model:
 ## 
-##   Comparative Fit Index (CFI)                    0.996
-##   Tucker-Lewis Index (TLI)                       0.997
+##   Comparative Fit Index (CFI)                    0.991
+##   Tucker-Lewis Index (TLI)                       0.992
 ## 
 ## Loglikelihood and Information Criteria:
 ## 
-##   Loglikelihood user model (H0)              -6150.596
-##   Loglikelihood unrestricted model (H1)      -6121.909
-## 
-##   Number of free parameters                         15
-##   Akaike (AIC)                               12331.193
-##   Bayesian (BIC)                             12391.065
-##   Sample-size adjusted Bayesian (BIC)        12343.469
+##   Loglikelihood user model (H0)              -6125.818
+##   Loglikelihood unrestricted model (H1)      -6094.389
+##                                                       
+##   Akaike (AIC)                               12281.635
+##   Bayesian (BIC)                             12341.507
+##   Sample-size adjusted Bayesian (BIC)        12293.911
 ## 
 ## Root Mean Square Error of Approximation:
 ## 
-##   RMSEA                                          0.019
-##   90 Percent Confidence Interval          0.000  0.039
-##   P-value RMSEA &lt;= 0.05                          0.998
+##   RMSEA                                          0.025
+##   90 Percent confidence interval - lower         0.000
+##   90 Percent confidence interval - upper         0.043
+##   P-value RMSEA &lt;= 0.05                          0.992
 ## 
 ## Standardized Root Mean Square Residual:
 ## 
-##   SRMR                                           0.028
+##   SRMR                                           0.035
 ## 
 ## Parameter Estimates:
 ## 
+##   Standard errors                             Standard
 ##   Information                                 Expected
 ##   Information saturated (h1) model          Structured
-##   Standard Errors                             Standard
 ## 
 ## Latent Variables:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
@@ -581,14 +588,14 @@ summary(spline_model_b, fit.measures = T)</code></pre>
 ## Covariances:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
 ##   level1_affect ~~                                    
-##     level2_affect     1.067    0.175    6.087    0.000
-##     slope1_affect     0.057    0.042    1.358    0.174
-##     slope2_affect    -0.006    0.019   -0.323    0.746
+##     level2_affect     0.771    0.171    4.511    0.000
+##     slope1_affect    -0.030    0.047   -0.632    0.528
+##     slope2_affect     0.013    0.019    0.701    0.484
 ##   level2_affect ~~                                    
-##     slope1_affect    -0.015    0.047   -0.327    0.743
-##     slope2_affect    -0.058    0.039   -1.508    0.131
+##     slope1_affect     0.044    0.047    0.936    0.349
+##     slope2_affect    -0.014    0.036   -0.397    0.691
 ##   slope1_affect ~~                                    
-##     slope2_affect     0.006    0.005    1.109    0.267
+##     slope2_affect    -0.009    0.005   -1.671    0.095
 ## 
 ## Intercepts:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
@@ -602,27 +609,27 @@ summary(spline_model_b, fit.measures = T)</code></pre>
 ##    .affect.8          0.000                           
 ##    .affect.9          0.000                           
 ##    .affect.10         0.000                           
-##     level1_affect     4.020    0.076   52.903    0.000
-##     level2_affect     3.858    0.110   35.124    0.000
-##     slope1_affect     0.774    0.022   35.974    0.000
-##     slope2_affect    -0.783    0.013  -61.697    0.000
+##     level1_affect     3.971    0.079   50.232    0.000
+##     level2_affect     3.868    0.105   36.736    0.000
+##     slope1_affect     0.804    0.023   35.669    0.000
+##     slope2_affect    -0.781    0.012  -65.077    0.000
 ## 
 ## Variances:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
-##     lvl1_ff           0.845    0.169    5.009    0.000
-##     lvl2_ff           1.525    0.354    4.304    0.000
-##     slp1_ff          -0.010    0.014   -0.714    0.475
-##     slp2_ff           0.009    0.005    1.782    0.075
-##    .affct.1 (rs_v)    0.976    0.028   34.641    0.000
-##    .affct.2 (rs_v)    0.976    0.028   34.641    0.000
-##    .affct.3 (rs_v)    0.976    0.028   34.641    0.000
-##    .affct.4 (rs_v)    0.976    0.028   34.641    0.000
-##    .affct.5 (rs_v)    0.976    0.028   34.641    0.000
-##    .affct.6 (rs_v)    0.976    0.028   34.641    0.000
-##    .affct.7 (rs_v)    0.976    0.028   34.641    0.000
-##    .affct.8 (rs_v)    0.976    0.028   34.641    0.000
-##    .affct.9 (rs_v)    0.976    0.028   34.641    0.000
-##    .affc.10 (rs_v)    0.976    0.028   34.641    0.000</code></pre>
+##     lvl1_ff           0.979    0.182    5.373    0.000
+##     lvl2_ff           1.006    0.329    3.060    0.002
+##     slp1_ff           0.000    0.016    0.013    0.990
+##     slp2_ff          -0.000    0.004   -0.082    0.935
+##    .affct.1 (rs_v)    1.014    0.029   34.641    0.000
+##    .affct.2 (rs_v)    1.014    0.029   34.641    0.000
+##    .affct.3 (rs_v)    1.014    0.029   34.641    0.000
+##    .affct.4 (rs_v)    1.014    0.029   34.641    0.000
+##    .affct.5 (rs_v)    1.014    0.029   34.641    0.000
+##    .affct.6 (rs_v)    1.014    0.029   34.641    0.000
+##    .affct.7 (rs_v)    1.014    0.029   34.641    0.000
+##    .affct.8 (rs_v)    1.014    0.029   34.641    0.000
+##    .affct.9 (rs_v)    1.014    0.029   34.641    0.000
+##    .affc.10 (rs_v)    1.014    0.029   34.641    0.000</code></pre>
 <p>Notice that the string syntax is the exact same because the process changes at the same point in time, it does not matter if the process changes to ‘more positive’ or ‘more negative.’</p>
 </div>
 <div id="negative-growth-growth-and-negative-growth" class="section level1">
@@ -731,7 +738,8 @@ ggplot() +
   geom_line(data = df_sum2_c, aes(x = time, y = affect)) + 
   geom_point(data = df3_c, aes(x = time, y = affect, group = id), color = &#39;gray85&#39;) + 
   geom_line(data = df3_c, aes(x = time, y = affect, group = id), color = &#39;gray85&#39;) + 
-  geom_line(data = df_sum3_c, aes(x = time, y = affect))</code></pre>
+  geom_line(data = df_sum3_c, aes(x = time, y = affect)) + 
+  theme_wsj()</code></pre>
 <p><img src="/Computational_Notes/spline_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>Now estimate the parameters using SEM:</p>
 <pre class="r"><code>library(lavaan)
@@ -829,55 +837,57 @@ affect.10 ~~ res_var*affect.10
 
 spline_model_c &lt;- growth(spline_string_c, data = df_wide_c)
 summary(spline_model_c, fit.measures = T)</code></pre>
-<pre><code>## lavaan 0.6-2 ended normally after 141 iterations
+<pre><code>## lavaan 0.6-6 ended normally after 140 iterations
 ## 
+##   Estimator                                         ML
 ##   Optimization method                           NLMINB
 ##   Number of free parameters                         42
 ##   Number of equality constraints                     9
-## 
+##                                                       
 ##   Number of observations                           400
-## 
-##   Estimator                                         ML
-##   Model Fit Test Statistic                     120.300
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                92.306
 ##   Degrees of freedom                               102
-##   P-value (Chi-square)                           0.104
+##   P-value (Chi-square)                           0.744
 ## 
-## Model test baseline model:
+## Model Test Baseline Model:
 ## 
-##   Minimum Function Test Statistic             3120.637
+##   Test statistic                              3122.724
 ##   Degrees of freedom                               105
 ##   P-value                                        0.000
 ## 
-## User model versus baseline model:
+## User Model versus Baseline Model:
 ## 
-##   Comparative Fit Index (CFI)                    0.994
-##   Tucker-Lewis Index (TLI)                       0.994
+##   Comparative Fit Index (CFI)                    1.000
+##   Tucker-Lewis Index (TLI)                       1.003
 ## 
 ## Loglikelihood and Information Criteria:
 ## 
-##   Loglikelihood user model (H0)              -9094.871
-##   Loglikelihood unrestricted model (H1)      -9034.722
-## 
-##   Number of free parameters                         33
-##   Akaike (AIC)                               18255.743
-##   Bayesian (BIC)                             18387.461
-##   Sample-size adjusted Bayesian (BIC)        18282.750
+##   Loglikelihood user model (H0)              -9072.897
+##   Loglikelihood unrestricted model (H1)      -9026.744
+##                                                       
+##   Akaike (AIC)                               18211.794
+##   Bayesian (BIC)                             18343.512
+##   Sample-size adjusted Bayesian (BIC)        18238.801
 ## 
 ## Root Mean Square Error of Approximation:
 ## 
-##   RMSEA                                          0.021
-##   90 Percent Confidence Interval          0.000  0.035
+##   RMSEA                                          0.000
+##   90 Percent confidence interval - lower         0.000
+##   90 Percent confidence interval - upper         0.020
 ##   P-value RMSEA &lt;= 0.05                          1.000
 ## 
 ## Standardized Root Mean Square Residual:
 ## 
-##   SRMR                                           0.040
+##   SRMR                                           0.037
 ## 
 ## Parameter Estimates:
 ## 
+##   Standard errors                             Standard
 ##   Information                                 Expected
 ##   Information saturated (h1) model          Structured
-##   Standard Errors                             Standard
 ## 
 ## Latent Variables:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
@@ -981,25 +991,25 @@ summary(spline_model_c, fit.measures = T)</code></pre>
 ## Covariances:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
 ##   level1_affect ~~                                    
-##     level2_affect     1.238    0.206    6.001    0.000
-##     level3_affect     0.745    0.237    3.137    0.002
-##     slope1_affect     0.038    0.044    0.857    0.392
-##     slope2_affect    -0.032    0.025   -1.275    0.202
-##     slope3_affect     0.021    0.018    1.196    0.232
+##     level2_affect     1.323    0.206    6.420    0.000
+##     level3_affect     1.314    0.273    4.809    0.000
+##     slope1_affect     0.014    0.044    0.323    0.747
+##     slope2_affect    -0.046    0.025   -1.814    0.070
+##     slope3_affect    -0.024    0.020   -1.185    0.236
 ##   level2_affect ~~                                    
-##     level3_affect     1.360    0.388    3.507    0.000
-##     slope1_affect    -0.020    0.056   -0.363    0.717
-##     slope2_affect    -0.006    0.058   -0.098    0.922
-##     slope3_affect    -0.015    0.029   -0.512    0.609
+##     level3_affect     1.114    0.425    2.619    0.009
+##     slope1_affect    -0.140    0.054   -2.574    0.010
+##     slope2_affect    -0.042    0.058   -0.719    0.472
+##     slope3_affect    -0.006    0.032   -0.195    0.846
 ##   level3_affect ~~                                    
-##     slope1_affect    -0.002    0.066   -0.024    0.981
-##     slope2_affect    -0.090    0.048   -1.857    0.063
-##     slope3_affect     0.097    0.053    1.819    0.069
+##     slope1_affect    -0.148    0.074   -2.014    0.044
+##     slope2_affect    -0.014    0.055   -0.252    0.801
+##     slope3_affect    -0.116    0.065   -1.778    0.075
 ##   slope1_affect ~~                                    
-##     slope2_affect     0.002    0.007    0.275    0.783
-##     slope3_affect    -0.001    0.005   -0.204    0.838
+##     slope2_affect     0.019    0.007    2.742    0.006
+##     slope3_affect     0.011    0.006    2.059    0.039
 ##   slope2_affect ~~                                    
-##     slope3_affect     0.005    0.004    1.411    0.158
+##     slope3_affect     0.001    0.004    0.140    0.889
 ## 
 ## Intercepts:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
@@ -1018,36 +1028,36 @@ summary(spline_model_c, fit.measures = T)</code></pre>
 ##    .affect.13         0.000                           
 ##    .affect.14         0.000                           
 ##    .affect.15         0.000                           
-##     level1_affect     3.978    0.078   51.181    0.000
-##     level2_affect     4.030    0.127   31.827    0.000
-##     level3_affect     4.034    0.151   26.752    0.000
-##     slope1_affect    -0.514    0.022  -23.449    0.000
-##     slope2_affect     0.490    0.016   30.764    0.000
-##     slope3_affect    -0.505    0.011  -44.201    0.000
+##     level1_affect     3.846    0.078   49.098    0.000
+##     level2_affect     4.085    0.125   32.789    0.000
+##     level3_affect     3.730    0.169   22.038    0.000
+##     slope1_affect    -0.471    0.022  -21.810    0.000
+##     slope2_affect     0.484    0.016   30.033    0.000
+##     slope3_affect    -0.482    0.013  -37.602    0.000
 ## 
 ## Variances:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
-##     lvl1_ff           0.873    0.177    4.933    0.000
-##     lvl2_ff           1.163    0.479    2.426    0.015
-##     lvl3_ff          -0.323    0.710   -0.455    0.649
-##     slp1_ff          -0.014    0.015   -0.907    0.365
-##     slp2_ff          -0.001    0.008   -0.189    0.850
-##     slp3_ff          -0.007    0.004   -1.664    0.096
-##    .affct.1 (rs_v)    1.029    0.031   33.665    0.000
-##    .affct.2 (rs_v)    1.029    0.031   33.665    0.000
-##    .affct.3 (rs_v)    1.029    0.031   33.665    0.000
-##    .affct.4 (rs_v)    1.029    0.031   33.665    0.000
-##    .affct.5 (rs_v)    1.029    0.031   33.665    0.000
-##    .affct.6 (rs_v)    1.029    0.031   33.665    0.000
-##    .affct.7 (rs_v)    1.029    0.031   33.665    0.000
-##    .affct.8 (rs_v)    1.029    0.031   33.665    0.000
-##    .affct.9 (rs_v)    1.029    0.031   33.665    0.000
-##    .affc.10 (rs_v)    1.029    0.031   33.665    0.000
-##    .affc.11           0.993    0.078   12.746    0.000
-##    .affc.12           1.018    0.078   13.034    0.000
-##    .affc.13           1.023    0.078   13.168    0.000
-##    .affc.14           0.935    0.073   12.828    0.000
-##    .affc.15           1.112    0.091   12.255    0.000</code></pre>
+##     lvl1_ff           0.993    0.179    5.545    0.000
+##     lvl2_ff           1.237    0.463    2.669    0.008
+##     lvl3_ff           2.472    0.867    2.853    0.004
+##     slp1_ff          -0.008    0.014   -0.555    0.579
+##     slp2_ff           0.007    0.008    0.833    0.405
+##     slp3_ff           0.009    0.005    1.761    0.078
+##    .affct.1 (rs_v)    0.975    0.029   33.458    0.000
+##    .affct.2 (rs_v)    0.975    0.029   33.458    0.000
+##    .affct.3 (rs_v)    0.975    0.029   33.458    0.000
+##    .affct.4 (rs_v)    0.975    0.029   33.458    0.000
+##    .affct.5 (rs_v)    0.975    0.029   33.458    0.000
+##    .affct.6 (rs_v)    0.975    0.029   33.458    0.000
+##    .affct.7 (rs_v)    0.975    0.029   33.458    0.000
+##    .affct.8 (rs_v)    0.975    0.029   33.458    0.000
+##    .affct.9 (rs_v)    0.975    0.029   33.458    0.000
+##    .affc.10 (rs_v)    0.975    0.029   33.458    0.000
+##    .affc.11           1.010    0.080   12.650    0.000
+##    .affc.12           1.023    0.078   13.168    0.000
+##    .affc.13           1.098    0.083   13.272    0.000
+##    .affc.14           1.038    0.082   12.722    0.000
+##    .affc.15           0.976    0.088   11.040    0.000</code></pre>
 <p>Again, the basis coefficients are the important piece here:</p>
 <pre class="r"><code>&#39;
 

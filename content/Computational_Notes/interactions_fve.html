@@ -22,24 +22,24 @@ y_{i} = b_0{i} + b_1{x_i} + b_2{z_i} + b_3{zx_i} + e_{i}
 <p>Each simulation will use the equation just presented to generate data across 100 individuals in the field and 100 individuals in the lab. The only difference between the two groups will be their initial distribution on <span class="math inline">\(x\)</span> and <span class="math inline">\(z\)</span>. For the lab group, their scores will be randomly assigned to -1 or 1, and in the field group scores will be randomly dispersed (normally) between -1 and 1. After generating the data I then estimate the coefficients using multiple regression and save the significance value in a vector. The process then interates 1000 times.</p>
 <div id="the-experiment-data" class="section level1">
 <h1>The Experiment Data</h1>
-<div id="the-distribution-of-x" class="section level2">
-<h2>The distribution of X:</h2>
+<div id="the-distribution-of-x" class="section level3">
+<h3>The distribution of X:</h3>
 <p><img src="/Computational_Notes/interactions_fve_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 </div>
-<div id="the-distribution-of-z" class="section level2">
-<h2>The distribution of Z:</h2>
+<div id="the-distribution-of-z" class="section level3">
+<h3>The distribution of Z:</h3>
 <p><img src="/Computational_Notes/interactions_fve_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 </div>
-<div id="the-distribution-of-y-after-using-the-equation-above-to-generate-scores-on-y" class="section level2">
-<h2>The distribution of Y after using the equation above to generate scores on Y:</h2>
+<div id="the-distribution-of-y-after-using-the-equation-above-to-generate-scores-on-y" class="section level3">
+<h3>The distribution of Y after using the equation above to generate scores on Y:</h3>
 <pre class="r"><code>y_values &lt;- b_0 + 0.20*x_values + 0.10*z_values + 
             1.00*x_values*z_values + rnorm(100,0,4)
 
 hist(y_values)</code></pre>
 <p><img src="/Computational_Notes/interactions_fve_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 </div>
-<div id="now-estimate-the-parameters-using-regression" class="section level2">
-<h2>Now estimate the parameters using regression:</h2>
+<div id="now-estimate-the-parameters-using-regression" class="section level3">
+<h3>Now estimate the parameters using regression:</h3>
 <pre class="r"><code>exp_data &lt;- data.frame(&quot;X&quot; = c(x_values),
                        &quot;Z&quot; = c(z_values),
                        &quot;Y&quot; = c(y_values))
@@ -51,43 +51,43 @@ summary(exp_model)</code></pre>
 ## lm(formula = Y ~ X + Z + X:Z, data = exp_data)
 ## 
 ## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -9.6757 -2.8968 -0.0137  2.7998 12.5804 
+##      Min       1Q   Median       3Q      Max 
+## -10.6849  -2.2795  -0.3268   2.5488  13.8342 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)  
-## (Intercept)  0.03329    0.45716   0.073   0.9421  
-## X            0.88654    0.45716   1.939   0.0554 .
-## Z            0.42835    0.45716   0.937   0.3511  
-## X:Z          1.00634    0.45716   2.201   0.0301 *
+##             Estimate Std. Error t value Pr(&gt;|t|)   
+## (Intercept)  -0.4084     0.3836  -1.065  0.28971   
+## X            -0.1640     0.3836  -0.427  0.67004   
+## Z             0.2244     0.3836   0.585  0.56001   
+## X:Z           1.1265     0.3836   2.937  0.00415 **
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 4.326 on 96 degrees of freedom
-## Multiple R-squared:  0.09377,    Adjusted R-squared:  0.06545 
-## F-statistic: 3.311 on 3 and 96 DF,  p-value: 0.02332</code></pre>
+## Residual standard error: 3.777 on 96 degrees of freedom
+## Multiple R-squared:  0.09487,    Adjusted R-squared:  0.06659 
+## F-statistic: 3.354 on 3 and 96 DF,  p-value: 0.0221</code></pre>
 </div>
 </div>
 <div id="the-field-study-data" class="section level1">
 <h1>The Field Study Data</h1>
-<div id="the-distribution-of-x-1" class="section level2">
-<h2>The distribution of X:</h2>
+<div id="the-distribution-of-x-1" class="section level3">
+<h3>The distribution of X:</h3>
 <p><img src="/Computational_Notes/interactions_fve_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 </div>
-<div id="the-distribution-of-z-1" class="section level2">
-<h2>The distribution of Z:</h2>
+<div id="the-distribution-of-z-1" class="section level3">
+<h3>The distribution of Z:</h3>
 <p><img src="/Computational_Notes/interactions_fve_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 </div>
-<div id="the-distribution-of-y-after-using-the-equation-above-to-generate-scores-on-y-1" class="section level2">
-<h2>The distribution of Y after using the equation above to generate scores on Y:</h2>
+<div id="the-distribution-of-y-after-using-the-equation-above-to-generate-scores-on-y-1" class="section level3">
+<h3>The distribution of Y after using the equation above to generate scores on Y:</h3>
 <pre class="r"><code>f_y_values &lt;- b_0 + 0.20*f_x_values + 0.10*f_z_values + 
               1.00*f_x_values*f_z_values + rnorm(100,0,4)
 
 hist(f_y_values)</code></pre>
 <p><img src="/Computational_Notes/interactions_fve_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 </div>
-<div id="now-estimate-the-parameters-using-regression-1" class="section level2">
-<h2>Now estimate the parameters using regression:</h2>
+<div id="now-estimate-the-parameters-using-regression-1" class="section level3">
+<h3>Now estimate the parameters using regression:</h3>
 <pre class="r"><code>field_data &lt;- data.frame(&quot;FX&quot; = c(f_x_values),
                            &quot;FZ&quot; = c(f_z_values),
                            &quot;FY&quot; = c(f_y_values))
@@ -99,27 +99,25 @@ summary(field_model)</code></pre>
 ## lm(formula = FY ~ FX + FZ + FX:FZ, data = field_data)
 ## 
 ## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -10.7816  -2.2458   0.1667   2.5051   9.7078 
+##     Min      1Q  Median      3Q     Max 
+## -8.7978 -2.7234 -0.1063  2.3467 14.1085 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)  
-## (Intercept)   0.2000     0.4162   0.481   0.6319  
-## FX           -0.1709     0.7764  -0.220   0.8262  
-## FZ            0.3394     0.8752   0.388   0.6991  
-## FX:FZ         3.8817     1.5524   2.500   0.0141 *
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+##             Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)  -0.1714     0.4191  -0.409    0.684
+## FX            0.4444     0.8346   0.532    0.596
+## FZ            1.1460     0.9293   1.233    0.221
+## FX:FZ        -1.7800     2.0545  -0.866    0.388
 ## 
-## Residual standard error: 4.129 on 96 degrees of freedom
-## Multiple R-squared:  0.06123,    Adjusted R-squared:  0.0319 
-## F-statistic: 2.087 on 3 and 96 DF,  p-value: 0.107</code></pre>
+## Residual standard error: 4.189 on 96 degrees of freedom
+## Multiple R-squared:  0.02571,    Adjusted R-squared:  -0.004741 
+## F-statistic: 0.8443 on 3 and 96 DF,  p-value: 0.473</code></pre>
 </div>
 </div>
 <div id="putting-everything-into-monte-carlo" class="section level1">
 <h1>Putting Everything Into Monte Carlo</h1>
-<div id="replicate-the-process-above-1000-times-and-save-the-p-value-each-time" class="section level2">
-<h2>Replicate the process above 1000 times and save the p-value each time</h2>
+<div id="replicate-the-process-above-1000-times-and-save-the-p-value-each-time" class="section level3">
+<h3>Replicate the process above 1000 times and save the p-value each time</h3>
 <pre class="r"><code>sims &lt;- 1000
 exp_results &lt;- numeric(1000)
 field_results &lt;- numeric(1000)
@@ -186,15 +184,15 @@ for(i in 1:sims){
 </div>
 <div id="the-results" class="section level1">
 <h1>The Results</h1>
-<div id="what-proportion-of-experiments-find-significant-interaction-effects" class="section level2">
-<h2>What proportion of experiments find significant interaction effects?</h2>
+<div id="what-proportion-of-experiments-find-significant-interaction-effects" class="section level3">
+<h3>What proportion of experiments find significant interaction effects?</h3>
 <pre class="r"><code>sum(exp_results &lt; 0.05) / 1000</code></pre>
-<pre><code>## [1] 0.716</code></pre>
+<pre><code>## [1] 0.692</code></pre>
 </div>
-<div id="what-proportion-of-field-studies-find-significant-interaction-effects" class="section level2">
-<h2>What proportion of field studies find significant interaction effects?</h2>
+<div id="what-proportion-of-field-studies-find-significant-interaction-effects" class="section level3">
+<h3>What proportion of field studies find significant interaction effects?</h3>
 <pre class="r"><code>sum(field_results &lt; 0.05) / 1000</code></pre>
-<pre><code>## [1] 0.103</code></pre>
+<pre><code>## [1] 0.098</code></pre>
 <p>Bo<span class="math inline">\(^2\)</span>m =)</p>
 </div>
 </div>

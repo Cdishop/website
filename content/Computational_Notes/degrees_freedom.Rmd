@@ -12,7 +12,7 @@ library(ggplot2)
 
 This post is about building intuition for degrees of freedom. There are two ways to think about it, the "information" way and the "line" way.
 
-## The Information Way
+### The Information Way
 
 The quantity, degrees of freedom, is the amount of information available in our data set minus the amount of information we want to pull from it. Here are a bunch of different ways of representing that idea:
 
@@ -38,7 +38,7 @@ The quantity, degrees of freedom, is the amount of information available in our 
 
 In a data set, information is (roughly) the unique variances and covariances that I can use. If I estimate too many parameters without enough information (i.e., without enough observed variables), then I loose DFs and I can't estimate anything. I cannot estimate a super complicated function if I only observe one measurement of performance and one measurement of motivation. 
 
-## The Line Way
+### The Line Way
 
 The line way builds off the idea that DF = unique information - used information, but we're going to walk through it visually. Imagine the equation
 

@@ -83,7 +83,7 @@ agent[[1]][1] &lt;- initial_sdo_value
 
 agent</code></pre>
 <pre><code>## $SDO
-## [1] 101.612
+## [1] 110.4145
 ## 
 ## $Peeps
 ## NULL</code></pre>
@@ -125,10 +125,10 @@ agent$Peeps &lt;- c(agent$Peeps, other)
 
 agent</code></pre>
 <pre><code>## $SDO
-## [1] 101.612 112.612
+## [1] 110.4145 109.4145
 ## 
 ## $Peeps
-## [1] 122.8536</code></pre>
+## [1] 108.602</code></pre>
 </div>
 <div id="the-full-model" class="section level1">
 <h1>The Full Model</h1>
@@ -246,12 +246,14 @@ new_data &lt;- plot_agent %&gt;%
   filter(Peeps_SDO &gt; 0) %&gt;%
   gather(Agent_SDO, Peeps_SDO, key = &#39;variable&#39;, value = &#39;SDO&#39;)
 
+library(ggthemes)
 
 ggplot(new_data, aes(x = Time, y = SDO)) + 
   geom_point() + 
   geom_line(color = &#39;blue&#39;) + 
   facet_wrap(~variable) + 
-  ylab(&quot;Level&quot;)</code></pre>
+  ylab(&quot;Level&quot;) + 
+  theme_wsj()</code></pre>
 <p><img src="/Computational_Notes/social_trait_comp_model_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p>Bo<span class="math inline">\(^2\)</span>m =)</p>
 </div>

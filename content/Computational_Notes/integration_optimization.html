@@ -27,6 +27,7 @@ f_x &lt;- 8 + cos(x^3)
 # Plot
 
 library(ggplot2)
+library(ggthemes)
 
 ex_plot &lt;- data.frame(
   &quot;x&quot; = c(x),
@@ -36,7 +37,8 @@ ex_plot &lt;- data.frame(
 g_plot &lt;- ggplot(ex_plot, aes(x = x, y = y)) + 
   geom_point() + 
   geom_smooth(se = F, span = 0.2) + 
-  scale_x_continuous(breaks = c(1:10))
+  scale_x_continuous(breaks = c(1:10)) + 
+  theme_wsj()
 
 g_plot</code></pre>
 <p><img src="/Computational_Notes/integration_optimization_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
@@ -129,7 +131,8 @@ ex_plot_2 &lt;- data.frame(
 
 g_plot_2 &lt;- ggplot(ex_plot_2, aes(x = x, y = y)) + 
   geom_point() + 
-  geom_smooth(se = F)
+  geom_smooth(se = F) + 
+  theme_wsj()
 
 g_plot_2</code></pre>
 <p><img src="/Computational_Notes/integration_optimization_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>

@@ -11,12 +11,12 @@ library(tidyverse)
 
 My last post demonstrated a dual change model for one variable, now I want to demonstrate a bivariate dual change model. A SEM path diagram for a bivariate dual change model is below, taken from [Wang, Zhou, and Zhang (2016)](https://www-annualreviews-org.proxy2.cl.msu.edu/doi/pdf/10.1146%2Fannurev-orgpsych-041015-062553)
 
-![](https://github.com/Cdishop/website/raw/master/content/Computational_Notes/dual_change_photos/bdc.png)
+![](https://github.com/Cdishop/homepage/raw/master/content/Computational_Notes/dual_change_photos/bdc.png)
 (If you do not have access to that link you can view a similar path diagram in [Jones, King, Gilrane, McCausland, Cortina, & Grimm, 2016](https://journals.sagepub.com/doi/pdf/10.1177/0149206313503012))
 
 Essentially, we have two dual change processes and a coupling parameter from the latent true score on one variable to the latent change score on the other. 
 
-## The DGP
+# The DGP
 
 \begin{equation}
 y_t =  constant_y + (1 + proportion_y)*y_{t-1} + coupling_{xy}*x_{t-1} + e
@@ -133,7 +133,7 @@ ggplot(three_cases, aes(x = time, y = response, color = variable)) +
   facet_wrap(~id)
 ```
 
-## Dual Change Model on Y
+# Dual Change Model on Y
 
 ```{r, cache = T}
 
@@ -259,7 +259,7 @@ new_data <- gsub('y', 'x', mystring)
 # write_file(new_data, path = 'x_file.txt') # not executed but will work
 ```
 
-## Dual Change Model on X 
+# Dual Change Model on X 
 
 ```{r}
 df_wide_x <- df %>%

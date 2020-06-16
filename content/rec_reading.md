@@ -13,7 +13,7 @@ Dmitry A. Kondrashov
 
 [Click here for link](https://www.amazon.com/Quantifying-Life-Symbiosis-Computation-Mathematics/dp/022637176X/ref=sr_1_1?ie=UTF8&qid=1524678360&sr=8-1&keywords=quantifying+life)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/quantlife.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/quantlife.png)
 
 
 
@@ -30,7 +30,7 @@ William Zinsser
 
 [Click here for link](https://www.amazon.com/Writing-Well-Classic-Guide-Nonfiction/dp/0060891548/ref=sr_1_1?s=books&ie=UTF8&qid=1524679014&sr=1-1&keywords=on+writing+well)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/writingwell.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/writingwell.png)
 
 
 
@@ -49,7 +49,7 @@ Thomas Gilovich
 
 [Click here for link](https://www.amazon.com/How-Know-What-Isnt-Fallibility/dp/0029117062/ref=sr_1_3?s=books&ie=UTF8&qid=1524679970&sr=1-3&keywords=how+we+know+what+isn%27t+so)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/how_we_know.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/how_we_know.png)
 
 
 
@@ -63,7 +63,7 @@ Melanie Mitchell
 
 [Click here for link](https://www.amazon.com/Complexity-Guided-Tour-Melanie-Mitchell/dp/0199798109/ref=sr_1_1?s=books&ie=UTF8&qid=1524678388&sr=1-1&keywords=complexity+a+guided+tour)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/complexity.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/complexity.png)
 
 
 
@@ -78,7 +78,7 @@ Leonard Mlodinow
 
 [Click here for link](https://www.amazon.com/Drunkards-Walk-Randomness-Rules-Lives/dp/0307275175/ref=sr_1_1?s=books&ie=UTF8&qid=1524678442&sr=1-1&keywords=the+drunkards+walk)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/drunkwalk.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/drunkwalk.png)
 
 
 
@@ -92,7 +92,7 @@ Carlo Rovelli
 
 [Click here for link](https://www.amazon.com/Order-Time-Carlo-Rovelli/dp/073521610X/ref=sr_1_1?ie=UTF8&qid=1526429375&sr=8-1&keywords=the+order+of+time)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/order_time.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/order_time.png)
 
 
 
@@ -111,7 +111,7 @@ Joseph Bizup
 
 [Click here for link](https://www.amazon.com/Style-Lessons-Clarity-Grace-12th/dp/0134080416/ref=sr_1_1?ie=UTF8&qid=1530631885&sr=8-1&keywords=style+lessons+in+grace)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/style.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/style.png)
 
 
 
@@ -127,7 +127,7 @@ Peter Singer
 
 [Click here for link](https://www.amazon.com/Ethics-Real-World-Essays-Things/dp/069117847X/ref=sr_1_1?ie=UTF8&qid=1534110030&sr=8-1&keywords=Peter+singer+82+brief&smid=ATVPDKIKX0DER)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/ethics_essays.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/ethics_essays.png)
 
 
 
@@ -142,7 +142,7 @@ David Salsburg
 
 [Click here for link](https://www.amazon.com/Lady-Tasting-Tea-Statistics-Revolutionized/dp/0805071342/ref=sr_1_1?ie=UTF8&qid=1529349371&sr=8-1&keywords=the+lady+tasting+tea)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/tasting_tea.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/tasting_tea.png)
 
 
 
@@ -158,7 +158,7 @@ Daniel T. Willingham
 
 [Click here for link](https://www.amazon.com/Why-Dont-Students-Like-School/dp/047059196X/ref=sr_1_1_sspa?ie=UTF8&qid=1544905242&sr=8-1-spons&keywords=why+don%27t+student+like+school&psc=1)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/school.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/school.png)
 
 
 
@@ -173,7 +173,7 @@ John H. Miller
 
 [Click here for link](https://www.amazon.com/Crude-Look-Whole-Science-Business/dp/0465055699/ref=sr_1_1?s=books&ie=UTF8&qid=1524679795&sr=1-1&keywords=a+crude+look+at+the+whole)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/crude_whole.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/crude_whole.png)
 
 
 
@@ -186,7 +186,7 @@ Cal Newport
 
 [Click here for link](https://www.amazon.com/Digital-Minimalism-Choosing-Focused-Noisy/dp/0525536515/ref=sr_1_1?keywords=digital+minimalism&qid=1565453149&s=gateway&sr=8-1)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/digital_min.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/digital_min.png)
 
 
 
@@ -204,7 +204,7 @@ Geoffrey West
 
 [Click here for link](https://www.amazon.com/Scale-Universal-Growth-Organisms-Companies/dp/014311090X/ref=sr_1_1?ie=UTF8&qid=1541968528&sr=8-1&keywords=scale+west)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/scale.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/scale.png)
 
 
 
@@ -220,7 +220,7 @@ Peter Singer
 
 [Click here for link](https://www.amazon.com/Most-Good-You-Can-Effective/dp/0300180276/ref=sr_1_1?keywords=the+most+good+you+can+do&qid=1555122359&s=gateway&sr=8-1)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/good.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/good.png)
 
 
 
@@ -236,7 +236,7 @@ Christopher Gandrud
 
 [Click here for link](https://www.amazon.com/Reproducible-Research-Studio-Chapman-Hall/dp/1498715370/ref=sr_1_1?ie=UTF8&qid=1534110087&sr=8-1&keywords=reproducible+research+with+r)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/reproducible_research.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/reproducible_research.png)
 
 
 
@@ -253,7 +253,7 @@ Daniel Shiffman
 
 [Click here for link](https://www.amazon.com/Nature-Code-Simulating-Natural-Processing/dp/0985930802/ref=sr_1_1?ie=UTF8&qid=1534109983&sr=8-1&keywords=the+nature+of+code)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/nature_code.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/nature_code.png)
 
 
 
@@ -273,7 +273,7 @@ Mary Roach
 
 [Click here for link](https://www.amazon.com/Stiff-Curious-Lives-Human-Cadavers/dp/B0001O356G/ref=sr_1_1?keywords=stiff&qid=1576539098&sr=8-1)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/stiff.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/stiff.png)
 
 
 
@@ -291,7 +291,7 @@ Valentino Braitenberg
 
 [Click here for link](https://www.amazon.com/Vehicles-Experiments-Psychology-Valentino-Braitenberg/dp/0262521121/ref=sr_1_1?keywords=synthetic+psychology&qid=1563232952&s=gateway&sr=8-1)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/vehicles.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/vehicles.png)
 
 
 
@@ -313,7 +313,7 @@ Richard McElreath
 
 [Click here for link](https://www.amazon.com/Statistical-Rethinking-Bayesian-Examples-Chapman/dp/1482253445/ref=sr_1_1?s=books&ie=UTF8&qid=1524678418&sr=1-1&keywords=statistical+rethinking)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/mcelreath_rethinking.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/mcelreath_rethinking.png)
 
 
 
@@ -331,7 +331,7 @@ Thomas M Nichols
 
 [Click here for link](https://www.amazon.com/Death-Expertise-Campaign-Established-Knowledge/dp/0190469412/ref=sr_1_1?ie=UTF8&qid=1530631928&sr=8-1&keywords=the+death+of+expertise)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/death_expertise.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/death_expertise.png)
 
 
 
@@ -354,7 +354,7 @@ Dana Mackenzie
 
 [Click here for link](https://www.amazon.com/Book-Why-Science-Cause-Effect/dp/046509760X/ref=sr_1_1?ie=UTF8&qid=1527948151&sr=8-1&keywords=the+book+of+why)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/book_why.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/book_why.png)
 
 
 
@@ -376,7 +376,7 @@ Charles Wheelan
 
 [Click here for link](https://www.amazon.com/Naked-Statistics-Stripping-Dread-Data/dp/B00CH7FWWU/ref=sr_1_1?s=books&ie=UTF8&qid=1524678465&sr=1-1&keywords=naked+statistics)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/nakedstats.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/nakedstats.png)
 
 
 
@@ -397,7 +397,7 @@ John Fox
 
 [Click here for link](https://www.amazon.com/Ball-Discovering-Object-Game/dp/0061881791/ref=sr_1_1?s=books&ie=UTF8&qid=1524679032&sr=1-1&keywords=the+ball+discovering)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/theball.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/theball.png)
 
 
 
@@ -415,7 +415,7 @@ Roger Highfield
 
 [Click here for link](https://www.amazon.com/SuperCooperators-Altruism-Evolution-Other-Succeed/dp/1451626630/ref=sr_1_1?ie=UTF8&qid=1541968376&sr=8-1&keywords=super+cooperators)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/super_coop.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/super_coop.png)
 
 
 
@@ -431,7 +431,7 @@ Ben Orlin
 
 [Click here for link](https://www.amazon.com/Math-Bad-Drawings-Illuminating-Reality/dp/0316509035/ref=sr_1_1?ie=UTF8&qid=1541968483&sr=8-1&keywords=mathematics+with+bad+drawings&dpID=51EP1Orpx0L&preST=_SX258_BO1,204,203,200_QL70_&dpSrc=srch)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/math_draw.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/math_draw.png)
 
 
 
@@ -446,7 +446,7 @@ Steven Johnson
 
 [Click here for link](https://www.amazon.com/How-We-Got-Now-Innovations-ebook/dp/B00INIXU5I/ref=sr_1_1?ie=UTF8&qid=1541968591&sr=8-1&keywords=how+we+got+to+now+johnson&dpID=512mgCAgJQL&preST=_SY445_QL70_&dpSrc=srch)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/now.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/now.png)
 
 
 
@@ -469,7 +469,7 @@ Peter Singer
 
 [Click here for link](https://www.amazon.com/Life-You-Can-Save-2010-09-14/dp/B01N3MESKP/ref=sr_1_2?keywords=the+life+you+can+save&qid=1555122514&s=gateway&sr=8-2)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/life_save.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/life_save.png)
 
 
 
@@ -491,7 +491,7 @@ Louis J. Gross
 
 [Click here for link](https://www.amazon.com/Mathematics-Life-Sciences-Erin-Bodine/dp/0691150729/ref=sr_1_1?s=books&ie=UTF8&qid=1524678619&sr=1-1&keywords=mathematics+for+the+life+sciences)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/mathlife.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/mathlife.png)
 
 
 
@@ -505,7 +505,7 @@ Menno Schilthuizen
 
 [Click here for link](https://www.amazon.com/Natures-Nether-Regions-Schilthuizen-2015-04-28/dp/B01FKSKGY6/ref=sr_1_2?keywords=natures+nether+regions&qid=1569771217&s=gateway&sr=8-2)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/nature_nether.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/nature_nether.png)
 
 
 
@@ -525,7 +525,7 @@ Andrew Robinson
 
 [Click here for link](https://www.amazon.com/Introduction-Scientific-Programming-Simulation-Chapman/dp/1466569999/ref=sr_1_3?s=books&ie=UTF8&qid=1524678645&sr=1-3&keywords=introduction+to+scientific+programming+and+simulation+using+r)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/rsimprog.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/rsimprog.png)
 
 
 
@@ -543,7 +543,7 @@ Brian Christian
 
 [Click here for link](https://www.amazon.com/Algorithms-Live-Computer-Science-Decisions/dp/1250118360/ref=sr_1_3?s=books&ie=UTF8&qid=1524678670&sr=1-3&keywords=algorithms+to+live+by)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/alglive.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/alglive.png)
 
 
 
@@ -557,7 +557,7 @@ Steve Strogatz
 
 [Click here for link](https://www.amazon.com/Infinite-Powers-Calculus-Reveals-Universe/dp/1328879984/ref=sr_1_1?keywords=infinite+powers&qid=1563232928&s=gateway&sr=8-1)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/infinite_powers.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/infinite_powers.png)
 
 
 
@@ -582,7 +582,7 @@ Daniel Simons
 
 [Click here for link](https://www.amazon.com/Invisible-Gorilla-How-Intuitions-Deceive/dp/0307459667/ref=sr_1_1?s=books&ie=UTF8&qid=1524678720&sr=1-1&keywords=the+invisible+gorilla)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/invisiblegorilla.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/invisiblegorilla.png)
 
 
 
@@ -597,7 +597,7 @@ Nicholas Epley
 
 [Click here for link](https://www.amazon.com/Mindwise-Understand-Others-Think-Believe/dp/0307595919/ref=sr_1_1?s=books&ie=UTF8&qid=1524678938&sr=1-1&keywords=mindwise+how)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/eplymindwise.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/eplymindwise.png)
 
 
 
@@ -610,7 +610,7 @@ Edited By John Brockman
 
 [Click here for link](https://www.amazon.com/This-Will-Change-Everything-Question/dp/0061899674/ref=sr_1_1?s=books&ie=UTF8&qid=1524678835&sr=1-1&keywords=this+will+change+everything)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/brockmaneverything.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/brockmaneverything.png)
 
 
 
@@ -628,7 +628,7 @@ Cacilda Jetha
 
 [Click here for link](https://www.amazon.com/SEX-AT-DAWN-STRAY-MEANS/dp/B00KEVTNSK/ref=sr_1_1?s=books&ie=UTF8&qid=1524678957&sr=1-1&keywords=sex+at+dawn)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/sexdawn.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/sexdawn.png)
 
 
 
@@ -647,7 +647,7 @@ Dan Heath
 
 [Click here for link](https://www.amazon.com/Made-Stick-Ideas-Survive-Others/dp/1400064287/ref=sr_1_1?s=books&ie=UTF8&qid=1524678997&sr=1-1&keywords=made+to+stick)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/stick.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/stick.png)
 
 
 
@@ -660,7 +660,7 @@ Daniel Bor
 
 [Click here for link](https://www.amazon.com/Ravenous-Brain-Consciousness-Explains-Insatiable/dp/046502047X/ref=sr_1_1?s=books&ie=UTF8&qid=1524679052&sr=1-1&keywords=the+ravenous+brain)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/ravenousbrain.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/ravenousbrain.png)
 
 
 
@@ -676,7 +676,7 @@ Ronald L. Meek
 
 [Click here for link](https://www.amazon.com/Matrices-Society-Applications-Sciences-Princeton/dp/0691610207/ref=sr_1_2?s=books&ie=UTF8&qid=1524679070&sr=1-2&keywords=matrices+and+society)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/matrices_society.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/matrices_society.png)
 
 
 
@@ -693,7 +693,7 @@ David Deutsch
 
 [Click here for link](https://www.amazon.com/Beginning-Infinity-Explanations-Transform-World/dp/0143121359/ref=sr_1_1?s=books&ie=UTF8&qid=1524679088&sr=1-1&keywords=the+beginning+of+infinity)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/infinity.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/infinity.png)
 
 
 
@@ -707,7 +707,7 @@ Edward R. Tufte
 
 [Click here for link](https://www.amazon.com/Visual-Display-Quantitative-Information/dp/B00A2RSEQI/ref=sr_1_2?ie=UTF8&qid=1535220474&sr=8-2&keywords=the+visual+display+of+quantitative+information)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/visual_display.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/visual_display.png)
 
 
 
@@ -732,7 +732,7 @@ Scott E. Page
 
 [Click here for link](https://www.amazon.com/Complex-Adaptive-Systems-Introduction-Computational/dp/0691127026/ref=sr_1_1?s=books&ie=UTF8&qid=1524678589&sr=1-1&keywords=complex+adaptive+systems)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/adaptive.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/adaptive.png)
 
 
 
@@ -752,7 +752,7 @@ Yuval Noah Harari
 
 [Click here for link](https://www.amazon.com/Homo-Deus-Brief-History-Tomorrow/dp/0062464310/ref=sr_1_1?s=books&ie=UTF8&qid=1524679148&sr=1-1&keywords=homo+deus)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/homodeus.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/homodeus.png)
 
 
 
@@ -766,7 +766,7 @@ Sam Harris
 
 [Click here for link](https://www.amazon.com/Moral-Landscape-Science-Determine-Values/dp/143917122X/ref=sr_1_1?s=books&ie=UTF8&qid=1524679169&sr=1-1&keywords=the+moral+landscape)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/morallandscape.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/morallandscape.png)
 
 
 
@@ -779,7 +779,7 @@ Robert B. Edgerton
 
 [Click here for link](https://www.amazon.com/Sick-Societies-Challenging-Primitive-Harmony/dp/0029089255/ref=sr_1_1?ie=UTF8&qid=1527948228&sr=8-1&keywords=sick+societies)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/sick_society.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/sick_society.png)
 
 
 
@@ -799,7 +799,7 @@ Peter Singer
 
 [Click here for link](https://www.amazon.com/Expanding-Circle-Ethics-Evolution-Progress/dp/0691150699/ref=sr_1_1?keywords=the+expanding+circle&qid=1555122466&s=gateway&sr=8-1)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/expanding_circle.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/expanding_circle.png)
 
 
 
@@ -816,7 +816,7 @@ Atul Gawande
 
 [Click here for link](https://www.amazon.com/Checklist-Manifesto-How-Things-Right/dp/0312430000/ref=sr_1_1?ie=UTF8&qid=1547762703&sr=8-1&keywords=the+checklist+manifesto+by+atul+gawande)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/checklist.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/checklist.png)
 
 
 
@@ -832,7 +832,7 @@ Steven Strogatz
 
 [Click here for link](https://www.amazon.com/Joy-Guided-Tour-Math-Infinity/dp/0544105850/ref=sr_1_1?ie=UTF8&qid=1547762739&sr=8-1&keywords=the+joy+of+x)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/joy_x.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/joy_x.png)
 
 
 
@@ -848,7 +848,7 @@ Charles Wheelan
 
 [Click here for link](https://www.amazon.com/Things-Commencement-Speaker-Ever-Said/dp/B00CL4IEAG/ref=sr_1_1?ie=UTF8&qid=1547762768&sr=8-1&keywords=10+1%2F2+things+no)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/no_speaker.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/no_speaker.png)
 
 
 
@@ -865,7 +865,7 @@ Max Shron
 
 [Click here for link](https://www.amazon.com/Thinking-Data-Turn-Information-Insights/dp/1449362931/ref=sr_1_1?ie=UTF8&qid=1547762669&sr=8-1&keywords=thinking+with+data)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/think_data.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/think_data.png)
 
 
 
@@ -881,7 +881,7 @@ Kenneth A. Bollen
 
 [Click here for link](https://www.amazon.com/Structural-Equations-Latent-Variables-Kenneth/dp/0471011711/ref=sr_1_1?s=books&ie=UTF8&qid=1524679315&sr=1-1&keywords=structural+equations+latent+variables)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/SEM.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/SEM.png)
 
 
 
@@ -896,7 +896,7 @@ Dan Heath
 
 [Click here for link](https://www.amazon.com/Switch-Change-Things-Heath-Hardcover/dp/B010IKJIYA/ref=sr_1_3?s=books&ie=UTF8&qid=1524679336&sr=1-3&keywords=switch+how+to+change+when)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/switch.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/switch.png)
 
 
 
@@ -912,7 +912,7 @@ Larry S. Liebovitch
 
 [Click here for link](https://www.amazon.com/Mathematical-Modeling-Social-Relationships-Computational/dp/331976764X/ref=sr_1_1?ie=UTF8&qid=1544905847&sr=8-1&keywords=mathematical+modeling+of+social+relationships)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/math_relationships.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/math_relationships.png)
 
 
 
@@ -926,7 +926,7 @@ Stephen M. Stigler
 
 [Click here for link](https://www.amazon.com/Seven-Pillars-Statistical-Wisdom/dp/0674088913/ref=sr_1_1?s=books&ie=UTF8&qid=1524679356&sr=1-1&keywords=the+seven+pillars+of+statistical)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/sevenstats.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/sevenstats.png)
 
 
 
@@ -947,7 +947,7 @@ Ian Stewart
 
 [Click here for link](https://www.amazon.com/Lifes-Other-Secret-Mathematics-Living/dp/0471296511/ref=sr_1_1?ie=UTF8&qid=1541968410&sr=8-1&keywords=life%27s+other+secret+ian&dpID=31v8-5eNf-L&preST=_SY291_BO1,204,203,200_QL40_&dpSrc=srch)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/lifes_secret.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/lifes_secret.png)
 
 
 
@@ -962,7 +962,7 @@ Edited by John Brockman
 
 [Click here for link](https://www.amazon.com/What-Should-Worried-About-Scientists/dp/006229623X/ref=sr_1_2?s=books&ie=UTF8&qid=1524679401&sr=1-2&keywords=what+should+we+be+worried+about)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/brockmanworried.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/brockmanworried.png)
 
 
 
@@ -974,7 +974,7 @@ Daniel Gilbert
 
 [Click here for link](https://www.amazon.com/Stumbling-Happiness-Daniel-Gilbert/dp/1400077427/ref=sr_1_1?s=books&ie=UTF8&qid=1524679419&sr=1-1&keywords=stumbling+on+happiness)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/gilberthappy.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/gilberthappy.png)
 
 
 
@@ -989,7 +989,7 @@ Dean Buonomano
 
 [Click here for link](https://www.amazon.com/Brain-Bugs-Brains-Flaws-Shape/dp/0393342220/ref=sr_1_1?s=books&ie=UTF8&qid=1524679522&sr=1-1&keywords=brain+bugs+how+the+brain%27s)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/brainbugs.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/brainbugs.png)
 
 
 
@@ -1003,7 +1003,7 @@ Kosuke Imai
 
 [Click here for link](https://www.amazon.com/Quantitative-Social-Science-Kosuke-Imai/dp/0691175462/ref=sr_1_1?ie=UTF8&qid=1530631848&sr=8-1&keywords=quantitative+social+science)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/quant_ss.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/quant_ss.png)
 
 
 
@@ -1021,7 +1021,7 @@ Jenny Odell
 
 [Click here for link](https://www.amazon.com/How-Do-Nothing-Resisting-Attention/dp/1612197493/ref=tmm_hrd_swatch_0?_encoding=UTF8&qid=1576539107&sr=8-1)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/do_nothingpng)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/do_nothingpng)
 
 
 
@@ -1040,7 +1040,7 @@ Jordan Ellenberg
 
 [Click here for link](https://www.amazon.com/How-Not-Be-Wrong-Mathematical/dp/0143127535/ref=sr_1_2?ie=UTF8&qid=1544905443&sr=8-2&keywords=how+not+to+be+wrong)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/not_wrong.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/not_wrong.png)
 
 
 
@@ -1059,7 +1059,7 @@ John V. Guttag
 
 [Click here for link](https://www.amazon.com/gp/product/0262529629/ref=oh_aui_detailpage_o03_s00?ie=UTF8&psc=1)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/computation_programming.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/computation_programming.png)
 
 
 
@@ -1076,7 +1076,7 @@ Kenneth A. Oye
 
 [Click here for link](https://www.amazon.com/Cooperation-under-Anarchy-Kenneth-Oye/dp/0691022402/ref=sr_1_1?ie=UTF8&qid=1534110079&sr=8-1&keywords=cooperation+under+anarchy)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/cooperation_anarchy.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/cooperation_anarchy.png)
 
 
 
@@ -1093,7 +1093,7 @@ Dan Ariely
 
 [Click here for link](https://www.amazon.com/Predictably-Irrational-Revised-Expanded-Decisions/dp/0061353248/ref=sr_1_1?s=books&ie=UTF8&qid=1524678490&sr=1-1&keywords=predictably+irrational)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/irrational.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/irrational.png)
 
 
 
@@ -1109,7 +1109,7 @@ Kenneth Cukier
 
 [Click here for link](https://www.amazon.com/Big-Data-Revolution-Transform-Think/dp/1848547900/ref=sr_1_10?s=books&ie=UTF8&qid=1524678890&sr=1-10&keywords=big+data+a+revolution)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/bigdata.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/bigdata.png)
 
 
 
@@ -1126,7 +1126,7 @@ Ian Stewart
 
 [Click here for link](https://www.amazon.com/Pursuit-Equations-That-Changed-World/dp/0465085989/ref=sr_1_1?ie=UTF8&qid=1529323656&sr=8-1&keywords=17+equations+that+changed+the+world)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/unknown.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/unknown.png)
 
 
 
@@ -1140,7 +1140,7 @@ Sherry Turkle
 
 [Click here for link](https://www.amazon.com/Reclaiming-Conversation-Power-Talk-Digital/dp/0143109790/ref=sr_1_1?keywords=reclaiming+conversation&qid=1565453094&s=gateway&sr=8-1)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/conversation.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/conversation.png)
 
 
 
@@ -1153,7 +1153,7 @@ Matt Parker
 
 [Click here for link](https://www.amazon.com/Humble-Pi-Comedy-Maths-Errors/dp/0241360234/ref=sr_1_fkmr0_1?keywords=humble+pie+maths+errors&qid=1565453048&s=gateway&sr=8-1-fkmr0)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/humble_pie.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/humble_pie.png)
 
 
 
@@ -1170,7 +1170,7 @@ Jerry Muller
 
 [Click here for link](https://www.amazon.com/Tyranny-Metrics-Jerry-Muller/dp/0691174954/ref=sr_1_1?ie=UTF8&qid=1529323708&sr=8-1&keywords=the+tyranny+of+metrics)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/tyranny_metrics.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/tyranny_metrics.png)
 
 
 
@@ -1181,7 +1181,7 @@ Arieh Ben_Naim
 
 [Click here for link](https://www.amazon.com/Briefest-History-Time-Misconstrued-Association/dp/9814749850/ref=sr_1_1?ie=UTF8&qid=1534110135&sr=8-1&keywords=the+briefest+history+of+time)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/history_time.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/history_time.png)
 
 
 
@@ -1193,7 +1193,7 @@ Gordon Livingston
 
 [Click here for link](https://www.amazon.com/Too-Soon-Old-Late-Smart/dp/1569243735/ref=sr_1_1?ie=UTF8&qid=1527948162&sr=8-1&keywords=too+soon+old)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/too_soon_old.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/too_soon_old.png)
 
 
 
@@ -1207,7 +1207,7 @@ Jim Duggan
 
 [Click here for link](https://www.amazon.com/System-Dynamics-Modeling-Lecture-Networks/dp/3319340417/ref=sr_1_1?s=books&ie=UTF8&qid=1526429142&sr=1-1&keywords=system+dynamics+modeling+with+r)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/system_dynamics.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/system_dynamics.png)
 
 
 
@@ -1223,7 +1223,7 @@ Brian Skyrms
 
 [Click here for link](https://www.amazon.com/Ten-Great-Ideas-about-Chance/dp/0691174164/ref=sr_1_1?s=books&ie=UTF8&qid=1524679586&sr=1-1&keywords=ten+great+ideas+about+chance)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/tenchance.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/tenchance.png)
 
 
 
@@ -1236,7 +1236,7 @@ Gerd Gigerenzer
 
 [Click here for link](https://www.amazon.com/Risk-Savvy-Make-Good-Decisions/dp/0143127101/ref=sr_1_1?ie=UTF8&qid=1525549444&sr=8-1&keywords=risk+savvy)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/risk_savvy.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/risk_savvy.png)
 
 
 
@@ -1249,7 +1249,7 @@ Donella H. Meadows
 
 [Click here for link](https://www.amazon.com/Thinking-Systems-Donella-H-Meadows/dp/1603580557/ref=sr_1_2?ie=UTF8&qid=1524678135&sr=8-2&keywords=thinking+in+systems)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/thinking_systems.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/thinking_systems.png)
 
 
 
@@ -1261,5 +1261,5 @@ Edited by John Brockman
 
 [Click here for link](https://www.amazon.com/This-Idea-Must-Die-Scientific/dp/0062374346/ref=sr_1_1?s=books&ie=UTF8&qid=1524679604&sr=1-1&keywords=this+idea+must+die)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/brockmandie.png)
+![](https://github.com/Cdishop/homepage/raw/master/misc/books/brockmandie.png)
 

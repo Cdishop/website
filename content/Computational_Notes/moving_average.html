@@ -25,6 +25,7 @@ for(i in 3:time){
 <p>That simulation results in the following.</p>
 <pre class="r"><code>library(tidyverse)
 library(ggplot2)
+library(ggthemes)
 
 df1 &lt;- data.frame(
   &#39;time&#39; = c(1:time),
@@ -33,7 +34,8 @@ df1 &lt;- data.frame(
 
 ggplot(df1, aes(x = time, y = y)) + 
   geom_point() + 
-  geom_line()</code></pre>
+  geom_line() + 
+  theme_wsj()</code></pre>
 <p><img src="/Computational_Notes/moving_average_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>The second way to simulate it is to generate noise within the loop itself, store the noise, and then apply it to the outcome across time.</p>
 <pre class="r"><code>set.seed(15)
@@ -69,7 +71,8 @@ for(i in 1:time){
 
 ggplot(df2, aes(x = time, y = yt)) + 
   geom_point() + 
-  geom_line()</code></pre>
+  geom_line() + 
+  theme_wsj()</code></pre>
 <p><img src="/Computational_Notes/moving_average_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>The second simulation style takes more code but I find it more intuitive. It is difficult for me to wrap my head around simulating all of the noise first and then applying it to the process as if the two are independent components – which is what the first simulation code mimics. To each their own.</p>
 <p>Bo<span class="math inline">\(^2\)</span>m =)</p>

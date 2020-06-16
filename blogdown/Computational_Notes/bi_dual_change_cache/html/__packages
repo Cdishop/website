@@ -9,5 +9,4 @@ dplyr
 stringr
 forcats
 reshape2
-bindrcpp
 lavaan

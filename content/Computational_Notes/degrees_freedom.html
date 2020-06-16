@@ -7,8 +7,8 @@ date: '2019-05-01'
 
 
 <p>This post is about building intuition for degrees of freedom. There are two ways to think about it, the “information” way and the “line” way.</p>
-<div id="the-information-way" class="section level2">
-<h2>The Information Way</h2>
+<div id="the-information-way" class="section level3">
+<h3>The Information Way</h3>
 <p>The quantity, degrees of freedom, is the amount of information available in our data set minus the amount of information we want to pull from it. Here are a bunch of different ways of representing that idea:</p>
 <p><span class="math display">\[\begin{equation}
 \textrm{DF} = \textrm{Knowns} - \textrm{Unknowns}
@@ -27,8 +27,8 @@ date: '2019-05-01'
 \end{equation}\]</span></p>
 <p>In a data set, information is (roughly) the unique variances and covariances that I can use. If I estimate too many parameters without enough information (i.e., without enough observed variables), then I loose DFs and I can’t estimate anything. I cannot estimate a super complicated function if I only observe one measurement of performance and one measurement of motivation.</p>
 </div>
-<div id="the-line-way" class="section level2">
-<h2>The Line Way</h2>
+<div id="the-line-way" class="section level3">
+<h3>The Line Way</h3>
 <p>The line way builds off the idea that DF = unique information - used information, but we’re going to walk through it visually. Imagine the equation</p>
 <p><span class="math display">\[\begin{equation}
 y = mx + b.

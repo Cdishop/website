@@ -36,7 +36,7 @@ MAs give us an average estimate across settings, tests, and people after correct
     
 In this post, I'm focusing only on step 3, the calculations, even though steps 1 and 2 are arguably the more important pieces.
 
-## Calculating MA Estimate and Variance
+### Calculating MA Estimate and Variance
 
 Within this step, there are many substeps:
 

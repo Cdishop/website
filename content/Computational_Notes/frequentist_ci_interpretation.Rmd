@@ -11,13 +11,13 @@ library(MASS)
 library(ggplot2)
 ```
 
-## Purpose 
+### Purpose 
 
 Imagine that you are interested in the relationship between stress and performance. To assess it, you observe 600 people at work and measure their stress via a self-report (e.g., "I feel stressed") and their performance via objective performance scores for the day (e.g., number of sales). You regress performance on stress and find that the estimated coefficient relating to two is 0.45. You then build a 95% confidence interval using the standard error that the analysis spit out and find that the CI is 0.45 +- 0.1. 
 
 What does that confidence interval actually mean? The purpose of this exercise is to build intuition behind frequentist CIs.
 
-## Steps
+### Steps
 
 1) Generate the population 
 
@@ -31,7 +31,7 @@ What does that confidence interval actually mean? The purpose of this exercise i
     
 3) Re-sample and repeat
 
-## 1) Generate the population
+### 1) Generate the population
 
 Our population will contain 100,000 people
 
@@ -72,7 +72,7 @@ df <- data.frame(
 
 What is the paramter relating stress to performance? 0.45, keep that in mind. Time to sample the population as if we conducted a study and run our regression.
 
-## 2) Sample the population
+### 2) Sample the population
 
 Randomly select 600 people from our population. That is, pretend we ran a study on 600 subjects.
 
@@ -139,7 +139,7 @@ contain_parameter
 
 What did we do? We sampled the population, ran a regression to relate stress to performance, and then calculated a CI on the slope term. The interpretation of a CI, however, is across infinite samples. Now we need to run through the sample, regress, and calculate CI procedure again and again and again -- Monte Carlo.
 
-## 3) Re sample and repeat
+### 3) Re sample and repeat
 
 I created a function that samples the population, runs a regression, calculates the CI, and then saves whether or not the interval contained 0.45 ('yes' or 'no'). You can view that code in the raw rmarkdown file. For now, just know that the function is called `sample_regress_calc_ci`.
 
@@ -201,7 +201,7 @@ for(i in 1:sims){
 
 ```
 
-## Interpretation
+### Interpretation
 
 How many computed intervals contain the population parameter?
 

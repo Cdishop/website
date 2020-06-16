@@ -1,23 +1,72 @@
-baseurl = "/" # Controls base URL
-languageCode = "en-US" # Controls html lang attribute
-title = "Christopher Dishop" # Homepage title and page title suffix
-paginate = 50 # Number of posts to show before paginating
-theme = "bulma"
+# Configuration of Academic
+# Documentation: https://sourcethemes.com/academic/
+#
+# This file is formatted using TOML syntax - learn more at https://learnxinyminutes.com/docs/toml/
+# Each configuration section is defined by a name in square brackets (e.g. `[outputs]`).
 
-enableRobotsTXT = true # Suggested, it generates a robots.txt
-googleAnalytics = "" # Optional, add tracking Id for analytics
-disqusShortname = "" # Optional, add Disqus shortname for comments
-SectionPagesMenu = "main" # Enable menu system for lazy bloggers
+# Title of your site
+title = "Christopher R. Dishop"
 
-[params]
-  theme_variant = "flatly" # possible value for the theme_variant `cerulean,cosmo,cyborg,darkly,flatly,journal,litera,lumen,lux,materia,minty,pulse,sandstone,simplex,slate,solar,spacelab,superhero,united,yeti`
-  description = "PhD Candidate in Organizational Psychology: Michigan State University" # Suggested, controls default description meta and landing page
-  powered_by = "" # Optional, controls name display on footer
-  hide_author = true # Optional, set true to hide author name on posts
-  images = [] # Suggested, controls default OpenGraph images controls author name display on meta tag
-  github  = "" # Optional, to display link to github account in menu bar
-  twitter = "" # Optional, to display link to twitter account in menu bar
+# The URL of your site.
+# End your URL with a `/` trailing slash, e.g. `https://example.com/`.
+baseurl = "https://christopherdishop.netlify.app/"
 
+# Enter a copyright notice to display in the site footer.
+# To display a copyright symbol, type `&copy;`. For current year, type `{year}`.
+copyright = "&copy; Christopher Dishop {year}"
 
+############################
+## Advanced options below ##
+############################
 
+# Name of Academic theme folder in `themes/`.
+theme = "hugo-academic"
 
+# Get last modified date for content from Git?
+enableGitInfo = false
+
+# Default language to use (if you setup multilingual support)
+defaultContentLanguage = "en"
+hasCJKLanguage = false  # Set `true` for Chinese/Japanese/Korean languages.
+defaultContentLanguageInSubdir = false
+removePathAccents = true  # Workaround for https://github.com/gohugoio/hugo/issues/5687
+
+summaryLength = 0  # Listing summary length in words. Also, see `abstract_length` in `params.toml`.
+paginate = 100  # Number of items per page in paginated lists.
+enableEmoji = true
+footnotereturnlinkcontents = "<sup>^</sup>"
+ignoreFiles = ["\\.ipynb$", ".ipynb_checkpoints$", "\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+
+[outputs]
+  home = [ "HTML", "RSS", "JSON", "WebAppManifest" ]
+  section = [ "HTML", "RSS" ]
+
+[mediaTypes."application/manifest+json"]
+  suffixes = ["webmanifest"]
+
+[outputFormats.WebAppManifest]
+  mediaType = "application/manifest+json"
+  rel = "manifest"
+
+[markup]
+  defaultMarkdownHandler = "goldmark"
+  [markup.goldmark.renderer]
+    unsafe = true  # Enable user to embed HTML snippets in Markdown content.
+  [markup.highlight]
+    style = "pygments"
+    codeFences = false  # Disable Hugo's code highlighter as it conflicts with Academic's highligher.
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+
+[imaging]
+  resampleFilter = "lanczos"
+  quality = 90
+  anchor = "smart"  # Anchor for cropping. Options include Smart and Center.
+
+# Taxonomies.
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  publication_type = "publication_types"
+  author = "authors"

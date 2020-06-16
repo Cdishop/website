@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Computational Notes | Christopher R. Dishop</title>
+    <link>https://christopherdishop.netlify.app/comp-notes/</link>
+      <atom:link href="https://christopherdishop.netlify.app/comp-notes/index.xml" rel="self" type="application/rss+xml" />
+    <description>Computational Notes</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Christopher Dishop 2020</copyright><lastBuildDate>Wed, 27 May 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://christopherdishop.netlify.app/img/pom-card.png</url>
+      <title>Computational Notes</title>
+      <link>https://christopherdishop.netlify.app/comp-notes/</link>
+    </image>
+    
+    <item>
+      <title>Counting Degrees of Freedom</title>
+      <link>https://christopherdishop.netlify.app/comp-notes/2017-07-13-dfs/</link>
+      <pubDate>Wed, 27 May 2020 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/comp-notes/2017-07-13-dfs/</guid>
+      <description>
+
+
+&lt;p&gt;This post contains a bunch of examples where I practice counting dfs. In each example, I generate the data, estimate the parameters using SEM, count the dfs, and then compare my count to what the model spits back. To count dfs, I need to know the number of knowns and unknowns in my system:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{equation}
+\textrm{DFs} = \textrm{knowns - unknowns}
+\end{equation}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;To count the number of knowns, I need to know the number of observed variables, &lt;em&gt;p&lt;/em&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{equation}
+\textrm{knowns} = p*(p+1) / 2
+\end{equation}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;To count the number of unknowns, I count the number of parameters that my model estimates. Now for the examples.&lt;/p&gt;
+&lt;div id=&#34;example-1---trust-and-availability-cause-helping&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Example 1 - Trust and availability cause helping&lt;/h1&gt;
+&lt;div id=&#34;dgp&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;DGP&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;people &amp;lt;- 400
+trust &amp;lt;- rnorm(people, 40, 2)
+availability &amp;lt;- rnorm(people, 20, 5)
+error &amp;lt;- rnorm(people, 0, 2)
+
+helping &amp;lt;- 3 + 0.2*trust + 0.7*availability + error&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;sem&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;SEM&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+library(lavaan)
+
+df &amp;lt;- data.frame(
+  &amp;#39;id&amp;#39; = c(1:people),
+  &amp;#39;trust&amp;#39; = c(trust),
+  &amp;#39;availability&amp;#39; = c(availability),
+  &amp;#39;helping&amp;#39; = c(helping)
+)
+
+ex1_string &amp;lt;- &amp;#39;
+
+helping ~ b1*trust + b2*availability
+
+&amp;#39;
+
+ex1_model &amp;lt;- sem(ex1_string, data = df)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;count-dfs&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Count dfs&lt;/h1&gt;
+&lt;div id=&#34;knowns-count-the-observed-variables&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Knowns (count the observed variables)&lt;/h4&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# p*(p + 1) / 2
+
+3*(3+1) / 2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 6&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;unknowns-count-the-estimated-parameters&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Unknowns (count the estimated parameters)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;1 for b1&lt;/li&gt;
+&lt;li&gt;1 for b2&lt;/li&gt;
+&lt;li&gt;1 for the variance of trust&lt;/li&gt;
+&lt;li&gt;1 for the variance of availability&lt;/li&gt;
+&lt;li&gt;1 for the covariance of trust and availability&lt;/li&gt;
+&lt;li&gt;1 for the prediction error on helping&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;total = 6&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;6 - 6 = 0&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex1_model)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 15 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                          3
+##                                                       
+##   Number of observations                           400
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 0.000
+##   Degrees of freedom                                 0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now if I restrict the covariance of trust and availability to be zero I should have 1 df&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ex1_string_restrict &amp;lt;- &amp;#39;
+
+helping ~ b1*trust + b2*availability
+trust ~~ 0*availability
+
+&amp;#39;
+
+ex1_model_restrict &amp;lt;- sem(ex1_string_restrict, data = df)
+show(ex1_model_restrict) # yup&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 16 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                          5
+##                                                       
+##   Number of observations                           400
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 0.284
+##   Degrees of freedom                                 1
+##   P-value (Chi-square)                           0.594&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;example-2---common-factor-underlying-6-observed-items&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Example 2 - Common factor underlying 6 observed items&lt;/h1&gt;
+&lt;div id=&#34;dgp-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;DGP&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;common_factor &amp;lt;- rnorm(people, 30, 2)
+error_cf &amp;lt;- rnorm(people, 0, 2)
+item1 &amp;lt;- 0.35*common_factor + error_cf
+item2 &amp;lt;- 0.22*common_factor + error_cf
+item3 &amp;lt;- 0.18*common_factor + error_cf
+item4 &amp;lt;- 0.24*common_factor + error_cf
+item5 &amp;lt;- 0.31*common_factor + error_cf
+item6 &amp;lt;- 0.44*common_factor + error_cf
+
+# nope, that approach is wrong. If I do above then my errors are not independent
+# prediction errors (in this case measurement) should be independent
+
+item1 &amp;lt;- 0.35*common_factor + rnorm(people, 0, 2)
+item2 &amp;lt;- 0.22*common_factor + rnorm(people, 0, 2)
+item3 &amp;lt;- 0.18*common_factor + rnorm(people, 0, 2)
+item4 &amp;lt;- 0.24*common_factor + rnorm(people, 0, 2)
+item5 &amp;lt;- 0.31*common_factor + rnorm(people, 0, 2)
+item6 &amp;lt;- 0.44*common_factor + rnorm(people, 0, 2)
+
+df_cf &amp;lt;- data.frame(
+  &amp;#39;id&amp;#39; = c(1:people),
+  &amp;#39;item1&amp;#39; = c(item1),
+  &amp;#39;item2&amp;#39; = c(item2),
+  &amp;#39;item3&amp;#39; = c(item3),
+  &amp;#39;item4&amp;#39; = c(item4),
+  &amp;#39;item5&amp;#39; = c(item5),
+  &amp;#39;item6&amp;#39; = c(item6)
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;sem-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;SEM&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ex2_string &amp;lt;- &amp;#39;
+
+com_factor =~ 1*item1 + fl2*item2 + fl3*item3 + fl4*item4 + fl5*item5 + fl6*item6
+&amp;#39;
+
+ex2_model &amp;lt;- sem(ex2_string, data = df_cf)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;count-dfs-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Count dfs&lt;/h3&gt;
+&lt;div id=&#34;knowns-count-the-observed-variables-1&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;knowns (count the observed variables)&lt;/h4&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# p*(p + 1) / 2
+
+6*(6 + 1) / 2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 21&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;unknowns-count-the-estimated-parameters-1&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;unknowns (count the estimated parameters)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;6 factor loadings, but I constrained the first one to be 1 (I have to to estimate the latent variable), so 5 parameters&lt;/li&gt;
+&lt;li&gt;5 measurement errors for the 5 factor loadings&lt;/li&gt;
+&lt;li&gt;1 variance for the latent exogenous variable&lt;/li&gt;
+&lt;li&gt;1 mean for the latent exogenous variable&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;total = 12&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;21 - 12 = 9&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex2_model)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 45 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                         12
+##                                                       
+##   Number of observations                           400
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 5.586
+##   Degrees of freedom                                 9
+##   P-value (Chi-square)                           0.781&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;example-3---two-latent-variables-predict-one-observed-outcome&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Example 3 - Two latent variables predict one observed outcome&lt;/h1&gt;
+&lt;p&gt;Cognitive ability (latent variable 1) and assertiveness (latent variable 2) predict productivity. Cognitive ability and assertiveness are both captured with 2 manifest items/variables.&lt;/p&gt;
+&lt;div id=&#34;dgp-2&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;DGP&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# cog ability (latent exogenous variable 1)
+cog_ability &amp;lt;- rnorm(people, 100, 15)
+ca_item1 &amp;lt;- 0.78*cog_ability + rnorm(people, 0, 1)
+ca_item2 &amp;lt;- 0.11*cog_ability + rnorm(people, 0, 1)
+
+# assertiveness (latent exogenous variable 2)
+assertive &amp;lt;- rnorm(people, 30, 8)
+ass_item1 &amp;lt;- 0.81*assertive + rnorm(people, 0, 1)
+ass_item2 &amp;lt;- 0.34*assertive + rnorm(people, 0, 1)
+
+# productivity (observed outcome)
+
+productivity &amp;lt;- 0.55*cog_ability + 0.82*assertive + rnorm(people, 0, 5)
+
+# data
+
+df_3 &amp;lt;- data.frame(
+  &amp;#39;id&amp;#39; = c(1:people),
+  &amp;#39;ca_item1&amp;#39; = c(ca_item1),
+  &amp;#39;ca_item2&amp;#39; = c(ca_item2),
+  &amp;#39;ass_item1&amp;#39; = c(ass_item1),
+  &amp;#39;ass_item2&amp;#39; = c(ass_item2),
+  &amp;#39;productivity&amp;#39; = c(productivity)
+  
+  )&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;sem-2&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;SEM&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ex3_string &amp;lt;- &amp;#39;
+
+cog_ability =~ 1*ca_item1 + fl2*ca_item2
+assertiveness =~ 1*ass_item1 + fla*ass_item2
+
+cog_ability ~~ cog_ability
+assertiveness ~~ assertiveness
+cog_ability ~~ assertiveness
+
+productivity ~ b1*cog_ability + b2*assertiveness
+
+&amp;#39;
+
+ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;count-dfs-2&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Count dfs&lt;/h3&gt;
+&lt;div id=&#34;knowns-count-the-observed-variables-2&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;knowns (count the observed variables)&lt;/h4&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# p*(p+1) / 2
+
+5*(5+1) / 2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 15&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;unknowns-count-the-estimated-parameters-2&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;unknowns (count the estimated parameters)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;4 factor loadings but I constrained 2 of them, so 2 factor loadings&lt;/li&gt;
+&lt;li&gt;2 measurement errors (4 items, but constrained 2 of them)&lt;/li&gt;
+&lt;li&gt;1 variance on cog ability&lt;/li&gt;
+&lt;li&gt;1 mean on cog ability&lt;/li&gt;
+&lt;li&gt;1 variance on assertiveness&lt;/li&gt;
+&lt;li&gt;1 mean on assertiveness&lt;/li&gt;
+&lt;li&gt;1 covariance among cog ability and assertiveness&lt;/li&gt;
+&lt;li&gt;b1&lt;/li&gt;
+&lt;li&gt;b2&lt;/li&gt;
+&lt;li&gt;2 prediction errors&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;total = 13&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;15 - 13 = 2&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex3_model)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 194 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                         12
+##                                                       
+##   Number of observations                           400
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 0.125
+##   Degrees of freedom                                 3
+##   P-value (Chi-square)                           0.989&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Nope. I’m one off, where did I go wrong?&lt;/p&gt;
+&lt;p&gt;Ah, there is only 1 prediction error because productivity is being predicted. I counted 2 prediction errors because I gave one to both b1 and b2. So, the unknowns should be…&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;4 factor loadings but I constrained 2 of them, so 2 factor loadings&lt;/li&gt;
+&lt;li&gt;2 measurement errors (4 items, but constrained 2 of them)&lt;/li&gt;
+&lt;li&gt;1 variance on cog ability&lt;/li&gt;
+&lt;li&gt;1 mean on cog ability&lt;/li&gt;
+&lt;li&gt;1 variance on assertiveness&lt;/li&gt;
+&lt;li&gt;1 mean on assertiveness&lt;/li&gt;
+&lt;li&gt;1 covariance among cog ability and assertiveness&lt;/li&gt;
+&lt;li&gt;b1&lt;/li&gt;
+&lt;li&gt;b2&lt;/li&gt;
+&lt;li&gt;1 prediction error&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;total = 12&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;15 - 12 = 3&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex3_model)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 194 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                         12
+##                                                       
+##   Number of observations                           400
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 0.125
+##   Degrees of freedom                                 3
+##   P-value (Chi-square)                           0.989&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;example-4---a-causes-b-which-causes-c-which-causes-d&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Example 4 - a causes b, which causes c, which causes d&lt;/h1&gt;
+&lt;div id=&#34;dgp-3&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;DGP&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;a &amp;lt;- rnorm(people, 300, 3)
+b &amp;lt;- 0.67*a + rnorm(people, 0, 1)
+c &amp;lt;- 0.99*b + rnorm(people, 0, 10)
+d &amp;lt;- 4 + 4*c + rnorm(people, 0, 4)
+
+df_chain &amp;lt;- data.frame(
+  &amp;#39;id&amp;#39; = c(1:people),
+  &amp;#39;a&amp;#39; = c(a),
+  &amp;#39;b&amp;#39; = c(b),
+  &amp;#39;c&amp;#39; = c(c),
+  &amp;#39;d&amp;#39; = c(d)
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;sem-3&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;SEM&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ex4_string &amp;lt;- &amp;#39;
+
+b ~ b1*a
+c ~ b2*b
+d ~ b3*c
+
+a ~~ a
+
+&amp;#39;
+
+ex4_model &amp;lt;- sem(ex4_string, data = df_chain)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;count-dfs-3&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Count dfs&lt;/h3&gt;
+&lt;div id=&#34;knowns-count-the-observed-variables-3&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;knowns (count the observed variables)&lt;/h4&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# p*(p+1) / 2
+4*(4+1) / 2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 10&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;unknowns-count-the-estimated-parameters-3&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;unknowns (count the estimated parameters)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;b1&lt;/li&gt;
+&lt;li&gt;b2&lt;/li&gt;
+&lt;li&gt;b3&lt;/li&gt;
+&lt;li&gt;3 prediction errors&lt;/li&gt;
+&lt;li&gt;1 variance for the lone exogenous variable (a)&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;total = 7&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;10 - 7 = 3&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex4_model)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 57 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                          7
+##                                                       
+##   Number of observations                           400
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 1.017
+##   Degrees of freedom                                 3
+##   P-value (Chi-square)                           0.797&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;example-5---observed-affect-over-7-time-points&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Example 5 - Observed affect over 7 time points&lt;/h1&gt;
+&lt;div id=&#34;dgp-4&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;DGP&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;time &amp;lt;- 7
+affect_store &amp;lt;- matrix(, ncol = 3, nrow = time*people)
+count &amp;lt;- 0
+for(i in 1:people){
+  
+  unob_het &amp;lt;- rnorm(1, 0, 3)
+  
+  for(j in 1:time){
+    count &amp;lt;- count + 1
+    
+    if(j == 1){
+      affect_store[count, 1] &amp;lt;- i
+      affect_store[count, 2] &amp;lt;- j
+      affect_store[count, 3] &amp;lt;- unob_het + 50 + rnorm(1, 0, 1)
+    }else{
+      affect_store[count, 1] &amp;lt;- i
+      affect_store[count, 2] &amp;lt;- j
+      affect_store[count, 3] &amp;lt;- 0.8*affect_store[count - 1, 3] + unob_het + rnorm(1, 0, 1)
+      
+    }
+  }
+  
+}
+df5 &amp;lt;- data.frame(affect_store)
+names(df5) &amp;lt;- c(&amp;#39;id&amp;#39;, &amp;#39;time&amp;#39;, &amp;#39;affect&amp;#39;)
+library(reshape2)
+df5_wide &amp;lt;- reshape(df5, idvar = &amp;#39;id&amp;#39;, timevar = &amp;#39;time&amp;#39;, direction = &amp;#39;wide&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;sem-4&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;SEM&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ex5_string &amp;lt;- &amp;#39;
+
+unob_het =~ 1*affect.2 + 1*affect.3 + 1*affect.4 + 1*affect.5 + 1*affect.6 + 1*affect.7
+
+affect.2 ~ ar*affect.1
+affect.3 ~ ar*affect.2
+affect.4 ~ ar*affect.3
+affect.5 ~ ar*affect.4
+affect.6 ~ ar*affect.5
+affect.7 ~ ar*affect.6
+
+affect.1 ~~ affect.1
+unob_het ~~ unob_het
+affect.1 ~~ unob_het
+
+&amp;#39;
+
+ex5_model &amp;lt;- sem(ex5_string, data = df5_wide)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;count-dfs-4&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Count dfs&lt;/h3&gt;
+&lt;div id=&#34;knowns-count-the-observed-variables-4&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;knowns (count the observed variables)&lt;/h4&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# p*(p+1) / 2
+7*(7+1) / 2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 28&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;unknowns-count-the-estimated-parameters-4&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;unknowns (count the estimated parameters)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;ar is 1 estimated parameter&lt;/li&gt;
+&lt;li&gt;1 variance of unobserved heterogeneity&lt;/li&gt;
+&lt;li&gt;1 variance of affect.1&lt;/li&gt;
+&lt;li&gt;1 covariance among affect.1 and unobserved heterogeneity&lt;/li&gt;
+&lt;li&gt;6 prediction errors&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;total = 10&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;28 - 10 = 18&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex5_model)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 97 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                         15
+##   Number of equality constraints                     5
+##                                                       
+##   Number of observations                           400
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                16.878
+##   Degrees of freedom                                18
+##   P-value (Chi-square)                           0.531&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Why didn’t I estimate a mean for unobserved heterogeneity here? In all of the other examples I estimated the variance (1 parameter) and the mean (1 parameter) of the latent exogenous variable. In this case, unobserved heterogeneity is the latent exogenous variable but I only estimated its variance. That’s because in this model we don’t really care about the mean of unobserved heterogeneity, it’s just a latent variable that we incorporate to account for stable individual differences. In other words, when I estimate latent cog ability and assertiveness as IVs to predict an outcome, I care about their means. Here, unobserved heterogeneity is just an additional factor to account for, not a variable whose mean I really care to know. That said, if I wanted to estimate the mean of unobserved heterogeneity (which would result in one additional estimated parameter and one fewer df) then I would incorporate the following into the model string.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;&amp;#39;
+
+unob_het ~ 1 # lavaan code for estimating the mean of a latent variable
+
+&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Art With Monte Carlo</title>
+      <link>https://christopherdishop.netlify.app/comp-notes/2017-07-12-art/</link>
+      <pubDate>Wed, 12 Jul 2017 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/comp-notes/2017-07-12-art/</guid>
+      <description>
+
+
+&lt;p&gt;I like to think of Monte Carlo as a counting method. If a condition is satisfied we make a note (e.g., 1), and if the condition is not satisfied we make a different note (e.g., 0). We then iterate and evaluate the pattern of 1’s and 0’s to learn about our process. Art can be described in a similar way: if a condition is satisfied we use a color, and if a condition is not satisfied we use a different color. After many iterations, we have an image.&lt;/p&gt;
+&lt;p&gt;Here is a simulation that “draws” a process, inspired by Caleb Madrigal (link &lt;a href=&#34;https://github.com/calebmadrigal/math-with-python/blob/master/MonteCarloEstimation.ipynb&#34;&gt;here&lt;/a&gt;).&lt;/p&gt;
+&lt;div id=&#34;the-data-generating-process&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;The Data Generating Process&lt;/h1&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;f &amp;lt;- function(x){
+  2*sin(4*x) + 2*sin(5*x) + 12
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;some-initial-values&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Some Initial Values&lt;/h1&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- seq(0, 10, length.out  = 1000)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;using-the-dgp-to-generate-values-of-y&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Using the DGP to generate values of Y&lt;/h1&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;y &amp;lt;- f(x)
+
+plot(x, y)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/comp-notes/2017-07-12-art/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;this-is-the-process-we-want-to-draw&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;This is the process we want to “draw”&lt;/h1&gt;
+&lt;/div&gt;
+&lt;div id=&#34;now-for-the-monte-carlo&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Now for the Monte Carlo&lt;/h1&gt;
+&lt;p&gt;We are going to evaluate 10,000 points within our process space (10 x 16).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;num_points &amp;lt;- 10000
+rect_width &amp;lt;- 10
+rect_height &amp;lt;- 16
+
+points &amp;lt;- matrix(, ncol = 2, nrow = num_points)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Column 1 of our points matrix represents the width of our process space while column 2 represents its height. First we fill the matrix with random values within our process space:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;for(i in 1:num_points){
+  points[i,1] = runif(1, 0, rect_width)
+  points[i,2] = runif(1, 0, rect_height)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now we iterate across all of those points and evaluate them with respect to our process. Think of the “width” as &lt;em&gt;X&lt;/em&gt; values and the “height” as &lt;em&gt;Y&lt;/em&gt; values. Given a value of &lt;em&gt;X&lt;/em&gt;, is our random value of &lt;em&gt;Y&lt;/em&gt; less than it would be if we created a &lt;em&gt;Y&lt;/em&gt; value by using our function (f(x))? If so, mark it in the “points_under” vector. If not, mark it in the “points_over” vector.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;points_under = matrix(, ncol = 2, nrow = num_points)
+points_above = matrix(, ncol = 2, nrow = num_points)
+
+for(i in 1:num_points){
+  if(points[i,2] &amp;lt; f(points[i,1])){
+    points_under[i,1] &amp;lt;- points[i,1]
+    points_under[i,2] &amp;lt;- points[i,2]
+  }
+  else{
+    points_above[i,1] &amp;lt;- points[i,1]
+    points_above[i,2] &amp;lt;- points[i,2]
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Put the results into new vectors without NA’s. Some NA’s come up because our data generating process is crazy.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;points_under_x &amp;lt;-  points_under[!is.na(points_under[,1]),1]
+points_under_y &amp;lt;-  points_under[!is.na(points_under[,2]),2]
+
+points_over_x &amp;lt;- points_above[!is.na(points_above[,1]),1]
+points_over_y &amp;lt;- points_above[!is.na(points_above[,2]),2]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now we have an image…&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(points_under_y ~ points_under_x, pch = 20, cex = 0.3)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/comp-notes/2017-07-12-art/index_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

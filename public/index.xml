@@ -1,598 +1,1352 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Christopher Dishop</title>
-    <link>/</link>
-    <description>Recent content on Christopher Dishop</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-US</language>
-    <lastBuildDate>Wed, 27 May 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
-    
+    <title>Christopher R. Dishop</title>
+    <link>https://christopherdishop.netlify.app/</link>
+      <atom:link href="https://christopherdishop.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <description>Christopher R. Dishop</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Christopher Dishop 2020</copyright><lastBuildDate>Wed, 27 May 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://christopherdishop.netlify.app/img/pom-card.png</url>
+      <title>Christopher R. Dishop</title>
+      <link>https://christopherdishop.netlify.app/</link>
+    </image>
     
     <item>
-      <title>CV</title>
-      <link>/cv/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Counting Degrees of Freedom</title>
+      <link>https://christopherdishop.netlify.app/comp-notes/2017-07-13-dfs/</link>
+      <pubDate>Wed, 27 May 2020 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/comp-notes/2017-07-13-dfs/</guid>
+      <description>
+
+
+&lt;p&gt;This post contains a bunch of examples where I practice counting dfs. In each example, I generate the data, estimate the parameters using SEM, count the dfs, and then compare my count to what the model spits back. To count dfs, I need to know the number of knowns and unknowns in my system:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{equation}
+\textrm{DFs} = \textrm{knowns - unknowns}
+\end{equation}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;To count the number of knowns, I need to know the number of observed variables, &lt;em&gt;p&lt;/em&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{equation}
+\textrm{knowns} = p*(p+1) / 2
+\end{equation}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;To count the number of unknowns, I count the number of parameters that my model estimates. Now for the examples.&lt;/p&gt;
+&lt;div id=&#34;example-1---trust-and-availability-cause-helping&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Example 1 - Trust and availability cause helping&lt;/h1&gt;
+&lt;div id=&#34;dgp&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;DGP&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;people &amp;lt;- 400
+trust &amp;lt;- rnorm(people, 40, 2)
+availability &amp;lt;- rnorm(people, 20, 5)
+error &amp;lt;- rnorm(people, 0, 2)
+
+helping &amp;lt;- 3 + 0.2*trust + 0.7*availability + error&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;sem&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;SEM&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+library(lavaan)
+
+df &amp;lt;- data.frame(
+  &amp;#39;id&amp;#39; = c(1:people),
+  &amp;#39;trust&amp;#39; = c(trust),
+  &amp;#39;availability&amp;#39; = c(availability),
+  &amp;#39;helping&amp;#39; = c(helping)
+)
+
+ex1_string &amp;lt;- &amp;#39;
+
+helping ~ b1*trust + b2*availability
+
+&amp;#39;
+
+ex1_model &amp;lt;- sem(ex1_string, data = df)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;count-dfs&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Count dfs&lt;/h1&gt;
+&lt;div id=&#34;knowns-count-the-observed-variables&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Knowns (count the observed variables)&lt;/h4&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# p*(p + 1) / 2
+
+3*(3+1) / 2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 6&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;unknowns-count-the-estimated-parameters&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Unknowns (count the estimated parameters)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;1 for b1&lt;/li&gt;
+&lt;li&gt;1 for b2&lt;/li&gt;
+&lt;li&gt;1 for the variance of trust&lt;/li&gt;
+&lt;li&gt;1 for the variance of availability&lt;/li&gt;
+&lt;li&gt;1 for the covariance of trust and availability&lt;/li&gt;
+&lt;li&gt;1 for the prediction error on helping&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;total = 6&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;6 - 6 = 0&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex1_model)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 15 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                          3
+##                                                       
+##   Number of observations                           400
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 0.000
+##   Degrees of freedom                                 0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now if I restrict the covariance of trust and availability to be zero I should have 1 df&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ex1_string_restrict &amp;lt;- &amp;#39;
+
+helping ~ b1*trust + b2*availability
+trust ~~ 0*availability
+
+&amp;#39;
+
+ex1_model_restrict &amp;lt;- sem(ex1_string_restrict, data = df)
+show(ex1_model_restrict) # yup&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 16 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                          5
+##                                                       
+##   Number of observations                           400
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 0.284
+##   Degrees of freedom                                 1
+##   P-value (Chi-square)                           0.594&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;example-2---common-factor-underlying-6-observed-items&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Example 2 - Common factor underlying 6 observed items&lt;/h1&gt;
+&lt;div id=&#34;dgp-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;DGP&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;common_factor &amp;lt;- rnorm(people, 30, 2)
+error_cf &amp;lt;- rnorm(people, 0, 2)
+item1 &amp;lt;- 0.35*common_factor + error_cf
+item2 &amp;lt;- 0.22*common_factor + error_cf
+item3 &amp;lt;- 0.18*common_factor + error_cf
+item4 &amp;lt;- 0.24*common_factor + error_cf
+item5 &amp;lt;- 0.31*common_factor + error_cf
+item6 &amp;lt;- 0.44*common_factor + error_cf
+
+# nope, that approach is wrong. If I do above then my errors are not independent
+# prediction errors (in this case measurement) should be independent
+
+item1 &amp;lt;- 0.35*common_factor + rnorm(people, 0, 2)
+item2 &amp;lt;- 0.22*common_factor + rnorm(people, 0, 2)
+item3 &amp;lt;- 0.18*common_factor + rnorm(people, 0, 2)
+item4 &amp;lt;- 0.24*common_factor + rnorm(people, 0, 2)
+item5 &amp;lt;- 0.31*common_factor + rnorm(people, 0, 2)
+item6 &amp;lt;- 0.44*common_factor + rnorm(people, 0, 2)
+
+df_cf &amp;lt;- data.frame(
+  &amp;#39;id&amp;#39; = c(1:people),
+  &amp;#39;item1&amp;#39; = c(item1),
+  &amp;#39;item2&amp;#39; = c(item2),
+  &amp;#39;item3&amp;#39; = c(item3),
+  &amp;#39;item4&amp;#39; = c(item4),
+  &amp;#39;item5&amp;#39; = c(item5),
+  &amp;#39;item6&amp;#39; = c(item6)
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;sem-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;SEM&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ex2_string &amp;lt;- &amp;#39;
+
+com_factor =~ 1*item1 + fl2*item2 + fl3*item3 + fl4*item4 + fl5*item5 + fl6*item6
+&amp;#39;
+
+ex2_model &amp;lt;- sem(ex2_string, data = df_cf)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;count-dfs-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Count dfs&lt;/h3&gt;
+&lt;div id=&#34;knowns-count-the-observed-variables-1&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;knowns (count the observed variables)&lt;/h4&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# p*(p + 1) / 2
+
+6*(6 + 1) / 2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 21&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;unknowns-count-the-estimated-parameters-1&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;unknowns (count the estimated parameters)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;6 factor loadings, but I constrained the first one to be 1 (I have to to estimate the latent variable), so 5 parameters&lt;/li&gt;
+&lt;li&gt;5 measurement errors for the 5 factor loadings&lt;/li&gt;
+&lt;li&gt;1 variance for the latent exogenous variable&lt;/li&gt;
+&lt;li&gt;1 mean for the latent exogenous variable&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;total = 12&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;21 - 12 = 9&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex2_model)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 45 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                         12
+##                                                       
+##   Number of observations                           400
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 5.586
+##   Degrees of freedom                                 9
+##   P-value (Chi-square)                           0.781&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;example-3---two-latent-variables-predict-one-observed-outcome&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Example 3 - Two latent variables predict one observed outcome&lt;/h1&gt;
+&lt;p&gt;Cognitive ability (latent variable 1) and assertiveness (latent variable 2) predict productivity. Cognitive ability and assertiveness are both captured with 2 manifest items/variables.&lt;/p&gt;
+&lt;div id=&#34;dgp-2&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;DGP&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# cog ability (latent exogenous variable 1)
+cog_ability &amp;lt;- rnorm(people, 100, 15)
+ca_item1 &amp;lt;- 0.78*cog_ability + rnorm(people, 0, 1)
+ca_item2 &amp;lt;- 0.11*cog_ability + rnorm(people, 0, 1)
+
+# assertiveness (latent exogenous variable 2)
+assertive &amp;lt;- rnorm(people, 30, 8)
+ass_item1 &amp;lt;- 0.81*assertive + rnorm(people, 0, 1)
+ass_item2 &amp;lt;- 0.34*assertive + rnorm(people, 0, 1)
+
+# productivity (observed outcome)
+
+productivity &amp;lt;- 0.55*cog_ability + 0.82*assertive + rnorm(people, 0, 5)
+
+# data
+
+df_3 &amp;lt;- data.frame(
+  &amp;#39;id&amp;#39; = c(1:people),
+  &amp;#39;ca_item1&amp;#39; = c(ca_item1),
+  &amp;#39;ca_item2&amp;#39; = c(ca_item2),
+  &amp;#39;ass_item1&amp;#39; = c(ass_item1),
+  &amp;#39;ass_item2&amp;#39; = c(ass_item2),
+  &amp;#39;productivity&amp;#39; = c(productivity)
+  
+  )&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;sem-2&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;SEM&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ex3_string &amp;lt;- &amp;#39;
+
+cog_ability =~ 1*ca_item1 + fl2*ca_item2
+assertiveness =~ 1*ass_item1 + fla*ass_item2
+
+cog_ability ~~ cog_ability
+assertiveness ~~ assertiveness
+cog_ability ~~ assertiveness
+
+productivity ~ b1*cog_ability + b2*assertiveness
+
+&amp;#39;
+
+ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;count-dfs-2&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Count dfs&lt;/h3&gt;
+&lt;div id=&#34;knowns-count-the-observed-variables-2&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;knowns (count the observed variables)&lt;/h4&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# p*(p+1) / 2
+
+5*(5+1) / 2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 15&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;unknowns-count-the-estimated-parameters-2&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;unknowns (count the estimated parameters)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;4 factor loadings but I constrained 2 of them, so 2 factor loadings&lt;/li&gt;
+&lt;li&gt;2 measurement errors (4 items, but constrained 2 of them)&lt;/li&gt;
+&lt;li&gt;1 variance on cog ability&lt;/li&gt;
+&lt;li&gt;1 mean on cog ability&lt;/li&gt;
+&lt;li&gt;1 variance on assertiveness&lt;/li&gt;
+&lt;li&gt;1 mean on assertiveness&lt;/li&gt;
+&lt;li&gt;1 covariance among cog ability and assertiveness&lt;/li&gt;
+&lt;li&gt;b1&lt;/li&gt;
+&lt;li&gt;b2&lt;/li&gt;
+&lt;li&gt;2 prediction errors&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;total = 13&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;15 - 13 = 2&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex3_model)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 194 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                         12
+##                                                       
+##   Number of observations                           400
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 0.125
+##   Degrees of freedom                                 3
+##   P-value (Chi-square)                           0.989&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Nope. I’m one off, where did I go wrong?&lt;/p&gt;
+&lt;p&gt;Ah, there is only 1 prediction error because productivity is being predicted. I counted 2 prediction errors because I gave one to both b1 and b2. So, the unknowns should be…&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;4 factor loadings but I constrained 2 of them, so 2 factor loadings&lt;/li&gt;
+&lt;li&gt;2 measurement errors (4 items, but constrained 2 of them)&lt;/li&gt;
+&lt;li&gt;1 variance on cog ability&lt;/li&gt;
+&lt;li&gt;1 mean on cog ability&lt;/li&gt;
+&lt;li&gt;1 variance on assertiveness&lt;/li&gt;
+&lt;li&gt;1 mean on assertiveness&lt;/li&gt;
+&lt;li&gt;1 covariance among cog ability and assertiveness&lt;/li&gt;
+&lt;li&gt;b1&lt;/li&gt;
+&lt;li&gt;b2&lt;/li&gt;
+&lt;li&gt;1 prediction error&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;total = 12&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;15 - 12 = 3&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex3_model)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 194 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                         12
+##                                                       
+##   Number of observations                           400
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 0.125
+##   Degrees of freedom                                 3
+##   P-value (Chi-square)                           0.989&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;example-4---a-causes-b-which-causes-c-which-causes-d&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Example 4 - a causes b, which causes c, which causes d&lt;/h1&gt;
+&lt;div id=&#34;dgp-3&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;DGP&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;a &amp;lt;- rnorm(people, 300, 3)
+b &amp;lt;- 0.67*a + rnorm(people, 0, 1)
+c &amp;lt;- 0.99*b + rnorm(people, 0, 10)
+d &amp;lt;- 4 + 4*c + rnorm(people, 0, 4)
+
+df_chain &amp;lt;- data.frame(
+  &amp;#39;id&amp;#39; = c(1:people),
+  &amp;#39;a&amp;#39; = c(a),
+  &amp;#39;b&amp;#39; = c(b),
+  &amp;#39;c&amp;#39; = c(c),
+  &amp;#39;d&amp;#39; = c(d)
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;sem-3&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;SEM&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ex4_string &amp;lt;- &amp;#39;
+
+b ~ b1*a
+c ~ b2*b
+d ~ b3*c
+
+a ~~ a
+
+&amp;#39;
+
+ex4_model &amp;lt;- sem(ex4_string, data = df_chain)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;count-dfs-3&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Count dfs&lt;/h3&gt;
+&lt;div id=&#34;knowns-count-the-observed-variables-3&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;knowns (count the observed variables)&lt;/h4&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# p*(p+1) / 2
+4*(4+1) / 2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 10&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;unknowns-count-the-estimated-parameters-3&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;unknowns (count the estimated parameters)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;b1&lt;/li&gt;
+&lt;li&gt;b2&lt;/li&gt;
+&lt;li&gt;b3&lt;/li&gt;
+&lt;li&gt;3 prediction errors&lt;/li&gt;
+&lt;li&gt;1 variance for the lone exogenous variable (a)&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;total = 7&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;10 - 7 = 3&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex4_model)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 57 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                          7
+##                                                       
+##   Number of observations                           400
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 1.017
+##   Degrees of freedom                                 3
+##   P-value (Chi-square)                           0.797&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;example-5---observed-affect-over-7-time-points&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Example 5 - Observed affect over 7 time points&lt;/h1&gt;
+&lt;div id=&#34;dgp-4&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;DGP&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;time &amp;lt;- 7
+affect_store &amp;lt;- matrix(, ncol = 3, nrow = time*people)
+count &amp;lt;- 0
+for(i in 1:people){
+  
+  unob_het &amp;lt;- rnorm(1, 0, 3)
+  
+  for(j in 1:time){
+    count &amp;lt;- count + 1
+    
+    if(j == 1){
+      affect_store[count, 1] &amp;lt;- i
+      affect_store[count, 2] &amp;lt;- j
+      affect_store[count, 3] &amp;lt;- unob_het + 50 + rnorm(1, 0, 1)
+    }else{
+      affect_store[count, 1] &amp;lt;- i
+      affect_store[count, 2] &amp;lt;- j
+      affect_store[count, 3] &amp;lt;- 0.8*affect_store[count - 1, 3] + unob_het + rnorm(1, 0, 1)
       
-      <guid>/cv/</guid>
+    }
+  }
+  
+}
+df5 &amp;lt;- data.frame(affect_store)
+names(df5) &amp;lt;- c(&amp;#39;id&amp;#39;, &amp;#39;time&amp;#39;, &amp;#39;affect&amp;#39;)
+library(reshape2)
+df5_wide &amp;lt;- reshape(df5, idvar = &amp;#39;id&amp;#39;, timevar = &amp;#39;time&amp;#39;, direction = &amp;#39;wide&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;sem-4&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;SEM&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ex5_string &amp;lt;- &amp;#39;
+
+unob_het =~ 1*affect.2 + 1*affect.3 + 1*affect.4 + 1*affect.5 + 1*affect.6 + 1*affect.7
+
+affect.2 ~ ar*affect.1
+affect.3 ~ ar*affect.2
+affect.4 ~ ar*affect.3
+affect.5 ~ ar*affect.4
+affect.6 ~ ar*affect.5
+affect.7 ~ ar*affect.6
+
+affect.1 ~~ affect.1
+unob_het ~~ unob_het
+affect.1 ~~ unob_het
+
+&amp;#39;
+
+ex5_model &amp;lt;- sem(ex5_string, data = df5_wide)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;count-dfs-4&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Count dfs&lt;/h3&gt;
+&lt;div id=&#34;knowns-count-the-observed-variables-4&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;knowns (count the observed variables)&lt;/h4&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# p*(p+1) / 2
+7*(7+1) / 2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 28&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;unknowns-count-the-estimated-parameters-4&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;unknowns (count the estimated parameters)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;ar is 1 estimated parameter&lt;/li&gt;
+&lt;li&gt;1 variance of unobserved heterogeneity&lt;/li&gt;
+&lt;li&gt;1 variance of affect.1&lt;/li&gt;
+&lt;li&gt;1 covariance among affect.1 and unobserved heterogeneity&lt;/li&gt;
+&lt;li&gt;6 prediction errors&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;total = 10&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;28 - 10 = 18&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex5_model)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 97 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                         15
+##   Number of equality constraints                     5
+##                                                       
+##   Number of observations                           400
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                16.878
+##   Degrees of freedom                                18
+##   P-value (Chi-square)                           0.531&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Why didn’t I estimate a mean for unobserved heterogeneity here? In all of the other examples I estimated the variance (1 parameter) and the mean (1 parameter) of the latent exogenous variable. In this case, unobserved heterogeneity is the latent exogenous variable but I only estimated its variance. That’s because in this model we don’t really care about the mean of unobserved heterogeneity, it’s just a latent variable that we incorporate to account for stable individual differences. In other words, when I estimate latent cog ability and assertiveness as IVs to predict an outcome, I care about their means. Here, unobserved heterogeneity is just an additional factor to account for, not a variable whose mean I really care to know. That said, if I wanted to estimate the mean of unobserved heterogeneity (which would result in one additional estimated parameter and one fewer df) then I would incorporate the following into the model string.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;&amp;#39;
+
+unob_het ~ 1 # lavaan code for estimating the mean of a latent variable
+
+&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Projects</title>
+      <link>https://christopherdishop.netlify.app/projects/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/projects/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Recommended Reading</title>
-      <link>/rec_reading/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/rec_reading/</guid>
-      <description>Quantifying Life: A Symbiosis of Computation, Mathematics, and Biology
-Dmitry A. Kondrashov
-Click here for link
-On Writing Well: The Classic Guide to Writing Nonfiction
-William Zinsser
-Click here for link
-How We Know What Isn&amp;rsquo;t So: The Fallibility of Human Reason in Everyday Life
-Thomas Gilovich
-Click here for link
-Complexity: A Guided Tour
-Melanie Mitchell
-Click here for link
-The Drunkard&amp;rsquo;s Walk: How Randomness Rules Our Lives
-Leonard Mlodinow</description>
+      <title>Resume</title>
+      <link>https://christopherdishop.netlify.app/about/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/about/</guid>
+      <description></description>
     </item>
     
     <item>
-      <title>R Resources</title>
-      <link>/r_resources/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/r_resources/</guid>
-      <description>Websites with many R resources All R books written with Bookdown
-All R cheatsheets
-APS list of R resources
-Show Us Your R
-Econometrics Simulations
-UVA Data Science Resources
-People with helpful individual websites Emily C. Zabor
-Jenny Bryan
-(teach =&amp;gt; purrr tutorial is excellent)
-Kristoffer Magnusson
-Sacha Epskamp
-FOM academic
-Suzan Baert
-Hadley Wickham
-David Robinson
-B Rodriguez
-Nathaniel D. Phillips
-Simon Ejdemyr
-The R Graph Gallery
-Christian Burkhart</description>
+      <title>Resume</title>
+      <link>https://christopherdishop.netlify.app/resume/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/resume/</guid>
+      <description></description>
     </item>
     
     <item>
-      <title>Counting Degrees of Freedom</title>
-      <link>/computational_notes/dfs/</link>
-      <pubDate>Wed, 27 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/dfs/</guid>
-      <description>This post contains a bunch of examples where I practice counting dfs. In each example, I generate the data, estimate the parameters using SEM, count the dfs, and then compare my count to what the model spits back. To count dfs, I need to know the number of knowns and unknowns in my system:
-\[\begin{equation} \textrm{DFs} = \textrm{knowns - unknowns} \end{equation}\]
-To count the number of knowns, I need to know the number of observed variables, p:</description>
+      <title>Talks &amp; Workshops</title>
+      <link>https://christopherdishop.netlify.app/talks/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/talks/</guid>
+      <description></description>
     </item>
     
     <item>
-      <title>Bivariate Latent Dual Change Model</title>
-      <link>/computational_notes/bi_dual_change/</link>
-      <pubDate>Tue, 26 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/bi_dual_change/</guid>
-      <description>My last post demonstrated a dual change model for one variable, now I want to demonstrate a bivariate dual change model. A SEM path diagram for a bivariate dual change model is below, taken from Wang, Zhou, and Zhang (2016)
-(If you do not have access to that link you can view a similar path diagram in Jones, King, Gilrane, McCausland, Cortina, &amp;amp; Grimm, 2016)
-Essentially, we have two dual change processes and a coupling parameter from the latent true score on one variable to the latent change score on the other.</description>
+      <title>LICENSE: CC-BY-SA</title>
+      <link>https://christopherdishop.netlify.app/license/</link>
+      <pubDate>Thu, 28 Jun 2018 00:00:00 +0100</pubDate>
+      <guid>https://christopherdishop.netlify.app/license/</guid>
+      <description>&lt;p&gt;My 
+&lt;a href=&#34;https://christopherdishop.netlify.app/post/&#34;&gt;blog posts&lt;/a&gt; are released under a 
+&lt;a href=&#34;http://creativecommons.org/licenses/by-sa/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Creative Commons Attribution-ShareAlike 4.0 International License&lt;/a&gt;.&lt;/p&gt;
+&lt;center&gt;
+&lt;i class=&#34;fab fa-creative-commons fa-2x&#34;&gt;&lt;/i&gt;&lt;i class=&#34;fab fa-creative-commons-by fa-2x&#34;&gt;&lt;/i&gt;&lt;i class=&#34;fab fa-creative-commons-sa fa-2x&#34;&gt;&lt;/i&gt;
+&lt;/center&gt;
+</description>
     </item>
     
     <item>
-      <title>Latent Dual Change Models</title>
-      <link>/computational_notes/dual_change/</link>
-      <pubDate>Sun, 24 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/dual_change/</guid>
-      <description>I begin with an intercept-only model in a latent change framework and then build to a full dual change model. SEM images in this post are taken from a lecture by Amy Nuttall. Two notes about the models and code below. First, the initial models will not fit well because I use a DGP with both dual change components, the initial models purposefully exclude either constant or proportion change. Second, I use the sem command throughout rather than growth in the lavaan package because it forces me to specify the entire model.</description>
+      <title>Subtyping cognitive profiles in Autism Spectrum Disorder using a random forest algorithm</title>
+      <link>https://christopherdishop.netlify.app/publication/2017-subtyping/</link>
+      <pubDate>Wed, 20 Dec 2017 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/publication/2017-subtyping/</guid>
+      <description></description>
     </item>
     
     <item>
-      <title>Julia Cheat Sheet</title>
-      <link>/computational_notes/julia_cheatsheet/</link>
-      <pubDate>Sat, 23 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/julia_cheatsheet/</guid>
-      <description>I started using Julia for my computational models and recently created a cheat sheet to house all of my common commands.
-You can find it on github here.
-Bo\(^2\)m =)</description>
-    </item>
-    
-    <item>
-      <title>Be Careful With Characters and Matrices</title>
-      <link>/computational_notes/matrix_characters/</link>
-      <pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/matrix_characters/</guid>
-      <description>If you fill a matrix cell with a character, R will convert the entire matrix into character values…so be careful = )
-time &amp;lt;- c(1:4) numbers &amp;lt;- c(1:4) characters &amp;lt;- c(&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;, &amp;#39;d&amp;#39;) count &amp;lt;- 0 df_mat &amp;lt;- matrix(, ncol = 3, nrow = length(time)) for(i in 1:length(time)){ count &amp;lt;- count + 1 df_mat[count, 1] &amp;lt;- time[i] df_mat[count, 2] &amp;lt;- numbers[i] df_mat[count, 3] &amp;lt;- characters[i] } df_mat ## [,1] [,2] [,3] ## [1,] &amp;quot;1&amp;quot; &amp;quot;1&amp;quot; &amp;quot;a&amp;quot; ## [2,] &amp;quot;2&amp;quot; &amp;quot;2&amp;quot; &amp;quot;b&amp;quot; ## [3,] &amp;quot;3&amp;quot; &amp;quot;3&amp;quot; &amp;quot;c&amp;quot; ## [4,] &amp;quot;4&amp;quot; &amp;quot;4&amp;quot; &amp;quot;d&amp;quot; Notice that all cells are now characters.</description>
-    </item>
-    
-    <item>
-      <title>Empirical Independence</title>
-      <link>/computational_notes/emp_dependence/</link>
-      <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/emp_dependence/</guid>
-      <description>Calculate the independence of two events using both analytic and empirical techniques. I’m trying to assess whether the probability of having a meal classified as “dinner” depends on whether that meal includes “chicken” as its main dish.
-The options for the main dish:
- chicken, salmon, pork, chicken, pancakes, french toast  The options for the side dishes:
- salad, salad, green beans, corn, carrots, bacon.  All possible combinations to create a meal:</description>
-    </item>
-    
-    <item>
-      <title>Independence Exercises</title>
-      <link>/computational_notes/prob_dependence/</link>
-      <pubDate>Thu, 02 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/prob_dependence/</guid>
-      <description>Some of my favorite, simple examples demonstrating how to evaluate whether two events are independent using Probability Theory.
-Example 1 - Product Rule
- Example 2 - Conditionals &amp;amp; Intersection
- Example 3 - Conditionals
- Example 4 - Markov Chain
-  Example 1 - Product Rule If two events are independent, then the product rule states that their intersection should equal the product of each independent probability.</description>
-    </item>
-    
-    <item>
-      <title>Scrape Numbered Pages</title>
-      <link>/computational_notes/scraping_numb_pages/</link>
-      <pubDate>Sun, 22 Mar 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/scraping_numb_pages/</guid>
-      <description>Quick command to compile all links for a website that numbers its pages. Image I want to go to a website that contains 100 pages of reviews, the first 10 on page 1, the second 10 on page 2, the third 10 on page 3, etc. The first step is to create a vector or list of links to navigate to, one for each page.
-The output I want is something like this…</description>
-    </item>
-    
-    <item>
-      <title>First Web Scraping</title>
-      <link>/computational_notes/scraping_practice/</link>
-      <pubDate>Fri, 20 Mar 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/scraping_practice/</guid>
-      <description>Dipping my feet into the world of websraping using rvest. The first few examples are pulled from Alex Bradley’s and Richard James’ 2019 article.
-Exercise 1 - From Article Scrape a single page from the article’s practice website. There are three things I want to pull from the page:
- header
- image
- text.
-  Then, put that information into a single data set.
-library(rvest) page_parse &amp;lt;- read_html(&amp;quot;https://practicewebscrapingsite.</description>
-    </item>
-    
-    <item>
-      <title>Using Gentle Ggplot2 to Present</title>
-      <link>/computational_notes/methods_others/</link>
-      <pubDate>Wed, 04 Mar 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/methods_others/</guid>
-      <description>I recently created my first slide deck using Garrick Aden-Buie’s awesome template called “Gentle Ggplot2.” You can find the presentation here and the source code on my GitHub page.
-Bo\(^2\)m =)</description>
-    </item>
-    
-    <item>
-      <title>Course Skeleton</title>
-      <link>/computational_notes/skeleton/</link>
-      <pubDate>Fri, 10 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/skeleton/</guid>
-      <description>I recently created a course skeleton for a research methods or statistics course. The website allows you to incorporate Rmarkdown and dynamic documents to better demonstrate interactive coding.
-You can find it on github here.
-Bo\(^2\)m =)</description>
-    </item>
-    
-    <item>
-      <title>Simulations With Rcpp</title>
-      <link>/computational_notes/sims_rccp/</link>
-      <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/sims_rccp/</guid>
-      <description>Simulating dynamic processes is slow in R. Using the Rcpp function, we can incorporate C++ code to improve performance.
-My dad, Tim, wrote the C++ code you see here = ).
-Example 1 - Two states, single unit We’re going to simulate data goverened by the following equations:
-\[\begin{align*} x_t &amp;amp;= a1x_{t-1} + b1y_{t-1}\\ y_t &amp;amp;= a2y_{t-1} + b2x_{t-1}. \end{align*}\]
-Here it is in R:
-library(tidyverse) library(Rcpp) # Parameters a1 &amp;lt;- 0.</description>
-    </item>
-    
-    <item>
-      <title>Regression Creates Weighted Linear Composites</title>
-      <link>/computational_notes/regression_composite/</link>
-      <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/regression_composite/</guid>
-      <description>One way to think about regression is as a tool that takes a set of predictors and creates a weighted, linear composite that maximally correlates with the response variable. It finds a way to combine multiple predictors into a single thing, using regression weights, and the weights are chosen such that, once the single composite is formed, it maximally correlates with the outcome.
-Here’s a simulation to punch that point home.</description>
-    </item>
-    
-    <item>
-      <title>Meta Analysis Comps Notes</title>
-      <link>/computational_notes/ma_compute/</link>
-      <pubDate>Sun, 15 Sep 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/ma_compute/</guid>
-      <description>I’m taking comps pretty soon so this is my summary document regarding meta-analysis.
-MAs give us an average estimate across settings, tests, and people after correcting for noise. In a bare-bones MA, we correct only for sampling error. In a full MA, we correct for sampling error, unreliability, and range restriction. I’ll demonstrate a full MA here where we assume direct (rather than indirect) range restriction.
-Steps Literature Review</description>
-    </item>
-    
-    <item>
-      <title>Intuition for Correlated Errors and Third Variables</title>
-      <link>/computational_notes/cheating_cor_errors/</link>
-      <pubDate>Wed, 26 Jun 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/cheating_cor_errors/</guid>
-      <description>In many research methods or statistics courses you come across the idea that correlated errors signal a third variable. In other words, you have a missing, relevant variable that induces correlation among your residuals. That’s a tough idea to wrap your head around, but it is easier to consider with respect to a given topic: cheating on exams. This post builds intuition for “correlated errors with respect to missing third variables” in the context of college exams and cheating.</description>
-    </item>
-    
-    <item>
-      <title>Systems Thinking on Goons in the NHL</title>
-      <link>/computational_notes/system_goons/</link>
-      <pubDate>Fri, 14 Jun 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/system_goons/</guid>
-      <description>Inspired by Bill Burr’s Monday Morning Podcast, episode 6-6-19.
-He describes how people that do not understand hockey wanted to get fighting out of the NHL, so in the 2000’s they made greater efforts to remove goons (fighters). What people outside the NHL often do not understand, though, is that fighting is used to minimize dirty play. When a team is playing dirty, you – as a couch of the team that is not playing dirty – send out a goon to punch around a few of their players.</description>
-    </item>
-    
-    <item>
-      <title>What Explaining Means in Statistics</title>
-      <link>/computational_notes/explaining_statistics/</link>
-      <pubDate>Fri, 03 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/explaining_statistics/</guid>
-      <description>Think about what it would mean to explain something to a friend. How would you explain why the Patriot’s won the Superbowl? How would you explain why you are feeling happy or sad? How would you explain tying a shoe to a toddler? How would you explain why eating lots of donuts tends to increase a person’s weight? How would you explain the timeline of Game of Thrones to someone who hadn’t seen it?</description>
-    </item>
-    
-    <item>
-      <title>Lavaan MPLUS Reference Sheet</title>
-      <link>/computational_notes/lavaan_mplus/</link>
-      <pubDate>Thu, 02 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/lavaan_mplus/</guid>
-      <description>A growth curve model written in lavaan and MPLUS as a syntax reference guide. Imagine a latent growth curve on affect across 4 time points. First, lavaan code:
-lavaan_string &amp;lt;- &amp;#39; # Latent intercept and slope factors intercept_affect =~ 1*affect.1 + 1*affect.2 + 1*affect.3 + 1*affect.4 slope_affect =~ 0*affect.1 + 1*affect.2 + 2*affect.3 + 3*affect.4 # Mean and variance of latent factors intercept_affect ~~ intercept_affect slope_affect ~~ slope_affect # Covariance between latent factors intercept_affect ~~ slope_affect # Fix observed variable means to 0 affect.</description>
-    </item>
-    
-    <item>
-      <title>Screwing Up A Mean Calculation</title>
-      <link>/computational_notes/mean_calculating/</link>
-      <pubDate>Thu, 02 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/mean_calculating/</guid>
-      <description>Quick note about calculating the mean of a column with dplyr in R. It’s surprisingly easy to screw up, and the culprit is forgetting to change the name of the column storing the new calculation.
-A simple dataframe.
-library(tidyverse) df &amp;lt;- data.frame( &amp;#39;books_read&amp;#39; = c(1,2,3,4,5,6), &amp;#39;intelligence&amp;#39; = c(4,5,6,7,8,8) ) df ## books_read intelligence ## 1 1 4 ## 2 2 5 ## 3 3 6 ## 4 4 7 ## 5 5 8 ## 6 6 8 I want to calculate the mean and standard deviation of the “books read” column.</description>
-    </item>
-    
-    <item>
-      <title>Degrees of Freedom Intuition</title>
-      <link>/computational_notes/degrees_freedom/</link>
-      <pubDate>Wed, 01 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/degrees_freedom/</guid>
-      <description>This post is about building intuition for degrees of freedom. There are two ways to think about it, the “information” way and the “line” way.
-The Information Way The quantity, degrees of freedom, is the amount of information available in our data set minus the amount of information we want to pull from it. Here are a bunch of different ways of representing that idea:
-\[\begin{equation} \textrm{DF} = \textrm{Knowns} - \textrm{Unknowns} \end{equation}\]</description>
-    </item>
-    
-    <item>
-      <title>Everything Partialled From Everything in Regression</title>
-      <link>/computational_notes/regression_partial/</link>
-      <pubDate>Fri, 19 Apr 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/regression_partial/</guid>
-      <description>In regression, everything is partialled from everything. Let’s work through that notion with images and code. Imagine that emotion and ability cause an outcome, \(Y\).
-What this image represents is that \(Y\) has variability (across people or time), and its variability is associated with variability in emotion and variability in ability. Notice that there is variability overlap between ability and \(Y\),
-emotion and \(Y\),
-emotion and ability,
-and all three variables.</description>
-    </item>
-    
-    <item>
-      <title>Convert Multiple Columns to Numeric or Character</title>
-      <link>/computational_notes/convert_numeric/</link>
-      <pubDate>Wed, 10 Apr 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/convert_numeric/</guid>
-      <description>Quick piece of code that turns all selected columns to numeric in R.
-df[, c(&amp;#39;col1&amp;#39;, &amp;#39;col2&amp;#39;)] &amp;lt;- as.numeric(as.character(unlist(df[, c(&amp;#39;col1&amp;#39;, &amp;#39;col2&amp;#39;)]))) Mutating within tidyverse is always a good options as well.
-df %&amp;gt;% mutate_at(vars(&amp;#39;column1&amp;#39;, &amp;#39;column2&amp;#39;), as.character) Bo\(^2\)m =)</description>
-    </item>
-    
-    <item>
-      <title>Simulating a Moving Average Process</title>
-      <link>/computational_notes/moving_average/</link>
-      <pubDate>Tue, 29 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/moving_average/</guid>
-      <description>Two ways to simulate a moving average process. A moving average is a linear combination of concurrent and historic noises:
-\[\begin{equation} y_t = z_t + z_{t-1} + z_{t-2} \end{equation}\]
-where \(y_t\) is the outcome variable that is influenced by noise at this moment (\(z_t\)) and noise from the last two time points. MA(q) processes can occur at any lag, I will use a two lag version here.
-The first way to simulate this process is to generate all noise terms and then sample from that distribution throughout our recursive routine.</description>
-    </item>
-    
-    <item>
-      <title>Turning Unequal Dates into Days</title>
-      <link>/computational_notes/uneven_time/</link>
-      <pubDate>Tue, 15 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/uneven_time/</guid>
-      <description>Longitudinal data of a group or team often have missing days. For example, only Bob reports a stress score on January 3rd even though Joe and Sam are also part of the sample.
-## id date stress ## 1 bob 2019-01-01 4 ## 2 joe 2019-01-01 5 ## 3 sam 2019-01-01 6 ## 4 bob 2019-01-02 6 ## 5 joe 2019-01-02 5 ## 6 bob 2019-01-03 4 ## 7 bob 2019-01-04 5 ## 8 joe 2019-01-04 6 ## 9 sam 2019-01-04 7 We want to create an additional column called “day” and use integers rather than dates to make plotting easier/prettier.</description>
-    </item>
-    
-    <item>
-      <title>Generating Time in a Data Frame</title>
-      <link>/computational_notes/time_index/</link>
-      <pubDate>Mon, 14 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/time_index/</guid>
-      <description>There are two code variations I use to generate time indexes. If I need time cycles
-## id score time ## 1 a 15.62265 1 ## 2 b 21.73583 2 ## 3 c 13.21569 3 ## 4 a 13.96619 1 ## 5 b 16.67478 2 ## 6 c 18.14021 3 ## 7 a 22.91621 1 ## 8 b 15.42282 2 ## 9 c 24.37991 3 then I use a sequence command.</description>
-    </item>
-    
-    <item>
-      <title>Only Store Successful Output - A Counter Placement Issue</title>
-      <link>/computational_notes/successful_output/</link>
-      <pubDate>Sun, 13 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/successful_output/</guid>
-      <description>Sometimes I store every result in my initialized vector/matrix.
-Here is the data.
-## people values day ## 1 john 8.125192 1 ## 2 teddy 10.624786 1 ## 3 clare 9.755946 1 ## 4 john 8.320525 2 ## 5 teddy 8.758530 2 ## 6 john 9.597217 3 ## 7 teddy 10.947977 3 ## 8 clare 9.416608 3 Now the code. I want to find the days where I have responses from John, Teddy, and Clare (as you can tell, I only have responses from all three of them on days 1 and 3).</description>
-    </item>
-    
-    <item>
-      <title>Row Labels Needed to Spread</title>
-      <link>/computational_notes/row_labels_spread/</link>
-      <pubDate>Fri, 11 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/row_labels_spread/</guid>
-      <description>No explanation for this set of notes, just a few reminders when spreading and gathering.
-## b_partial b_wo_partial se_partial se_wo_partial ## 1 1 4 6 3 ## 2 2 5 7 2 ## 3 3 6 8 1 We want the columns to be “model,” “result,” and “value.”
-Here is my incorrect attempt.
-cd_try &amp;lt;- cd_try %&amp;gt;% gather(b_partial, b_wo_partial, key = &amp;#39;model&amp;#39;, value = &amp;#39;b1&amp;#39;) cd_try ## se_partial se_wo_partial model b1 ## 1 6 3 b_partial 1 ## 2 7 2 b_partial 2 ## 3 8 1 b_partial 3 ## 4 6 3 b_wo_partial 4 ## 5 7 2 b_wo_partial 5 ## 6 8 1 b_wo_partial 6 cd_try &amp;lt;- cd_try %&amp;gt;% gather(se_partial, se_wo_partial, key = &amp;#39;se_model&amp;#39;, value = &amp;#39;sd&amp;#39;) cd_try # not evaluated because it won&amp;#39;t work Instead, I need to gather everything in at the same time, split, and then spread.</description>
-    </item>
-    
-    <item>
-      <title>Reveal Hidden NA&#39;s in Longitudinal Data</title>
-      <link>/computational_notes/reveal_na/</link>
-      <pubDate>Thu, 10 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/reveal_na/</guid>
-      <description>Longitudinal data sets often have hidden NAs when they are in long-form. For example, in the data set below Zoe is missing on days 2 and 4, but it isn’t obvious because there are no specific “NA’s” within the data.
-## time id q1 q2 ## 1 1 Jac 4 3 ## 2 1 Jess 5 2 ## 3 1 Zoe 3 4 ## 4 2 Jac 6 1 ## 5 2 Jess 7 2 ## 6 3 Jac 5 3 ## 7 3 Jess 4 4 ## 8 3 Zoe 3 2 ## 9 4 Jac 4 3 ## 10 4 Jess 5 4 Usually I recommend cleaning within the tidyverse package, but in this case I prefer reshape.</description>
-    </item>
-    
-    <item>
-      <title>Column Names As Parameters with GGplot2</title>
-      <link>/computational_notes/ggplot_column_parameters/</link>
-      <pubDate>Sun, 06 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/ggplot_column_parameters/</guid>
-      <description>Another example of using column names as parameters with quo, this time within ggplot2. A snippet of the data:
-## day id stress performance ## 1 1 Josh 9 18 ## 2 2 Josh 5 7 ## 3 3 Josh 6 7 ## 4 4 Josh 5 6 ## 5 5 Josh 4 11 ## 6 6 Josh 4 15 Let’s say we want to plot each person’s stress over time: three time-series trajectories.</description>
-    </item>
-    
-    <item>
-      <title>The Premature Covariate</title>
-      <link>/computational_notes/premature_covariate/</link>
-      <pubDate>Sun, 06 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/premature_covariate/</guid>
-      <description>A replication of Patricia Cohen’s wonderful, “problem of the premature covariate” (chapter 2 in Collins &amp;amp; Horn, 1991). Here is a simple version of the problem. Imagine that we want to know the influence of a life event, like meeting a friend, on happiness. We conduct a study where we measure people’s happiness at time one, wait two weeks, and then measure their happiness again along with whether or not they met a friend since we last observed them.</description>
-    </item>
-    
-    <item>
-      <title>Mutating Scale Items with NA</title>
-      <link>/computational_notes/mutate_na/</link>
-      <pubDate>Sat, 05 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/mutate_na/</guid>
-      <description>Creating item totals with a data set containing NAs is surprisingly difficult. Here is the data.
-library(tidyverse) cd &amp;lt;- data.frame( &amp;quot;q1&amp;quot; = c(1,2,NA), &amp;quot;q2&amp;quot; = c(2,2,2), &amp;#39;q3&amp;#39; = c(NA, NA,2), &amp;#39;id&amp;#39; = c(&amp;#39;201&amp;#39;, &amp;#39;202&amp;#39;, &amp;#39;203&amp;#39;) ) cd ## q1 q2 q3 id ## 1 1 2 NA 201 ## 2 2 2 NA 202 ## 3 NA 2 2 203 Mutating directly over columns with NA does not work.</description>
-    </item>
-    
-    <item>
-      <title>Frequentist Confidence Intervals</title>
-      <link>/computational_notes/frequentist_ci_interpretation/</link>
-      <pubDate>Fri, 04 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/frequentist_ci_interpretation/</guid>
-      <description>Purpose Imagine that you are interested in the relationship between stress and performance. To assess it, you observe 600 people at work and measure their stress via a self-report (e.g., “I feel stressed”) and their performance via objective performance scores for the day (e.g., number of sales). You regress performance on stress and find that the estimated coefficient relating to two is 0.45. You then build a 95% confidence interval using the standard error that the analysis spit out and find that the CI is 0.</description>
-    </item>
-    
-    <item>
-      <title>More on Column Names as Parameters</title>
-      <link>/computational_notes/col_names_parameters_quo/</link>
-      <pubDate>Thu, 06 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/col_names_parameters_quo/</guid>
-      <description>Use quo or enquo when you want to include column names as parameters in a function. For example, a function like the following would not work:
-bad_function &amp;lt;- function(data, col_name){ newdf &amp;lt;- data %&amp;gt;% mutate(&amp;#39;adjusted_column&amp;#39; = col_name + 1) return(newdf) } bad_function(df, column_i_care_about) because column_i_care_about isn’t specified in a form that mutate can work with.
-Examples The data are contained in df1.
-df1 &amp;lt;- data.frame( a = c(1,2,NA), b = c(NA,3,4) ) df1 ## a b ## 1 1 NA ## 2 2 3 ## 3 NA 4 The function: take the column specified by the parameter and add one to every value.</description>
-    </item>
-    
-    <item>
-      <title>Monte Carlo Approximation</title>
-      <link>/computational_notes/mc_approximation/</link>
-      <pubDate>Sun, 12 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/mc_approximation/</guid>
-      <description>Monte Carlo helps us understand processes that we can describe but don’t yet have analytic solutions for. Here are two examples: the birthday problem and the tasting tea problem.
-Birthday Problem If you are standing in a room with 25 other people, what is the probability that at least two people share the same birthday? This question has a mathematical solution, but if we don’t know it we can use Monte Carlo to help.</description>
-    </item>
-    
-    <item>
-      <title>Longitudinal Plotting</title>
-      <link>/computational_notes/longitudinal_plotting/</link>
-      <pubDate>Wed, 04 Jul 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/longitudinal_plotting/</guid>
-      <description>A few random notes about plotting, describing, and thinking about trajectories.
-Plotting Trajectories Imagine we record “affect” (\(Y\)) for five people over 20 time points. ggplot2 produces poor longitudinal trajectories if you only specify time and affect as variables:
-library(ggplot2) library(tidyverse) plot1 &amp;lt;- ggplot(df1, aes(x = time, y = affect)) + geom_point() + geom_line() plot1 Instead, specify “id” either as the grouping variable:
-plot2 &amp;lt;- ggplot(df1, aes(x = time, y = affect, group = id)) + geom_point() + geom_line() plot2 or a color.</description>
-    </item>
-    
-    <item>
-      <title>Column Names As Parameters</title>
-      <link>/computational_notes/column_name_parameters/</link>
-      <pubDate>Sat, 02 Jun 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/column_name_parameters/</guid>
-      <description>I always forget how to use column names as function parameters, so here is an example.
-Function with no column name parameters Function:
- Select columns
- Replace the Jimmy and James ‘v_1’ values with 99
-  library(tidyverse) dish &amp;lt;- data.frame( &amp;#39;person&amp;#39; = c(&amp;#39;jimmy&amp;#39;, &amp;#39;james&amp;#39;, &amp;#39;johnny&amp;#39;), &amp;#39;v_1&amp;#39; = c(rnorm(3, 0, 1)), &amp;#39;v_2&amp;#39; = c(rnorm(3, 10, 5)), &amp;#39;v_3&amp;#39; = c(rnorm(3, 50, 10)), &amp;#39;v_4&amp;#39; = c(rnorm(3, 25, 15)) ) mini &amp;lt;- dish %&amp;gt;% select(person, v_1, v_2) mini[mini$person == &amp;#39;jimmy&amp;#39;, 2] &amp;lt;- 99 mini[mini$person == &amp;#39;james&amp;#39;, 2] &amp;lt;- 99 The original data:</description>
-    </item>
-    
-    <item>
-      <title>Spline Modeling</title>
-      <link>/computational_notes/spline/</link>
-      <pubDate>Sat, 05 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/spline/</guid>
-      <description>A few spline models (also known as piecewise models). As in previous posts, ‘affect’ is the name given to values of \(y\) throughout.
-1) Growth and Even More Growth A model that captures a process that increases initially and then increases at an even greater rate once it reaches time point 5. The data generating process:
-\[\begin{equation} y_{it} = \begin{cases} 4 + 0.3t + error_{t}, &amp;amp; \text{if time &amp;lt; 5}\\ 8 + 0.</description>
-    </item>
-    
-    <item>
-      <title>Latent Growth Curves</title>
-      <link>/computational_notes/latent_growth/</link>
-      <pubDate>Sun, 15 Apr 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/latent_growth/</guid>
-      <description>Latent Growth Curves I will progress through three models: linear, quadratic growth, and latent basis. In every example I use a sample of 400, 6 time points, and ‘affect’ as the variable of interest.
-Don’t forget that multiplying by time
- \(0.6t\)  is different from describing over time
- \(0.6_t\).  1) Linear The data generating process:
-\[\begin{equation} y_{it} = 4 - 0.6t + e_{t} \end{equation}\]
-library(tidyverse) library(ggplot2) library(MASS) N &amp;lt;- 400 time &amp;lt;- 6 intercept &amp;lt;- 4 linear_growth &amp;lt;- -0.</description>
-    </item>
-    
-    <item>
-      <title>Social Trait Development Computational Model</title>
-      <link>/computational_notes/social_trait_comp_model/</link>
-      <pubDate>Fri, 30 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/social_trait_comp_model/</guid>
-      <description>I built the following simple computational model for an individual differences class in the Spring of 2018 to demonstrate how to incorporate explantory elements for trait development into a computational framework. This model assumes that an individual’s trait development depends on 1) the environment and 2) interactions with others inside and outside of the individual’s social group. Moreover, the model assumes traits are somewhat stable and exhibit self-similarity across time.</description>
-    </item>
-    
-    <item>
-      <title>Numerical Integration and Optimization</title>
-      <link>/computational_notes/integration_optimization/</link>
-      <pubDate>Fri, 16 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/integration_optimization/</guid>
-      <description>Integration Trapezoid Rule
-To find the area under a curve we can generate a sequence of trapezoids that follow the rules of the curve (i.e., the data generating function for the curve) along the \(x\)-axis and then add all of the trapezoids together. To create a trapezoid we use the following equation:
- let \(w\) equal the width of the trapezoid (along the \(x\)-axis), then
- Area = (\(w/2\) * \(f(x_i)\)) + \(f(x_i+1)\)   for a single trapezoid.</description>
-    </item>
-    
-    <item>
-      <title>Random Walks</title>
-      <link>/computational_notes/random_walks/</link>
-      <pubDate>Thu, 11 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/random_walks/</guid>
-      <description>Some random walk fun. I use 400 steps in each example.
-One-Dimensional Random Walk A random walk using a recursive equation.
-# Empty vector to store the walk rw_1 &amp;lt;- numeric(400) # Initial value rw_1[1] &amp;lt;- 7 # The Random Walk equation in a for-loop for(i in 2:400){ rw_1[i] &amp;lt;- 1*rw_1[i - 1] + rnorm(1,0,2) } plot(rw_1) A random walk using R’s “cumsum” command.</description>
-    </item>
-    
-    <item>
-      <title>Combining CSV Files</title>
-      <link>/computational_notes/load_csv/</link>
-      <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/load_csv/</guid>
-      <description>A couple quick pieces of code to assist any time I need to work with many CSV files.
-Into List This first code chunk loads all of the CSV files in a folder, makes each into data frame, and stores each separately in a list.
-setwd(&amp;quot;enter path&amp;quot;) # A character vector of every file name files &amp;lt;- Sys.glob(&amp;quot;*.csv&amp;quot;) # A list of all CSV files in the respective folder as data.</description>
-    </item>
-    
-    <item>
-      <title>Formatting Qualtrics Responses</title>
-      <link>/computational_notes/formatting_qualtrics/</link>
-      <pubDate>Tue, 02 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/formatting_qualtrics/</guid>
-      <description>Here is a quick piece of code to create numeric response scores when data are read in as strings (e.g., “Strongly Agree, Agree, Neutral”).
-library(tidyverse) library(dplyr) library(plyr) df &amp;lt;- read.csv(&amp;quot;path&amp;quot;) labels_to_values1 &amp;lt;- function(x){ mapvalues(x, from = c(&amp;quot;Strongly Agree&amp;quot;, &amp;quot;Agree&amp;quot;, &amp;quot;Slightly Agree&amp;quot;, &amp;quot;Slightly Disagree&amp;quot;, &amp;quot;Disagree&amp;quot;, &amp;quot;Strongly Disagree&amp;quot;), to = c(6,5,4,3,2,1)) } recode_df &amp;lt;- df %&amp;gt;% select(column_to_modify1, column_to_modify2, column_to_modify2, etc) %&amp;gt;% apply(2, FUN = labels_to_values1) %&amp;gt;% data.frame() Note that R will throw you warnings if all of the response options are not used, but the code will still work.</description>
-    </item>
-    
-    <item>
-      <title>Why Detecting Interactions is Easier in the Lab</title>
-      <link>/computational_notes/interactions_fve/</link>
-      <pubDate>Wed, 15 Nov 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/interactions_fve/</guid>
-      <description>A fun simulation by McClelland and Judd (1993) in Psychological Bulletin that demonstrates why detecting interactions outside the lab (i.e., in field studies) is difficult. In experiments, scores on the independent variables are located at the extremes of their respective distributions because we manipulate conditions. The distribution of scores across all of the independent variables in field studies, conversely, is typically assumed to be normal. By creating “extreme groups” in experiments, therefore, it becomes easier to detect interactions.</description>
-    </item>
-    
-    <item>
-      <title>Workforce Dynamics</title>
-      <link>/computational_notes/role_dynamics/</link>
-      <pubDate>Tue, 22 Aug 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/role_dynamics/</guid>
-      <description>We can model the states of a system by applying a transition matrix to values represented in an initial distribution and repeating it until we reach an equilibrium.
-Suppose we want to model how job roles in a given company change over time. Let us assume the following:
- There are three (hierarchical) positions in the company:
- Analyst
- Project Coordinator
- Manager
-  30 new workers enter the company each year, and they all begin as analysts</description>
-    </item>
-    
-    <item>
-      <title>Convert Text File</title>
-      <link>/computational_notes/convert_text/</link>
-      <pubDate>Sun, 09 Apr 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/convert_text/</guid>
-      <description>A quick piece of code that reads a text file, changes something, saves a new text file, and iterates that process for every text file in that folder.
-setwd(&amp;quot;path to the text files&amp;quot;) library(readr) all_files = Sys.glob(&amp;quot;*.txt&amp;quot;) for(i in 1:length(all_files)){ data = all_files[i] mystring = read_file(paste(data)) new_data = gsub(&amp;quot;old piece of text&amp;quot;, &amp;quot;new piece of text&amp;quot;, mystring) write_file(new_data, path = paste(&amp;quot;something&amp;quot;, code, &amp;quot;.txt&amp;quot;, sep = &amp;quot;&amp;quot;) } Bo\(^2\)m =)</description>
+      <title>blogdown: Creating Websites with R Markdown</title>
+      <link>https://christopherdishop.netlify.app/publication/2017-blogdown/</link>
+      <pubDate>Thu, 14 Dec 2017 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/publication/2017-blogdown/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>Art With Monte Carlo</title>
-      <link>/computational_notes/art_montecarlo/</link>
-      <pubDate>Sat, 18 Mar 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/art_montecarlo/</guid>
-      <description>I like to think of Monte Carlo as a counting method. If a condition is satisfied we make a note (e.g., 1), and if the condition is not satisfied we make a different note (e.g., 0). We then iterate and evaluate the pattern of 1’s and 0’s to learn about our process. Art can be described in a similar way: if a condition is satisfied we use a color, and if a condition is not satisfied we use a different color.</description>
+      <link>https://christopherdishop.netlify.app/comp-notes/2017-07-12-art/</link>
+      <pubDate>Wed, 12 Jul 2017 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/comp-notes/2017-07-12-art/</guid>
+      <description>
+
+
+&lt;p&gt;I like to think of Monte Carlo as a counting method. If a condition is satisfied we make a note (e.g., 1), and if the condition is not satisfied we make a different note (e.g., 0). We then iterate and evaluate the pattern of 1’s and 0’s to learn about our process. Art can be described in a similar way: if a condition is satisfied we use a color, and if a condition is not satisfied we use a different color. After many iterations, we have an image.&lt;/p&gt;
+&lt;p&gt;Here is a simulation that “draws” a process, inspired by Caleb Madrigal (link &lt;a href=&#34;https://github.com/calebmadrigal/math-with-python/blob/master/MonteCarloEstimation.ipynb&#34;&gt;here&lt;/a&gt;).&lt;/p&gt;
+&lt;div id=&#34;the-data-generating-process&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;The Data Generating Process&lt;/h1&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;f &amp;lt;- function(x){
+  2*sin(4*x) + 2*sin(5*x) + 12
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;some-initial-values&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Some Initial Values&lt;/h1&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- seq(0, 10, length.out  = 1000)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;using-the-dgp-to-generate-values-of-y&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Using the DGP to generate values of Y&lt;/h1&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;y &amp;lt;- f(x)
+
+plot(x, y)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/comp-notes/2017-07-12-art/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;this-is-the-process-we-want-to-draw&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;This is the process we want to “draw”&lt;/h1&gt;
+&lt;/div&gt;
+&lt;div id=&#34;now-for-the-monte-carlo&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Now for the Monte Carlo&lt;/h1&gt;
+&lt;p&gt;We are going to evaluate 10,000 points within our process space (10 x 16).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;num_points &amp;lt;- 10000
+rect_width &amp;lt;- 10
+rect_height &amp;lt;- 16
+
+points &amp;lt;- matrix(, ncol = 2, nrow = num_points)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Column 1 of our points matrix represents the width of our process space while column 2 represents its height. First we fill the matrix with random values within our process space:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;for(i in 1:num_points){
+  points[i,1] = runif(1, 0, rect_width)
+  points[i,2] = runif(1, 0, rect_height)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now we iterate across all of those points and evaluate them with respect to our process. Think of the “width” as &lt;em&gt;X&lt;/em&gt; values and the “height” as &lt;em&gt;Y&lt;/em&gt; values. Given a value of &lt;em&gt;X&lt;/em&gt;, is our random value of &lt;em&gt;Y&lt;/em&gt; less than it would be if we created a &lt;em&gt;Y&lt;/em&gt; value by using our function (f(x))? If so, mark it in the “points_under” vector. If not, mark it in the “points_over” vector.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;points_under = matrix(, ncol = 2, nrow = num_points)
+points_above = matrix(, ncol = 2, nrow = num_points)
+
+for(i in 1:num_points){
+  if(points[i,2] &amp;lt; f(points[i,1])){
+    points_under[i,1] &amp;lt;- points[i,1]
+    points_under[i,2] &amp;lt;- points[i,2]
+  }
+  else{
+    points_above[i,1] &amp;lt;- points[i,1]
+    points_above[i,2] &amp;lt;- points[i,2]
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Put the results into new vectors without NA’s. Some NA’s come up because our data generating process is crazy.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;points_under_x &amp;lt;-  points_under[!is.na(points_under[,1]),1]
+points_under_y &amp;lt;-  points_under[!is.na(points_under[,2]),2]
+
+points_over_x &amp;lt;- points_above[!is.na(points_above[,1]),1]
+points_over_y &amp;lt;- points_above[!is.na(points_above[,2]),2]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now we have an image…&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(points_under_y ~ points_under_x, pch = 20, cex = 0.3)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/comp-notes/2017-07-12-art/index_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
-      <title>The Binomial Effect Size Display</title>
-      <link>/computational_notes/besd/</link>
-      <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/computational_notes/besd/</guid>
-      <description>Effect sizes provide information about the magnitude of an effect. Unfortunately, they can be difficult to interpret or appear “small” to anyone unfamiliar with the typical effect sizes in a given research field. Rosenthal and Rubin (1992) provide an intuitive effect size, called the Binomial Effect Size Display, that captures the change in success rate due to a treatment.
-The calculation is simple:
- Treamtment BESD = 0.50 + (r / 2)</description>
+      <title>Quantitative Analysis of Disfluency in Children with Autism Spectrum Disorder or Language Impairment</title>
+      <link>https://christopherdishop.netlify.app/publication/2017-mazes-asd-sli/</link>
+      <pubDate>Wed, 15 Mar 2017 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/publication/2017-mazes-asd-sli/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Epidemiology of autism spectrum disorders</title>
+      <link>https://christopherdishop.netlify.app/publication/2016-primer-on-asd/</link>
+      <pubDate>Fri, 19 Feb 2016 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/publication/2016-primer-on-asd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Uh and Um in Children With Autism Spectrum Disorders or Language Impairment</title>
+      <link>https://christopherdishop.netlify.app/publication/2016-uh-and-um-asd-sli/</link>
+      <pubDate>Fri, 22 Jan 2016 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/publication/2016-uh-and-um-asd-sli/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Obesity and Autism</title>
+      <link>https://christopherdishop.netlify.app/publication/2015-obesity-in-asd-multisite/</link>
+      <pubDate>Thu, 03 Sep 2015 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/publication/2015-obesity-in-asd-multisite/</guid>
+      <description>&lt;p&gt;METHODS: Participants were 5053 children with confirmed diagnosis of ASD in the Autism Speaks Autism Treatment Network. Measured values for weight and height were used to calculate BMI percentiles; Centers for Disease Control and Prevention criteria for BMI for gender and age were used to define overweight and obesity (85th and 95th percentiles, respectively).&lt;/p&gt;
+&lt;p&gt;RESULTS: In children age 2 to 17 years, 33.6% were overweight and 18% were obese. Compared with a general US population sample, rates of unhealthy weight were significantly higher among children with ASDs ages 2 to 5 years and among those of non-Hispanic white origin. Multivariate analyses revealed that older age, Hispanic or Latino ethnicity, lower parent education levels, and sleep and affective problems were all significant predictors of obesity.&lt;/p&gt;
+&lt;p&gt;CONCLUSIONS: Our results indicate that the prevalence of unhealthy weight is significantly greater among children with ASD compared with the general population, with differences present as early as ages 2 to 5 years. Because obesity is more prevalent among older children in the general population, these findings raise the question of whether there are different trajectories of weight gain among children with ASDs, possibly beginning in early childhood.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Memory in language-impaired children with and without autism</title>
+      <link>https://christopherdishop.netlify.app/publication/2015-memory-in-li-asd/</link>
+      <pubDate>Sun, 14 Jun 2015 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/publication/2015-memory-in-li-asd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Epidemiology of autism spectrum disorders</title>
+      <link>https://christopherdishop.netlify.app/publication/2015-translational/</link>
+      <pubDate>Wed, 10 Jun 2015 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/publication/2015-translational/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Aggressive Behavior Problems in Children with Autism Spectrum Disorders: Prevalence and Correlates in a Large Clinical Sample</title>
+      <link>https://christopherdishop.netlify.app/publication/2014-aggression-in-asd/</link>
+      <pubDate>Sun, 22 Jun 2014 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/publication/2014-aggression-in-asd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Epidemiology of autism spectrum disorders</title>
+      <link>https://christopherdishop.netlify.app/publication/2014-handbook/</link>
+      <pubDate>Mon, 03 Mar 2014 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/publication/2014-handbook/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Overweight and Obesity: Prevalence and Correlates in a Large Clinical Sample of Children with Autism Spectrum Disorder</title>
+      <link>https://christopherdishop.netlify.app/publication/2014-obesity-in-asd-oregon/</link>
+      <pubDate>Sun, 02 Feb 2014 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/publication/2014-obesity-in-asd-oregon/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Epidemiology of Autism Spectrum Disorder</title>
+      <link>https://christopherdishop.netlify.app/publication/2014-asd-epidemiology-in-practice/</link>
+      <pubDate>Wed, 01 Jan 2014 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/publication/2014-asd-epidemiology-in-practice/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Quantifying Repetitive Speech in Autism Spectrum Disorders and Language Impairment</title>
+      <link>https://christopherdishop.netlify.app/publication/2013-repetitive-speech-in-asd-sli/</link>
+      <pubDate>Fri, 12 Apr 2013 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/publication/2013-repetitive-speech-in-asd-sli/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>‘It’s Not That We Hate You’: Understanding Children’s Gender Attitudes and Expectancies About Peer Relationships</title>
+      <link>https://christopherdishop.netlify.app/publication/2011-gender-attitudes/</link>
+      <pubDate>Tue, 08 Feb 2011 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/publication/2011-gender-attitudes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Effects of Different Attentional Cues on Responding to Joint Attention in Younger Siblings of Children with Autism Spectrum Disorders</title>
+      <link>https://christopherdishop.netlify.app/publication/2007-rja-in-sibs/</link>
+      <pubDate>Mon, 01 Jan 2007 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/publication/2007-rja-in-sibs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Item-specific Processing Reduces False Memories</title>
+      <link>https://christopherdishop.netlify.app/publication/2004-false-memories/</link>
+      <pubDate>Wed, 01 Dec 2004 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/publication/2004-false-memories/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://christopherdishop.netlify.app/r_resources/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/r_resources/</guid>
+      <description>&lt;h3 id=&#34;websites-with-many-r-resources&#34;&gt;Websites with many R resources&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://bookdown.org&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;All R books written with Bookdown&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.rstudio.com/resources/cheatsheets/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;All R cheatsheets&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.psychologicalscience.org/observer/learning-to-work-with-r&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;APS list of R resources&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;http://www.flutterbys.com.au/stats/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Show Us Your R&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;http://www.econometricsbysimulation.com/2012/10/using-simulations-to-maximize.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Econometrics Simulations&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://data.library.virginia.edu/statlab/data-science-resources/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;UVA Data Science Resources&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;people-with-helpful-individual-websites&#34;&gt;People with helpful individual websites&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.emilyzabor.com/tutorials/rmarkdown_websites_tutorial.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Emily C. Zabor&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://jennybryan.org&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Jenny Bryan&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://rpsychologist.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Kristoffer Magnusson&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;http://sachaepskamp.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Sacha Epskamp&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://data-se.netlify.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;FOM academic&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://suzan.rbind.io&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Suzan Baert&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;http://hadley.nz/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Hadley Wickham&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;http://varianceexplained.org&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;David Robinson&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://b-rodrigues.github.io/fput/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;B Rodriguez&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://bookdown.org/ndphillips/YaRrr/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Nathaniel D. Phillips&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://sejdemyr.github.io&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Simon Ejdemyr&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.r-graph-gallery.com/all-graphs/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;The R Graph Gallery&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://christianburkhart.de&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Christian Burkhart&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://malco.io&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Malcolm Barrett&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://jflournoy.github.io&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;John Flournoy&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;http://uc-r.github.io/introduction&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;UC R Guide&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://crumplab.github.io/Courses.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Crump Lab&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;http://datascience.tntlab.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Richard N. Landers&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://quantscience.rbind.io/#posts&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Mark Lai&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://francish.netlify.app/#posts&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Francis L. Huang&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;courses&#34;&gt;Courses&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;http://had.co.nz/stat480.1.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Applied Statistical Computing Course&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://biol607.github.io/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;BioStates by Jarrett Byrnes&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.datacamp.com/community/open-courses/beginning-bayes-in-r&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Introduction to Bayes in DataCamp (free course)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.datacamp.com/community/open-courses/statistical-inference-and-data-analysis&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Data Analysis and Statistical Inference on Data Camp&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://github.com/jrgant/prob-stats&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Probability and Statistics with Simulations&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://quantdev.ssri.psu.edu/resources&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Penn State Quant Developmental Systems&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;random&#34;&gt;Random&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.datadreaming.org/post/r-markdown-theme-gallery/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;R Markdown Themes&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://blogs.uoregon.edu/rclub/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;R club&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.zoology.ubc.ca/~schluter/R/fit-model/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Various Linear Model Tests in R&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.statmethods.net/stats/anova.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ANOVA and MANOVA&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://tclavelle.github.io/blog/r_and_apis/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Using R to extract data from web APIs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;http://biostat.mc.vanderbilt.edu/wiki/pub/Main/ColeBeck/datestimes.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Handling date-times in R&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.brodrigues.co/blog/2017-02-17-lesser_known_tricks/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lesser Known Dplyr tricks&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;http://www.stat.cmu.edu/~cshalizi/rmarkdown/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Rmarkdown&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://github.com/jessiesunpsych/power-simulations&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Power Simulations&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://stackoverflow.com/questions/47494975/passing-column-name-as-parameter-to-a-function-using-dplyr&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Functions with columns as parameters 1&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.brodrigues.co/blog/2016-07-18-data-frame-columns-as-arguments-to-dplyr-functions/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Functions with columns as parameters 2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;http://haozhu233.github.io/kableExtra/awesome_table_in_html.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Kable Extra&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://github.com/Rdatatable/data.table/wiki/Getting-started&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Data.Table&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;http://rpsychologist.com/r-guide-longitudinal-lme-lmer&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Growth models with lme and lmer&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://threadreaderapp.com/thread/1073313224446009345.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Cross-lagged Panel Models&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://debruine.github.io/faux/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Simulate Experiments&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://rpubs.com/YaRrr/MLTutorial&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Maximum Likelihood&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://github.com/jrgant/citr&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;citr&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://emoriebeck.github.io/R-tutorials/purrr/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Purrr tutorial&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://osf.io/2emja/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Psych Networks Winter School Resources&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Top 50 ggplot2 Visualizations&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;dags&#34;&gt;DAGS&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://github.com/jrgant/causalgraphs_latex/blob/master/graphical-models-causal.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Dags using LaTex&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://github.com/jrgant/quickdag&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;QuickDag&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://rich-iannone.github.io/DiagrammeR/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DiagrammeR&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://ggdag.netlify.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GGdag&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://sgfin.github.io/2019/06/19/Causal-Inference-Book-All-DAGs/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;All DAGS from Hernan and Robins - Sam Finlayson&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;structural-equations-modeling&#34;&gt;Structural Equations Modeling&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;http://lavaan.ugent.be&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;lavaan homepage&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://groups.google.com/forum/#!topic/lavaan/oKwP0_6-i1g&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Measurement Equivalence&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://github.com/osofr/simcausal&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;sims package&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.draw.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Draw SEMs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://github.com/brandmaier/onyxR&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;onyxR for SEM diagrams with lavaan&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;progressing-through-stats-with-r&#34;&gt;Progressing Through Stats with R&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://ismayc.github.io/rbasics-book/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Basics of R and R Markdown&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://happygitwithr.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Basics of Git and Github with R&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://psyteachr.github.io/msc-data-skills/sim.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Beginner Concepts for Reproducible Science&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://r4ds.had.co.nz&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;R for Data Science&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://leanpub.com/LittleInferenceBook/read&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Statistical Inference&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://bookdown.org/ejvanholm/Textbook/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Intro to Quant Methods&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://leanpub.com/regmods/read&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Regression&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://bookdown.org/ccolonescu/RPoE4/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Econometrics&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://otexts.org/fpp2/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Time series and forecasting&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://serialmentor.com/dataviz/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Data Visualization&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.tidytextmining.com/nasa.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Text Analysis&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;scraping-packages&#34;&gt;Scraping Packages&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://github.com/mguideng/gdscrapeR&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Scrape Glass Door&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;commands-and-help-for-non-r-programming&#34;&gt;Commands and help for non-R programming&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.markomedia.com.au/compress-pdf-on-os-x-in-terminal/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Compress pdf in terminal&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://stackoverflow.com/questions/33636467/unable-to-click-always-allow-on-git-credential-osxkeychain-popup&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Mac denying pushing/pulling due to git keychain&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://help.github.com/articles/caching-your-github-password-in-git/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Saving username and password through keychain with Git&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;http://blog.martinfenner.org/2014/08/25/using-microsoft-word-with-git/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Using word with Git&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://tex.stackexchange.com/questions/16010/number-every-line-of-pages&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Line numbering in LaTex&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://jabranham.com/blog/2016/11/using-pandoc-export-to-word/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Exporting .tex to word with pandoc&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://apple.stackexchange.com/questions/252362/how-do-i-count-words-in-a-pdf-file-on-os-x&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Word Count on PDF From Terminal&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;so-helpful-they-deserve-their-own-category&#34;&gt;So helpful they deserve their own category&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.calvin.edu/~rpruim/courses/s341/S17/from-class/MathinRmd.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Math notation with Rmarkdown&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.verbosus.com/bibtex-style-examples.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;BibTex Examples&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;http://moser-isi.ethz.ch/docs/typeset_equations.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Latex equations basics&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://tex.stackexchange.com/questions/132704/how-to-build-knitr-document-from-the-command-line&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Compile Rmarkdown and tex files from terminal&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://tex.stackexchange.com/questions/171711/how-to-include-latex-package-in-r-markdown&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Include LaTeX packages in YAML header&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://holtzy.github.io/Pimp-my-rmd/#references&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Pimp Your Rmarkdown&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.rdocumentation.org/packages/rebus/versions/0.1-3&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Rebus Package&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://haozhu233.github.io/kableExtra/best_practice_for_newline_in_latex_table.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Newline breaks in Rmarkdown tables&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://christopherdishop.netlify.app/rec_reading/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/rec_reading/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Quantifying Life: A Symbiosis of Computation, Mathematics, and Biology&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Dmitry A. Kondrashov&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Quantifying-Life-Symbiosis-Computation-Mathematics/dp/022637176X/ref=sr_1_1?ie=UTF8&amp;amp;qid=1524678360&amp;amp;sr=8-1&amp;amp;keywords=quantifying&amp;#43;life&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/quantlife.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;On Writing Well: The Classic Guide to Writing Nonfiction&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;William Zinsser&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Writing-Well-Classic-Guide-Nonfiction/dp/0060891548/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524679014&amp;amp;sr=1-1&amp;amp;keywords=on&amp;#43;writing&amp;#43;well&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/writingwell.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;How We Know What Isn&amp;rsquo;t So: The Fallibility of Human Reason in Everyday Life&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Thomas Gilovich&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/How-Know-What-Isnt-Fallibility/dp/0029117062/ref=sr_1_3?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524679970&amp;amp;sr=1-3&amp;amp;keywords=how&amp;#43;we&amp;#43;know&amp;#43;what&amp;#43;isn%27t&amp;#43;so&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/how_we_know.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Complexity: A Guided Tour&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Melanie Mitchell&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Complexity-Guided-Tour-Melanie-Mitchell/dp/0199798109/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524678388&amp;amp;sr=1-1&amp;amp;keywords=complexity&amp;#43;a&amp;#43;guided&amp;#43;tour&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/complexity.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The Drunkard&amp;rsquo;s Walk: How Randomness Rules Our Lives&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Leonard Mlodinow&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Drunkards-Walk-Randomness-Rules-Lives/dp/0307275175/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524678442&amp;amp;sr=1-1&amp;amp;keywords=the&amp;#43;drunkards&amp;#43;walk&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/drunkwalk.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The Order Of Time&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Carlo Rovelli&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Order-Time-Carlo-Rovelli/dp/073521610X/ref=sr_1_1?ie=UTF8&amp;amp;qid=1526429375&amp;amp;sr=8-1&amp;amp;keywords=the&amp;#43;order&amp;#43;of&amp;#43;time&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/order_time.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Style: Lessons in Clarity and Grace&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;John M Williams&lt;/p&gt;
+&lt;p&gt;Joseph Bizup&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Style-Lessons-Clarity-Grace-12th/dp/0134080416/ref=sr_1_1?ie=UTF8&amp;amp;qid=1530631885&amp;amp;sr=8-1&amp;amp;keywords=style&amp;#43;lessons&amp;#43;in&amp;#43;grace&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/style.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Ethics in the Real World: 82 Brief Essays on Things That Matter&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Peter Singer&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Ethics-Real-World-Essays-Things/dp/069117847X/ref=sr_1_1?ie=UTF8&amp;amp;qid=1534110030&amp;amp;sr=8-1&amp;amp;keywords=Peter&amp;#43;singer&amp;#43;82&amp;#43;brief&amp;amp;smid=ATVPDKIKX0DER&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/ethics_essays.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The Lady Tasting Tea: How Statistics Revolutionized Science in the Twentieth Century&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;David Salsburg&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Lady-Tasting-Tea-Statistics-Revolutionized/dp/0805071342/ref=sr_1_1?ie=UTF8&amp;amp;qid=1529349371&amp;amp;sr=8-1&amp;amp;keywords=the&amp;#43;lady&amp;#43;tasting&amp;#43;tea&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/tasting_tea.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Why Don&amp;rsquo;t Students Like School?&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Daniel T. Willingham&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Why-Dont-Students-Like-School/dp/047059196X/ref=sr_1_1_sspa?ie=UTF8&amp;amp;qid=1544905242&amp;amp;sr=8-1-spons&amp;amp;keywords=why&amp;#43;don%27t&amp;#43;student&amp;#43;like&amp;#43;school&amp;amp;psc=1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/school.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;A Crude Look at the Whole: The Science of Complex Systems in Business, Life, and Society&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;John H. Miller&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Crude-Look-Whole-Science-Business/dp/0465055699/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524679795&amp;amp;sr=1-1&amp;amp;keywords=a&amp;#43;crude&amp;#43;look&amp;#43;at&amp;#43;the&amp;#43;whole&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/crude_whole.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Digital Minimalism&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Cal Newport&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Digital-Minimalism-Choosing-Focused-Noisy/dp/0525536515/ref=sr_1_1?keywords=digital&amp;#43;minimalism&amp;amp;qid=1565453149&amp;amp;s=gateway&amp;amp;sr=8-1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/digital_min.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Scale: The Universal Laws of Life, Growth, and Death in Organisms, Cities, and Companies&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Geoffrey West&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Scale-Universal-Growth-Organisms-Companies/dp/014311090X/ref=sr_1_1?ie=UTF8&amp;amp;qid=1541968528&amp;amp;sr=8-1&amp;amp;keywords=scale&amp;#43;west&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/scale.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The Most Good You Can Do&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Peter Singer&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Most-Good-You-Can-Effective/dp/0300180276/ref=sr_1_1?keywords=the&amp;#43;most&amp;#43;good&amp;#43;you&amp;#43;can&amp;#43;do&amp;amp;qid=1555122359&amp;amp;s=gateway&amp;amp;sr=8-1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/good.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Reproducible Research with R and R Studio&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Christopher Gandrud&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Reproducible-Research-Studio-Chapman-Hall/dp/1498715370/ref=sr_1_1?ie=UTF8&amp;amp;qid=1534110087&amp;amp;sr=8-1&amp;amp;keywords=reproducible&amp;#43;research&amp;#43;with&amp;#43;r&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/reproducible_research.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The Nature of Code: Simulating Natural Systems with Processing&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Daniel Shiffman&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Nature-Code-Simulating-Natural-Processing/dp/0985930802/ref=sr_1_1?ie=UTF8&amp;amp;qid=1534109983&amp;amp;sr=8-1&amp;amp;keywords=the&amp;#43;nature&amp;#43;of&amp;#43;code&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/nature_code.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Stiff: The Curious Lives of Human Cadavers&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Mary Roach&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Stiff-Curious-Lives-Human-Cadavers/dp/B0001O356G/ref=sr_1_1?keywords=stiff&amp;amp;qid=1576539098&amp;amp;sr=8-1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/stiff.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Vehicles: Experiments in Synthetic Psychology&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Valentino Braitenberg&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Vehicles-Experiments-Psychology-Valentino-Braitenberg/dp/0262521121/ref=sr_1_1?keywords=synthetic&amp;#43;psychology&amp;amp;qid=1563232952&amp;amp;s=gateway&amp;amp;sr=8-1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/vehicles.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Statistical Rethinking: A Bayesian Course with Examples in R and Stan&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Richard McElreath&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Statistical-Rethinking-Bayesian-Examples-Chapman/dp/1482253445/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524678418&amp;amp;sr=1-1&amp;amp;keywords=statistical&amp;#43;rethinking&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/mcelreath_rethinking.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The Death of Expertise: The Campaign against Established Knowledge and Why it Matters&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Thomas M Nichols&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Death-Expertise-Campaign-Established-Knowledge/dp/0190469412/ref=sr_1_1?ie=UTF8&amp;amp;qid=1530631928&amp;amp;sr=8-1&amp;amp;keywords=the&amp;#43;death&amp;#43;of&amp;#43;expertise&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/death_expertise.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The Book of Why&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Judea Pearl&lt;/p&gt;
+&lt;p&gt;Dana Mackenzie&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Book-Why-Science-Cause-Effect/dp/046509760X/ref=sr_1_1?ie=UTF8&amp;amp;qid=1527948151&amp;amp;sr=8-1&amp;amp;keywords=the&amp;#43;book&amp;#43;of&amp;#43;why&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/book_why.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Naked Statistics: Stripping The Dread From The Data&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Charles Wheelan&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Naked-Statistics-Stripping-Dread-Data/dp/B00CH7FWWU/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524678465&amp;amp;sr=1-1&amp;amp;keywords=naked&amp;#43;statistics&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/nakedstats.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The Ball: Discovering the Object of the Game&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;John Fox&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Ball-Discovering-Object-Game/dp/0061881791/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524679032&amp;amp;sr=1-1&amp;amp;keywords=the&amp;#43;ball&amp;#43;discovering&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/theball.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;SuperCooperators: Altruism, Evolution, and Why We Need Each Other to Succeed&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Martin A. Nowak&lt;/p&gt;
+&lt;p&gt;Roger Highfield&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/SuperCooperators-Altruism-Evolution-Other-Succeed/dp/1451626630/ref=sr_1_1?ie=UTF8&amp;amp;qid=1541968376&amp;amp;sr=8-1&amp;amp;keywords=super&amp;#43;cooperators&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/super_coop.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Math with Bad Drawings: Illuminating the Ideas That Shape Our Reality&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Ben Orlin&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Math-Bad-Drawings-Illuminating-Reality/dp/0316509035/ref=sr_1_1?ie=UTF8&amp;amp;qid=1541968483&amp;amp;sr=8-1&amp;amp;keywords=mathematics&amp;#43;with&amp;#43;bad&amp;#43;drawings&amp;amp;dpID=51EP1Orpx0L&amp;amp;preST=_SX258_BO1,204,203,200_QL70_&amp;amp;dpSrc=srch&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/math_draw.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;How We Got to Now: Six Innovations That Made the Modern World&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Steven Johnson&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/How-We-Got-Now-Innovations-ebook/dp/B00INIXU5I/ref=sr_1_1?ie=UTF8&amp;amp;qid=1541968591&amp;amp;sr=8-1&amp;amp;keywords=how&amp;#43;we&amp;#43;got&amp;#43;to&amp;#43;now&amp;#43;johnson&amp;amp;dpID=512mgCAgJQL&amp;amp;preST=_SY445_QL70_&amp;amp;dpSrc=srch&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/now.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The Life You Can Save&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Peter Singer&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Life-You-Can-Save-2010-09-14/dp/B01N3MESKP/ref=sr_1_2?keywords=the&amp;#43;life&amp;#43;you&amp;#43;can&amp;#43;save&amp;amp;qid=1555122514&amp;amp;s=gateway&amp;amp;sr=8-2&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/life_save.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Mathematics for the Life Sciences&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Erin N. Bodine&lt;/p&gt;
+&lt;p&gt;Suzanne Lenhart&lt;/p&gt;
+&lt;p&gt;Louis J. Gross&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Mathematics-Life-Sciences-Erin-Bodine/dp/0691150729/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524678619&amp;amp;sr=1-1&amp;amp;keywords=mathematics&amp;#43;for&amp;#43;the&amp;#43;life&amp;#43;sciences&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/mathlife.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Nature&amp;rsquo;s Nether Regions: What the Sex Lives of Bugs, Birds, and Beasts Tell Us About Evolution, Biodiversity, and Ourselves&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Menno Schilthuizen&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Natures-Nether-Regions-Schilthuizen-2015-04-28/dp/B01FKSKGY6/ref=sr_1_2?keywords=natures&amp;#43;nether&amp;#43;regions&amp;amp;qid=1569771217&amp;amp;s=gateway&amp;amp;sr=8-2&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/nature_nether.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Introduction To Scientific Programming and Simulation Using R&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Owen Jones&lt;/p&gt;
+&lt;p&gt;Robert Maillardet&lt;/p&gt;
+&lt;p&gt;Andrew Robinson&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Introduction-Scientific-Programming-Simulation-Chapman/dp/1466569999/ref=sr_1_3?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524678645&amp;amp;sr=1-3&amp;amp;keywords=introduction&amp;#43;to&amp;#43;scientific&amp;#43;programming&amp;#43;and&amp;#43;simulation&amp;#43;using&amp;#43;r&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/rsimprog.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Algorithms To Live By: The Computer Science Of Human Decisions&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Brian Christian&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Algorithms-Live-Computer-Science-Decisions/dp/1250118360/ref=sr_1_3?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524678670&amp;amp;sr=1-3&amp;amp;keywords=algorithms&amp;#43;to&amp;#43;live&amp;#43;by&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/alglive.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Infinite Powers&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Steve Strogatz&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Infinite-Powers-Calculus-Reveals-Universe/dp/1328879984/ref=sr_1_1?keywords=infinite&amp;#43;powers&amp;amp;qid=1563232928&amp;amp;s=gateway&amp;amp;sr=8-1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/infinite_powers.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The Invisible Gorilla: How Our Intuitions Deceive Us&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Christopher Chabris&lt;/p&gt;
+&lt;p&gt;Daniel Simons&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Invisible-Gorilla-How-Intuitions-Deceive/dp/0307459667/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524678720&amp;amp;sr=1-1&amp;amp;keywords=the&amp;#43;invisible&amp;#43;gorilla&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/invisiblegorilla.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Mindwise: How We Understand What Others Think, Believe, Feel, and Want&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Nicholas Epley&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Mindwise-Understand-Others-Think-Believe/dp/0307595919/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524678938&amp;amp;sr=1-1&amp;amp;keywords=mindwise&amp;#43;how&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/eplymindwise.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This Will Change Everything: Ideas That Will Shape The Future&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Edited By John Brockman&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/This-Will-Change-Everything-Question/dp/0061899674/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524678835&amp;amp;sr=1-1&amp;amp;keywords=this&amp;#43;will&amp;#43;change&amp;#43;everything&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/brockmaneverything.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Sex At Dawn: How We Mate, Why We Stay, and What It Means for Modern Relationships&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Christopher Ryan&lt;/p&gt;
+&lt;p&gt;Cacilda Jetha&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/SEX-AT-DAWN-STRAY-MEANS/dp/B00KEVTNSK/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524678957&amp;amp;sr=1-1&amp;amp;keywords=sex&amp;#43;at&amp;#43;dawn&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/sexdawn.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Made to Stick: Why Some Ideas Survive and Others Die&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Chip Heath&lt;/p&gt;
+&lt;p&gt;Dan Heath&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Made-Stick-Ideas-Survive-Others/dp/1400064287/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524678997&amp;amp;sr=1-1&amp;amp;keywords=made&amp;#43;to&amp;#43;stick&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/stick.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The Ravenous Brain: How The New Science of Consciousness Explains Our Insatiable Search For Meaning&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Daniel Bor&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Ravenous-Brain-Consciousness-Explains-Insatiable/dp/046502047X/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524679052&amp;amp;sr=1-1&amp;amp;keywords=the&amp;#43;ravenous&amp;#43;brain&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/ravenousbrain.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Matrices and Society: Matrix Algebra and Its Applications in the Social Sciences&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Ian Bradley&lt;/p&gt;
+&lt;p&gt;Ronald L. Meek&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Matrices-Society-Applications-Sciences-Princeton/dp/0691610207/ref=sr_1_2?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524679070&amp;amp;sr=1-2&amp;amp;keywords=matrices&amp;#43;and&amp;#43;society&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/matrices_society.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The Beginning Of Infinity: Explanations That Transform The World&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;David Deutsch&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Beginning-Infinity-Explanations-Transform-World/dp/0143121359/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524679088&amp;amp;sr=1-1&amp;amp;keywords=the&amp;#43;beginning&amp;#43;of&amp;#43;infinity&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/infinity.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The Visual Display of Quantitative Information&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Edward R. Tufte&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Visual-Display-Quantitative-Information/dp/B00A2RSEQI/ref=sr_1_2?ie=UTF8&amp;amp;qid=1535220474&amp;amp;sr=8-2&amp;amp;keywords=the&amp;#43;visual&amp;#43;display&amp;#43;of&amp;#43;quantitative&amp;#43;information&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/visual_display.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Complex Adaptive Systems: An Introduction to Computational Models of Social Life&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;John H. Miller&lt;/p&gt;
+&lt;p&gt;Scott E. Page&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Complex-Adaptive-Systems-Introduction-Computational/dp/0691127026/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524678589&amp;amp;sr=1-1&amp;amp;keywords=complex&amp;#43;adaptive&amp;#43;systems&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/adaptive.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Homo Deus: A Brief History of Tomorrow&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Yuval Noah Harari&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Homo-Deus-Brief-History-Tomorrow/dp/0062464310/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524679148&amp;amp;sr=1-1&amp;amp;keywords=homo&amp;#43;deus&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/homodeus.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The Moral Landscape: How Science Can Determine Human Values&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Sam Harris&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Moral-Landscape-Science-Determine-Values/dp/143917122X/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524679169&amp;amp;sr=1-1&amp;amp;keywords=the&amp;#43;moral&amp;#43;landscape&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/morallandscape.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Sick Societies: Challenging the Myth of Primitive Harmony&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Robert B. Edgerton&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Sick-Societies-Challenging-Primitive-Harmony/dp/0029089255/ref=sr_1_1?ie=UTF8&amp;amp;qid=1527948228&amp;amp;sr=8-1&amp;amp;keywords=sick&amp;#43;societies&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/sick_society.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The Expanding Circle: Ethics, Evolution, and Moral Progress&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Peter Singer&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Expanding-Circle-Ethics-Evolution-Progress/dp/0691150699/ref=sr_1_1?keywords=the&amp;#43;expanding&amp;#43;circle&amp;amp;qid=1555122466&amp;amp;s=gateway&amp;amp;sr=8-1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/expanding_circle.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The Checklist Manifesto: How to Get Things Right&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Atul Gawande&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Checklist-Manifesto-How-Things-Right/dp/0312430000/ref=sr_1_1?ie=UTF8&amp;amp;qid=1547762703&amp;amp;sr=8-1&amp;amp;keywords=the&amp;#43;checklist&amp;#43;manifesto&amp;#43;by&amp;#43;atul&amp;#43;gawande&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/checklist.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The Joy of x: A Guided Tour of Math, from One to Infinity&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Steven Strogatz&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Joy-Guided-Tour-Math-Infinity/dp/0544105850/ref=sr_1_1?ie=UTF8&amp;amp;qid=1547762739&amp;amp;sr=8-1&amp;amp;keywords=the&amp;#43;joy&amp;#43;of&amp;#43;x&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/joy_x.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;10 1/2 Things No Commencement Speaker Has Ever Said&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Charles Wheelan&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Things-Commencement-Speaker-Ever-Said/dp/B00CL4IEAG/ref=sr_1_1?ie=UTF8&amp;amp;qid=1547762768&amp;amp;sr=8-1&amp;amp;keywords=10&amp;#43;1%2F2&amp;#43;things&amp;#43;no&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/no_speaker.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Thinking with Data: How to Turn Information into Insights&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Max Shron&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Thinking-Data-Turn-Information-Insights/dp/1449362931/ref=sr_1_1?ie=UTF8&amp;amp;qid=1547762669&amp;amp;sr=8-1&amp;amp;keywords=thinking&amp;#43;with&amp;#43;data&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/think_data.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Structural Equations With Latent Variables&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Kenneth A. Bollen&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Structural-Equations-Latent-Variables-Kenneth/dp/0471011711/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524679315&amp;amp;sr=1-1&amp;amp;keywords=structural&amp;#43;equations&amp;#43;latent&amp;#43;variables&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/SEM.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Switch: How To Change Things When Change Is Hard&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Chip Heath&lt;/p&gt;
+&lt;p&gt;Dan Heath&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Switch-Change-Things-Heath-Hardcover/dp/B010IKJIYA/ref=sr_1_3?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524679336&amp;amp;sr=1-3&amp;amp;keywords=switch&amp;#43;how&amp;#43;to&amp;#43;change&amp;#43;when&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/switch.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Mathematical Modeling of Social Relationships&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Urszula Strawinska-Zanko&lt;/p&gt;
+&lt;p&gt;Larry S. Liebovitch&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Mathematical-Modeling-Social-Relationships-Computational/dp/331976764X/ref=sr_1_1?ie=UTF8&amp;amp;qid=1544905847&amp;amp;sr=8-1&amp;amp;keywords=mathematical&amp;#43;modeling&amp;#43;of&amp;#43;social&amp;#43;relationships&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/math_relationships.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The Seven Pillars of Statistical Wisdom&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Stephen M. Stigler&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Seven-Pillars-Statistical-Wisdom/dp/0674088913/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524679356&amp;amp;sr=1-1&amp;amp;keywords=the&amp;#43;seven&amp;#43;pillars&amp;#43;of&amp;#43;statistical&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/sevenstats.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Life&amp;rsquo;s Other Secret: The New Mathematics of the Living World&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Ian Stewart&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Lifes-Other-Secret-Mathematics-Living/dp/0471296511/ref=sr_1_1?ie=UTF8&amp;amp;qid=1541968410&amp;amp;sr=8-1&amp;amp;keywords=life%27s&amp;#43;other&amp;#43;secret&amp;#43;ian&amp;amp;dpID=31v8-5eNf-L&amp;amp;preST=_SY291_BO1,204,203,200_QL40_&amp;amp;dpSrc=srch&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/lifes_secret.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;What Should We Be Worried About? Real Scenarios That Keep Scientists Up at Night&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Edited by John Brockman&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/What-Should-Worried-About-Scientists/dp/006229623X/ref=sr_1_2?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524679401&amp;amp;sr=1-2&amp;amp;keywords=what&amp;#43;should&amp;#43;we&amp;#43;be&amp;#43;worried&amp;#43;about&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/brockmanworried.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Stumbling on Happiness&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Daniel Gilbert&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Stumbling-Happiness-Daniel-Gilbert/dp/1400077427/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524679419&amp;amp;sr=1-1&amp;amp;keywords=stumbling&amp;#43;on&amp;#43;happiness&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/gilberthappy.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Brain Bugs: How The Brain&amp;rsquo;s Flaws Shape Our Lives&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Dean Buonomano&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Brain-Bugs-Brains-Flaws-Shape/dp/0393342220/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524679522&amp;amp;sr=1-1&amp;amp;keywords=brain&amp;#43;bugs&amp;#43;how&amp;#43;the&amp;#43;brain%27s&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/brainbugs.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Quantitative Social Science: An Introduction&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Kosuke Imai&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Quantitative-Social-Science-Kosuke-Imai/dp/0691175462/ref=sr_1_1?ie=UTF8&amp;amp;qid=1530631848&amp;amp;sr=8-1&amp;amp;keywords=quantitative&amp;#43;social&amp;#43;science&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/quant_ss.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;How to Do Nothing: Resisting the Attention Economy&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Jenny Odell&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/How-Do-Nothing-Resisting-Attention/dp/1612197493/ref=tmm_hrd_swatch_0?_encoding=UTF8&amp;amp;qid=1576539107&amp;amp;sr=8-1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/do_nothingpng&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;How Not to Be Wrong: The Power of Mathematical Thinking&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Jordan Ellenberg&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/How-Not-Be-Wrong-Mathematical/dp/0143127535/ref=sr_1_2?ie=UTF8&amp;amp;qid=1544905443&amp;amp;sr=8-2&amp;amp;keywords=how&amp;#43;not&amp;#43;to&amp;#43;be&amp;#43;wrong&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/not_wrong.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Introduction to Computation and Programming Using Python&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;John V. Guttag&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/gp/product/0262529629/ref=oh_aui_detailpage_o03_s00?ie=UTF8&amp;amp;psc=1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/computation_programming.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Cooperation Under Anarchy&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Kenneth A. Oye&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Cooperation-under-Anarchy-Kenneth-Oye/dp/0691022402/ref=sr_1_1?ie=UTF8&amp;amp;qid=1534110079&amp;amp;sr=8-1&amp;amp;keywords=cooperation&amp;#43;under&amp;#43;anarchy&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/cooperation_anarchy.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Predictably Irrational: The Hidden Forces That Shape Our Decisions&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Dan Ariely&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Predictably-Irrational-Revised-Expanded-Decisions/dp/0061353248/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524678490&amp;amp;sr=1-1&amp;amp;keywords=predictably&amp;#43;irrational&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/irrational.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Big Data: A Revolution That Will Transform How We Live, Work, and Think&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Viktor Mayer-Schonberger&lt;/p&gt;
+&lt;p&gt;Kenneth Cukier&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Big-Data-Revolution-Transform-Think/dp/1848547900/ref=sr_1_10?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524678890&amp;amp;sr=1-10&amp;amp;keywords=big&amp;#43;data&amp;#43;a&amp;#43;revolution&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/bigdata.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;In Pursuit of the Unknown: 17 Equations That Changed the World&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Ian Stewart&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Pursuit-Equations-That-Changed-World/dp/0465085989/ref=sr_1_1?ie=UTF8&amp;amp;qid=1529323656&amp;amp;sr=8-1&amp;amp;keywords=17&amp;#43;equations&amp;#43;that&amp;#43;changed&amp;#43;the&amp;#43;world&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/unknown.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Reclaiming Conversation&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Sherry Turkle&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Reclaiming-Conversation-Power-Talk-Digital/dp/0143109790/ref=sr_1_1?keywords=reclaiming&amp;#43;conversation&amp;amp;qid=1565453094&amp;amp;s=gateway&amp;amp;sr=8-1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/conversation.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Humble Pie: A Comedy of Maths Errors&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Matt Parker&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Humble-Pi-Comedy-Maths-Errors/dp/0241360234/ref=sr_1_fkmr0_1?keywords=humble&amp;#43;pie&amp;#43;maths&amp;#43;errors&amp;amp;qid=1565453048&amp;amp;s=gateway&amp;amp;sr=8-1-fkmr0&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/humble_pie.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The Tyranny of Metrics&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Jerry Muller&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Tyranny-Metrics-Jerry-Muller/dp/0691174954/ref=sr_1_1?ie=UTF8&amp;amp;qid=1529323708&amp;amp;sr=8-1&amp;amp;keywords=the&amp;#43;tyranny&amp;#43;of&amp;#43;metrics&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/tyranny_metrics.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The Briefest History of Time&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Arieh Ben_Naim&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Briefest-History-Time-Misconstrued-Association/dp/9814749850/ref=sr_1_1?ie=UTF8&amp;amp;qid=1534110135&amp;amp;sr=8-1&amp;amp;keywords=the&amp;#43;briefest&amp;#43;history&amp;#43;of&amp;#43;time&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/history_time.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Too Soon Old, Too Late Smart&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Gordon Livingston&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Too-Soon-Old-Late-Smart/dp/1569243735/ref=sr_1_1?ie=UTF8&amp;amp;qid=1527948162&amp;amp;sr=8-1&amp;amp;keywords=too&amp;#43;soon&amp;#43;old&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/too_soon_old.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;System Dynamics Modeling with R&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Jim Duggan&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/System-Dynamics-Modeling-Lecture-Networks/dp/3319340417/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1526429142&amp;amp;sr=1-1&amp;amp;keywords=system&amp;#43;dynamics&amp;#43;modeling&amp;#43;with&amp;#43;r&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/system_dynamics.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Ten Great Ideas About Chance&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Persi Diaconis&lt;/p&gt;
+&lt;p&gt;Brian Skyrms&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Ten-Great-Ideas-about-Chance/dp/0691174164/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524679586&amp;amp;sr=1-1&amp;amp;keywords=ten&amp;#43;great&amp;#43;ideas&amp;#43;about&amp;#43;chance&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/tenchance.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Risk Savvy: How To Make Good Decisions&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Gerd Gigerenzer&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Risk-Savvy-Make-Good-Decisions/dp/0143127101/ref=sr_1_1?ie=UTF8&amp;amp;qid=1525549444&amp;amp;sr=8-1&amp;amp;keywords=risk&amp;#43;savvy&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/risk_savvy.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Thinking in Systems: A Primer&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Donella H. Meadows&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Thinking-Systems-Donella-H-Meadows/dp/1603580557/ref=sr_1_2?ie=UTF8&amp;amp;qid=1524678135&amp;amp;sr=8-2&amp;amp;keywords=thinking&amp;#43;in&amp;#43;systems&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/thinking_systems.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This Idea Must Die: Scientific Theories That Are Blocking Progress&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Edited by John Brockman&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/This-Idea-Must-Die-Scientific/dp/0062374346/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524679604&amp;amp;sr=1-1&amp;amp;keywords=this&amp;#43;idea&amp;#43;must&amp;#43;die&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/brockmandie.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Curriculum Vitae</title>
+      <link>https://christopherdishop.netlify.app/cv/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/cv/</guid>
+      <description>&lt;p&gt;Download this file 
+&lt;a href=&#34;https://raw.githubusercontent.com/Cdishop/homepage/master/misc/CV.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;object data=&#34;https://raw.githubusercontent.com/Cdishop/website/master/misc/CV.pdf&#34; width=&#34;800px&#34; height=&#34;700px&#34;&gt;
+    &lt;embed src=&#34;https://raw.githubusercontent.com/Cdishop/website/master/misc/CV.pdf&#34;&gt;
+        &lt;p&gt;This browser does not support PDFs. Please download the PDF to view it: &lt;a href=&#34;https://raw.githubusercontent.com/Cdishop/website/master/misc/CV.pdf&#34;&gt;Download PDF&lt;/a&gt;.&lt;/p&gt;
+    &lt;/embed&gt;
+&lt;/object&gt;</description>
     </item>
     
   </channel>

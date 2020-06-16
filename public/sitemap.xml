@@ -3,273 +3,410 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/cv/</loc>
-  </url>
-  
-  <url>
-    <loc>/rec_reading/</loc>
-  </url>
-  
-  <url>
-    <loc>/r_resources/</loc>
-  </url>
-  
-  <url>
-    <loc>/</loc>
+    <loc>https://christopherdishop.netlify.app/</loc>
     <lastmod>2020-05-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/</loc>
+    <loc>https://christopherdishop.netlify.app/comp-notes/</loc>
     <lastmod>2020-05-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/dfs/</loc>
+    <loc>https://christopherdishop.netlify.app/comp-notes/2017-07-13-dfs/</loc>
     <lastmod>2020-05-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/bi_dual_change/</loc>
-    <lastmod>2020-05-26T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/projects/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/dual_change/</loc>
-    <lastmod>2020-05-24T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/about/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/julia_cheatsheet/</loc>
-    <lastmod>2020-05-23T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/resume/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/matrix_characters/</loc>
-    <lastmod>2020-05-22T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/talks/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/emp_dependence/</loc>
-    <lastmod>2020-04-03T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/license/</loc>
+    <lastmod>2018-06-28T00:00:00+01:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/prob_dependence/</loc>
-    <lastmod>2020-04-02T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/authors/alison/</loc>
+    <lastmod>2017-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/scraping_numb_pages/</loc>
-    <lastmod>2020-03-22T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/publication_types/2/</loc>
+    <lastmod>2017-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/scraping_practice/</loc>
-    <lastmod>2020-03-20T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/authors/</loc>
+    <lastmod>2017-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/methods_others/</loc>
-    <lastmod>2020-03-04T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/authors/beth-hoover-langhorst/</loc>
+    <lastmod>2017-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/skeleton/</loc>
-    <lastmod>2020-01-10T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/authors/damien-fair/</loc>
+    <lastmod>2017-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/sims_rccp/</loc>
-    <lastmod>2019-12-10T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/authors/damion-demeter/</loc>
+    <lastmod>2017-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/regression_composite/</loc>
-    <lastmod>2019-12-01T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/authors/eric-feczko/</loc>
+    <lastmod>2017-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/ma_compute/</loc>
-    <lastmod>2019-09-15T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/authors/eric-fombonne/</loc>
+    <lastmod>2017-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/cheating_cor_errors/</loc>
-    <lastmod>2019-06-26T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/authors/jan-van-santen/</loc>
+    <lastmod>2017-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/system_goons/</loc>
-    <lastmod>2019-06-14T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/authors/joel-nigg/</loc>
+    <lastmod>2017-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/explaining_statistics/</loc>
-    <lastmod>2019-05-03T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/authors/julia-grieser-painter/</loc>
+    <lastmod>2017-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/lavaan_mplus/</loc>
-    <lastmod>2019-05-02T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/authors/lourdes-irwin/</loc>
+    <lastmod>2017-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/mean_calculating/</loc>
-    <lastmod>2019-05-02T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/authors/michaela-cordova/</loc>
+    <lastmod>2017-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/degrees_freedom/</loc>
-    <lastmod>2019-05-01T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/authors/nadir-balba/</loc>
+    <lastmod>2017-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/regression_partial/</loc>
-    <lastmod>2019-04-19T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/authors/oscar-miranda-dominguez/</loc>
+    <lastmod>2017-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/convert_numeric/</loc>
-    <lastmod>2019-04-10T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/publication_types/</loc>
+    <lastmod>2017-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/moving_average/</loc>
-    <lastmod>2019-01-29T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/publication/</loc>
+    <lastmod>2017-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/uneven_time/</loc>
-    <lastmod>2019-01-15T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/authors/sarah-karalunas/</loc>
+    <lastmod>2017-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/time_index/</loc>
-    <lastmod>2019-01-14T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/publication/2017-subtyping/</loc>
+    <lastmod>2017-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/successful_output/</loc>
-    <lastmod>2019-01-13T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/publication_types/5/</loc>
+    <lastmod>2017-12-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/row_labels_spread/</loc>
-    <lastmod>2019-01-11T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/authors/amber-thomas/</loc>
+    <lastmod>2017-12-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/reveal_na/</loc>
-    <lastmod>2019-01-10T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/publication/2017-blogdown/</loc>
+    <lastmod>2017-12-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/ggplot_column_parameters/</loc>
-    <lastmod>2019-01-06T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/authors/yihui-xie/</loc>
+    <lastmod>2017-12-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/premature_covariate/</loc>
-    <lastmod>2019-01-06T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/comp-notes/2017-07-12-art/</loc>
+    <lastmod>2017-07-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/mutate_na/</loc>
-    <lastmod>2019-01-05T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/authors/geza-kiss/</loc>
+    <lastmod>2017-03-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/frequentist_ci_interpretation/</loc>
-    <lastmod>2019-01-04T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/authors/heather-macfarlane/</loc>
+    <lastmod>2017-03-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/col_names_parameters_quo/</loc>
-    <lastmod>2018-09-06T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/authors/katina-papadakis/</loc>
+    <lastmod>2017-03-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/mc_approximation/</loc>
-    <lastmod>2018-08-12T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/authors/kyle-gorman/</loc>
+    <lastmod>2017-03-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/longitudinal_plotting/</loc>
-    <lastmod>2018-07-04T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/publication/2017-mazes-asd-sli/</loc>
+    <lastmod>2017-03-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/column_name_parameters/</loc>
-    <lastmod>2018-06-02T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/authors/rosemary-ingham/</loc>
+    <lastmod>2017-03-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/spline/</loc>
-    <lastmod>2018-05-05T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/publication_types/6/</loc>
+    <lastmod>2016-02-19T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/latent_growth/</loc>
-    <lastmod>2018-04-15T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/publication/2016-primer-on-asd/</loc>
+    <lastmod>2016-02-19T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/social_trait_comp_model/</loc>
-    <lastmod>2018-03-30T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/authors/katharine-zuckerman/</loc>
+    <lastmod>2016-02-19T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/integration_optimization/</loc>
-    <lastmod>2018-02-16T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/authors/jan-p.-h.-van-santen/</loc>
+    <lastmod>2016-01-22T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/random_walks/</loc>
-    <lastmod>2018-01-11T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/authors/lindsay-olson/</loc>
+    <lastmod>2016-01-22T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/load_csv/</loc>
-    <lastmod>2018-01-03T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/authors/peter-a.-heeman/</loc>
+    <lastmod>2016-01-22T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/formatting_qualtrics/</loc>
-    <lastmod>2018-01-02T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/authors/rebecca-lunsford/</loc>
+    <lastmod>2016-01-22T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/interactions_fve/</loc>
-    <lastmod>2017-11-15T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/publication/2016-uh-and-um-asd-sli/</loc>
+    <lastmod>2016-01-22T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/role_dynamics/</loc>
-    <lastmod>2017-08-22T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/authors/katharine-e.-zuckerman/</loc>
+    <lastmod>2015-09-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/convert_text/</loc>
-    <lastmod>2017-04-09T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/publication/2015-obesity-in-asd-multisite/</loc>
+    <lastmod>2015-09-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/art_montecarlo/</loc>
-    <lastmod>2017-03-18T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/publication/2015-memory-in-li-asd/</loc>
+    <lastmod>2015-06-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/computational_notes/besd/</loc>
-    <lastmod>2017-01-01T00:00:00+00:00</lastmod>
+    <loc>https://christopherdishop.netlify.app/publication/2015-translational/</loc>
+    <lastmod>2015-06-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/</loc>
+    <loc>https://christopherdishop.netlify.app/publication/2014-aggression-in-asd/</loc>
+    <lastmod>2014-06-22T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/</loc>
+    <loc>https://christopherdishop.netlify.app/authors/arlene-d.-hagen/</loc>
+    <lastmod>2014-06-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://christopherdishop.netlify.app/authors/daniel-j.-kriz/</loc>
+    <lastmod>2014-06-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://christopherdishop.netlify.app/authors/katherine-e.-zuckerman/</loc>
+    <lastmod>2014-06-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://christopherdishop.netlify.app/authors/susanne-w.-duvall/</loc>
+    <lastmod>2014-06-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://christopherdishop.netlify.app/publication/2014-handbook/</loc>
+    <lastmod>2014-03-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://christopherdishop.netlify.app/authors/kimberly-guion/</loc>
+    <lastmod>2014-02-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://christopherdishop.netlify.app/authors/lisa-voltolina/</loc>
+    <lastmod>2014-02-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://christopherdishop.netlify.app/publication/2014-obesity-in-asd-oregon/</loc>
+    <lastmod>2014-02-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://christopherdishop.netlify.app/publication/2014-asd-epidemiology-in-practice/</loc>
+    <lastmod>2014-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://christopherdishop.netlify.app/publication/2013-repetitive-speech-in-asd-sli/</loc>
+    <lastmod>2013-04-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://christopherdishop.netlify.app/authors/richard-w.-sproat/</loc>
+    <lastmod>2013-04-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://christopherdishop.netlify.app/authors/bridget-m.-gaertner/</loc>
+    <lastmod>2011-02-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://christopherdishop.netlify.app/authors/carol-lynn-martin/</loc>
+    <lastmod>2011-02-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://christopherdishop.netlify.app/authors/cindy-f.-miller/</loc>
+    <lastmod>2011-02-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://christopherdishop.netlify.app/authors/dawn-e.-england/</loc>
+    <lastmod>2011-02-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://christopherdishop.netlify.app/authors/diane-n.-ruble/</loc>
+    <lastmod>2011-02-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://christopherdishop.netlify.app/authors/kristina-m.-zosuls/</loc>
+    <lastmod>2011-02-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://christopherdishop.netlify.app/publication/2011-gender-attitudes/</loc>
+    <lastmod>2011-02-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://christopherdishop.netlify.app/publication/2007-rja-in-sibs/</loc>
+    <lastmod>2007-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://christopherdishop.netlify.app/authors/paul-j.-yoder/</loc>
+    <lastmod>2007-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://christopherdishop.netlify.app/authors/tedra-a.-walden/</loc>
+    <lastmod>2007-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://christopherdishop.netlify.app/authors/wendy-l.-stone/</loc>
+    <lastmod>2007-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://christopherdishop.netlify.app/authors/anderson-d.-smith/</loc>
+    <lastmod>2004-12-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://christopherdishop.netlify.app/authors/chuck-l.-robertson/</loc>
+    <lastmod>2004-12-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://christopherdishop.netlify.app/authors/david-p.-mccabe/</loc>
+    <lastmod>2004-12-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://christopherdishop.netlify.app/publication/2004-false-memories/</loc>
+    <lastmod>2004-12-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://christopherdishop.netlify.app/r_resources/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://christopherdishop.netlify.app/rec_reading/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://christopherdishop.netlify.app/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>https://christopherdishop.netlify.app/cv/</loc>
+  </url>
+  
+  <url>
+    <loc>https://christopherdishop.netlify.app/tags/</loc>
   </url>
   
 </urlset>

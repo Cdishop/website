@@ -1,251 +1,887 @@
-<!DOCTYPE html>
-<html lang="en-US">
+<!DOCTYPE html><html lang="en-us" >
 
 <head>
-    <meta name="generator" content="Hugo 0.72.0" />
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>R Resources | Christopher Dishop</title>
 
-     
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Websites with many R resources  All R books written with Bookdown">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://christopherdishop.netlify.app/r_resources/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#06805E">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
       
     
     
-    
-    
-    
-
-  <meta name="author" content="">
-
- 
-    <meta property="og:title" content="R Resources" />
-<meta property="og:description" content="Websites with many R resources All R books written with Bookdown
-All R cheatsheets
-APS list of R resources
-Show Us Your R
-Econometrics Simulations
-UVA Data Science Resources
-People with helpful individual websites Emily C. Zabor
-Jenny Bryan
-(teach =&gt; purrr tutorial is excellent)
-Kristoffer Magnusson
-Sacha Epskamp
-FOM academic
-Suzan Baert
-Hadley Wickham
-David Robinson
-B Rodriguez
-Nathaniel D. Phillips
-Simon Ejdemyr
-The R Graph Gallery
-Christian Burkhart" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/r_resources/" />
-
- 
+      
+      
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/tomorrow.min.css" crossorigin="anonymous" title="hl-light">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/tomorrow.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+      
     
 
-
-
- 
     
-     
-     
+
+    
+
     
     
-    <link rel="canonical" href="/r_resources/">   <link rel="shortcut icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABwlBMVEUAAAA/3MUK07UJ0rRk6NkC0rMAw5sAx6Ic1rs/3MYAlU0E0rQAhjMAyKIAiTkM07UJ07UAhC8m2L4o2L5O4Msn2L4AzKoAzq0128Mo2b8F0rQE0rMu2cAt2cAA0bI228MA0LAAy6kr2b8Q1LcF0rMH0rUAxp4t2b8c1ros2b8P1LcAzKsAzq4528Q02sIM07YAfyg93cUD0rMA0LEA0bFK4c0M1LcL07Uv2sEAzawY1rlJ4c0w2sEAzKkY1rqr+PQN07Yj170G0rQI07UF0bMt2cAF0rMC0bIL07UF0bMs2cAF0rMA0bIC0bIL07UF0rMA0bIA0bIA0bIO1LYr2b8N07Yp2L4F0rMF0rQJ07UA0bIC0bMA0bIH0rQK07UD0bMA0LAF0rMAyqYE0rMA0bIS1Lg228ID0bMM07YS1LcI07QL07UJ07UC0bMM07YG0rMS1Lc328IR1LcC0bIK07UM07Yo2L4P1LcL07UD0rMD0rMD0rMB0bIH0rQ23MMQ1LcD0rMN1LYB0LAJ0rQ33MMG0bMP1bgD0rMN07YH0rQH0rQ33MQF0rMD0rMN1LYo2L4F0rQG0rSA6tsA0bIB0bL////yxqscAAAAk3RSTlMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgnDXAUItvZKBAi6+vpMuf3++wEIAQcEBFn5AgR9UwMEoQLD/AEH4AIdAzha+UMEAQcc9AM4CAFSA9IC+4AEAc8yAwIEBAHOMQOBBLfLMAnFlAJNsa0LAAAAAWJLR0SVCGB6gwAAAAd0SU1FB+EBBBI4BduZ4woAAAF5SURBVDjLY2CAAUYmZgcWRydnVhc2dg4GTMAJlOdydZvs7sHtiU0FSJ7Hy3uyz2RfP24XNl4OLPJ8Xv5A+YBAsAo0M2DyQZMnY1fBL+AgCJXHrkIoWDgEJo9NhUioaBhCHqoiXExcAqZAMkIqckrU5MkoKqSjZeAmyMbIxSIZAFIRMCVOOl4epkAmQSERrwKOJMXkySl4rEhVSkufHDAZtyMzlDPdJweiyiN7UyRLIHsKQj5wMnowSIar5ExJQcjn5qnmqyFHlzqKL7EoQPMlphUaaL7EcGSBZiGKLzFUZGgVFSP5ElNFCVPpFORwhAeVto4uWEGwUJk3alSAVXhIR+tB7ShHTi5QkOIzpUKqEmKCPpODgReaipSUyVWl0tW6GEkWGhRBk2tq6wzrsSVqqPaGRqOmZmMTXWwqwNpbTFvbzMwtsGUMoPb2DqOmTksxK2xZLyhgck1XtzVIuw22zNszeXJvH0i7rR1G9gVlf/v+CRMnWaPYDgA74gwO0j2znAAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxNy0wMS0wNFQxODo1NjowNSswMTowME2yC4wAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTctMDEtMDRUMTg6NTY6MDUrMDE6MDA877MwAAAAV3pUWHRSYXcgcHJvZmlsZSB0eXBlIGlwdGMAAHic4/IMCHFWKCjKT8vMSeVSAAMjCy5jCxMjE0uTFAMTIESANMNkAyOzVCDL2NTIxMzEHMQHy4BIoEouAOoXEXTyQjWVAAAAAElFTkSuQmCC">
+      
 
+      
+      
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
-    <link rel="stylesheet" href="https://jenil.github.io/bulmaswatch/flatly/bulmaswatch.min.css"> 
-    <link rel="stylesheet" href="/css/landing.css">   
+      
     
+      
+
+      
+      
+
+      
     
-</head>
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400i%7CKarla:400,400i,700,700i%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
 
 
-<body>
-    <header> <nav class="navbar is-transparent">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="/">
-      <img src="/img/bulma.png" alt="Bulma logo">
-    </a>
-  </div>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-99209585-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'UA-99209585-1', {});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hubd7880285348c4660acc9402140a2483_242472_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hubd7880285348c4660acc9402140a2483_242472_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="https://christopherdishop.netlify.app/r_resources/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@apreshill">
+  <meta property="twitter:creator" content="@apreshill">
+  
+  <meta property="og:site_name" content="Christopher R. Dishop">
+  <meta property="og:url" content="https://christopherdishop.netlify.app/r_resources/">
+  <meta property="og:title" content=" | Christopher R. Dishop">
+  <meta property="og:description" content="Websites with many R resources  All R books written with Bookdown"><meta property="og:image" content="https://christopherdishop.netlify.app/img/pom-card.png">
+  <meta property="twitter:image" content="https://christopherdishop.netlify.app/img/pom-card.png"><meta property="og:locale" content="en-us">
   
     
     
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title> | Christopher R. Dishop</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
     
-    <span class="nav-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
-    </span>
+      <a class="navbar-brand" href="/">Christopher R. Dishop</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
     
-    
-    
-    <div class="navbar-end">
-      <div class="navbar-item">
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
         
         
-          <a itemprop="url" class="navbar-item " href="/cv/"><span itemprop="name">CV</span></a>
         
-          <a itemprop="url" class="navbar-item " href="/rec_reading/"><span itemprop="name">Recommended Reading</span></a>
+
         
-          <a itemprop="url" class="navbar-item  is-active" href="/r_resources/"><span itemprop="name">R Resources</span></a>
         
-          <a itemprop="url" class="navbar-item " href="/computational_notes/"><span itemprop="name">Computational_Notes</span></a>
         
-      </div> 
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/cv"><span>CV</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/comp-notes"><span>Computation</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/r_resources"><span>R Resources</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/rec_reading"><span>Recommended</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+
+        
+
+        
+
+        
+
+      </ul>
+
     </div>
   </div>
 </nav>
- </header>
-    <main>
 
-<div class="columns is-fullheight">
-    <div class="column">
-        <section class="hero is-default is-bold">
-            <div class="hero-body">
-                <div class="content container">
-                   <h1 id="websites-with-many-r-resources">Websites with many R resources</h1>
-<p><a href="https://bookdown.org">All R books written with Bookdown</a></p>
-<p><a href="https://www.rstudio.com/resources/cheatsheets/">All R cheatsheets</a></p>
-<p><a href="https://www.psychologicalscience.org/observer/learning-to-work-with-r">APS list of R resources</a></p>
-<p><a href="http://www.flutterbys.com.au/stats/index.html">Show Us Your R</a></p>
-<p><a href="http://www.econometricsbysimulation.com/2012/10/using-simulations-to-maximize.html">Econometrics Simulations</a></p>
-<p><a href="https://data.library.virginia.edu/statlab/data-science-resources/">UVA Data Science Resources</a></p>
-<h1 id="people-with-helpful-individual-websites">People with helpful individual websites</h1>
-<p><a href="https://www.emilyzabor.com/tutorials/rmarkdown_websites_tutorial.html">Emily C. Zabor</a></p>
-<p><a href="https://jennybryan.org">Jenny Bryan</a></p>
-<p>(teach =&gt; purrr tutorial is excellent)</p>
-<p><a href="https://rpsychologist.com">Kristoffer Magnusson</a></p>
-<p><a href="http://sachaepskamp.com">Sacha Epskamp</a></p>
-<p><a href="https://data-se.netlify.com">FOM academic</a></p>
-<p><a href="https://suzan.rbind.io">Suzan Baert</a></p>
-<p><a href="http://hadley.nz/index.html">Hadley Wickham</a></p>
-<p><a href="http://varianceexplained.org">David Robinson</a></p>
-<p><a href="https://b-rodrigues.github.io/fput/">B Rodriguez</a></p>
-<p><a href="https://bookdown.org/ndphillips/YaRrr/">Nathaniel D. Phillips</a></p>
-<p><a href="https://sejdemyr.github.io">Simon Ejdemyr</a></p>
-<p><a href="https://www.r-graph-gallery.com/all-graphs/">The R Graph Gallery</a></p>
-<p><a href="https://christianburkhart.de">Christian Burkhart</a></p>
-<p><a href="https://malco.io">Malcolm Barrett</a></p>
-<p><a href="https://jflournoy.github.io">John Flournoy</a></p>
-<p><a href="http://uc-r.github.io/introduction">UC R Guide</a></p>
-<p><a href="https://crumplab.github.io/Courses.html">Crump Lab</a></p>
-<p><a href="http://datascience.tntlab.org/">Richard N. Landers</a></p>
-<p><a href="https://quantscience.rbind.io/#posts">Mark Lai</a></p>
-<p><a href="https://francish.netlify.app/#posts">Francis L. Huang</a></p>
-<h1 id="courses">Courses</h1>
-<p><a href="http://had.co.nz/stat480.1.html">Applied Statistical Computing Course</a></p>
-<p><a href="https://biol607.github.io/index.html">BioStates by Jarrett Byrnes</a></p>
-<p><a href="https://www.datacamp.com/community/open-courses/beginning-bayes-in-r">Introduction to Bayes in DataCamp (free course)</a></p>
-<p><a href="https://www.datacamp.com/community/open-courses/statistical-inference-and-data-analysis">Data Analysis and Statistical Inference on Data Camp</a></p>
-<p><a href="https://github.com/jrgant/prob-stats">Probability and Statistics with Simulations</a></p>
-<p><a href="https://quantdev.ssri.psu.edu/resources">Penn State Quant Developmental Systems</a></p>
-<h1 id="random">Random</h1>
-<p><a href="https://www.datadreaming.org/post/r-markdown-theme-gallery/">R Markdown Themes</a></p>
-<p><a href="https://blogs.uoregon.edu/rclub/">R club</a></p>
-<p><a href="https://www.zoology.ubc.ca/~schluter/R/fit-model/">Various Linear Model Tests in R</a></p>
-<p><a href="https://www.statmethods.net/stats/anova.html">ANOVA and MANOVA</a></p>
-<p><a href="https://tclavelle.github.io/blog/r_and_apis/">Using R to extract data from web APIs</a></p>
-<p><a href="http://biostat.mc.vanderbilt.edu/wiki/pub/Main/ColeBeck/datestimes.pdf">Handling date-times in R</a></p>
-<p><a href="https://www.brodrigues.co/blog/2017-02-17-lesser_known_tricks/">Lesser Known Dplyr tricks</a></p>
-<p><a href="http://www.stat.cmu.edu/~cshalizi/rmarkdown/">Rmarkdown</a></p>
-<p><a href="https://github.com/jessiesunpsych/power-simulations">Power Simulations</a></p>
-<p><a href="https://stackoverflow.com/questions/47494975/passing-column-name-as-parameter-to-a-function-using-dplyr">Functions with columns as parameters 1</a></p>
-<p><a href="https://www.brodrigues.co/blog/2016-07-18-data-frame-columns-as-arguments-to-dplyr-functions/">Functions with columns as parameters 2</a></p>
-<p><a href="http://haozhu233.github.io/kableExtra/awesome_table_in_html.html">Kable Extra</a></p>
-<p><a href="https://github.com/Rdatatable/data.table/wiki/Getting-started">Data.Table</a></p>
-<p><a href="http://rpsychologist.com/r-guide-longitudinal-lme-lmer">Growth models with lme and lmer</a></p>
-<p><a href="https://threadreaderapp.com/thread/1073313224446009345.html">Cross-lagged Panel Models</a></p>
-<p><a href="https://debruine.github.io/faux/index.html">Simulate Experiments</a></p>
-<p><a href="https://rpubs.com/YaRrr/MLTutorial">Maximum Likelihood</a></p>
-<p><a href="https://github.com/jrgant/citr">citr</a></p>
-<p><a href="https://emoriebeck.github.io/R-tutorials/purrr/">Purrr tutorial</a></p>
-<p><a href="https://osf.io/2emja/">Psych Networks Winter School Resources</a></p>
-<p><a href="http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html">Top 50 ggplot2 Visualizations</a></p>
-<h1 id="dags">DAGS</h1>
-<p><a href="https://github.com/jrgant/causalgraphs_latex/blob/master/graphical-models-causal.pdf">Dags using LaTex</a></p>
-<p><a href="https://github.com/jrgant/quickdag">QuickDag</a></p>
-<p><a href="https://rich-iannone.github.io/DiagrammeR/">DiagrammeR</a></p>
-<p><a href="https://ggdag.netlify.com">GGdag</a></p>
-<p><a href="https://sgfin.github.io/2019/06/19/Causal-Inference-Book-All-DAGs/">All DAGS from Hernan and Robins - Sam Finlayson</a></p>
-<h1 id="structural-equations-modeling">Structural Equations Modeling</h1>
-<p><a href="http://lavaan.ugent.be">lavaan homepage</a></p>
-<p><a href="https://groups.google.com/forum/#!topic/lavaan/oKwP0_6-i1g">Measurement Equivalence</a></p>
-<p><a href="https://github.com/osofr/simcausal">sims package</a></p>
-<p><a href="https://www.draw.io/">Draw SEMs</a></p>
-<p><a href="https://github.com/brandmaier/onyxR">onyxR for SEM diagrams with lavaan</a></p>
-<h1 id="progressing-through-stats-with-r">Progressing Through Stats with R</h1>
-<p><a href="https://ismayc.github.io/rbasics-book/index.html">Basics of R and R Markdown</a></p>
-<p><a href="https://happygitwithr.com">Basics of Git and Github with R</a></p>
-<p><a href="https://psyteachr.github.io/msc-data-skills/sim.html">Beginner Concepts for Reproducible Science</a></p>
-<p><a href="https://r4ds.had.co.nz">R for Data Science</a></p>
-<p><a href="https://leanpub.com/LittleInferenceBook/read">Statistical Inference</a></p>
-<p><a href="https://bookdown.org/ejvanholm/Textbook/">Intro to Quant Methods</a></p>
-<p><a href="https://leanpub.com/regmods/read">Regression</a></p>
-<p><a href="https://bookdown.org/ccolonescu/RPoE4/">Econometrics</a></p>
-<p><a href="https://otexts.org/fpp2/">Time series and forecasting</a></p>
-<p><a href="https://serialmentor.com/dataviz/">Data Visualization</a></p>
-<p><a href="https://www.tidytextmining.com/nasa.html">Text Analysis</a></p>
-<h1 id="scraping-packages">Scraping Packages</h1>
-<p><a href="https://github.com/mguideng/gdscrapeR">Scrape Glass Door</a></p>
-<h1 id="commands-and-help-for-non-r-programming">Commands and help for non-R programming</h1>
-<p><a href="https://www.markomedia.com.au/compress-pdf-on-os-x-in-terminal/">Compress pdf in terminal</a></p>
-<p><a href="https://stackoverflow.com/questions/33636467/unable-to-click-always-allow-on-git-credential-osxkeychain-popup">Mac denying pushing/pulling due to git keychain</a></p>
-<p><a href="https://help.github.com/articles/caching-your-github-password-in-git/">Saving username and password through keychain with Git</a></p>
-<p><a href="http://blog.martinfenner.org/2014/08/25/using-microsoft-word-with-git/">Using word with Git</a></p>
-<p><a href="https://tex.stackexchange.com/questions/16010/number-every-line-of-pages">Line numbering in LaTex</a></p>
-<p><a href="https://jabranham.com/blog/2016/11/using-pandoc-export-to-word/">Exporting .tex to word with pandoc</a></p>
-<p><a href="https://apple.stackexchange.com/questions/252362/how-do-i-count-words-in-a-pdf-file-on-os-x">Word Count on PDF From Terminal</a></p>
-<h1 id="so-helpful-they-deserve-their-own-category">So helpful they deserve their own category</h1>
-<p><a href="https://www.calvin.edu/~rpruim/courses/s341/S17/from-class/MathinRmd.html">Math notation with Rmarkdown</a></p>
-<p><a href="https://www.verbosus.com/bibtex-style-examples.html">BibTex Examples</a></p>
-<p><a href="http://moser-isi.ethz.ch/docs/typeset_equations.pdf">Latex equations basics</a></p>
-<p><a href="https://tex.stackexchange.com/questions/132704/how-to-build-knitr-document-from-the-command-line">Compile Rmarkdown and tex files from terminal</a></p>
-<p><a href="https://tex.stackexchange.com/questions/171711/how-to-include-latex-package-in-r-markdown">Include LaTeX packages in YAML header</a></p>
-<p><a href="https://holtzy.github.io/Pimp-my-rmd/#references">Pimp Your Rmarkdown</a></p>
-<p><a href="https://www.rdocumentation.org/packages/rebus/versions/0.1-3">Rebus Package</a></p>
-<p><a href="https://haozhu233.github.io/kableExtra/best_practice_for_newline_in_latex_table.pdf">Newline breaks in Rmarkdown tables</a></p>
 
-                </div>
-                <br>
-            </div>
-        </section>
-    </div>
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1></h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+
 </div>
-</main>
-    <footer> 
-  <footer class="footer">
-    <div class="container">
-        <div class="content has-text-centered">
-            <p>
-                I generated this site using 
-                <a href="https://gohugo.io/">Hugo</a> and Jeblister's
-                <a href="https://themes.gohugo.io/bulma/">Bulma</a> theme.
-                
-            </p>
-            <p>
-              Michigan State University is not liable for any opinions on this website.
 
-            </p>
-        </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h3 id="websites-with-many-r-resources">Websites with many R resources</h3>
+<p>
+<a href="https://bookdown.org" target="_blank" rel="noopener">All R books written with Bookdown</a></p>
+<p>
+<a href="https://www.rstudio.com/resources/cheatsheets/" target="_blank" rel="noopener">All R cheatsheets</a></p>
+<p>
+<a href="https://www.psychologicalscience.org/observer/learning-to-work-with-r" target="_blank" rel="noopener">APS list of R resources</a></p>
+<p>
+<a href="http://www.flutterbys.com.au/stats/index.html" target="_blank" rel="noopener">Show Us Your R</a></p>
+<p>
+<a href="http://www.econometricsbysimulation.com/2012/10/using-simulations-to-maximize.html" target="_blank" rel="noopener">Econometrics Simulations</a></p>
+<p>
+<a href="https://data.library.virginia.edu/statlab/data-science-resources/" target="_blank" rel="noopener">UVA Data Science Resources</a></p>
+<h3 id="people-with-helpful-individual-websites">People with helpful individual websites</h3>
+<p>
+<a href="https://www.emilyzabor.com/tutorials/rmarkdown_websites_tutorial.html" target="_blank" rel="noopener">Emily C. Zabor</a></p>
+<p>
+<a href="https://jennybryan.org" target="_blank" rel="noopener">Jenny Bryan</a></p>
+<p>
+<a href="https://rpsychologist.com" target="_blank" rel="noopener">Kristoffer Magnusson</a></p>
+<p>
+<a href="http://sachaepskamp.com" target="_blank" rel="noopener">Sacha Epskamp</a></p>
+<p>
+<a href="https://data-se.netlify.com" target="_blank" rel="noopener">FOM academic</a></p>
+<p>
+<a href="https://suzan.rbind.io" target="_blank" rel="noopener">Suzan Baert</a></p>
+<p>
+<a href="http://hadley.nz/index.html" target="_blank" rel="noopener">Hadley Wickham</a></p>
+<p>
+<a href="http://varianceexplained.org" target="_blank" rel="noopener">David Robinson</a></p>
+<p>
+<a href="https://b-rodrigues.github.io/fput/" target="_blank" rel="noopener">B Rodriguez</a></p>
+<p>
+<a href="https://bookdown.org/ndphillips/YaRrr/" target="_blank" rel="noopener">Nathaniel D. Phillips</a></p>
+<p>
+<a href="https://sejdemyr.github.io" target="_blank" rel="noopener">Simon Ejdemyr</a></p>
+<p>
+<a href="https://www.r-graph-gallery.com/all-graphs/" target="_blank" rel="noopener">The R Graph Gallery</a></p>
+<p>
+<a href="https://christianburkhart.de" target="_blank" rel="noopener">Christian Burkhart</a></p>
+<p>
+<a href="https://malco.io" target="_blank" rel="noopener">Malcolm Barrett</a></p>
+<p>
+<a href="https://jflournoy.github.io" target="_blank" rel="noopener">John Flournoy</a></p>
+<p>
+<a href="http://uc-r.github.io/introduction" target="_blank" rel="noopener">UC R Guide</a></p>
+<p>
+<a href="https://crumplab.github.io/Courses.html" target="_blank" rel="noopener">Crump Lab</a></p>
+<p>
+<a href="http://datascience.tntlab.org/" target="_blank" rel="noopener">Richard N. Landers</a></p>
+<p>
+<a href="https://quantscience.rbind.io/#posts" target="_blank" rel="noopener">Mark Lai</a></p>
+<p>
+<a href="https://francish.netlify.app/#posts" target="_blank" rel="noopener">Francis L. Huang</a></p>
+<h3 id="courses">Courses</h3>
+<p>
+<a href="http://had.co.nz/stat480.1.html" target="_blank" rel="noopener">Applied Statistical Computing Course</a></p>
+<p>
+<a href="https://biol607.github.io/index.html" target="_blank" rel="noopener">BioStates by Jarrett Byrnes</a></p>
+<p>
+<a href="https://www.datacamp.com/community/open-courses/beginning-bayes-in-r" target="_blank" rel="noopener">Introduction to Bayes in DataCamp (free course)</a></p>
+<p>
+<a href="https://www.datacamp.com/community/open-courses/statistical-inference-and-data-analysis" target="_blank" rel="noopener">Data Analysis and Statistical Inference on Data Camp</a></p>
+<p>
+<a href="https://github.com/jrgant/prob-stats" target="_blank" rel="noopener">Probability and Statistics with Simulations</a></p>
+<p>
+<a href="https://quantdev.ssri.psu.edu/resources" target="_blank" rel="noopener">Penn State Quant Developmental Systems</a></p>
+<h3 id="random">Random</h3>
+<p>
+<a href="https://www.datadreaming.org/post/r-markdown-theme-gallery/" target="_blank" rel="noopener">R Markdown Themes</a></p>
+<p>
+<a href="https://blogs.uoregon.edu/rclub/" target="_blank" rel="noopener">R club</a></p>
+<p>
+<a href="https://www.zoology.ubc.ca/~schluter/R/fit-model/" target="_blank" rel="noopener">Various Linear Model Tests in R</a></p>
+<p>
+<a href="https://www.statmethods.net/stats/anova.html" target="_blank" rel="noopener">ANOVA and MANOVA</a></p>
+<p>
+<a href="https://tclavelle.github.io/blog/r_and_apis/" target="_blank" rel="noopener">Using R to extract data from web APIs</a></p>
+<p>
+<a href="http://biostat.mc.vanderbilt.edu/wiki/pub/Main/ColeBeck/datestimes.pdf" target="_blank" rel="noopener">Handling date-times in R</a></p>
+<p>
+<a href="https://www.brodrigues.co/blog/2017-02-17-lesser_known_tricks/" target="_blank" rel="noopener">Lesser Known Dplyr tricks</a></p>
+<p>
+<a href="http://www.stat.cmu.edu/~cshalizi/rmarkdown/" target="_blank" rel="noopener">Rmarkdown</a></p>
+<p>
+<a href="https://github.com/jessiesunpsych/power-simulations" target="_blank" rel="noopener">Power Simulations</a></p>
+<p>
+<a href="https://stackoverflow.com/questions/47494975/passing-column-name-as-parameter-to-a-function-using-dplyr" target="_blank" rel="noopener">Functions with columns as parameters 1</a></p>
+<p>
+<a href="https://www.brodrigues.co/blog/2016-07-18-data-frame-columns-as-arguments-to-dplyr-functions/" target="_blank" rel="noopener">Functions with columns as parameters 2</a></p>
+<p>
+<a href="http://haozhu233.github.io/kableExtra/awesome_table_in_html.html" target="_blank" rel="noopener">Kable Extra</a></p>
+<p>
+<a href="https://github.com/Rdatatable/data.table/wiki/Getting-started" target="_blank" rel="noopener">Data.Table</a></p>
+<p>
+<a href="http://rpsychologist.com/r-guide-longitudinal-lme-lmer" target="_blank" rel="noopener">Growth models with lme and lmer</a></p>
+<p>
+<a href="https://threadreaderapp.com/thread/1073313224446009345.html" target="_blank" rel="noopener">Cross-lagged Panel Models</a></p>
+<p>
+<a href="https://debruine.github.io/faux/index.html" target="_blank" rel="noopener">Simulate Experiments</a></p>
+<p>
+<a href="https://rpubs.com/YaRrr/MLTutorial" target="_blank" rel="noopener">Maximum Likelihood</a></p>
+<p>
+<a href="https://github.com/jrgant/citr" target="_blank" rel="noopener">citr</a></p>
+<p>
+<a href="https://emoriebeck.github.io/R-tutorials/purrr/" target="_blank" rel="noopener">Purrr tutorial</a></p>
+<p>
+<a href="https://osf.io/2emja/" target="_blank" rel="noopener">Psych Networks Winter School Resources</a></p>
+<p>
+<a href="http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html" target="_blank" rel="noopener">Top 50 ggplot2 Visualizations</a></p>
+<h3 id="dags">DAGS</h3>
+<p>
+<a href="https://github.com/jrgant/causalgraphs_latex/blob/master/graphical-models-causal.pdf" target="_blank" rel="noopener">Dags using LaTex</a></p>
+<p>
+<a href="https://github.com/jrgant/quickdag" target="_blank" rel="noopener">QuickDag</a></p>
+<p>
+<a href="https://rich-iannone.github.io/DiagrammeR/" target="_blank" rel="noopener">DiagrammeR</a></p>
+<p>
+<a href="https://ggdag.netlify.com" target="_blank" rel="noopener">GGdag</a></p>
+<p>
+<a href="https://sgfin.github.io/2019/06/19/Causal-Inference-Book-All-DAGs/" target="_blank" rel="noopener">All DAGS from Hernan and Robins - Sam Finlayson</a></p>
+<h3 id="structural-equations-modeling">Structural Equations Modeling</h3>
+<p>
+<a href="http://lavaan.ugent.be" target="_blank" rel="noopener">lavaan homepage</a></p>
+<p>
+<a href="https://groups.google.com/forum/#!topic/lavaan/oKwP0_6-i1g" target="_blank" rel="noopener">Measurement Equivalence</a></p>
+<p>
+<a href="https://github.com/osofr/simcausal" target="_blank" rel="noopener">sims package</a></p>
+<p>
+<a href="https://www.draw.io/" target="_blank" rel="noopener">Draw SEMs</a></p>
+<p>
+<a href="https://github.com/brandmaier/onyxR" target="_blank" rel="noopener">onyxR for SEM diagrams with lavaan</a></p>
+<h3 id="progressing-through-stats-with-r">Progressing Through Stats with R</h3>
+<p>
+<a href="https://ismayc.github.io/rbasics-book/index.html" target="_blank" rel="noopener">Basics of R and R Markdown</a></p>
+<p>
+<a href="https://happygitwithr.com" target="_blank" rel="noopener">Basics of Git and Github with R</a></p>
+<p>
+<a href="https://psyteachr.github.io/msc-data-skills/sim.html" target="_blank" rel="noopener">Beginner Concepts for Reproducible Science</a></p>
+<p>
+<a href="https://r4ds.had.co.nz" target="_blank" rel="noopener">R for Data Science</a></p>
+<p>
+<a href="https://leanpub.com/LittleInferenceBook/read" target="_blank" rel="noopener">Statistical Inference</a></p>
+<p>
+<a href="https://bookdown.org/ejvanholm/Textbook/" target="_blank" rel="noopener">Intro to Quant Methods</a></p>
+<p>
+<a href="https://leanpub.com/regmods/read" target="_blank" rel="noopener">Regression</a></p>
+<p>
+<a href="https://bookdown.org/ccolonescu/RPoE4/" target="_blank" rel="noopener">Econometrics</a></p>
+<p>
+<a href="https://otexts.org/fpp2/" target="_blank" rel="noopener">Time series and forecasting</a></p>
+<p>
+<a href="https://serialmentor.com/dataviz/" target="_blank" rel="noopener">Data Visualization</a></p>
+<p>
+<a href="https://www.tidytextmining.com/nasa.html" target="_blank" rel="noopener">Text Analysis</a></p>
+<h3 id="scraping-packages">Scraping Packages</h3>
+<p>
+<a href="https://github.com/mguideng/gdscrapeR" target="_blank" rel="noopener">Scrape Glass Door</a></p>
+<h3 id="commands-and-help-for-non-r-programming">Commands and help for non-R programming</h3>
+<p>
+<a href="https://www.markomedia.com.au/compress-pdf-on-os-x-in-terminal/" target="_blank" rel="noopener">Compress pdf in terminal</a></p>
+<p>
+<a href="https://stackoverflow.com/questions/33636467/unable-to-click-always-allow-on-git-credential-osxkeychain-popup" target="_blank" rel="noopener">Mac denying pushing/pulling due to git keychain</a></p>
+<p>
+<a href="https://help.github.com/articles/caching-your-github-password-in-git/" target="_blank" rel="noopener">Saving username and password through keychain with Git</a></p>
+<p>
+<a href="http://blog.martinfenner.org/2014/08/25/using-microsoft-word-with-git/" target="_blank" rel="noopener">Using word with Git</a></p>
+<p>
+<a href="https://tex.stackexchange.com/questions/16010/number-every-line-of-pages" target="_blank" rel="noopener">Line numbering in LaTex</a></p>
+<p>
+<a href="https://jabranham.com/blog/2016/11/using-pandoc-export-to-word/" target="_blank" rel="noopener">Exporting .tex to word with pandoc</a></p>
+<p>
+<a href="https://apple.stackexchange.com/questions/252362/how-do-i-count-words-in-a-pdf-file-on-os-x" target="_blank" rel="noopener">Word Count on PDF From Terminal</a></p>
+<h3 id="so-helpful-they-deserve-their-own-category">So helpful they deserve their own category</h3>
+<p>
+<a href="https://www.calvin.edu/~rpruim/courses/s341/S17/from-class/MathinRmd.html" target="_blank" rel="noopener">Math notation with Rmarkdown</a></p>
+<p>
+<a href="https://www.verbosus.com/bibtex-style-examples.html" target="_blank" rel="noopener">BibTex Examples</a></p>
+<p>
+<a href="http://moser-isi.ethz.ch/docs/typeset_equations.pdf" target="_blank" rel="noopener">Latex equations basics</a></p>
+<p>
+<a href="https://tex.stackexchange.com/questions/132704/how-to-build-knitr-document-from-the-command-line" target="_blank" rel="noopener">Compile Rmarkdown and tex files from terminal</a></p>
+<p>
+<a href="https://tex.stackexchange.com/questions/171711/how-to-include-latex-package-in-r-markdown" target="_blank" rel="noopener">Include LaTeX packages in YAML header</a></p>
+<p>
+<a href="https://holtzy.github.io/Pimp-my-rmd/#references" target="_blank" rel="noopener">Pimp Your Rmarkdown</a></p>
+<p>
+<a href="https://www.rdocumentation.org/packages/rebus/versions/0.1-3" target="_blank" rel="noopener">Rebus Package</a></p>
+<p>
+<a href="https://haozhu233.github.io/kableExtra/best_practice_for_newline_in_latex_table.pdf" target="_blank" rel="noopener">Newline breaks in Rmarkdown tables</a></p>
+
     </div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="/js/academic.min.6f7ce8be710290b8c431bbc97f405d15.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+  <p class="powered-by">
+    <a href="/license/">LICENSE: CC-BY-SA <br> <i class="fab fa-creative-commons fa-2x"></i><i class="fab fa-creative-commons-by fa-2x"></i><i class="fab fa-creative-commons-sa fa-2x"></i> </a><br>
+  </p>
+  
+
+  <p class="powered-by">
+    © Christopher Dishop 2020 &middot; 
+
+    Made with <i class="far fa-heart" style="color: #06805E"></i>, <a href="https://github.com/rbind/apreshill" target="_blank" rel="noopener"><i class="fas fa-code-branch"></i></a>, the <a href="https://cran.r-project.org/" target="_blank" rel="noopener"><i class="fab fa-r-project"></i> </a><a href="https://github.com/rstudio/blogdown" target="_blank" rel="noopener">blogdown</a> package, and the 
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
 </footer>
 
-<script src="//yihui.name/js/math-code.js"></script>
-<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  </div>
+  
 
-<link rel="stylesheet" href="/css/obsidian.css" rel="stylesheet" id="theme-stylesheet">
-<script src="/js/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script> 
-</footer>
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <script async type="text/javascript" src="/js/bulma.js"></script>
-    <script async type="text/javascript"  src="/js/clipboard.min.js"></script>
-    <script async type="text/javascript"  src="/js/clip.js"></script>
 </body>
-
 </html>

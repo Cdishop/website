@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>machine learning | Christopher R. Dishop</title>
+    <link>https://christopherdishop.netlify.app/tags/machine-learning/</link>
+      <atom:link href="https://christopherdishop.netlify.app/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <description>machine learning</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Christopher Dishop 2020</copyright><lastBuildDate>Tue, 21 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://christopherdishop.netlify.app/img/pom-card.png</url>
+      <title>machine learning</title>
+      <link>https://christopherdishop.netlify.app/tags/machine-learning/</link>
+    </image>
+    
+    <item>
+      <title>tidymodels.org</title>
+      <link>https://christopherdishop.netlify.app/project/tidymodels.org/</link>
+      <pubDate>Tue, 21 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/project/tidymodels.org/</guid>
+      <description>&lt;p&gt;The tidymodels framework is a collection of R packages for modeling and machine learning using tidyverse principles. This website was built with Hugo, using a theme I developed and maintain. I worked with my former intern, 
+&lt;a href=&#34;https://desiree.rbind.io&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Desirée De Leon&lt;/a&gt;, to design the style of the website.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Introduction to Machine Learning with the Tidyverse</title>
+      <link>https://christopherdishop.netlify.app/project/tidyml/</link>
+      <pubDate>Mon, 27 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/project/tidyml/</guid>
+      <description>&lt;p&gt;These workshops provide a gentle introduction to supervised machine learning: concepts, methods, and R code. Participants learn how to train and assess predictive models with several common machine learning algorithms, as well as how to do feature engineering to improve the predictive accuracy of their models. We focus on teaching intuitive explanations of the models and best practices for predictive modeling. Along the way, we introduce several core 
+&lt;a href=&#34;https://github.com/tidymodels&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;tidymodels&lt;/a&gt; packages, which provide a grammar for modeling that makes it easy to the right thing, and harder to accidentally do the wrong thing.&lt;/p&gt;
+&lt;p&gt;See the workshop websites for more, including links to the GitHub repositories for all workshop materials.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

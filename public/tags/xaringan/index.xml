@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>xaringan | Christopher R. Dishop</title>
+    <link>https://christopherdishop.netlify.app/tags/xaringan/</link>
+      <atom:link href="https://christopherdishop.netlify.app/tags/xaringan/index.xml" rel="self" type="application/rss+xml" />
+    <description>xaringan</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Christopher Dishop 2020</copyright><lastBuildDate>Wed, 27 Apr 2016 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://christopherdishop.netlify.app/img/pom-card.png</url>
+      <title>xaringan</title>
+      <link>https://christopherdishop.netlify.app/tags/xaringan/</link>
+    </image>
+    
+    <item>
+      <title>Advanced R Markdown</title>
+      <link>https://christopherdishop.netlify.app/project/advanced-r-markdown/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/project/advanced-r-markdown/</guid>
+      <description>&lt;p&gt;This two-day workshop is designed for those who want to take their R Markdown skills to the next level. We’ll talk about many low-level details in the rmarkdown package and the whole R Markdown ecosystem. The two goals of this workshop are: 1) learn how to fully customize R Markdown output (HTML, LaTeX/PDF, Word, and PowerPoint); and 2) learn more about existing R Markdown extensions in the ecosystem, such as flexdashboard, bookdown, blogdown, pkgdown, xaringan, rticles, and learnr. We will also talk about how to use or develop new language engines (languages that are not R), how to develop HTML widgets, and integrate Shiny with R Markdown.&lt;/p&gt;
+&lt;p&gt;See the workshop website for more, and links to individual slides below.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Principles &amp; Practice of Data Visualization</title>
+      <link>https://christopherdishop.netlify.app/project/ohsu-dataviz/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/project/ohsu-dataviz/</guid>
+      <description>&lt;p&gt;This was a 12-week course with weekly 1.5 hour hands-on labs using R and the &lt;code&gt;ggplot2&lt;/code&gt; package. This course (CS631) was co-developed with Drs. Steven Bedrick and Jackie Wirz. This team-taught course was offered at Oregon Health &amp;amp; Science University to graduate students in the biomedical sciences.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

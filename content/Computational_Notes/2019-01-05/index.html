@@ -1,0 +1,64 @@
+---
+title: "Mutating Scale Items with NA"
+date: "2019-01-05"
+summary: "-----"
+---
+
+
+
+<p>Creating item totals with a data set containing NAs is surprisingly difficult. Here is the data.</p>
+<pre class="r"><code>library(tidyverse)
+
+cd &lt;- data.frame(
+  &quot;q1&quot; = c(1,2,NA),
+  &quot;q2&quot; = c(2,2,2),
+  &#39;q3&#39; = c(NA, NA,2),
+  &#39;id&#39; = c(&#39;201&#39;, &#39;202&#39;, &#39;203&#39;)
+)
+
+cd</code></pre>
+<pre><code>##   q1 q2 q3  id
+## 1  1  2 NA 201
+## 2  2  2 NA 202
+## 3 NA  2  2 203</code></pre>
+<p>Mutating directly over columns with NA does not work.</p>
+<pre class="r"><code>cd %&gt;%
+  mutate(cohesion = 
+           q1 + q2 + q3)</code></pre>
+<pre><code>##   q1 q2 q3  id cohesion
+## 1  1  2 NA 201       NA
+## 2  2  2 NA 202       NA
+## 3 NA  2  2 203       NA</code></pre>
+<p>Filtering removes the data we are interested in.</p>
+<pre class="r"><code>cd %&gt;%
+  filter(!is.na(q1) == T &amp;&amp; !is.na(q2) == T &amp;&amp; !is.na(q3) == T)</code></pre>
+<pre><code>## [1] q1 q2 q3 id
+## &lt;0 rows&gt; (or 0-length row.names)</code></pre>
+<p>We cannot use <code>rowMeans</code> in combination with <code>mutate</code> because the two are not compatible. The code below is not evaluated, but if you run it it does not work.</p>
+<pre class="r"><code>cd %&gt;%
+  mutate(cohesion =
+           rowMeans(q1, q2, q3, na.rm = T))</code></pre>
+<p>Using the <code>rowwise</code> command within a pipe gets us close</p>
+<pre class="r"><code>cd %&gt;%
+  rowwise() %&gt;%
+  mutate(mean = mean(q1, q2, q3, na.rm = T))</code></pre>
+<pre><code>## # A tibble: 3 x 5
+## # Rowwise: 
+##      q1    q2    q3 id     mean
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
+## 1     1     2    NA 201       1
+## 2     2     2    NA 202       2
+## 3    NA     2     2 203     NaN</code></pre>
+<p>but the mean value is not calculated correctly. We need to include <code>c()</code> to vectorize the items.</p>
+<pre class="r"><code>cd %&gt;%
+  rowwise() %&gt;%
+  mutate(mean = mean(c(q1, q2, q3), na.rm = T))</code></pre>
+<pre><code>## # A tibble: 3 x 5
+## # Rowwise: 
+##      q1    q2    q3 id     mean
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
+## 1     1     2    NA 201     1.5
+## 2     2     2    NA 202     2  
+## 3    NA     2     2 203     2</code></pre>
+<p>Finally the right answer. Use <code>rowwise</code> in combination with a vectorized <code>mutate</code>.</p>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>

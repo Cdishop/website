@@ -1,0 +1,57 @@
+---
+title: "Be Careful With Characters and Matrices"
+date: "2020-05-22"
+summary: "-----"
+---
+
+
+
+<p>If you fill a matrix cell with a character, R will convert the entire matrix into character values…so be careful = )</p>
+<pre class="r"><code>time &lt;- c(1:4)
+numbers &lt;- c(1:4)
+characters &lt;- c(&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;)
+count &lt;- 0
+
+df_mat &lt;- matrix(, ncol = 3, nrow = length(time))
+
+for(i in 1:length(time)){
+  count &lt;- count + 1
+  
+  df_mat[count, 1] &lt;- time[i]
+  df_mat[count, 2] &lt;- numbers[i]
+  df_mat[count, 3] &lt;- characters[i]
+  
+}
+
+df_mat</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,] &quot;1&quot;  &quot;1&quot;  &quot;a&quot; 
+## [2,] &quot;2&quot;  &quot;2&quot;  &quot;b&quot; 
+## [3,] &quot;3&quot;  &quot;3&quot;  &quot;c&quot; 
+## [4,] &quot;4&quot;  &quot;4&quot;  &quot;d&quot;</code></pre>
+<p>Notice that all cells are now characters. Characters are a huge problem if you are calculating values to place into the cells. That is, I wouldn’t be able to run code like this in a loop:</p>
+<pre class="r"><code>df_mat[count - 1, 2] &lt;- df_mat[count - 1, 3] * 0.5</code></pre>
+<p>Instead, use numbers for everything and then change them to characters later.</p>
+<pre class="r"><code>time &lt;- c(1:4)
+numbers &lt;- c(1:4)
+characters &lt;- c(1, 2, 3, 4) # here is the change
+count &lt;- 0
+
+df_mat &lt;- matrix(, ncol = 3, nrow = length(time))
+
+for(i in 1:length(time)){
+  count &lt;- count + 1
+  
+  df_mat[count, 1] &lt;- time[i]
+  df_mat[count, 2] &lt;- numbers[i]
+  df_mat[count, 3] &lt;- characters[i]
+  
+}
+
+df_mat</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    1    1
+## [2,]    2    2    2
+## [3,]    3    3    3
+## [4,]    4    4    4</code></pre>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>

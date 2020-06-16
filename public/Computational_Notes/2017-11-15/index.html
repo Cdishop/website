@@ -1,0 +1,902 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="-----">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/computational_notes/2017-11-15/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#06805E">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/tomorrow.min.css" crossorigin="anonymous" title="hl-light">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/tomorrow.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+      
+    
+
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400i%7CKarla:400,400i,700,700i%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-99209585-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'UA-99209585-1', {});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hua7ddb50eead73fc737c5c3187aff8cf9_17132_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hua7ddb50eead73fc737c5c3187aff8cf9_17132_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="/computational_notes/2017-11-15/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@apreshill">
+  <meta property="twitter:creator" content="@apreshill">
+  
+  <meta property="og:site_name" content="Christopher R. Dishop">
+  <meta property="og:url" content="/computational_notes/2017-11-15/">
+  <meta property="og:title" content="Why Detecting Interactions is Easier in the Lab | Christopher R. Dishop">
+  <meta property="og:description" content="-----"><meta property="og:image" content="/img/pom-card.png">
+  <meta property="twitter:image" content="/img/pom-card.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2017-11-15T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2017-11-15T00:00:00&#43;00:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Why Detecting Interactions is Easier in the Lab | Christopher R. Dishop</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">Christopher R. Dishop</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
+        
+        
+        
+          
+            
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="https://raw.githubusercontent.com/Cdishop/website/master/misc/CV.pdf" target="_blank" rel="noopener"><span>CV</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/computational_notes"><span>Computation</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/r_resources"><span>R Resources</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/rec_reading"><span>Recommended</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+
+        
+
+        
+
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Why Detecting Interactions is Easier in the Lab</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Nov 15, 2017
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+
+<p>A fun simulation by McClelland and Judd (1993) in <em>Psychological Bulletin</em> that demonstrates why detecting interactions outside the lab (i.e., in field studies) is difficult. In experiments, scores on the independent variables are located at the extremes of their respective distributions because we manipulate conditions. The distribution of scores across all of the independent variables in field studies, conversely, is typically assumed to be normal. By creating “extreme groups” in experiments, therefore, it becomes easier to detect interactions.</p>
+<p>Imagine running an experiment where we randomly assign participants to one of two groups on an independent variable, goal difficulty. In one group the goal is challening, in the other group the goal is easy to accomplish. We are then interested in which group performs better on a task. After randomly assigning to groups, the distribution of scores on “goal difficulty” would be as follows:</p>
+<p><img src="/Computational_Notes/2017-11-15/index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>where 50 people are assigned to each condition. In this case, the distribution of scores is aligned at the extremes (i.e., -1, or the hard goal, and 1, or the easy goal) because we manipulated that variable. In field studies, where we cannot manipulate goal difficulty, the distribution of scores would be as follows:</p>
+<p><img src="/Computational_Notes/2017-11-15/index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>where scores about the independent variable (goal difficulty) are dispersed because we did not manipulate. The same distributional differences occur across other independent variables that we include in our design, and they are the reason behind fewer interaction detections in field studies.</p>
+<p>The cool part is that this happens even when the data generating mechanisms are exactly the same. The mechanism that causes <span class="math inline">\(y\)</span>, in both the experiments and field studies in this simulation, will be:</p>
+<p><span class="math display">\[\begin{equation}
+y_{i} = b_0{i} + b_1{x_i} + b_2{z_i} + b_3{zx_i} + e_{i}
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(y_{i}\)</span> is the value of the outcome (i.e., performance) for the <span class="math inline">\(i^\text{th}\)</span> person, <span class="math inline">\(x_i\)</span> is the value of one independent variable for the <span class="math inline">\(i^\text{th}\)</span> person (i.e., goal difficulty), <span class="math inline">\(z_i\)</span> is the value of another independent variable for the <span class="math inline">\(i^\text{th}\)</span> person (e.g., whatever variable you please), <span class="math inline">\(zx_i\)</span> represents the combination of values on <span class="math inline">\(x\)</span> and <span class="math inline">\(z\)</span> for the <span class="math inline">\(i^\text{th}\)</span> person (i.e., the interaction term), <span class="math inline">\(e_i\)</span> is a normally distributed error term for the <span class="math inline">\(i^\text{th}\)</span> person, and <span class="math inline">\(b_0\)</span>, <span class="math inline">\(b_1\)</span>, and <span class="math inline">\(b_2\)</span> represent the regression intercept and coefficients relating the predictors to the outcome.</p>
+<p>Again, the data generating equation, the thing that causes <span class="math inline">\(y\)</span>, is the same for both field studies and experiments. We are going to find differences, however, simply because the distribution on the independent variables are different.</p>
+<p>The values for <span class="math inline">\(b_0\)</span>, <span class="math inline">\(b_1\)</span>, and <span class="math inline">\(b_2\)</span> will be, respectively, 0, 0.20, 0.10, and 1.0 (see McClelland &amp; Judd, 1993). In other words, our interaction coefficient is gigantic.</p>
+<p>Each simulation will use the equation just presented to generate data across 100 individuals in the field and 100 individuals in the lab. The only difference between the two groups will be their initial distribution on <span class="math inline">\(x\)</span> and <span class="math inline">\(z\)</span>. For the lab group, their scores will be randomly assigned to -1 or 1, and in the field group scores will be randomly dispersed (normally) between -1 and 1. After generating the data I then estimate the coefficients using multiple regression and save the significance value in a vector. The process then interates 1000 times.</p>
+<div id="the-experiment-data" class="section level1">
+<h1>The Experiment Data</h1>
+<div id="the-distribution-of-x" class="section level3">
+<h3>The distribution of X:</h3>
+<p><img src="/Computational_Notes/2017-11-15/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="the-distribution-of-z" class="section level3">
+<h3>The distribution of Z:</h3>
+<p><img src="/Computational_Notes/2017-11-15/index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+<div id="the-distribution-of-y-after-using-the-equation-above-to-generate-scores-on-y" class="section level3">
+<h3>The distribution of Y after using the equation above to generate scores on Y:</h3>
+<pre class="r"><code>y_values &lt;- b_0 + 0.20*x_values + 0.10*z_values + 
+            1.00*x_values*z_values + rnorm(100,0,4)
+
+hist(y_values)</code></pre>
+<p><img src="/Computational_Notes/2017-11-15/index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
+<div id="now-estimate-the-parameters-using-regression" class="section level3">
+<h3>Now estimate the parameters using regression:</h3>
+<pre class="r"><code>exp_data &lt;- data.frame(&quot;X&quot; = c(x_values),
+                       &quot;Z&quot; = c(z_values),
+                       &quot;Y&quot; = c(y_values))
+
+exp_model &lt;- lm(Y ~ X + Z + X:Z, data = exp_data)
+summary(exp_model)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = Y ~ X + Z + X:Z, data = exp_data)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -8.6044 -2.2962  0.1527  2.9004  8.3609 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)  
+## (Intercept)   0.4735     0.3939   1.202   0.2323  
+## X            -0.7021     0.3939  -1.783   0.0778 .
+## Z             0.6931     0.3939   1.760   0.0817 .
+## X:Z           0.9612     0.3939   2.440   0.0165 *
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 3.907 on 96 degrees of freedom
+## Multiple R-squared:  0.1039, Adjusted R-squared:  0.07593 
+## F-statistic: 3.712 on 3 and 96 DF,  p-value: 0.01417</code></pre>
+</div>
+</div>
+<div id="the-field-study-data" class="section level1">
+<h1>The Field Study Data</h1>
+<div id="the-distribution-of-x-1" class="section level3">
+<h3>The distribution of X:</h3>
+<p><img src="/Computational_Notes/2017-11-15/index_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
+<div id="the-distribution-of-z-1" class="section level3">
+<h3>The distribution of Z:</h3>
+<p><img src="/Computational_Notes/2017-11-15/index_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+</div>
+<div id="the-distribution-of-y-after-using-the-equation-above-to-generate-scores-on-y-1" class="section level3">
+<h3>The distribution of Y after using the equation above to generate scores on Y:</h3>
+<pre class="r"><code>f_y_values &lt;- b_0 + 0.20*f_x_values + 0.10*f_z_values + 
+              1.00*f_x_values*f_z_values + rnorm(100,0,4)
+
+hist(f_y_values)</code></pre>
+<p><img src="/Computational_Notes/2017-11-15/index_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+</div>
+<div id="now-estimate-the-parameters-using-regression-1" class="section level3">
+<h3>Now estimate the parameters using regression:</h3>
+<pre class="r"><code>field_data &lt;- data.frame(&quot;FX&quot; = c(f_x_values),
+                           &quot;FZ&quot; = c(f_z_values),
+                           &quot;FY&quot; = c(f_y_values))
+
+field_model &lt;- lm(FY ~ FX + FZ + FX:FZ, data = field_data)
+summary(field_model)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = FY ~ FX + FZ + FX:FZ, data = field_data)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -9.5347 -2.5822 -0.0993  3.0451 11.0879 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)  -0.4747     0.4032  -1.177    0.242
+## FX            0.6387     0.7902   0.808    0.421
+## FZ            0.1865     0.7932   0.235    0.815
+## FX:FZ         1.9542     1.5989   1.222    0.225
+## 
+## Residual standard error: 4.025 on 96 degrees of freedom
+## Multiple R-squared:  0.02598,    Adjusted R-squared:  -0.004459 
+## F-statistic: 0.8535 on 3 and 96 DF,  p-value: 0.4681</code></pre>
+</div>
+</div>
+<div id="putting-everything-into-monte-carlo" class="section level1">
+<h1>Putting Everything Into Monte Carlo</h1>
+<div id="replicate-the-process-above-1000-times-and-save-the-p-value-each-time" class="section level3">
+<h3>Replicate the process above 1000 times and save the p-value each time</h3>
+<pre class="r"><code>sims &lt;- 1000
+exp_results &lt;- numeric(1000)
+field_results &lt;- numeric(1000)
+
+
+X_coefficient &lt;- 0.20
+Z_coefficient &lt;- 0.10
+
+XZ_coefficient &lt;- 1.00
+Mu &lt;- 0
+
+xy_data &lt;- c(-1,1)
+
+library(MASS)
+
+for(i in 1:sims){
+  
+  # Experiment Data
+  
+  # X
+  x_values &lt;- sample(xy_data, 100, replace = T)
+  
+  # Z
+  z_values &lt;- sample(xy_data, 100, replace = T)
+  
+  # Y
+  y_values &lt;- Mu + X_coefficient * x_values + Z_coefficient * z_values + 
+              XZ_coefficient * x_values * z_values + rnorm(100,0,4)
+  
+  exp_data &lt;- data.frame(&quot;X&quot; = c(x_values),
+                         &quot;Z&quot; = c(z_values),
+                         &quot;Y&quot; = c(y_values))
+  
+  
+  # Field Data
+  
+  # X
+  f_x_values &lt;- rnorm(100, 0, 0.5)
+  
+  # Z
+  f_z_values &lt;- rnorm(100, 0, 0.5)
+  
+  # Y
+  f_y_values &lt;- Mu + X_coefficient * f_x_values + Z_coefficient * f_z_values + 
+                XZ_coefficient * f_x_values * f_z_values + rnorm(100,0,4)
+ 
+  
+  field_data &lt;- data.frame(&quot;FX&quot; = c(f_x_values),
+                           &quot;FZ&quot; = c(f_z_values),
+                           &quot;FY&quot; = c(f_y_values))
+  
+  
+  # Modeling
+  
+  
+  exp_model &lt;- lm(Y ~ X + Z + X:Z, data = exp_data)
+  exp_results[i] &lt;- summary(exp_model)$coefficients[4,4]
+  
+  field_model &lt;- lm(FY ~ FX + FZ + FX:FZ, data = field_data)
+  field_results[i] &lt;- summary(field_model)$coefficients[4,4]
+  
+}</code></pre>
+</div>
+</div>
+<div id="the-results" class="section level1">
+<h1>The Results</h1>
+<div id="what-proportion-of-experiments-find-significant-interaction-effects" class="section level3">
+<h3>What proportion of experiments find significant interaction effects?</h3>
+<pre class="r"><code>sum(exp_results &lt; 0.05) / 1000</code></pre>
+<pre><code>## [1] 0.672</code></pre>
+</div>
+<div id="what-proportion-of-field-studies-find-significant-interaction-effects" class="section level3">
+<h3>What proportion of field studies find significant interaction effects?</h3>
+<pre class="r"><code>sum(field_results &lt; 0.05) / 1000</code></pre>
+<pre><code>## [1] 0.082</code></pre>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>
+</div>
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="/js/academic.min.6f7ce8be710290b8c431bbc97f405d15.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+
+
+  <p class="powered-by">
+    © Christopher Dishop 2020 &middot; 
+
+    Made with <a href="https://cran.r-project.org/" target="_blank" rel="noopener"><i class="fab fa-r-project"></i> </a><a href="https://github.com/rstudio/blogdown" target="_blank" rel="noopener">blogdown</a>,
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>, and
+    <a href="https://github.com/rbind/apreshill" target="_blank" rel="noopener">Alison's Hill's</a> wonderful template.
+
+    
+
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

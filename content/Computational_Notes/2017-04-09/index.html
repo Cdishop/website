@@ -1,0 +1,28 @@
+---
+title: "Convert Text File"
+date: "2017-04-09"
+summary: "-----"
+---
+
+
+
+<p>A quick piece of code that reads a text file, changes something, saves a new text file, and iterates that process for every text file in that folder.</p>
+<pre class="r"><code>setwd(&quot;path to the text files&quot;)
+library(readr)
+
+all_files = Sys.glob(&quot;*.txt&quot;)
+
+
+
+for(i in 1:length(all_files)){
+  
+  data = all_files[i]
+  mystring = read_file(paste(data))
+  
+  new_data = gsub(&quot;old piece of text&quot;, &quot;new piece of text&quot;, mystring)
+  
+  write_file(new_data, path = paste(&quot;something&quot;, code, &quot;.txt&quot;, sep = &quot;&quot;)
+  
+  
+}</code></pre>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>

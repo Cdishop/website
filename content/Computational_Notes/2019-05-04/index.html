@@ -1,0 +1,44 @@
+---
+title: "Screwing Up A Mean Calculation"
+date: "2019-05-04"
+summary: "-----"
+---
+
+
+
+<p>Quick note about calculating the mean of a column with <code>dplyr</code> in <code>R</code>. It’s surprisingly easy to screw up, and the culprit is forgetting to change the name of the column storing the new calculation.</p>
+<p>A simple dataframe.</p>
+<pre class="r"><code>library(tidyverse)
+
+df &lt;- data.frame(
+  &#39;books_read&#39; = c(1,2,3,4,5,6),
+  &#39;intelligence&#39; = c(4,5,6,7,8,8)
+)
+
+df</code></pre>
+<pre><code>##   books_read intelligence
+## 1          1            4
+## 2          2            5
+## 3          3            6
+## 4          4            7
+## 5          5            8
+## 6          6            8</code></pre>
+<p>I want to calculate the mean and standard deviation of the “books read” column. If I calculate the mean and then place it into a new column that has the same name as the original variable, then standard deviation command doesn’t work.</p>
+<pre class="r"><code>library(tidyverse)
+df %&gt;%
+  summarise(
+    books_read = mean(books_read), # this line is the problem
+    sd_books_read = sd(books_read)
+  )</code></pre>
+<pre><code>##   books_read sd_books_read
+## 1        3.5            NA</code></pre>
+<p>Instead, I need to call the new “mean books read” column a different name.</p>
+<pre class="r"><code>library(tidyverse)
+df %&gt;%
+  summarise(
+    mean_books_read = mean(books_read), # this line is the problem
+    sd_books_read = sd(books_read)
+  )</code></pre>
+<pre><code>##   mean_books_read sd_books_read
+## 1             3.5      1.870829</code></pre>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>

@@ -1,0 +1,142 @@
+---
+title: "Empirical Independence"
+Date: "2020-04-03"
+summary: "-----"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message= F, warning = F, cache = T)
+library(tidyverse)
+library(kableExtra)
+```
+
+Calculate the independence of two events using both analytic and empirical techniques. I'm trying to assess whether the probability of having a meal classified as "dinner" depends on whether that meal includes "chicken" as its main dish. 
+
+The options for the main dish:
+
+* chicken, salmon, pork, chicken, pancakes, french toast
+
+The options for the side dishes:
+
+* salad, salad, green beans, corn, carrots, bacon.
+
+All possible combinations to create a meal:
+
+```{r}
+dishes <- data.frame(
+    main = c("chicken", "salmon", "pork", "chicken", "pancakes", "french toast"),
+    side = c("salad", "salad", "green beans", "corn", "carrots", "bacon")
+)
+
+possible_meals <- dishes %>%
+  cross_df() %>%
+  mutate_if(is.factor,as.character)
+
+possible_meals
+```
+
+Event **a** will be, "the main course is chicken." What is its probability?
+
+```{r}
+# a = main course is chicken
+# tally the number of meals that include chicken
+
+sum(possible_meals$main == "chicken") / nrow(possible_meals)
+
+```
+
+So, `p(a)` = 0.333. Event **b** will be, "the meal is dinner." What is its probability?
+
+```{r}
+# b = the meal is dinner (rather than breakfast)
+# tally the number of meals that are dinners rather than breakfast
+# any meals with pancakes, french toast, or bacon are not dinner
+
+# number of meal options for 'main" X number of meal options for 'side'
+(
+  sum(dishes$main != c('pancakes', 'french toast')) / nrow(dishes)
+    *
+  sum(dishes$side != "bacon") / nrow(dishes)
+)
+```
+So, `p(b)` = 0.555. If **a** and **b** are independent, then `p(b)` should be the same as `p(b | a)`. Does the probability of eating a meal classified as dinner depend on whether that meal includes chicken?
+
+First, the analytic solution. 
+
+* `p(b | a) = p(b & a) / p(a)`
+
+* `p(dinner | chicken) = p(dinner & chicken) / p(chicken)`
+
+I need to find `p(dinner & chicken)` to solve. So tally the possible ways chicken can combine with other dishes to create a dinner platter. 
+
+```{r}
+tally_count <- 0
+for(i in 1:nrow(possible_meals)){
+  
+  meal_df <- possible_meals[i,]
+  
+  contain_chicken <- meal_df$main == "chicken"
+  no_bacon <- meal_df$side != "bacon"
+  
+  if(contain_chicken == T && no_bacon == T){tally_count <- tally_count + 1}
+}
+
+tally_count / nrow(possible_meals)
+
+```
+
+Cool, `p(dinner & chicken)` = 0.2777. Now I can calculate the conditional probability.
+
+* `p(dinner | chicken) = p(dinner & chicken) / p(chicken)`
+
+* `X = 0.2777 / 0.333`
+* `X = 0.83`
+
+X does not equal `p(b)`, so the two are dependent. How about the empirical solution?
+
+```{r}
+
+# what is the empirical estimate of p(dinner | chicken)?
+# to calculate, I need:
+# p(dinner & chicken) / p(chicken)
+
+sims <- 10000
+df <- data.frame(
+    chicken_and_dinner = c(rep(0, sims)),
+    chicken = c(rep(0, sims))
+    
+)
+
+for(j in 1:sims){
+  
+  eat_main <- sample(dishes$main, 1, replace = F)
+  eat_side <- sample(dishes$side, 1, replace = F)
+  
+  chicken_and_dinner <- F
+  
+  if(eat_main == "chicken" && 
+    (eat_side == "salad" | eat_side == "green beans" | eat_side == "corn" | eat_side == "carrots")){
+    chicken_and_dinner <- T
+    }
+  
+  
+  chicken <- F
+  if(eat_main == "chicken"){chicken <- T}
+  
+  single_run_result <- c(chicken_and_dinner, chicken)
+  df[j, "chicken_and_dinner"] <- chicken_and_dinner
+  df[j, "chicken"] <- chicken
+  
+}
+
+tally_chicken_and_dinner <- sum(df$chicken_and_dinner == 1)
+tally_chicken <- sum(df$chicken == 1)
+
+prob_cd <- tally_chicken_and_dinner / sims
+prob_c <- tally_chicken / sims
+
+prob_cd / prob_c
+
+```
+
+Bo$^2$m =)

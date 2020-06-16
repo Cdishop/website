@@ -1,0 +1,435 @@
+---
+title: "Counting Degrees of Freedom"
+date: '2020-05-27'
+summary: "-----"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F, message= F)
+```
+
+This post contains a bunch of examples where I practice counting dfs. In each example, I generate the data, estimate the parameters using SEM, count the dfs, and then compare my count to what the model spits back. To count dfs, I need to know the number of knowns and unknowns in my system:
+
+\begin{equation}
+\textrm{DFs} = \textrm{knowns - unknowns}
+\end{equation}
+
+To count the number of knowns, I need to know the number of observed variables, *p*:
+
+\begin{equation}
+\textrm{knowns} = p*(p+1) / 2
+\end{equation}
+
+To count the number of unknowns, I count the number of parameters that my model estimates. Now for the examples.
+
+# Example 1 - Trust and availability cause helping
+
+### DGP
+
+```{r}
+people <- 400
+trust <- rnorm(people, 40, 2)
+availability <- rnorm(people, 20, 5)
+error <- rnorm(people, 0, 2)
+
+helping <- 3 + 0.2*trust + 0.7*availability + error
+
+```
+
+### SEM
+
+```{r}
+library(tidyverse)
+library(lavaan)
+
+df <- data.frame(
+  'id' = c(1:people),
+  'trust' = c(trust),
+  'availability' = c(availability),
+  'helping' = c(helping)
+)
+
+ex1_string <- '
+
+helping ~ b1*trust + b2*availability
+
+'
+
+ex1_model <- sem(ex1_string, data = df)
+```
+
+# Count dfs
+
+#### Knowns (count the observed variables)
+
+```{r}
+# p*(p + 1) / 2
+
+3*(3+1) / 2
+```
+
+#### Unknowns (count the estimated parameters)
+
+* 1 for b1
+* 1 for b2
+* 1 for the variance of trust
+* 1 for the variance of availability
+* 1 for the covariance of trust and availability
+* 1 for the prediction error on helping
+* total = 6
+
+* 6 - 6 = 0
+
+```{r}
+show(ex1_model)
+```
+
+Now if I restrict the covariance of trust and availability to be zero I should have 1 df
+
+```{r}
+
+ex1_string_restrict <- '
+
+helping ~ b1*trust + b2*availability
+trust ~~ 0*availability
+
+'
+
+ex1_model_restrict <- sem(ex1_string_restrict, data = df)
+show(ex1_model_restrict) # yup
+```
+
+# Example 2 - Common factor underlying 6 observed items
+
+### DGP
+
+```{r}
+
+common_factor <- rnorm(people, 30, 2)
+error_cf <- rnorm(people, 0, 2)
+item1 <- 0.35*common_factor + error_cf
+item2 <- 0.22*common_factor + error_cf
+item3 <- 0.18*common_factor + error_cf
+item4 <- 0.24*common_factor + error_cf
+item5 <- 0.31*common_factor + error_cf
+item6 <- 0.44*common_factor + error_cf
+
+# nope, that approach is wrong. If I do above then my errors are not independent
+# prediction errors (in this case measurement) should be independent
+
+item1 <- 0.35*common_factor + rnorm(people, 0, 2)
+item2 <- 0.22*common_factor + rnorm(people, 0, 2)
+item3 <- 0.18*common_factor + rnorm(people, 0, 2)
+item4 <- 0.24*common_factor + rnorm(people, 0, 2)
+item5 <- 0.31*common_factor + rnorm(people, 0, 2)
+item6 <- 0.44*common_factor + rnorm(people, 0, 2)
+
+df_cf <- data.frame(
+  'id' = c(1:people),
+  'item1' = c(item1),
+  'item2' = c(item2),
+  'item3' = c(item3),
+  'item4' = c(item4),
+  'item5' = c(item5),
+  'item6' = c(item6)
+)
+```
+
+### SEM
+
+```{r}
+
+ex2_string <- '
+
+com_factor =~ 1*item1 + fl2*item2 + fl3*item3 + fl4*item4 + fl5*item5 + fl6*item6
+'
+
+ex2_model <- sem(ex2_string, data = df_cf)
+```
+
+### Count dfs
+
+#### knowns (count the observed variables)
+
+```{r}
+# p*(p + 1) / 2
+
+6*(6 + 1) / 2
+```
+
+#### unknowns (count the estimated parameters)
+
+* 6 factor loadings, but I constrained the first one to be 1 (I have to to estimate the latent variable), so 5 parameters
+* 5 measurement errors for the 5 factor loadings
+* 1 variance for the latent exogenous variable
+* 1 mean for the latent exogenous variable
+* total = 12
+
+* 21 - 12 = 9
+
+```{r}
+show(ex2_model)
+```
+
+# Example 3 - Two latent variables predict one observed outcome
+
+Cognitive ability (latent variable 1) and assertiveness (latent variable 2) predict productivity. Cognitive ability and assertiveness are both captured with 2 manifest items/variables. 
+
+### DGP
+
+```{r}
+# cog ability (latent exogenous variable 1)
+cog_ability <- rnorm(people, 100, 15)
+ca_item1 <- 0.78*cog_ability + rnorm(people, 0, 1)
+ca_item2 <- 0.11*cog_ability + rnorm(people, 0, 1)
+
+# assertiveness (latent exogenous variable 2)
+assertive <- rnorm(people, 30, 8)
+ass_item1 <- 0.81*assertive + rnorm(people, 0, 1)
+ass_item2 <- 0.34*assertive + rnorm(people, 0, 1)
+
+# productivity (observed outcome)
+
+productivity <- 0.55*cog_ability + 0.82*assertive + rnorm(people, 0, 5)
+
+# data
+
+df_3 <- data.frame(
+  'id' = c(1:people),
+  'ca_item1' = c(ca_item1),
+  'ca_item2' = c(ca_item2),
+  'ass_item1' = c(ass_item1),
+  'ass_item2' = c(ass_item2),
+  'productivity' = c(productivity)
+  
+  )
+
+```
+
+### SEM
+
+```{r}
+ex3_string <- '
+
+cog_ability =~ 1*ca_item1 + fl2*ca_item2
+assertiveness =~ 1*ass_item1 + fla*ass_item2
+
+cog_ability ~~ cog_ability
+assertiveness ~~ assertiveness
+cog_ability ~~ assertiveness
+
+productivity ~ b1*cog_ability + b2*assertiveness
+
+'
+
+ex3_model <- sem(ex3_string, data = df_3)
+```
+
+### Count dfs
+
+#### knowns (count the observed variables)
+
+```{r}
+# p*(p+1) / 2
+
+5*(5+1) / 2
+```
+
+#### unknowns (count the estimated parameters)
+
+* 4 factor loadings but I constrained 2 of them, so 2 factor loadings
+* 2 measurement errors (4 items, but constrained 2 of them)
+* 1 variance on cog ability
+* 1 mean on cog ability
+* 1 variance on assertiveness
+* 1 mean on assertiveness
+* 1 covariance among cog ability and assertiveness
+* b1
+* b2
+* 2 prediction errors
+* total = 13
+
+* 15 - 13 = 2
+
+```{r}
+show(ex3_model)
+```
+
+Nope. I'm one off, where did I go wrong? 
+
+Ah, there is only 1 prediction error because productivity is being predicted. I counted 2 prediction errors because I gave one to both b1 and b2. So, the unknowns should be...
+
+* 4 factor loadings but I constrained 2 of them, so 2 factor loadings
+* 2 measurement errors (4 items, but constrained 2 of them)
+* 1 variance on cog ability
+* 1 mean on cog ability
+* 1 variance on assertiveness
+* 1 mean on assertiveness
+* 1 covariance among cog ability and assertiveness
+* b1
+* b2
+* 1 prediction error
+* total = 12
+
+* 15 - 12 = 3
+
+```{r}
+show(ex3_model)
+```
+
+# Example 4 - a causes b, which causes c, which causes d
+
+### DGP
+
+```{r}
+a <- rnorm(people, 300, 3)
+b <- 0.67*a + rnorm(people, 0, 1)
+c <- 0.99*b + rnorm(people, 0, 10)
+d <- 4 + 4*c + rnorm(people, 0, 4)
+
+df_chain <- data.frame(
+  'id' = c(1:people),
+  'a' = c(a),
+  'b' = c(b),
+  'c' = c(c),
+  'd' = c(d)
+)
+```
+
+### SEM
+
+```{r}
+ex4_string <- '
+
+b ~ b1*a
+c ~ b2*b
+d ~ b3*c
+
+a ~~ a
+
+'
+
+ex4_model <- sem(ex4_string, data = df_chain)
+
+```
+
+### Count dfs
+
+#### knowns (count the observed variables)
+
+```{r}
+# p*(p+1) / 2
+4*(4+1) / 2
+```
+
+#### unknowns (count the estimated parameters)
+
+* b1
+* b2
+* b3
+* 3 prediction errors
+* 1 variance for the lone exogenous variable (a)
+* total = 7
+
+* 10 - 7 = 3
+
+```{r}
+show(ex4_model)
+```
+
+# Example 5 - Observed affect over 7 time points
+
+### DGP
+
+```{r}
+time <- 7
+affect_store <- matrix(, ncol = 3, nrow = time*people)
+count <- 0
+for(i in 1:people){
+  
+  unob_het <- rnorm(1, 0, 3)
+  
+  for(j in 1:time){
+    count <- count + 1
+    
+    if(j == 1){
+      affect_store[count, 1] <- i
+      affect_store[count, 2] <- j
+      affect_store[count, 3] <- unob_het + 50 + rnorm(1, 0, 1)
+    }else{
+      affect_store[count, 1] <- i
+      affect_store[count, 2] <- j
+      affect_store[count, 3] <- 0.8*affect_store[count - 1, 3] + unob_het + rnorm(1, 0, 1)
+      
+    }
+  }
+  
+}
+df5 <- data.frame(affect_store)
+names(df5) <- c('id', 'time', 'affect')
+library(reshape2)
+df5_wide <- reshape(df5, idvar = 'id', timevar = 'time', direction = 'wide')
+```
+
+### SEM
+
+```{r}
+ex5_string <- '
+
+unob_het =~ 1*affect.2 + 1*affect.3 + 1*affect.4 + 1*affect.5 + 1*affect.6 + 1*affect.7
+
+affect.2 ~ ar*affect.1
+affect.3 ~ ar*affect.2
+affect.4 ~ ar*affect.3
+affect.5 ~ ar*affect.4
+affect.6 ~ ar*affect.5
+affect.7 ~ ar*affect.6
+
+affect.1 ~~ affect.1
+unob_het ~~ unob_het
+affect.1 ~~ unob_het
+
+'
+
+ex5_model <- sem(ex5_string, data = df5_wide)
+
+```
+
+### Count dfs
+
+#### knowns (count the observed variables)
+
+```{r}
+# p*(p+1) / 2
+7*(7+1) / 2
+```
+
+#### unknowns (count the estimated parameters)
+
+* ar is 1 estimated parameter
+* 1 variance of unobserved heterogeneity
+* 1 variance of affect.1
+* 1 covariance among affect.1 and unobserved heterogeneity
+* 6 prediction errors
+* total = 10
+
+* 28 - 10 = 18
+
+```{r}
+show(ex5_model)
+```
+
+Why didn't I estimate a mean for unobserved heterogeneity here? In all of the other examples I estimated the variance (1 parameter) and the mean (1 parameter) of the latent exogenous variable. In this case, unobserved heterogeneity is the latent exogenous variable but I only estimated its variance. That's because in this model we don't really care about the mean of unobserved heterogeneity, it's just a latent variable that we incorporate to account for stable individual differences. In other words, when I estimate latent cog ability and assertiveness as IVs to predict an outcome, I care about their means. Here, unobserved heterogeneity is just an additional factor to account for, not a variable whose mean I really care to know. That said, if I wanted to estimate the mean of unobserved heterogeneity (which would result in one additional estimated parameter and one fewer df) then I would incorporate the following into the model string.
+
+```{r, eval = F}
+
+'
+
+unob_het ~ 1 # lavaan code for estimating the mean of a latent variable
+
+'
+
+```
+
+
+Bo$^2$m =)

@@ -1,0 +1,832 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="-----">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/computational_notes/2019-06-14/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#06805E">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/tomorrow.min.css" crossorigin="anonymous" title="hl-light">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/tomorrow.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+      
+    
+
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400i%7CKarla:400,400i,700,700i%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-99209585-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'UA-99209585-1', {});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hua7ddb50eead73fc737c5c3187aff8cf9_17132_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hua7ddb50eead73fc737c5c3187aff8cf9_17132_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="/computational_notes/2019-06-14/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@apreshill">
+  <meta property="twitter:creator" content="@apreshill">
+  
+  <meta property="og:site_name" content="Christopher R. Dishop">
+  <meta property="og:url" content="/computational_notes/2019-06-14/">
+  <meta property="og:title" content="Systems Thinking on Goons in the NHL | Christopher R. Dishop">
+  <meta property="og:description" content="-----"><meta property="og:image" content="/img/pom-card.png">
+  <meta property="twitter:image" content="/img/pom-card.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2019-06-14T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2019-06-14T00:00:00&#43;00:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Systems Thinking on Goons in the NHL | Christopher R. Dishop</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">Christopher R. Dishop</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
+        
+        
+        
+          
+            
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="https://raw.githubusercontent.com/Cdishop/website/master/misc/CV.pdf" target="_blank" rel="noopener"><span>CV</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/computational_notes"><span>Computation</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/r_resources"><span>R Resources</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/rec_reading"><span>Recommended</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+
+        
+
+        
+
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Systems Thinking on Goons in the NHL</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jun 14, 2019
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+
+<p>Inspired by Bill Burr’s Monday Morning Podcast, episode 6-6-19.</p>
+<p>He describes how people that do not understand hockey wanted to get fighting out of the NHL, so in the 2000’s they made greater efforts to remove goons (fighters). What people outside the NHL often do not understand, though, is that fighting is used to minimize dirty play. When a team is playing dirty, you – as a couch of the team that is not playing dirty – send out a goon to punch around a few of their players. In doing so, the other team knocks it off and play continues candidly. Fighting looks bad, but the overall amount of dirty play in the NHL is reduced when it contains a sufficient population of goons. Sounds like systems thinking.</p>
+<div id="simulation-set-up" class="section level1">
+<h1>Simulation Set-Up</h1>
+<ul>
+<li><p>States and Relationships</p>
+<ul>
+<li><p>2 states modeled over time (number of goons and number of dirty plays, or the level of “dirtiness” in the NHL)</p></li>
+<li><p>Number of goons fluctuates independently but with autoregression</p>
+<ul>
+<li>N_goons(t) = N_goons(t-1)</li>
+</ul></li>
+<li><p>Dirtiness level is a function of its prior self and the number of goons, such that a greater number of goons causes lower levels of dirtiness</p>
+<ul>
+<li>D_level(t) = D_level(t-1) - N_goons(t)</li>
+</ul></li>
+</ul></li>
+<li><p>Flow</p>
+<ul>
+<li><p>First, watch the states fluctuate over time and establish equilibrium</p></li>
+<li><p>Second, remove a bunch of goons and then see what happens to the system</p></li>
+</ul></li>
+</ul>
+</div>
+<div id="simulation" class="section level1">
+<h1>Simulation</h1>
+<p>Initial levels of goons and dirtiness.</p>
+<pre class="r"><code>n_goons_initial &lt;- 30
+d_level_initial &lt;- 15</code></pre>
+<p>Now simulate the states across time (20 time points) according to the simulation set-up above. Alpha will be set to 0.7 for both states and beta will be set to 0.2. The forcing terms for goons and dirtiness will be, respectively, 25 and 20.</p>
+<pre class="r"><code>time &lt;- 30
+df_mat &lt;- matrix(ncol = 3, nrow = time)
+count &lt;- 0
+
+for(i in seq_along(1:time)){
+  count &lt;- count + 1
+  
+  
+  if(i == 1){
+    
+    df_mat[count, 1] &lt;- n_goons_initial
+    df_mat[count, 2] &lt;- d_level_initial
+    df_mat[count, 3] &lt;- i
+    
+  }else{
+    
+    
+    df_mat[count, 1] &lt;- 25 + 0.7*df_mat[count - 1, 1] + rnorm(1, 0, 1)
+    df_mat[count, 2] &lt;- 20 + 0.7*df_mat[count - 1, 2] - 0.2*df_mat[count, 1] + rnorm(1, 0, 1)
+    df_mat[count, 3] &lt;- i
+    
+    
+  }
+  
+  
+}
+
+df &lt;- data.frame(df_mat)
+names(df) &lt;- c(&#39;n_goons&#39;, &#39;d_level&#39;, &#39;time&#39;)</code></pre>
+<p>View both states over time.</p>
+<pre class="r"><code>library(ggthemes)
+df_plot &lt;- df %&gt;%
+  gather(n_goons, d_level, key = &#39;variable&#39;, value = &#39;value&#39;)
+
+ggplot(df_plot, aes(x = time, y = value, color = variable)) + 
+  geom_point() + 
+  geom_line()</code></pre>
+<p><img src="/Computational_Notes/2019-06-14/index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>As you can see, the number of goons and the dirtiness level in the NHL drive toward equilibrium levels over time. There are goons, which means there are fights and the potential to appear “dirty” to anyone without an understanding of the system, but having goons around maintains the overall dirtiness within the NHL at low levels.</p>
+<p>Now, what happens to the level of dirtiness when we remove a bunch of goons at time point 14 and beyond?</p>
+<pre class="r"><code>n_goons_initial &lt;- 30
+d_level_initial &lt;- 15
+
+time &lt;- 30
+df_mat &lt;- matrix(ncol = 3, nrow = time)
+count &lt;- 0
+
+for(i in seq_along(1:time)){
+  count &lt;- count + 1
+  
+  
+  if(i == 1){
+    
+    df_mat[count, 1] &lt;- n_goons_initial
+    df_mat[count, 2] &lt;- d_level_initial
+    df_mat[count, 3] &lt;- i
+    
+  }else if (i &lt;=13){
+    
+    df_mat[count, 1] &lt;- 25 + 0.7*df_mat[count - 1, 1] + rnorm(1, 0, 1)
+    df_mat[count, 2] &lt;- 20 + 0.7*df_mat[count - 1, 2] - 0.2*df_mat[count, 1] + rnorm(1, 0, 1)
+    df_mat[count, 3] &lt;- i
+    
+    
+    # HERE IS THE CHANGE
+  }else if(i  &gt; 13){
+    
+    num_goons &lt;- sample(c(2,3,4), 1)
+    df_mat[count, 1] &lt;- num_goons
+    df_mat[count, 2] &lt;- 20 + 0.7*df_mat[count - 1, 2] - 0.2*df_mat[count, 1] + rnorm(1, 0, 1)
+    df_mat[count, 3] &lt;- i
+    ######################################
+    
+  }
+}
+  
+
+df &lt;- data.frame(df_mat)
+names(df) &lt;- c(&#39;n_goons&#39;, &#39;d_level&#39;, &#39;time&#39;)
+
+df_plot &lt;- df %&gt;%
+  gather(n_goons, d_level, key = &#39;variable&#39;, value = &#39;value&#39;)
+
+ggplot(df_plot, aes(x = time, y = value, color = variable)) + 
+  geom_point() + 
+  geom_line()</code></pre>
+<p><img src="/Computational_Notes/2019-06-14/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>What happened? The level of dirtiness increases after removing goons. In other words, removing goons, or fighters, from the NHL may make the game appear more civil from the outside, but goons are embedded in a system that maintains overall low levels of dirtiness. When the goons are removed – and they are a crucial part of the system – dirtiness levels increase dramatically.</p>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="/js/academic.min.6f7ce8be710290b8c431bbc97f405d15.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+
+
+  <p class="powered-by">
+    © Christopher Dishop 2020 &middot; 
+
+    Made with <a href="https://cran.r-project.org/" target="_blank" rel="noopener"><i class="fab fa-r-project"></i> </a><a href="https://github.com/rstudio/blogdown" target="_blank" rel="noopener">blogdown</a>,
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>, and
+    <a href="https://github.com/rbind/apreshill" target="_blank" rel="noopener">Alison's Hill's</a> wonderful template.
+
+    
+
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

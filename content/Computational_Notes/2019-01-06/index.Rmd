@@ -1,0 +1,64 @@
+---
+title: "Column Names As Parameters with GGplot2"
+date: "2019-01-06"
+summary: "-----"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
+```
+
+Another example of using column names as parameters with `quo`, this time within `ggplot2`. A snippet of the data:
+
+```{r, echo = F, cache = T}
+
+df <- data.frame(
+  'day' = c(seq(from = 1, to = 10, each = 3)),
+  'id' = c(rep('Josh', 10),
+           rep('Julie', 10),
+           rep('Johnny', 10)),
+  'stress' = c(sample(4:9, 10, replace = T),
+               sample(6:12, 10, replace = T),
+               sample(2:8, 10, replace = T)),
+  'performance' = c(sample(6:18, 10, replace = T),
+                    sample(3:8, 10, replace = T),
+                    sample(12:14, 10, replace = T))
+)
+
+head(df)
+```
+
+Let's say we want to plot each person's stress over time: three time-series trajectories.
+
+```{r, cache = T}
+library(tidyverse)
+library(ggplot2)
+
+ggplot(df, aes(x = day, y = stress, color = id)) + 
+  geom_point() + 
+  geom_line()
+
+```
+
+Great, but imagine having a data set with 300 different DVs. Instead of re-calling `ggplot` each time we can create a function where the column (DV) is the paramter.
+
+```{r, cache = T}
+
+plot_it <- function(col_name){
+  
+  g <- ggplot(df, aes(x = day, y = !!col_name, color = id)) + 
+  geom_point() + 
+  geom_line()
+  
+  return(g)
+  
+}
+```
+
+Note the `!!` before the parameter. Now, to plot the new graph we use `quo` within the function call.
+
+```{r, cache = T}
+plot_it(quo(performance))
+```
+
+Bo$^2$m =)

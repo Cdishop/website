@@ -1,0 +1,127 @@
+---
+title: "The Binomial Effect Size Display"
+date: '2017-01-01'
+summary: "-----"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F, message = F)
+library(bindata)
+library(tidyverse)
+```
+
+Effect sizes provide information about the magnitude of an effect. Unfortunately, they can be difficult to interpret or appear "small" to anyone unfamiliar with the typical effect sizes in a given research field. [Rosenthal and Rubin (1992)](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C23&q=Effect+Sizes%3A+Pearson%27s+Correlation%2C+Its+Display+Via+the+BESD%2C+and+Alternative+Indices&btnG=) provide an intuitive effect size, called the Binomial Effect Size Display, that captures the change in success rate due to a treatment.
+
+The calculation is simple:
+
+* Treamtment BESD = 0.50 + (*r* / 2)
+
+* Control BESD    = 0.50 - (*r* / 2)
+
+where *r* is the correlation coefficient between treatment and survival (however defined). Many mathematical discussions exist, below is a simulation of one specific example by [Randolph and Edmondson (2005)](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C23&q=using+the+binomial+effect+size+display+to+present+the+magnitude&btnG=). Please keep in mind the BESD is not without its critics (e.g., [Thompson 1998](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C23&q=An+Evaluation+of+Rosenthal+and+Rubin%27s+Binomial+Effect+Size+Display&btnG=)). 
+
+# The Example
+
+Aziothymidine (*AZT*) is used to treat AIDS, and the correlation between *AZT* use and survival is 0.23. Using the equations above, we can calculate the BESD for the treatment and control groups.
+
+```{r}
+
+# Survival
+
+AZT_survive <- 0.50 + (0.23 / 2)
+Placebo_survive <- 0.50 - (0.23 / 2)
+
+```
+
+So the survival percentages for each group are:
+
+```{r}
+
+AZT_survive
+
+Placebo_survive
+
+```
+
+Now we can simulate that process to see if our results match.
+
+# The Simulation
+
+Preliminary set up:
+
+```{r}
+k <- 1000
+percent_treatment_survive <- numeric(k)
+percent_control_survive <- numeric(k)
+
+# The correlation between AZT and survival is 0.23
+
+Sigma <- matrix(c(1.0, 0.23,
+                    0.23, 1.0), 2, 2, byrow = T)
+
+```
+
+Running the process:
+
+```{r, cache=TRUE}
+
+for(i in 1:k){
+  
+  # Draws from a binomial distribution with 0.50 base rate
+  
+  # The correlation between both vectors is 0.23
+  
+  # The first vector is treatment vs control assignment.
+  # 1 = treatment ; 0 = control
+  
+  # The second vector is survive vs. not survive
+  # 1 = survive ; 0 = not survive
+  
+  x <- rmvbin(5000, margprob = c(0.5, 0.5), bincorr = Sigma)
+  x <- as.data.frame(x)
+  
+  # "Survive" is when column 2 is equal to 1
+  
+  total_survive <- x %>%
+        filter(V2 == 1)
+  
+  # The amount of people in each group that survived
+  
+  treatment_survive <- sum(total_survive$V1 == 1) / nrow(total_survive)
+  
+  control_survive <- sum(total_survive$V1 == 0) / nrow(total_survive)
+  
+  # Save the results from each iteration
+  
+  percent_treatment_survive[i] <- treatment_survive
+  percent_control_survive[i] <- control_survive
+  
+}
+
+```
+
+# Comparison
+
+Our original calculations were as follows:
+
+```{r}
+
+AZT_survive
+
+Placebo_survive
+
+```
+
+and here are the simulation results:
+
+```{r}
+
+mean(percent_treatment_survive)
+
+mean(percent_control_survive)
+
+```
+
+Keep in mind the BESD assumes a 50/50 base rate of success (however defined) with no treatment.
+
+Bo$^2$m =)

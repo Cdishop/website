@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Computational Notes | Christopher R. Dishop</title>
-    <link>https://christopherdishop.netlify.app/comp-notes/</link>
-      <atom:link href="https://christopherdishop.netlify.app/comp-notes/index.xml" rel="self" type="application/rss+xml" />
+    <link>/comp-notes/</link>
+      <atom:link href="/comp-notes/index.xml" rel="self" type="application/rss+xml" />
     <description>Computational Notes</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Christopher Dishop 2020</copyright><lastBuildDate>Wed, 27 May 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://christopherdishop.netlify.app/img/pom-card.png</url>
+      <url>/img/pom-card.png</url>
       <title>Computational Notes</title>
-      <link>https://christopherdishop.netlify.app/comp-notes/</link>
+      <link>/comp-notes/</link>
     </image>
     
     <item>
       <title>Counting Degrees of Freedom</title>
-      <link>https://christopherdishop.netlify.app/comp-notes/2017-07-13-dfs/</link>
+      <link>/comp-notes/2017-07-13-dfs/</link>
       <pubDate>Wed, 27 May 2020 00:00:00 +0000</pubDate>
-      <guid>https://christopherdishop.netlify.app/comp-notes/2017-07-13-dfs/</guid>
+      <guid>/comp-notes/2017-07-13-dfs/</guid>
       <description>
 
 
@@ -487,9 +487,9 @@ unob_het ~ 1 # lavaan code for estimating the mean of a latent variable
     
     <item>
       <title>Art With Monte Carlo</title>
-      <link>https://christopherdishop.netlify.app/comp-notes/2017-07-12-art/</link>
+      <link>/comp-notes/2017-07-12-art/</link>
       <pubDate>Wed, 12 Jul 2017 00:00:00 +0000</pubDate>
-      <guid>https://christopherdishop.netlify.app/comp-notes/2017-07-12-art/</guid>
+      <guid>/comp-notes/2017-07-12-art/</guid>
       <description>
 
 
@@ -510,7 +510,7 @@ unob_het ~ 1 # lavaan code for estimating the mean of a latent variable
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;y &amp;lt;- f(x)
 
 plot(x, y)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/comp-notes/2017-07-12-art/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/comp-notes/2017-07-12-art/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;this-is-the-process-we-want-to-draw&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;This is the process we want to “draw”&lt;/h1&gt;
@@ -550,7 +550,7 @@ points_over_x &amp;lt;- points_above[!is.na(points_above[,1]),1]
 points_over_y &amp;lt;- points_above[!is.na(points_above[,2]),2]&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Now we have an image…&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(points_under_y ~ points_under_x, pch = 20, cex = 0.3)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/comp-notes/2017-07-12-art/index_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/comp-notes/2017-07-12-art/index_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
 &lt;/div&gt;
 </description>

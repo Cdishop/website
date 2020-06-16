@@ -1,0 +1,833 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="-----">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/computational_notes/2020-04-03/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#06805E">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/tomorrow.min.css" crossorigin="anonymous" title="hl-light">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/tomorrow.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+      
+    
+
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400i%7CKarla:400,400i,700,700i%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-99209585-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'UA-99209585-1', {});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hua7ddb50eead73fc737c5c3187aff8cf9_17132_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hua7ddb50eead73fc737c5c3187aff8cf9_17132_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="/computational_notes/2020-04-03/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@apreshill">
+  <meta property="twitter:creator" content="@apreshill">
+  
+  <meta property="og:site_name" content="Christopher R. Dishop">
+  <meta property="og:url" content="/computational_notes/2020-04-03/">
+  <meta property="og:title" content="Empirical Independence | Christopher R. Dishop">
+  <meta property="og:description" content="-----"><meta property="og:image" content="/img/pom-card.png">
+  <meta property="twitter:image" content="/img/pom-card.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2020-04-03T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2020-04-03T00:00:00&#43;00:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Empirical Independence | Christopher R. Dishop</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">Christopher R. Dishop</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
+        
+        
+        
+          
+            
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="https://raw.githubusercontent.com/Cdishop/website/master/misc/CV.pdf" target="_blank" rel="noopener"><span>CV</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/computational_notes"><span>Computation</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/r_resources"><span>R Resources</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/rec_reading"><span>Recommended</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+
+        
+
+        
+
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Empirical Independence</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Apr 3, 2020
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+
+<p>Calculate the independence of two events using both analytic and empirical techniques. I’m trying to assess whether the probability of having a meal classified as “dinner” depends on whether that meal includes “chicken” as its main dish.</p>
+<p>The options for the main dish:</p>
+<ul>
+<li>chicken, salmon, pork, chicken, pancakes, french toast</li>
+</ul>
+<p>The options for the side dishes:</p>
+<ul>
+<li>salad, salad, green beans, corn, carrots, bacon.</li>
+</ul>
+<p>All possible combinations to create a meal:</p>
+<pre class="r"><code>dishes &lt;- data.frame(
+    main = c(&quot;chicken&quot;, &quot;salmon&quot;, &quot;pork&quot;, &quot;chicken&quot;, &quot;pancakes&quot;, &quot;french toast&quot;),
+    side = c(&quot;salad&quot;, &quot;salad&quot;, &quot;green beans&quot;, &quot;corn&quot;, &quot;carrots&quot;, &quot;bacon&quot;)
+)
+
+possible_meals &lt;- dishes %&gt;%
+  cross_df() %&gt;%
+  mutate_if(is.factor,as.character)
+
+possible_meals</code></pre>
+<pre><code>## # A tibble: 36 x 2
+##    main         side 
+##    &lt;chr&gt;        &lt;chr&gt;
+##  1 chicken      salad
+##  2 salmon       salad
+##  3 pork         salad
+##  4 chicken      salad
+##  5 pancakes     salad
+##  6 french toast salad
+##  7 chicken      salad
+##  8 salmon       salad
+##  9 pork         salad
+## 10 chicken      salad
+## # … with 26 more rows</code></pre>
+<p>Event <strong>a</strong> will be, “the main course is chicken.” What is its probability?</p>
+<pre class="r"><code># a = main course is chicken
+# tally the number of meals that include chicken
+
+sum(possible_meals$main == &quot;chicken&quot;) / nrow(possible_meals)</code></pre>
+<pre><code>## [1] 0.3333333</code></pre>
+<p>So, <code>p(a)</code> = 0.333. Event <strong>b</strong> will be, “the meal is dinner.” What is its probability?</p>
+<pre class="r"><code># b = the meal is dinner (rather than breakfast)
+# tally the number of meals that are dinners rather than breakfast
+# any meals with pancakes, french toast, or bacon are not dinner
+
+# number of meal options for &#39;main&quot; X number of meal options for &#39;side&#39;
+(
+  sum(dishes$main != c(&#39;pancakes&#39;, &#39;french toast&#39;)) / nrow(dishes)
+    *
+  sum(dishes$side != &quot;bacon&quot;) / nrow(dishes)
+)</code></pre>
+<pre><code>## [1] 0.5555556</code></pre>
+<p>So, <code>p(b)</code> = 0.555. If <strong>a</strong> and <strong>b</strong> are independent, then <code>p(b)</code> should be the same as <code>p(b | a)</code>. Does the probability of eating a meal classified as dinner depend on whether that meal includes chicken?</p>
+<p>First, the analytic solution.</p>
+<ul>
+<li><p><code>p(b | a) = p(b &amp; a) / p(a)</code></p></li>
+<li><p><code>p(dinner | chicken) = p(dinner &amp; chicken) / p(chicken)</code></p></li>
+</ul>
+<p>I need to find <code>p(dinner &amp; chicken)</code> to solve. So tally the possible ways chicken can combine with other dishes to create a dinner platter.</p>
+<pre class="r"><code>tally_count &lt;- 0
+for(i in 1:nrow(possible_meals)){
+  
+  meal_df &lt;- possible_meals[i,]
+  
+  contain_chicken &lt;- meal_df$main == &quot;chicken&quot;
+  no_bacon &lt;- meal_df$side != &quot;bacon&quot;
+  
+  if(contain_chicken == T &amp;&amp; no_bacon == T){tally_count &lt;- tally_count + 1}
+}
+
+tally_count / nrow(possible_meals)</code></pre>
+<pre><code>## [1] 0.2777778</code></pre>
+<p>Cool, <code>p(dinner &amp; chicken)</code> = 0.2777. Now I can calculate the conditional probability.</p>
+<ul>
+<li><p><code>p(dinner | chicken) = p(dinner &amp; chicken) / p(chicken)</code></p></li>
+<li><code>X = 0.2777 / 0.333</code></li>
+<li><p><code>X = 0.83</code></p></li>
+</ul>
+<p>X does not equal <code>p(b)</code>, so the two are dependent. How about the empirical solution?</p>
+<pre class="r"><code># what is the empirical estimate of p(dinner | chicken)?
+# to calculate, I need:
+# p(dinner &amp; chicken) / p(chicken)
+
+sims &lt;- 10000
+df &lt;- data.frame(
+    chicken_and_dinner = c(rep(0, sims)),
+    chicken = c(rep(0, sims))
+    
+)
+
+for(j in 1:sims){
+  
+  eat_main &lt;- sample(dishes$main, 1, replace = F)
+  eat_side &lt;- sample(dishes$side, 1, replace = F)
+  
+  chicken_and_dinner &lt;- F
+  
+  if(eat_main == &quot;chicken&quot; &amp;&amp; 
+    (eat_side == &quot;salad&quot; | eat_side == &quot;green beans&quot; | eat_side == &quot;corn&quot; | eat_side == &quot;carrots&quot;)){
+    chicken_and_dinner &lt;- T
+    }
+  
+  
+  chicken &lt;- F
+  if(eat_main == &quot;chicken&quot;){chicken &lt;- T}
+  
+  single_run_result &lt;- c(chicken_and_dinner, chicken)
+  df[j, &quot;chicken_and_dinner&quot;] &lt;- chicken_and_dinner
+  df[j, &quot;chicken&quot;] &lt;- chicken
+  
+}
+
+tally_chicken_and_dinner &lt;- sum(df$chicken_and_dinner == 1)
+tally_chicken &lt;- sum(df$chicken == 1)
+
+prob_cd &lt;- tally_chicken_and_dinner / sims
+prob_c &lt;- tally_chicken / sims
+
+prob_cd / prob_c</code></pre>
+<pre><code>## [1] 0.8201883</code></pre>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="/js/academic.min.6f7ce8be710290b8c431bbc97f405d15.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+
+
+  <p class="powered-by">
+    © Christopher Dishop 2020 &middot; 
+
+    Made with <a href="https://cran.r-project.org/" target="_blank" rel="noopener"><i class="fab fa-r-project"></i> </a><a href="https://github.com/rstudio/blogdown" target="_blank" rel="noopener">blogdown</a>,
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>, and
+    <a href="https://github.com/rbind/apreshill" target="_blank" rel="noopener">Alison's Hill's</a> wonderful template.
+
+    
+
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

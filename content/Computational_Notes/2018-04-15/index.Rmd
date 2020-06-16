@@ -1,0 +1,494 @@
+---
+title: "Latent Growth Curves"
+Date: "2018-04-15"
+summary: "-----"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
+library(ggthemes)
+```
+
+# Latent Growth Curves
+
+I will progress through three models: linear, quadratic growth, and latent basis. In every example I use a sample of 400, 6 time points, and 'affect' as the variable of interest. 
+
+Don't forget that multiplying by time
+
+* $0.6t$ 
+
+is different from describing over time
+
+* $0.6_t$.
+
+### 1) Linear
+
+*The data generating process:*
+
+\begin{equation}
+y_{it} = 4 - 0.6t + e_{t}
+\end{equation}
+
+```{r, cache=TRUE}
+
+library(tidyverse)
+library(ggplot2)
+library(MASS)
+
+N <- 400
+time <- 6
+
+intercept <- 4
+linear_growth <- -0.6
+
+df_matrix <- matrix(, nrow = N*time, ncol = 3)
+
+count <- 0
+
+for(i in 1:400){
+  
+  unob_het_affect <- rnorm(1,0,3)
+
+  
+  for(j in 1:6){
+    
+    count <- count + 1
+    
+    if(j == 1){
+      
+      df_matrix[count, 1] <- i
+      df_matrix[count, 2] <- j
+      df_matrix[count, 3] <- intercept + unob_het_affect + rnorm(1,0,1)
+    }else{
+      
+      
+      df_matrix[count, 1] <- i
+      df_matrix[count, 2] <- j
+      df_matrix[count, 3] <- intercept + linear_growth*j + unob_het_affect + rnorm(1,0,1)
+      
+    }
+    
+    
+    
+  }
+  
+  
+}
+
+df <- data.frame(df_matrix)
+names(df) <- c('id', 'time', 'affect')
+
+random_ids <- sample(df$id, 5)
+
+random_df <- df %>%
+  filter(id %in% random_ids)
+  
+
+ggplot(df, aes(x = time, y = affect, group = id)) + 
+  geom_point(color = 'gray85') + 
+  geom_line(color = 'gray85') + 
+  geom_point(data = random_df, aes(x = time, y = affect, group = id), color = 'blue') + 
+  geom_line(data = random_df, aes(x = time, y = affect, group = id), color = 'blue') 
+
+```
+
+
+*Estimating the model:*
+
+Formatting the data:
+
+```{r}
+
+df_wide <- reshape(df, idvar = 'id', timevar = 'time', direction = 'wide')
+
+
+```
+
+First, an intercept only (no change) model:
+
+```{r, cache=TRUE}
+
+library(lavaan)
+
+no_change_string <- '
+
+# Latent intercept factor
+
+intercept_affect =~ 1*affect.1 + 1*affect.2 + 1*affect.3 + 1*affect.4 + 1*affect.5 + 1*affect.6
+
+# Mean and variance of latent intercept factor
+
+intercept_affect ~~ intercept_affect
+
+# Fix observed variable means to 0
+
+affect.1 ~ 0
+affect.2 ~ 0
+affect.3 ~ 0
+affect.4 ~ 0
+affect.5 ~ 0
+affect.6 ~ 0
+
+# Constrain residual (error) variance of observed variables to equality across time
+
+affect.1 ~~ res_var*affect.1
+affect.2 ~~ res_var*affect.2
+affect.3 ~~ res_var*affect.3
+affect.4 ~~ res_var*affect.4
+affect.5 ~~ res_var*affect.5
+affect.6 ~~ res_var*affect.6
+
+
+'
+
+no_change_model <- growth(no_change_string, data = df_wide)
+summary(no_change_model, fit.measures = T)
+
+```
+
+Now, a linear growth model centered at time point 1. The intercept factor estimate, therefore, is the estimated average affect at time 1.
+
+```{r, cache=TRUE}
+
+
+library(lavaan)
+
+linear_change_string <- '
+
+# Latent intercept and slope factors
+
+intercept_affect =~ 1*affect.1 + 1*affect.2 + 1*affect.3 + 1*affect.4 + 1*affect.5 + 1*affect.6
+slope_affect =~ 0*affect.1 + 1*affect.2 + 2*affect.3 + 3*affect.4 + 4*affect.5 + 5*affect.6
+
+# Mean and variance of latent factors
+
+intercept_affect ~~ intercept_affect
+slope_affect ~~ slope_affect
+
+# Covariance between latent factors
+
+intercept_affect ~~ slope_affect
+
+# Fix observed variable means to 0
+
+affect.1 ~ 0
+affect.2 ~ 0
+affect.3 ~ 0
+affect.4 ~ 0
+affect.5 ~ 0
+affect.6 ~ 0
+
+# Constrain residual (error) variance of observed variables to equality across time
+
+affect.1 ~~ res_var*affect.1
+affect.2 ~~ res_var*affect.2
+affect.3 ~~ res_var*affect.3
+affect.4 ~~ res_var*affect.4
+affect.5 ~~ res_var*affect.5
+affect.6 ~~ res_var*affect.6
+
+
+'
+
+linear_change_model <- growth(linear_change_string, data = df_wide)
+summary(linear_change_model, fit.measures = T)
+
+inspect(linear_change_model, 'cov.lv')
+
+```
+
+This model does an adequate job recovering the intercept and slope parameters. 
+
+If I wanted to center the model at time point 3 the latent intercept term would be interpreted as the estimated average affect at time 3 and the syntax would change to:
+
+```{r, eval = F}
+
+'
+slope_affect =~ -2*affect.1 + -1*affect.2 + 0*affect.3 + 1*affect.4 + 2*affect.5 + 3*affect.6
+
+'
+
+
+```
+
+### 2) Quadratic
+
+*The data generating process:*
+
+\begin{equation}
+y_{it} = 4 + 0.2t + 0.7t^2 + e_{t}
+\end{equation}
+
+```{r}
+
+library(tidyverse)
+library(ggplot2)
+library(MASS)
+
+N <- 400
+time <- 6
+
+
+
+intercept_mu <- 4
+linear_growth2 <- 0.2
+quad_growth <- 0.7
+
+df_matrix2 <- matrix(, nrow = N*time, ncol = 3)
+
+count <- 0
+
+for(i in 1:400){
+  
+  unob_het_affect <- rnorm(1,0,3)
+
+  
+  for(j in 1:6){
+    
+    count <- count + 1
+    
+    if(j == 1){
+      
+      df_matrix2[count, 1] <- i
+      df_matrix2[count, 2] <- j
+      df_matrix2[count, 3] <- intercept + rnorm(1,0,1) + rnorm(1,0,1)
+    }else{
+      
+      
+      df_matrix2[count, 1] <- i
+      df_matrix2[count, 2] <- j
+      df_matrix2[count, 3] <- intercept + linear_growth2*j + quad_growth*(j^2) + unob_het_affect + rnorm(1,0,1)
+      
+    }
+    
+    
+    
+  }
+  
+  
+}
+
+df2 <- data.frame(df_matrix2)
+names(df2) <- c('id', 'time', 'affect')
+
+random_ids2 <- sample(df2$id, 5)
+
+random_df2 <- df2 %>%
+  filter(id %in% random_ids2)
+  
+
+ggplot(df2, aes(x = time, y = affect, group = id)) + 
+  geom_point(color = 'gray85') + 
+  geom_line(color = 'gray85') + 
+  geom_point(data = random_df2, aes(x = time, y = affect, group = id), color = 'blue') + 
+  geom_line(data = random_df2, aes(x = time, y = affect, group = id), color = 'blue') + 
+  theme_wsj()
+
+```
+
+*Estimating the model:*
+
+Quadratic growth model:
+
+
+```{r}
+
+df_wide2 <- reshape(df2, idvar = 'id', timevar = 'time', direction = 'wide')
+
+
+library(lavaan)
+
+quad_change_string <- '
+
+# Latent intercept, linear slope, and quad slope factors
+
+intercept_affect =~ 1*affect.1 + 1*affect.2 + 1*affect.3 + 1*affect.4 + 1*affect.5 + 1*affect.6
+slope_affect =~ 0*affect.1 + 1*affect.2 + 2*affect.3 + 3*affect.4 + 4*affect.5 + 5*affect.6
+quad_slope_affect =~ 0*affect.1 + 1*affect.2 + 4*affect.3 + 9*affect.4 + 16*affect.5 + 25*affect.6
+
+# Mean and variance of latent factors
+
+intercept_affect ~~ intercept_affect
+slope_affect ~~ slope_affect
+quad_slope_affect ~~ quad_slope_affect
+
+# Covariance between latent factors
+
+intercept_affect ~~ slope_affect
+intercept_affect ~~ quad_slope_affect
+slope_affect ~~ quad_slope_affect
+
+# Fix observed variable means to 0
+
+affect.1 ~ 0
+affect.2 ~ 0
+affect.3 ~ 0
+affect.4 ~ 0
+affect.5 ~ 0
+affect.6 ~ 0
+
+# Constrain residual (error) variance of observed variables to equality across time
+
+affect.1 ~~ res_var*affect.1
+affect.2 ~~ res_var*affect.2
+affect.3 ~~ res_var*affect.3
+affect.4 ~~ res_var*affect.4
+affect.5 ~~ res_var*affect.5
+affect.6 ~~ res_var*affect.6
+
+
+'
+
+quad_change_model <- growth(quad_change_string, data = df_wide2)
+summary(quad_change_model, fit.measures = T)
+
+
+```
+
+This model recovers the intercept and quadratic parameters but not the linear growth parameter.
+
+### 3) Latent Basis
+
+This model allows us to see where a majority of the change occurs in the process. For example, does more change occur between time points 2 and 3 or 5 and 6? In this model we are not trying to recover the parameters, but describe the change process in detail.
+
+*Data generating process:*
+
+Time 1 - Time 3:
+\begin{equation}
+y_{it} = 4 + 0.2t + e_{t}
+\end{equation}
+
+Time 4 - Time 6:
+\begin{equation}
+y_{it} = 4 + 0.8t + e_{t}
+\end{equation}
+
+
+```{r}
+
+
+
+library(tidyverse)
+library(ggplot2)
+library(MASS)
+
+N <- 400
+time <- 6
+
+
+intercept_mu <- 4
+growth_1 <- 0.2
+growth_2 <- 0.8
+
+
+df_matrix3 <- matrix(, nrow = N*time, ncol = 3)
+
+count <- 0
+
+for(i in 1:400){
+  
+  unob_het_affect <- rnorm(1,0,3)
+  
+  
+  for(j in 1:6){
+    
+    count <- count + 1
+    
+    if(j < 4){
+      
+      df_matrix3[count, 1] <- i
+      df_matrix3[count, 2] <- j
+      df_matrix3[count, 3] <- intercept + growth_1*j + unob_het_affect + rnorm(1,0,1)
+      
+    }else{
+      
+      
+      df_matrix3[count, 1] <- i
+      df_matrix3[count, 2] <- j
+      df_matrix3[count, 3] <- intercept + growth_2*j + unob_het_affect + rnorm(1,0,1)
+      
+    }
+    
+    
+    
+  }
+  
+  
+}
+
+df3 <- data.frame(df_matrix3)
+names(df3) <- c('id', 'time', 'affect')
+
+random_ids3 <- sample(df3$id, 5)
+
+random_df3 <- df3 %>%
+  filter(id %in% random_ids3)
+  
+
+ggplot(df3, aes(x = time, y = affect, group = id)) + 
+  geom_point(color = 'gray85') + 
+  geom_line(color = 'gray85') + 
+  geom_point(data = random_df3, aes(x = time, y = affect, group = id), color = 'blue') + 
+  geom_line(data = random_df3, aes(x = time, y = affect, group = id), color = 'blue')
+
+```
+
+*Estimating the model:*
+
+Latent basis:
+
+Similar to a linear growth model but we freely estimate the intermediate basis coefficients. Remember to constrain the first basis coefficient to zero and the last to 1.
+
+```{r}
+
+df_wide3 <- reshape(df3, idvar = 'id', timevar = 'time', direction = 'wide')
+
+
+library(lavaan)
+
+lb_string <- '
+
+# Latent intercept and slope terms with intermediate time points freely estimated
+
+intercept_affect =~ 1*affect.1 + 1*affect.2 + 1*affect.3 + 1*affect.4 + 1*affect.5 + 1*affect.6
+slope_affect =~ 0*affect.1 + bc1*affect.2 + bc2*affect.3 + bc3*affect.4 + bc4*affect.5 + 1*affect.6
+
+# Mean and variance of latent factors
+
+intercept_affect ~~ intercept_affect
+slope_affect ~~ slope_affect
+
+# Covariance between latent factors
+
+intercept_affect ~~ slope_affect
+
+# Fix observed variable means to 0
+
+affect.1 ~ 0
+affect.2 ~ 0
+affect.3 ~ 0
+affect.4 ~ 0
+affect.5 ~ 0
+affect.6 ~ 0
+
+# Constrain residual (error) variance of observed variables to equality across time
+
+affect.1 ~~ res_var*affect.1
+affect.2 ~~ res_var*affect.2
+affect.3 ~~ res_var*affect.3
+affect.4 ~~ res_var*affect.4
+affect.5 ~~ res_var*affect.5
+affect.6 ~~ res_var*affect.6
+
+
+'
+
+lb_model <- growth(lb_string, data = df_wide3)
+summary(lb_model, fit.measures = T)
+
+
+```
+
+`bc1` represents the percentage of change for the average individual between time 1 and  2. `bc2` represents the percentage change betwen time 1 and 3, `bc4` is the percentage change between time 1 and 5, etc.
+
+Bo$^2$m =)

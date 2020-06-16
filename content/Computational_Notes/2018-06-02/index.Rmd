@@ -1,0 +1,121 @@
+---
+title: "Column Names As Parameters"
+date: "2018-06-02"
+summary: "-----"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F, message = F)
+```
+
+I always forget how to use column names as function parameters, so here is an example. 
+
+# Function with no column name parameters
+
+Function:
+
+* Select columns
+
+* Replace the Jimmy and James 'v_1' values with 99
+
+```{r}
+
+library(tidyverse)
+
+dish <- data.frame(
+  'person' = c('jimmy', 'james', 'johnny'),
+  'v_1' = c(rnorm(3, 0, 1)),
+  'v_2' = c(rnorm(3, 10, 5)),
+  'v_3' = c(rnorm(3, 50, 10)),
+  'v_4' = c(rnorm(3, 25, 15))
+)
+
+mini <- dish %>%
+  select(person, v_1, v_2)
+
+mini[mini$person == 'jimmy', 2] <- 99
+mini[mini$person == 'james', 2] <- 99
+
+
+```
+
+The original data:
+
+```{r, echo = F}
+dish
+```
+
+What we changed it to:
+
+```{r, echo = F}
+mini
+```
+
+Here is the function equivalent:
+
+```{r}
+
+impute_99 <- function(data){
+  
+  
+  new_data <- data %>%
+    select(person, v_1, v_2)
+  
+  new_data[new_data$person == 'jimmy', 2] <- 99
+  new_data[new_data$person == 'james', 2] <- 99
+  
+  return(new_data)
+  
+  
+}
+
+```
+
+Our result:
+
+```{r}
+
+adjusted_data <- impute_99(dish)
+adjusted_data
+
+```
+
+# Function with column names as parameters
+
+Now, what if we want to use specific column names as parameters in our function? We could change the function to:
+
+```{r}
+
+
+impute_99_column_specific <- function(data, column1, column2){
+  
+  new_data <- data %>%
+    select(person, column1, column2)
+  
+  new_data[new_data$person == 'jimmy', 2] <- 99 # column1 change
+  new_data[new_data$person == 'james', 2] <- 99 # column2 change
+  
+  return(new_data)
+  
+}
+
+```
+
+where 'column1' and 'column2' can be replaced by specific names. Here is where I usually get confused, the following code does not work:
+
+```{r, eval = F}
+
+cool_data <- impute_99_column_specific(dish, v_1, v_2)
+
+```
+
+Fortunately the correction is simple, just put quotes around the column names:
+
+```{r}
+cool_data <- impute_99_column_specific(dish, 'v_1', 'v_2')
+cool_data
+
+
+```
+
+Bo$^2$m =)

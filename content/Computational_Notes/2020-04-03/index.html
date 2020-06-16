@@ -1,0 +1,129 @@
+---
+title: "Empirical Independence"
+Date: "2020-04-03"
+summary: "-----"
+---
+
+
+
+<p>Calculate the independence of two events using both analytic and empirical techniques. I’m trying to assess whether the probability of having a meal classified as “dinner” depends on whether that meal includes “chicken” as its main dish.</p>
+<p>The options for the main dish:</p>
+<ul>
+<li>chicken, salmon, pork, chicken, pancakes, french toast</li>
+</ul>
+<p>The options for the side dishes:</p>
+<ul>
+<li>salad, salad, green beans, corn, carrots, bacon.</li>
+</ul>
+<p>All possible combinations to create a meal:</p>
+<pre class="r"><code>dishes &lt;- data.frame(
+    main = c(&quot;chicken&quot;, &quot;salmon&quot;, &quot;pork&quot;, &quot;chicken&quot;, &quot;pancakes&quot;, &quot;french toast&quot;),
+    side = c(&quot;salad&quot;, &quot;salad&quot;, &quot;green beans&quot;, &quot;corn&quot;, &quot;carrots&quot;, &quot;bacon&quot;)
+)
+
+possible_meals &lt;- dishes %&gt;%
+  cross_df() %&gt;%
+  mutate_if(is.factor,as.character)
+
+possible_meals</code></pre>
+<pre><code>## # A tibble: 36 x 2
+##    main         side 
+##    &lt;chr&gt;        &lt;chr&gt;
+##  1 chicken      salad
+##  2 salmon       salad
+##  3 pork         salad
+##  4 chicken      salad
+##  5 pancakes     salad
+##  6 french toast salad
+##  7 chicken      salad
+##  8 salmon       salad
+##  9 pork         salad
+## 10 chicken      salad
+## # … with 26 more rows</code></pre>
+<p>Event <strong>a</strong> will be, “the main course is chicken.” What is its probability?</p>
+<pre class="r"><code># a = main course is chicken
+# tally the number of meals that include chicken
+
+sum(possible_meals$main == &quot;chicken&quot;) / nrow(possible_meals)</code></pre>
+<pre><code>## [1] 0.3333333</code></pre>
+<p>So, <code>p(a)</code> = 0.333. Event <strong>b</strong> will be, “the meal is dinner.” What is its probability?</p>
+<pre class="r"><code># b = the meal is dinner (rather than breakfast)
+# tally the number of meals that are dinners rather than breakfast
+# any meals with pancakes, french toast, or bacon are not dinner
+
+# number of meal options for &#39;main&quot; X number of meal options for &#39;side&#39;
+(
+  sum(dishes$main != c(&#39;pancakes&#39;, &#39;french toast&#39;)) / nrow(dishes)
+    *
+  sum(dishes$side != &quot;bacon&quot;) / nrow(dishes)
+)</code></pre>
+<pre><code>## [1] 0.5555556</code></pre>
+<p>So, <code>p(b)</code> = 0.555. If <strong>a</strong> and <strong>b</strong> are independent, then <code>p(b)</code> should be the same as <code>p(b | a)</code>. Does the probability of eating a meal classified as dinner depend on whether that meal includes chicken?</p>
+<p>First, the analytic solution.</p>
+<ul>
+<li><p><code>p(b | a) = p(b &amp; a) / p(a)</code></p></li>
+<li><p><code>p(dinner | chicken) = p(dinner &amp; chicken) / p(chicken)</code></p></li>
+</ul>
+<p>I need to find <code>p(dinner &amp; chicken)</code> to solve. So tally the possible ways chicken can combine with other dishes to create a dinner platter.</p>
+<pre class="r"><code>tally_count &lt;- 0
+for(i in 1:nrow(possible_meals)){
+  
+  meal_df &lt;- possible_meals[i,]
+  
+  contain_chicken &lt;- meal_df$main == &quot;chicken&quot;
+  no_bacon &lt;- meal_df$side != &quot;bacon&quot;
+  
+  if(contain_chicken == T &amp;&amp; no_bacon == T){tally_count &lt;- tally_count + 1}
+}
+
+tally_count / nrow(possible_meals)</code></pre>
+<pre><code>## [1] 0.2777778</code></pre>
+<p>Cool, <code>p(dinner &amp; chicken)</code> = 0.2777. Now I can calculate the conditional probability.</p>
+<ul>
+<li><p><code>p(dinner | chicken) = p(dinner &amp; chicken) / p(chicken)</code></p></li>
+<li><code>X = 0.2777 / 0.333</code></li>
+<li><p><code>X = 0.83</code></p></li>
+</ul>
+<p>X does not equal <code>p(b)</code>, so the two are dependent. How about the empirical solution?</p>
+<pre class="r"><code># what is the empirical estimate of p(dinner | chicken)?
+# to calculate, I need:
+# p(dinner &amp; chicken) / p(chicken)
+
+sims &lt;- 10000
+df &lt;- data.frame(
+    chicken_and_dinner = c(rep(0, sims)),
+    chicken = c(rep(0, sims))
+    
+)
+
+for(j in 1:sims){
+  
+  eat_main &lt;- sample(dishes$main, 1, replace = F)
+  eat_side &lt;- sample(dishes$side, 1, replace = F)
+  
+  chicken_and_dinner &lt;- F
+  
+  if(eat_main == &quot;chicken&quot; &amp;&amp; 
+    (eat_side == &quot;salad&quot; | eat_side == &quot;green beans&quot; | eat_side == &quot;corn&quot; | eat_side == &quot;carrots&quot;)){
+    chicken_and_dinner &lt;- T
+    }
+  
+  
+  chicken &lt;- F
+  if(eat_main == &quot;chicken&quot;){chicken &lt;- T}
+  
+  single_run_result &lt;- c(chicken_and_dinner, chicken)
+  df[j, &quot;chicken_and_dinner&quot;] &lt;- chicken_and_dinner
+  df[j, &quot;chicken&quot;] &lt;- chicken
+  
+}
+
+tally_chicken_and_dinner &lt;- sum(df$chicken_and_dinner == 1)
+tally_chicken &lt;- sum(df$chicken == 1)
+
+prob_cd &lt;- tally_chicken_and_dinner / sims
+prob_c &lt;- tally_chicken / sims
+
+prob_cd / prob_c</code></pre>
+<pre><code>## [1] 0.8201883</code></pre>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>

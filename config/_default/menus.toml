@@ -10,7 +10,7 @@
 
 [[main]]
   name = "Computation"
-  url = "/comp-notes"
+  url = "/Computational_Notes"
   weight = 20
 
 
@@ -18,7 +18,7 @@
 
 [[main]]
   name = "CV"
-  url = "/cv"
+  url = "https://raw.githubusercontent.com/Cdishop/website/master/misc/CV.pdf"
   weight = 10
 
 

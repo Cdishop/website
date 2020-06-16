@@ -1,0 +1,35 @@
+---
+title: "Generating Time in a Data Frame"
+Date: "2019-01-14"
+summary: "-----"
+---
+
+
+
+<p>There are two code variations I use to generate time indexes. If I need time cycles</p>
+<pre><code>##   id    score time
+## 1  a 24.81885    1
+## 2  b 18.46513    2
+## 3  c 15.95025    3
+## 4  a 24.79416    1
+## 5  b 18.14886    2
+## 6  c 18.99802    3
+## 7  a 14.98879    1
+## 8  b 23.75162    2
+## 9  c 12.85643    3</code></pre>
+<p>then I use a sequence command.</p>
+<pre class="r"><code>time &lt;- seq(from = 1, to = 3, each = 3)</code></pre>
+<p>If I need time ordered</p>
+<pre><code>##   id    score time
+## 1  a 26.85878    1
+## 2  a 26.10859    1
+## 3  a 20.01426    1
+## 4  b 22.19061    2
+## 5  b 17.04311    2
+## 6  b 19.55141    2
+## 7  c 16.98356    3
+## 8  c 24.42635    3
+## 9  c 23.62059    3</code></pre>
+<p>then I use a replicate command.</p>
+<pre class="r"><code>time &lt;- rep(c(1:3), each = 3)</code></pre>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>

@@ -1,0 +1,68 @@
+---
+title: "Mutating Scale Items with NA"
+date: "2019-01-05"
+summary: "-----"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
+```
+
+Creating item totals with a data set containing NAs is surprisingly difficult. Here is the data.
+
+```{r, cache=T}
+library(tidyverse)
+
+cd <- data.frame(
+  "q1" = c(1,2,NA),
+  "q2" = c(2,2,2),
+  'q3' = c(NA, NA,2),
+  'id' = c('201', '202', '203')
+)
+
+cd
+```
+
+Mutating directly over columns with NA does not work.
+
+```{r, cache=T}
+cd %>%
+  mutate(cohesion = 
+           q1 + q2 + q3)
+```
+
+Filtering removes the data we are interested in.
+
+```{r, cache=T}
+cd %>%
+  filter(!is.na(q1) == T && !is.na(q2) == T && !is.na(q3) == T)
+```
+
+We cannot use `rowMeans` in combination with `mutate` because the two are not compatible. The code below is not evaluated, but if you run it it does not work.
+
+```{r, eval = F, cache=T}
+
+cd %>%
+  mutate(cohesion =
+           rowMeans(q1, q2, q3, na.rm = T))
+```
+
+Using the `rowwise` command within a pipe gets us close
+
+```{r, cache=T}
+cd %>%
+  rowwise() %>%
+  mutate(mean = mean(q1, q2, q3, na.rm = T))
+```
+
+but the mean value is not calculated correctly. We need to include `c()` to vectorize the items.
+
+```{r, cache=T}
+cd %>%
+  rowwise() %>%
+  mutate(mean = mean(c(q1, q2, q3), na.rm = T))
+```
+
+Finally the right answer. Use `rowwise` in combination with a vectorized `mutate`.
+
+Bo$^2$m =)

@@ -1,0 +1,144 @@
+---
+title: "First Web Scraping"
+date: '2020-03-20'
+summary: "-----"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F, message = F, cache = T)
+# https://practicewebscrapingsite.wordpress.com/
+```
+
+Dipping my feet into the world of websraping using `rvest`. The first few examples are pulled from [Alex Bradley's and Richard James' 2019 article](https://journals.sagepub.com/doi/abs/10.1177/2515245919859535).
+
+# Exercise 1 - From Article
+
+Scrape a single page from the article's practice website. There are three things I want to pull from the page:
+
+* header
+
+* image
+
+* text.
+
+Then, put that information into a single data set.
+
+```{r}
+library(rvest)
+
+page_parse <- read_html("https://practicewebscrapingsite.wordpress.com/example-1/")
+
+headers <- html_nodes(page_parse, '.Title') %>%
+                html_text()
+
+images <- html_nodes(page_parse, 'img') %>%
+                html_attr('src')
+images <- images[1:3]
+
+text <- html_nodes(page_parse, '.Content') %>%
+                html_text()
+
+ex1_df <- data.frame(
+  'id' = c(1:3),
+  'headers' = c(headers),
+  'image_links' = c(images),
+  'text' = c(text)
+)
+
+ex1_df
+```
+
+
+# Example 2 - From Article
+
+Next, navigate to several different pages and scrape relevant information. First, compile all of the relevant links. Then, navigate to each page using one of the links and pull...
+
+* header
+
+* text
+
+* author
+
+Get links
+
+```{r}
+library(rvest)
+
+parse_page_ex2 <- read_html('https://practicewebscrapingsite.wordpress.com/example-2/')
+links <- html_nodes(parse_page_ex2, '.Links a') %>% html_attr("href")
+```
+
+Initialize storage vectors
+
+```{r}
+heads <- c()
+txt <- c()
+authors <- c()
+```
+
+For each link, go there and pull out the header, text, and authors
+
+```{r}
+
+for (i in links){
+  Sys.sleep(2)
+  
+  page_i <- read_html(i)
+  
+  head <- html_node(page_i, '.entry-title') %>% html_text()
+  tx <- html_node(page_i, '.Content , em') %>% html_text()
+  author <- html_node(page_i, '.Author em') %>% html_text()
+  
+  heads <- c(heads, head)
+  txt <- c(txt, tx)
+  authors <- c(authors, author)
+  
+}
+```
+
+Data frame
+
+```{r}
+df_ex2 <- data.frame(
+  'id' = c(1:length(heads)),
+  'page' = c(links),
+  'headers' = c(heads),
+  'text' = c(txt),
+  'authors' = c(authors)
+)
+
+head(df_ex2)
+```
+
+# Example 3 - Scrape My Website
+
+What if I want to scrape the computational notes on my own website? I need a for-loop to iterate over each page, and I'd like to end up with a data set containing the following for each page:
+
+* title
+
+* the text content.
+
+My website gets tripped up when it tries to scrape itself while rendering. So, I'll post this example on github. Here is the [link](https://cdishop.github.io/Cdishop.github.io.own_scrape/). 
+
+
+# Example 4 - Scrape IMDB
+
+In the prior examples, I scraped text. What if I want to scrape a movie rating from IMDB?
+
+```{r}
+# scrape the score for 'there will be blood'
+movie_page <- read_html("https://www.imdb.com/title/tt0469494/?ref_=fn_al_tt_1")
+review <- html_nodes(movie_page, "strong span") %>%
+          html_text() %>%
+          as.numeric()
+
+review
+
+```
+
+It would be great if I could create a vector of movie titles and then enter a command to impute a single title into the "search" menu on IMDB, but doing so is not straight forward in `R`. `RSelenium` is an option but I wasn't able to figure it out. Here's a [link that uses it](http://zevross.com/blog/2015/05/19/scrape-website-data-with-the-new-r-package-rvest/).
+
+Bo$^2$m =)
+
+
+

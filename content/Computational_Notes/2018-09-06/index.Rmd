@@ -1,0 +1,120 @@
+---
+title: "More on Column Names as Parameters"
+date: "2018-09-06"
+summary: "-----"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F, message = F)
+```
+
+```{r, echo = F}
+library(tidyverse)
+```
+
+
+Use `quo` or `enquo` when you want to include column names as parameters in a function. For example, a function like the following would not work:
+
+```{r, eval = F}
+
+bad_function <- function(data, col_name){
+  
+  newdf <- data %>%
+    mutate('adjusted_column' = col_name + 1)
+  
+  return(newdf)
+  
+}
+
+bad_function(df, column_i_care_about)
+
+```
+
+\noindent because `column_i_care_about` isn't specified in a form that `mutate` can work with.
+
+# Examples
+
+The data are contained in `df1`.
+
+```{r}
+df1 <- data.frame(
+  a = c(1,2,NA),
+  b = c(NA,3,4)
+)
+
+df1
+
+```
+
+\noindent The function: take the column specified by the parameter and add one to every value. Then return the new data frame.
+
+```{r}
+
+adder <- function(col_use){
+  
+  newdf <- df1 %>%
+    mutate('adder' = 
+             (!!col_use) + 1)  # correct form here using !!
+    
+  return(newdf)
+  
+}
+
+adder(quo(a))                 # correct form here using quo
+```
+
+\noindent A more complicated function by incorporating `is.na`.
+
+```{r}
+
+na_tagger <- function(col_use){
+  
+  newdf <- df1 %>%
+    mutate('na_tag' = 
+             ifelse(is.na((!!col_use)) == T, 1, 0))
+  
+  return(newdf)
+}
+
+na_tagger(quo(a))
+
+```
+
+In the examples above I used `quo` interactively. You get the same result by instead using `enquo` within the function.
+
+```{r}
+
+adder2 <- function(col_use){
+  
+  col_use <- enquo(col_use)
+  
+  newdf <- df1 %>%
+    mutate('adder' = 
+             (!!col_use) + 1)
+  
+  return(newdf)
+}
+
+adder2(a)
+
+```
+
+# One More Note
+
+Sometimes I also need to specify the data set and column within a `dplyr` command and then use the parameter to select a specific row. The following format seems to work well: `data[['col_name']][row]`. Here is a function that is inefficient but demonstrates the point well:
+
+```{r, eval = F}
+
+selector2 <- function(x, y){
+  
+  new <- df1 %>%
+    filter(robby == df1[['robby']][x]) %>%
+    filter(ruddy == df1[['ruddy']][y])
+  
+  return(new)
+}
+
+
+```
+
+Bo$^2$m =)

@@ -1,0 +1,141 @@
+---
+title: "Independence Exercises"
+Date: "2020-04-02"
+summary: "-----"
+---
+
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+
+
+<p>Some of my favorite, simple examples demonstrating how to evaluate whether two events are independent using Probability Theory.</p>
+<ol style="list-style-type: decimal">
+<li><p>Example 1 - Product Rule</p></li>
+<li><p>Example 2 - Conditionals &amp; Intersection</p></li>
+<li><p>Example 3 - Conditionals</p></li>
+<li><p>Example 4 - Markov Chain</p></li>
+</ol>
+<div id="example-1---product-rule" class="section level1">
+<h1>Example 1 - Product Rule</h1>
+<p>If two events are independent, then the product rule states that their intersection should equal the product of each independent probability.</p>
+<ul>
+<li><code>p(a &amp; b) = p(a) * p(b)</code></li>
+</ul>
+<p>The World Values Survey is an ongoing worldwide survey that polls the world population about perceptions of life, work, family, politics, etc. The most recent phase of the survey that polled 77,882 people from 57 countries estimates that 36.2% of the world’s population agrees with the statement “Men should have more right to a job than women.” The survey also estimates that 13.8% of people have a university degree or higher, and that 3.5% of people fit both criteria.</p>
+<p>Does agreeing depend on level of degree? If <strong>a</strong> = “someone agrees with the statment” and <strong>b</strong> = “has a university degree or higher,” does <strong>a</strong> depend on <strong>b</strong>?</p>
+<ul>
+<li><p><code>p(agree) = 0.362</code></p></li>
+<li><p><code>p(univ degree) = 0.138</code></p></li>
+<li><p><code>p(agree &amp; univ degree) = 0.036</code></p></li>
+</ul>
+<p>If they are independent, then the product rule should hold.</p>
+<ul>
+<li><code>p(a &amp; b) = p(a) * p(b)</code></li>
+</ul>
+<p>Evaluate:</p>
+<ul>
+<li><code>0.036 = 0.362 * 0.138</code> (which does not hold)</li>
+</ul>
+<p>Therefore, the two are dependent.</p>
+<p>This example comes from a <a href="link">coursera class</a>.</p>
+</div>
+<div id="example-2---conditionals-intersection" class="section level1">
+<h1>Example 2 - Conditionals &amp; Intersection</h1>
+<p>If two events are independent, then the probability of one conditioning on the other should equal the probability of the original alone.</p>
+<ul>
+<li><p><code>p(b | a) = p(b &amp; a) / p(a)</code></p></li>
+<li><p>If <strong>a</strong> and <strong>b</strong> are independent, then <code>p(b | a) = p(b)</code>.</p></li>
+</ul>
+<p>Two players are each going to role a different die. Player 1’s die is six-sided and contains the numbers 5, 5, 5, 1, 1, 1, whereas player 2’s die contains the numbers 4, 4, 4, 4, 0, 0.</p>
+<p>Take <strong>a</strong> to be the event that the player 1’s die is 5, and take <strong>b</strong> to be the event that the sum of the dice is equal to 1.</p>
+<ul>
+<li><strong>a</strong> = player 1 rolls a 5</li>
+<li><strong>b</strong> = sum of both dice is 1</li>
+</ul>
+<p>Is <strong>b</strong> dependent on <strong>a</strong>?</p>
+<p><img src="https://github.com/Cdishop/website/raw/master/content/Computational_Notes/independence_images/calc_a.png" width="500" /></p>
+<p>We can also run the same procedure but with a different event for <strong>b</strong>.</p>
+<p><img src="https://github.com/Cdishop/website/raw/master/content/Computational_Notes/independence_images/calc_b.png" width="500" /></p>
+</div>
+<div id="example-3---conditionals" class="section level1">
+<h1>Example 3 - Conditionals</h1>
+<p>If two events are independent, then taking <strong>a</strong> and conditioning on other events (e.g., <strong>b</strong>, <strong>c</strong>, <strong>d</strong>, etc.) should not change the observed probability.</p>
+<p>In 2013, a research group interviewed a random sample of 500 NC residents asking them whether they think widespread gun ownership protects law abiding citizens from crime, or makes society more dangerous.</p>
+<ul>
+<li>58% of all respondents said it protects citizens</li>
+<li>67% of White respondents,</li>
+<li>28% of Black respondents,</li>
+<li>and 64% of Hispanic respondents shared this view.</li>
+</ul>
+<p>Are opinion on gun ownership and ethnicity dependent?</p>
+<ul>
+<li><p><code>p(agree) = 58%</code></p></li>
+<li><p><code>p(agree | white) = 67%</code></p></li>
+<li><p><code>p(agree | black) = 28%</code></p></li>
+<li><p><code>p(agree | hispanic) = 64%</code></p></li>
+</ul>
+<p>Notice that conditioning on the other variables changes the probability, so opinion and ethnicity are probably dependent.</p>
+<p>This example comes from a <a href="link">coursera class</a>.</p>
+</div>
+<div id="example-4---markov-chains" class="section level1">
+<h1>Example 4 - Markov Chains</h1>
+<p>If two events are independent, then the probability of observing one after the other should be <code>p(a) * p(a)</code>, similar to the notion of a coin flip such that the probability of observing two heads in a row is 0.5X0.5 = 0.25. If you calculate a transition matrix and observe probabilities that differ from that original number, then the sequence is probably dependent.</p>
+<p>Andrei Markov applied Markov chains to the poem <em>Eugene Onegin</em> by Alexander Pushkin. In the first 20,000 letters of the poem, he counted the number of vowels (8,638) and consonants (11,362).</p>
+<ul>
+<li><p><code>p(vowel) = 0.432</code></p></li>
+<li><p><code>p(consonant) = 0.568</code></p></li>
+</ul>
+<p>Then, he counted the transitions from vowel to consonant or consonant to vowel. For every vowel, the number of times the next letter was a vowel was 1,104 and the number of times the next letter was a consonant was 7,534. For every consonant, the number of times the next letter was a consonant was 3,827 and the number of times the next letter was a vowel was 7,535.</p>
+<ul>
+<li><p><code>p(vowel to vowel) = 1104 / 8638 = 0.175</code></p></li>
+<li><p><code>p(vowel to consonant) = 7534 / 8638 = 0.825</code></p></li>
+<li><p><code>p(consonant to vowel) = 7535 / 11362 = 0.526</code></p></li>
+<li><p><code>p(consonant to consonant) = 3827 / 11362 = 0.474</code></p></li>
+</ul>
+<p>So the transition matrix is…</p>
+<pre class="r"><code>transition_matrix &lt;- matrix(c(&#39;&#39;, &#39;v&#39;, &#39;c&#39;,
+                              &#39;v&#39;, &#39;0.175&#39;, &#39;0.825&#39;,
+                              &#39;c&#39;, &#39;0.526&#39;, &#39;0.474&#39;), 3, 3)
+
+transition_matrix %&gt;%
+  kable() %&gt;%
+  kable_styling(bootstrap_options = &quot;striped&quot;, full_width = F)</code></pre>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<tbody>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+v
+</td>
+<td style="text-align:left;">
+c
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+v
+</td>
+<td style="text-align:left;">
+0.175
+</td>
+<td style="text-align:left;">
+0.526
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+c
+</td>
+<td style="text-align:left;">
+0.825
+</td>
+<td style="text-align:left;">
+0.474
+</td>
+</tr>
+</tbody>
+</table>
+<p>If the letters were independent, then the probability of witnessing a vowel follow a vowel would be <code>p(vowel) * p(vowel)</code>, or <code>0.432 * 0.423</code> = 0.186624. However, the observed transition probability is 0.175, so the sequence is dependent.</p>
+<p>Note that you have to assume that the counts of vowels and consonants reflect their true propabilities (which follows from the law of large numbers). Markov showed that the law of large numbers applied to even dependent sequences.</p>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>
+</div>

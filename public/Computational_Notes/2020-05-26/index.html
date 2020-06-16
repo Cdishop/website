@@ -1,0 +1,1932 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="-----">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/computational_notes/2020-05-26/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#06805E">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/tomorrow.min.css" crossorigin="anonymous" title="hl-light">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/tomorrow.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+      
+    
+
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400i%7CKarla:400,400i,700,700i%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-99209585-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'UA-99209585-1', {});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hua7ddb50eead73fc737c5c3187aff8cf9_17132_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hua7ddb50eead73fc737c5c3187aff8cf9_17132_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="/computational_notes/2020-05-26/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@apreshill">
+  <meta property="twitter:creator" content="@apreshill">
+  
+  <meta property="og:site_name" content="Christopher R. Dishop">
+  <meta property="og:url" content="/computational_notes/2020-05-26/">
+  <meta property="og:title" content="Bivariate Latent Dual Change Model | Christopher R. Dishop">
+  <meta property="og:description" content="-----"><meta property="og:image" content="/img/pom-card.png">
+  <meta property="twitter:image" content="/img/pom-card.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2020-05-26T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2020-05-26T00:00:00&#43;00:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Bivariate Latent Dual Change Model | Christopher R. Dishop</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">Christopher R. Dishop</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
+        
+        
+        
+          
+            
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="https://raw.githubusercontent.com/Cdishop/website/master/misc/CV.pdf" target="_blank" rel="noopener"><span>CV</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/computational_notes"><span>Computation</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/r_resources"><span>R Resources</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/rec_reading"><span>Recommended</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+
+        
+
+        
+
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Bivariate Latent Dual Change Model</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    May 26, 2020
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+
+<p>My last post demonstrated a dual change model for one variable, now I want to demonstrate a bivariate dual change model. A SEM path diagram for a bivariate dual change model is below, taken from <a href="https://www-annualreviews-org.proxy2.cl.msu.edu/doi/pdf/10.1146%2Fannurev-orgpsych-041015-062553">Wang, Zhou, and Zhang (2016)</a></p>
+<p><img src="https://github.com/Cdishop/website/raw/master/content/Computational_Notes/dual_change_photos/bdc.png" />
+(If you do not have access to that link you can view a similar path diagram in <a href="https://journals.sagepub.com/doi/pdf/10.1177/0149206313503012">Jones, King, Gilrane, McCausland, Cortina, &amp; Grimm, 2016</a>)</p>
+<p>Essentially, we have two dual change processes and a coupling parameter from the latent true score on one variable to the latent change score on the other.</p>
+<div id="the-dgp" class="section level1">
+<h1>The DGP</h1>
+<p><span class="math display">\[\begin{equation}
+y_t =  constant_y + (1 + proportion_y)*y_{t-1} + coupling_{xy}*x_{t-1} + e
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(constant_y\)</span> is the change factor (or latent slope) on <span class="math inline">\(y\)</span>, <span class="math inline">\(proportion_y\)</span> is the proportion change factor, and <span class="math inline">\(coupling_xy\)</span> is the coupling parameter relating <span class="math inline">\(x\)</span> to <span class="math inline">\(y\)</span>. The DGP for <span class="math inline">\(x\)</span> is</p>
+<p><span class="math display">\[\begin{equation}
+x_t =  constant_x + (1 + proportion_x)*x_{t-1} + coupling_{yx}*y_{t-1} + e
+\end{equation}\]</span></p>
+<p>where the terms are similar but now applied to values of <span class="math inline">\(x\)</span>. The true values used in the DGP are:</p>
+<p><span class="math display">\[\begin{align}
+y_t &amp;=  0.5 + (1 + -0.32)y_{t-1} + 0.4x_{t-1} + e \\
+x_t &amp;=  0.5 + (1 + 0.22)x_{t-1} - 0.4y_{t-1} + e
+\end{align}\]</span></p>
+<p>with initial values for both <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> sampled from <span class="math inline">\(N\)</span> ~ (10, 1).</p>
+<pre class="r"><code>people &lt;- 700
+time &lt;- 6
+x_cause_y &lt;- 0.4
+y_cause_x &lt;- -0.4
+
+const_x &lt;- 0.5
+const_y &lt;- 0.5
+
+prop_x &lt;- 0.22
+prop_y &lt;- -0.32
+
+df_mat &lt;- matrix(, ncol = 4, nrow = people*time)
+count &lt;- 0
+
+for(i in 1:people){
+  
+  unob_het_y &lt;- rnorm(1, 0, 3)
+  unob_het_x &lt;- rnorm(1, 0, 3)
+  
+  for(j in 1:time){
+    count &lt;- count + 1
+    
+    if(j == 1){
+      df_mat[count, 1] &lt;- i
+      df_mat[count, 2] &lt;- j
+      df_mat[count, 3] &lt;- rnorm(1, 10, 1)
+      df_mat[count, 4] &lt;- rnorm(1, 10, 1)
+    }else{
+      
+      df_mat[count, 1] &lt;- i
+      df_mat[count, 2] &lt;- j
+      df_mat[count, 3] &lt;- const_x + (1+prop_x)*df_mat[count - 1, 3] + y_cause_x*df_mat[count - 1, 4] + unob_het_x + rnorm(1,0,1)
+      df_mat[count, 4] &lt;- const_y + (1+prop_y)*df_mat[count - 1, 4] + x_cause_y*df_mat[count - 1, 3] + unob_het_y + rnorm(1,0,1)
+    }
+    
+  }
+  
+  
+}
+
+library(tidyverse)
+library(ggplot2)
+library(reshape2)
+
+df &lt;- data.frame(df_mat)
+names(df) &lt;- c(&#39;id&#39;, &#39;time&#39;, &#39;x&#39;, &#39;y&#39;)</code></pre>
+<p>Values of <span class="math inline">\(y\)</span> over time.</p>
+<pre class="r"><code>random_nums &lt;- sample(c(1:700), 6)
+df_sample &lt;- df %&gt;%
+  filter(id %in% random_nums)
+
+ggplot(df, aes(x = time, y = y, group = id)) + 
+  geom_point(color = &#39;grey85&#39;) + 
+  geom_line(color = &#39;grey85&#39;) + 
+  geom_point(data = df_sample, aes(x = time, y = y, group = id)) + 
+  geom_line(data = df_sample, aes(x = time, y = y, group = id))</code></pre>
+<p><img src="/Computational_Notes/2020-05-26/index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>Values of <span class="math inline">\(x\)</span> over time.</p>
+<pre class="r"><code>plot_single_response &lt;- function(y_axis){
+  
+  plot_it &lt;- ggplot(df, aes(x = time, y = !!y_axis, group = id)) + 
+    geom_point(color = &#39;grey85&#39;) + 
+    geom_line(color = &#39;grey85&#39;) + 
+    geom_point(data = df_sample, aes(x = time, y = !!y_axis, group = id)) + 
+    geom_line(data = df_sample, aes(x = time, y = !!y_axis, group = id))
+  
+  return(plot_it)
+}
+
+plot_single_response(quo(x))</code></pre>
+<p><img src="/Computational_Notes/2020-05-26/index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Three randomly selected individuals with <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> plotted simultaneously.</p>
+<pre class="r"><code>three_cases &lt;- df %&gt;%
+  filter(id == 4 | id == 500 | id == 322) %&gt;%
+  gather(x, y, key = &#39;variable&#39;, value = &#39;response&#39;)
+
+ggplot(three_cases, aes(x = time, y = response, color = variable)) + 
+  geom_point() + 
+  geom_line() + 
+  facet_wrap(~id)</code></pre>
+<p><img src="/Computational_Notes/2020-05-26/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="dual-change-model-on-y" class="section level1">
+<h1>Dual Change Model on Y</h1>
+<pre class="r"><code>df_wide_y &lt;- df %&gt;%
+  select(id, time, y) %&gt;%
+  reshape(idvar = &#39;id&#39;, timevar = &#39;time&#39;, direction = &#39;wide&#39;)
+
+library(lavaan)
+
+dual_change_y_string &lt;- &#39;
+
+# latent true scores over y
+ly1 =~ 1*y.1
+ly2 =~ 1*y.2
+ly3 =~ 1*y.3
+ly4 =~ 1*y.4
+ly5 =~ 1*y.5
+ly6 =~ 1*y.6
+
+# latent change scores over the true scores (but not the first time point)
+cy2 =~ 1*ly2
+cy3 =~ 1*ly3
+cy4 =~ 1*ly4
+cy5 =~ 1*ly5
+cy6 =~ 1*ly6
+
+# autoregressions of latent true scores over y constrained to 1
+ly2 ~ 1*ly1
+ly3 ~ 1*ly2
+ly4 ~ 1*ly3
+ly5 ~ 1*ly4
+ly6 ~ 1*ly5
+
+# latent intercept over first latent true score on y
+l_intercept =~ 1*ly1
+
+# change component 1 of the dual change model
+
+# latent slope (or change factor) over the change scores
+l_slope =~ 1*cy2 + 1*cy3 + 1*cy4 + 1*cy5 + 1*cy6
+
+# estimate means and variances of those intercept and slope terms
+l_intercept ~~ l_intercept
+l_slope ~~ l_slope
+l_slope ~ 1
+l_intercept ~ 1
+
+# and a covariance between them
+l_intercept ~~ l_slope
+
+# change component 2 of the dual change model
+
+# proportion change from true scores over y to the change factors
+cy2 ~ prop*ly1
+cy3 ~ prop*ly2
+cy4 ~ prop*ly3
+cy5 ~ prop*ly4
+cy6 ~ prop*ly5
+
+# means and variances of latent factors set to zero
+ly1 ~ 0
+ly2 ~ 0
+ly3 ~ 0
+ly4 ~ 0
+ly5 ~ 0
+ly6 ~ 0
+
+cy2 ~ 0
+cy3 ~ 0
+cy4 ~ 0
+cy5 ~ 0
+cy6 ~ 0
+
+ly1 ~~ 0*ly1
+ly2 ~~ 0*ly2
+ly3 ~~ 0*ly3
+ly4 ~~ 0*ly4
+ly5 ~~ 0*ly5
+ly6 ~~ 0*ly6
+
+cy2 ~~ 0*cy2
+cy3 ~~ 0*cy3
+cy4 ~~ 0*cy4
+cy5 ~~ 0*cy5
+cy6 ~~ 0*cy6
+
+# means of indicators to zero
+y.1 ~ 0
+y.2 ~ 0
+y.3 ~ 0
+y.4 ~ 0
+y.5 ~ 0
+y.6 ~ 0
+
+# residual variances constrained to equality across time
+y.1 ~~ res_var*y.1
+y.2 ~~ res_var*y.2
+y.3 ~~ res_var*y.3
+y.4 ~~ res_var*y.4
+y.5 ~~ res_var*y.5
+y.6 ~~ res_var*y.6
+
+# do not allow change factors to correlate
+cy2 ~~ 0*cy3 + 0*cy4 + 0*cy5 + 0*cy6
+cy3 ~~ 0*cy4 + 0*cy5 + 0*cy6
+cy4 ~~ 0*cy5 + 0*cy6
+cy5 ~~ 0*cy6
+
+&#39;
+
+dc_y_model &lt;- sem(dual_change_y_string, data = df_wide_y)
+summary(dc_y_model, fit.measures = T)</code></pre>
+<pre><code>## lavaan 0.6-6 ended normally after 57 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                         16
+##   Number of equality constraints                     9
+##                                                       
+##   Number of observations                           700
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                              6389.847
+##   Degrees of freedom                                20
+##   P-value (Chi-square)                           0.000
+## 
+## Model Test Baseline Model:
+## 
+##   Test statistic                              8286.339
+##   Degrees of freedom                                15
+##   P-value                                        0.000
+## 
+## User Model versus Baseline Model:
+## 
+##   Comparative Fit Index (CFI)                    0.230
+##   Tucker-Lewis Index (TLI)                       0.422
+## 
+## Loglikelihood and Information Criteria:
+## 
+##   Loglikelihood user model (H0)             -11708.642
+##   Loglikelihood unrestricted model (H1)      -8513.718
+##                                                       
+##   Akaike (AIC)                               23431.283
+##   Bayesian (BIC)                             23463.141
+##   Sample-size adjusted Bayesian (BIC)        23440.914
+## 
+## Root Mean Square Error of Approximation:
+## 
+##   RMSEA                                          0.675
+##   90 Percent confidence interval - lower         0.661
+##   90 Percent confidence interval - upper         0.688
+##   P-value RMSEA &lt;= 0.05                          0.000
+## 
+## Standardized Root Mean Square Residual:
+## 
+##   SRMR                                           2.363
+## 
+## Parameter Estimates:
+## 
+##   Standard errors                             Standard
+##   Information                                 Expected
+##   Information saturated (h1) model          Structured
+## 
+## Latent Variables:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##   ly1 =~                                              
+##     y.1               1.000                           
+##   ly2 =~                                              
+##     y.2               1.000                           
+##   ly3 =~                                              
+##     y.3               1.000                           
+##   ly4 =~                                              
+##     y.4               1.000                           
+##   ly5 =~                                              
+##     y.5               1.000                           
+##   ly6 =~                                              
+##     y.6               1.000                           
+##   cy2 =~                                              
+##     ly2               1.000                           
+##   cy3 =~                                              
+##     ly3               1.000                           
+##   cy4 =~                                              
+##     ly4               1.000                           
+##   cy5 =~                                              
+##     ly5               1.000                           
+##   cy6 =~                                              
+##     ly6               1.000                           
+##   l_intercept =~                                      
+##     ly1               1.000                           
+##   l_slope =~                                          
+##     cy2               1.000                           
+##     cy3               1.000                           
+##     cy4               1.000                           
+##     cy5               1.000                           
+##     cy6               1.000                           
+## 
+## Regressions:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##   ly2 ~                                               
+##     ly1               1.000                           
+##   ly3 ~                                               
+##     ly2               1.000                           
+##   ly4 ~                                               
+##     ly3               1.000                           
+##   ly5 ~                                               
+##     ly4               1.000                           
+##   ly6 ~                                               
+##     ly5               1.000                           
+##   cy2 ~                                               
+##     ly1     (prop)    0.250    0.019   13.327    0.000
+##   cy3 ~                                               
+##     ly2     (prop)    0.250    0.019   13.327    0.000
+##   cy4 ~                                               
+##     ly3     (prop)    0.250    0.019   13.327    0.000
+##   cy5 ~                                               
+##     ly4     (prop)    0.250    0.019   13.327    0.000
+##   cy6 ~                                               
+##     ly5     (prop)    0.250    0.019   13.327    0.000
+## 
+## Covariances:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##   l_intercept ~~                                      
+##     l_slope          -1.394    0.223   -6.256    0.000
+##  .cy2 ~~                                              
+##    .cy3               0.000                           
+##    .cy4               0.000                           
+##    .cy5               0.000                           
+##    .cy6               0.000                           
+##  .cy3 ~~                                              
+##    .cy4               0.000                           
+##    .cy5               0.000                           
+##    .cy6               0.000                           
+##  .cy4 ~~                                              
+##    .cy5               0.000                           
+##    .cy6               0.000                           
+##  .cy5 ~~                                              
+##    .cy6               0.000                           
+## 
+## Intercepts:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##     l_slope          -3.285    0.213  -15.445    0.000
+##     l_intercept      11.707    0.114  102.723    0.000
+##    .ly1               0.000                           
+##    .ly2               0.000                           
+##    .ly3               0.000                           
+##    .ly4               0.000                           
+##    .ly5               0.000                           
+##    .ly6               0.000                           
+##    .cy2               0.000                           
+##    .cy3               0.000                           
+##    .cy4               0.000                           
+##    .cy5               0.000                           
+##    .cy6               0.000                           
+##    .y.1               0.000                           
+##    .y.2               0.000                           
+##    .y.3               0.000                           
+##    .y.4               0.000                           
+##    .y.5               0.000                           
+##    .y.6               0.000                           
+## 
+## Variances:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##     l_ntrcp           5.916    0.485   12.193    0.000
+##     l_slope           2.273    0.201   11.307    0.000
+##    .ly1               0.000                           
+##    .ly2               0.000                           
+##    .ly3               0.000                           
+##    .ly4               0.000                           
+##    .ly5               0.000                           
+##    .ly6               0.000                           
+##    .cy2               0.000                           
+##    .cy3               0.000                           
+##    .cy4               0.000                           
+##    .cy5               0.000                           
+##    .cy6               0.000                           
+##    .y.1     (rs_v)    7.123    0.190   37.417    0.000
+##    .y.2     (rs_v)    7.123    0.190   37.417    0.000
+##    .y.3     (rs_v)    7.123    0.190   37.417    0.000
+##    .y.4     (rs_v)    7.123    0.190   37.417    0.000
+##    .y.5     (rs_v)    7.123    0.190   37.417    0.000
+##    .y.6     (rs_v)    7.123    0.190   37.417    0.000</code></pre>
+<p>Code to change the <span class="math inline">\(y\)</span>’s in the string to <span class="math inline">\(x\)</span>’s without manually deleting and inserting <span class="math inline">\(x\)</span> into the string above. All you have to do is paste the string into a .txt document and save the file as “y_file.txt”</p>
+<pre class="r"><code>library(readr)
+
+mystring &lt;- read_file(&#39;y_file.txt&#39;)
+new_data &lt;- gsub(&#39;y&#39;, &#39;x&#39;, mystring)
+# write_file(new_data, path = &#39;x_file.txt&#39;) # not executed but will work</code></pre>
+</div>
+<div id="dual-change-model-on-x" class="section level1">
+<h1>Dual Change Model on X</h1>
+<pre class="r"><code>df_wide_x &lt;- df %&gt;%
+  select(id, time, x) %&gt;%
+  reshape(idvar = &#39;id&#39;, timevar = &#39;time&#39;, direction = &#39;wide&#39;)
+
+
+library(lavaan)
+
+dual_change_x_string &lt;- &#39;
+
+# latent true scores over x
+lx1 =~ 1*x.1
+lx2 =~ 1*x.2
+lx3 =~ 1*x.3
+lx4 =~ 1*x.4
+lx5 =~ 1*x.5
+lx6 =~ 1*x.6
+
+# latent change scores over the true scores (but not the first time point)
+cx2 =~ 1*lx2
+cx3 =~ 1*lx3
+cx4 =~ 1*lx4
+cx5 =~ 1*lx5
+cx6 =~ 1*lx6
+
+# autoregressions of latent true scores over x constrained to 1
+lx2 ~ 1*lx1
+lx3 ~ 1*lx2
+lx4 ~ 1*lx3
+lx5 ~ 1*lx4
+lx6 ~ 1*lx5
+
+# latent intercept over first latent true score on x
+l_intercept =~ 1*lx1
+
+# change component 1 of the dual change model
+
+# latent slope (or change factor) over the change scores
+l_slope =~ 1*cx2 + 1*cx3 + 1*cx4 + 1*cx5 + 1*cx6
+
+# estimate means and variances of those intercept and slope terms
+l_intercept ~~ l_intercept
+l_slope ~~ l_slope
+l_slope ~ 1
+l_intercept ~ 1
+
+# and a covariance between them
+l_intercept ~~ l_slope
+
+# change component 2 of the dual change model
+
+# proportion change from true scores over x to the change factors
+cx2 ~ prop*lx1
+cx3 ~ prop*lx2
+cx4 ~ prop*lx3
+cx5 ~ prop*lx4
+cx6 ~ prop*lx5
+
+# means and variances of latent factors set to zero
+lx1 ~ 0
+lx2 ~ 0
+lx3 ~ 0
+lx4 ~ 0
+lx5 ~ 0
+lx6 ~ 0
+
+cx2 ~ 0
+cx3 ~ 0
+cx4 ~ 0
+cx5 ~ 0
+cx6 ~ 0
+
+lx1 ~~ 0*lx1
+lx2 ~~ 0*lx2
+lx3 ~~ 0*lx3
+lx4 ~~ 0*lx4
+lx5 ~~ 0*lx5
+lx6 ~~ 0*lx6
+
+cx2 ~~ 0*cx2
+cx3 ~~ 0*cx3
+cx4 ~~ 0*cx4
+cx5 ~~ 0*cx5
+cx6 ~~ 0*cx6
+
+# means of indicators to zero
+x.1 ~ 0
+x.2 ~ 0
+x.3 ~ 0
+x.4 ~ 0
+x.5 ~ 0
+x.6 ~ 0
+
+# residual variances constrained to equalitx across time
+x.1 ~~ res_var*x.1
+x.2 ~~ res_var*x.2
+x.3 ~~ res_var*x.3
+x.4 ~~ res_var*x.4
+x.5 ~~ res_var*x.5
+x.6 ~~ res_var*x.6
+
+# do not allow change factors to correlate
+cx2 ~~ 0*cx3 + 0*cx4 + 0*cx5 + 0*cx6
+cx3 ~~ 0*cx4 + 0*cx5 + 0*cx6
+cx4 ~~ 0*cx5 + 0*cx6
+cx5 ~~ 0*cx6
+
+&#39;
+
+dc_x_model &lt;- sem(dual_change_x_string, data = df_wide_x)
+summary(dc_x_model, fit.measures = T)</code></pre>
+<pre><code>## lavaan 0.6-6 ended normally after 64 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                         16
+##   Number of equality constraints                     9
+##                                                       
+##   Number of observations                           700
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                              4424.279
+##   Degrees of freedom                                20
+##   P-value (Chi-square)                           0.000
+## 
+## Model Test Baseline Model:
+## 
+##   Test statistic                             11743.090
+##   Degrees of freedom                                15
+##   P-value                                        0.000
+## 
+## User Model versus Baseline Model:
+## 
+##   Comparative Fit Index (CFI)                    0.624
+##   Tucker-Lewis Index (TLI)                       0.718
+## 
+## Loglikelihood and Information Criteria:
+## 
+##   Loglikelihood user model (H0)             -10266.470
+##   Loglikelihood unrestricted model (H1)      -8054.331
+##                                                       
+##   Akaike (AIC)                               20546.941
+##   Bayesian (BIC)                             20578.798
+##   Sample-size adjusted Bayesian (BIC)        20556.572
+## 
+## Root Mean Square Error of Approximation:
+## 
+##   RMSEA                                          0.561
+##   90 Percent confidence interval - lower         0.547
+##   90 Percent confidence interval - upper         0.575
+##   P-value RMSEA &lt;= 0.05                          0.000
+## 
+## Standardized Root Mean Square Residual:
+## 
+##   SRMR                                           0.901
+## 
+## Parameter Estimates:
+## 
+##   Standard errors                             Standard
+##   Information                                 Expected
+##   Information saturated (h1) model          Structured
+## 
+## Latent Variables:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##   lx1 =~                                              
+##     x.1               1.000                           
+##   lx2 =~                                              
+##     x.2               1.000                           
+##   lx3 =~                                              
+##     x.3               1.000                           
+##   lx4 =~                                              
+##     x.4               1.000                           
+##   lx5 =~                                              
+##     x.5               1.000                           
+##   lx6 =~                                              
+##     x.6               1.000                           
+##   cx2 =~                                              
+##     lx2               1.000                           
+##   cx3 =~                                              
+##     lx3               1.000                           
+##   cx4 =~                                              
+##     lx4               1.000                           
+##   cx5 =~                                              
+##     lx5               1.000                           
+##   cx6 =~                                              
+##     lx6               1.000                           
+##   l_intercept =~                                      
+##     lx1               1.000                           
+##   l_slope =~                                          
+##     cx2               1.000                           
+##     cx3               1.000                           
+##     cx4               1.000                           
+##     cx5               1.000                           
+##     cx6               1.000                           
+## 
+## Regressions:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##   lx2 ~                                               
+##     lx1               1.000                           
+##   lx3 ~                                               
+##     lx2               1.000                           
+##   lx4 ~                                               
+##     lx3               1.000                           
+##   lx5 ~                                               
+##     lx4               1.000                           
+##   lx6 ~                                               
+##     lx5               1.000                           
+##   cx2 ~                                               
+##     lx1     (prop)    0.157    0.004   35.120    0.000
+##   cx3 ~                                               
+##     lx2     (prop)    0.157    0.004   35.120    0.000
+##   cx4 ~                                               
+##     lx3     (prop)    0.157    0.004   35.120    0.000
+##   cx5 ~                                               
+##     lx4     (prop)    0.157    0.004   35.120    0.000
+##   cx6 ~                                               
+##     lx5     (prop)    0.157    0.004   35.120    0.000
+## 
+## Covariances:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##   l_intercept ~~                                      
+##     l_slope          -0.838    0.257   -3.259    0.001
+##  .cx2 ~~                                              
+##    .cx3               0.000                           
+##    .cx4               0.000                           
+##    .cx5               0.000                           
+##    .cx6               0.000                           
+##  .cx3 ~~                                              
+##    .cx4               0.000                           
+##    .cx5               0.000                           
+##    .cx6               0.000                           
+##  .cx4 ~~                                              
+##    .cx5               0.000                           
+##    .cx6               0.000                           
+##  .cx5 ~~                                              
+##    .cx6               0.000                           
+## 
+## Intercepts:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##     l_slope          -3.550    0.122  -29.197    0.000
+##     l_intercept      10.396    0.079  131.733    0.000
+##    .lx1               0.000                           
+##    .lx2               0.000                           
+##    .lx3               0.000                           
+##    .lx4               0.000                           
+##    .lx5               0.000                           
+##    .lx6               0.000                           
+##    .cx2               0.000                           
+##    .cx3               0.000                           
+##    .cx4               0.000                           
+##    .cx5               0.000                           
+##    .cx6               0.000                           
+##    .x.1               0.000                           
+##    .x.2               0.000                           
+##    .x.3               0.000                           
+##    .x.4               0.000                           
+##    .x.5               0.000                           
+##    .x.6               0.000                           
+## 
+## Variances:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##     l_ntrcp           3.105    0.224   13.844    0.000
+##     l_slope           9.678    0.559   17.306    0.000
+##    .lx1               0.000                           
+##    .lx2               0.000                           
+##    .lx3               0.000                           
+##    .lx4               0.000                           
+##    .lx5               0.000                           
+##    .lx6               0.000                           
+##    .cx2               0.000                           
+##    .cx3               0.000                           
+##    .cx4               0.000                           
+##    .cx5               0.000                           
+##    .cx6               0.000                           
+##    .x.1     (rs_v)    2.309    0.062   37.417    0.000
+##    .x.2     (rs_v)    2.309    0.062   37.417    0.000
+##    .x.3     (rs_v)    2.309    0.062   37.417    0.000
+##    .x.4     (rs_v)    2.309    0.062   37.417    0.000
+##    .x.5     (rs_v)    2.309    0.062   37.417    0.000
+##    .x.6     (rs_v)    2.309    0.062   37.417    0.000</code></pre>
+</div>
+<div id="bivariate-dual-change-model" class="section level1">
+<h1>Bivariate Dual Change Model</h1>
+<pre class="r"><code>bi_dc_string &lt;- &#39;
+
+# DUAL CHANGE IN Y
+
+#
+
+#
+
+#
+
+# latent true scores over y
+ly1 =~ 1*y.1
+ly2 =~ 1*y.2
+ly3 =~ 1*y.3
+ly4 =~ 1*y.4
+ly5 =~ 1*y.5
+ly6 =~ 1*y.6
+
+# latent change scores over the true scores (but not the first time point)
+cy2 =~ 1*ly2
+cy3 =~ 1*ly3
+cy4 =~ 1*ly4
+cy5 =~ 1*ly5
+cy6 =~ 1*ly6
+
+# autoregressions of latent true scores over y constrained to 1
+ly2 ~ 1*ly1
+ly3 ~ 1*ly2
+ly4 ~ 1*ly3
+ly5 ~ 1*ly4
+ly6 ~ 1*ly5
+
+# latent intercept over first latent true score on y
+l_intercept =~ 1*ly1
+
+# change component 1 of the dual change model
+
+# latent slope (or change factor) over the change scores
+l_slope =~ 1*cy2 + 1*cy3 + 1*cy4 + 1*cy5 + 1*cy6
+
+# estimate means and variances of those intercept and slope terms
+l_intercept ~~ l_intercept
+l_slope ~~ l_slope
+l_slope ~ 1
+l_intercept ~ 1
+
+# and a covariance between them
+l_intercept ~~ l_slope
+
+# change component 2 of the dual change model
+
+# proportion change from true scores over y to the change factors
+cy2 ~ prop*ly1
+cy3 ~ prop*ly2
+cy4 ~ prop*ly3
+cy5 ~ prop*ly4
+cy6 ~ prop*ly5
+
+# means and variances of latent factors set to zero
+ly1 ~ 0
+ly2 ~ 0
+ly3 ~ 0
+ly4 ~ 0
+ly5 ~ 0
+ly6 ~ 0
+
+cy2 ~ 0
+cy3 ~ 0
+cy4 ~ 0
+cy5 ~ 0
+cy6 ~ 0
+
+ly1 ~~ 0*ly1
+ly2 ~~ 0*ly2
+ly3 ~~ 0*ly3
+ly4 ~~ 0*ly4
+ly5 ~~ 0*ly5
+ly6 ~~ 0*ly6
+
+cy2 ~~ 0*cy2
+cy3 ~~ 0*cy3
+cy4 ~~ 0*cy4
+cy5 ~~ 0*cy5
+cy6 ~~ 0*cy6
+
+# means of indicators to zero
+y.1 ~ 0
+y.2 ~ 0
+y.3 ~ 0
+y.4 ~ 0
+y.5 ~ 0
+y.6 ~ 0
+
+# residual variances constrained to equality across time
+y.1 ~~ res_var*y.1
+y.2 ~~ res_var*y.2
+y.3 ~~ res_var*y.3
+y.4 ~~ res_var*y.4
+y.5 ~~ res_var*y.5
+y.6 ~~ res_var*y.6
+
+# do not allow change factors to correlate
+cy2 ~~ 0*cy3 + 0*cy4 + 0*cy5 + 0*cy6
+cy3 ~~ 0*cy4 + 0*cy5 + 0*cy6
+cy4 ~~ 0*cy5 + 0*cy6
+cy5 ~~ 0*cy6
+
+
+# DUAL CHANGE IN X
+
+#
+
+#
+
+#
+
+
+
+
+
+
+# latent true scores over x
+lx1 =~ 1*x.1
+lx2 =~ 1*x.2
+lx3 =~ 1*x.3
+lx4 =~ 1*x.4
+lx5 =~ 1*x.5
+lx6 =~ 1*x.6
+
+# latent change scores over the true scores (but not the first time point)
+cx2 =~ 1*lx2
+cx3 =~ 1*lx3
+cx4 =~ 1*lx4
+cx5 =~ 1*lx5
+cx6 =~ 1*lx6
+
+# autoregressions of latent true scores over x constrained to 1
+lx2 ~ 1*lx1
+lx3 ~ 1*lx2
+lx4 ~ 1*lx3
+lx5 ~ 1*lx4
+lx6 ~ 1*lx5
+
+# latent intercept over first latent true score on x
+lx_intercept =~ 1*lx1
+
+# change component 1 of the dual change model
+
+# latent slope (or change factor) over the change scores
+lx_slope =~ 1*cx2 + 1*cx3 + 1*cx4 + 1*cx5 + 1*cx6
+
+# estimate means and variances of those intercept and slope terms
+lx_intercept ~~ lx_intercept
+lx_slope ~~ lx_slope
+lx_slope ~ 1
+lx_intercept ~ 1
+
+# and a covariance between them
+lx_intercept ~~ lx_slope
+
+# change component 2 of the dual change model
+
+# proportion change from true scores over x to the change factors
+cx2 ~ propx*lx1
+cx3 ~ propx*lx2
+cx4 ~ propx*lx3
+cx5 ~ propx*lx4
+cx6 ~ propx*lx5
+
+# means and variances of latent factors set to zero
+lx1 ~ 0
+lx2 ~ 0
+lx3 ~ 0
+lx4 ~ 0
+lx5 ~ 0
+lx6 ~ 0
+
+cx2 ~ 0
+cx3 ~ 0
+cx4 ~ 0
+cx5 ~ 0
+cx6 ~ 0
+
+lx1 ~~ 0*lx1
+lx2 ~~ 0*lx2
+lx3 ~~ 0*lx3
+lx4 ~~ 0*lx4
+lx5 ~~ 0*lx5
+lx6 ~~ 0*lx6
+
+cx2 ~~ 0*cx2
+cx3 ~~ 0*cx3
+cx4 ~~ 0*cx4
+cx5 ~~ 0*cx5
+cx6 ~~ 0*cx6
+
+# means of indicators to zero
+x.1 ~ 0
+x.2 ~ 0
+x.3 ~ 0
+x.4 ~ 0
+x.5 ~ 0
+x.6 ~ 0
+
+# residual variances constrained to equalitx across time
+x.1 ~~ res_varx*x.1
+x.2 ~~ res_varx*x.2
+x.3 ~~ res_varx*x.3
+x.4 ~~ res_varx*x.4
+x.5 ~~ res_varx*x.5
+x.6 ~~ res_varx*x.6
+
+# do not allow change factors to correlate
+cx2 ~~ 0*cx3 + 0*cx4 + 0*cx5 + 0*cx6
+cx3 ~~ 0*cx4 + 0*cx5 + 0*cx6
+cx4 ~~ 0*cx5 + 0*cx6
+cx5 ~~ 0*cx6
+
+# COUPLING
+
+#
+
+#
+
+cy2 ~ xy*lx1
+cy3 ~ xy*lx2
+cy4 ~ xy*lx3
+cy5 ~ xy*lx4
+cy6 ~ xy*lx5
+
+cx2 ~ yx*ly1
+cx3 ~ yx*ly2
+cx4 ~ yx*ly3
+cx5 ~ yx*ly4
+cx6 ~ yx*ly5
+
+
+&#39;
+
+df_both &lt;- df %&gt;%
+  reshape(idvar = &#39;id&#39;, timevar = &#39;time&#39;, direction = &#39;wide&#39;)
+
+bi_dc_model &lt;- sem(bi_dc_string, data = df_both)
+summary(bi_dc_model, fit.measures = T)</code></pre>
+<pre><code>## lavaan 0.6-6 ended normally after 123 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                         46
+##   Number of equality constraints                    26
+##                                                       
+##   Number of observations                           700
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                              1546.104
+##   Degrees of freedom                                70
+##   P-value (Chi-square)                           0.000
+## 
+## Model Test Baseline Model:
+## 
+##   Test statistic                             24109.208
+##   Degrees of freedom                                66
+##   P-value                                        0.000
+## 
+## User Model versus Baseline Model:
+## 
+##   Comparative Fit Index (CFI)                    0.939
+##   Tucker-Lewis Index (TLI)                       0.942
+## 
+## Loglikelihood and Information Criteria:
+## 
+##   Loglikelihood user model (H0)             -15301.211
+##   Loglikelihood unrestricted model (H1)     -14528.159
+##                                                       
+##   Akaike (AIC)                               30642.422
+##   Bayesian (BIC)                             30733.444
+##   Sample-size adjusted Bayesian (BIC)        30669.940
+## 
+## Root Mean Square Error of Approximation:
+## 
+##   RMSEA                                          0.174
+##   90 Percent confidence interval - lower         0.166
+##   90 Percent confidence interval - upper         0.181
+##   P-value RMSEA &lt;= 0.05                          0.000
+## 
+## Standardized Root Mean Square Residual:
+## 
+##   SRMR                                           0.102
+## 
+## Parameter Estimates:
+## 
+##   Standard errors                             Standard
+##   Information                                 Expected
+##   Information saturated (h1) model          Structured
+## 
+## Latent Variables:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##   ly1 =~                                              
+##     y.1               1.000                           
+##   ly2 =~                                              
+##     y.2               1.000                           
+##   ly3 =~                                              
+##     y.3               1.000                           
+##   ly4 =~                                              
+##     y.4               1.000                           
+##   ly5 =~                                              
+##     y.5               1.000                           
+##   ly6 =~                                              
+##     y.6               1.000                           
+##   cy2 =~                                              
+##     ly2               1.000                           
+##   cy3 =~                                              
+##     ly3               1.000                           
+##   cy4 =~                                              
+##     ly4               1.000                           
+##   cy5 =~                                              
+##     ly5               1.000                           
+##   cy6 =~                                              
+##     ly6               1.000                           
+##   l_intercept =~                                      
+##     ly1               1.000                           
+##   l_slope =~                                          
+##     cy2               1.000                           
+##     cy3               1.000                           
+##     cy4               1.000                           
+##     cy5               1.000                           
+##     cy6               1.000                           
+##   lx1 =~                                              
+##     x.1               1.000                           
+##   lx2 =~                                              
+##     x.2               1.000                           
+##   lx3 =~                                              
+##     x.3               1.000                           
+##   lx4 =~                                              
+##     x.4               1.000                           
+##   lx5 =~                                              
+##     x.5               1.000                           
+##   lx6 =~                                              
+##     x.6               1.000                           
+##   cx2 =~                                              
+##     lx2               1.000                           
+##   cx3 =~                                              
+##     lx3               1.000                           
+##   cx4 =~                                              
+##     lx4               1.000                           
+##   cx5 =~                                              
+##     lx5               1.000                           
+##   cx6 =~                                              
+##     lx6               1.000                           
+##   lx_intercept =~                                     
+##     lx1               1.000                           
+##   lx_slope =~                                         
+##     cx2               1.000                           
+##     cx3               1.000                           
+##     cx4               1.000                           
+##     cx5               1.000                           
+##     cx6               1.000                           
+## 
+## Regressions:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##   ly2 ~                                               
+##     ly1               1.000                           
+##   ly3 ~                                               
+##     ly2               1.000                           
+##   ly4 ~                                               
+##     ly3               1.000                           
+##   ly5 ~                                               
+##     ly4               1.000                           
+##   ly6 ~                                               
+##     ly5               1.000                           
+##   cy2 ~                                               
+##     ly1     (prop)   -0.315    0.004  -77.421    0.000
+##   cy3 ~                                               
+##     ly2     (prop)   -0.315    0.004  -77.421    0.000
+##   cy4 ~                                               
+##     ly3     (prop)   -0.315    0.004  -77.421    0.000
+##   cy5 ~                                               
+##     ly4     (prop)   -0.315    0.004  -77.421    0.000
+##   cy6 ~                                               
+##     ly5     (prop)   -0.315    0.004  -77.421    0.000
+##   lx2 ~                                               
+##     lx1               1.000                           
+##   lx3 ~                                               
+##     lx2               1.000                           
+##   lx4 ~                                               
+##     lx3               1.000                           
+##   lx5 ~                                               
+##     lx4               1.000                           
+##   lx6 ~                                               
+##     lx5               1.000                           
+##   cx2 ~                                               
+##     lx1     (prpx)    0.221    0.002  100.363    0.000
+##   cx3 ~                                               
+##     lx2     (prpx)    0.221    0.002  100.363    0.000
+##   cx4 ~                                               
+##     lx3     (prpx)    0.221    0.002  100.363    0.000
+##   cx5 ~                                               
+##     lx4     (prpx)    0.221    0.002  100.363    0.000
+##   cx6 ~                                               
+##     lx5     (prpx)    0.221    0.002  100.363    0.000
+##   cy2 ~                                               
+##     lx1       (xy)    0.402    0.002  188.751    0.000
+##   cy3 ~                                               
+##     lx2       (xy)    0.402    0.002  188.751    0.000
+##   cy4 ~                                               
+##     lx3       (xy)    0.402    0.002  188.751    0.000
+##   cy5 ~                                               
+##     lx4       (xy)    0.402    0.002  188.751    0.000
+##   cy6 ~                                               
+##     lx5       (xy)    0.402    0.002  188.751    0.000
+##   cx2 ~                                               
+##     ly1       (yx)   -0.428    0.004 -101.317    0.000
+##   cx3 ~                                               
+##     ly2       (yx)   -0.428    0.004 -101.317    0.000
+##   cx4 ~                                               
+##     ly3       (yx)   -0.428    0.004 -101.317    0.000
+##   cx5 ~                                               
+##     ly4       (yx)   -0.428    0.004 -101.317    0.000
+##   cx6 ~                                               
+##     ly5       (yx)   -0.428    0.004 -101.317    0.000
+## 
+## Covariances:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##   l_intercept ~~                                      
+##     l_slope           0.324    0.149    2.167    0.030
+##  .cy2 ~~                                              
+##    .cy3               0.000                           
+##    .cy4               0.000                           
+##    .cy5               0.000                           
+##    .cy6               0.000                           
+##  .cy3 ~~                                              
+##    .cy4               0.000                           
+##    .cy5               0.000                           
+##    .cy6               0.000                           
+##  .cy4 ~~                                              
+##    .cy5               0.000                           
+##    .cy6               0.000                           
+##  .cy5 ~~                                              
+##    .cy6               0.000                           
+##   lx_intercept ~~                                     
+##     lx_slope          0.113    0.129    0.877    0.381
+##  .cx2 ~~                                              
+##    .cx3               0.000                           
+##    .cx4               0.000                           
+##    .cx5               0.000                           
+##    .cx6               0.000                           
+##  .cx3 ~~                                              
+##    .cx4               0.000                           
+##    .cx5               0.000                           
+##    .cx6               0.000                           
+##  .cx4 ~~                                              
+##    .cx5               0.000                           
+##    .cx6               0.000                           
+##  .cx5 ~~                                              
+##    .cx6               0.000                           
+##   l_intercept ~~                                      
+##     lx_intercept     -0.227    0.051   -4.436    0.000
+##     lx_slope          0.088    0.144    0.609    0.543
+##   l_slope ~~                                          
+##     lx_intercept     -0.071    0.135   -0.524    0.601
+##     lx_slope          0.483    0.358    1.348    0.178
+## 
+## Intercepts:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##     l_slope           0.605    0.124    4.892    0.000
+##     l_intercept      10.055    0.047  214.190    0.000
+##    .ly1               0.000                           
+##    .ly2               0.000                           
+##    .ly3               0.000                           
+##    .ly4               0.000                           
+##    .ly5               0.000                           
+##    .ly6               0.000                           
+##    .cy2               0.000                           
+##    .cy3               0.000                           
+##    .cy4               0.000                           
+##    .cy5               0.000                           
+##    .cy6               0.000                           
+##    .y.1               0.000                           
+##    .y.2               0.000                           
+##    .y.3               0.000                           
+##    .y.4               0.000                           
+##    .y.5               0.000                           
+##    .y.6               0.000                           
+##     lx_slope          0.857    0.122    7.050    0.000
+##     lx_intercept      9.975    0.042  235.419    0.000
+##    .lx1               0.000                           
+##    .lx2               0.000                           
+##    .lx3               0.000                           
+##    .lx4               0.000                           
+##    .lx5               0.000                           
+##    .lx6               0.000                           
+##    .cx2               0.000                           
+##    .cx3               0.000                           
+##    .cx4               0.000                           
+##    .cx5               0.000                           
+##    .cx6               0.000                           
+##    .x.1               0.000                           
+##    .x.2               0.000                           
+##    .x.3               0.000                           
+##    .x.4               0.000                           
+##    .x.5               0.000                           
+##    .x.6               0.000                           
+## 
+## Variances:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##     l_ntr             1.069    0.080   13.399    0.000
+##     l_slp             9.410    0.520   18.097    0.000
+##    .ly1               0.000                           
+##    .ly2               0.000                           
+##    .ly3               0.000                           
+##    .ly4               0.000                           
+##    .ly5               0.000                           
+##    .ly6               0.000                           
+##    .cy2               0.000                           
+##    .cy3               0.000                           
+##    .cy4               0.000                           
+##    .cy5               0.000                           
+##    .cy6               0.000                           
+##    .y.1   (res_vr)    0.729    0.020   37.350    0.000
+##    .y.2   (res_vr)    0.729    0.020   37.350    0.000
+##    .y.3   (res_vr)    0.729    0.020   37.350    0.000
+##    .y.4   (res_vr)    0.729    0.020   37.350    0.000
+##    .y.5   (res_vr)    0.729    0.020   37.350    0.000
+##    .y.6   (res_vr)    0.729    0.020   37.350    0.000
+##     lx_nt             1.022    0.065   15.701    0.000
+##     lx_sl             8.955    0.489   18.297    0.000
+##    .lx1               0.000                           
+##    .lx2               0.000                           
+##    .lx3               0.000                           
+##    .lx4               0.000                           
+##    .lx5               0.000                           
+##    .lx6               0.000                           
+##    .cx2               0.000                           
+##    .cx3               0.000                           
+##    .cx4               0.000                           
+##    .cx5               0.000                           
+##    .cx6               0.000                           
+##    .x.1   (rs_vrx)    0.432    0.012   36.464    0.000
+##    .x.2   (rs_vrx)    0.432    0.012   36.464    0.000
+##    .x.3   (rs_vrx)    0.432    0.012   36.464    0.000
+##    .x.4   (rs_vrx)    0.432    0.012   36.464    0.000
+##    .x.5   (rs_vrx)    0.432    0.012   36.464    0.000
+##    .x.6   (rs_vrx)    0.432    0.012   36.464    0.000</code></pre>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="/js/academic.min.6f7ce8be710290b8c431bbc97f405d15.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+
+
+  <p class="powered-by">
+    © Christopher Dishop 2020 &middot; 
+
+    Made with <a href="https://cran.r-project.org/" target="_blank" rel="noopener"><i class="fab fa-r-project"></i> </a><a href="https://github.com/rstudio/blogdown" target="_blank" rel="noopener">blogdown</a>,
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>, and
+    <a href="https://github.com/rbind/apreshill" target="_blank" rel="noopener">Alison's Hill's</a> wonderful template.
+
+    
+
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

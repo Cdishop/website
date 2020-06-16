@@ -1,0 +1,78 @@
+---
+title: "Turning Unequal Dates into Days"
+Date: "2019-01-15"
+summary: "-----"
+---
+
+
+
+<p>Longitudinal data of a group or team often have missing days. For example, only Bob reports a stress score on January 3rd even though Joe and Sam are also part of the sample.</p>
+<pre><code>##    id       date stress
+## 1 bob 2019-01-01      4
+## 2 joe 2019-01-01      5
+## 3 sam 2019-01-01      6
+## 4 bob 2019-01-02      6
+## 5 joe 2019-01-02      5
+## 6 bob 2019-01-03      4
+## 7 bob 2019-01-04      5
+## 8 joe 2019-01-04      6
+## 9 sam 2019-01-04      7</code></pre>
+<p>We want to create an additional column called “day” and use integers rather than dates to make plotting easier/prettier. To do so, we need to create a new data frame of unique dates and unique days, and then we need to merge that new data fram with the original to align the new “day” integer values.</p>
+<p>Turn the dates into a character vector so that they are easier to work with.</p>
+<pre class="r"><code>df$date &lt;- as.character(df$date)</code></pre>
+<p>Now give each unique date a respective integer “day” value in a new data frame.</p>
+<pre class="r"><code>uniq_dates &lt;- unique(df$date)
+
+day_integers &lt;- data.frame(
+  &#39;date&#39; = c(uniq_dates),
+  &#39;day&#39; = c(1:length(uniq_dates))
+)
+
+day_integers$date &lt;- as.character(day_integers$date)</code></pre>
+<p>Finally, merge the new <code>day_integers</code> data frame with the original so that we have easy numbers for plotting.</p>
+<pre class="r"><code>plot_df &lt;- left_join(df, day_integers)
+
+plot_df</code></pre>
+<pre><code>##    id       date stress day
+## 1 bob 2019-01-01      4   1
+## 2 joe 2019-01-01      5   1
+## 3 sam 2019-01-01      6   1
+## 4 bob 2019-01-02      6   2
+## 5 joe 2019-01-02      5   2
+## 6 bob 2019-01-03      4   3
+## 7 bob 2019-01-04      5   4
+## 8 joe 2019-01-04      6   4
+## 9 sam 2019-01-04      7   4</code></pre>
+<p>One additional note. It can be instructive to see the inefficient way to get the same result using a <code>for-loop</code>. Here is un-evaluated code that is the for-loop equivalent to above.</p>
+<pre class="r"><code># take unique date
+# which rows match 
+# plug in counter to those values
+# increase counter by 1
+
+time_vec &lt;- numeric(nrow(original_df))
+unique_dates &lt;- unique(original_df$date)
+
+counter &lt;- 0
+
+for(i in 1:length(unique_dates)){
+  
+  # take unique date
+  
+  datey &lt;- unique_dates[i]
+  
+  # which rows match this date?
+  
+  use_rows &lt;- which(original_df$date == datey)
+  
+  # increase counter
+  
+  counter &lt;- counter + 1
+  
+  # plug in counter in time vec
+  
+  time_vec[use_rows] &lt;- counter
+  
+}
+
+original_df$day &lt;- time_vec</code></pre>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>

@@ -1,0 +1,1174 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="-----">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/computational_notes/2017-07-13-dfs/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#06805E">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/tomorrow.min.css" crossorigin="anonymous" title="hl-light">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/tomorrow.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+      
+    
+
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400i%7CKarla:400,400i,700,700i%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-99209585-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'UA-99209585-1', {});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hua7ddb50eead73fc737c5c3187aff8cf9_17132_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hua7ddb50eead73fc737c5c3187aff8cf9_17132_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="/computational_notes/2017-07-13-dfs/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@apreshill">
+  <meta property="twitter:creator" content="@apreshill">
+  
+  <meta property="og:site_name" content="Christopher R. Dishop">
+  <meta property="og:url" content="/computational_notes/2017-07-13-dfs/">
+  <meta property="og:title" content="Counting Degrees of Freedom | Christopher R. Dishop">
+  <meta property="og:description" content="-----"><meta property="og:image" content="/img/pom-card.png">
+  <meta property="twitter:image" content="/img/pom-card.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2020-05-27T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2020-05-27T00:00:00&#43;00:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Counting Degrees of Freedom | Christopher R. Dishop</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">Christopher R. Dishop</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
+        
+        
+        
+          
+            
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="https://raw.githubusercontent.com/Cdishop/website/master/misc/CV.pdf" target="_blank" rel="noopener"><span>CV</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/computational_notes"><span>Computation</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/r_resources"><span>R Resources</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/rec_reading"><span>Recommended</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+
+        
+
+        
+
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Counting Degrees of Freedom</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    May 27, 2020
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+
+<p>This post contains a bunch of examples where I practice counting dfs. In each example, I generate the data, estimate the parameters using SEM, count the dfs, and then compare my count to what the model spits back. To count dfs, I need to know the number of knowns and unknowns in my system:</p>
+<p><span class="math display">\[\begin{equation}
+\textrm{DFs} = \textrm{knowns - unknowns}
+\end{equation}\]</span></p>
+<p>To count the number of knowns, I need to know the number of observed variables, <em>p</em>:</p>
+<p><span class="math display">\[\begin{equation}
+\textrm{knowns} = p*(p+1) / 2
+\end{equation}\]</span></p>
+<p>To count the number of unknowns, I count the number of parameters that my model estimates. Now for the examples.</p>
+<div id="example-1---trust-and-availability-cause-helping" class="section level1">
+<h1>Example 1 - Trust and availability cause helping</h1>
+<div id="dgp" class="section level3">
+<h3>DGP</h3>
+<pre class="r"><code>people &lt;- 400
+trust &lt;- rnorm(people, 40, 2)
+availability &lt;- rnorm(people, 20, 5)
+error &lt;- rnorm(people, 0, 2)
+
+helping &lt;- 3 + 0.2*trust + 0.7*availability + error</code></pre>
+</div>
+<div id="sem" class="section level3">
+<h3>SEM</h3>
+<pre class="r"><code>library(tidyverse)
+library(lavaan)
+
+df &lt;- data.frame(
+  &#39;id&#39; = c(1:people),
+  &#39;trust&#39; = c(trust),
+  &#39;availability&#39; = c(availability),
+  &#39;helping&#39; = c(helping)
+)
+
+ex1_string &lt;- &#39;
+
+helping ~ b1*trust + b2*availability
+
+&#39;
+
+ex1_model &lt;- sem(ex1_string, data = df)</code></pre>
+</div>
+</div>
+<div id="count-dfs" class="section level1">
+<h1>Count dfs</h1>
+<div id="knowns-count-the-observed-variables" class="section level4">
+<h4>Knowns (count the observed variables)</h4>
+<pre class="r"><code># p*(p + 1) / 2
+
+3*(3+1) / 2</code></pre>
+<pre><code>## [1] 6</code></pre>
+</div>
+<div id="unknowns-count-the-estimated-parameters" class="section level4">
+<h4>Unknowns (count the estimated parameters)</h4>
+<ul>
+<li>1 for b1</li>
+<li>1 for b2</li>
+<li>1 for the variance of trust</li>
+<li>1 for the variance of availability</li>
+<li>1 for the covariance of trust and availability</li>
+<li>1 for the prediction error on helping</li>
+<li><p>total = 6</p></li>
+<li><p>6 - 6 = 0</p></li>
+</ul>
+<pre class="r"><code>show(ex1_model)</code></pre>
+<pre><code>## lavaan 0.6-6 ended normally after 14 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                          3
+##                                                       
+##   Number of observations                           400
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 0.000
+##   Degrees of freedom                                 0</code></pre>
+<p>Now if I restrict the covariance of trust and availability to be zero I should have 1 df</p>
+<pre class="r"><code>ex1_string_restrict &lt;- &#39;
+
+helping ~ b1*trust + b2*availability
+trust ~~ 0*availability
+
+&#39;
+
+ex1_model_restrict &lt;- sem(ex1_string_restrict, data = df)
+show(ex1_model_restrict) # yup</code></pre>
+<pre><code>## lavaan 0.6-6 ended normally after 16 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                          5
+##                                                       
+##   Number of observations                           400
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 1.830
+##   Degrees of freedom                                 1
+##   P-value (Chi-square)                           0.176</code></pre>
+</div>
+</div>
+<div id="example-2---common-factor-underlying-6-observed-items" class="section level1">
+<h1>Example 2 - Common factor underlying 6 observed items</h1>
+<div id="dgp-1" class="section level3">
+<h3>DGP</h3>
+<pre class="r"><code>common_factor &lt;- rnorm(people, 30, 2)
+error_cf &lt;- rnorm(people, 0, 2)
+item1 &lt;- 0.35*common_factor + error_cf
+item2 &lt;- 0.22*common_factor + error_cf
+item3 &lt;- 0.18*common_factor + error_cf
+item4 &lt;- 0.24*common_factor + error_cf
+item5 &lt;- 0.31*common_factor + error_cf
+item6 &lt;- 0.44*common_factor + error_cf
+
+# nope, that approach is wrong. If I do above then my errors are not independent
+# prediction errors (in this case measurement) should be independent
+
+item1 &lt;- 0.35*common_factor + rnorm(people, 0, 2)
+item2 &lt;- 0.22*common_factor + rnorm(people, 0, 2)
+item3 &lt;- 0.18*common_factor + rnorm(people, 0, 2)
+item4 &lt;- 0.24*common_factor + rnorm(people, 0, 2)
+item5 &lt;- 0.31*common_factor + rnorm(people, 0, 2)
+item6 &lt;- 0.44*common_factor + rnorm(people, 0, 2)
+
+df_cf &lt;- data.frame(
+  &#39;id&#39; = c(1:people),
+  &#39;item1&#39; = c(item1),
+  &#39;item2&#39; = c(item2),
+  &#39;item3&#39; = c(item3),
+  &#39;item4&#39; = c(item4),
+  &#39;item5&#39; = c(item5),
+  &#39;item6&#39; = c(item6)
+)</code></pre>
+</div>
+<div id="sem-1" class="section level3">
+<h3>SEM</h3>
+<pre class="r"><code>ex2_string &lt;- &#39;
+
+com_factor =~ 1*item1 + fl2*item2 + fl3*item3 + fl4*item4 + fl5*item5 + fl6*item6
+&#39;
+
+ex2_model &lt;- sem(ex2_string, data = df_cf)</code></pre>
+</div>
+<div id="count-dfs-1" class="section level3">
+<h3>Count dfs</h3>
+<div id="knowns-count-the-observed-variables-1" class="section level4">
+<h4>knowns (count the observed variables)</h4>
+<pre class="r"><code># p*(p + 1) / 2
+
+6*(6 + 1) / 2</code></pre>
+<pre><code>## [1] 21</code></pre>
+</div>
+<div id="unknowns-count-the-estimated-parameters-1" class="section level4">
+<h4>unknowns (count the estimated parameters)</h4>
+<ul>
+<li>6 factor loadings, but I constrained the first one to be 1 (I have to to estimate the latent variable), so 5 parameters</li>
+<li>5 measurement errors for the 5 factor loadings</li>
+<li>1 variance for the latent exogenous variable</li>
+<li>1 mean for the latent exogenous variable</li>
+<li><p>total = 12</p></li>
+<li><p>21 - 12 = 9</p></li>
+</ul>
+<pre class="r"><code>show(ex2_model)</code></pre>
+<pre><code>## lavaan 0.6-6 ended normally after 46 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                         12
+##                                                       
+##   Number of observations                           400
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 9.588
+##   Degrees of freedom                                 9
+##   P-value (Chi-square)                           0.385</code></pre>
+</div>
+</div>
+</div>
+<div id="example-3---two-latent-variables-predict-one-observed-outcome" class="section level1">
+<h1>Example 3 - Two latent variables predict one observed outcome</h1>
+<p>Cognitive ability (latent variable 1) and assertiveness (latent variable 2) predict productivity. Cognitive ability and assertiveness are both captured with 2 manifest items/variables.</p>
+<div id="dgp-2" class="section level3">
+<h3>DGP</h3>
+<pre class="r"><code># cog ability (latent exogenous variable 1)
+cog_ability &lt;- rnorm(people, 100, 15)
+ca_item1 &lt;- 0.78*cog_ability + rnorm(people, 0, 1)
+ca_item2 &lt;- 0.11*cog_ability + rnorm(people, 0, 1)
+
+# assertiveness (latent exogenous variable 2)
+assertive &lt;- rnorm(people, 30, 8)
+ass_item1 &lt;- 0.81*assertive + rnorm(people, 0, 1)
+ass_item2 &lt;- 0.34*assertive + rnorm(people, 0, 1)
+
+# productivity (observed outcome)
+
+productivity &lt;- 0.55*cog_ability + 0.82*assertive + rnorm(people, 0, 5)
+
+# data
+
+df_3 &lt;- data.frame(
+  &#39;id&#39; = c(1:people),
+  &#39;ca_item1&#39; = c(ca_item1),
+  &#39;ca_item2&#39; = c(ca_item2),
+  &#39;ass_item1&#39; = c(ass_item1),
+  &#39;ass_item2&#39; = c(ass_item2),
+  &#39;productivity&#39; = c(productivity)
+  
+  )</code></pre>
+</div>
+<div id="sem-2" class="section level3">
+<h3>SEM</h3>
+<pre class="r"><code>ex3_string &lt;- &#39;
+
+cog_ability =~ 1*ca_item1 + fl2*ca_item2
+assertiveness =~ 1*ass_item1 + fla*ass_item2
+
+cog_ability ~~ cog_ability
+assertiveness ~~ assertiveness
+cog_ability ~~ assertiveness
+
+productivity ~ b1*cog_ability + b2*assertiveness
+
+&#39;
+
+ex3_model &lt;- sem(ex3_string, data = df_3)</code></pre>
+</div>
+<div id="count-dfs-2" class="section level3">
+<h3>Count dfs</h3>
+<div id="knowns-count-the-observed-variables-2" class="section level4">
+<h4>knowns (count the observed variables)</h4>
+<pre class="r"><code># p*(p+1) / 2
+
+5*(5+1) / 2</code></pre>
+<pre><code>## [1] 15</code></pre>
+</div>
+<div id="unknowns-count-the-estimated-parameters-2" class="section level4">
+<h4>unknowns (count the estimated parameters)</h4>
+<ul>
+<li>4 factor loadings but I constrained 2 of them, so 2 factor loadings</li>
+<li>2 measurement errors (4 items, but constrained 2 of them)</li>
+<li>1 variance on cog ability</li>
+<li>1 mean on cog ability</li>
+<li>1 variance on assertiveness</li>
+<li>1 mean on assertiveness</li>
+<li>1 covariance among cog ability and assertiveness</li>
+<li>b1</li>
+<li>b2</li>
+<li>2 prediction errors</li>
+<li><p>total = 13</p></li>
+<li><p>15 - 13 = 2</p></li>
+</ul>
+<pre class="r"><code>show(ex3_model)</code></pre>
+<pre><code>## lavaan 0.6-6 ended normally after 164 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                         12
+##                                                       
+##   Number of observations                           400
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 1.336
+##   Degrees of freedom                                 3
+##   P-value (Chi-square)                           0.721</code></pre>
+<p>Nope. I’m one off, where did I go wrong?</p>
+<p>Ah, there is only 1 prediction error because productivity is being predicted. I counted 2 prediction errors because I gave one to both b1 and b2. So, the unknowns should be…</p>
+<ul>
+<li>4 factor loadings but I constrained 2 of them, so 2 factor loadings</li>
+<li>2 measurement errors (4 items, but constrained 2 of them)</li>
+<li>1 variance on cog ability</li>
+<li>1 mean on cog ability</li>
+<li>1 variance on assertiveness</li>
+<li>1 mean on assertiveness</li>
+<li>1 covariance among cog ability and assertiveness</li>
+<li>b1</li>
+<li>b2</li>
+<li>1 prediction error</li>
+<li><p>total = 12</p></li>
+<li><p>15 - 12 = 3</p></li>
+</ul>
+<pre class="r"><code>show(ex3_model)</code></pre>
+<pre><code>## lavaan 0.6-6 ended normally after 164 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                         12
+##                                                       
+##   Number of observations                           400
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 1.336
+##   Degrees of freedom                                 3
+##   P-value (Chi-square)                           0.721</code></pre>
+</div>
+</div>
+</div>
+<div id="example-4---a-causes-b-which-causes-c-which-causes-d" class="section level1">
+<h1>Example 4 - a causes b, which causes c, which causes d</h1>
+<div id="dgp-3" class="section level3">
+<h3>DGP</h3>
+<pre class="r"><code>a &lt;- rnorm(people, 300, 3)
+b &lt;- 0.67*a + rnorm(people, 0, 1)
+c &lt;- 0.99*b + rnorm(people, 0, 10)
+d &lt;- 4 + 4*c + rnorm(people, 0, 4)
+
+df_chain &lt;- data.frame(
+  &#39;id&#39; = c(1:people),
+  &#39;a&#39; = c(a),
+  &#39;b&#39; = c(b),
+  &#39;c&#39; = c(c),
+  &#39;d&#39; = c(d)
+)</code></pre>
+</div>
+<div id="sem-3" class="section level3">
+<h3>SEM</h3>
+<pre class="r"><code>ex4_string &lt;- &#39;
+
+b ~ b1*a
+c ~ b2*b
+d ~ b3*c
+
+a ~~ a
+
+&#39;
+
+ex4_model &lt;- sem(ex4_string, data = df_chain)</code></pre>
+</div>
+<div id="count-dfs-3" class="section level3">
+<h3>Count dfs</h3>
+<div id="knowns-count-the-observed-variables-3" class="section level4">
+<h4>knowns (count the observed variables)</h4>
+<pre class="r"><code># p*(p+1) / 2
+4*(4+1) / 2</code></pre>
+<pre><code>## [1] 10</code></pre>
+</div>
+<div id="unknowns-count-the-estimated-parameters-3" class="section level4">
+<h4>unknowns (count the estimated parameters)</h4>
+<ul>
+<li>b1</li>
+<li>b2</li>
+<li>b3</li>
+<li>3 prediction errors</li>
+<li>1 variance for the lone exogenous variable (a)</li>
+<li><p>total = 7</p></li>
+<li><p>10 - 7 = 3</p></li>
+</ul>
+<pre class="r"><code>show(ex4_model)</code></pre>
+<pre><code>## lavaan 0.6-6 ended normally after 47 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                          7
+##                                                       
+##   Number of observations                           400
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 1.543
+##   Degrees of freedom                                 3
+##   P-value (Chi-square)                           0.672</code></pre>
+</div>
+</div>
+</div>
+<div id="example-5---observed-affect-over-7-time-points" class="section level1">
+<h1>Example 5 - Observed affect over 7 time points</h1>
+<div id="dgp-4" class="section level3">
+<h3>DGP</h3>
+<pre class="r"><code>time &lt;- 7
+affect_store &lt;- matrix(, ncol = 3, nrow = time*people)
+count &lt;- 0
+for(i in 1:people){
+  
+  unob_het &lt;- rnorm(1, 0, 3)
+  
+  for(j in 1:time){
+    count &lt;- count + 1
+    
+    if(j == 1){
+      affect_store[count, 1] &lt;- i
+      affect_store[count, 2] &lt;- j
+      affect_store[count, 3] &lt;- unob_het + 50 + rnorm(1, 0, 1)
+    }else{
+      affect_store[count, 1] &lt;- i
+      affect_store[count, 2] &lt;- j
+      affect_store[count, 3] &lt;- 0.8*affect_store[count - 1, 3] + unob_het + rnorm(1, 0, 1)
+      
+    }
+  }
+  
+}
+df5 &lt;- data.frame(affect_store)
+names(df5) &lt;- c(&#39;id&#39;, &#39;time&#39;, &#39;affect&#39;)
+library(reshape2)
+df5_wide &lt;- reshape(df5, idvar = &#39;id&#39;, timevar = &#39;time&#39;, direction = &#39;wide&#39;)</code></pre>
+</div>
+<div id="sem-4" class="section level3">
+<h3>SEM</h3>
+<pre class="r"><code>ex5_string &lt;- &#39;
+
+unob_het =~ 1*affect.2 + 1*affect.3 + 1*affect.4 + 1*affect.5 + 1*affect.6 + 1*affect.7
+
+affect.2 ~ ar*affect.1
+affect.3 ~ ar*affect.2
+affect.4 ~ ar*affect.3
+affect.5 ~ ar*affect.4
+affect.6 ~ ar*affect.5
+affect.7 ~ ar*affect.6
+
+affect.1 ~~ affect.1
+unob_het ~~ unob_het
+affect.1 ~~ unob_het
+
+&#39;
+
+ex5_model &lt;- sem(ex5_string, data = df5_wide)</code></pre>
+</div>
+<div id="count-dfs-4" class="section level3">
+<h3>Count dfs</h3>
+<div id="knowns-count-the-observed-variables-4" class="section level4">
+<h4>knowns (count the observed variables)</h4>
+<pre class="r"><code># p*(p+1) / 2
+7*(7+1) / 2</code></pre>
+<pre><code>## [1] 28</code></pre>
+</div>
+<div id="unknowns-count-the-estimated-parameters-4" class="section level4">
+<h4>unknowns (count the estimated parameters)</h4>
+<ul>
+<li>ar is 1 estimated parameter</li>
+<li>1 variance of unobserved heterogeneity</li>
+<li>1 variance of affect.1</li>
+<li>1 covariance among affect.1 and unobserved heterogeneity</li>
+<li>6 prediction errors</li>
+<li><p>total = 10</p></li>
+<li><p>28 - 10 = 18</p></li>
+</ul>
+<pre class="r"><code>show(ex5_model)</code></pre>
+<pre><code>## lavaan 0.6-6 ended normally after 135 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                         15
+##   Number of equality constraints                     5
+##                                                       
+##   Number of observations                           400
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                11.109
+##   Degrees of freedom                                18
+##   P-value (Chi-square)                           0.890</code></pre>
+<p>Why didn’t I estimate a mean for unobserved heterogeneity here? In all of the other examples I estimated the variance (1 parameter) and the mean (1 parameter) of the latent exogenous variable. In this case, unobserved heterogeneity is the latent exogenous variable but I only estimated its variance. That’s because in this model we don’t really care about the mean of unobserved heterogeneity, it’s just a latent variable that we incorporate to account for stable individual differences. In other words, when I estimate latent cog ability and assertiveness as IVs to predict an outcome, I care about their means. Here, unobserved heterogeneity is just an additional factor to account for, not a variable whose mean I really care to know. That said, if I wanted to estimate the mean of unobserved heterogeneity (which would result in one additional estimated parameter and one fewer df) then I would incorporate the following into the model string.</p>
+<pre class="r"><code>&#39;
+
+unob_het ~ 1 # lavaan code for estimating the mean of a latent variable
+
+&#39;</code></pre>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>
+</div>
+</div>
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="/js/academic.min.6f7ce8be710290b8c431bbc97f405d15.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+
+
+  <p class="powered-by">
+    © Christopher Dishop 2020 &middot; 
+
+    Made with <a href="https://cran.r-project.org/" target="_blank" rel="noopener"><i class="fab fa-r-project"></i> </a><a href="https://github.com/rstudio/blogdown" target="_blank" rel="noopener">blogdown</a>,
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>, and
+    <a href="https://github.com/rbind/apreshill" target="_blank" rel="noopener">Alison's Hill's</a> wonderful template.
+
+    
+
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,995 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="-----">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/computational_notes/2019-01-08/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#06805E">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/tomorrow.min.css" crossorigin="anonymous" title="hl-light">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/tomorrow.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+      
+    
+
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400i%7CKarla:400,400i,700,700i%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-99209585-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'UA-99209585-1', {});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hua7ddb50eead73fc737c5c3187aff8cf9_17132_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hua7ddb50eead73fc737c5c3187aff8cf9_17132_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="/computational_notes/2019-01-08/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@apreshill">
+  <meta property="twitter:creator" content="@apreshill">
+  
+  <meta property="og:site_name" content="Christopher R. Dishop">
+  <meta property="og:url" content="/computational_notes/2019-01-08/">
+  <meta property="og:title" content="The Premature Covariate | Christopher R. Dishop">
+  <meta property="og:description" content="-----"><meta property="og:image" content="/img/pom-card.png">
+  <meta property="twitter:image" content="/img/pom-card.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2019-01-08T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2019-01-08T00:00:00&#43;00:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>The Premature Covariate | Christopher R. Dishop</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">Christopher R. Dishop</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
+        
+        
+        
+          
+            
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="https://raw.githubusercontent.com/Cdishop/website/master/misc/CV.pdf" target="_blank" rel="noopener"><span>CV</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/computational_notes"><span>Computation</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/r_resources"><span>R Resources</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/rec_reading"><span>Recommended</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+
+        
+
+        
+
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>The Premature Covariate</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 8, 2019
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+
+<p>A replication of Patricia Cohen’s wonderful, “problem of the premature covariate” (chapter 2 in Collins &amp; Horn, 1991). Here is a simple version of the problem. Imagine that we want to know the influence of a life event, like meeting a friend, on happiness. We conduct a study where we measure people’s happiness at time one, wait two weeks, and then measure their happiness again along with whether or not they met a friend since we last observed them. To assess the relationship between meeting a friend and happiness, we regress post happiness on both pre happiness and whether or not they met a friend. That is, our regression takes the form:</p>
+<blockquote>
+<blockquote>
+<p>Happy<span class="math inline">\(_{post}\)</span> ~ Happy<span class="math inline">\(_{pre}\)</span> + Met_Friend.</p>
+</blockquote>
+</blockquote>
+<p>What Dr. Cohen draws attention to is that the coefficient relating “met friend” to happiness will be biased if (a) there is some non-zero probability of reverse causality and (b) we do not measure “met friend” exactly when it occurs. Remember, in our mock study we assessed both happiness and whether or not someone met a friend during our post-measure. Is that exactly when different people across the sample actually met a new friend? Perhaps, but most of our sample either did or did not meet a friend <em>at some unknown time within the past two weeks</em>; Dr. Cohen’s point is that this unknown is an issue to linger on.</p>
+<div id="simulation-explanation" class="section level1">
+<h1>Simulation Explanation</h1>
+<p>If Dr. Cohen’s issue is worthwhile, then, under a system where “met friend” truly does <em>not</em> influence happiness, we should be able to make “met friend” appear to influence happiness based on the points she raises. That is, when “met friend” does not influence happiness we should be able to make it appear so if we create a system where (1) happiness instead influences the probability of meeting a friend (reverse causality) and (2) we do not measure “met friend” exactly when it occurs. Below, we generate data where “met friend” does not influence happiness but the coefficient relating “met friend” to happiness will still be significant (and large) because of the issues raised.</p>
+<p>Here are the steps to the simulation:</p>
+<ol style="list-style-type: decimal">
+<li><p>Start with a random value for happiness (distributed normally across 600 people) at time one.</p></li>
+<li><p>Happiness at <span class="math inline">\(t+1\)</span> is its previous value plus one of the following, all with equal probability: +0.25, -0.25, or 0.</p></li>
+<li><p>At each time point, concurrent happiness influences the probability of meeting a friend. When happiness is low people are unlikely to meet a friend, whereas when happiness is high people are more likely to meet a friend. Meeting a friend is coded as 0 or 1 for each time point (i.e., no or yes).</p></li>
+<li><p>Continue for 25 time points.</p></li>
+<li><p>Assess the relationships between post happiness, pre happiness, and “met friend.” Pre happiness is always time one, whereas we will explore different post assesssments (e.g., post happiness is time 25 vs. post happiness is time 20). “Met friend” will always be whether the individual met a friend within 5 time points of the post happiness assessment. So, if we analyze post happiness as time 20, then “met friend” is whether the individual met a friend during times 15 through 20.</p></li>
+</ol>
+<p>Notice that the simulation captures the notions raised above: “met friend” does not influence happiness, instead the reverse happens. And after making a decision about the timing of our pre and post assessment we lose information about when “met friend” actually happened. We know <em>whether</em> it happened but not when; we also don’t retain information on the differences in timing across our sample.</p>
+</div>
+<div id="meeting-a-friend-or-not" class="section level1">
+<h1>Meeting a Friend or Not</h1>
+<p>The most difficult aspect of the simulation is specifying step 3: “met friend” is some function of concurrent happiness. Dr. Cohen’s original explanation is, “the probability of <span class="math inline">\(X\)</span> for each unit of time was determined by a Markov process, with probability increasing as a function of the level of contemporaneous <span class="math inline">\(Y\)</span>. Probabilities used increased from 0 for those with current <span class="math inline">\(Y\)</span> less than -1.00 to 0.25 for those with current scores of 1.5 or greater” (she uses different variables for x and y in her discussion). What does that mean? How do we specify a Markov process where the probability of “met friend” is between 0 and 0.25 with respect to happiness cutoffs like -1.00 and 1.5? I don’t know either. But we can make it easier by recognizing that, at its core, the idea is simply, “meeting a friend is more likely when people are happier,” which we can represent with a simple linear equation like <span class="math inline">\(y = mx + b\)</span>. All we need to do is to find the slope and y-intercept, then we’ll have an equation where we can plug in “happiness” and get “probability of meeting a friend.” Here is how.</p>
+<p>Remember that we can find the slope and y-intercept of a line if we know the location of two of its points. Here, we know that the probability of “met friend” needs to be between 0 and 0.25, and the happiness cutoffs need to be -1.00 and 1.5. If I want to relate happiness to “met friend,” then, I can put happiness on the x-axis and “met friend” on the y-axis and recognize that by combining these cutoffs I get the end-points of a line: (1.5, 0.25) is one point and (-1, 1.5) is the other. Computing rise-over-run and then solving for the intercept gives me the following:</p>
+<blockquote>
+<blockquote>
+<p>Probability of meeting a friend = 0.1*Happy + 0.01</p>
+</blockquote>
+</blockquote>
+<p>Now we have a way to compute the probability of meeting a friend based on happiness. It is not as precise as the Markov process but it will work just fine. (Note: I actuallly use the points (1.4999, 2.4999) and (-0.999, 1.4999) to calculate the slope and intercept in the simulation because I will also use if-statements for the cutoffs)</p>
+</div>
+<div id="simulate-one-person" class="section level1">
+<h1>Simulate One Person</h1>
+<p>It’s always helpful to make sure we can get a simulation to work on one person. In the simulation below, <span class="math inline">\(y\)</span> is happiness and <span class="math inline">\(x\)</span> is “met friend.”</p>
+<pre class="r"><code>time &lt;- 25
+y &lt;- numeric(time)
+x &lt;- numeric(time)
+
+count &lt;- 0
+
+for(i in 1:time){
+  count &lt;- count + 1
+  
+  if(i == 1){
+    
+    y[count] &lt;- rnorm(1, mean = 0.5, sd = 0.5)
+    x[count] &lt;- 0
+    
+  }else{
+    
+    
+    # y up or down with autoregression
+    
+    updownsame &lt;- sample(c(&#39;up&#39;, &#39;down&#39;, &#39;same&#39;), 1)
+    
+    if(updownsame == &#39;up&#39;){
+      
+      y[count] &lt;- y[count - 1] + 0.25
+      
+    }else if(updownsame == &#39;down&#39;){
+      
+      y[count] &lt;- y[count - 1] - 0.25
+      
+    }else{
+      
+      y[count] &lt;- y[count - 1]
+      
+    }
+    
+    # x is a function of y
+    
+    if(y[count] &lt;= -1.00){
+      
+      x_prob &lt;- 0
+      
+    }else if(y[count] &gt;= 1.5){
+      
+      x_prob &lt;- 0.25
+      
+    }else{
+      
+      x_prob &lt;- 0.10004*y[count] + 0.09994
+      
+      
+    }
+    
+    x[count] &lt;- rbinom(1, 1, x_prob)
+    
+  }
+  
+}</code></pre>
+</div>
+<div id="full-sample" class="section level1">
+<h1>Full Sample</h1>
+<p>That script worked, so now let’s update the code slightly and run it across 600 people.</p>
+<pre class="r"><code>people &lt;- 600
+time &lt;- 25
+df &lt;- matrix(, nrow = people*time, ncol = 4)
+
+count &lt;- 0
+
+for(j in 1:people){
+  
+  
+
+for(i in 1:time){
+  count &lt;- count + 1
+  
+  if(i == 1){
+    
+    df[count, 1] &lt;- j
+    df[count, 2] &lt;- i
+    df[count, 3] &lt;- rnorm(1, mean = 0.5, sd = 0.5)
+    df[count, 4] &lt;- 0
+    
+  }else{
+    
+    df[count, 1] &lt;- j
+    df[count, 2] &lt;- i
+    
+    # y up or down with autoregression
+    
+    updownsame &lt;- sample(c(&#39;up&#39;, &#39;down&#39;, &#39;same&#39;), 1)
+    
+    if(updownsame == &#39;up&#39;){
+      
+      df[count, 3] &lt;- df[count - 1, 3] + 0.25
+      
+    }else if(updownsame == &#39;down&#39;){
+      
+      df[count, 3] &lt;- df[count - 1, 3] - 0.25
+      
+    }else{
+      
+      df[count, 3] &lt;- df[count - 1, 3]
+      
+    }
+    
+    # x is a function of y
+    
+    if(df[count, 3] &lt;= -1.00){
+      
+      x_prob &lt;- 0
+      
+    }else if(df[count, 3] &gt;= 1.5){
+      
+      x_prob &lt;- 0.25
+      
+    }else{
+      
+      x_prob &lt;- 0.10004*df[count, 3] + 0.09994
+      
+    }
+    
+    df[count, 4] &lt;- rbinom(1, 1, x_prob)
+    
+  }
+  
+}
+
+  
+  
+}
+
+
+df &lt;- data.frame(df)
+names(df) &lt;- c(&#39;id&#39;, &#39;time&#39;, &#39;happy&#39;, &#39;met_friend&#39;)
+library(tidyverse)</code></pre>
+<div id="results" class="section level3">
+<h3>Results</h3>
+<p>Remember, we generated data where “met friend” did not influence happiness. Now we are going to assess the coefficient relating “met friend” to happiness to see if it differs from zero. First, let’s say our post-assessment happened at time 10.</p>
+<p>Trim down our data set to just that time frame.</p>
+<pre class="r"><code>happy10_sample &lt;- df %&gt;%
+  filter(time &lt; 11)</code></pre>
+<p>How many friends did each person meet between times 5 and 10?</p>
+<pre class="r"><code>friend_count &lt;- happy10_sample %&gt;%
+  filter(time &gt; 4) %&gt;%
+  group_by(id) %&gt;%
+  summarise(
+    friend_count = sum(met_friend)
+  )</code></pre>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<p>Now change that to:</p>
+<ul>
+<li>0 = did not happen</li>
+<li>1 = happened at least once (meaning sum of friend_count is not equal to 0)</li>
+</ul>
+<pre class="r"><code>friend_count &lt;- friend_count %&gt;%
+  mutate(friend_event = case_when(
+    friend_count == 0 ~ 0,
+    friend_count != 0 ~ 1
+  ))</code></pre>
+<p>Merge that count back into the happy10 data set and prepare the data for regression.</p>
+<pre class="r"><code># Merge back into y10 df
+
+happy10_sample &lt;- left_join(happy10_sample, friend_count)
+
+# Filter down to what&#39;s needed for regression
+
+happy10_filter &lt;- happy10_sample %&gt;%
+  select(id, time, happy, friend_event) %&gt;%
+  filter(time == 1 | time == 10)
+
+library(reshape2)
+
+happy10_wide &lt;- reshape(happy10_filter, idvar = &#39;id&#39;, timevar = &#39;time&#39;, direction = &#39;wide&#39;)
+
+# The x columns are synonymous, so I can remove one 
+
+happy10_wide &lt;- happy10_wide[, c(&#39;id&#39;, &#39;happy.10&#39;, &#39;happy.1&#39;, &#39;friend_event.1&#39;)]
+names(happy10_wide) &lt;- c(&#39;id&#39;, &#39;happy_post&#39;, &#39;happy_pre&#39;, &#39;met_friend&#39;)</code></pre>
+<p>Now regress post happy on pre happy and whether or not they met a friend between times 5 and 10.</p>
+<pre class="r"><code>summary(lm(happy_post ~ happy_pre + met_friend,
+           data = happy10_wide))$coefficients</code></pre>
+<pre><code>##               Estimate Std. Error   t value     Pr(&gt;|t|)
+## (Intercept) -0.1050699 0.04102004 -2.561429 1.066877e-02
+## happy_pre    0.9337432 0.04815831 19.389036 2.537842e-65
+## met_friend   0.2526980 0.04992485  5.061568 5.545673e-07</code></pre>
+<p>The coefficient relating “met friend” to happiness is about 0.3 and it is significant (remember there was no influence from “met friend” to happiness).</p>
+<p>What about when we change the post assessment to time point 15?</p>
+<p>First create a function out of all the “tidying” steps above:</p>
+<pre class="r"><code>df_create &lt;- function(time1){
+  library(reshape2)
+  library(tidyverse)
+  time2 &lt;- time1 - 5
+  
+  y_sample &lt;- df %&gt;%
+    filter(time &lt;= time1)
+  
+  friend_count &lt;- y_sample %&gt;%
+    filter(time &gt;= time2) %&gt;%
+    group_by(id) %&gt;%
+    summarise(
+      friend_count = sum(met_friend)
+    )
+  
+  friend_count &lt;- friend_count %&gt;%
+    mutate(friend_event = case_when(
+      friend_count == 0 ~ 0,
+      friend_count != 0 ~ 1
+    ))
+  
+  y_sample &lt;- left_join(y_sample, friend_count)
+  y_filter &lt;- y_sample %&gt;%
+    select(id, time, happy, friend_event) %&gt;%
+    filter(time == 1 | time == time1)
+  
+  y_wide &lt;- reshape(y_filter, idvar = &#39;id&#39;, timevar = &#39;time&#39;, direction = &#39;wide&#39;)
+  
+  yname &lt;- paste(&#39;happy.&#39;, time1, sep = &#39;&#39;)
+  
+  y_wide &lt;- y_wide[, c(&#39;id&#39;, yname, &#39;happy.1&#39;, &#39;friend_event.1&#39;)]
+  names(y_wide) &lt;- c(&#39;id&#39;, &#39;happy_post&#39;, &#39;happy_pre&#39;, &#39;met_friend&#39;)
+  
+  return(y_wide)
+
+}</code></pre>
+<p>Here are the results:</p>
+<pre class="r"><code>happy15_wide &lt;- df_create(15)
+
+summary(lm(happy_post ~ happy_pre + met_friend,
+           data = happy15_wide))$coefficients</code></pre>
+<pre><code>##               Estimate Std. Error   t value     Pr(&gt;|t|)
+## (Intercept) -0.2154859 0.04700472 -4.584346 5.551550e-06
+## happy_pre    0.8440452 0.05624981 15.005297 2.076223e-43
+## met_friend   0.5000608 0.05837959  8.565678 9.187047e-17</code></pre>
+<p>What about when we select time 25 as our post assessment?</p>
+<pre class="r"><code>happy25_wide &lt;- df_create(25)
+
+summary(lm(happy_post ~ happy_pre + met_friend,
+           data = happy25_wide))$coefficients</code></pre>
+<pre><code>##               Estimate Std. Error   t value     Pr(&gt;|t|)
+## (Intercept) -0.3849218 0.06220349 -6.188106 1.132745e-09
+## happy_pre    0.8216318 0.07466252 11.004608 9.061944e-26
+## met_friend   0.8663628 0.07697388 11.255282 8.833209e-27</code></pre>
+<p>Notice how large the coefficient relating “met friend” to happiness is here: close to 0.9 – remember, there truly is no effect relating “met friend” to happiness.</p>
+</div>
+</div>
+<div id="conclusion" class="section level1">
+<h1>Conclusion</h1>
+<p>If there is some probability of reverse causality and we don’t measure the event exactly when it occurs then the estimate relating that event to our outcome will be biased. If many “event opportunities” occur between our pre and post measure then our estimate will be extremely biased.</p>
+<p>Bo<span class="math inline">\(^2\)</span>m = )</p>
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="/js/academic.min.6f7ce8be710290b8c431bbc97f405d15.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+
+
+  <p class="powered-by">
+    © Christopher Dishop 2020 &middot; 
+
+    Made with <a href="https://cran.r-project.org/" target="_blank" rel="noopener"><i class="fab fa-r-project"></i> </a><a href="https://github.com/rstudio/blogdown" target="_blank" rel="noopener">blogdown</a>,
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>, and
+    <a href="https://github.com/rbind/apreshill" target="_blank" rel="noopener">Alison's Hill's</a> wonderful template.
+
+    
+
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

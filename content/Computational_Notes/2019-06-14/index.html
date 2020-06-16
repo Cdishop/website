@@ -1,0 +1,128 @@
+---
+title: "Systems Thinking on Goons in the NHL"
+Date: "2019-06-14"
+summary: "-----"
+---
+
+
+
+<p>Inspired by Bill Burr’s Monday Morning Podcast, episode 6-6-19.</p>
+<p>He describes how people that do not understand hockey wanted to get fighting out of the NHL, so in the 2000’s they made greater efforts to remove goons (fighters). What people outside the NHL often do not understand, though, is that fighting is used to minimize dirty play. When a team is playing dirty, you – as a couch of the team that is not playing dirty – send out a goon to punch around a few of their players. In doing so, the other team knocks it off and play continues candidly. Fighting looks bad, but the overall amount of dirty play in the NHL is reduced when it contains a sufficient population of goons. Sounds like systems thinking.</p>
+<div id="simulation-set-up" class="section level1">
+<h1>Simulation Set-Up</h1>
+<ul>
+<li><p>States and Relationships</p>
+<ul>
+<li><p>2 states modeled over time (number of goons and number of dirty plays, or the level of “dirtiness” in the NHL)</p></li>
+<li><p>Number of goons fluctuates independently but with autoregression</p>
+<ul>
+<li>N_goons(t) = N_goons(t-1)</li>
+</ul></li>
+<li><p>Dirtiness level is a function of its prior self and the number of goons, such that a greater number of goons causes lower levels of dirtiness</p>
+<ul>
+<li>D_level(t) = D_level(t-1) - N_goons(t)</li>
+</ul></li>
+</ul></li>
+<li><p>Flow</p>
+<ul>
+<li><p>First, watch the states fluctuate over time and establish equilibrium</p></li>
+<li><p>Second, remove a bunch of goons and then see what happens to the system</p></li>
+</ul></li>
+</ul>
+</div>
+<div id="simulation" class="section level1">
+<h1>Simulation</h1>
+<p>Initial levels of goons and dirtiness.</p>
+<pre class="r"><code>n_goons_initial &lt;- 30
+d_level_initial &lt;- 15</code></pre>
+<p>Now simulate the states across time (20 time points) according to the simulation set-up above. Alpha will be set to 0.7 for both states and beta will be set to 0.2. The forcing terms for goons and dirtiness will be, respectively, 25 and 20.</p>
+<pre class="r"><code>time &lt;- 30
+df_mat &lt;- matrix(ncol = 3, nrow = time)
+count &lt;- 0
+
+for(i in seq_along(1:time)){
+  count &lt;- count + 1
+  
+  
+  if(i == 1){
+    
+    df_mat[count, 1] &lt;- n_goons_initial
+    df_mat[count, 2] &lt;- d_level_initial
+    df_mat[count, 3] &lt;- i
+    
+  }else{
+    
+    
+    df_mat[count, 1] &lt;- 25 + 0.7*df_mat[count - 1, 1] + rnorm(1, 0, 1)
+    df_mat[count, 2] &lt;- 20 + 0.7*df_mat[count - 1, 2] - 0.2*df_mat[count, 1] + rnorm(1, 0, 1)
+    df_mat[count, 3] &lt;- i
+    
+    
+  }
+  
+  
+}
+
+df &lt;- data.frame(df_mat)
+names(df) &lt;- c(&#39;n_goons&#39;, &#39;d_level&#39;, &#39;time&#39;)</code></pre>
+<p>View both states over time.</p>
+<pre class="r"><code>library(ggthemes)
+df_plot &lt;- df %&gt;%
+  gather(n_goons, d_level, key = &#39;variable&#39;, value = &#39;value&#39;)
+
+ggplot(df_plot, aes(x = time, y = value, color = variable)) + 
+  geom_point() + 
+  geom_line()</code></pre>
+<p><img src="/Computational_Notes/2019-06-14/index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>As you can see, the number of goons and the dirtiness level in the NHL drive toward equilibrium levels over time. There are goons, which means there are fights and the potential to appear “dirty” to anyone without an understanding of the system, but having goons around maintains the overall dirtiness within the NHL at low levels.</p>
+<p>Now, what happens to the level of dirtiness when we remove a bunch of goons at time point 14 and beyond?</p>
+<pre class="r"><code>n_goons_initial &lt;- 30
+d_level_initial &lt;- 15
+
+time &lt;- 30
+df_mat &lt;- matrix(ncol = 3, nrow = time)
+count &lt;- 0
+
+for(i in seq_along(1:time)){
+  count &lt;- count + 1
+  
+  
+  if(i == 1){
+    
+    df_mat[count, 1] &lt;- n_goons_initial
+    df_mat[count, 2] &lt;- d_level_initial
+    df_mat[count, 3] &lt;- i
+    
+  }else if (i &lt;=13){
+    
+    df_mat[count, 1] &lt;- 25 + 0.7*df_mat[count - 1, 1] + rnorm(1, 0, 1)
+    df_mat[count, 2] &lt;- 20 + 0.7*df_mat[count - 1, 2] - 0.2*df_mat[count, 1] + rnorm(1, 0, 1)
+    df_mat[count, 3] &lt;- i
+    
+    
+    # HERE IS THE CHANGE
+  }else if(i  &gt; 13){
+    
+    num_goons &lt;- sample(c(2,3,4), 1)
+    df_mat[count, 1] &lt;- num_goons
+    df_mat[count, 2] &lt;- 20 + 0.7*df_mat[count - 1, 2] - 0.2*df_mat[count, 1] + rnorm(1, 0, 1)
+    df_mat[count, 3] &lt;- i
+    ######################################
+    
+  }
+}
+  
+
+df &lt;- data.frame(df_mat)
+names(df) &lt;- c(&#39;n_goons&#39;, &#39;d_level&#39;, &#39;time&#39;)
+
+df_plot &lt;- df %&gt;%
+  gather(n_goons, d_level, key = &#39;variable&#39;, value = &#39;value&#39;)
+
+ggplot(df_plot, aes(x = time, y = value, color = variable)) + 
+  geom_point() + 
+  geom_line()</code></pre>
+<p><img src="/Computational_Notes/2019-06-14/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>What happened? The level of dirtiness increases after removing goons. In other words, removing goons, or fighters, from the NHL may make the game appear more civil from the outside, but goons are embedded in a system that maintains overall low levels of dirtiness. When the goons are removed – and they are a crucial part of the system – dirtiness levels increase dramatically.</p>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>
+</div>

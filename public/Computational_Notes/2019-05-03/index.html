@@ -1,0 +1,742 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="-----">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/computational_notes/2019-05-03/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#06805E">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/tomorrow.min.css" crossorigin="anonymous" title="hl-light">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/tomorrow.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+      
+    
+
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400i%7CKarla:400,400i,700,700i%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-99209585-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'UA-99209585-1', {});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hua7ddb50eead73fc737c5c3187aff8cf9_17132_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hua7ddb50eead73fc737c5c3187aff8cf9_17132_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="/computational_notes/2019-05-03/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@apreshill">
+  <meta property="twitter:creator" content="@apreshill">
+  
+  <meta property="og:site_name" content="Christopher R. Dishop">
+  <meta property="og:url" content="/computational_notes/2019-05-03/">
+  <meta property="og:title" content="What Explaining Means in Statistics | Christopher R. Dishop">
+  <meta property="og:description" content="-----"><meta property="og:image" content="/img/pom-card.png">
+  <meta property="twitter:image" content="/img/pom-card.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2019-05-03T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2019-05-03T00:00:00&#43;00:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>What Explaining Means in Statistics | Christopher R. Dishop</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">Christopher R. Dishop</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
+        
+        
+        
+          
+            
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="https://raw.githubusercontent.com/Cdishop/website/master/misc/CV.pdf" target="_blank" rel="noopener"><span>CV</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/computational_notes"><span>Computation</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/r_resources"><span>R Resources</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/rec_reading"><span>Recommended</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+
+        
+
+        
+
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>What Explaining Means in Statistics</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    May 3, 2019
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+
+<p>Think about what it would mean to explain something to a friend. How would you explain why the Patriot’s won the Superbowl? How would you explain why you are feeling happy or sad? How would you explain tying a shoe to a toddler? How would you explain why eating lots of donuts tends to increase a person’s weight? How would you explain the timeline of Game of Thrones to someone who hadn’t seen it?</p>
+<p>What you came up with, or thought about, is different from how “explaining” is usually used in research. We typically use the term to mean “explain variation,” and the goal of this post is to flesh-out what that means. While you read this, though, try to keep in mind the thought, “how does this connect to the way I explain things in everyday life?”</p>
+<p>Imagine that we have a scatter plot, performance on the Y axis and ability on the X axis.</p>
+<p><img src="/Computational_Notes/2019-05-03/index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>We collected data on several people – Bob, Chris, Julie, Monte, and Rachel, we measured each person’s performance and ability – and those individual data points are represented in the scatterplot. In statistics, what we try to do is account for variability in performance, we try to explain variation in performance. Here is what that means.</p>
+<p>Take the mean of performance as a flat, horizontal line across all values of ability. For now we do not care about ability, we are just using it to visualize the data.</p>
+<p><img src="/Computational_Notes/2019-05-03/index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>Notice that the mean of performance does not perfectly align with the observed data. That is, each of the points on the plot do not fall exactly on the horizontal line. If they did, we would say that the mean of performance perfectly explains the variability in performance. Instead, each of the points has some distance from the mean of performance line, and we call those distances residuals.</p>
+<p><img src="/Computational_Notes/2019-05-03/index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>What those residuals mean conceptually is that the observed data points do not fall exactly on the mean of performance. Performance cannot be explained simply by its mean. There is variation in performance that is left to explain, there are distances (residuals) that are not accounted for.</p>
+<p>Summing across all of those residuals gets us what is called the total sum of squares. All of the observed values have some distance from the mean performance line, when we aggregate all of those distances (all of the vertical line segments) we get an index of the variability in performance that we are trying to explain.</p>
+<p><strong>TSS</strong> = sum of vertical, residual distances</p>
+<p>The real equation for TSS uses squares because negative distances will cancel positive distances, but this is a conceptual write-up. So we are ok ignoring that for now.</p>
+<p>So, we have variation in performance that is not accounted for by the mean of performance. Now imagine that we believe some super complicated function of ability (X) explains the variation in performance. This super complicated function is a crazy line that perfectly runs through every observed data point.</p>
+<p><img src="/Computational_Notes/2019-05-03/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Now remove the observed data points from the graph so that we are only looking at the mean of performance and the predicted values of performance as a function of ability.</p>
+<p><img src="/Computational_Notes/2019-05-03/index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>Now we have a graph of PREDICTED data. That is, the black line does not have observed data points, it does not represent what we saw when we collected data and measured performance and ability on Bob and the others. We are looking at the predicted values of performance based on some super complicated function of ability. Notice that the black line also has distances from the mean of performance, so we can sum across those distances to get another quantity, called the expected sum of squares.</p>
+<p><img src="/Computational_Notes/2019-05-03/index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><strong>ESS</strong> = sum of vertical, residual distances (but from our predicted line rather than our observed data points)</p>
+<p>Because our super complicated function perfectly went through each observed data point, TSS is equivalent to ESS in this case. That means that our super complicated function perfectly explains the variation in performance. We have accounted for all variance in our outcome.</p>
+<p>Usually we don’t use super complicated equations. We tend to posit linear functions, such that we think that performance is a linear function of ability. If we were to plot a predicted line showing performance as a linear function of ability, the residual distances would change and ESS would be different from TSS, meaning that we explained some, but not all of the variation in performance.</p>
+<p>That is what explaining means in research and statistics (technically, “explaining variation”). Observed data varies about the mean on some dependent variable and there are distances from observed data points to the mean line. If we aggregate those distances together we get TSS, a sense of the total variation in the DV. Then we create some equation relating predictors to the outcome and use it to generate new values of the DV (i.e., predicted values). Explaining in statistics means, “to what extent do my predicted values have the same pattern of distances as my observed values?” “To what extent are the distances from the predicted values to the mean line the same as the distances from the observed values to the mean line?” “To what extent is the total variation represented by the predicted variation?” Is TSS equivalent to ESS?</p>
+<p>Now return to the notion that we opened with, to what extent does explaining variation reflect how you explain things in everyday life?</p>
+<div id="connecting-to-causality" class="section level3">
+<h3>Connecting to Causality</h3>
+<p>How does all of this connect to causality? Knowing about cause helps you “explain variation,” but explaining more or less variation does not give you information about cause. Said differently, knowledge about cause, or the data generating process, or truth, will influence your ability to explain variation, but improving your ability to explain variation will not necessarily produce insights about the DGP. If you know the true process – i.e., the DGP, the underlying structure of effects and variables, the causal system – then you will be able to (almost perfectly) explain variation in the sense that I described in this post. If you know the true process, then you will be able to explain why Bob’s score is different from Julie’s, why some variables correlate with the outcome and others don’t, and why Monte’s score is different from time 1 versus time 2. Full knowledge of the DGP means you can predict what happens next, there are no unknowns left to make your ESS different from your TSS.</p>
+<p>But the reverse is not true. Just because you can explain variation – in the statistical sense described here – does not mean that you have the right DGP or know anything about cause. I could have the wrong DGP, the wrong notion about the causal structure, the wrong variables in the model, but improve my ability to “explain variation” by including more variables in my model. I could include additional, irrelevant variables to make my model more complex and subsequently improve my ability to “explain variation,” but I wouldn’t produce any greater knowledge about cause or the DGP. Knowledge about cause, explanation, why, or the DGP comes from research designs and assumptions, not statistical models. Did you randomly assign and manipulate, and were there strong assumptions involved in the form of DAGS? Did you “wiggle” or change some variables (think Judea Pearl) and observe the effect of doing so on other variables in a controlled environment? Fancy stats don’t get you there, great research designs and assumptions sometimes do.</p>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="/js/academic.min.6f7ce8be710290b8c431bbc97f405d15.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+
+
+  <p class="powered-by">
+    © Christopher Dishop 2020 &middot; 
+
+    Made with <a href="https://cran.r-project.org/" target="_blank" rel="noopener"><i class="fab fa-r-project"></i> </a><a href="https://github.com/rstudio/blogdown" target="_blank" rel="noopener">blogdown</a>,
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>, and
+    <a href="https://github.com/rbind/apreshill" target="_blank" rel="noopener">Alison's Hill's</a> wonderful template.
+
+    
+
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

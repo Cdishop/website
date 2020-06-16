@@ -1,0 +1,33 @@
+---
+title: "Formatting Qualtrics Responses"
+date: "2018-01-02"
+summary: "-----"
+---
+
+
+
+<p>Here is a quick piece of code to create numeric response scores when data are read in as strings (e.g., “Strongly Agree, Agree, Neutral”).</p>
+<pre class="r"><code>library(tidyverse)
+library(dplyr)
+library(plyr)
+
+df &lt;- read.csv(&quot;path&quot;)
+
+labels_to_values1 &lt;- function(x){
+  
+  mapvalues(x, from = c(&quot;Strongly Agree&quot;, 
+                        &quot;Agree&quot;, 
+                        &quot;Slightly Agree&quot;, 
+                        &quot;Slightly Disagree&quot;, 
+                        &quot;Disagree&quot;, 
+                        &quot;Strongly Disagree&quot;),
+                        to = c(6,5,4,3,2,1))
+  
+}
+
+recode_df &lt;- df %&gt;%
+  select(column_to_modify1, column_to_modify2, column_to_modify2, etc) %&gt;%
+  apply(2, FUN = labels_to_values1) %&gt;%
+  data.frame()</code></pre>
+<p>Note that R will throw you warnings if all of the response options are not used, but the code will still work.</p>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>

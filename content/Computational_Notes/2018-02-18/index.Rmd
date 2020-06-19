@@ -1,0 +1,21 @@
+---
+title: "Restart & Clear Environment"
+date: "2018-02-18"
+summary: "-----"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F, message = F)
+```
+
+```{r, eval = F}
+# restart session
+.rs.restartR()
+
+# clear environment
+remove(list = ls())
+```
+
+
+
+Bo$^2$m =)

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Christopher R. Dishop</title>
-    <link>/</link>
-      <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://christopherdishop.netlify.app/</link>
+      <atom:link href="https://christopherdishop.netlify.app/index.xml" rel="self" type="application/rss+xml" />
     <description>Christopher R. Dishop</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Christopher Dishop 2020</copyright><lastBuildDate>Wed, 27 May 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/img/pom-card.png</url>
+      <url>https://christopherdishop.netlify.app/img/pom-card.png</url>
       <title>Christopher R. Dishop</title>
-      <link>/</link>
+      <link>https://christopherdishop.netlify.app/</link>
     </image>
     
     <item>
       <title>Counting Degrees of Freedom</title>
-      <link>/computational_notes/2017-07-13-dfs/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2017-07-13-dfs/</link>
       <pubDate>Wed, 27 May 2020 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2017-07-13-dfs/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2017-07-13-dfs/</guid>
       <description>
 
 
@@ -105,7 +105,7 @@ trust ~~ 0*availability
 
 ex1_model_restrict &amp;lt;- sem(ex1_string_restrict, data = df)
 show(ex1_model_restrict) # yup&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 15 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 16 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -115,9 +115,9 @@ show(ex1_model_restrict) # yup&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 1.184
+##   Test statistic                                 0.000
 ##   Degrees of freedom                                 1
-##   P-value (Chi-square)                           0.277&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.995&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;example-2---common-factor-underlying-6-observed-items&#34; class=&#34;section level1&#34;&gt;
@@ -182,7 +182,7 @@ ex2_model &amp;lt;- sem(ex2_string, data = df_cf)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;21 - 12 = 9&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex2_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 60 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 70 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -192,9 +192,9 @@ ex2_model &amp;lt;- sem(ex2_string, data = df_cf)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 6.872
+##   Test statistic                                 7.770
 ##   Degrees of freedom                                 9
-##   P-value (Chi-square)                           0.650&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.557&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -272,7 +272,7 @@ ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;15 - 13 = 2&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex3_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 168 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 198 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -282,9 +282,9 @@ ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 0.593
+##   Test statistic                                 9.570
 ##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.898&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.023&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Nope. I’m one off, where did I go wrong?&lt;/p&gt;
 &lt;p&gt;Ah, there is only 1 prediction error because productivity is being predicted. I counted 2 prediction errors because I gave one to both b1 and b2. So, the unknowns should be…&lt;/p&gt;
 &lt;ul&gt;
@@ -302,7 +302,7 @@ ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;15 - 12 = 3&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex3_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 168 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 198 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -312,9 +312,9 @@ ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 0.593
+##   Test statistic                                 9.570
 ##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.898&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.023&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -369,7 +369,7 @@ ex4_model &amp;lt;- sem(ex4_string, data = df_chain)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;10 - 7 = 3&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex4_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 56 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 59 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -379,9 +379,9 @@ ex4_model &amp;lt;- sem(ex4_string, data = df_chain)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 4.941
+##   Test statistic                                 7.451
 ##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.176&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.059&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -458,7 +458,7 @@ ex5_model &amp;lt;- sem(ex5_string, data = df5_wide)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;28 - 10 = 18&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex5_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 117 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 114 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -469,9 +469,9 @@ ex5_model &amp;lt;- sem(ex5_string, data = df5_wide)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                16.836
+##   Test statistic                                14.589
 ##   Degrees of freedom                                18
-##   P-value (Chi-square)                           0.534&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.690&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Why didn’t I estimate a mean for unobserved heterogeneity here? In all of the other examples I estimated the variance (1 parameter) and the mean (1 parameter) of the latent exogenous variable. In this case, unobserved heterogeneity is the latent exogenous variable but I only estimated its variance. That’s because in this model we don’t really care about the mean of unobserved heterogeneity, it’s just a latent variable that we incorporate to account for stable individual differences. In other words, when I estimate latent cog ability and assertiveness as IVs to predict an outcome, I care about their means. Here, unobserved heterogeneity is just an additional factor to account for, not a variable whose mean I really care to know. That said, if I wanted to estimate the mean of unobserved heterogeneity (which would result in one additional estimated parameter and one fewer df) then I would incorporate the following into the model string.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;&amp;#39;
 
@@ -487,9 +487,9 @@ unob_het ~ 1 # lavaan code for estimating the mean of a latent variable
     
     <item>
       <title>Bivariate Latent Dual Change Model</title>
-      <link>/computational_notes/2020-05-26/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2020-05-26/</link>
       <pubDate>Tue, 26 May 2020 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2020-05-26/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2020-05-26/</guid>
       <description>
 
 
@@ -568,7 +568,7 @@ ggplot(df, aes(x = time, y = y, group = id)) +
   geom_line(color = &amp;#39;grey85&amp;#39;) + 
   geom_point(data = df_sample, aes(x = time, y = y, group = id)) + 
   geom_line(data = df_sample, aes(x = time, y = y, group = id))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2020-05-26/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-05-26/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Values of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; over time.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot_single_response &amp;lt;- function(y_axis){
   
@@ -582,7 +582,7 @@ ggplot(df, aes(x = time, y = y, group = id)) +
 }
 
 plot_single_response(quo(x))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2020-05-26/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-05-26/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Three randomly selected individuals with &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; plotted simultaneously.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;three_cases &amp;lt;- df %&amp;gt;%
   filter(id == 4 | id == 500 | id == 322) %&amp;gt;%
@@ -592,7 +592,7 @@ ggplot(three_cases, aes(x = time, y = response, color = variable)) +
   geom_point() + 
   geom_line() + 
   facet_wrap(~id)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2020-05-26/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-05-26/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;dual-change-model-on-y&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Dual Change Model on Y&lt;/h1&gt;
@@ -1718,9 +1718,9 @@ summary(bi_dc_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Latent Dual Change Models</title>
-      <link>/computational_notes/2020-05-24/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2020-05-24/</link>
       <pubDate>Sun, 24 May 2020 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2020-05-24/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2020-05-24/</guid>
       <description>
 
 
@@ -1781,7 +1781,7 @@ ggplot(df, aes(x = time, y = y, group = id)) +
   geom_line(color = &amp;#39;grey85&amp;#39;) + 
   geom_point(data = sample_df, aes(x = time, y = y, group = id)) + 
   geom_line(data = sample_df, aes(x = time, y = y, group = id))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2020-05-24/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-05-24/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Change the data to wide and load &lt;code&gt;lavaan&lt;/code&gt; before we start modeling.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_wide &amp;lt;- reshape(df, idvar = &amp;#39;id&amp;#39;, timevar = &amp;#39;time&amp;#39;, direction = &amp;#39;wide&amp;#39;)
 library(lavaan)&lt;/code&gt;&lt;/pre&gt;
@@ -2901,9 +2901,9 @@ summary(dual_change_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Julia Cheat Sheet</title>
-      <link>/computational_notes/2020-05-23/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2020-05-23/</link>
       <pubDate>Sat, 23 May 2020 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2020-05-23/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2020-05-23/</guid>
       <description>
 
 
@@ -2915,9 +2915,9 @@ summary(dual_change_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Be Careful With Characters and Matrices</title>
-      <link>/computational_notes/2020-05-22/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2020-05-22/</link>
       <pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2020-05-22/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2020-05-22/</guid>
       <description>
 
 
@@ -2975,9 +2975,9 @@ df_mat&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Empirical Independence</title>
-      <link>/computational_notes/2020-04-03/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2020-04-03/</link>
       <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2020-04-03/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2020-04-03/</guid>
       <description>
 
 
@@ -3107,11 +3107,11 @@ prob_cd / prob_c&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Independence Exercises</title>
-      <link>/computational_notes/2020-04-02/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2020-04-02/</link>
       <pubDate>Thu, 02 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2020-04-02/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2020-04-02/</guid>
       <description>
-&lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Some of my favorite, simple examples demonstrating how to evaluate whether two events are independent using Probability Theory.&lt;/p&gt;
@@ -3251,9 +3251,9 @@ c
     
     <item>
       <title>Scrape Numbered Pages</title>
-      <link>/computational_notes/2020-03-22/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2020-03-22/</link>
       <pubDate>Sun, 22 Mar 2020 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2020-03-22/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2020-03-22/</guid>
       <description>
 
 
@@ -3328,10 +3328,66 @@ head(all_webs)&lt;/code&gt;&lt;/pre&gt;
     </item>
     
     <item>
+      <title>Quosures Within an Index</title>
+      <link>https://christopherdishop.netlify.app/computational_notes/2020-03-21/</link>
+      <pubDate>Sat, 21 Mar 2020 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2020-03-21/</guid>
+      <description>
+
+
+&lt;p&gt;I’ve written about quosures in previous posts. They can be used in functions to specify column names. But what if a column name is pulled from a loop and the value is a character? In that case, surround the value with &lt;code&gt;sym()&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Here is an example using only quosures.&lt;/p&gt;
+&lt;p&gt;First, the data and the function:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+library(ggplot2)
+library(hrbrthemes)
+
+people &amp;lt;- 600
+
+df &amp;lt;- tibble(
+  &amp;quot;id&amp;quot; = c(1:people),
+  &amp;quot;performance&amp;quot; = c(rnorm(people, 50, 3))
+)
+
+
+multiply_and_plot &amp;lt;- function(col1){
+  
+  
+  df &amp;lt;- df %&amp;gt;% 
+    mutate(new_performance = !!col1 * 0.5)
+  
+  g &amp;lt;- ggplot(df, aes(x = !!col1)) + 
+    geom_histogram(fill=&amp;quot;#69b3a2&amp;quot;, alpha=0.4) + 
+    theme_ipsum() +
+    labs(x = &amp;quot;Adj-Performance&amp;quot;, y = &amp;quot;Frequency&amp;quot;)
+  
+  return(g)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Using quosure:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;multiply_and_plot(quo(performance))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-03-21/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;But what if the column name is an index from a vector or for loop? Use &lt;code&gt;sym()&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;use_cols &amp;lt;- c(&amp;quot;performance&amp;quot;)
+
+for(i in 1:1){
+  
+  print(
+    
+  multiply_and_plot(sym(use_cols[i]))
+  
+  )
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-03-21/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Also note that I had to include &lt;code&gt;results = &amp;quot;asis&amp;quot;&lt;/code&gt; in the Rmarkdown document and put the function within a print command to get the output to render.&lt;/p&gt;
+&lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>First Web Scraping</title>
-      <link>/computational_notes/2020-03-20/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2020-03-20/</link>
       <pubDate>Fri, 20 Mar 2020 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2020-03-20/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2020-03-20/</guid>
       <description>
 
 
@@ -3481,9 +3537,9 @@ review&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Using Gentle Ggplot2 to Present</title>
-      <link>/computational_notes/2020-03-04/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2020-03-04/</link>
       <pubDate>Wed, 04 Mar 2020 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2020-03-04/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2020-03-04/</guid>
       <description>
 
 
@@ -3493,10 +3549,194 @@ review&lt;/code&gt;&lt;/pre&gt;
     </item>
     
     <item>
+      <title>Untidy Tables &amp; In-Place Mutation</title>
+      <link>https://christopherdishop.netlify.app/computational_notes/2020-01-14/</link>
+      <pubDate>Tue, 14 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2020-01-14/</guid>
+      <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;Hadley has written extensively about &lt;a href=&#34;https://vita.had.co.nz/papers/tidy-data.pdf&#34;&gt;tidy data&lt;/a&gt; and why it’s &lt;a href=&#34;https://github.com/tidyverse/dplyr/issues/425&#34;&gt;unsound to implement in-place data mutations&lt;/a&gt;. Some notes below on breaking both of those rules = ).&lt;/p&gt;
+&lt;p&gt;In-place changes to data using &lt;code&gt;tidyverse&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+df &amp;lt;- tibble(
+  &amp;quot;team&amp;quot; = c(&amp;quot;A&amp;quot;, &amp;quot;A&amp;quot;, &amp;quot;B&amp;quot;, &amp;quot;B&amp;quot;, &amp;quot;C&amp;quot;, &amp;quot;C&amp;quot;),
+  &amp;quot;individual&amp;quot; = c(1, 2, 3, 4, 5, 6),
+  &amp;quot;performance&amp;quot; = c(NA, 4, 5, 6, 2, 3),
+  &amp;quot;affect&amp;quot; = c(NA, 6, 7, 8, 4, 2),
+  &amp;quot;fav_color&amp;quot; = c(NA, &amp;quot;blue&amp;quot;, &amp;quot;green&amp;quot;, &amp;quot;orange&amp;quot;, &amp;quot;yellow&amp;quot;, &amp;quot;purple&amp;quot;)
+)
+df&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 5
+##   team  individual performance affect fav_color
+##   &amp;lt;chr&amp;gt;      &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;  &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;    
+## 1 A              1          NA     NA &amp;lt;NA&amp;gt;     
+## 2 A              2           4      6 blue     
+## 3 B              3           5      7 green    
+## 4 B              4           6      8 orange   
+## 5 C              5           2      4 yellow   
+## 6 C              6           3      2 purple&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Insert a performance, affect, and favorite color value for individual 1 within team A.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df %&amp;gt;% 
+  filter(team == &amp;quot;A&amp;quot; &amp;amp; individual == 1) %&amp;gt;% 
+  mutate(performance = 8,
+         affect = 2,
+         fav_color = &amp;quot;silver&amp;quot;) %&amp;gt;% 
+  rbind(df %&amp;gt;% filter(team != &amp;quot;A&amp;quot; &amp;amp; individual != 1))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 5 x 5
+##   team  individual performance affect fav_color
+##   &amp;lt;chr&amp;gt;      &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;  &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;    
+## 1 A              1           8      2 silver   
+## 2 B              3           5      7 green    
+## 3 B              4           6      8 orange   
+## 4 C              5           2      4 yellow   
+## 5 C              6           3      2 purple&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now for the note on untidy tables. Here’s some tidy data displayed using &lt;code&gt;kable&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(kableExtra)
+dt &amp;lt;- tibble(
+  
+  &amp;#39;team&amp;#39; = c(&amp;#39;A&amp;#39;, &amp;#39;A&amp;#39;, &amp;#39;A&amp;#39;,
+             &amp;#39;B&amp;#39;, &amp;#39;B&amp;#39;, &amp;#39;B&amp;#39;,
+             &amp;#39;C&amp;#39;, &amp;#39;C&amp;#39;, &amp;#39;C&amp;#39;),
+  &amp;#39;person&amp;#39; = c(1,2,3,
+               4,5,6,
+               7,8,9),
+  &amp;#39;score&amp;#39; = c(rnorm(9, 23, 3))
+  
+)
+
+dt %&amp;gt;% 
+  group_by(team) %&amp;gt;% 
+  summarize(
+    &amp;quot;Mean&amp;quot; = mean(score),
+    &amp;quot;SD&amp;quot; = sd(score)
+  ) %&amp;gt;% 
+  kable() %&amp;gt;% 
+  kable_styling()&lt;/code&gt;&lt;/pre&gt;
+&lt;table class=&#34;table&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+team
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Mean
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+SD
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+A
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+21.88049
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2.305258
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+B
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+20.19759
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3.474347
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+C
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+24.84912
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3.878338
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Looks great to me. The issue is that sometimes people expect to see data displayed in “untidy” formats. Let’s change the output so that each team is listed across the first row and the table displays the mean score alongside the standard deviation within parentheses.&lt;/p&gt;
+&lt;p&gt;To do so, I’m going to put string parentheses around the SD values, unite the mean and SD columns, then transform the data from long to wide format. Don’t forget to ungroup as well.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dt %&amp;gt;% 
+  group_by(team) %&amp;gt;% 
+  summarize(
+    &amp;quot;Mean&amp;quot; = round(mean(score), digits = 2),
+    &amp;quot;SD&amp;quot; = round(sd(score), digits = 2)
+  ) %&amp;gt;% 
+  ungroup() %&amp;gt;% 
+  # insert parentheses
+  mutate(SD = paste0(&amp;quot;(&amp;quot;, SD, &amp;quot;)&amp;quot;)) %&amp;gt;% 
+  # combine mean and SD columns
+  unite(meansd, Mean, SD, sep = &amp;quot; &amp;quot;, remove = T) %&amp;gt;% 
+  # make wide
+  pivot_wider(names_from = team, values_from = meansd) %&amp;gt;% 
+  rename(&amp;quot;Team A&amp;quot; = &amp;quot;A&amp;quot;,
+         &amp;quot;Team B&amp;quot; = &amp;quot;B&amp;quot;,
+         &amp;quot;Team C&amp;quot; = &amp;quot;C&amp;quot;) %&amp;gt;% 
+  kable(caption = &amp;quot;Team Scores&amp;quot;) %&amp;gt;% 
+  kable_styling() %&amp;gt;% 
+  footnote(&amp;quot;Mean (SD)&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;table class=&#34;table&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;caption&gt;
+&lt;span id=&#34;tab:unnamed-chunk-4&#34;&gt;Table 1: &lt;/span&gt;Team Scores
+&lt;/caption&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Team A
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Team B
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Team C
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+21.88 (2.31)
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+20.2 (3.47)
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+24.85 (3.88)
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tfoot&gt;
+&lt;tr&gt;
+&lt;td style=&#34;padding: 0; border: 0;&#34; colspan=&#34;100%&#34;&gt;
+&lt;span style=&#34;font-style: italic;&#34;&gt;Note: &lt;/span&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;padding: 0; border: 0;&#34; colspan=&#34;100%&#34;&gt;
+&lt;sup&gt;&lt;/sup&gt; Mean (SD)
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tfoot&gt;
+&lt;/table&gt;
+&lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Course Skeleton</title>
-      <link>/computational_notes/2020-01-10/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2020-01-10/</link>
       <pubDate>Fri, 10 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2020-01-10/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2020-01-10/</guid>
       <description>
 
 
@@ -3508,9 +3748,9 @@ review&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Simulations With Rcpp</title>
-      <link>/computational_notes/2019-12-10/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2019-12-10/</link>
       <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2019-12-10/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2019-12-10/</guid>
       <description>
 
 
@@ -3771,9 +4011,9 @@ head(df)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Regression Creates Weighted Linear Composites</title>
-      <link>/computational_notes/2019-12-01/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2019-12-01/</link>
       <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2019-12-01/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2019-12-01/</guid>
       <description>
 
 
@@ -3804,19 +4044,19 @@ df$id &amp;lt;- c(1:N)&lt;/code&gt;&lt;/pre&gt;
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -2.10686 -0.54755 -0.06257  0.56801  2.36631 
+## -2.87315 -0.57330  0.00411  0.56083  2.35863 
 ## 
 ## Coefficients:
-##              Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept) -0.005584   0.036107  -0.155    0.877    
-## x1           0.418654   0.035468  11.804  &amp;lt; 2e-16 ***
-## x2           0.282908   0.038936   7.266 1.44e-12 ***
+##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
+## (Intercept) -0.03791    0.03877  -0.978    0.329    
+## x1           0.29803    0.03937   7.569 1.83e-13 ***
+## x2           0.38596    0.03947   9.780  &amp;lt; 2e-16 ***
 ## ---
 ## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
 ## 
-## Residual standard error: 0.8058 on 497 degrees of freedom
-## Multiple R-squared:  0.2924, Adjusted R-squared:  0.2895 
-## F-statistic: 102.7 on 2 and 497 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+## Residual standard error: 0.8645 on 497 degrees of freedom
+## Multiple R-squared:  0.2644, Adjusted R-squared:  0.2614 
+## F-statistic: 89.31 on 2 and 497 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Here’s the kicker: you can think of those weights as optimal functions telling us how to create the composite.&lt;/p&gt;
 &lt;p&gt;Create a composite using the regression weights.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
@@ -3824,7 +4064,7 @@ df &amp;lt;- df %&amp;gt;%
   mutate(composite_x = 0.33*x1 + 0.4*x2)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Those weights provide the maximum correlation between our composite and the outcome.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cor(df$y, df$composite_x)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 0.5219796&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.5139733&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;In other words, the above correlation could not be higher with any other set of weights. Regression found the weights that makes the correlation above as large as it can be.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(lm(y ~ composite_x,
            data = df))&lt;/code&gt;&lt;/pre&gt;
@@ -3834,27 +4074,27 @@ df &amp;lt;- df %&amp;gt;%
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -2.27890 -0.58681 -0.06548  0.56313  2.30891 
+## -2.89747 -0.57429  0.01195  0.55452  2.35251 
 ## 
 ## Coefficients:
-##              Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept) -0.009586   0.036559  -0.262    0.793    
-## composite_x  0.962073   0.070448  13.657   &amp;lt;2e-16 ***
+##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
+## (Intercept) -0.03688    0.03864  -0.954     0.34    
+## composite_x  0.93908    0.07023  13.371   &amp;lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
 ## 
-## Residual standard error: 0.8162 on 498 degrees of freedom
-## Multiple R-squared:  0.2725, Adjusted R-squared:  0.271 
-## F-statistic: 186.5 on 1 and 498 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+## Residual standard error: 0.8638 on 498 degrees of freedom
+## Multiple R-squared:  0.2642, Adjusted R-squared:  0.2627 
+## F-statistic: 178.8 on 1 and 498 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Meta Analysis Comps Notes</title>
-      <link>/computational_notes/2019-09-15/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2019-09-15/</link>
       <pubDate>Sun, 15 Sep 2019 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2019-09-15/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2019-09-15/</guid>
       <description>
 
 
@@ -4117,9 +4357,9 @@ upper_ci&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Intuition for Correlated Errors and Third Variables</title>
-      <link>/computational_notes/2019-06-26/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2019-06-26/</link>
       <pubDate>Wed, 26 Jun 2019 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2019-06-26/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2019-06-26/</guid>
       <description>
 
 
@@ -4127,18 +4367,18 @@ upper_ci&lt;/code&gt;&lt;/pre&gt;
 &lt;div id=&#34;the-exam-structure&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;The Exam Structure&lt;/h3&gt;
 &lt;p&gt;First, let’s get a feel for the exams. I’m going to use a lot of images in this post so it helps to walk through the basics of each plot. Imagine students taking a multiple choice test where they fill in one of five responses, “A,” “B,” “C,” “D,” or “E” for each question. The correct answer for question one is “C”&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2019-06-26/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2019-06-26/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;where the x-axis shows the response options a student can select for each question, and the y-axis shows the question number (there is only one question so far).&lt;/p&gt;
 &lt;p&gt;The correct answer for question two is also “C”&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2019-06-26/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2019-06-26/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;and that pattern continues for the rest of the questions on this 5-item test.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2019-06-26/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2019-06-26/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;In other words, imagine a 5 question exam where the correct answer for each question is “C.” With the basic images in play, we can think about how students might respond.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;no-cheating-what-is-the-pattern-of-errors-across-questions&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;No Cheating – What is the Pattern of Errors across Questions?&lt;/h3&gt;
 &lt;p&gt;First, consider an exam where students do not cheat. If nobody cheats, then everyone’s errors will be dispersed about the true option for each question, “C.” Some people falsely select “A” whereas others falsely select “E,” and yet others falsely select “B.” Here is a plot that retains the purple crosses that mark the true option, “C,” but also includes student responses from Susie, Peter, and John.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2019-06-26/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2019-06-26/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;For example, on question one Susie selects “A,” Peter selects “E,” and John selects “D,” meaning that none of the students get the answer correct. Every student, though, marks the correct response (C) for question 4.&lt;/p&gt;
 &lt;p&gt;There is no pattern in this plot. The green triangles, red circles, and blue-green squares are dispersed about the true score purple-crosses randomly. John gets some questions wrong, Susie gets some questions wrong, and Peter gets some questions wrong, but whether John incorrectly marks “A” or “E” doesn’t tell us anything about whether Peter incorrectly marks “A” or “E.” They are all wrong in a random way.&lt;/p&gt;
 &lt;p&gt;What about when students cheat?&lt;/p&gt;
@@ -4146,7 +4386,7 @@ upper_ci&lt;/code&gt;&lt;/pre&gt;
 &lt;div id=&#34;cheating-what-is-the-pattern-of-errors-across-questions&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Cheating – What is the Pattern of Errors across Questions?&lt;/h3&gt;
 &lt;p&gt;When students cheat, the errors, or “wrongness” of questions, produce a pattern – meaning that the errors are correlated. Imagine that a cheater, let’s say it’s Peter, hacks the teacher’s computer and gains access to all of the questions before the exam. He then answers all of the questions and sends his responses to the rest of the class (John and Susie). But Peter makes a mistake: he writes down the wrong answers to four of the questions. John and Susie use Peter’s responses on the exam, but since they were copying from Peter’s responses they have the same pattern on “wrongness” on the four questions that Peter missed – they get the same questions wrong in the same way. After the exam, the pattern of scores looks as follows.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2019-06-26/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2019-06-26/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;The true, correct responses are again labeled with purple cross-hairs: response “C” is the correct answer for each question. On question one, John, Peter, and Susie all incorrectly selected “A.” On question three, everyone incorrectly selected “E,” and on question four everyone incorrectly selected “D.” John, Peter, and Susie are wrong in the same way across the questions, their errors produce a pattern, a consistency, a correlation. The errors in our system correlate, which signals a third variable. In this case, the third variable is cheating.&lt;/p&gt;
 &lt;p&gt;So, think of exams and cheating when you hear the mantra, “correlated errors signal a third variable.” When an important variable is omitted from an analysis, the model is said to be missing a third variable and the errors may correlate. What this tells you is that something else – something unaccounted for – is influencing the patterns in your system, in the same sense as cheating influencing the pattern of responses on an exam.&lt;/p&gt;
 &lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
@@ -4156,9 +4396,9 @@ upper_ci&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Systems Thinking on Goons in the NHL</title>
-      <link>/computational_notes/2019-06-14/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2019-06-14/</link>
       <pubDate>Fri, 14 Jun 2019 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2019-06-14/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2019-06-14/</guid>
       <description>
 
 
@@ -4229,7 +4469,7 @@ df_plot &amp;lt;- df %&amp;gt;%
 ggplot(df_plot, aes(x = time, y = value, color = variable)) + 
   geom_point() + 
   geom_line()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2019-06-14/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2019-06-14/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;As you can see, the number of goons and the dirtiness level in the NHL drive toward equilibrium levels over time. There are goons, which means there are fights and the potential to appear “dirty” to anyone without an understanding of the system, but having goons around maintains the overall dirtiness within the NHL at low levels.&lt;/p&gt;
 &lt;p&gt;Now, what happens to the level of dirtiness when we remove a bunch of goons at time point 14 and beyond?&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n_goons_initial &amp;lt;- 30
@@ -4278,7 +4518,7 @@ df_plot &amp;lt;- df %&amp;gt;%
 ggplot(df_plot, aes(x = time, y = value, color = variable)) + 
   geom_point() + 
   geom_line()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2019-06-14/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2019-06-14/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;What happened? The level of dirtiness increases after removing goons. In other words, removing goons, or fighters, from the NHL may make the game appear more civil from the outside, but goons are embedded in a system that maintains overall low levels of dirtiness. When the goons are removed – and they are a crucial part of the system – dirtiness levels increase dramatically.&lt;/p&gt;
 &lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
 &lt;/div&gt;
@@ -4287,9 +4527,9 @@ ggplot(df_plot, aes(x = time, y = value, color = variable)) +
     
     <item>
       <title>Screwing Up A Mean Calculation</title>
-      <link>/computational_notes/2019-05-04/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2019-05-04/</link>
       <pubDate>Sat, 04 May 2019 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2019-05-04/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2019-05-04/</guid>
       <description>
 
 
@@ -4334,31 +4574,31 @@ df %&amp;gt;%
     
     <item>
       <title>What Explaining Means in Statistics</title>
-      <link>/computational_notes/2019-05-03/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2019-05-03/</link>
       <pubDate>Fri, 03 May 2019 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2019-05-03/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2019-05-03/</guid>
       <description>
 
 
 &lt;p&gt;Think about what it would mean to explain something to a friend. How would you explain why the Patriot’s won the Superbowl? How would you explain why you are feeling happy or sad? How would you explain tying a shoe to a toddler? How would you explain why eating lots of donuts tends to increase a person’s weight? How would you explain the timeline of Game of Thrones to someone who hadn’t seen it?&lt;/p&gt;
 &lt;p&gt;What you came up with, or thought about, is different from how “explaining” is usually used in research. We typically use the term to mean “explain variation,” and the goal of this post is to flesh-out what that means. While you read this, though, try to keep in mind the thought, “how does this connect to the way I explain things in everyday life?”&lt;/p&gt;
 &lt;p&gt;Imagine that we have a scatter plot, performance on the Y axis and ability on the X axis.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2019-05-03/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2019-05-03/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;We collected data on several people – Bob, Chris, Julie, Monte, and Rachel, we measured each person’s performance and ability – and those individual data points are represented in the scatterplot. In statistics, what we try to do is account for variability in performance, we try to explain variation in performance. Here is what that means.&lt;/p&gt;
 &lt;p&gt;Take the mean of performance as a flat, horizontal line across all values of ability. For now we do not care about ability, we are just using it to visualize the data.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2019-05-03/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2019-05-03/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Notice that the mean of performance does not perfectly align with the observed data. That is, each of the points on the plot do not fall exactly on the horizontal line. If they did, we would say that the mean of performance perfectly explains the variability in performance. Instead, each of the points has some distance from the mean of performance line, and we call those distances residuals.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2019-05-03/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2019-05-03/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;What those residuals mean conceptually is that the observed data points do not fall exactly on the mean of performance. Performance cannot be explained simply by its mean. There is variation in performance that is left to explain, there are distances (residuals) that are not accounted for.&lt;/p&gt;
 &lt;p&gt;Summing across all of those residuals gets us what is called the total sum of squares. All of the observed values have some distance from the mean performance line, when we aggregate all of those distances (all of the vertical line segments) we get an index of the variability in performance that we are trying to explain.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;TSS&lt;/strong&gt; = sum of vertical, residual distances&lt;/p&gt;
 &lt;p&gt;The real equation for TSS uses squares because negative distances will cancel positive distances, but this is a conceptual write-up. So we are ok ignoring that for now.&lt;/p&gt;
 &lt;p&gt;So, we have variation in performance that is not accounted for by the mean of performance. Now imagine that we believe some super complicated function of ability (X) explains the variation in performance. This super complicated function is a crazy line that perfectly runs through every observed data point.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2019-05-03/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2019-05-03/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Now remove the observed data points from the graph so that we are only looking at the mean of performance and the predicted values of performance as a function of ability.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2019-05-03/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2019-05-03/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Now we have a graph of PREDICTED data. That is, the black line does not have observed data points, it does not represent what we saw when we collected data and measured performance and ability on Bob and the others. We are looking at the predicted values of performance based on some super complicated function of ability. Notice that the black line also has distances from the mean of performance, so we can sum across those distances to get another quantity, called the expected sum of squares.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2019-05-03/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2019-05-03/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;ESS&lt;/strong&gt; = sum of vertical, residual distances (but from our predicted line rather than our observed data points)&lt;/p&gt;
 &lt;p&gt;Because our super complicated function perfectly went through each observed data point, TSS is equivalent to ESS in this case. That means that our super complicated function perfectly explains the variation in performance. We have accounted for all variance in our outcome.&lt;/p&gt;
 &lt;p&gt;Usually we don’t use super complicated equations. We tend to posit linear functions, such that we think that performance is a linear function of ability. If we were to plot a predicted line showing performance as a linear function of ability, the residual distances would change and ESS would be different from TSS, meaning that we explained some, but not all of the variation in performance.&lt;/p&gt;
@@ -4375,9 +4615,9 @@ df %&amp;gt;%
     
     <item>
       <title>Lavaan MPLUS Reference Sheet</title>
-      <link>/computational_notes/2019-05-02/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2019-05-02/</link>
       <pubDate>Thu, 02 May 2019 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2019-05-02/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2019-05-02/</guid>
       <description>
 
 
@@ -4451,9 +4691,9 @@ affect.4 ~~ res_var*affect.4
     
     <item>
       <title>Degrees of Freedom Intuition</title>
-      <link>/computational_notes/2019-05-01/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2019-05-01/</link>
       <pubDate>Wed, 01 May 2019 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2019-05-01/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2019-05-01/</guid>
       <description>
 
 
@@ -4485,13 +4725,13 @@ affect.4 ~~ res_var*affect.4
 y = mx + b.
 \end{equation}\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;As written, an infinite number of lines can represent that equation. The intercept can be any value and the slope can be any value. There are no constraints.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2019-05-01/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2019-05-01/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Now imagine an equation with a constraint, such that the intercept must be 2:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{equation}
 y = mx + 2.
 \end{equation}\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;You can still draw infinite lines here, but all of them must go through 2 as their intercept.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2019-05-01/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2019-05-01/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Now we can count our degrees of freedom. Let’s say each example above had 10 pieces of information (10 observed variables).&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{equation}
 y = mx + b \textrm{;} \textrm{ with 10 pieces of information and 2 estimated parameters. DF = 10 - 2. DF = 8}
@@ -4507,9 +4747,9 @@ y = mx + 2 \textrm{;} \textrm{ with 10 pieces of information and 1 estimated par
     
     <item>
       <title>Everything Partialled From Everything in Regression</title>
-      <link>/computational_notes/2019-04-19/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2019-04-19/</link>
       <pubDate>Fri, 19 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2019-04-19/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2019-04-19/</guid>
       <description>
 
 
@@ -4589,9 +4829,9 @@ df$emotion_with_ability_removed &amp;lt;- emotion_with_ability_removed&lt;/code&
     
     <item>
       <title>Convert Multiple Columns to Numeric or Character</title>
-      <link>/computational_notes/2019-04-10/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2019-04-10/</link>
       <pubDate>Wed, 10 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2019-04-10/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2019-04-10/</guid>
       <description>
 
 
@@ -4606,9 +4846,9 @@ df$emotion_with_ability_removed &amp;lt;- emotion_with_ability_removed&lt;/code&
     
     <item>
       <title>Simulating a Moving Average Process</title>
-      <link>/computational_notes/2019-01-29/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2019-01-29/</link>
       <pubDate>Tue, 29 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2019-01-29/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2019-01-29/</guid>
       <description>
 
 
@@ -4640,7 +4880,7 @@ df1 &amp;lt;- data.frame(
 ggplot(df1, aes(x = time, y = y)) + 
   geom_point() + 
   geom_line() &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2019-01-29/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2019-01-29/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;The second way to simulate it is to generate noise within the loop itself, store the noise, and then apply it to the outcome across time.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(15)
 
@@ -4676,7 +4916,7 @@ for(i in 1:time){
 ggplot(df2, aes(x = time, y = yt)) + 
   geom_point() + 
   geom_line()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2019-01-29/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2019-01-29/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;The second simulation style takes more code but I find it more intuitive. It is difficult for me to wrap my head around simulating all of the noise first and then applying it to the process as if the two are independent components – which is what the first simulation code mimics. To each their own.&lt;/p&gt;
 &lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
 </description>
@@ -4684,9 +4924,9 @@ ggplot(df2, aes(x = time, y = yt)) +
     
     <item>
       <title>Turning Unequal Dates into Days</title>
-      <link>/computational_notes/2019-01-15/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2019-01-15/</link>
       <pubDate>Tue, 15 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2019-01-15/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2019-01-15/</guid>
       <description>
 
 
@@ -4765,9 +5005,9 @@ original_df$day &amp;lt;- time_vec&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Generating Time in a Data Frame</title>
-      <link>/computational_notes/2019-01-14/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2019-01-14/</link>
       <pubDate>Mon, 14 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2019-01-14/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2019-01-14/</guid>
       <description>
 
 
@@ -4803,9 +5043,9 @@ original_df$day &amp;lt;- time_vec&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Only Store Successful Output - A Counter Placement Issue</title>
-      <link>/computational_notes/2019-01-13/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2019-01-13/</link>
       <pubDate>Sun, 13 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2019-01-13/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2019-01-13/</guid>
       <description>
 
 
@@ -4874,9 +5114,9 @@ use_days&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Row Labels Needed to Spread</title>
-      <link>/computational_notes/2019-01-11/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2019-01-11/</link>
       <pubDate>Fri, 11 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2019-01-11/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2019-01-11/</guid>
       <description>
 
 
@@ -4966,9 +5206,9 @@ cd_try&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Reveal Hidden NA&#39;s in Longitudinal Data</title>
-      <link>/computational_notes/2019-01-10/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2019-01-10/</link>
       <pubDate>Thu, 10 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2019-01-10/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2019-01-10/</guid>
       <description>
 
 
@@ -5058,9 +5298,9 @@ cd %&amp;gt;%
     
     <item>
       <title>The Premature Covariate</title>
-      <link>/computational_notes/2019-01-08/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2019-01-08/</link>
       <pubDate>Tue, 08 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2019-01-08/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2019-01-08/</guid>
       <description>
 
 
@@ -5352,9 +5592,9 @@ summary(lm(happy_post ~ happy_pre + met_friend,
     
     <item>
       <title>Column Names As Parameters with GGplot2</title>
-      <link>/computational_notes/2019-01-06/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2019-01-06/</link>
       <pubDate>Sun, 06 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2019-01-06/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2019-01-06/</guid>
       <description>
 
 
@@ -5373,7 +5613,7 @@ library(ggplot2)
 ggplot(df, aes(x = day, y = stress, color = id)) + 
   geom_point() + 
   geom_line()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2019-01-06/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2019-01-06/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Great, but imagine having a data set with 300 different DVs. Instead of re-calling &lt;code&gt;ggplot&lt;/code&gt; each time we can create a function where the column (DV) is the paramter.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot_it &amp;lt;- function(col_name){
   
@@ -5386,16 +5626,16 @@ ggplot(df, aes(x = day, y = stress, color = id)) +
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Note the &lt;code&gt;!!&lt;/code&gt; before the parameter. Now, to plot the new graph we use &lt;code&gt;quo&lt;/code&gt; within the function call.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot_it(quo(performance))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2019-01-06/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2019-01-06/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Mutating Scale Items with NA</title>
-      <link>/computational_notes/2019-01-05/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2019-01-05/</link>
       <pubDate>Sat, 05 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2019-01-05/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2019-01-05/</guid>
       <description>
 
 
@@ -5460,9 +5700,9 @@ cd&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Frequentist Confidence Intervals</title>
-      <link>/computational_notes/2019-01-04/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2019-01-04/</link>
       <pubDate>Fri, 04 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2019-01-04/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2019-01-04/</guid>
       <description>
 
 
@@ -5519,19 +5759,19 @@ sample_df &amp;lt;- df %&amp;gt;%
 ## lm(formula = performance ~ stress, data = sample_df)
 ## 
 ## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -2.60530 -0.65217 -0.00019  0.64258  2.96768 
+##     Min      1Q  Median      3Q     Max 
+## -3.5526 -0.6562  0.0308  0.6242  3.3567 
 ## 
 ## Coefficients:
-##              Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept) -0.061121   0.039900  -1.532    0.126    
-## stress       0.429826   0.008418  51.063   &amp;lt;2e-16 ***
+##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
+## (Intercept) 0.046270   0.040833   1.133    0.258    
+## stress      0.459144   0.008246  55.678   &amp;lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
 ## 
-## Residual standard error: 0.977 on 598 degrees of freedom
-## Multiple R-squared:  0.8134, Adjusted R-squared:  0.8131 
-## F-statistic:  2607 on 1 and 598 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+## Residual standard error: 0.999 on 598 degrees of freedom
+## Multiple R-squared:  0.8383, Adjusted R-squared:  0.838 
+## F-statistic:  3100 on 1 and 598 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;b-compute-the-ci&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;2b) Compute the CI&lt;/h3&gt;
@@ -5556,7 +5796,7 @@ if(se_lower &amp;lt;= stress_performance_coefficient &amp;amp;&amp;amp; se_upper
 }
 
 contain_parameter&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;no&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;yes&amp;quot;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;What did we do? We sampled the population, ran a regression to relate stress to performance, and then calculated a CI on the slope term. The interpretation of a CI, however, is across infinite samples. Now we need to run through the sample, regress, and calculate CI procedure again and again and again – Monte Carlo.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;re-sample-and-repeat&#34; class=&#34;section level3&#34;&gt;
@@ -5581,48 +5821,48 @@ for(i in 1:sims){
 &lt;h3&gt;Interpretation&lt;/h3&gt;
 &lt;p&gt;How many computed intervals contain the population parameter?&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sum(all_ci_contains == &amp;#39;yes&amp;#39;) / sims&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 0.9477778&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.9688889&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 </description>
     </item>
     
     <item>
       <title>Projects</title>
-      <link>/projects/</link>
+      <link>https://christopherdishop.netlify.app/projects/</link>
       <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>/projects/</guid>
+      <guid>https://christopherdishop.netlify.app/projects/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Resume</title>
-      <link>/about/</link>
+      <link>https://christopherdishop.netlify.app/about/</link>
       <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>/about/</guid>
+      <guid>https://christopherdishop.netlify.app/about/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Resume</title>
-      <link>/resume/</link>
+      <link>https://christopherdishop.netlify.app/resume/</link>
       <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>/resume/</guid>
+      <guid>https://christopherdishop.netlify.app/resume/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Talks &amp; Workshops</title>
-      <link>/talks/</link>
+      <link>https://christopherdishop.netlify.app/talks/</link>
       <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>/talks/</guid>
+      <guid>https://christopherdishop.netlify.app/talks/</guid>
       <description></description>
     </item>
     
     <item>
       <title>More on Column Names as Parameters</title>
-      <link>/computational_notes/2018-09-06/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2018-09-06/</link>
       <pubDate>Thu, 06 Sep 2018 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2018-09-06/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2018-09-06/</guid>
       <description>
 
 
@@ -5718,9 +5958,9 @@ adder2(a)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Monte Carlo Approximation</title>
-      <link>/computational_notes/2018-08-12/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2018-08-12/</link>
       <pubDate>Sun, 12 Aug 2018 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2018-08-12/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2018-08-12/</guid>
       <description>
 
 
@@ -5801,7 +6041,7 @@ plot1 &amp;lt;- ggplot(df, aes(x = group_size, y = probability)) +
   geom_bar(stat = &amp;#39;identity&amp;#39;, color = &amp;#39;orange&amp;#39;)
 
 plot1&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2018-08-12/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2018-08-12/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;The equation to solve the birthday problem is&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{equation}
 n! / (n - k)!
@@ -5857,9 +6097,9 @@ for(i in 1:iterations){
     
     <item>
       <title>Longitudinal Plotting</title>
-      <link>/computational_notes/2018-07-04/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2018-07-04/</link>
       <pubDate>Wed, 04 Jul 2018 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2018-07-04/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2018-07-04/</guid>
       <description>
 
 
@@ -5875,23 +6115,23 @@ plot1 &amp;lt;- ggplot(df1, aes(x = time, y = affect)) +
   geom_line()
 
 plot1&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2018-07-04/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2018-07-04/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Instead, specify “id” either as the grouping variable:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot2 &amp;lt;- ggplot(df1, aes(x = time, y = affect, group = id)) + 
   geom_point() + 
   geom_line()
 
 plot2&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2018-07-04/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2018-07-04/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;or a color.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot3 &amp;lt;- ggplot(df1, aes(x = time, y = affect, color = id)) + 
   geom_point() + 
   geom_line()
 
 plot3&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2018-07-04/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2018-07-04/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;If you have a data set with too many trajectories&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2018-07-04/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2018-07-04/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;then select a random sample to keep dark&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df2_sample_ids &amp;lt;- sample(df2$id, 5)
 df2_sample &amp;lt;- df2 %&amp;gt;%
@@ -5908,28 +6148,28 @@ df2_sample &amp;lt;- df2 %&amp;gt;%
   geom_line(data = df2_sample, aes(x = time, y = affect, group = id))
 
 plot5&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2018-07-04/index_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2018-07-04/index_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Notice that I had to evoke two additional geom commands and source my new data sample.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;trajectory-descriptions&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Trajectory Descriptions&lt;/h1&gt;
 &lt;div id=&#34;equilibrium&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Equilibrium&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2018-07-04/index_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2018-07-04/index_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Panel A: Increasing equilibrium level with constant variance.&lt;/p&gt;
 &lt;p&gt;Panel B: Decreasing equilibrium level with constant variance.&lt;/p&gt;
 &lt;p&gt;Panel C: Decreasing equilibrium level with increasing variance.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;latent-growth-intercepts-and-slopes&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Latent Growth Intercepts and Slopes&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2018-07-04/index_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2018-07-04/index_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Panel A: Between person differences in intercept but no differences in slope.&lt;/p&gt;
 &lt;p&gt;Panel B: Between person differences in slope but no differences in intercept.&lt;/p&gt;
 &lt;p&gt;Panel C: Between person differences in intercepts and slopes.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;between-and-within-person-variance&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Between and Within Person Variance&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2018-07-04/index_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2018-07-04/index_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Panel A: Between person differences in level (intercept in LGC literature) but no between person differences in variability.&lt;/p&gt;
 &lt;p&gt;Panel B: No between person differences in level (intercept) or variability, but the amount of variability in these trajectories is greater than Panel A.
 Panel C: No between person differences in level (intercept) but there are between person differences in variability.&lt;/p&gt;
@@ -5941,17 +6181,17 @@ Panel C: No between person differences in level (intercept) but there are betwee
 &lt;div id=&#34;main-effect&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Main Effect&lt;/h3&gt;
 &lt;p&gt;Group A (difficult, specific goals) higher performance than group B (vague goals).&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2018-07-04/index_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2018-07-04/index_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;interaction&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Interaction&lt;/h3&gt;
 &lt;p&gt;For males: Group A (difficult, specific goals) higher performance than group B (vague goals).
 For females: Group B (vague goals) higher performance than group B (difficult, specific goals).&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2018-07-04/index_files/figure-html/unnamed-chunk-13-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2018-07-04/index_files/figure-html/unnamed-chunk-13-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;interaction-and-main-effect&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Interaction and Main Effect&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2018-07-04/index_files/figure-html/unnamed-chunk-14-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2018-07-04/index_files/figure-html/unnamed-chunk-14-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -5960,11 +6200,11 @@ For females: Group B (vague goals) higher performance than group B (difficult, s
     
     <item>
       <title>LICENSE: CC-BY-SA</title>
-      <link>/license/</link>
+      <link>https://christopherdishop.netlify.app/license/</link>
       <pubDate>Thu, 28 Jun 2018 00:00:00 +0100</pubDate>
-      <guid>/license/</guid>
+      <guid>https://christopherdishop.netlify.app/license/</guid>
       <description>&lt;p&gt;My 
-&lt;a href=&#34;/post/&#34;&gt;blog posts&lt;/a&gt; are released under a 
+&lt;a href=&#34;https://christopherdishop.netlify.app/post/&#34;&gt;blog posts&lt;/a&gt; are released under a 
 &lt;a href=&#34;http://creativecommons.org/licenses/by-sa/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Creative Commons Attribution-ShareAlike 4.0 International License&lt;/a&gt;.&lt;/p&gt;
 &lt;center&gt;
 &lt;i class=&#34;fab fa-creative-commons fa-2x&#34;&gt;&lt;/i&gt;&lt;i class=&#34;fab fa-creative-commons-by fa-2x&#34;&gt;&lt;/i&gt;&lt;i class=&#34;fab fa-creative-commons-sa fa-2x&#34;&gt;&lt;/i&gt;
@@ -5974,9 +6214,9 @@ For females: Group B (vague goals) higher performance than group B (difficult, s
     
     <item>
       <title>Column Names As Parameters</title>
-      <link>/computational_notes/2018-06-02/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2018-06-02/</link>
       <pubDate>Sat, 02 Jun 2018 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2018-06-02/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2018-06-02/</guid>
       <description>
 
 
@@ -6004,15 +6244,15 @@ mini &amp;lt;- dish %&amp;gt;%
 mini[mini$person == &amp;#39;jimmy&amp;#39;, 2] &amp;lt;- 99
 mini[mini$person == &amp;#39;james&amp;#39;, 2] &amp;lt;- 99&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The original data:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;##   person          v_1      v_2      v_3      v_4
-## 1  jimmy -0.007497808 8.451624 48.85219 23.55404
-## 2  james -0.531246144 9.485034 46.79875 36.95828
-## 3 johnny -0.083400822 4.042767 57.31783 32.33972&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   person         v_1      v_2      v_3      v_4
+## 1  jimmy -1.11680909 14.35137 48.94281 33.91117
+## 2  james -0.03908281 11.58705 41.07339 27.23097
+## 3 johnny  0.60901339 10.78356 37.29786 38.02774&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;What we changed it to:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;##   person         v_1      v_2
-## 1  jimmy 99.00000000 8.451624
-## 2  james 99.00000000 9.485034
-## 3 johnny -0.08340082 4.042767&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   person        v_1      v_2
+## 1  jimmy 99.0000000 14.35137
+## 2  james 99.0000000 11.58705
+## 3 johnny  0.6090134 10.78356&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Here is the function equivalent:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;impute_99 &amp;lt;- function(data){
   
@@ -6030,10 +6270,10 @@ mini[mini$person == &amp;#39;james&amp;#39;, 2] &amp;lt;- 99&lt;/code&gt;&lt;/pr
 &lt;p&gt;Our result:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;adjusted_data &amp;lt;- impute_99(dish)
 adjusted_data&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##   person         v_1      v_2
-## 1  jimmy 99.00000000 8.451624
-## 2  james 99.00000000 9.485034
-## 3 johnny -0.08340082 4.042767&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   person        v_1      v_2
+## 1  jimmy 99.0000000 14.35137
+## 2  james 99.0000000 11.58705
+## 3 johnny  0.6090134 10.78356&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;function-with-column-names-as-parameters&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Function with column names as parameters&lt;/h1&gt;
@@ -6054,10 +6294,10 @@ adjusted_data&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Fortunately the correction is simple, just put quotes around the column names:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cool_data &amp;lt;- impute_99_column_specific(dish, &amp;#39;v_1&amp;#39;, &amp;#39;v_2&amp;#39;)
 cool_data&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##   person         v_1      v_2
-## 1  jimmy 99.00000000 8.451624
-## 2  james 99.00000000 9.485034
-## 3 johnny -0.08340082 4.042767&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   person        v_1      v_2
+## 1  jimmy 99.0000000 14.35137
+## 2  james 99.0000000 11.58705
+## 3 johnny  0.6090134 10.78356&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
 &lt;/div&gt;
 </description>
@@ -6065,9 +6305,9 @@ cool_data&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Spline Modeling</title>
-      <link>/computational_notes/2018-05-05/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2018-05-05/</link>
       <pubDate>Sat, 05 May 2018 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2018-05-05/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2018-05-05/</guid>
       <description>
 
 
@@ -6158,7 +6398,7 @@ ggplot() +
   geom_line(data = df2, aes(x = time, y = affect, group = id), color = &amp;#39;gray85&amp;#39;) + 
   geom_line(data = df_sum1, aes(x = time, y = affect)) + 
   geom_line(data = df_sum2, aes(x = time, y = affect))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2018-05-05/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2018-05-05/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Estimating the parameters using SEM:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(lavaan)
 
@@ -6472,7 +6712,7 @@ ggplot() +
   geom_line(data = df2_b, aes(x = time, y = affect, group = id), color = &amp;#39;gray85&amp;#39;) + 
   geom_line(data = df_sum1_b, aes(x = time, y = affect)) + 
   geom_line(data = df_sum2_b, aes(x = time, y = affect))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2018-05-05/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2018-05-05/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Estimating the parameters using SEM:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(lavaan)
 
@@ -6799,7 +7039,7 @@ ggplot() +
   geom_point(data = df3_c, aes(x = time, y = affect, group = id), color = &amp;#39;gray85&amp;#39;) + 
   geom_line(data = df3_c, aes(x = time, y = affect, group = id), color = &amp;#39;gray85&amp;#39;) + 
   geom_line(data = df_sum3_c, aes(x = time, y = affect))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2018-05-05/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2018-05-05/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Now estimate the parameters using SEM:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(lavaan)
 
@@ -7153,9 +7393,9 @@ slope3_affect =~ 0*affect.1 + 0*affect.2 + 0*affect.3 + 0*affect.4 +
     
     <item>
       <title>Latent Growth Curves</title>
-      <link>/computational_notes/2018-04-15/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2018-04-15/</link>
       <pubDate>Sun, 15 Apr 2018 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2018-04-15/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2018-04-15/</guid>
       <description>
 
 
@@ -7234,7 +7474,7 @@ ggplot(df, aes(x = time, y = affect, group = id)) +
   geom_line(color = &amp;#39;gray85&amp;#39;) + 
   geom_point(data = random_df, aes(x = time, y = affect, group = id), color = &amp;#39;blue&amp;#39;) + 
   geom_line(data = random_df, aes(x = time, y = affect, group = id), color = &amp;#39;blue&amp;#39;) &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2018-04-15/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2018-04-15/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Estimating the model:&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Formatting the data:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_wide &amp;lt;- reshape(df, idvar = &amp;#39;id&amp;#39;, timevar = &amp;#39;time&amp;#39;, direction = &amp;#39;wide&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
@@ -7571,7 +7811,7 @@ ggplot(df2, aes(x = time, y = affect, group = id)) +
   geom_point(data = random_df2, aes(x = time, y = affect, group = id), color = &amp;#39;blue&amp;#39;) + 
   geom_line(data = random_df2, aes(x = time, y = affect, group = id), color = &amp;#39;blue&amp;#39;) + 
   theme_wsj()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2018-04-15/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2018-04-15/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Estimating the model:&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Quadratic growth model:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_wide2 &amp;lt;- reshape(df2, idvar = &amp;#39;id&amp;#39;, timevar = &amp;#39;time&amp;#39;, direction = &amp;#39;wide&amp;#39;)
@@ -7805,7 +8045,7 @@ ggplot(df3, aes(x = time, y = affect, group = id)) +
   geom_line(color = &amp;#39;gray85&amp;#39;) + 
   geom_point(data = random_df3, aes(x = time, y = affect, group = id), color = &amp;#39;blue&amp;#39;) + 
   geom_line(data = random_df3, aes(x = time, y = affect, group = id), color = &amp;#39;blue&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2018-04-15/index_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2018-04-15/index_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Estimating the model:&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Latent basis:&lt;/p&gt;
 &lt;p&gt;Similar to a linear growth model but we freely estimate the intermediate basis coefficients. Remember to constrain the first basis coefficient to zero and the last to 1.&lt;/p&gt;
@@ -7957,9 +8197,9 @@ summary(lb_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Social Trait Development Computational Model</title>
-      <link>/computational_notes/2018-03-30/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2018-03-30/</link>
       <pubDate>Fri, 30 Mar 2018 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2018-03-30/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2018-03-30/</guid>
       <description>
 
 
@@ -8040,7 +8280,7 @@ agent[[1]][1] &amp;lt;- initial_sdo_value
 
 agent&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## $SDO
-## [1] 99.02874
+## [1] 98.19323
 ## 
 ## $Peeps
 ## NULL&lt;/code&gt;&lt;/pre&gt;
@@ -8082,10 +8322,10 @@ agent$Peeps &amp;lt;- c(agent$Peeps, other)
 
 agent&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## $SDO
-## [1]  99.02874 119.02874
+## [1] 98.19323 87.19323
 ## 
 ## $Peeps
-## [1] 108.453&lt;/code&gt;&lt;/pre&gt;
+## [1] 96.30824&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;the-full-model&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;The Full Model&lt;/h1&gt;
@@ -8209,17 +8449,34 @@ ggplot(new_data, aes(x = Time, y = SDO)) +
   geom_line(color = &amp;#39;blue&amp;#39;) + 
   facet_wrap(~variable) + 
   ylab(&amp;quot;Level&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2018-03-30/index_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2018-03-30/index_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>
     
     <item>
+      <title>Restart &amp; Clear Environment</title>
+      <link>https://christopherdishop.netlify.app/computational_notes/2018-02-18/</link>
+      <pubDate>Sun, 18 Feb 2018 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2018-02-18/</guid>
+      <description>
+
+
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# restart session
+.rs.restartR()
+
+# clear environment
+remove(list = ls())&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Numerical Integration and Optimization</title>
-      <link>/computational_notes/2018-02-16/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2018-02-16/</link>
       <pubDate>Fri, 16 Feb 2018 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2018-02-16/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2018-02-16/</guid>
       <description>
 
 
@@ -8258,7 +8515,7 @@ g_plot &amp;lt;- ggplot(ex_plot, aes(x = x, y = y)) +
   theme_wsj()
 
 g_plot&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2018-02-16/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2018-02-16/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;The trapezoid algorithm:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Parameters = the function, x-axis beginning, x-axis end, the number of trapezoids to create
 
@@ -8351,7 +8608,7 @@ g_plot_2 &amp;lt;- ggplot(ex_plot_2, aes(x = x, y = y)) +
   geom_smooth(se = F)
 
 g_plot_2&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2018-02-16/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2018-02-16/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;The golden section algorithm:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;golden_section &amp;lt;- function(fx, x.l, x.r, x.m, tolerance){
   
@@ -8480,18 +8737,18 @@ g_plot_2&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Random Walks</title>
-      <link>/computational_notes/2018-01-11/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2018-01-11/</link>
       <pubDate>Thu, 11 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2018-01-11/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2018-01-11/</guid>
       <description>
-&lt;script src=&#34;/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;/rmarkdown-libs/plotly-binding/plotly.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;/rmarkdown-libs/typedarray/typedarray.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;/rmarkdown-libs/jquery/jquery.min.js&#34;&gt;&lt;/script&gt;
-&lt;link href=&#34;/rmarkdown-libs/crosstalk/css/crosstalk.css&#34; rel=&#34;stylesheet&#34; /&gt;
-&lt;script src=&#34;/rmarkdown-libs/crosstalk/js/crosstalk.min.js&#34;&gt;&lt;/script&gt;
-&lt;link href=&#34;/rmarkdown-libs/plotly-htmlwidgets-css/plotly-htmlwidgets.css&#34; rel=&#34;stylesheet&#34; /&gt;
-&lt;script src=&#34;/rmarkdown-libs/plotly-main/plotly-latest.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/plotly-binding/plotly.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/typedarray/typedarray.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/jquery/jquery.min.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/crosstalk/css/crosstalk.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/crosstalk/js/crosstalk.min.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/plotly-htmlwidgets-css/plotly-htmlwidgets.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/plotly-main/plotly-latest.min.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Some random walk fun. I use 400 steps in each example.&lt;/p&gt;
@@ -8515,7 +8772,7 @@ for(i in 2:400){
 }
 
 plot(rw_1)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2018-01-11/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2018-01-11/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;A random walk using R’s “cumsum” command. Here, I will generate a vector of randomly selected 1’s and -1’s. “Cumsum” then compiles those values.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# A vector of 1&amp;#39;s and -1&amp;#39;s
 
@@ -8524,7 +8781,7 @@ rw_2 &amp;lt;- sample(c(1, -1), 400, replace = T)
 rw_2 &amp;lt;- cumsum(rw_2)
 
 plot(rw_2)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2018-01-11/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2018-01-11/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;two-dimensional-random-walk&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Two-Dimensional Random Walk&lt;/h1&gt;
@@ -8584,9 +8841,9 @@ plot_ly(rw_3, x = ~step, y = ~Dim_1, z = ~Dim_2, type = &amp;#39;scatter3d&amp;#
     
     <item>
       <title>Combining CSV Files</title>
-      <link>/computational_notes/2018-01-03/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2018-01-03/</link>
       <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2018-01-03/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2018-01-03/</guid>
       <description>
 
 
@@ -8630,9 +8887,9 @@ data_set &amp;lt;- do.call(cbind,
     
     <item>
       <title>Formatting Qualtrics Responses</title>
-      <link>/computational_notes/2018-01-02/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2018-01-02/</link>
       <pubDate>Tue, 02 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2018-01-02/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2018-01-02/</guid>
       <description>
 
 
@@ -8666,33 +8923,33 @@ recode_df &amp;lt;- df %&amp;gt;%
     
     <item>
       <title>Subtyping cognitive profiles in Autism Spectrum Disorder using a random forest algorithm</title>
-      <link>/publication/2017-subtyping/</link>
+      <link>https://christopherdishop.netlify.app/publication/2017-subtyping/</link>
       <pubDate>Wed, 20 Dec 2017 00:00:00 +0000</pubDate>
-      <guid>/publication/2017-subtyping/</guid>
+      <guid>https://christopherdishop.netlify.app/publication/2017-subtyping/</guid>
       <description></description>
     </item>
     
     <item>
       <title>blogdown: Creating Websites with R Markdown</title>
-      <link>/publication/2017-blogdown/</link>
+      <link>https://christopherdishop.netlify.app/publication/2017-blogdown/</link>
       <pubDate>Thu, 14 Dec 2017 00:00:00 +0000</pubDate>
-      <guid>/publication/2017-blogdown/</guid>
+      <guid>https://christopherdishop.netlify.app/publication/2017-blogdown/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Why Detecting Interactions is Easier in the Lab</title>
-      <link>/computational_notes/2017-11-15/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2017-11-15/</link>
       <pubDate>Wed, 15 Nov 2017 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2017-11-15/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2017-11-15/</guid>
       <description>
 
 
 &lt;p&gt;A fun simulation by McClelland and Judd (1993) in &lt;em&gt;Psychological Bulletin&lt;/em&gt; that demonstrates why detecting interactions outside the lab (i.e., in field studies) is difficult. In experiments, scores on the independent variables are located at the extremes of their respective distributions because we manipulate conditions. The distribution of scores across all of the independent variables in field studies, conversely, is typically assumed to be normal. By creating “extreme groups” in experiments, therefore, it becomes easier to detect interactions.&lt;/p&gt;
 &lt;p&gt;Imagine running an experiment where we randomly assign participants to one of two groups on an independent variable, goal difficulty. In one group the goal is challening, in the other group the goal is easy to accomplish. We are then interested in which group performs better on a task. After randomly assigning to groups, the distribution of scores on “goal difficulty” would be as follows:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2017-11-15/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2017-11-15/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;where 50 people are assigned to each condition. In this case, the distribution of scores is aligned at the extremes (i.e., -1, or the hard goal, and 1, or the easy goal) because we manipulated that variable. In field studies, where we cannot manipulate goal difficulty, the distribution of scores would be as follows:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2017-11-15/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2017-11-15/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;where scores about the independent variable (goal difficulty) are dispersed because we did not manipulate. The same distributional differences occur across other independent variables that we include in our design, and they are the reason behind fewer interaction detections in field studies.&lt;/p&gt;
 &lt;p&gt;The cool part is that this happens even when the data generating mechanisms are exactly the same. The mechanism that causes &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;, in both the experiments and field studies in this simulation, will be:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{equation}
@@ -8706,11 +8963,11 @@ y_{i} = b_0{i} + b_1{x_i} + b_2{z_i} + b_3{zx_i} + e_{i}
 &lt;h1&gt;The Experiment Data&lt;/h1&gt;
 &lt;div id=&#34;the-distribution-of-x&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;The distribution of X:&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2017-11-15/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2017-11-15/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;the-distribution-of-z&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;The distribution of Z:&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2017-11-15/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2017-11-15/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;the-distribution-of-y-after-using-the-equation-above-to-generate-scores-on-y&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;The distribution of Y after using the equation above to generate scores on Y:&lt;/h3&gt;
@@ -8718,7 +8975,7 @@ y_{i} = b_0{i} + b_1{x_i} + b_2{z_i} + b_3{zx_i} + e_{i}
             1.00*x_values*z_values + rnorm(100,0,4)
 
 hist(y_values)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2017-11-15/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2017-11-15/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;now-estimate-the-parameters-using-regression&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Now estimate the parameters using regression:&lt;/h3&gt;
@@ -8754,11 +9011,11 @@ summary(exp_model)&lt;/code&gt;&lt;/pre&gt;
 &lt;h1&gt;The Field Study Data&lt;/h1&gt;
 &lt;div id=&#34;the-distribution-of-x-1&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;The distribution of X:&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2017-11-15/index_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2017-11-15/index_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;the-distribution-of-z-1&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;The distribution of Z:&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2017-11-15/index_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2017-11-15/index_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;the-distribution-of-y-after-using-the-equation-above-to-generate-scores-on-y-1&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;The distribution of Y after using the equation above to generate scores on Y:&lt;/h3&gt;
@@ -8766,7 +9023,7 @@ summary(exp_model)&lt;/code&gt;&lt;/pre&gt;
               1.00*f_x_values*f_z_values + rnorm(100,0,4)
 
 hist(f_y_values)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2017-11-15/index_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2017-11-15/index_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;now-estimate-the-parameters-using-regression-1&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Now estimate the parameters using regression:&lt;/h3&gt;
@@ -8883,9 +9140,9 @@ for(i in 1:sims){
     
     <item>
       <title>Workforce Dynamics</title>
-      <link>/computational_notes/2017-08-22/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2017-08-22/</link>
       <pubDate>Tue, 22 Aug 2017 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2017-08-22/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2017-08-22/</guid>
       <description>
 
 
@@ -8964,12 +9221,12 @@ data_f &amp;lt;- data_f %&amp;gt;%
 ggplot(data_f, aes(x = Time, y = Proportion, color = Position)) + 
   geom_point() + 
   geom_line()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2017-08-22/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2017-08-22/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;The amount of people in the company overall:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(data_f, aes(x = Time, y = Num_People, color = Position)) + 
   geom_point() + 
   geom_line()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2017-08-22/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2017-08-22/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;As you can tell, this is unrealistic =)&lt;/p&gt;
 &lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
 &lt;/div&gt;
@@ -8978,9 +9235,9 @@ ggplot(data_f, aes(x = Time, y = Proportion, color = Position)) +
     
     <item>
       <title>Art With Monte Carlo</title>
-      <link>/computational_notes/2017-07-12-art/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2017-07-12-art/</link>
       <pubDate>Wed, 12 Jul 2017 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2017-07-12-art/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2017-07-12-art/</guid>
       <description>
 
 
@@ -9001,7 +9258,7 @@ ggplot(data_f, aes(x = Time, y = Proportion, color = Position)) +
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;y &amp;lt;- f(x)
 
 plot(x, y)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2017-07-12-art/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2017-07-12-art/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;this-is-the-process-we-want-to-draw&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;This is the process we want to “draw”&lt;/h1&gt;
@@ -9041,7 +9298,7 @@ points_over_x &amp;lt;- points_above[!is.na(points_above[,1]),1]
 points_over_y &amp;lt;- points_above[!is.na(points_above[,2]),2]&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Now we have an image…&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(points_under_y ~ points_under_x, pch = 20, cex = 0.3)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/Computational_Notes/2017-07-12-art/index_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2017-07-12-art/index_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
 &lt;/div&gt;
 </description>
@@ -9049,9 +9306,9 @@ points_over_y &amp;lt;- points_above[!is.na(points_above[,2]),2]&lt;/code&gt;&lt
     
     <item>
       <title>Convert Text File</title>
-      <link>/computational_notes/2017-04-09/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2017-04-09/</link>
       <pubDate>Sun, 09 Apr 2017 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2017-04-09/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2017-04-09/</guid>
       <description>
 
 
@@ -9080,17 +9337,17 @@ for(i in 1:length(all_files)){
     
     <item>
       <title>Quantitative Analysis of Disfluency in Children with Autism Spectrum Disorder or Language Impairment</title>
-      <link>/publication/2017-mazes-asd-sli/</link>
+      <link>https://christopherdishop.netlify.app/publication/2017-mazes-asd-sli/</link>
       <pubDate>Wed, 15 Mar 2017 00:00:00 +0000</pubDate>
-      <guid>/publication/2017-mazes-asd-sli/</guid>
+      <guid>https://christopherdishop.netlify.app/publication/2017-mazes-asd-sli/</guid>
       <description></description>
     </item>
     
     <item>
       <title>The Binomial Effect Size Display</title>
-      <link>/computational_notes/2017-01-01/</link>
+      <link>https://christopherdishop.netlify.app/computational_notes/2017-01-01/</link>
       <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
-      <guid>/computational_notes/2017-01-01/</guid>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2017-01-01/</guid>
       <description>
 
 
@@ -9180,25 +9437,25 @@ Sigma &amp;lt;- matrix(c(1.0, 0.23,
     
     <item>
       <title>Epidemiology of autism spectrum disorders</title>
-      <link>/publication/2016-primer-on-asd/</link>
+      <link>https://christopherdishop.netlify.app/publication/2016-primer-on-asd/</link>
       <pubDate>Fri, 19 Feb 2016 00:00:00 +0000</pubDate>
-      <guid>/publication/2016-primer-on-asd/</guid>
+      <guid>https://christopherdishop.netlify.app/publication/2016-primer-on-asd/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Uh and Um in Children With Autism Spectrum Disorders or Language Impairment</title>
-      <link>/publication/2016-uh-and-um-asd-sli/</link>
+      <link>https://christopherdishop.netlify.app/publication/2016-uh-and-um-asd-sli/</link>
       <pubDate>Fri, 22 Jan 2016 00:00:00 +0000</pubDate>
-      <guid>/publication/2016-uh-and-um-asd-sli/</guid>
+      <guid>https://christopherdishop.netlify.app/publication/2016-uh-and-um-asd-sli/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Obesity and Autism</title>
-      <link>/publication/2015-obesity-in-asd-multisite/</link>
+      <link>https://christopherdishop.netlify.app/publication/2015-obesity-in-asd-multisite/</link>
       <pubDate>Thu, 03 Sep 2015 00:00:00 +0000</pubDate>
-      <guid>/publication/2015-obesity-in-asd-multisite/</guid>
+      <guid>https://christopherdishop.netlify.app/publication/2015-obesity-in-asd-multisite/</guid>
       <description>&lt;p&gt;METHODS: Participants were 5053 children with confirmed diagnosis of ASD in the Autism Speaks Autism Treatment Network. Measured values for weight and height were used to calculate BMI percentiles; Centers for Disease Control and Prevention criteria for BMI for gender and age were used to define overweight and obesity (85th and 95th percentiles, respectively).&lt;/p&gt;
 &lt;p&gt;RESULTS: In children age 2 to 17 years, 33.6% were overweight and 18% were obese. Compared with a general US population sample, rates of unhealthy weight were significantly higher among children with ASDs ages 2 to 5 years and among those of non-Hispanic white origin. Multivariate analyses revealed that older age, Hispanic or Latino ethnicity, lower parent education levels, and sleep and affective problems were all significant predictors of obesity.&lt;/p&gt;
 &lt;p&gt;CONCLUSIONS: Our results indicate that the prevalence of unhealthy weight is significantly greater among children with ASD compared with the general population, with differences present as early as ages 2 to 5 years. Because obesity is more prevalent among older children in the general population, these findings raise the question of whether there are different trajectories of weight gain among children with ASDs, possibly beginning in early childhood.&lt;/p&gt;
@@ -9207,89 +9464,89 @@ Sigma &amp;lt;- matrix(c(1.0, 0.23,
     
     <item>
       <title>Memory in language-impaired children with and without autism</title>
-      <link>/publication/2015-memory-in-li-asd/</link>
+      <link>https://christopherdishop.netlify.app/publication/2015-memory-in-li-asd/</link>
       <pubDate>Sun, 14 Jun 2015 00:00:00 +0000</pubDate>
-      <guid>/publication/2015-memory-in-li-asd/</guid>
+      <guid>https://christopherdishop.netlify.app/publication/2015-memory-in-li-asd/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Epidemiology of autism spectrum disorders</title>
-      <link>/publication/2015-translational/</link>
+      <link>https://christopherdishop.netlify.app/publication/2015-translational/</link>
       <pubDate>Wed, 10 Jun 2015 00:00:00 +0000</pubDate>
-      <guid>/publication/2015-translational/</guid>
+      <guid>https://christopherdishop.netlify.app/publication/2015-translational/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Aggressive Behavior Problems in Children with Autism Spectrum Disorders: Prevalence and Correlates in a Large Clinical Sample</title>
-      <link>/publication/2014-aggression-in-asd/</link>
+      <link>https://christopherdishop.netlify.app/publication/2014-aggression-in-asd/</link>
       <pubDate>Sun, 22 Jun 2014 00:00:00 +0000</pubDate>
-      <guid>/publication/2014-aggression-in-asd/</guid>
+      <guid>https://christopherdishop.netlify.app/publication/2014-aggression-in-asd/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Epidemiology of autism spectrum disorders</title>
-      <link>/publication/2014-handbook/</link>
+      <link>https://christopherdishop.netlify.app/publication/2014-handbook/</link>
       <pubDate>Mon, 03 Mar 2014 00:00:00 +0000</pubDate>
-      <guid>/publication/2014-handbook/</guid>
+      <guid>https://christopherdishop.netlify.app/publication/2014-handbook/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Overweight and Obesity: Prevalence and Correlates in a Large Clinical Sample of Children with Autism Spectrum Disorder</title>
-      <link>/publication/2014-obesity-in-asd-oregon/</link>
+      <link>https://christopherdishop.netlify.app/publication/2014-obesity-in-asd-oregon/</link>
       <pubDate>Sun, 02 Feb 2014 00:00:00 +0000</pubDate>
-      <guid>/publication/2014-obesity-in-asd-oregon/</guid>
+      <guid>https://christopherdishop.netlify.app/publication/2014-obesity-in-asd-oregon/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Epidemiology of Autism Spectrum Disorder</title>
-      <link>/publication/2014-asd-epidemiology-in-practice/</link>
+      <link>https://christopherdishop.netlify.app/publication/2014-asd-epidemiology-in-practice/</link>
       <pubDate>Wed, 01 Jan 2014 00:00:00 +0000</pubDate>
-      <guid>/publication/2014-asd-epidemiology-in-practice/</guid>
+      <guid>https://christopherdishop.netlify.app/publication/2014-asd-epidemiology-in-practice/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Quantifying Repetitive Speech in Autism Spectrum Disorders and Language Impairment</title>
-      <link>/publication/2013-repetitive-speech-in-asd-sli/</link>
+      <link>https://christopherdishop.netlify.app/publication/2013-repetitive-speech-in-asd-sli/</link>
       <pubDate>Fri, 12 Apr 2013 00:00:00 +0000</pubDate>
-      <guid>/publication/2013-repetitive-speech-in-asd-sli/</guid>
+      <guid>https://christopherdishop.netlify.app/publication/2013-repetitive-speech-in-asd-sli/</guid>
       <description></description>
     </item>
     
     <item>
       <title>‘It’s Not That We Hate You’: Understanding Children’s Gender Attitudes and Expectancies About Peer Relationships</title>
-      <link>/publication/2011-gender-attitudes/</link>
+      <link>https://christopherdishop.netlify.app/publication/2011-gender-attitudes/</link>
       <pubDate>Tue, 08 Feb 2011 00:00:00 +0000</pubDate>
-      <guid>/publication/2011-gender-attitudes/</guid>
+      <guid>https://christopherdishop.netlify.app/publication/2011-gender-attitudes/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Effects of Different Attentional Cues on Responding to Joint Attention in Younger Siblings of Children with Autism Spectrum Disorders</title>
-      <link>/publication/2007-rja-in-sibs/</link>
+      <link>https://christopherdishop.netlify.app/publication/2007-rja-in-sibs/</link>
       <pubDate>Mon, 01 Jan 2007 00:00:00 +0000</pubDate>
-      <guid>/publication/2007-rja-in-sibs/</guid>
+      <guid>https://christopherdishop.netlify.app/publication/2007-rja-in-sibs/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Item-specific Processing Reduces False Memories</title>
-      <link>/publication/2004-false-memories/</link>
+      <link>https://christopherdishop.netlify.app/publication/2004-false-memories/</link>
       <pubDate>Wed, 01 Dec 2004 00:00:00 +0000</pubDate>
-      <guid>/publication/2004-false-memories/</guid>
+      <guid>https://christopherdishop.netlify.app/publication/2004-false-memories/</guid>
       <description></description>
     </item>
     
     <item>
       <title></title>
-      <link>/r_resources/</link>
+      <link>https://christopherdishop.netlify.app/r_resources/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/r_resources/</guid>
+      <guid>https://christopherdishop.netlify.app/r_resources/</guid>
       <description>&lt;h3 id=&#34;websites-with-many-r-resources&#34;&gt;Websites with many R resources&lt;/h3&gt;
 &lt;p&gt;
 &lt;a href=&#34;https://bookdown.org&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;All R books written with Bookdown&lt;/a&gt;&lt;/p&gt;
@@ -9485,9 +9742,9 @@ Sigma &amp;lt;- matrix(c(1.0, 0.23,
     
     <item>
       <title></title>
-      <link>/rec_reading/</link>
+      <link>https://christopherdishop.netlify.app/rec_reading/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/rec_reading/</guid>
+      <guid>https://christopherdishop.netlify.app/rec_reading/</guid>
       <description>&lt;p&gt;&lt;em&gt;Quantifying Life: A Symbiosis of Computation, Mathematics, and Biology&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Dmitry A. Kondrashov&lt;/p&gt;
 &lt;p&gt;
@@ -9889,9 +10146,9 @@ Sigma &amp;lt;- matrix(c(1.0, 0.23,
     
     <item>
       <title>Curriculum Vitae</title>
-      <link>/cv/</link>
+      <link>https://christopherdishop.netlify.app/cv/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/cv/</guid>
+      <guid>https://christopherdishop.netlify.app/cv/</guid>
       <description>&lt;p&gt;Download this file 
 &lt;a href=&#34;https://raw.githubusercontent.com/Cdishop/homepage/master/misc/CV.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;object data=&#34;https://raw.githubusercontent.com/Cdishop/website/master/misc/CV.pdf&#34; width=&#34;800px&#34; height=&#34;700px&#34;&gt;

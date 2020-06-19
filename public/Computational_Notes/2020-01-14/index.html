@@ -1,0 +1,885 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="-----">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://christopherdishop.netlify.app/computational_notes/2020-01-14/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#06805E">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/tomorrow.min.css" crossorigin="anonymous" title="hl-light">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/tomorrow.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+      
+    
+
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400i%7CKarla:400,400i,700,700i%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-99209585-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'UA-99209585-1', {});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hua7ddb50eead73fc737c5c3187aff8cf9_17132_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hua7ddb50eead73fc737c5c3187aff8cf9_17132_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="https://christopherdishop.netlify.app/computational_notes/2020-01-14/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@apreshill">
+  <meta property="twitter:creator" content="@apreshill">
+  
+  <meta property="og:site_name" content="Christopher R. Dishop">
+  <meta property="og:url" content="https://christopherdishop.netlify.app/computational_notes/2020-01-14/">
+  <meta property="og:title" content="Untidy Tables &amp; In-Place Mutation | Christopher R. Dishop">
+  <meta property="og:description" content="-----"><meta property="og:image" content="https://christopherdishop.netlify.app/img/pom-card.png">
+  <meta property="twitter:image" content="https://christopherdishop.netlify.app/img/pom-card.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2020-01-14T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2020-01-14T00:00:00&#43;00:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Untidy Tables &amp; In-Place Mutation | Christopher R. Dishop</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">Christopher R. Dishop</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
+        
+        
+        
+          
+            
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="https://raw.githubusercontent.com/Cdishop/website/master/misc/CV.pdf" target="_blank" rel="noopener"><span>CV</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/computational_notes"><span>Computation</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/r_resources"><span>R Resources</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/rec_reading"><span>Recommended</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+
+        
+
+        
+
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Untidy Tables &amp; In-Place Mutation</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 14, 2020
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+
+
+<p>Hadley has written extensively about <a href="https://vita.had.co.nz/papers/tidy-data.pdf">tidy data</a> and why it’s <a href="https://github.com/tidyverse/dplyr/issues/425">unsound to implement in-place data mutations</a>. Some notes below on breaking both of those rules = ).</p>
+<p>In-place changes to data using <code>tidyverse</code>.</p>
+<pre class="r"><code>library(tidyverse)
+df &lt;- tibble(
+  &quot;team&quot; = c(&quot;A&quot;, &quot;A&quot;, &quot;B&quot;, &quot;B&quot;, &quot;C&quot;, &quot;C&quot;),
+  &quot;individual&quot; = c(1, 2, 3, 4, 5, 6),
+  &quot;performance&quot; = c(NA, 4, 5, 6, 2, 3),
+  &quot;affect&quot; = c(NA, 6, 7, 8, 4, 2),
+  &quot;fav_color&quot; = c(NA, &quot;blue&quot;, &quot;green&quot;, &quot;orange&quot;, &quot;yellow&quot;, &quot;purple&quot;)
+)
+df</code></pre>
+<pre><code>## # A tibble: 6 x 5
+##   team  individual performance affect fav_color
+##   &lt;chr&gt;      &lt;dbl&gt;       &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    
+## 1 A              1          NA     NA &lt;NA&gt;     
+## 2 A              2           4      6 blue     
+## 3 B              3           5      7 green    
+## 4 B              4           6      8 orange   
+## 5 C              5           2      4 yellow   
+## 6 C              6           3      2 purple</code></pre>
+<p>Insert a performance, affect, and favorite color value for individual 1 within team A.</p>
+<pre class="r"><code>df %&gt;% 
+  filter(team == &quot;A&quot; &amp; individual == 1) %&gt;% 
+  mutate(performance = 8,
+         affect = 2,
+         fav_color = &quot;silver&quot;) %&gt;% 
+  rbind(df %&gt;% filter(team != &quot;A&quot; &amp; individual != 1))</code></pre>
+<pre><code>## # A tibble: 5 x 5
+##   team  individual performance affect fav_color
+##   &lt;chr&gt;      &lt;dbl&gt;       &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    
+## 1 A              1           8      2 silver   
+## 2 B              3           5      7 green    
+## 3 B              4           6      8 orange   
+## 4 C              5           2      4 yellow   
+## 5 C              6           3      2 purple</code></pre>
+<p>Now for the note on untidy tables. Here’s some tidy data displayed using <code>kable</code>.</p>
+<pre class="r"><code>library(kableExtra)
+dt &lt;- tibble(
+  
+  &#39;team&#39; = c(&#39;A&#39;, &#39;A&#39;, &#39;A&#39;,
+             &#39;B&#39;, &#39;B&#39;, &#39;B&#39;,
+             &#39;C&#39;, &#39;C&#39;, &#39;C&#39;),
+  &#39;person&#39; = c(1,2,3,
+               4,5,6,
+               7,8,9),
+  &#39;score&#39; = c(rnorm(9, 23, 3))
+  
+)
+
+dt %&gt;% 
+  group_by(team) %&gt;% 
+  summarize(
+    &quot;Mean&quot; = mean(score),
+    &quot;SD&quot; = sd(score)
+  ) %&gt;% 
+  kable() %&gt;% 
+  kable_styling()</code></pre>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+team
+</th>
+<th style="text-align:right;">
+Mean
+</th>
+<th style="text-align:right;">
+SD
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+21.88049
+</td>
+<td style="text-align:right;">
+2.305258
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+20.19759
+</td>
+<td style="text-align:right;">
+3.474347
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+24.84912
+</td>
+<td style="text-align:right;">
+3.878338
+</td>
+</tr>
+</tbody>
+</table>
+<p>Looks great to me. The issue is that sometimes people expect to see data displayed in “untidy” formats. Let’s change the output so that each team is listed across the first row and the table displays the mean score alongside the standard deviation within parentheses.</p>
+<p>To do so, I’m going to put string parentheses around the SD values, unite the mean and SD columns, then transform the data from long to wide format. Don’t forget to ungroup as well.</p>
+<pre class="r"><code>dt %&gt;% 
+  group_by(team) %&gt;% 
+  summarize(
+    &quot;Mean&quot; = round(mean(score), digits = 2),
+    &quot;SD&quot; = round(sd(score), digits = 2)
+  ) %&gt;% 
+  ungroup() %&gt;% 
+  # insert parentheses
+  mutate(SD = paste0(&quot;(&quot;, SD, &quot;)&quot;)) %&gt;% 
+  # combine mean and SD columns
+  unite(meansd, Mean, SD, sep = &quot; &quot;, remove = T) %&gt;% 
+  # make wide
+  pivot_wider(names_from = team, values_from = meansd) %&gt;% 
+  rename(&quot;Team A&quot; = &quot;A&quot;,
+         &quot;Team B&quot; = &quot;B&quot;,
+         &quot;Team C&quot; = &quot;C&quot;) %&gt;% 
+  kable(caption = &quot;Team Scores&quot;) %&gt;% 
+  kable_styling() %&gt;% 
+  footnote(&quot;Mean (SD)&quot;)</code></pre>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-4">Table 1: </span>Team Scores
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Team A
+</th>
+<th style="text-align:left;">
+Team B
+</th>
+<th style="text-align:left;">
+Team C
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+21.88 (2.31)
+</td>
+<td style="text-align:left;">
+20.2 (3.47)
+</td>
+<td style="text-align:left;">
+24.85 (3.88)
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border: 0;" colspan="100%">
+<span style="font-style: italic;">Note: </span>
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border: 0;" colspan="100%">
+<sup></sup> Mean (SD)
+</td>
+</tr>
+</tfoot>
+</table>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="/js/academic.min.6f7ce8be710290b8c431bbc97f405d15.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+
+
+  <p class="powered-by">
+    © Christopher Dishop 2020 &middot; 
+
+    Made with <a href="https://cran.r-project.org/" target="_blank" rel="noopener"><i class="fab fa-r-project"></i> </a><a href="https://github.com/rstudio/blogdown" target="_blank" rel="noopener">blogdown</a>,
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>, and
+    <a href="https://github.com/rbind/apreshill" target="_blank" rel="noopener">Alison's Hill's</a> wonderful template.
+
+    
+
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

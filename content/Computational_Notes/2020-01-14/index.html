@@ -1,0 +1,181 @@
+---
+title: "Untidy Tables & In-Place Mutation"
+summary: '-----'
+date: '2020-01-14'
+---
+
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+
+
+<p>Hadley has written extensively about <a href="https://vita.had.co.nz/papers/tidy-data.pdf">tidy data</a> and why it’s <a href="https://github.com/tidyverse/dplyr/issues/425">unsound to implement in-place data mutations</a>. Some notes below on breaking both of those rules = ).</p>
+<p>In-place changes to data using <code>tidyverse</code>.</p>
+<pre class="r"><code>library(tidyverse)
+df &lt;- tibble(
+  &quot;team&quot; = c(&quot;A&quot;, &quot;A&quot;, &quot;B&quot;, &quot;B&quot;, &quot;C&quot;, &quot;C&quot;),
+  &quot;individual&quot; = c(1, 2, 3, 4, 5, 6),
+  &quot;performance&quot; = c(NA, 4, 5, 6, 2, 3),
+  &quot;affect&quot; = c(NA, 6, 7, 8, 4, 2),
+  &quot;fav_color&quot; = c(NA, &quot;blue&quot;, &quot;green&quot;, &quot;orange&quot;, &quot;yellow&quot;, &quot;purple&quot;)
+)
+df</code></pre>
+<pre><code>## # A tibble: 6 x 5
+##   team  individual performance affect fav_color
+##   &lt;chr&gt;      &lt;dbl&gt;       &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    
+## 1 A              1          NA     NA &lt;NA&gt;     
+## 2 A              2           4      6 blue     
+## 3 B              3           5      7 green    
+## 4 B              4           6      8 orange   
+## 5 C              5           2      4 yellow   
+## 6 C              6           3      2 purple</code></pre>
+<p>Insert a performance, affect, and favorite color value for individual 1 within team A.</p>
+<pre class="r"><code>df %&gt;% 
+  filter(team == &quot;A&quot; &amp; individual == 1) %&gt;% 
+  mutate(performance = 8,
+         affect = 2,
+         fav_color = &quot;silver&quot;) %&gt;% 
+  rbind(df %&gt;% filter(team != &quot;A&quot; &amp; individual != 1))</code></pre>
+<pre><code>## # A tibble: 5 x 5
+##   team  individual performance affect fav_color
+##   &lt;chr&gt;      &lt;dbl&gt;       &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    
+## 1 A              1           8      2 silver   
+## 2 B              3           5      7 green    
+## 3 B              4           6      8 orange   
+## 4 C              5           2      4 yellow   
+## 5 C              6           3      2 purple</code></pre>
+<p>Now for the note on untidy tables. Here’s some tidy data displayed using <code>kable</code>.</p>
+<pre class="r"><code>library(kableExtra)
+dt &lt;- tibble(
+  
+  &#39;team&#39; = c(&#39;A&#39;, &#39;A&#39;, &#39;A&#39;,
+             &#39;B&#39;, &#39;B&#39;, &#39;B&#39;,
+             &#39;C&#39;, &#39;C&#39;, &#39;C&#39;),
+  &#39;person&#39; = c(1,2,3,
+               4,5,6,
+               7,8,9),
+  &#39;score&#39; = c(rnorm(9, 23, 3))
+  
+)
+
+dt %&gt;% 
+  group_by(team) %&gt;% 
+  summarize(
+    &quot;Mean&quot; = mean(score),
+    &quot;SD&quot; = sd(score)
+  ) %&gt;% 
+  kable() %&gt;% 
+  kable_styling()</code></pre>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+team
+</th>
+<th style="text-align:right;">
+Mean
+</th>
+<th style="text-align:right;">
+SD
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+21.88049
+</td>
+<td style="text-align:right;">
+2.305258
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+20.19759
+</td>
+<td style="text-align:right;">
+3.474347
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+24.84912
+</td>
+<td style="text-align:right;">
+3.878338
+</td>
+</tr>
+</tbody>
+</table>
+<p>Looks great to me. The issue is that sometimes people expect to see data displayed in “untidy” formats. Let’s change the output so that each team is listed across the first row and the table displays the mean score alongside the standard deviation within parentheses.</p>
+<p>To do so, I’m going to put string parentheses around the SD values, unite the mean and SD columns, then transform the data from long to wide format. Don’t forget to ungroup as well.</p>
+<pre class="r"><code>dt %&gt;% 
+  group_by(team) %&gt;% 
+  summarize(
+    &quot;Mean&quot; = round(mean(score), digits = 2),
+    &quot;SD&quot; = round(sd(score), digits = 2)
+  ) %&gt;% 
+  ungroup() %&gt;% 
+  # insert parentheses
+  mutate(SD = paste0(&quot;(&quot;, SD, &quot;)&quot;)) %&gt;% 
+  # combine mean and SD columns
+  unite(meansd, Mean, SD, sep = &quot; &quot;, remove = T) %&gt;% 
+  # make wide
+  pivot_wider(names_from = team, values_from = meansd) %&gt;% 
+  rename(&quot;Team A&quot; = &quot;A&quot;,
+         &quot;Team B&quot; = &quot;B&quot;,
+         &quot;Team C&quot; = &quot;C&quot;) %&gt;% 
+  kable(caption = &quot;Team Scores&quot;) %&gt;% 
+  kable_styling() %&gt;% 
+  footnote(&quot;Mean (SD)&quot;)</code></pre>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-4">Table 1: </span>Team Scores
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Team A
+</th>
+<th style="text-align:left;">
+Team B
+</th>
+<th style="text-align:left;">
+Team C
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+21.88 (2.31)
+</td>
+<td style="text-align:left;">
+20.2 (3.47)
+</td>
+<td style="text-align:left;">
+24.85 (3.88)
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border: 0;" colspan="100%">
+<span style="font-style: italic;">Note: </span>
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border: 0;" colspan="100%">
+<sup></sup> Mean (SD)
+</td>
+</tr>
+</tfoot>
+</table>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>

@@ -1,0 +1,53 @@
+---
+title: "Quosures Within an Index"
+summary: '-----'
+date: '2020-03-21'
+---
+
+
+
+<p>I’ve written about quosures in previous posts. They can be used in functions to specify column names. But what if a column name is pulled from a loop and the value is a character? In that case, surround the value with <code>sym()</code>.</p>
+<p>Here is an example using only quosures.</p>
+<p>First, the data and the function:</p>
+<pre class="r"><code>library(tidyverse)
+library(ggplot2)
+library(hrbrthemes)
+
+people &lt;- 600
+
+df &lt;- tibble(
+  &quot;id&quot; = c(1:people),
+  &quot;performance&quot; = c(rnorm(people, 50, 3))
+)
+
+
+multiply_and_plot &lt;- function(col1){
+  
+  
+  df &lt;- df %&gt;% 
+    mutate(new_performance = !!col1 * 0.5)
+  
+  g &lt;- ggplot(df, aes(x = !!col1)) + 
+    geom_histogram(fill=&quot;#69b3a2&quot;, alpha=0.4) + 
+    theme_ipsum() +
+    labs(x = &quot;Adj-Performance&quot;, y = &quot;Frequency&quot;)
+  
+  return(g)
+}</code></pre>
+<p>Using quosure:</p>
+<pre class="r"><code>multiply_and_plot(quo(performance))</code></pre>
+<p><img src="/Computational_Notes/2020-03-21/index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>But what if the column name is an index from a vector or for loop? Use <code>sym()</code>.</p>
+<pre class="r"><code>use_cols &lt;- c(&quot;performance&quot;)
+
+for(i in 1:1){
+  
+  print(
+    
+  multiply_and_plot(sym(use_cols[i]))
+  
+  )
+}</code></pre>
+<p><img src="/Computational_Notes/2020-03-21/index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Also note that I had to include <code>results = &quot;asis&quot;</code> in the Rmarkdown document and put the function within a print command to get the output to render.</p>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>

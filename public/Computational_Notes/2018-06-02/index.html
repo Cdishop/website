@@ -26,7 +26,7 @@
   <meta name="description" content="-----">
 
   
-  <link rel="alternate" hreflang="en-us" href="/computational_notes/2018-06-02/">
+  <link rel="alternate" hreflang="en-us" href="https://christopherdishop.netlify.app/computational_notes/2018-06-02/">
 
   
 
@@ -250,7 +250,7 @@
   <link rel="icon" type="image/png" href="/images/icon_hua7ddb50eead73fc737c5c3187aff8cf9_17132_32x32_fill_lanczos_center_2.png">
   <link rel="apple-touch-icon" type="image/png" href="/images/icon_hua7ddb50eead73fc737c5c3187aff8cf9_17132_192x192_fill_lanczos_center_2.png">
 
-  <link rel="canonical" href="/computational_notes/2018-06-02/">
+  <link rel="canonical" href="https://christopherdishop.netlify.app/computational_notes/2018-06-02/">
 
   
   
@@ -268,10 +268,10 @@
   <meta property="twitter:creator" content="@apreshill">
   
   <meta property="og:site_name" content="Christopher R. Dishop">
-  <meta property="og:url" content="/computational_notes/2018-06-02/">
+  <meta property="og:url" content="https://christopherdishop.netlify.app/computational_notes/2018-06-02/">
   <meta property="og:title" content="Column Names As Parameters | Christopher R. Dishop">
-  <meta property="og:description" content="-----"><meta property="og:image" content="/img/pom-card.png">
-  <meta property="twitter:image" content="/img/pom-card.png"><meta property="og:locale" content="en-us">
+  <meta property="og:description" content="-----"><meta property="og:image" content="https://christopherdishop.netlify.app/img/pom-card.png">
+  <meta property="twitter:image" content="https://christopherdishop.netlify.app/img/pom-card.png"><meta property="og:locale" content="en-us">
   
     
       <meta property="article:published_time" content="2018-06-02T00:00:00&#43;00:00">
@@ -567,15 +567,15 @@ mini &lt;- dish %&gt;%
 mini[mini$person == &#39;jimmy&#39;, 2] &lt;- 99
 mini[mini$person == &#39;james&#39;, 2] &lt;- 99</code></pre>
 <p>The original data:</p>
-<pre><code>##   person          v_1      v_2      v_3      v_4
-## 1  jimmy -0.007497808 8.451624 48.85219 23.55404
-## 2  james -0.531246144 9.485034 46.79875 36.95828
-## 3 johnny -0.083400822 4.042767 57.31783 32.33972</code></pre>
+<pre><code>##   person         v_1      v_2      v_3      v_4
+## 1  jimmy -1.11680909 14.35137 48.94281 33.91117
+## 2  james -0.03908281 11.58705 41.07339 27.23097
+## 3 johnny  0.60901339 10.78356 37.29786 38.02774</code></pre>
 <p>What we changed it to:</p>
-<pre><code>##   person         v_1      v_2
-## 1  jimmy 99.00000000 8.451624
-## 2  james 99.00000000 9.485034
-## 3 johnny -0.08340082 4.042767</code></pre>
+<pre><code>##   person        v_1      v_2
+## 1  jimmy 99.0000000 14.35137
+## 2  james 99.0000000 11.58705
+## 3 johnny  0.6090134 10.78356</code></pre>
 <p>Here is the function equivalent:</p>
 <pre class="r"><code>impute_99 &lt;- function(data){
   
@@ -593,10 +593,10 @@ mini[mini$person == &#39;james&#39;, 2] &lt;- 99</code></pre>
 <p>Our result:</p>
 <pre class="r"><code>adjusted_data &lt;- impute_99(dish)
 adjusted_data</code></pre>
-<pre><code>##   person         v_1      v_2
-## 1  jimmy 99.00000000 8.451624
-## 2  james 99.00000000 9.485034
-## 3 johnny -0.08340082 4.042767</code></pre>
+<pre><code>##   person        v_1      v_2
+## 1  jimmy 99.0000000 14.35137
+## 2  james 99.0000000 11.58705
+## 3 johnny  0.6090134 10.78356</code></pre>
 </div>
 <div id="function-with-column-names-as-parameters" class="section level1">
 <h1>Function with column names as parameters</h1>
@@ -617,10 +617,10 @@ adjusted_data</code></pre>
 <p>Fortunately the correction is simple, just put quotes around the column names:</p>
 <pre class="r"><code>cool_data &lt;- impute_99_column_specific(dish, &#39;v_1&#39;, &#39;v_2&#39;)
 cool_data</code></pre>
-<pre><code>##   person         v_1      v_2
-## 1  jimmy 99.00000000 8.451624
-## 2  james 99.00000000 9.485034
-## 3 johnny -0.08340082 4.042767</code></pre>
+<pre><code>##   person        v_1      v_2
+## 1  jimmy 99.0000000 14.35137
+## 2  james 99.0000000 11.58705
+## 3 johnny  0.6090134 10.78356</code></pre>
 <p>Bo<span class="math inline">\(^2\)</span>m =)</p>
 </div>
 

@@ -1,0 +1,97 @@
+---
+title: "Untidy Tables & In-Place Mutation"
+summary: '-----'
+date: '2020-01-14'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F, message = F, F)
+
+```
+
+Hadley has written extensively about [tidy data](https://vita.had.co.nz/papers/tidy-data.pdf) and why it's [unsound to implement in-place data mutations](https://github.com/tidyverse/dplyr/issues/425). Some notes below on breaking both of those rules = ). 
+
+In-place changes to data using `tidyverse`.
+
+```{r}
+library(tidyverse)
+df <- tibble(
+  "team" = c("A", "A", "B", "B", "C", "C"),
+  "individual" = c(1, 2, 3, 4, 5, 6),
+  "performance" = c(NA, 4, 5, 6, 2, 3),
+  "affect" = c(NA, 6, 7, 8, 4, 2),
+  "fav_color" = c(NA, "blue", "green", "orange", "yellow", "purple")
+)
+df
+```
+
+Insert a performance, affect, and favorite color value for individual 1 within team A. 
+
+```{r}
+df %>% 
+  filter(team == "A" & individual == 1) %>% 
+  mutate(performance = 8,
+         affect = 2,
+         fav_color = "silver") %>% 
+  rbind(df %>% filter(team != "A" & individual != 1))
+```
+
+Now for the note on untidy tables. Here's some tidy data displayed using `kable`.
+
+```{r}
+library(kableExtra)
+dt <- tibble(
+  
+  'team' = c('A', 'A', 'A',
+             'B', 'B', 'B',
+             'C', 'C', 'C'),
+  'person' = c(1,2,3,
+               4,5,6,
+               7,8,9),
+  'score' = c(rnorm(9, 23, 3))
+  
+)
+
+dt %>% 
+  group_by(team) %>% 
+  summarize(
+    "Mean" = mean(score),
+    "SD" = sd(score)
+  ) %>% 
+  kable() %>% 
+  kable_styling()
+```
+
+Looks great to me. The issue is that sometimes people expect to see data displayed in "untidy" formats. Let's change the output so that each team is listed across the first row and the table displays the mean score alongside the standard deviation within parentheses. 
+
+To do so, I'm going to put string parentheses around the SD values, unite the mean and SD columns, then transform the data from long to wide format. Don't forget to ungroup as well.
+
+```{r}
+
+dt %>% 
+  group_by(team) %>% 
+  summarize(
+    "Mean" = round(mean(score), digits = 2),
+    "SD" = round(sd(score), digits = 2)
+  ) %>% 
+  ungroup() %>% 
+  # insert parentheses
+  mutate(SD = paste0("(", SD, ")")) %>% 
+  # combine mean and SD columns
+  unite(meansd, Mean, SD, sep = " ", remove = T) %>% 
+  # make wide
+  pivot_wider(names_from = team, values_from = meansd) %>% 
+  rename("Team A" = "A",
+         "Team B" = "B",
+         "Team C" = "C") %>% 
+  kable(caption = "Team Scores") %>% 
+  kable_styling() %>% 
+  footnote("Mean (SD)")
+  
+
+```
+
+
+
+
+Bo$^2$m =)

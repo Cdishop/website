@@ -27,6 +27,8 @@
 
 [Sacha Epskamp](http://sachaepskamp.com)
 
+[Lisa DeBruine](https://debruine.github.io/)
+
 [FOM academic](https://data-se.netlify.com)
 
 [Suzan Baert](https://suzan.rbind.io)

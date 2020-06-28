@@ -59,6 +59,8 @@
 
 [Mark Lai](https://quantscience.rbind.io/#posts)
 
+[Joshua Loftus](http://joshualoftus.com/page/teaching/)
+
 [Francis L. Huang](https://francish.netlify.app/#posts)
 
 ### Courses
@@ -92,6 +94,8 @@
 [Lesser Known Dplyr tricks](https://www.brodrigues.co/blog/2017-02-17-lesser_known_tricks/)
 
 [Rmarkdown](http://www.stat.cmu.edu/~cshalizi/rmarkdown/)
+
+[Packages for extremely messy data](https://rfortherestofus.com/2019/12/how-to-clean-messy-data-in-r/)
 
 [Power Simulations](https://github.com/jessiesunpsych/power-simulations)
 
@@ -164,6 +168,8 @@
 [Time series and forecasting](https://otexts.org/fpp2/)
 
 [Data Visualization](https://serialmentor.com/dataviz/)
+
+[Statistical ReThinking with Tidyverse](https://bookdown.org/content/4857/)
 
 [Text Analysis](https://www.tidytextmining.com/nasa.html)
 

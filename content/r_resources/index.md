@@ -167,6 +167,8 @@
 
 [Time series and forecasting](https://otexts.org/fpp2/)
 
+[Applied time series](https://nwfsc-timeseries.github.io/atsa-labs/)
+
 [Data Visualization](https://serialmentor.com/dataviz/)
 
 [Statistical ReThinking with Tidyverse](https://bookdown.org/content/4857/)

@@ -1,3 +1,5 @@
+  
+
 
 
 
@@ -8,9 +10,6 @@ Dmitry A. Kondrashov
 [Click here for link](https://www.amazon.com/Quantifying-Life-Symbiosis-Computation-Mathematics/dp/022637176X/ref=sr_1_1?ie=UTF8&qid=1524678360&sr=8-1&keywords=quantifying+life)
 
 ![](https://github.com/Cdishop/website/raw/master/misc/books/quantlife.png)
-
-
-
 
 
 
@@ -241,6 +240,22 @@ Christopher Gandrud
 
 
 
+*Reclaiming Conversation*
+
+Sherry Turkle
+
+[Click here for link](https://www.amazon.com/Reclaiming-Conversation-Power-Talk-Digital/dp/0143109790/ref=sr_1_1?keywords=reclaiming+conversation&qid=1565453094&s=gateway&sr=8-1)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/conversation.png)
+
+
+
+
+
+
+
+
+
 *The Nature of Code: Simulating Natural Systems with Processing*
 
 Daniel Shiffman
@@ -419,43 +434,6 @@ Roger Highfield
 
 
 
-*Math with Bad Drawings: Illuminating the Ideas That Shape Our Reality*
-
-Ben Orlin
-
-[Click here for link](https://www.amazon.com/Math-Bad-Drawings-Illuminating-Reality/dp/0316509035/ref=sr_1_1?ie=UTF8&qid=1541968483&sr=8-1&keywords=mathematics+with+bad+drawings&dpID=51EP1Orpx0L&preST=_SX258_BO1,204,203,200_QL70_&dpSrc=srch)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/math_draw.png)
-
-
-
-
-
-
-
-
-*How We Got to Now: Six Innovations That Made the Modern World*
-
-Steven Johnson
-
-[Click here for link](https://www.amazon.com/How-We-Got-Now-Innovations-ebook/dp/B00INIXU5I/ref=sr_1_1?ie=UTF8&qid=1541968591&sr=8-1&keywords=how+we+got+to+now+johnson&dpID=512mgCAgJQL&preST=_SY445_QL70_&dpSrc=srch)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/now.png)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 *The Life You Can Save*
 
@@ -509,28 +487,6 @@ Menno Schilthuizen
 
 
 
-*Introduction To Scientific Programming and Simulation Using R*
-
-Owen Jones
-
-Robert Maillardet
-
-Andrew Robinson
-
-[Click here for link](https://www.amazon.com/Introduction-Scientific-Programming-Simulation-Chapman/dp/1466569999/ref=sr_1_3?s=books&ie=UTF8&qid=1524678645&sr=1-3&keywords=introduction+to+scientific+programming+and+simulation+using+r)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/rsimprog.png)
-
-
-
-
-
-
-
-
-
-
-
 *Algorithms To Live By: The Computer Science Of Human Decisions*
 
 Brian Christian
@@ -557,6 +513,23 @@ Steve Strogatz
 
 
 
+
+
+
+
+
+
+
+
+*The Coddling of the American Mind*
+
+Greg Lukianoff
+
+Jonathan Haidt
+
+[Click here for link](https://www.amazon.com/Coddling-American-Mind-Intentions-Generation/dp/0735224897)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/coddling.png)
 
 
 
@@ -623,6 +596,42 @@ Cacilda Jetha
 [Click here for link](https://www.amazon.com/SEX-AT-DAWN-STRAY-MEANS/dp/B00KEVTNSK/ref=sr_1_1?s=books&ie=UTF8&qid=1524678957&sr=1-1&keywords=sex+at+dawn)
 
 ![](https://github.com/Cdishop/website/raw/master/misc/books/sexdawn.png)
+
+
+
+
+
+
+
+
+
+
+*Math with Bad Drawings: Illuminating the Ideas That Shape Our Reality*
+
+Ben Orlin
+
+[Click here for link](https://www.amazon.com/Math-Bad-Drawings-Illuminating-Reality/dp/0316509035/ref=sr_1_1?ie=UTF8&qid=1541968483&sr=8-1&keywords=mathematics+with+bad+drawings&dpID=51EP1Orpx0L&preST=_SX258_BO1,204,203,200_QL70_&dpSrc=srch)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/math_draw.png)
+
+
+
+
+
+
+
+
+
+
+*How We Got to Now: Six Innovations That Made the Modern World*
+
+Steven Johnson
+
+[Click here for link](https://www.amazon.com/How-We-Got-Now-Innovations-ebook/dp/B00INIXU5I/ref=sr_1_1?ie=UTF8&qid=1541968591&sr=8-1&keywords=how+we+got+to+now+johnson&dpID=512mgCAgJQL&preST=_SY445_QL70_&dpSrc=srch)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/now.png)
+
+
 
 
 
@@ -713,11 +722,6 @@ Edward R. Tufte
 
 
 
-
-
-
-
-
 *Complex Adaptive Systems: An Introduction to Computational Models of Social Life*
 
 John H. Miller
@@ -747,6 +751,10 @@ Yuval Noah Harari
 [Click here for link](https://www.amazon.com/Homo-Deus-Brief-History-Tomorrow/dp/0062464310/ref=sr_1_1?s=books&ie=UTF8&qid=1524679148&sr=1-1&keywords=homo+deus)
 
 ![](https://github.com/Cdishop/website/raw/master/misc/books/homodeus.png)
+
+
+
+
 
 
 
@@ -811,6 +819,28 @@ Atul Gawande
 [Click here for link](https://www.amazon.com/Checklist-Manifesto-How-Things-Right/dp/0312430000/ref=sr_1_1?ie=UTF8&qid=1547762703&sr=8-1&keywords=the+checklist+manifesto+by+atul+gawande)
 
 ![](https://github.com/Cdishop/website/raw/master/misc/books/checklist.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*Discrimination and Disparities*
+
+Thomas Sowell
+
+[Click here for link](https://www.amazon.com/Discrimination-Disparities-Thomas-Sowell/dp/154164560X)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/disparity.png)
+
 
 
 
@@ -962,6 +992,40 @@ Edited by John Brockman
 
 
 
+
+
+
+
+
+
+
+*Introduction To Scientific Programming and Simulation Using R*
+
+Owen Jones
+
+Robert Maillardet
+
+Andrew Robinson
+
+[Click here for link](https://www.amazon.com/Introduction-Scientific-Programming-Simulation-Chapman/dp/1466569999/ref=sr_1_3?s=books&ie=UTF8&qid=1524678645&sr=1-3&keywords=introduction+to+scientific+programming+and+simulation+using+r)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/rsimprog.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 *Stumbling on Happiness*
 
 Daniel Gilbert
@@ -1009,13 +1073,59 @@ Kosuke Imai
 
 
 
+*Sync*
+
+Steven H. Strogatz
+
+[Click here for link](https://www.amazon.com/Sync-Order-Emerges-Universe-Nature-ebook/dp/B0072M0X2Y)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/sync.png)
+
+
+
+
+
+
+
+
+
+
+*This Idea Is Brilliant*
+
+Edited by John Brockman
+
+[Click here for link](https://www.amazon.com/This-Idea-Brilliant-Overlooked-Underappreciated/dp/0062698214)
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/brilliant.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 *How to Do Nothing: Resisting the Attention Economy*
 
 Jenny Odell
 
 [Click here for link](https://www.amazon.com/How-Do-Nothing-Resisting-Attention/dp/1612197493/ref=tmm_hrd_swatch_0?_encoding=UTF8&qid=1576539107&sr=8-1)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/do_nothingpng)
+![](https://github.com/Cdishop/website/raw/master/misc/books/do_nothing.png)
 
 
 
@@ -1035,6 +1145,21 @@ Jordan Ellenberg
 [Click here for link](https://www.amazon.com/How-Not-Be-Wrong-Mathematical/dp/0143127535/ref=sr_1_2?ie=UTF8&qid=1544905443&sr=8-2&keywords=how+not+to+be+wrong)
 
 ![](https://github.com/Cdishop/website/raw/master/misc/books/not_wrong.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1128,13 +1253,6 @@ Ian Stewart
 
 
 
-*Reclaiming Conversation*
-
-Sherry Turkle
-
-[Click here for link](https://www.amazon.com/Reclaiming-Conversation-Power-Talk-Digital/dp/0143109790/ref=sr_1_1?keywords=reclaiming+conversation&qid=1565453094&s=gateway&sr=8-1)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/conversation.png)
 
 
 

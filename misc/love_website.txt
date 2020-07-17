@@ -2,3 +2,8 @@ https://jblevins.org
 
 
 http://elevanth.org/blog/2018/09/02/golden_eggs/
+
+
+# simple with rmarkdown - good for lab
+
+https://djnavarro.github.io/chdss2018/index.html

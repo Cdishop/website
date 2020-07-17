@@ -55,6 +55,8 @@
 
 [Crump Lab](https://crumplab.github.io/Courses.html)
 
+[Danielle Navarro](https://djnavarro.net/)
+
 [Richard N. Landers](http://datascience.tntlab.org/)
 
 [Mark Lai](https://quantscience.rbind.io/#posts)
@@ -155,6 +157,8 @@
 
 [Beginner Concepts for Reproducible Science](https://psyteachr.github.io/msc-data-skills/sim.html)
 
+[Learning Statistics with R](https://learningstatisticswithr.com/)
+
 [R for Data Science](https://r4ds.had.co.nz)
 
 [Statistical Inference](https://leanpub.com/LittleInferenceBook/read)
@@ -168,6 +172,8 @@
 [Time series and forecasting](https://otexts.org/fpp2/)
 
 [Applied time series](https://nwfsc-timeseries.github.io/atsa-labs/)
+
+[Advanced time series](https://www.economodel.com/time-series-analysis)
 
 [Data Visualization](https://serialmentor.com/dataviz/)
 

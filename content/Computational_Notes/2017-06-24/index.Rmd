@@ -1,0 +1,104 @@
+---
+title: "Tidyverse Randoms"
+date: "2017-06-24"
+summary: "-----"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F, message = F, cache = T, eval = F)
+```
+
+Some tidyverse commands I came across and hadn't seen before. Thought it would be useful to store them here.
+
+### Replace & Recode
+
+Replace missing values with the median.
+
+```{r}
+
+df <- df %>%
+  mutate(stress = replace(stress,
+                          is.na(stress),
+                          median(stress, na.rm = T)))
+
+```
+
+Change a variable's label.
+
+```{r}
+df <- df %>%
+  mutate(group = replace(group, group == "A", "Group-A"))
+```
+
+Recode is a simple version of `case_when`.
+
+```{r}
+df %>%
+  mutate(color = recode(color,
+                        "g" = "green",
+                        "b" = "blue",
+                        "y" = "y",
+                        .default = "other"))
+```
+
+### An Alternative To Quosure
+
+```{r}
+calc <- function(data, group_var) {
+  data %>%
+    group_by({{ group_var }}) %>%
+    summarize(mean = mean(stress))
+}
+
+```
+
+
+```{r}
+calc_m_sd <- function(data, mean_var, sd_var) {
+  data %>%
+    summarize(
+      "mean_{{mean_var}}" := mean({{ mean_var }}),
+      "sd_{{sd_var}}" := mean({{ sd_var }})
+    )
+}
+
+```
+
+
+
+### Using .data in a for-loop
+
+```{r}
+for (variable in names(df)) {
+  df %>% count(.data[[variable]]) %>% print()
+}
+
+
+```
+
+
+### Select a column if it's row values have x
+
+```{r}
+df %>%
+  select_if(is.numeric) %>%
+  select_if(~mean(., na.rm=TRUE) > 10)
+
+
+df %>% 
+  select_all(any_vars(str_detect(., pattern = "Mu")))
+```
+
+
+### If with "is" At with "vars
+
+```{r}
+mutate_if(is.numeric)
+
+mutate_at(vars(contains("Q")))
+          
+```
+
+
+Bo$^2$m =)
+

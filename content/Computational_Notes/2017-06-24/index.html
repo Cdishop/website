@@ -1,0 +1,65 @@
+---
+title: "Tidyverse Randoms"
+date: "2017-06-24"
+summary: "-----"
+---
+
+
+
+<p>Some tidyverse commands I came across and hadn’t seen before. Thought it would be useful to store them here.</p>
+<div id="replace-recode" class="section level3">
+<h3>Replace &amp; Recode</h3>
+<p>Replace missing values with the median.</p>
+<pre class="r"><code>df &lt;- df %&gt;%
+  mutate(stress = replace(stress,
+                          is.na(stress),
+                          median(stress, na.rm = T)))</code></pre>
+<p>Change a variable’s label.</p>
+<pre class="r"><code>df &lt;- df %&gt;%
+  mutate(group = replace(group, group == &quot;A&quot;, &quot;Group-A&quot;))</code></pre>
+<p>Recode is a simple version of <code>case_when</code>.</p>
+<pre class="r"><code>df %&gt;%
+  mutate(color = recode(color,
+                        &quot;g&quot; = &quot;green&quot;,
+                        &quot;b&quot; = &quot;blue&quot;,
+                        &quot;y&quot; = &quot;y&quot;,
+                        .default = &quot;other&quot;))</code></pre>
+</div>
+<div id="an-alternative-to-quosure" class="section level3">
+<h3>An Alternative To Quosure</h3>
+<pre class="r"><code>calc &lt;- function(data, group_var) {
+  data %&gt;%
+    group_by({{ group_var }}) %&gt;%
+    summarize(mean = mean(stress))
+}</code></pre>
+<pre class="r"><code>calc_m_sd &lt;- function(data, mean_var, sd_var) {
+  data %&gt;%
+    summarize(
+      &quot;mean_{{mean_var}}&quot; := mean({{ mean_var }}),
+      &quot;sd_{{sd_var}}&quot; := mean({{ sd_var }})
+    )
+}</code></pre>
+</div>
+<div id="using-.data-in-a-for-loop" class="section level3">
+<h3>Using .data in a for-loop</h3>
+<pre class="r"><code>for (variable in names(df)) {
+  df %&gt;% count(.data[[variable]]) %&gt;% print()
+}</code></pre>
+</div>
+<div id="select-a-column-if-its-row-values-have-x" class="section level3">
+<h3>Select a column if it’s row values have x</h3>
+<pre class="r"><code>df %&gt;%
+  select_if(is.numeric) %&gt;%
+  select_if(~mean(., na.rm=TRUE) &gt; 10)
+
+
+df %&gt;% 
+  select_all(any_vars(str_detect(., pattern = &quot;Mu&quot;)))</code></pre>
+</div>
+<div id="if-with-is-at-with-vars" class="section level3">
+<h3>If with “is” At with &quot;vars</h3>
+<pre class="r"><code>mutate_if(is.numeric)
+
+mutate_at(vars(contains(&quot;Q&quot;)))</code></pre>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>
+</div>

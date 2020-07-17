@@ -1,0 +1,212 @@
+---
+title: "First Differencing By Group"
+date: "2017-12-23"
+summary: "-----"
+---
+
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+
+
+<p>A bit of practice taking the first difference when the data is not consistent with a typical time-series structure.</p>
+<p>The first set of data.</p>
+<pre class="r"><code>library(tidyverse)
+library(kableExtra)
+dff &lt;- tibble(
+  &#39;id&#39; = c(&#39;a&#39;, &#39;a&#39;, &#39;b&#39;, &#39;b&#39;, &#39;c&#39;, &#39;c&#39;),
+  &#39;survey&#39; = c(1, 2, 1, 2, 1, 2),
+  &#39;score&#39; = c(4, 4, 2, 4, 5, 2),
+  &#39;team&#39; = c(&#39;a&#39;, &#39;a&#39;, &#39;a&#39;, &#39;a&#39;, &#39;a&#39;, &#39;a&#39;)
+)
+dff %&gt;% kable() %&gt;% kable_styling()</code></pre>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+id
+</th>
+<th style="text-align:right;">
+survey
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+team
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+a
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+a
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+a
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+a
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+c
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+a
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+c
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+a
+</td>
+</tr>
+</tbody>
+</table>
+<p>The goal is to subtract scores on the first survey from scores on the second survey. E.g., what are the change scores across the surveys for each participant?</p>
+<pre class="r"><code>dff %&gt;% 
+  group_by(id) %&gt;% 
+  mutate(diffscore = score - lag(score))</code></pre>
+<pre><code>## # A tibble: 6 x 5
+## # Groups:   id [3]
+##   id    survey score team  diffscore
+##   &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;
+## 1 a          1     4 a            NA
+## 2 a          2     4 a             0
+## 3 b          1     2 a            NA
+## 4 b          2     4 a             2
+## 5 c          1     5 a            NA
+## 6 c          2     2 a            -3</code></pre>
+<p>The second set of data.</p>
+<pre class="r"><code>score &lt;- c(10,30,14,20,6)
+group &lt;- c(rep(1001,2),rep(1005,3))
+df &lt;- data.frame(score,group)
+
+df %&gt;% kable() %&gt;% kable_styling()</code></pre>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:right;">
+group
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+1001
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+1001
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+1005
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+1005
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+1005
+</td>
+</tr>
+</tbody>
+</table>
+<p>Group 10001 has two scores whereas group 1005 has 3. I want the change from one score to another for each group.</p>
+<pre class="r"><code>df %&gt;%
+  group_by(group) %&gt;%
+  mutate(first_diff = score - lag(score))</code></pre>
+<pre><code>## # A tibble: 5 x 3
+## # Groups:   group [2]
+##   score group first_diff
+##   &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;
+## 1    10  1001         NA
+## 2    30  1001         20
+## 3    14  1005         NA
+## 4    20  1005          6
+## 5     6  1005        -14</code></pre>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>

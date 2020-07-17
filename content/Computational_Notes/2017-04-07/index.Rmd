@@ -1,0 +1,15 @@
+---
+title: "Facet Wrap Across Multiple Pages"
+Date: "2017-04-07"
+summary: "-----"
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
+```
+
+Great [discussion of extending a facet wrap across several pages](https://www.programmingwithr.com/how-to-make-your-facet-wrap-facet-grid-ggplots-span-across-multiple-pages-in-pdf/).
+
+
+Bo$^2$m =)

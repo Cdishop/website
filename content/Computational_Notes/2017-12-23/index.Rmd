@@ -1,0 +1,59 @@
+---
+title: "First Differencing By Group"
+date: "2017-12-23"
+summary: "-----"
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F, message = F, cache = T)
+```
+
+
+A bit of practice taking the first difference when the data is not consistent with a typical time-series structure. 
+
+The first set of data.
+
+```{r}
+library(tidyverse)
+library(kableExtra)
+dff <- tibble(
+  'id' = c('a', 'a', 'b', 'b', 'c', 'c'),
+  'survey' = c(1, 2, 1, 2, 1, 2),
+  'score' = c(4, 4, 2, 4, 5, 2),
+  'team' = c('a', 'a', 'a', 'a', 'a', 'a')
+)
+dff %>% kable() %>% kable_styling()
+```
+
+The goal is to subtract scores on the first survey from scores on the second survey. E.g., what are the change scores across the surveys for each participant?
+
+```{r}
+
+dff %>% 
+  group_by(id) %>% 
+  mutate(diffscore = score - lag(score))
+
+```
+
+The second set of data.
+
+```{r}
+
+score <- c(10,30,14,20,6)
+group <- c(rep(1001,2),rep(1005,3))
+df <- data.frame(score,group)
+
+df %>% kable() %>% kable_styling()
+```
+
+Group 10001 has two scores whereas group 1005 has 3. I want the  change from one score to another for each group. 
+
+```{r}
+df %>%
+  group_by(group) %>%
+  mutate(first_diff = score - lag(score))
+```
+
+
+Bo$^2$m =)

@@ -1,15 +1,34 @@
-  
+
+
+
+>"It is what you read when you don't have to that determines who you will be when you cannot help it." - Oscar Wilde
+
+------
+------
 
 
 
 
-*Quantifying Life: A Symbiosis of Computation, Mathematics, and Biology*
+
+
+&nbsp;
+
+
+
+<div align="center">
+
+Quantifying Life: A Symbiosis of Computation, Mathematics, and Biology
+
+ </div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/quantlife.png)
 
 Dmitry A. Kondrashov
 
 [Click here for link](https://www.amazon.com/Quantifying-Life-Symbiosis-Computation-Mathematics/dp/022637176X/ref=sr_1_1?ie=UTF8&qid=1524678360&sr=8-1&keywords=quantifying+life)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/quantlife.png)
+------
+------
 
 
 
@@ -17,13 +36,25 @@ Dmitry A. Kondrashov
 
 
 
-*On Writing Well: The Classic Guide to Writing Nonfiction*
+
+&nbsp;
+
+
+
+<div align="center">
+
+
+On Writing Well: The Classic Guide to Writing Nonfiction
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/writingwell.png)
 
 William Zinsser
 
 [Click here for link](https://www.amazon.com/Writing-Well-Classic-Guide-Nonfiction/dp/0060891548/ref=sr_1_1?s=books&ie=UTF8&qid=1524679014&sr=1-1&keywords=on+writing+well)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/writingwell.png)
+------
+------
 
 
 
@@ -33,16 +64,24 @@ William Zinsser
 
 
 
+&nbsp;
 
 
 
-*How We Know What Isn't So: The Fallibility of Human Reason in Everyday Life*
+<div align="center">
+
+
+How We Know What Isn't So: The Fallibility of Human Reason in Everyday Life
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/how_we_know.png)
 
 Thomas Gilovich
 
 [Click here for link](https://www.amazon.com/How-Know-What-Isnt-Fallibility/dp/0029117062/ref=sr_1_3?s=books&ie=UTF8&qid=1524679970&sr=1-3&keywords=how+we+know+what+isn%27t+so)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/how_we_know.png)
+------
+------
 
 
 
@@ -50,13 +89,24 @@ Thomas Gilovich
 
 
 
-*Complexity: A Guided Tour*
+
+
+
+&nbsp;
+
+<div align="center">
+
+Complexity: A Guided Tour
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/complexity.png)
 
 Melanie Mitchell
 
 [Click here for link](https://www.amazon.com/Complexity-Guided-Tour-Melanie-Mitchell/dp/0199798109/ref=sr_1_1?s=books&ie=UTF8&qid=1524678388&sr=1-1&keywords=complexity+a+guided+tour)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/complexity.png)
+------
+------
 
 
 
@@ -65,13 +115,30 @@ Melanie Mitchell
 
 
 
-*The Drunkard's Walk: How Randomness Rules Our Lives*
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+
+The Drunkard's Walk: How Randomness Rules Our Lives
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/drunkwalk.png)
 
 Leonard Mlodinow
 
 [Click here for link](https://www.amazon.com/Drunkards-Walk-Randomness-Rules-Lives/dp/0307275175/ref=sr_1_1?s=books&ie=UTF8&qid=1524678442&sr=1-1&keywords=the+drunkards+walk)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/drunkwalk.png)
+------
+------
 
 
 
@@ -79,13 +146,30 @@ Leonard Mlodinow
 
 
 
-*The Order Of Time*
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+
+The Order Of Time
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/order_time.png)
 
 Carlo Rovelli
 
 [Click here for link](https://www.amazon.com/Order-Time-Carlo-Rovelli/dp/073521610X/ref=sr_1_1?ie=UTF8&qid=1526429375&sr=8-1&keywords=the+order+of+time)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/order_time.png)
+------
+------
 
 
 
@@ -95,7 +179,23 @@ Carlo Rovelli
 
 
 
-*Style: Lessons in Clarity and Grace*
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+
+Style: Lessons in Clarity and Grace
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/style.png)
 
 John M Williams
 
@@ -104,7 +204,8 @@ Joseph Bizup
 
 [Click here for link](https://www.amazon.com/Style-Lessons-Clarity-Grace-12th/dp/0134080416/ref=sr_1_1?ie=UTF8&qid=1530631885&sr=8-1&keywords=style+lessons+in+grace)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/style.png)
+------
+------
 
 
 
@@ -114,13 +215,25 @@ Joseph Bizup
 
 
 
-*Ethics in the Real World: 82 Brief Essays on Things That Matter*
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Ethics in the Real World: 82 Brief Essays on Things That Matter
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/ethics_essays.png)
 
 Peter Singer
 
 [Click here for link](https://www.amazon.com/Ethics-Real-World-Essays-Things/dp/069117847X/ref=sr_1_1?ie=UTF8&qid=1534110030&sr=8-1&keywords=Peter+singer+82+brief&smid=ATVPDKIKX0DER)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/ethics_essays.png)
+------
+------
 
 
 
@@ -129,13 +242,29 @@ Peter Singer
 
 
 
-*The Lady Tasting Tea: How Statistics Revolutionized Science in the Twentieth Century*
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+The Lady Tasting Tea: How Statistics Revolutionized Science in the Twentieth Century
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/tasting_tea.png)
 
 David Salsburg
 
 [Click here for link](https://www.amazon.com/Lady-Tasting-Tea-Statistics-Revolutionized/dp/0805071342/ref=sr_1_1?ie=UTF8&qid=1529349371&sr=8-1&keywords=the+lady+tasting+tea)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/tasting_tea.png)
+------
+------
 
 
 
@@ -145,13 +274,31 @@ David Salsburg
 
 
 
-*Why Don't Students Like School?*
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Why Don't Students Like School?
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/school.png)
 
 Daniel T. Willingham
 
 [Click here for link](https://www.amazon.com/Why-Dont-Students-Like-School/dp/047059196X/ref=sr_1_1_sspa?ie=UTF8&qid=1544905242&sr=8-1-spons&keywords=why+don%27t+student+like+school&psc=1)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/school.png)
+------
+------
 
 
 
@@ -160,26 +307,64 @@ Daniel T. Willingham
 
 
 
-*A Crude Look at the Whole: The Science of Complex Systems in Business, Life, and Society*
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+A Crude Look at the Whole: The Science of Complex Systems in Business, Life, and Society
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/crude_whole.png)
 
 John H. Miller
 
 [Click here for link](https://www.amazon.com/Crude-Look-Whole-Science-Business/dp/0465055699/ref=sr_1_1?s=books&ie=UTF8&qid=1524679795&sr=1-1&keywords=a+crude+look+at+the+whole)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/crude_whole.png)
+------
+------
 
 
 
 
 
 
-*Digital Minimalism*
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Digital Minimalism
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/digital_min.png)
 
 Cal Newport
 
 [Click here for link](https://www.amazon.com/Digital-Minimalism-Choosing-Focused-Noisy/dp/0525536515/ref=sr_1_1?keywords=digital+minimalism&qid=1565453149&s=gateway&sr=8-1)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/digital_min.png)
+------
+------
 
 
 
@@ -191,13 +376,27 @@ Cal Newport
 
 
 
-*Scale: The Universal Laws of Life, Growth, and Death in Organisms, Cities, and Companies*
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Scale: The Universal Laws of Life, Growth, and Death in Organisms, Cities, and Companies
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/scale.png)
 
 Geoffrey West
 
 [Click here for link](https://www.amazon.com/Scale-Universal-Growth-Organisms-Companies/dp/014311090X/ref=sr_1_1?ie=UTF8&qid=1541968528&sr=8-1&keywords=scale+west)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/scale.png)
+------
+------
 
 
 
@@ -207,13 +406,26 @@ Geoffrey West
 
 
 
-*The Most Good You Can Do*
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+The Most Good You Can Do
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/good.png)
 
 Peter Singer
 
 [Click here for link](https://www.amazon.com/Most-Good-You-Can-Effective/dp/0300180276/ref=sr_1_1?keywords=the+most+good+you+can+do&qid=1555122359&s=gateway&sr=8-1)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/good.png)
+------
+------
 
 
 
@@ -223,13 +435,24 @@ Peter Singer
 
 
 
-*Reproducible Research with R and R Studio*
+
+
+
+
+&nbsp;
+
+<div align="center">
+Reproducible Research with R and R Studio
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/reproducible_research.png)
 
 Christopher Gandrud
 
 [Click here for link](https://www.amazon.com/Reproducible-Research-Studio-Chapman-Hall/dp/1498715370/ref=sr_1_1?ie=UTF8&qid=1534110087&sr=8-1&keywords=reproducible+research+with+r)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/reproducible_research.png)
+------
+------
 
 
 
@@ -240,29 +463,25 @@ Christopher Gandrud
 
 
 
-*Reclaiming Conversation*
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Reclaiming Conversation
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/conversation.png)
 
 Sherry Turkle
 
 [Click here for link](https://www.amazon.com/Reclaiming-Conversation-Power-Talk-Digital/dp/0143109790/ref=sr_1_1?keywords=reclaiming+conversation&qid=1565453094&s=gateway&sr=8-1)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/conversation.png)
-
-
-
-
-
-
-
-
-
-*The Nature of Code: Simulating Natural Systems with Processing*
-
-Daniel Shiffman
-
-[Click here for link](https://www.amazon.com/Nature-Code-Simulating-Natural-Processing/dp/0985930802/ref=sr_1_1?ie=UTF8&qid=1534109983&sr=8-1&keywords=the+nature+of+code)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/nature_code.png)
+------
+------
 
 
 
@@ -276,13 +495,21 @@ Daniel Shiffman
 
 
 
-*Stiff: The Curious Lives of Human Cadavers*
+
+&nbsp;
+
+<div align="center">
+Stiff: The Curious Lives of Human Cadavers
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/stiff.png)
 
 Mary Roach
 
 [Click here for link](https://www.amazon.com/Stiff-Curious-Lives-Human-Cadavers/dp/B0001O356G/ref=sr_1_1?keywords=stiff&qid=1576539098&sr=8-1)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/stiff.png)
+------
+------
 
 
 
@@ -294,13 +521,22 @@ Mary Roach
 
 
 
-*Vehicles: Experiments in Synthetic Psychology*
+
+
+&nbsp;
+
+<div align="center">
+Vehicles: Experiments in Synthetic Psychology
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/vehicles.png)
 
 Valentino Braitenberg
 
 [Click here for link](https://www.amazon.com/Vehicles-Experiments-Psychology-Valentino-Braitenberg/dp/0262521121/ref=sr_1_1?keywords=synthetic+psychology&qid=1563232952&s=gateway&sr=8-1)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/vehicles.png)
+------
+------
 
 
 
@@ -315,14 +551,20 @@ Valentino Braitenberg
 
 
 
+&nbsp;
 
-*Statistical Rethinking: A Bayesian Course with Examples in R and Stan*
+<div align="center">
+Statistical Rethinking: A Bayesian Course with Examples in R and Stan
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/mcelreath_rethinking.png)
 
 Richard McElreath
 
 [Click here for link](https://www.amazon.com/Statistical-Rethinking-Bayesian-Examples-Chapman/dp/1482253445/ref=sr_1_1?s=books&ie=UTF8&qid=1524678418&sr=1-1&keywords=statistical+rethinking)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/mcelreath_rethinking.png)
+------
+------
 
 
 
@@ -334,13 +576,22 @@ Richard McElreath
 
 
 
-*The Death of Expertise: The Campaign against Established Knowledge and Why it Matters*
+
+
+&nbsp;
+
+<div align="center">
+The Death of Expertise: The Campaign against Established Knowledge and Why it Matters
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/death_expertise.png)
 
 Thomas M Nichols
 
 [Click here for link](https://www.amazon.com/Death-Expertise-Campaign-Established-Knowledge/dp/0190469412/ref=sr_1_1?ie=UTF8&qid=1530631928&sr=8-1&keywords=the+death+of+expertise)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/death_expertise.png)
+------
+------
 
 
 
@@ -355,7 +606,15 @@ Thomas M Nichols
 
 
 
-*The Book of Why*
+
+
+&nbsp;
+
+<div align="center">
+The Book of Why
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/book_why.png)
 
 Judea Pearl
 
@@ -363,7 +622,8 @@ Dana Mackenzie
 
 [Click here for link](https://www.amazon.com/Book-Why-Science-Cause-Effect/dp/046509760X/ref=sr_1_1?ie=UTF8&qid=1527948151&sr=8-1&keywords=the+book+of+why)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/book_why.png)
+------
+------
 
 
 
@@ -379,13 +639,20 @@ Dana Mackenzie
 
 
 
-*Naked Statistics: Stripping The Dread From The Data*
+&nbsp;
+
+<div align="center">
+Naked Statistics: Stripping The Dread From The Data
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/nakedstats.png)
 
 Charles Wheelan
 
 [Click here for link](https://www.amazon.com/Naked-Statistics-Stripping-Dread-Data/dp/B00CH7FWWU/ref=sr_1_1?s=books&ie=UTF8&qid=1524678465&sr=1-1&keywords=naked+statistics)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/nakedstats.png)
+------
+------
 
 
 
@@ -400,13 +667,25 @@ Charles Wheelan
 
 
 
-*The Ball: Discovering the Object of the Game*
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+The Ball: Discovering the Object of the Game
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/theball.png)
 
 John Fox
 
 [Click here for link](https://www.amazon.com/Ball-Discovering-Object-Game/dp/0061881791/ref=sr_1_1?s=books&ie=UTF8&qid=1524679032&sr=1-1&keywords=the+ball+discovering)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/theball.png)
+------
+------
 
 
 
@@ -416,7 +695,86 @@ John Fox
 
 
 
-*SuperCooperators: Altruism, Evolution, and Why We Need Each Other to Succeed*
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+The Life You Can Save
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/life_save.png)
+
+Peter Singer
+
+[Click here for link](https://www.amazon.com/Life-You-Can-Save-2010-09-14/dp/B01N3MESKP/ref=sr_1_2?keywords=the+life+you+can+save&qid=1555122514&s=gateway&sr=8-2)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+The Nature of Code: Simulating Natural Systems with Processing
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/nature_code.png)
+
+Daniel Shiffman
+
+[Click here for link](https://www.amazon.com/Nature-Code-Simulating-Natural-Processing/dp/0985930802/ref=sr_1_1?ie=UTF8&qid=1534109983&sr=8-1&keywords=the+nature+of+code)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+SuperCooperators: Altruism, Evolution, and Why We Need Each Other to Succeed
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/super_coop.png)
 
 Martin A. Nowak
 
@@ -424,24 +782,8 @@ Roger Highfield
 
 [Click here for link](https://www.amazon.com/SuperCooperators-Altruism-Evolution-Other-Succeed/dp/1451626630/ref=sr_1_1?ie=UTF8&qid=1541968376&sr=8-1&keywords=super+cooperators)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/super_coop.png)
-
-
-
-
-
-
-
-
-
-
-*The Life You Can Save*
-
-Peter Singer
-
-[Click here for link](https://www.amazon.com/Life-You-Can-Save-2010-09-14/dp/B01N3MESKP/ref=sr_1_2?keywords=the+life+you+can+save&qid=1555122514&s=gateway&sr=8-2)
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/life_save.png)
+------
+------
 
 
 
@@ -453,7 +795,15 @@ Peter Singer
 
 
 
-*Mathematics for the Life Sciences*
+
+
+&nbsp;
+
+<div align="center">
+Mathematics for the Life Sciences
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/mathlife.png)
 
 Erin N. Bodine
 
@@ -463,7 +813,8 @@ Louis J. Gross
 
 [Click here for link](https://www.amazon.com/Mathematics-Life-Sciences-Erin-Bodine/dp/0691150729/ref=sr_1_1?s=books&ie=UTF8&qid=1524678619&sr=1-1&keywords=mathematics+for+the+life+sciences)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/mathlife.png)
+------
+------
 
 
 
@@ -471,13 +822,30 @@ Louis J. Gross
 
 
 
-*Nature's Nether Regions: What the Sex Lives of Bugs, Birds, and Beasts Tell Us About Evolution, Biodiversity, and Ourselves*
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Nature's Nether Regions: What the Sex Lives of Bugs, Birds, and Beasts Tell Us About Evolution, Biodiversity, and Ourselves
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/nature_nether.png)
 
 Menno Schilthuizen
 
 [Click here for link](https://www.amazon.com/Natures-Nether-Regions-Schilthuizen-2015-04-28/dp/B01FKSKGY6/ref=sr_1_2?keywords=natures+nether+regions&qid=1569771217&s=gateway&sr=8-2)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/nature_nether.png)
+------
+------
 
 
 
@@ -487,13 +855,32 @@ Menno Schilthuizen
 
 
 
-*Algorithms To Live By: The Computer Science Of Human Decisions*
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Algorithms To Live By: The Computer Science Of Human Decisions
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/alglive.png)
 
 Brian Christian
 
 [Click here for link](https://www.amazon.com/Algorithms-Live-Computer-Science-Decisions/dp/1250118360/ref=sr_1_3?s=books&ie=UTF8&qid=1524678670&sr=1-3&keywords=algorithms+to+live+by)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/alglive.png)
+------
+------
 
 
 
@@ -501,13 +888,31 @@ Brian Christian
 
 
 
-*Infinite Powers*
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Infinite Powers
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/infinite_powers.png)
 
 Steve Strogatz
 
 [Click here for link](https://www.amazon.com/Infinite-Powers-Calculus-Reveals-Universe/dp/1328879984/ref=sr_1_1?keywords=infinite+powers&qid=1563232928&s=gateway&sr=8-1)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/infinite_powers.png)
+------
+------
 
 
 
@@ -521,7 +926,18 @@ Steve Strogatz
 
 
 
-*The Coddling of the American Mind*
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+The Coddling of the American Mind
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/coddling.png)
 
 Greg Lukianoff
 
@@ -529,7 +945,8 @@ Jonathan Haidt
 
 [Click here for link](https://www.amazon.com/Coddling-American-Mind-Intentions-Generation/dp/0735224897)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/coddling.png)
+------
+------
 
 
 
@@ -541,7 +958,18 @@ Jonathan Haidt
 
 
 
-*The Invisible Gorilla: How Our Intuitions Deceive Us*
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+The Invisible Gorilla: How Our Intuitions Deceive Us
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/invisiblegorilla.png)
 
 Christopher Chabris
 
@@ -549,7 +977,8 @@ Daniel Simons
 
 [Click here for link](https://www.amazon.com/Invisible-Gorilla-How-Intuitions-Deceive/dp/0307459667/ref=sr_1_1?s=books&ie=UTF8&qid=1524678720&sr=1-1&keywords=the+invisible+gorilla)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/invisiblegorilla.png)
+------
+------
 
 
 
@@ -558,26 +987,71 @@ Daniel Simons
 
 
 
-*Mindwise: How We Understand What Others Think, Believe, Feel, and Want*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Mindwise: How We Understand What Others Think, Believe, Feel, and Want
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/eplymindwise.png)
 
 Nicholas Epley
 
 [Click here for link](https://www.amazon.com/Mindwise-Understand-Others-Think-Believe/dp/0307595919/ref=sr_1_1?s=books&ie=UTF8&qid=1524678938&sr=1-1&keywords=mindwise+how)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/eplymindwise.png)
+------
+------
 
 
 
 
 
 
-*This Will Change Everything: Ideas That Will Shape The Future*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+This Will Change Everything: Ideas That Will Shape The Future
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/brockmaneverything.png)
 
 Edited By John Brockman
 
 [Click here for link](https://www.amazon.com/This-Will-Change-Everything-Question/dp/0061899674/ref=sr_1_1?s=books&ie=UTF8&qid=1524678835&sr=1-1&keywords=this+will+change+everything)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/brockmaneverything.png)
+------
+------
 
 
 
@@ -587,7 +1061,24 @@ Edited By John Brockman
 
 
 
-*Sex At Dawn: How We Mate, Why We Stay, and What It Means for Modern Relationships*
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Sex At Dawn: How We Mate, Why We Stay, and What It Means for Modern Relationships
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/sexdawn.png)
 
 Christopher Ryan
 
@@ -595,7 +1086,8 @@ Cacilda Jetha
 
 [Click here for link](https://www.amazon.com/SEX-AT-DAWN-STRAY-MEANS/dp/B00KEVTNSK/ref=sr_1_1?s=books&ie=UTF8&qid=1524678957&sr=1-1&keywords=sex+at+dawn)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/sexdawn.png)
+------
+------
 
 
 
@@ -606,13 +1098,65 @@ Cacilda Jetha
 
 
 
-*Math with Bad Drawings: Illuminating the Ideas That Shape Our Reality*
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Can Medicine Be Cured? The Corruption of a Profession
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/cured.png)
+
+Seamus O'Mahony
+
+[Click here for link](https://www.amazon.com/Can-Medicine-Cured-Corruption-Profession-ebook/dp/B07DKKVBL4)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Math with Bad Drawings: Illuminating the Ideas That Shape Our Reality
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/math_draw.png)
 
 Ben Orlin
 
 [Click here for link](https://www.amazon.com/Math-Bad-Drawings-Illuminating-Reality/dp/0316509035/ref=sr_1_1?ie=UTF8&qid=1541968483&sr=8-1&keywords=mathematics+with+bad+drawings&dpID=51EP1Orpx0L&preST=_SX258_BO1,204,203,200_QL70_&dpSrc=srch)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/math_draw.png)
+------
+------
 
 
 
@@ -623,13 +1167,27 @@ Ben Orlin
 
 
 
-*How We Got to Now: Six Innovations That Made the Modern World*
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+How We Got to Now: Six Innovations That Made the Modern World
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/now.png)
 
 Steven Johnson
 
 [Click here for link](https://www.amazon.com/How-We-Got-Now-Innovations-ebook/dp/B00INIXU5I/ref=sr_1_1?ie=UTF8&qid=1541968591&sr=8-1&keywords=how+we+got+to+now+johnson&dpID=512mgCAgJQL&preST=_SY445_QL70_&dpSrc=srch)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/now.png)
+------
+------
 
 
 
@@ -642,7 +1200,19 @@ Steven Johnson
 
 
 
-*Made to Stick: Why Some Ideas Survive and Others Die*
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Made to Stick: Why Some Ideas Survive and Others Die
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/stick.png)
 
 Chip Heath
 
@@ -650,20 +1220,41 @@ Dan Heath
 
 [Click here for link](https://www.amazon.com/Made-Stick-Ideas-Survive-Others/dp/1400064287/ref=sr_1_1?s=books&ie=UTF8&qid=1524678997&sr=1-1&keywords=made+to+stick)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/stick.png)
+------
+------
 
 
 
 
 
 
-*The Ravenous Brain: How The New Science of Consciousness Explains Our Insatiable Search For Meaning*
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+The Ravenous Brain: How The New Science of Consciousness Explains Our Insatiable Search For Meaning
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/ravenousbrain.png)
 
 Daniel Bor
 
 [Click here for link](https://www.amazon.com/Ravenous-Brain-Consciousness-Explains-Insatiable/dp/046502047X/ref=sr_1_1?s=books&ie=UTF8&qid=1524679052&sr=1-1&keywords=the+ravenous+brain)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/ravenousbrain.png)
+------
+------
 
 
 
@@ -671,7 +1262,25 @@ Daniel Bor
 
 
 
-*Matrices and Society: Matrix Algebra and Its Applications in the Social Sciences*
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Matrices and Society: Matrix Algebra and Its Applications in the Social Sciences
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/matrices_society.png)
 
 Ian Bradley
 
@@ -679,7 +1288,8 @@ Ronald L. Meek
 
 [Click here for link](https://www.amazon.com/Matrices-Society-Applications-Sciences-Princeton/dp/0691610207/ref=sr_1_2?s=books&ie=UTF8&qid=1524679070&sr=1-2&keywords=matrices+and+society)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/matrices_society.png)
+------
+------
 
 
 
@@ -690,13 +1300,32 @@ Ronald L. Meek
 
 
 
-*The Beginning Of Infinity: Explanations That Transform The World*
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+The Beginning Of Infinity: Explanations That Transform The World
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/infinity.png)
 
 David Deutsch
 
 [Click here for link](https://www.amazon.com/Beginning-Infinity-Explanations-Transform-World/dp/0143121359/ref=sr_1_1?s=books&ie=UTF8&qid=1524679088&sr=1-1&keywords=the+beginning+of+infinity)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/infinity.png)
+------
+------
 
 
 
@@ -704,13 +1333,31 @@ David Deutsch
 
 
 
-*The Visual Display of Quantitative Information*
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+The Visual Display of Quantitative Information
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/visual_display.png)
 
 Edward R. Tufte
 
 [Click here for link](https://www.amazon.com/Visual-Display-Quantitative-Information/dp/B00A2RSEQI/ref=sr_1_2?ie=UTF8&qid=1535220474&sr=8-2&keywords=the+visual+display+of+quantitative+information)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/visual_display.png)
+------
+------
 
 
 
@@ -722,7 +1369,21 @@ Edward R. Tufte
 
 
 
-*Complex Adaptive Systems: An Introduction to Computational Models of Social Life*
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Complex Adaptive Systems: An Introduction to Computational Models of Social Life
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/adaptive.png)
 
 John H. Miller
 
@@ -730,7 +1391,8 @@ Scott E. Page
 
 [Click here for link](https://www.amazon.com/Complex-Adaptive-Systems-Introduction-Computational/dp/0691127026/ref=sr_1_1?s=books&ie=UTF8&qid=1524678589&sr=1-1&keywords=complex+adaptive+systems)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/adaptive.png)
+------
+------
 
 
 
@@ -744,13 +1406,28 @@ Scott E. Page
 
 
 
-*Homo Deus: A Brief History of Tomorrow*
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Homo Deus: A Brief History of Tomorrow
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/homodeus.png)
 
 Yuval Noah Harari
 
 [Click here for link](https://www.amazon.com/Homo-Deus-Brief-History-Tomorrow/dp/0062464310/ref=sr_1_1?s=books&ie=UTF8&qid=1524679148&sr=1-1&keywords=homo+deus)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/homodeus.png)
+------
+------
 
 
 
@@ -762,26 +1439,57 @@ Yuval Noah Harari
 
 
 
-*The Moral Landscape: How Science Can Determine Human Values*
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+The Moral Landscape: How Science Can Determine Human Values
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/morallandscape.png)
 
 Sam Harris
 
 [Click here for link](https://www.amazon.com/Moral-Landscape-Science-Determine-Values/dp/143917122X/ref=sr_1_1?s=books&ie=UTF8&qid=1524679169&sr=1-1&keywords=the+moral+landscape)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/morallandscape.png)
+------
+------
 
 
 
 
 
 
-*Sick Societies: Challenging the Myth of Primitive Harmony*
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Sick Societies: Challenging the Myth of Primitive Harmony
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/sick_society.png)
 
 Robert B. Edgerton
 
 [Click here for link](https://www.amazon.com/Sick-Societies-Challenging-Primitive-Harmony/dp/0029089255/ref=sr_1_1?ie=UTF8&qid=1527948228&sr=8-1&keywords=sick+societies)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/sick_society.png)
+------
+------
 
 
 
@@ -795,13 +1503,22 @@ Robert B. Edgerton
 
 
 
-*The Expanding Circle: Ethics, Evolution, and Moral Progress*
+
+
+&nbsp;
+
+<div align="center">
+The Expanding Circle: Ethics, Evolution, and Moral Progress
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/expanding_circle.png)
 
 Peter Singer
 
 [Click here for link](https://www.amazon.com/Expanding-Circle-Ethics-Evolution-Progress/dp/0691150699/ref=sr_1_1?keywords=the+expanding+circle&qid=1555122466&s=gateway&sr=8-1)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/expanding_circle.png)
+------
+------
 
 
 
@@ -812,13 +1529,31 @@ Peter Singer
 
 
 
-*The Checklist Manifesto: How to Get Things Right*
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+The Checklist Manifesto: How to Get Things Right
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/checklist.png)
 
 Atul Gawande
 
 [Click here for link](https://www.amazon.com/Checklist-Manifesto-How-Things-Right/dp/0312430000/ref=sr_1_1?ie=UTF8&qid=1547762703&sr=8-1&keywords=the+checklist+manifesto+by+atul+gawande)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/checklist.png)
+------
+------
 
 
 
@@ -833,13 +1568,24 @@ Atul Gawande
 
 
 
-*Discrimination and Disparities*
+
+
+
+
+&nbsp;
+
+<div align="center">
+Discrimination and Disparities
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/disparity.png)
 
 Thomas Sowell
 
 [Click here for link](https://www.amazon.com/Discrimination-Disparities-Thomas-Sowell/dp/154164560X)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/disparity.png)
+------
+------
 
 
 
@@ -850,13 +1596,30 @@ Thomas Sowell
 
 
 
-*The Joy of x: A Guided Tour of Math, from One to Infinity*
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+The Joy of x: A Guided Tour of Math, from One to Infinity
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/joy_x.png)
 
 Steven Strogatz
 
 [Click here for link](https://www.amazon.com/Joy-Guided-Tour-Math-Infinity/dp/0544105850/ref=sr_1_1?ie=UTF8&qid=1547762739&sr=8-1&keywords=the+joy+of+x)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/joy_x.png)
+------
+------
 
 
 
@@ -866,13 +1629,30 @@ Steven Strogatz
 
 
 
-*10 1/2 Things No Commencement Speaker Has Ever Said*
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+10 1/2 Things No Commencement Speaker Has Ever Said
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/no_speaker.png)
 
 Charles Wheelan
 
 [Click here for link](https://www.amazon.com/Things-Commencement-Speaker-Ever-Said/dp/B00CL4IEAG/ref=sr_1_1?ie=UTF8&qid=1547762768&sr=8-1&keywords=10+1%2F2+things+no)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/no_speaker.png)
+------
+------
 
 
 
@@ -883,13 +1663,28 @@ Charles Wheelan
 
 
 
-*Thinking with Data: How to Turn Information into Insights*
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Thinking with Data: How to Turn Information into Insights
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/think_data.png)
 
 Max Shron
 
 [Click here for link](https://www.amazon.com/Thinking-Data-Turn-Information-Insights/dp/1449362931/ref=sr_1_1?ie=UTF8&qid=1547762669&sr=8-1&keywords=thinking+with+data)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/think_data.png)
+------
+------
 
 
 
@@ -899,20 +1694,49 @@ Max Shron
 
 
 
-*Structural Equations With Latent Variables*
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Structural Equations With Latent Variables
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/SEM.png)
 
 Kenneth A. Bollen
 
 [Click here for link](https://www.amazon.com/Structural-Equations-Latent-Variables-Kenneth/dp/0471011711/ref=sr_1_1?s=books&ie=UTF8&qid=1524679315&sr=1-1&keywords=structural+equations+latent+variables)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/SEM.png)
+------
+------
 
 
 
 
 
 
-*Switch: How To Change Things When Change Is Hard*
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Switch: How To Change Things When Change Is Hard
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/switch.png)
 
 Chip Heath
 
@@ -920,7 +1744,8 @@ Dan Heath
 
 [Click here for link](https://www.amazon.com/Switch-Change-Things-Heath-Hardcover/dp/B010IKJIYA/ref=sr_1_3?s=books&ie=UTF8&qid=1524679336&sr=1-3&keywords=switch+how+to+change+when)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/switch.png)
+------
+------
 
 
 
@@ -928,7 +1753,27 @@ Dan Heath
 
 
 
-*Mathematical Modeling of Social Relationships*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Mathematical Modeling of Social Relationships
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/math_relationships.png)
 
 Urszula Strawinska-Zanko
 
@@ -936,7 +1781,8 @@ Larry S. Liebovitch
 
 [Click here for link](https://www.amazon.com/Mathematical-Modeling-Social-Relationships-Computational/dp/331976764X/ref=sr_1_1?ie=UTF8&qid=1544905847&sr=8-1&keywords=mathematical+modeling+of+social+relationships)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/math_relationships.png)
+------
+------
 
 
 
@@ -944,13 +1790,30 @@ Larry S. Liebovitch
 
 
 
-*The Seven Pillars of Statistical Wisdom*
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+The Seven Pillars of Statistical Wisdom
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/sevenstats.png)
 
 Stephen M. Stigler
 
 [Click here for link](https://www.amazon.com/Seven-Pillars-Statistical-Wisdom/dp/0674088913/ref=sr_1_1?s=books&ie=UTF8&qid=1524679356&sr=1-1&keywords=the+seven+pillars+of+statistical)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/sevenstats.png)
+------
+------
 
 
 
@@ -965,13 +1828,25 @@ Stephen M. Stigler
 
 
 
-*Life's Other Secret: The New Mathematics of the Living World*
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Life's Other Secret: The New Mathematics of the Living World
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/lifes_secret.png)
 
 Ian Stewart
 
 [Click here for link](https://www.amazon.com/Lifes-Other-Secret-Mathematics-Living/dp/0471296511/ref=sr_1_1?ie=UTF8&qid=1541968410&sr=8-1&keywords=life%27s+other+secret+ian&dpID=31v8-5eNf-L&preST=_SY291_BO1,204,203,200_QL40_&dpSrc=srch)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/lifes_secret.png)
+------
+------
 
 
 
@@ -980,13 +1855,31 @@ Ian Stewart
 
 
 
-*What Should We Be Worried About? Real Scenarios That Keep Scientists Up at Night*
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+What Should We Be Worried About? Real Scenarios That Keep Scientists Up at Night
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/brockmanworried.png)
 
 Edited by John Brockman
 
 [Click here for link](https://www.amazon.com/What-Should-Worried-About-Scientists/dp/006229623X/ref=sr_1_2?s=books&ie=UTF8&qid=1524679401&sr=1-2&keywords=what+should+we+be+worried+about)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/brockmanworried.png)
+------
+------
 
 
 
@@ -999,7 +1892,17 @@ Edited by John Brockman
 
 
 
-*Introduction To Scientific Programming and Simulation Using R*
+
+
+
+
+&nbsp;
+
+<div align="center">
+Introduction To Scientific Programming and Simulation Using R
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/rsimprog.png)
 
 Owen Jones
 
@@ -1009,7 +1912,8 @@ Andrew Robinson
 
 [Click here for link](https://www.amazon.com/Introduction-Scientific-Programming-Simulation-Chapman/dp/1466569999/ref=sr_1_3?s=books&ie=UTF8&qid=1524678645&sr=1-3&keywords=introduction+to+scientific+programming+and+simulation+using+r)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/rsimprog.png)
+------
+------
 
 
 
@@ -1026,13 +1930,23 @@ Andrew Robinson
 
 
 
-*Stumbling on Happiness*
+
+
+
+&nbsp;
+
+<div align="center">
+Stumbling on Happiness
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/gilberthappy.png)
 
 Daniel Gilbert
 
 [Click here for link](https://www.amazon.com/Stumbling-Happiness-Daniel-Gilbert/dp/1400077427/ref=sr_1_1?s=books&ie=UTF8&qid=1524679419&sr=1-1&keywords=stumbling+on+happiness)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/gilberthappy.png)
+------
+------
 
 
 
@@ -1041,13 +1955,31 @@ Daniel Gilbert
 
 
 
-*Brain Bugs: How The Brain's Flaws Shape Our Lives*
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Brain Bugs: How The Brain's Flaws Shape Our Lives
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/brainbugs.png)
 
 Dean Buonomano
 
 [Click here for link](https://www.amazon.com/Brain-Bugs-Brains-Flaws-Shape/dp/0393342220/ref=sr_1_1?s=books&ie=UTF8&qid=1524679522&sr=1-1&keywords=brain+bugs+how+the+brain%27s)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/brainbugs.png)
+------
+------
 
 
 
@@ -1055,13 +1987,31 @@ Dean Buonomano
 
 
 
-*Quantitative Social Science: An Introduction*
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Quantitative Social Science: An Introduction
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/quant_ss.png)
 
 Kosuke Imai
 
 [Click here for link](https://www.amazon.com/Quantitative-Social-Science-Kosuke-Imai/dp/0691175462/ref=sr_1_1?ie=UTF8&qid=1530631848&sr=8-1&keywords=quantitative+social+science)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/quant_ss.png)
+------
+------
 
 
 
@@ -1073,13 +2023,27 @@ Kosuke Imai
 
 
 
-*Sync*
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Sync
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/sync.png)
 
 Steven H. Strogatz
 
 [Click here for link](https://www.amazon.com/Sync-Order-Emerges-Universe-Nature-ebook/dp/B0072M0X2Y)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/sync.png)
+------
+------
 
 
 
@@ -1090,13 +2054,24 @@ Steven H. Strogatz
 
 
 
-*This Idea Is Brilliant*
+
+
+
+
+&nbsp;
+
+<div align="center">
+This Idea Is Brilliant
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/brilliant.png)
 
 Edited by John Brockman
 
 [Click here for link](https://www.amazon.com/This-Idea-Brilliant-Overlooked-Underappreciated/dp/0062698214)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/brilliant.png)
+------
+------
 
 
 
@@ -1119,13 +2094,22 @@ Edited by John Brockman
 
 
 
-*How to Do Nothing: Resisting the Attention Economy*
+
+
+&nbsp;
+
+<div align="center">
+How to Do Nothing: Resisting the Attention Economy
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/do_nothing.png)
 
 Jenny Odell
 
 [Click here for link](https://www.amazon.com/How-Do-Nothing-Resisting-Attention/dp/1612197493/ref=tmm_hrd_swatch_0?_encoding=UTF8&qid=1576539107&sr=8-1)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/do_nothing.png)
+------
+------
 
 
 
@@ -1138,13 +2122,26 @@ Jenny Odell
 
 
 
-*How Not to Be Wrong: The Power of Mathematical Thinking*
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+How Not to Be Wrong: The Power of Mathematical Thinking
+</div>
+
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/not_wrong.png)
 
 Jordan Ellenberg
 
 [Click here for link](https://www.amazon.com/How-Not-Be-Wrong-Mathematical/dp/0143127535/ref=sr_1_2?ie=UTF8&qid=1544905443&sr=8-2&keywords=how+not+to+be+wrong)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/not_wrong.png)
+------
+------
 
 
 
@@ -1169,16 +2166,20 @@ Jordan Ellenberg
 
 
 
+&nbsp;
 
+<div align="center">
+Introduction to Computation and Programming Using Python
+</div>
 
-
-*Introduction to Computation and Programming Using Python*
+![](https://github.com/Cdishop/website/raw/master/misc/books/computation_programming.png)
 
 John V. Guttag
 
 [Click here for link](https://www.amazon.com/gp/product/0262529629/ref=oh_aui_detailpage_o03_s00?ie=UTF8&psc=1)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/computation_programming.png)
+------
+------
 
 
 
@@ -1189,13 +2190,26 @@ John V. Guttag
 
 
 
-*Cooperation Under Anarchy*
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Cooperation Under Anarchy
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/cooperation_anarchy.png)
 
 Kenneth A. Oye
 
 [Click here for link](https://www.amazon.com/Cooperation-under-Anarchy-Kenneth-Oye/dp/0691022402/ref=sr_1_1?ie=UTF8&qid=1534110079&sr=8-1&keywords=cooperation+under+anarchy)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/cooperation_anarchy.png)
+------
+------
 
 
 
@@ -1206,13 +2220,25 @@ Kenneth A. Oye
 
 
 
-*Predictably Irrational: The Hidden Forces That Shape Our Decisions*
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Predictably Irrational: The Hidden Forces That Shape Our Decisions
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/irrational.png)
 
 Dan Ariely
 
 [Click here for link](https://www.amazon.com/Predictably-Irrational-Revised-Expanded-Decisions/dp/0061353248/ref=sr_1_1?s=books&ie=UTF8&qid=1524678490&sr=1-1&keywords=predictably+irrational)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/irrational.png)
+------
+------
 
 
 
@@ -1220,7 +2246,23 @@ Dan Ariely
 
 
 
-*Big Data: A Revolution That Will Transform How We Live, Work, and Think*
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Big Data: A Revolution That Will Transform How We Live, Work, and Think
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/bigdata.png)
 
 Viktor Mayer-Schonberger
 
@@ -1228,7 +2270,8 @@ Kenneth Cukier
 
 [Click here for link](https://www.amazon.com/Big-Data-Revolution-Transform-Think/dp/1848547900/ref=sr_1_10?s=books&ie=UTF8&qid=1524678890&sr=1-10&keywords=big+data+a+revolution)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/bigdata.png)
+------
+------
 
 
 
@@ -1239,13 +2282,62 @@ Kenneth Cukier
 
 
 
-*In Pursuit of the Unknown: 17 Equations That Changed the World*
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+An Introduction to Models in the Social Sciences
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/socialmodels.png)
+
+Charles A. Lave
+
+James G. March
+
+[Click here for link](https://www.amazon.com/Introduction-Models-Social-Sciences/dp/0819183814)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+In Pursuit of the Unknown: 17 Equations That Changed the World
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/unknown.png)
 
 Ian Stewart
 
 [Click here for link](https://www.amazon.com/Pursuit-Equations-That-Changed-World/dp/0465085989/ref=sr_1_1?ie=UTF8&qid=1529323656&sr=8-1&keywords=17+equations+that+changed+the+world)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/unknown.png)
+------
+------
 
 
 
@@ -1259,13 +2351,24 @@ Ian Stewart
 
 
 
-*Humble Pie: A Comedy of Maths Errors*
+
+
+
+
+&nbsp;
+
+<div align="center">
+Humble Pie: A Comedy of Maths Errors
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/humble_pie.png)
 
 Matt Parker
 
 [Click here for link](https://www.amazon.com/Humble-Pi-Comedy-Maths-Errors/dp/0241360234/ref=sr_1_fkmr0_1?keywords=humble+pie+maths+errors&qid=1565453048&s=gateway&sr=8-1-fkmr0)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/humble_pie.png)
+------
+------
 
 
 
@@ -1276,36 +2379,130 @@ Matt Parker
 
 
 
-*The Tyranny of Metrics*
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+The Tyranny of Metrics
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/tyranny_metrics.png)
 
 Jerry Muller
 
 [Click here for link](https://www.amazon.com/Tyranny-Metrics-Jerry-Muller/dp/0691174954/ref=sr_1_1?ie=UTF8&qid=1529323708&sr=8-1&keywords=the+tyranny+of+metrics)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/tyranny_metrics.png)
+------
+------
 
 
 
 
-*The Briefest History of Time*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+The Model Thinker: What You Need to Know to Make Data Work for You
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/manymodel.png)
+
+Scott E. Page
+
+[Click here for link](https://www.amazon.com/Model-Thinker-What-Need-Know/dp/0465094627)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+The Briefest History of Time
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/history_time.png)
 
 Arieh Ben_Naim
 
 [Click here for link](https://www.amazon.com/Briefest-History-Time-Misconstrued-Association/dp/9814749850/ref=sr_1_1?ie=UTF8&qid=1534110135&sr=8-1&keywords=the+briefest+history+of+time)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/history_time.png)
+------
+------
 
 
 
 
 
-*Too Soon Old, Too Late Smart*
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Too Soon Old, Too Late Smart
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/too_soon_old.png)
 
 Gordon Livingston
 
 [Click here for link](https://www.amazon.com/Too-Soon-Old-Late-Smart/dp/1569243735/ref=sr_1_1?ie=UTF8&qid=1527948162&sr=8-1&keywords=too+soon+old)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/too_soon_old.png)
+------
+------
 
 
 
@@ -1313,13 +2510,30 @@ Gordon Livingston
 
 
 
-*System Dynamics Modeling with R*
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+System Dynamics Modeling with R
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/system_dynamics.png)
 
 Jim Duggan
 
 [Click here for link](https://www.amazon.com/System-Dynamics-Modeling-Lecture-Networks/dp/3319340417/ref=sr_1_1?s=books&ie=UTF8&qid=1526429142&sr=1-1&keywords=system+dynamics+modeling+with+r)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/system_dynamics.png)
+------
+------
 
 
 
@@ -1327,7 +2541,24 @@ Jim Duggan
 
 
 
-*Ten Great Ideas About Chance*
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Ten Great Ideas About Chance
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/tenchance.png)
 
 Persi Diaconis
 
@@ -1335,43 +2566,130 @@ Brian Skyrms
 
 [Click here for link](https://www.amazon.com/Ten-Great-Ideas-about-Chance/dp/0691174164/ref=sr_1_1?s=books&ie=UTF8&qid=1524679586&sr=1-1&keywords=ten+great+ideas+about+chance)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/tenchance.png)
+------
+------
 
 
 
 
 
 
-*Risk Savvy: How To Make Good Decisions*
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Risk Savvy: How To Make Good Decisions
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/risk_savvy.png)
 
 Gerd Gigerenzer
 
 [Click here for link](https://www.amazon.com/Risk-Savvy-Make-Good-Decisions/dp/0143127101/ref=sr_1_1?ie=UTF8&qid=1525549444&sr=8-1&keywords=risk+savvy)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/risk_savvy.png)
+------
+------
 
 
 
 
 
 
-*Thinking in Systems: A Primer*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Thinking in Systems: A Primer
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/thinking_systems.png)
 
 Donella H. Meadows
 
 [Click here for link](https://www.amazon.com/Thinking-Systems-Donella-H-Meadows/dp/1603580557/ref=sr_1_2?ie=UTF8&qid=1524678135&sr=8-2&keywords=thinking+in+systems)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/thinking_systems.png)
+------
+------
 
 
 
 
 
-*This Idea Must Die: Scientific Theories That Are Blocking Progress*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+This Idea Must Die: Scientific Theories That Are Blocking Progress
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/brockmandie.png)
 
 Edited by John Brockman
 
 [Click here for link](https://www.amazon.com/This-Idea-Must-Die-Scientific/dp/0062374346/ref=sr_1_1?s=books&ie=UTF8&qid=1524679604&sr=1-1&keywords=this+idea+must+die)
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/brockmandie.png)
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
 

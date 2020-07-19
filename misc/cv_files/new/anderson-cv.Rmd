@@ -1,0 +1,570 @@
+---
+title: "Christopher Dishop's Vita"
+first: "dude"
+output:
+  pagedown::html_paged:
+    self_contained: false
+    css: [anderson-cv.css]
+    number_sections: false
+links-to-footnotes: false
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(lubridate)
+library(knitr)
+opts_chunk$set(echo = FALSE)
+options(knitr.kable.NA = '')
+
+#### cv entries #####
+cv_entries <- readxl::read_xlsx(here::here("data", "cv_entries.xlsx"))
+
+#### publications #####
+pubs <- readxl::read_xlsx(here::here("data", "pubs.xlsx")) %>% 
+  arrange(order) %>% 
+  select(-order)
+
+pubs <- map_df(pubs, ~gsub("\\.$", "", .x))
+
+courses <- readxl::read_xlsx(here::here("data", "courses.xlsx"))
+
+#### teaching ####
+
+teaching <- readxl::read_xlsx(here::here("data", "teaching.xlsx"))
+
+#### service ####
+
+service <- readxl::read_xlsx(here::here("data", "service.xlsx"))
+
+#### awards #### 
+
+awards <- readxl::read_xlsx(here::here("data", "awards.xlsx"))
+```
+
+
+```{r}
+PDF <- T # Set to TRUE when rendering to PDF via pagedown::chrome_print()
+if(PDF) {
+  header <- '
+  View online
+  <a href="https://cdishop.github.io/cv/" class="icon-block">
+      <i class="fas fafooter fa-globe"></i>
+  </a>
+  '
+} else {
+  header <- '
+  Download PDF
+  <a href="https://github.com/cdishop/cv/raw/master/dishop-cv.pdf" class="icon-block">
+      <i class="fas fafooter fa-download"></i>
+  </a>
+  '
+}
+```
+
+
+<div class = "download">
+```{r results = "asis"}
+cat(header)
+```
+
+
+</div>
+
+<div class = "footer",>
+  
+  <a href="https://christopherdishop.netlify.app" class="icon-block">
+      <i class="fas fafooter fa-globe"> </i>
+  </a>
+  
+</div>
+
+
+<div id = "block_container">
+
+<div class = "first", id="bloc1">Christopher R.</div>  
+<div class = "last", id="bloc2">Dishop</div>
+
+</div>
+
+<div id = "position", class = "position">
+Assistant Professor
+</div>
+
+
+<div id = "sub", class = "sub">
+Curriculum Vita
+</div>
+
+
+
+<!-- Add in some info about doctoral student advising/training - i.e., sondra committee -->
+
+<div class="grid-container">
+
+
+```{r summary, child = here::here("content", "summary.Rmd")}
+```
+
+```{r contact-info, child = here::here("content", "contact-info.Rmd")}
+```
+
+</div>
+
+
+## Education {.education .nohead}
+```{r}
+cv_entries %>% 
+  filter(type == 'education') %>% 
+  mutate(what = paste0(what, ", ", where),
+         what = gsub("NA", "", what),
+         what = gsub(", $", "", what),
+         what = ifelse(!is.na(url), 
+                       paste0("[", what, "](", url, ")"), 
+                       what)
+         ) %>% 
+  mutate(year = str_c(year_begin)) %>% 
+  select(year, what) %>% 
+  kable()
+```
+
+## Professional Experience {.history .nohead}
+
+```{r}
+cv_entries %>% 
+  filter(type == 'history') %>% 
+  mutate(what = paste0("<span style= 'font-weight: 500'>",
+                       what, 
+                       "</span>"),
+    what = paste0(what, ", ", where),
+         what = gsub("NA", "", what),
+         what = gsub(", $", "", what)) %>% 
+  #mutate(year = str_c(year_begin, 
+  #                   " --- ", 
+  #                    ifelse(is.na(year_end), "", year_end))) %>% 
+  mutate(year = str_c(year_begin)) %>% 
+  select(year, what) %>% 
+  kable()
+```
+
+
+# Scholarship
+
+<div class = "inote">
+-||||||-
+
+</div>
+
+
+## Peer-Reviewed Publications
+
+```{r}
+make_cite <- function(authors,	year,	title,	journal = NULL,	volume = NULL,	
+                      issue = NULL,	pages = NULL,	doi = NULL,	url = NULL,
+                      book = NULL, place_published = NULL, conference = NULL,
+                      poster = NULL, conf_loc = NULL, annual_meeting = NULL,
+                      version = NULL,...) {
+  
+  if(!is.null(journal)) {
+    journal <- paste0("*", journal, "*.")
+  }
+  
+  if(!is.null(volume)) {
+    volume <- paste0("*", volume, "*,")
+  }
+  
+  if(!is.null(issue)) {
+    volume <- paste0(gsub(",", "", volume), "(", issue, "),")
+  }
+  if(!is.null(doi) & !is.null(url)) {
+    doi <- paste0("[doi: ", doi, "](", url, ")")
+  }
+  if(!is.null(pages)) {
+    if(!is.null(book)) {
+      pages <- paste0("(pp. ", pages, ").")
+    }
+    else {
+     pages <- paste0(pages,".") 
+    }
+  }
+  if(!is.null(book)) {
+    book <- paste0("*", book, "*")
+  }
+  if(!is.null(conference)) {
+    title <- paste0("*", title, "*")
+    if(is.null(poster)) {
+      if(annual_meeting) {
+        conference <- paste0("Presentation at the annual ", conference, ".")
+      }
+      else {
+        conference <- paste0("Invited talk ", conference, ".")
+      }
+    }
+    else if(poster) {
+      if(annual_meeting) {
+       conference <- paste0("Poster presented at the annual meeting of the ", 
+                            conference,
+                            ", ", 
+                            conf_loc,
+                            ".") 
+      }
+      else {
+        conference <- paste0("Poster presented at the ", 
+                             conference, 
+                             ", ", 
+                             conf_loc, 
+                             ".") 
+      }
+    }
+    else {
+       if(annual_meeting) {
+          conference <- paste0("Paper presented at the annual meeting of the ", 
+                            conference, 
+                            ", ", 
+                            conf_loc,
+                            ".") 
+      }
+      else {
+        conference <- paste0("Paper presented at the ", 
+                             conference, 
+                             ",", 
+                             conf_loc,
+                            ".") 
+      }
+    }
+  }
+  if(!is.null(version)) {
+    version <- paste0("R package version ", version, ".")
+  }
+  authors <- gsub(
+    "Dishop, C. R\\.?",
+    "<span style= 'font-weight: 500'>Dishop, C. R.</span>", 
+    authors)
+   
+  paste(authors, 
+        paste0("(", year, ")."), 
+        paste0(title, "."),
+        version, 
+        conference,
+        journal, 
+        volume,
+        book,
+        pages, 
+        doi,
+        place_published)
+}
+
+prpas <- pubs %>% 
+  filter(type == "prpa") %>% 
+  select(-type) 
+
+each_cite <- split(prpas, seq_len(nrow(prpas)))
+empties <- map(each_cite, ~map_lgl(.x, is.na))
+
+cites <- map2(each_cite, empties, ~.x[ ,!.y])
+formatted_cites <- map(cites, ~do.call(make_cite, .x)) 
+
+fa_doc <- ifelse(
+  !is.na(prpas$full_paper_link), 
+  paste0('[<i class="fas falink2 fa-file-alt"></i>](', 
+         prpas$full_paper_link, 
+         ")"
+         ),
+  ""
+  )
+
+fa_git <- ifelse(
+  !is.na(prpas$git_repo), 
+  paste0('[<i class="fab falink2 fa-github"></i>](', 
+         prpas$git_repo, 
+         ")"
+         ),
+  ""
+  )
+
+pubs_tbl <- tibble(year = prpas$year,
+                  count = paste0(seq(length(formatted_cites), 1), "."),
+                  cites = paste(unlist(formatted_cites), fa_doc, fa_git)) 
+
+pubs_tbl <- pubs_tbl %>% 
+  group_by(year) %>%
+  mutate(count_within_year = 1:n()) %>% 
+  ungroup() %>% 
+  mutate(year = ifelse(count_within_year == 1, year, "")) %>% 
+  select(-count_within_year)
+```
+
+
+
+```{r}
+# NEED TO CHANGE BELOW BASED ON NUMBER OF IN PRESS ARTICLES
+```
+
+<div class = "hangingindent prpa nohead">
+
+```{r} 
+kable(pubs_tbl[1, ])
+```
+
+</div>
+
+```{r}
+# NEED TO CHANGE ABOVE BASED ON NUMBER OF IN PRESS ARTICLES
+```
+
+
+
+
+
+<div class = "prpa nohead hangingindent">
+
+```{r}
+kable(pubs_tbl[seq(2, nrow(pubs_tbl)), ])
+```
+
+</div>
+
+
+
+
+<!-- ## Manuscripts under review for publication {.submitted .nohead} -->
+
+<div class = "hangingindent">
+
+```{r }
+submitted <- pubs %>% 
+  filter(type == "in-review") %>% 
+  select(-type)
+
+fa_doc <- ifelse(
+  !is.na(submitted$full_paper_link), 
+  paste0('[<i class="fas falink2 fa-file-alt"></i>](', 
+         submitted$full_paper_link, 
+         ")"
+         ),
+  ""
+  )
+
+fa_git <- ifelse(
+  !is.na(submitted$git_repo), 
+  paste0('[<i class="fab falink2 fa-github"></i>](', 
+         submitted$git_repo, 
+         ")"
+         ),
+  ""
+  )
+
+each_cite <- split(submitted, seq_len(nrow(submitted)))
+empties <- map(each_cite, ~map_lgl(.x, is.na))
+
+cites <- map2(each_cite, empties, ~.x[ ,!.y])
+formatted_cites <- map(cites, ~do.call(make_cite, .x)) 
+
+if(length(formatted_cites) > 0) {
+ submitted_tbl <- tibble(count = paste0(seq(length(formatted_cites), 1), "."),
+                         cites = paste(unlist(formatted_cites), fa_doc, fa_git)) 
+  
+  kable(submitted_tbl) 
+}
+```
+
+</div>
+
+
+## Book chapters {.submitted .nohead}
+
+<div class = "hangingindent">
+
+```{r}
+chapters <- pubs %>% 
+  filter(type == "book-chapter") %>% 
+  select(-type)
+
+each_cite <- split(chapters, seq_len(nrow(chapters)))
+empties <- map(each_cite, ~map_lgl(.x, is.na))
+
+cites <- map2(each_cite, empties, ~.x[ ,!.y])
+formatted_cites <- map(cites, ~do.call(make_cite, .x)) 
+
+chapters_tbl <- tibble(count = paste0(seq(length(formatted_cites), 1), "."),
+                        cites = unlist(formatted_cites)) 
+  
+kable(chapters_tbl)
+
+```
+
+</div>
+
+## Invited Talks, Conference Presentations & Posters {.prpa .nohead}
+
+<div class = "hangingindent">
+
+```{r}
+confs <- pubs %>% 
+  filter(type == "conference") %>% 
+  select(-type)
+
+fa_doc <- ifelse(
+  !is.na(confs$full_paper_link), 
+  paste0('[<i class="fas falink2 fa-file-alt"></i>](', 
+         confs$full_paper_link, 
+         ")"
+         ),
+  ""
+  )
+
+fa_git <- ifelse(
+  !is.na(confs$git_repo), 
+  paste0('[<i class="fab falink2 fa-github"></i>](', 
+         confs$git_repo, 
+         ")"
+         ),
+  ""
+  )
+
+fa_pres <- ifelse(
+  !is.na(confs$slides_link), 
+  paste0('[<i class="fas falink3 fa-chalkboard-teacher"></i>](', 
+         confs$slides_link, 
+         ")"
+         ),
+  ""
+  )
+
+
+each_cite <- split(confs, seq_len(nrow(confs)))
+empties <- map(each_cite, ~map_lgl(.x, is.na))
+
+cites <- map2(each_cite, empties, ~.x[ ,!.y])
+formatted_cites <- map(cites, ~do.call(make_cite, .x)) 
+
+conf_tbl <- tibble(year = confs$year,
+                   count = paste0(seq(length(formatted_cites), 1), "."),
+                   cites = paste(unlist(formatted_cites), 
+                                 fa_doc, 
+                                 fa_pres, 
+                                 fa_git)
+)
+  
+
+conf_tbl <- conf_tbl %>% 
+  mutate(year = parse_number(year)) %>% 
+  group_by(year) %>%
+  mutate(count_within_year = 1:n()) %>% 
+  ungroup() %>% 
+  mutate(year = ifelse(count_within_year == 1, year, "")) %>% 
+  select(-count_within_year)
+
+kable(conf_tbl[seq(1, nrow(conf_tbl)), ])
+```
+
+# Teaching
+
+<div class = "inote">
+-||||||-
+
+</div>
+
+## Courses {.history .nohead}
+
+```{r, warning = F, message = F}
+library(kableExtra)
+teaching %>% 
+  filter(type == 'teach') %>% 
+  mutate(
+    what = paste0(what, ", ", where),
+         what = gsub("NA", "", what),
+         what = gsub(", $", "", what)) %>% 
+  #mutate(year = str_c(year_begin, 
+   #                  " ", 
+    #                  ifelse(is.na(year_end), "", year_end))) %>% 
+  mutate(year = str_c(year_begin)) %>% 
+  select(term, what) %>% 
+  kable() %>% 
+  kable_styling(position = "left") %>% 
+  column_spec(1, width = "3cm")
+```
+
+
+# Professional Service 
+
+<div class = "inote">
+-||||||-
+
+</div>
+
+## University Committees {.nohead .submitted}
+
+<div class = "hangingindent">
+
+```{r}
+committees <- service %>%
+  filter(type == "committee")
+
+committees %>%
+  mutate(count = paste0(seq(nrow(.), 1), "."),
+         cite = paste0(paste0("*", what, "*"),
+                       ". (", 
+                       ifelse(!is.na(year_begin), 
+                              paste0(year_begin, "-"), 
+                              ""), 
+                       year_end, 
+                       "). ",
+                       where, 
+                       ".")) %>%
+  select(term, what) %>%
+  kable() %>% 
+  kable_styling(position = "left") %>% 
+  column_spec(1, width = "3cm")
+```
+
+</div>
+
+## Advised Research {.nohead .submitted}
+
+<div class = "hangingindent">
+
+```{r}
+doc_stu <- service %>%
+  filter(type == "doc")
+
+doc_stu %>%
+  mutate(count = paste0(seq(nrow(.), 1), "."),
+         cite = paste0(what, ". (", year_begin, "-", year_end, 
+                       "). Dissertation title: *", additional_info, "*. ", 
+                       where, ".")) %>%
+  select(term, what) %>%
+  kable() %>% 
+  kable_styling(position = "left") %>% 
+  column_spec(1, width = "3cm")
+```
+
+</div>
+
+
+# Honors
+<div class = "inote">
+-||||||-
+
+</div>
+
+## Awards & Grants {.nohead .submitted}
+
+<div class = "hangingindent">
+
+```{r, message = F, warning = F}
+library(kableExtra)
+awards <- awards %>%
+  filter(type == "award")
+
+awards %>%
+  mutate(count = paste0(seq(nrow(.), 1), "."),
+         cite = paste0(what, ". (", year_begin, "-", year_end, 
+                       "). Dissertation title: *", additional_info, "*. ", 
+                       where, ".")) %>%
+  select(term, what) %>%
+  kable() %>% 
+  kable_styling(position = "left") %>% 
+  column_spec(1, width = "3cm")
+```
+
+</div>

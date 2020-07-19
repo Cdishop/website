@@ -1,0 +1,19 @@
+```{r}
+# haven't figured out google scholar image yet
+# https://github.com/FortAwesome/Font-Awesome/issues/541
+```
+
+
+```{block type='col- grid-item', echo=TRUE}
+## Contact information {.box}
+<div class = "info-box">
+| left | left |
+|:------|-----:|
+| **Contact** |
+| <span style="color: #454545"><i class="fas fa-map-marker-alt"></i></span> [Michigan State University](https://psychology.msu.edu/)|
+| <span style="color: #454545"><i class="fas fa-envelope"></i></span> dishopch\@msu.edu |
+| <span style="color: #454545"><i class="fas fa-globe"></i></span> [www.christopherdishop.com](https://christopherdishop.netlify.app/) |
+| <span style="color: #454545"><i class="fab fa-github"></i></span> [Cdishop](https://github.com/Cdishop/) |
+
+</div>
+```

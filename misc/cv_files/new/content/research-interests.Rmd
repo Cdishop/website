@@ -1,0 +1,17 @@
+```{r}
+# haven't figured out google scholar image yet
+# https://github.com/FortAwesome/Font-Awesome/issues/541
+```
+
+
+```{block type='col- grid-item', echo=TRUE}
+## Contact information {.box}
+<div class = "info-box">
+| left | left |
+|:------|-----:|
+| Cooperation |
+| Motivation |
+| Dynamics |
+
+</div>
+```

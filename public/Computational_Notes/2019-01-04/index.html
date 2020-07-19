@@ -596,19 +596,19 @@ sample_df &lt;- df %&gt;%
 ## lm(formula = performance ~ stress, data = sample_df)
 ## 
 ## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -2.98006 -0.67975 -0.00121  0.68746  3.10549 
+##     Min      1Q  Median      3Q     Max 
+## -3.3598 -0.6912 -0.0103  0.6614  3.3867 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) 0.015099   0.041497   0.364    0.716    
-## stress      0.458298   0.008516  53.815   &lt;2e-16 ***
+## (Intercept) 0.047104   0.041462   1.136    0.256    
+## stress      0.462315   0.008216  56.273   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 1.016 on 598 degrees of freedom
-## Multiple R-squared:  0.8289, Adjusted R-squared:  0.8286 
-## F-statistic:  2896 on 1 and 598 DF,  p-value: &lt; 2.2e-16</code></pre>
+## Residual standard error: 1.015 on 598 degrees of freedom
+## Multiple R-squared:  0.8412, Adjusted R-squared:  0.8409 
+## F-statistic:  3167 on 1 and 598 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <div id="b-compute-the-ci" class="section level3">
 <h3>2b) Compute the CI</h3>
@@ -658,7 +658,7 @@ for(i in 1:sims){
 <h3>Interpretation</h3>
 <p>How many computed intervals contain the population parameter?</p>
 <pre class="r"><code>sum(all_ci_contains == &#39;yes&#39;) / sims</code></pre>
-<pre><code>## [1] 0.9466667</code></pre>
+<pre><code>## [1] 0.9611111</code></pre>
 </div>
 
     </div>

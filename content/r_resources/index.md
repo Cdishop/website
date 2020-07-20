@@ -59,6 +59,8 @@
 
 [Richard N. Landers](http://datascience.tntlab.org/)
 
+[Gaston Sanchez](https://www.gastonsanchez.com/)
+
 [Mark Lai](https://quantscience.rbind.io/#posts)
 
 [Joshua Loftus](http://joshualoftus.com/page/teaching/)

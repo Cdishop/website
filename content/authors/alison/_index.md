@@ -6,7 +6,7 @@ education:
   courses:
   - course: PhD in Organizational Psychology
     institution: Michigan State University
-    year: 2021 (Expected)
+    year: 2020 (Expected)
   - course: MA in Organizational Psychology
     institution: Michigan State University
     year: 2019

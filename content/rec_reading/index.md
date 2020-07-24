@@ -1,7 +1,7 @@
 
 
 
->"It is what you read when you don't have to that determines who you will be when you cannot help it." - Oscar Wilde
+>"It's what you read when you don't have to that determines who you will be when you can't help it." - Oscar Wilde
 
 ------
 ------

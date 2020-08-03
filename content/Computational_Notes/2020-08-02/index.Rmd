@@ -1,0 +1,40 @@
+---
+title: "Host Multiple Pages on GitHub"
+date: "2020-08-02"
+summary: "-----"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F, message = F)
+library(tidyverse)
+```
+
+GitHub allows you to host one static website per repository. Here's how to do it:
+
+Steps:
+
+* Create a repository
+
+* Create a 'gh-pages' branch
+
+![](https://github.com/Cdishop/website/raw/master/content/Computational_Notes/github_images/ghpages.png){width=500px}
+
+
+* Make the 'gh-pages' branch your default
+
+![](https://github.com/Cdishop/website/raw/master/content/Computational_Notes/github_images/default.png){width=500px}
+
+* Delete the old 'master' branch
+
+* Clone the repo to your local computer
+
+* Create an index using whatever source-code you prefer
+
+![](https://github.com/Cdishop/website/raw/master/content/Computational_Notes/github_images/index.png){width=500px}
+
+* Commit and push the files
+
+* GitHub will automatically render the site after a few moments
+
+
+Bo$^2$m =)

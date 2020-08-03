@@ -1,0 +1,45 @@
+---
+title: "Anonymous Push on GitHub"
+date: "2020-08-01"
+summary: "-----"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F, message = F)
+library(tidyverse)
+# https://stackoverflow.com/questions/48458567/how-to-commit-changes-to-git-repository-anonymously
+```
+
+Quick note on cloning, committing, and pushing anonymously on GitHub. 
+
+Steps:
+
+* Create an anonymous account and repo on GitHub
+
+* Clone repo to local computer
+
+* Navigate to it
+
+* Configure anonymous username and email
+
+```{r, eval = F}
+
+git add .
+git commit -m "initial commit"
+git pull
+
+```
+
+* Push using full specification
+
+```{r, eval = F}
+
+# replace username, password, and repository:
+
+git push 'https://username:password@github.com/username/repository.git'
+
+
+```
+
+
+Bo$^2$m =)

@@ -26,7 +26,7 @@ If two events are independent, then the product rule states that their intersect
 
 * `p(a & b) = p(a) * p(b)`
 
-The World Values Survey is an ongoing  worldwide survey that polls the world population about perceptions of life, work, family, politics, etc. The most recent phase of the survey that polled 77,882 people from 57 countries estimates that 36.2% of the world's population agrees with the statement "Men should have more right to a job than women." The survey also estimates that 13.8% of people have a university degree or higher, and that 3.5% of people fit both criteria. 
+The World Values Survey is an ongoing  worldwide survey that polls the world population about perceptions of life, work, family, politics, etc. The most recent phase of the survey that polled 77,882 people from 57 countries estimates that 36.2% of the world's population agrees with the statement, "Music is not necessary to enhance one's life." The survey also estimates that 13.8% of people have a university degree or higher, and that 3.5% of people fit both criteria. 
 
 Does agreeing depend on level of degree? If **a** = "someone agrees with the statment" and **b** = "has a university degree or higher," does **a** depend on **b**?
 

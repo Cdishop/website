@@ -110,7 +110,6 @@ Curriculum Vita
 
 </div>
 
-
 ## Education {.education .nohead}
 ```{r}
 cv_entries %>% 

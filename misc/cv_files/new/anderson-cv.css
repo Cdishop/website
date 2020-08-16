@@ -72,9 +72,13 @@ h2.date {
 }
 
 body {
+   /* commands for all 'minor' text in the document*/
+   /*important*/
   font-family: 'Roboto', sans-serif;
+  /* increments only by 100 */
   font-weight: 300;
   font-size: 9pt;
+  /*color: #610363;*/
 }
 
 :root{
@@ -165,10 +169,13 @@ p, li {
   text-align: center;
   color: #000;
 }
+
 .sub {
   font-family: 'Roboto Slab', serif;
-  color: #454545;
-  background-color: #DEF2FF;
+  color: #610363;
+  /* below 'background-color' changes the color of the opening box */
+    /*important*/
+  background-color: #FFFFFF;
   padding-top: 10px;
   margin-top: 15px;
   padding-bottom: 10px;
@@ -189,6 +196,7 @@ p, li {
   font-weight: 100;
   font-style: italic;
   margin-bottom: 0px;
+  /* this is the color of the symbol just under section headers like 'scholarship' */
   color: #5F6A6A;
 
 }
@@ -206,6 +214,8 @@ p, li {
 h1 {
   font-family: 'Roboto Slab', serif;
   text-align: center;
+  /* below = color of headers like 'scholarship'*/
+    /*important*/
   color: #5F6A6A;
   font-size: 1.6em;
   font-weight: normal;
@@ -214,14 +224,24 @@ h1 {
 }
 
 /* section headers */
+/* headers like 'education' and 'professional experience' */
+  /*important*/
 h2 {
-  color: #649FD3;
-  border-bottom: 2px solid darkgray;
+  /*color: #610363;*/
+  /*color: #61089C;*/
+  color: #470673;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  /* color of the horizontal bar under headers like "education"*/
+  border-bottom-color: #DEDEDE;
   margin-top: 0.6em;
   margin-bottom: 0.3em;
   font-size: 1.5em;
   font-weight: 300;
 }
+
+
+
 
 /* PAGE 1 */
 h2.summary,

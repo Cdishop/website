@@ -1,4 +1,15 @@
-# My CV
-This is a repo for my CV, which uses a data-driven approach. In other words, entries are stored as data, which are then read into R and can be rendered in various ways. The entire CV is built with a combination of [pagedown](https://github.com/rstudio/pagedown) with custom HTML and CSS. Basically, this allows PDFs to be generated using HTML and CSS code, as opposedd something like LaTeX. 
+# CV
 
-Please feel free to fork/modify as much as you'd like, and get in touch if you have any questions.
+This repo uses [Daniel Anderson's](https://github.com/datalorax) template and renders a data-driven CV. 
+
+Steps for rendering:
+
+* adjust content excel files
+
+* adjust base .Rmd file
+
+* open R studio project
+
+* run 'pagedown::chrome_print('anderson-cv.Rmd', output = "out.pdf")
+
+* to edit and re-run, quit re-studio and delete the pdf. Then re-render

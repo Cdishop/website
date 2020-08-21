@@ -163,6 +163,8 @@
 
 [R for Data Science](https://r4ds.had.co.nz)
 
+[Beginning Computer Science with R](https://homerhanumat.github.io/r-notes/index.html)
+
 [Statistical Inference](https://leanpub.com/LittleInferenceBook/read)
 
 [Intro to Quant Methods](https://bookdown.org/ejvanholm/Textbook/)

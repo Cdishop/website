@@ -1674,6 +1674,40 @@ Charles Wheelan
 &nbsp;
 
 <div align="center">
+Reflections on the Human Condition
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/reflections.png)
+
+Eric Hoffer
+
+[Click here for link](https://www.amazon.com/Reflections-Human-Condition-Eric-Hoffer/dp/1933435143/ref=sr_1_2?dchild=1&keywords=eric+hoffer+reflections+of+the+human&qid=1598629438&sr=8-2)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
 Thinking with Data: How to Turn Information into Insights
 </div>
 
@@ -2239,6 +2273,47 @@ Dan Ariely
 
 ------
 ------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+The Passionate State of Mind
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/passionate.png)
+
+Eric Hoffer
+
+[Click here for link](https://www.amazon.com/Passionate-State-Mind-Other-Aphorisms/dp/1933435097/ref=sr_1_2?dchild=1&keywords=hoffer+passionate+state+of+mind&qid=1598629512&sr=8-2)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -2426,6 +2426,272 @@ Ian Stewart
 
 
 
+&nbsp;
+
+<div align="center">
+Sapiens: A Brief History of Humankind
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/sapiens.png)
+
+Yuval Noah Harari
+
+[Click here for link](https://www.amazon.com/Sapiens-Humankind-Yuval-Noah-Harari/dp/0062316095/ref=tmm_hrd_swatch_0?_encoding=UTF8&qid=1599076931&sr=8-2)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+The Greatest Minds and Ideas of All Time
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/greatest.png)
+
+Will Durant
+
+[Click here for link](https://www.amazon.com/Greatest-Minds-Ideas-All-Time/dp/0743235533/ref=sr_1_2?dchild=1&keywords=will+durant+thinkers&qid=1599076729&sr=8-2)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+This Blinding Absence of Light
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/blinding.png)
+
+Tahar Ben Jelloun
+
+[Click here for link](https://www.amazon.com/Blinding-Absence-Light-Tahar-Jelloun/dp/014303572X/ref=sr_1_1?crid=B2T2Y3JODDGK&dchild=1&keywords=this+blinding+absence+of+light&qid=1599076711&sprefix=this+blinding+ab%2Caps%2C145&sr=8-1)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Working and Thinking on the Waterfront
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/waterfront.png)
+
+Eric Hoffer
+
+[Click here for link](https://www.amazon.com/Working-Thinking-Waterfront-Eric-Hoffer/dp/1933435291/ref=sr_1_1?dchild=1&keywords=working+and+thinking+on+the+waterfront&qid=1599076923&sr=8-1)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+The Art of Thinking Clearly
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/thinkclearly.png)
+
+Rolf Dobelli
+
+[Click here for link](https://www.amazon.com/Art-Thinking-Clearly-Rolf-Dobelli-ebook/dp/B00IZP6EVQ/ref=sr_1_3?dchild=1&keywords=the+art+of+thinking+clearly&qid=1599077205&sr=8-3)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Retire Before Mom and Dad: The Simple Numbers Behind A Lifetime of Financial Freedom
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/retire.png)
+
+Rob Berger
+
+[Click here for link](https://www.amazon.com/Retire-Before-Mom-Dad-Financial/dp/1733914501/ref=sr_1_1_sspa?dchild=1&keywords=retire+before+mom+and+dad&qid=1599077168&sr=8-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEySUlMWExPS1FBWVZQJmVuY3J5cHRlZElkPUEwNjgzNjQzMlExSFI0UThYV0FJUCZlbmNyeXB0ZWRBZElkPUExMDIyNzYyMjZJWkJTNUpRQjhPVCZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+7 Tipping Points That Saved the World
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/saved.png)
+
+Chris Stewart
+
+Ted Stewart
+
+[Click here for link](https://www.amazon.com/Tipping-Points-That-Saved-World/dp/160641951X/ref=sr_1_1?dchild=1&keywords=7+tipping+points+that+saved+the+world&qid=1599076908&sr=8-1)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+The Lessons of History
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/history.png)
+
+Will Durant
+
+Ariel Durant
+
+[Click here for link](https://www.amazon.com/Lessons-History-Will-Durant/dp/143914995X/ref=sr_1_1?dchild=1&keywords=will+durant+thinkers&qid=1599076729&sr=8-1)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -169,6 +169,8 @@
 
 [Intro to Quant Methods](https://bookdown.org/ejvanholm/Textbook/)
 
+[Introduction to Data Science](https://rafalab.github.io/dsbook/)
+
 [Regression](https://leanpub.com/regmods/read)
 
 [Econometrics](https://bookdown.org/ccolonescu/RPoE4/)

@@ -145,7 +145,7 @@ ex1_model &amp;lt;- sem(ex1_string, data = df)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;6 - 6 = 0&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex1_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 14 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 12 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -167,7 +167,7 @@ trust ~~ 0*availability
 
 ex1_model_restrict &amp;lt;- sem(ex1_string_restrict, data = df)
 show(ex1_model_restrict) # yup&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 15 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 14 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -177,9 +177,9 @@ show(ex1_model_restrict) # yup&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 0.057
+##   Test statistic                                 0.474
 ##   Degrees of freedom                                 1
-##   P-value (Chi-square)                           0.812&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.491&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;example-2---common-factor-underlying-6-observed-items&#34; class=&#34;section level1&#34;&gt;
@@ -244,7 +244,7 @@ ex2_model &amp;lt;- sem(ex2_string, data = df_cf)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;21 - 12 = 9&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex2_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 57 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 55 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -254,9 +254,9 @@ ex2_model &amp;lt;- sem(ex2_string, data = df_cf)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 9.484
+##   Test statistic                                 8.497
 ##   Degrees of freedom                                 9
-##   P-value (Chi-square)                           0.394&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.485&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -334,7 +334,7 @@ ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;15 - 13 = 2&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex3_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 184 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 174 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -344,9 +344,9 @@ ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 3.744
+##   Test statistic                                 3.888
 ##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.290&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.274&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Nope. I’m one off, where did I go wrong?&lt;/p&gt;
 &lt;p&gt;Ah, there is only 1 prediction error because productivity is being predicted. I counted 2 prediction errors because I gave one to both b1 and b2. So, the unknowns should be…&lt;/p&gt;
 &lt;ul&gt;
@@ -364,7 +364,7 @@ ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;15 - 12 = 3&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex3_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 184 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 174 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -374,9 +374,9 @@ ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 3.744
+##   Test statistic                                 3.888
 ##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.290&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.274&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -431,7 +431,7 @@ ex4_model &amp;lt;- sem(ex4_string, data = df_chain)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;10 - 7 = 3&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex4_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 71 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 43 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -441,9 +441,9 @@ ex4_model &amp;lt;- sem(ex4_string, data = df_chain)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 3.329
+##   Test statistic                                 1.979
 ##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.344&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.577&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -520,7 +520,7 @@ ex5_model &amp;lt;- sem(ex5_string, data = df5_wide)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;28 - 10 = 18&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex5_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 106 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 121 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -531,9 +531,9 @@ ex5_model &amp;lt;- sem(ex5_string, data = df5_wide)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                16.039
+##   Test statistic                                14.770
 ##   Degrees of freedom                                18
-##   P-value (Chi-square)                           0.590&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.678&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Why didn’t I estimate a mean for unobserved heterogeneity here? In all of the other examples I estimated the variance (1 parameter) and the mean (1 parameter) of the latent exogenous variable. In this case, unobserved heterogeneity is the latent exogenous variable but I only estimated its variance. That’s because in this model we don’t really care about the mean of unobserved heterogeneity, it’s just a latent variable that we incorporate to account for stable individual differences. In other words, when I estimate latent cog ability and assertiveness as IVs to predict an outcome, I care about their means. Here, unobserved heterogeneity is just an additional factor to account for, not a variable whose mean I really care to know. That said, if I wanted to estimate the mean of unobserved heterogeneity (which would result in one additional estimated parameter and one fewer df) then I would incorporate the following into the model string.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;&amp;#39;
 
@@ -3696,10 +3696,10 @@ SD
 A
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-23.61614
+18.90544
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-2.216960
+1.169533
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -3707,10 +3707,10 @@ A
 B
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-23.10658
+23.33787
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-1.883306
+2.239268
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -3718,10 +3718,10 @@ B
 C
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-23.95257
+21.86897
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-1.754748
+2.134311
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -3767,13 +3767,13 @@ Team C
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-23.62 (2.22)
+18.91 (1.17)
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-23.11 (1.88)
+23.34 (2.24)
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-23.95 (1.75)
+21.87 (2.13)
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -4106,19 +4106,19 @@ df$id &amp;lt;- c(1:N)&lt;/code&gt;&lt;/pre&gt;
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -2.61802 -0.55220 -0.02909  0.55845  2.73961 
+## -2.34316 -0.60411  0.04692  0.56378  2.29014 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept)  0.03465    0.03812   0.909    0.364    
-## x1           0.36808    0.03742   9.837  &amp;lt; 2e-16 ***
-## x2           0.26836    0.03696   7.262 1.49e-12 ***
+## (Intercept)  0.02687    0.03842   0.699    0.485    
+## x1           0.39741    0.03764  10.560   &amp;lt;2e-16 ***
+## x2           0.36810    0.03964   9.285   &amp;lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
 ## 
-## Residual standard error: 0.8517 on 497 degrees of freedom
-## Multiple R-squared:  0.2659, Adjusted R-squared:  0.263 
-## F-statistic: 90.03 on 2 and 497 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+## Residual standard error: 0.859 on 497 degrees of freedom
+## Multiple R-squared:  0.3263, Adjusted R-squared:  0.3236 
+## F-statistic: 120.4 on 2 and 497 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Here’s the kicker: you can think of those weights as optimal functions telling us how to create the composite.&lt;/p&gt;
 &lt;p&gt;Create a composite using the regression weights.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
@@ -4126,7 +4126,7 @@ df &amp;lt;- df %&amp;gt;%
   mutate(composite_x = 0.33*x1 + 0.4*x2)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Those weights provide the maximum correlation between our composite and the outcome.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cor(df$y, df$composite_x)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 0.50428&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.5676718&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;In other words, the above correlation could not be higher with any other set of weights. Regression found the weights that makes the correlation above as large as it can be.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(lm(y ~ composite_x,
            data = df))&lt;/code&gt;&lt;/pre&gt;
@@ -4136,18 +4136,18 @@ df &amp;lt;- df %&amp;gt;%
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -2.74454 -0.52069 -0.01189  0.53508  2.73920 
+## -2.38180 -0.60689  0.02118  0.59290  2.36281 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept)  0.03875    0.03836    1.01    0.313    
-## composite_x  0.85484    0.06560   13.03   &amp;lt;2e-16 ***
+## (Intercept)  0.02656    0.03849    0.69    0.491    
+## composite_x  1.04545    0.06794   15.39   &amp;lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
 ## 
-## Residual standard error: 0.8576 on 498 degrees of freedom
-## Multiple R-squared:  0.2543, Adjusted R-squared:  0.2528 
-## F-statistic: 169.8 on 1 and 498 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+## Residual standard error: 0.8607 on 498 degrees of freedom
+## Multiple R-squared:  0.3223, Adjusted R-squared:  0.3209 
+## F-statistic: 236.8 on 1 and 498 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
 </description>
     </item>
@@ -5822,18 +5822,18 @@ sample_df &amp;lt;- df %&amp;gt;%
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -3.6786 -0.6585  0.0390  0.6904  3.0761 
+## -2.4448 -0.7170 -0.0222  0.6474  2.9734 
 ## 
 ## Coefficients:
 ##              Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept) -0.099444   0.043031  -2.311   0.0212 *  
-## stress       0.444648   0.008963  49.611   &amp;lt;2e-16 ***
+## (Intercept) -0.036526   0.039568  -0.923    0.356    
+## stress       0.454806   0.007939  57.285   &amp;lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
 ## 
-## Residual standard error: 1.054 on 598 degrees of freedom
-## Multiple R-squared:  0.8045, Adjusted R-squared:  0.8042 
-## F-statistic:  2461 on 1 and 598 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+## Residual standard error: 0.9686 on 598 degrees of freedom
+## Multiple R-squared:  0.8459, Adjusted R-squared:  0.8456 
+## F-statistic:  3282 on 1 and 598 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;b-compute-the-ci&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;2b) Compute the CI&lt;/h3&gt;
@@ -5883,7 +5883,7 @@ for(i in 1:sims){
 &lt;h3&gt;Interpretation&lt;/h3&gt;
 &lt;p&gt;How many computed intervals contain the population parameter?&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sum(all_ci_contains == &amp;#39;yes&amp;#39;) / sims&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 0.9377778&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.9533333&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 </description>
     </item>
@@ -6306,15 +6306,15 @@ mini &amp;lt;- dish %&amp;gt;%
 mini[mini$person == &amp;#39;jimmy&amp;#39;, 2] &amp;lt;- 99
 mini[mini$person == &amp;#39;james&amp;#39;, 2] &amp;lt;- 99&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The original data:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;##   person        v_1       v_2      v_3       v_4
-## 1  jimmy  0.5206264 12.644021 58.42083  9.505481
-## 2  james -0.1052171  5.664526 65.99185 11.693714
-## 3 johnny -0.3725068 11.758806 56.23247 18.094420&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   person         v_1       v_2      v_3      v_4
+## 1  jimmy -0.05192334 14.323487 57.23598 34.88207
+## 2  james  0.85977779  4.580808 48.94879 32.64684
+## 3 johnny -0.94709073 12.253920 51.35526 10.04864&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;What we changed it to:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;##   person        v_1       v_2
-## 1  jimmy 99.0000000 12.644021
-## 2  james 99.0000000  5.664526
-## 3 johnny -0.3725068 11.758806&lt;/code&gt;&lt;/pre&gt;
+## 1  jimmy 99.0000000 14.323487
+## 2  james 99.0000000  4.580808
+## 3 johnny -0.9470907 12.253920&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Here is the function equivalent:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;impute_99 &amp;lt;- function(data){
   
@@ -6333,9 +6333,9 @@ mini[mini$person == &amp;#39;james&amp;#39;, 2] &amp;lt;- 99&lt;/code&gt;&lt;/pr
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;adjusted_data &amp;lt;- impute_99(dish)
 adjusted_data&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##   person        v_1       v_2
-## 1  jimmy 99.0000000 12.644021
-## 2  james 99.0000000  5.664526
-## 3 johnny -0.3725068 11.758806&lt;/code&gt;&lt;/pre&gt;
+## 1  jimmy 99.0000000 14.323487
+## 2  james 99.0000000  4.580808
+## 3 johnny -0.9470907 12.253920&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;function-with-column-names-as-parameters&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Function with column names as parameters&lt;/h1&gt;
@@ -6357,9 +6357,9 @@ adjusted_data&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cool_data &amp;lt;- impute_99_column_specific(dish, &amp;#39;v_1&amp;#39;, &amp;#39;v_2&amp;#39;)
 cool_data&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##   person        v_1       v_2
-## 1  jimmy 99.0000000 12.644021
-## 2  james 99.0000000  5.664526
-## 3 johnny -0.3725068 11.758806&lt;/code&gt;&lt;/pre&gt;
+## 1  jimmy 99.0000000 14.323487
+## 2  james 99.0000000  4.580808
+## 3 johnny -0.9470907 12.253920&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
 &lt;/div&gt;
 </description>
@@ -8342,7 +8342,7 @@ agent[[1]][1] &amp;lt;- initial_sdo_value
 
 agent&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## $SDO
-## [1] 115.0832
+## [1] 89.24501
 ## 
 ## $Peeps
 ## NULL&lt;/code&gt;&lt;/pre&gt;
@@ -8384,10 +8384,10 @@ agent$Peeps &amp;lt;- c(agent$Peeps, other)
 
 agent&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## $SDO
-## [1] 115.0832 133.0832
+## [1]  89.24501 103.24501
 ## 
 ## $Peeps
-## [1] 100.3479&lt;/code&gt;&lt;/pre&gt;
+## [1] 99.37445&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;the-full-model&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;The Full Model&lt;/h1&gt;
@@ -10079,6 +10079,8 @@ Sigma &amp;lt;- matrix(c(1.0, 0.23,
 &lt;p&gt;
 &lt;a href=&#34;https://bookdown.org/ejvanholm/Textbook/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Intro to Quant Methods&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;
+&lt;a href=&#34;https://rafalab.github.io/dsbook/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Introduction to Data Science&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
 &lt;a href=&#34;https://leanpub.com/regmods/read&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Regression&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;
 &lt;a href=&#34;https://bookdown.org/ccolonescu/RPoE4/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Econometrics&lt;/a&gt;&lt;/p&gt;
@@ -10907,6 +10909,88 @@ In Pursuit of the Unknown: 17 Equations That Changed the World
 &lt;p&gt;Ian Stewart&lt;/p&gt;
 &lt;p&gt;
 &lt;a href=&#34;https://www.amazon.com/Pursuit-Equations-That-Changed-World/dp/0465085989/ref=sr_1_1?ie=UTF8&amp;amp;qid=1529323656&amp;amp;sr=8-1&amp;amp;keywords=17&amp;#43;equations&amp;#43;that&amp;#43;changed&amp;#43;the&amp;#43;world&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;div align=&#34;center&#34;&gt;
+Sapiens: A Brief History of Humankind
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/sapiens.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Yuval Noah Harari&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Sapiens-Humankind-Yuval-Noah-Harari/dp/0062316095/ref=tmm_hrd_swatch_0?_encoding=UTF8&amp;amp;qid=1599076931&amp;amp;sr=8-2&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;div align=&#34;center&#34;&gt;
+The Greatest Minds and Ideas of All Time
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/greatest.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Will Durant&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Greatest-Minds-Ideas-All-Time/dp/0743235533/ref=sr_1_2?dchild=1&amp;amp;keywords=will&amp;#43;durant&amp;#43;thinkers&amp;amp;qid=1599076729&amp;amp;sr=8-2&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;div align=&#34;center&#34;&gt;
+This Blinding Absence of Light
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/blinding.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Tahar Ben Jelloun&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Blinding-Absence-Light-Tahar-Jelloun/dp/014303572X/ref=sr_1_1?crid=B2T2Y3JODDGK&amp;amp;dchild=1&amp;amp;keywords=this&amp;#43;blinding&amp;#43;absence&amp;#43;of&amp;#43;light&amp;amp;qid=1599076711&amp;amp;sprefix=this&amp;#43;blinding&amp;#43;ab%2Caps%2C145&amp;amp;sr=8-1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;div align=&#34;center&#34;&gt;
+Working and Thinking on the Waterfront
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/waterfront.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Eric Hoffer&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Working-Thinking-Waterfront-Eric-Hoffer/dp/1933435291/ref=sr_1_1?dchild=1&amp;amp;keywords=working&amp;#43;and&amp;#43;thinking&amp;#43;on&amp;#43;the&amp;#43;waterfront&amp;amp;qid=1599076923&amp;amp;sr=8-1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;div align=&#34;center&#34;&gt;
+The Art of Thinking Clearly
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/thinkclearly.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Rolf Dobelli&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Art-Thinking-Clearly-Rolf-Dobelli-ebook/dp/B00IZP6EVQ/ref=sr_1_3?dchild=1&amp;amp;keywords=the&amp;#43;art&amp;#43;of&amp;#43;thinking&amp;#43;clearly&amp;amp;qid=1599077205&amp;amp;sr=8-3&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;div align=&#34;center&#34;&gt;
+Retire Before Mom and Dad: The Simple Numbers Behind A Lifetime of Financial Freedom
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/retire.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Rob Berger&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Retire-Before-Mom-Dad-Financial/dp/1733914501/ref=sr_1_1_sspa?dchild=1&amp;amp;keywords=retire&amp;#43;before&amp;#43;mom&amp;#43;and&amp;#43;dad&amp;amp;qid=1599077168&amp;amp;sr=8-1-spons&amp;amp;psc=1&amp;amp;spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEySUlMWExPS1FBWVZQJmVuY3J5cHRlZElkPUEwNjgzNjQzMlExSFI0UThYV0FJUCZlbmNyeXB0ZWRBZElkPUExMDIyNzYyMjZJWkJTNUpRQjhPVCZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;div align=&#34;center&#34;&gt;
+7 Tipping Points That Saved the World
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/saved.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Chris Stewart&lt;/p&gt;
+&lt;p&gt;Ted Stewart&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Tipping-Points-That-Saved-World/dp/160641951X/ref=sr_1_1?dchild=1&amp;amp;keywords=7&amp;#43;tipping&amp;#43;points&amp;#43;that&amp;#43;saved&amp;#43;the&amp;#43;world&amp;amp;qid=1599076908&amp;amp;sr=8-1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;div align=&#34;center&#34;&gt;
+The Lessons of History
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/history.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Will Durant&lt;/p&gt;
+&lt;p&gt;Ariel Durant&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Lessons-History-Will-Durant/dp/143914995X/ref=sr_1_1?dchild=1&amp;amp;keywords=will&amp;#43;durant&amp;#43;thinkers&amp;amp;qid=1599076729&amp;amp;sr=8-1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;hr&gt;
 &lt;p&gt; &lt;/p&gt;

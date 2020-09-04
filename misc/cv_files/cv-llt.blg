@@ -1,20 +1,20 @@
-[0] Config.pm:304> INFO - This is Biber 2.12
-[0] Config.pm:307> INFO - Logfile is 'cv-llt.blg'
-[27] biber-darwin:315> INFO - === Mon May 18, 2020, 12:25:47
-[43] Biber.pm:371> INFO - Reading 'cv-llt.bcf'
-[115] Biber.pm:886> INFO - Using all citekeys in bib section 0
-[126] Biber.pm:4093> INFO - Processing section 0
-[134] Biber.pm:4254> INFO - Looking for bibtex format file 'own-bib.bib' for section 0
-[135] bibtex.pm:1523> INFO - LaTeX decoding ...
-[160] bibtex.pm:1340> INFO - Found BibTeX data source 'own-bib.bib'
-[161] Utils.pm:193> WARN - Duplicate entry key: 'dc97' in file 'own-bib.bib', skipping ...
-[161] Utils.pm:193> WARN - Duplicate entry key: 'dd3' in file 'own-bib.bib', skipping ...
-[286] Utils.pm:193> WARN - BibTeX subsystem: warning: comma(s) at end of name (removing)
-[286] Utils.pm:193> WARN - BibTeX subsystem: author, warning: comma(s) at end of name (removing)
-[325] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[325] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'variable = shifted' with 'variable = non-ignorable'
-[326] Biber.pm:3921> INFO - Sorting list 'ymdnt/global//global/global' of type 'entry' with template 'ymdnt' and locale 'en-GB'
-[326] Biber.pm:3927> INFO - No sort tailoring available for locale 'en-GB'
-[347] bbl.pm:636> INFO - Writing 'cv-llt.bbl' with encoding 'UTF-8'
-[366] bbl.pm:739> INFO - Output to cv-llt.bbl
-[366] Biber.pm:110> INFO - WARNINGS: 4
+[0] Config.pm:302> INFO - This is Biber 2.11
+[0] Config.pm:305> INFO - Logfile is 'cv-llt.blg'
+[33] biber-darwin:313> INFO - === Fri Sep  4, 2020, 12:45:39
+[53] Biber.pm:371> INFO - Reading 'cv-llt.bcf'
+[135] Biber.pm:854> INFO - Using all citekeys in bib section 0
+[149] Biber.pm:3976> INFO - Processing section 0
+[159] Biber.pm:4136> INFO - Looking for bibtex format file 'own-bib.bib' for section 0
+[160] bibtex.pm:1500> INFO - LaTeX decoding ...
+[187] bibtex.pm:1316> INFO - Found BibTeX data source 'own-bib.bib'
+[188] Utils.pm:193> WARN - Duplicate entry key: 'dc97' in file 'own-bib.bib', skipping ...
+[189] Utils.pm:193> WARN - Duplicate entry key: 'dd3' in file 'own-bib.bib', skipping ...
+[322] Utils.pm:193> WARN - BibTeX subsystem: warning: comma(s) at end of name (removing)
+[322] Utils.pm:193> WARN - BibTeX subsystem: author, warning: comma(s) at end of name (removing)
+[371] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'variable = shifted' with 'variable = non-ignorable'
+[371] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[371] Biber.pm:3804> INFO - Sorting list 'ymdnt/global//global/global' of type 'entry' with template 'ymdnt' and locale 'en-GB'
+[371] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-GB'
+[397] bbl.pm:617> INFO - Writing 'cv-llt.bbl' with encoding 'UTF-8'
+[420] bbl.pm:720> INFO - Output to cv-llt.bbl
+[420] Biber.pm:110> INFO - WARNINGS: 4

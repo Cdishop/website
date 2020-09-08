@@ -157,7 +157,7 @@
 
 [Basics of Git and Github with R](https://happygitwithr.com)
 
-[Beginner Concepts for Reproducible Science](https://psyteachr.github.io/msc-data-skills/sim.html)
+[Beginner Concepts for Reproducible Science](https://psyteachr.github.io/msc-data-skills/)
 
 [Learning Statistics with R](https://learningstatisticswithr.com/)
 
@@ -170,6 +170,8 @@
 [Intro to Quant Methods](https://bookdown.org/ejvanholm/Textbook/)
 
 [Introduction to Data Science](https://rafalab.github.io/dsbook/)
+
+[Introduction to Computational Data for Biology](https://biol607.github.io/schedule.html)
 
 [Regression](https://leanpub.com/regmods/read)
 

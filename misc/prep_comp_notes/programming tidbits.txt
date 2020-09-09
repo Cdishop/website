@@ -1,0 +1,71 @@
+
+# read multiple tabs in excel
+
+
+This will read all the tabs, and merge all their data into a single dataframe with a new column ("Tabs") having the tab names as values.
+readxl::excel_sheets("file_path") %>%
+purrr::set_names() %>%
+purrr::map_df(~ readxl::read_excel(path = "file_path", sheet = .x), .id = "Tabs")
+
+
+ · Reply · 19h · Edited
+Grace Jones
+Do the tabs need the same column names for this?
+ · Reply · 19h
+Marc-Aurèle Rivière
+Grace Jones Indeed, you'll have issues if all the tabs don't have the same column names. In that case, replace map_df() with map() on the last line (and remove the .id argument that will no longer be useful). You'll get a list of data frames, one for each tab.
+
+
+
+# histograms show all discrete values on x
+
+make y a factor
+use scale_x_discrete(drop = F)
+
+
+mutate(y = factor(y, levels = c(1,2,3,4))
+
+
+
+# sequence of letter stamped with values
+
+sprintf("S%s", 1:3)
+
+S1, S2, S3
+
+
+
+# quosures in a loop
+
+plotfunc <- function(col){
+	
+	g <- ggplot(df, aes(x = !!col)) + 
+		geom_point()
+
+	return(g)
+
+}
+
+plotfunc(quo(column))
+
+column_names <- c("col1", "col2", "col3", "col4")
+for(j in 1:4){
+
+	# make sure you incorporate 'results = "asis" '
+	print(plotfunc(sym(column_names[j])))
+
+}
+
+
+
+# mutate at with a function
+
+parenthit <- function(x)(paste0("(", x, ")"))
+mutate_at(vars(starts_with("sd")), parenthit)
+
+
+
+
+# analysis of ordinal data
+
+https://ourcodingclub.github.io/tutorials/qualitative/

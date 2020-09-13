@@ -1,0 +1,70 @@
+---
+title: "Thomas Schelling's Model"
+date: "2020-09-08"
+summary: "-----"
+---
+
+
+
+<p>A replication of Thomas Schelling’s model, which was originally published in <em>The Journal of Mathematical Sociology.</em> <a href="https://ytliu0.github.io/schelling/">Yuk Tung Liu</a> offers a great summary.</p>
+<blockquote>
+<p>The following map shows the distribution of people with different ethnicity living in the city of Chicago (source: radicalcartography.net):</p>
+</blockquote>
+<p><img src="https://github.com/Cdishop/website/raw/master/content/Computational_Notes/2020-09-08/seg.png" /></p>
+<blockquote>
+<p>Segregation may arise from social and economic reasons. However, Thomas Schelling, winner of the 2005 Nobel Memorial Prize in Economic Sciences, pointed out another possible reason. He constructed a simple model and used pennies and nickels on a graph paper to demonstrate that segregation can develop naturally even though each individual is tolerant towards another group. For example, if everyone requires at least half of his neighbors to be of the same color, the final outcome is a high degree of segregation. What Schelling demonstrated was that the “macrobehavior” in a society may not reflect the “micromotives” of its individual members.</p>
+</blockquote>
+<blockquote>
+<p>Schelling’s model is an example of an agent-based model for simulating the actions and interactions of autonomous agents (both individual or collective entities such as organizations or groups) on the overall system. Agent-based models are useful in simulating complex systems. An interesting phenomenon that can occur in a complex system is emergence, in which a structure or pattern arises in the system from the bottom up. As you will see, segregation is a result of emergence in the system described by the Schelling model. Members of each group do not consciously choose to live in a certain area, but the collective behavior of the individuals gives rise to segregation.</p>
+</blockquote>
+<div id="schelling-model" class="section level1">
+<h1>Schelling Model</h1>
+<p>Let’s start by situating people on a grid. The cells of the grid will contain a value, and that value will indicate one of three states: uninhabited (0), inhabited by a hockey player (1), or inhabited by a soccer player (2). Let’s use a 51x51 grid with 2000 occupied cells. A 51x51 grid contains 2601 cells in total.</p>
+<p>Create a vector with 1000s 1s, 1000 2s, and the remaining 601 slots 0s.</p>
+<pre><code>group
+   0    1    2 
+ 601 1000 1000 </code></pre>
+<p>So far, all I have is a vector with a bunch of 1s, 2s, and 0s.</p>
+<p>Now, collate those numbers into a matrix through random sampling.</p>
+<pre><code>[1] 0 2 2 0</code></pre>
+<pre><code>[1] 1 1 0 1 0</code></pre>
+<pre><code>[1] 1 0 2 2 2 2 1</code></pre>
+<p>Plot with base R</p>
+<p><img src="/Computational_Notes/2020-09-08/index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Plot with ggplot2 - requires long data</p>
+<pre><code>  Var1 Var2 value
+1    1    1     0
+2    2    1     1
+3    3    1     0
+4    4    1     1
+5    5    1     1
+6    6    1     0</code></pre>
+<p><img src="/Computational_Notes/2020-09-08/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>The grid is now filled with randomly dispersed hockey players, soccer players, and empty lots. The next step is to introduce a parameter that Schelling used in his original model. The similarity threshold, <span class="math inline">\(z\)</span>, takes a value between 0 and 1, and it measures how intolerant an agent is towards other athletes. An agent is satisfied if at least a fraction <span class="math inline">\(z\)</span> of his neighbors belong to the same group – i.e., a hockey player likes to be around other hockey players. Mathematically, an agent is satisfied if the number of people around him is greater than <span class="math inline">\(z\)</span>. He is dissatisfied if he has fewer people of similar type around him. The smaller the value of <span class="math inline">\(z\)</span>, the more tolerant agents are of other groups.</p>
+<p>With a similarity threshold of 0.30, a hockey player will move if fewer than 30% of his neighbors are other hockey players. A hockey player will stay if at least 30% of his neighbors are hockey players.</p>
+<p>Having set the threshold, we now need a function to calculate how many neighbors are hockey players and how many are soccer players. This function spits back the similarity ratio, <span class="math inline">\(r_{sim}\)</span>. <span class="math inline">\(r_{sim}\)</span> is a proportion: the number of neighbors of the same group divided by the total number of neighbors.</p>
+<p><span class="math display">\[\begin{equation}
+r_{sim} = \dfrac{n_{same}}{n_{neighbors}}
+\end{equation}\]</span></p>
+<p>For a hockey player, the ratio would become</p>
+<p><span class="math display">\[\begin{equation}
+r_{sim_{hockey}} = \dfrac{n_{hockey}}{n_{neighbors}}
+\end{equation}\]</span></p>
+<p>Here is an <a href="https://github.com/ngockatz/Schelling-Segregation">example</a>:</p>
+<p><img src="https://github.com/Cdishop/website/raw/master/content/Computational_Notes/2020-09-08/neighbors.png" /></p>
+<p>If I were a super programmer, I could create a function to do so. I’m not. Instead, I’ll create a function called <code>get_neighbor_coords</code> that returns the locations of every neighbor for agent <span class="math inline">\(i\)</span>. The function takes a vector parameter that houses agent <span class="math inline">\(i\)</span>s location (e.g., [2, 13]). Then, it pulls the coordinates of each neighbor under the Moore paradigm (8 surrounding patches - clockwise).</p>
+<p>The function returns a matrix with the coordinates of the surrounding 8 patches. If I was focused, for example, on agent [2, 3], then the function would return</p>
+<pre><code>     [,1] [,2]
+[1,]    3    3
+[2,]    3    4
+[3,]    2    4
+[4,]    1    4
+[5,]    1    3
+[6,]    1    2
+[7,]    2    2
+[8,]    3    2</code></pre>
+<p>which shows that coordinate [3,3] is just below agent <span class="math inline">\(i\)</span>, coordinate [3,4] is just below and to the right, and coordinate [2,4] is directly to the right.</p>
+<p>Now we are ready to iterate across every agent (i.e., every cell in <code>grid</code>).</p>
+<p><img src="/Computational_Notes/2020-09-08/index_files/figure-html/unnamed-chunk-9-1.png" width="672" /><img src="/Computational_Notes/2020-09-08/index_files/figure-html/unnamed-chunk-9-2.png" width="672" /><img src="/Computational_Notes/2020-09-08/index_files/figure-html/unnamed-chunk-9-3.png" width="672" /><img src="/Computational_Notes/2020-09-08/index_files/figure-html/unnamed-chunk-9-4.png" width="672" /><img src="/Computational_Notes/2020-09-08/index_files/figure-html/unnamed-chunk-9-5.png" width="672" /><img src="/Computational_Notes/2020-09-08/index_files/figure-html/unnamed-chunk-9-6.png" width="672" /><img src="/Computational_Notes/2020-09-08/index_files/figure-html/unnamed-chunk-9-7.png" width="672" /><img src="/Computational_Notes/2020-09-08/index_files/figure-html/unnamed-chunk-9-8.png" width="672" /><img src="/Computational_Notes/2020-09-08/index_files/figure-html/unnamed-chunk-9-9.png" width="672" /><img src="/Computational_Notes/2020-09-08/index_files/figure-html/unnamed-chunk-9-10.png" width="672" /><img src="/Computational_Notes/2020-09-08/index_files/figure-html/unnamed-chunk-9-11.png" width="672" /><img src="/Computational_Notes/2020-09-08/index_files/figure-html/unnamed-chunk-9-12.png" width="672" /><img src="/Computational_Notes/2020-09-08/index_files/figure-html/unnamed-chunk-9-13.png" width="672" /><img src="/Computational_Notes/2020-09-08/index_files/figure-html/unnamed-chunk-9-14.png" width="672" /><img src="/Computational_Notes/2020-09-08/index_files/figure-html/unnamed-chunk-9-15.png" width="672" /></p>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>
+</div>

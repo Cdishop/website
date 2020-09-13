@@ -5,12 +5,837 @@
     <link>https://christopherdishop.netlify.app/computational_notes/</link>
       <atom:link href="https://christopherdishop.netlify.app/computational_notes/index.xml" rel="self" type="application/rss+xml" />
     <description>Computational Notes</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Christopher Dishop 2020</copyright><lastBuildDate>Sun, 02 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Christopher Dishop 2020</copyright><lastBuildDate>Thu, 10 Sep 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://christopherdishop.netlify.app/img/pom-card.png</url>
       <title>Computational Notes</title>
       <link>https://christopherdishop.netlify.app/computational_notes/</link>
     </image>
+    
+    <item>
+      <title>Thomas Schelling&#39;s Model: Long Form</title>
+      <link>https://christopherdishop.netlify.app/computational_notes/2020-09-10/</link>
+      <pubDate>Thu, 10 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2020-09-10/</guid>
+      <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;The Schelling model that I created in my last post used matrix operations. It required me to think in terms of patches housed in a matrix. Consider the following 3x3 grid.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;##      [,1] [,2] [,3]
+## [1,]    1    2    1
+## [2,]    1    0    1
+## [3,]    1    1    0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Each cell can be thought of as a patch. When a given patch is 0, it is unoccupied. When a given patch is 1 or 2, it is occupied by a hockey or soccer player, respectively. When I implement a Schelling model using a matrix, it puts me in a certain frame of mind. I have to consider patches as locations specified by rows and columns. At row 1 column 2, for example, sits patch XXX that is either occupied or unoccupied.&lt;/p&gt;
+&lt;p&gt;Another way to implement the Schelling model is to use long data. The same information conveyed in the 3x3 matrix is shown in long form below.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;##   xcoord ycoord type
+## 1      1      1    1
+## 2      2      1    1
+## 3      3      1    1
+## 4      1      2    2
+## 5      2      2    0
+## 6      3      2    1
+## 7      1      3    1
+## 8      2      3    1
+## 9      3      3    0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Coordinates are now viewed as information that can be stored in respective columns. The &lt;code&gt;type&lt;/code&gt; column represents whether the patch is unoccupied (0), houses a hockey player (1), or houses a soccer player (2). The goal of this post is to re-create the Schelling model using long data.&lt;/p&gt;
+&lt;p&gt;I’m going to present the code in two sections. The first demonstrates the behavior of 1 agent within a single time point. The second reveals the full model: it iterates over 50 time points using all agents.&lt;/p&gt;
+&lt;div id=&#34;basic-idea&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Basic Idea&lt;/h2&gt;
+&lt;p&gt;The model uses two data frames to store (the most important) information. One holds the coordinates of the living location of each agent. Susan, for example, lives at xcoord = 3 &amp;amp; ycoord = 10, whereas Johnny lives at xcoord = 2 &amp;amp; ycoord = 15. The other specifies the object located at each patch on the grid (0 = unoccupied, 1 = hockey player, 2 = soccer player), and this second data frame will be used for plotting.&lt;/p&gt;
+&lt;p&gt;To reiterate, one data frame stores agent coordinates:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(kableExtra)
+
+head(agent_df) %&amp;gt;% 
+  kable() %&amp;gt;% 
+  kable_styling()&lt;/code&gt;&lt;/pre&gt;
+&lt;table class=&#34;table&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+xcoord
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+ycoord
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+type
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+agent
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+5
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+8
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+9
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+5
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+10
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+6
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;and the other, which will be used for plotting, stores patch information.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(patch_df) %&amp;gt;% 
+  kable() %&amp;gt;% 
+  kable_styling()&lt;/code&gt;&lt;/pre&gt;
+&lt;table class=&#34;table&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+xcoord
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+ycoord
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+type
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+5
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+6
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;The pseudocode for the model is as follows.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;&amp;quot;
+for each period
+      
+    for each agent i
+                
+        identify i&amp;#39;s 8 surrounding neighbors
+        count the number of similar and dissimilar neighbors
+        -- e.g., if i is a hockey player and is surrounded by soccer players...
+        -- then he has mostly dissimilar neighbors
+        
+        if agent i has more dissimilar neighbors than he desires, then label him as unhappy
+        if agent i has more similar neighbors than he desires, then label him as happy
+        
+        repeat for all agents
+        
+    for each unhappy agent j
+    
+        randomly select a new patch to possibly move to
+        if the patch is unoccupied, move there
+        
+        repeat for all unhappy agents
+        
+    
+    plot the grid of patches for this period
+    save the plot
+    
+end
+&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Of course, the model is much more complex in syntax. But the basic idea is straightforward: people move if they have many dissimilar neighbors, and they stay if they have similar neighbors. Moreover, new patches, which are selected when agents want to move, are pulled randomly.&lt;/p&gt;
+&lt;p&gt;Let’s pretend we are at the first period and are beginning to iterate across agents. The code works as follows.&lt;/p&gt;
+&lt;p&gt;Starting with agent 1, identify her coordinates and type (type meaning hockey or soccer player).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;    agent_coords &amp;lt;- agent_df %&amp;gt;% 
+      filter(agent == 1) %&amp;gt;% 
+      select(xcoord, ycoord)
+    
+    agent_type &amp;lt;- agent_df %&amp;gt;% 
+      filter(agent == 1) %&amp;gt;% 
+      select(type) %&amp;gt;% 
+      pull()
+
+    
+glimpse(agent_coords)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Rows: 1
+## Columns: 2
+## $ xcoord &amp;lt;int&amp;gt; 1
+## $ ycoord &amp;lt;int&amp;gt; 1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;glimpse(agent_type)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  num 2&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Using agent i’s coordinates, identify her 8 surrounding neighbors.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;neigh &amp;lt;- get_neigh(agent_coords)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The function &lt;code&gt;get_neigh&lt;/code&gt; is prespecified (I will show you the syntax below). It’s too complicated to pick apart now. Just know that it returns the coordinates of her 8 surrounding neighbors.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;neigh %&amp;gt;% kable() %&amp;gt;% kable_styling&lt;/code&gt;&lt;/pre&gt;
+&lt;table class=&#34;table&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+xcoord
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+ycoord
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+51
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+51
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+51
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+51
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+51
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+51
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;I’m about to start counting similar neighbors, so I need to initialize a few counters.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;total_neighs &amp;lt;- 0
+similar_neighs &amp;lt;- 0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Count similar neighbors. Go through each row in the &lt;code&gt;neigh&lt;/code&gt; matrix to find a given neighbor’s coordinates. Use those coordinates to pull all information about neighbor &lt;code&gt;n&lt;/code&gt; from the agent data frame. Then, increment &lt;code&gt;similar_neighs&lt;/code&gt; by 1 if neighbor &lt;code&gt;n&lt;/code&gt; is the same type as agent i. Increment &lt;code&gt;total_neighs&lt;/code&gt; if the patch isn’t empty.&lt;/p&gt;
+&lt;p&gt;Stated simply, if agent i is a hockey player then count the number of other hockey players. Also count the number of non-empty patches.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;    for(n in 1:nrow(neigh)){
+    
+      # save neighbor 
+      neigh_agent &amp;lt;- patch_df %&amp;gt;% 
+        filter(xcoord == neigh$xcoord[n],
+               ycoord == neigh$ycoord[n])
+        
+      # increment similar neighbors by 1 if agent is same as neighbor
+      # increment total neighbors by 1 if patch isn&amp;#39;t empty
+      if(agent_type == neigh_agent$type){similar_neighs &amp;lt;- similar_neighs + 1}
+      if(neigh_agent$type != 0){total_neighs &amp;lt;- total_neighs + 1}
+      
+    }&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now my counters have values.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;print(
+  paste(&amp;quot;Total Neighbors =&amp;quot;, total_neighs, &amp;quot;\n&amp;quot;,
+        &amp;quot;Similar Neighbors =&amp;quot;, similar_neighs)
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;Total Neighbors = 5 \n Similar Neighbors = 5&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Calculate a similarity ratio. Take the number of similar neighbors and divide it by the total number of neighbors (i.e., non-empty patches).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sim_ratio &amp;lt;- similar_neighs / total_neighs&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I won’t show the code here, but all of the information calculated so far then gets stored in a master “results” data frame.&lt;/p&gt;
+&lt;p&gt;So far, we have identified agent i’s neighbors and calculated her similarity ratio. We now need to determine whether she wants to move. If she does, we then need to find a new place for her to move to.&lt;/p&gt;
+&lt;p&gt;Schelling’s original model used inequalities to generate agent happiness (or satisfaction). When one’s similarity ratio is greater than some innate preference for similar others (say, 0.6), then the agent is happy and stays put. When one’s similarity ratio is lower than 0.6, the agent is unhappy and moves. Here is that idea embodied in code.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;empty &amp;lt;- is.nan(sim_ratio)
+happy &amp;lt;- NULL
+    
+if(empty == TRUE){happy &amp;lt;- TRUE} # if the agent has no neighbors, he is happy
+if(empty == FALSE &amp;amp;&amp;amp; sim_ratio &amp;gt; 0.6){happy &amp;lt;- TRUE}
+if(empty == FALSE &amp;amp;&amp;amp; sim_ratio &amp;lt; 0.6){happy &amp;lt;- FALSE}
+if(empty == FALSE &amp;amp;&amp;amp; sim_ratio == 0.6){happy &amp;lt;- FALSE}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The inequalities are located in the &lt;code&gt;if&lt;/code&gt; statements. What makes the syntax a bit tricky is that I also included an &lt;code&gt;empty&lt;/code&gt; object. I did that because not all agents have neighbors. It is possible for an agent to be surrounded by all empty patches. When this (unlikely) case happens, then &lt;code&gt;total_neighs&lt;/code&gt; is equal to 0, and we all know that dividing by 0 doesn’t work. So, the code above asks whether &lt;code&gt;sim_ratio&lt;/code&gt; has an actual value, and it only moves forward if so. Said differently, &lt;code&gt;empty&lt;/code&gt; would equal &lt;code&gt;TRUE&lt;/code&gt; when agent i has no neighbors. If the agent is happy, the code moves forward. If the agent is unhappy, she gets stored (not shown).&lt;/p&gt;
+&lt;p&gt;The steps above then repeat for every agent. Once it iterates over all agents, storing the unhappy agents when they arise, it finds new patches for the unhappy agents. First, randomly select new coordinates.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  new_x &amp;lt;- sample(51, 1)
+  new_y &amp;lt;- sample(51, 1)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Is the patch located at those coordinates occupied?&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  agent_type_at_new &amp;lt;- patch_df %&amp;gt;% 
+    filter(xcoord == new_x,
+           ycoord == new_y) %&amp;gt;% 
+    select(type) %&amp;gt;% 
+    pull()
+
+
+  # 0 = unoccupied
+  # 1 = hockey player
+  # 2 = soccer player
+
+  occupied &amp;lt;- FALSE
+  if(agent_type_at_new != 0){occupied &amp;lt;- TRUE}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If the patch is unoccupied, then we can work with our unhappy agent. If the patch is occupied, we need to continue to sample patches until we find one that is unoccupied.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  while(occupied == TRUE){
+    
+    new_x &amp;lt;- sample(51, 1)
+    new_y &amp;lt;- sample(51, 1)
+    agent_type_at_new &amp;lt;- patch_df %&amp;gt;% 
+      filter(xcoord == new_x,
+             ycoord == new_y) %&amp;gt;% 
+      select(type) %&amp;gt;% 
+      pull()
+    
+    if(agent_type_at_new == 0){occupied &amp;lt;- FALSE}
+  }&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Once selected, we change the new patch to occupied within the &lt;code&gt;patch_df&lt;/code&gt;, change the old patch to unoccupied within the &lt;code&gt;patch_df&lt;/code&gt;, and update the agent data frame with unhappy agent i’s new coordinates. The code to do so is something like the following.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  # change new patch to unhappy agent i&amp;#39;s type
+  patch_df[patch_df$xcoord == new_x &amp;amp; patch_df$ycoord == new_y, &amp;quot;type&amp;quot;] &amp;lt;- current_unhappy$type[1]
+  # go to the old patch where unhappy agent i used to live and change it to 0
+  patch_df[patch_df$xcoord == current_unhappy$xcoord[1] &amp;amp; patch_df$ycoord == current_unhappy$ycoord[1], &amp;quot;type&amp;quot;] &amp;lt;- 0
+  
+  # update the agent_df to reflect unhappy agent i&amp;#39;s new coordinates
+  agent_df[agent_df$agent == current_unhappy$agent[1], &amp;quot;xcoord&amp;quot;] &amp;lt;- new_x
+  agent_df[agent_df$agent == current_unhappy$agent[1], &amp;quot;ycoord&amp;quot;] &amp;lt;- new_y&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;full-model&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Full Model&lt;/h2&gt;
+&lt;p&gt;Here is the full model.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+library(reshape2)
+library(ggplot2)
+
+# initial grid
+#
+#
+#
+#
+#
+#
+
+
+dims &amp;lt;- 51*51
+empty_patches &amp;lt;- 781
+peeps &amp;lt;- c(rep(1, (dims-empty_patches) / 2),
+           rep(2, (dims-empty_patches) / 2),
+           rep(0, empty_patches))
+
+num_agents &amp;lt;- dims - empty_patches
+
+mat &amp;lt;- matrix(sample(peeps, dims, replace = F), 51, 51, byrow = T)
+
+patch_df &amp;lt;- melt(mat) %&amp;gt;% 
+  mutate(xcoord = Var1,
+         ycoord = Var2,
+         type = value) %&amp;gt;% 
+  select(xcoord, 
+         ycoord,
+         type)
+
+agent_df &amp;lt;- patch_df %&amp;gt;% 
+  filter(type %in% c(1,2)) %&amp;gt;% 
+  mutate(agent = 1:num_agents)
+
+plotfirst &amp;lt;- patch_df
+
+alike_preference &amp;lt;- 0.6
+
+
+
+# get neighbors function
+#
+#
+#
+#
+#
+#
+#
+#
+
+get_neigh &amp;lt;- function(xy){
+  
+  # starting from right and going clockwise, I want neighbors a,b,c,d,e,f,g,h
+  
+  ax &amp;lt;- xy[1 , &amp;quot;xcoord&amp;quot;] + 1
+  ay &amp;lt;- xy[1, &amp;quot;ycoord&amp;quot;]
+  # xcoord, ycoord
+  a &amp;lt;- c(ax, ay)
+  
+  bx &amp;lt;- xy[1 , &amp;quot;xcoord&amp;quot;] + 1
+  by &amp;lt;- xy[1, &amp;quot;ycoord&amp;quot;] - 1
+  # xcoord, ycoord
+  b &amp;lt;- c(bx, by)
+  
+  cx &amp;lt;- xy[1 , &amp;quot;xcoord&amp;quot;]
+  cy &amp;lt;- xy[1, &amp;quot;ycoord&amp;quot;] - 1
+  # xcoord, ycoord
+  c &amp;lt;- c(cx, cy)
+  
+  dx &amp;lt;- xy[1 , &amp;quot;xcoord&amp;quot;] - 1
+  dy &amp;lt;- xy[1, &amp;quot;ycoord&amp;quot;] - 1
+  # xcoord, ycoord
+  d &amp;lt;- c(dx, dy)
+  
+  ex &amp;lt;- xy[1 , &amp;quot;xcoord&amp;quot;] - 1
+  ey &amp;lt;- xy[1, &amp;quot;ycoord&amp;quot;]
+  # xcoord, ycoord
+  e &amp;lt;- c(ex, ey)
+  
+  fx &amp;lt;- xy[1 , &amp;quot;xcoord&amp;quot;] - 1
+  fy &amp;lt;- xy[1, &amp;quot;ycoord&amp;quot;] + 1
+  # xcoord, ycoord
+  f &amp;lt;- c(fx, fy)
+  
+  gx &amp;lt;- xy[1 , &amp;quot;xcoord&amp;quot;]
+  gy &amp;lt;- xy[1, &amp;quot;ycoord&amp;quot;] + 1
+  # xcoord, ycoord
+  g &amp;lt;- c(gx, gy)
+  
+  hx &amp;lt;- xy[1 , &amp;quot;xcoord&amp;quot;] + 1
+  hy &amp;lt;- xy[1, &amp;quot;ycoord&amp;quot;] + 1
+  # xcoord, ycoord
+  h &amp;lt;- c(hx, hy)
+  
+  
+  dff &amp;lt;- data.frame(
+    &amp;#39;xcoord&amp;#39; = c(a[1], b[1], c[1], d[1], e[1], f[1], g[1], h[1]),
+    &amp;#39;ycoord&amp;#39; = c(a[2], b[2], c[2], d[2], e[2], f[2], g[2], h[2])
+  )
+  
+  dff &amp;lt;- dff %&amp;gt;% 
+    mutate(xcoord = ifelse(xcoord == 0, 51, xcoord),
+           xcoord = ifelse(xcoord == 52, 1, xcoord),
+           ycoord = ifelse(ycoord == 0, 51, ycoord),
+           ycoord = ifelse(ycoord == 52, 1, ycoord))
+  
+  return(dff)
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+# initialize stores
+#
+#
+#
+#
+#
+#
+#
+#
+#
+
+time &amp;lt;- 40
+result_df &amp;lt;- data.frame(
+  &amp;quot;time&amp;quot; = numeric(time*num_agents),
+  &amp;quot;agent&amp;quot; = numeric(time*num_agents),
+  &amp;quot;simratio&amp;quot; = numeric(time*num_agents)
+)
+count &amp;lt;- 0
+save_plots &amp;lt;- list()
+
+
+
+
+
+
+
+
+# begin iterations over periods
+#
+#
+#
+#
+#
+#
+#
+for(i in 1:time){
+
+
+unhappy_store &amp;lt;- list()
+unhappy_counter &amp;lt;- 0
+
+
+
+
+# for each agent
+for(ag in 1:num_agents){
+
+    
+  count &amp;lt;- count + 1
+  
+  # save agent&amp;#39;s coords
+  # save agent&amp;#39;s type
+    agent_coords &amp;lt;- agent_df %&amp;gt;% 
+      filter(agent == ag) %&amp;gt;% 
+      select(xcoord, ycoord)
+    
+    agent_type &amp;lt;- agent_df %&amp;gt;% 
+      filter(agent == ag) %&amp;gt;% 
+      select(type) %&amp;gt;% 
+      pull()
+  
+  
+    
+    
+    # identify neighbors - save their coordinates
+    neigh &amp;lt;- get_neigh(agent_coords)
+    total_neighs &amp;lt;- 0
+    similar_neighs &amp;lt;- 0
+
+    # for each neighbor
+    for(n in 1:nrow(neigh)){
+    
+      # save neighbor 
+      neigh_agent &amp;lt;- patch_df %&amp;gt;% 
+        filter(xcoord == neigh$xcoord[n],
+               ycoord == neigh$ycoord[n])
+        
+      # increment similar neighbors by 1 if agent is same as neighbor
+      # increment total neighbors by 1 if patch isn&amp;#39;t empty
+      if(agent_type == neigh_agent$type){similar_neighs &amp;lt;- similar_neighs + 1}
+      if(neigh_agent$type != 0){total_neighs &amp;lt;- total_neighs + 1}
+      
+    }
+    
+    
+    # save his sim/total (time, agent, simratio)
+    sim_ratio &amp;lt;- similar_neighs / total_neighs
+    
+    result_df[count, &amp;quot;time&amp;quot;] &amp;lt;- i
+    result_df[count, &amp;quot;agent&amp;quot;] &amp;lt;- ag
+    result_df[count, &amp;quot;simratio&amp;quot;] &amp;lt;- sim_ratio
+    
+    # if the agent has empty patches around him (is.nan(sim_ratio) == T)
+    # or
+    # if sim/total &amp;gt; then alike_preferences, 
+    # then the agent is happy
+    # otherwise, he is unhappy
+    empty &amp;lt;- is.nan(sim_ratio)
+    happy &amp;lt;- NULL
+    
+    if(empty == TRUE){happy &amp;lt;- TRUE}
+    if(empty == FALSE &amp;amp;&amp;amp; sim_ratio &amp;gt; alike_preference){happy &amp;lt;- TRUE}
+    if(empty == FALSE &amp;amp;&amp;amp; sim_ratio &amp;lt; alike_preference){happy &amp;lt;- FALSE}
+    if(empty == FALSE &amp;amp;&amp;amp; sim_ratio == alike_preference){happy &amp;lt;- FALSE}
+    
+    # if the agent is unhappy, store him
+    if(happy == FALSE){
+      unhappy_counter &amp;lt;- unhappy_counter + 1
+      unhappy_store[[unhappy_counter]] &amp;lt;- ag
+    }
+    
+}
+
+# after going through all agents, have the unhappy agents move
+
+unhappy_agents &amp;lt;- unlist(unhappy_store)
+
+for(q in 1:length(unhappy_agents)){
+  if(is.null(unhappy_agents) == TRUE){break}
+  
+  # randomly select a new patch
+  new_x &amp;lt;- sample(51, 1)
+  new_y &amp;lt;- sample(51, 1)
+  
+  # is the new patch occupied?
+  agent_type_at_new &amp;lt;- patch_df %&amp;gt;% 
+    filter(xcoord == new_x,
+           ycoord == new_y) %&amp;gt;% 
+    select(type) %&amp;gt;% 
+    pull()
+  
+  occupied &amp;lt;- FALSE
+  if(agent_type_at_new != 0){occupied &amp;lt;- TRUE}
+  
+  while(occupied == TRUE){
+    
+    new_x &amp;lt;- sample(51, 1)
+    new_y &amp;lt;- sample(51, 1)
+    agent_type_at_new &amp;lt;- patch_df %&amp;gt;% 
+      filter(xcoord == new_x,
+             ycoord == new_y) %&amp;gt;% 
+      select(type) %&amp;gt;% 
+      pull()
+    
+    if(agent_type_at_new == 0){occupied &amp;lt;- FALSE}
+    
+  }
+  
+  # unhappy agent
+  current_unhappy &amp;lt;- agent_df %&amp;gt;% 
+    filter(agent == unhappy_agents[q])
+  
+  # go to the new x and y position in the patch and place the agent type there
+  patch_df[patch_df$xcoord == new_x &amp;amp; patch_df$ycoord == new_y, &amp;quot;type&amp;quot;] &amp;lt;- current_unhappy$type[1]
+  # go to the old x and y position in the patch and change it to 0
+  patch_df[patch_df$xcoord == current_unhappy$xcoord[1] &amp;amp; patch_df$ycoord == current_unhappy$ycoord[1], &amp;quot;type&amp;quot;] &amp;lt;- 0
+  
+  # change the agent_df to reflect the agent&amp;#39;s new position
+  agent_df[agent_df$agent == current_unhappy$agent[1], &amp;quot;xcoord&amp;quot;] &amp;lt;- new_x
+  agent_df[agent_df$agent == current_unhappy$agent[1], &amp;quot;ycoord&amp;quot;] &amp;lt;- new_y
+  
+
+  
+}
+
+# create plot
+# save and store plot
+
+gp &amp;lt;- ggplot(patch_df, aes(x = xcoord, y = ycoord, fill = type)) + 
+  geom_tile() + 
+  ggtitle(paste(&amp;quot;Period =&amp;quot;, i))
+
+save_plots[[i]] &amp;lt;- gp
+
+
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(plotfirst, aes(x = xcoord, y = ycoord, fill = type)) + 
+  geom_tile() +
+  ggtitle(&amp;quot;Period = 0&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;for(l in 1:time){
+  
+  print(save_plots[[l]])
+  
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-2.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-3.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-4.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-5.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-6.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-7.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-8.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-9.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-10.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-11.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-12.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-13.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-14.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-15.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-16.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-17.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-18.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-19.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-20.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-21.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-22.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-23.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-24.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-25.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-26.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-27.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-28.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-29.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-30.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-31.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-32.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-33.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-34.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-35.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-36.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-37.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-38.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-39.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-40.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-41.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Thomas Schelling&#39;s Model</title>
+      <link>https://christopherdishop.netlify.app/computational_notes/2020-09-08/</link>
+      <pubDate>Tue, 08 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2020-09-08/</guid>
+      <description>
+
+
+&lt;p&gt;A replication of Thomas Schelling’s model, which was originally published in &lt;em&gt;The Journal of Mathematical Sociology.&lt;/em&gt; &lt;a href=&#34;https://ytliu0.github.io/schelling/&#34;&gt;Yuk Tung Liu&lt;/a&gt; offers a great summary.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The following map shows the distribution of people with different ethnicity living in the city of Chicago (source: radicalcartography.net):&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/content/Computational_Notes/2020-09-08/seg.png&#34; /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Segregation may arise from social and economic reasons. However, Thomas Schelling, winner of the 2005 Nobel Memorial Prize in Economic Sciences, pointed out another possible reason. He constructed a simple model and used pennies and nickels on a graph paper to demonstrate that segregation can develop naturally even though each individual is tolerant towards another group. For example, if everyone requires at least half of his neighbors to be of the same color, the final outcome is a high degree of segregation. What Schelling demonstrated was that the “macrobehavior” in a society may not reflect the “micromotives” of its individual members.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Schelling’s model is an example of an agent-based model for simulating the actions and interactions of autonomous agents (both individual or collective entities such as organizations or groups) on the overall system. Agent-based models are useful in simulating complex systems. An interesting phenomenon that can occur in a complex system is emergence, in which a structure or pattern arises in the system from the bottom up. As you will see, segregation is a result of emergence in the system described by the Schelling model. Members of each group do not consciously choose to live in a certain area, but the collective behavior of the individuals gives rise to segregation.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div id=&#34;schelling-model&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Schelling Model&lt;/h1&gt;
+&lt;p&gt;Let’s start by situating people on a grid. The cells of the grid will contain a value, and that value will indicate one of three states: uninhabited (0), inhabited by a hockey player (1), or inhabited by a soccer player (2). Let’s use a 51x51 grid with 2000 occupied cells. A 51x51 grid contains 2601 cells in total.&lt;/p&gt;
+&lt;p&gt;Create a vector with 1000s 1s, 1000 2s, and the remaining 601 slots 0s.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;group
+   0    1    2 
+ 601 1000 1000 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So far, all I have is a vector with a bunch of 1s, 2s, and 0s.&lt;/p&gt;
+&lt;p&gt;Now, collate those numbers into a matrix through random sampling.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[1] 0 2 2 0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[1] 1 1 0 1 0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[1] 1 0 2 2 2 2 1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Plot with base R&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-08/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Plot with ggplot2 - requires long data&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  Var1 Var2 value
+1    1    1     0
+2    2    1     1
+3    3    1     0
+4    4    1     1
+5    5    1     1
+6    6    1     0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-08/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;The grid is now filled with randomly dispersed hockey players, soccer players, and empty lots. The next step is to introduce a parameter that Schelling used in his original model. The similarity threshold, &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt;, takes a value between 0 and 1, and it measures how intolerant an agent is towards other athletes. An agent is satisfied if at least a fraction &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt; of his neighbors belong to the same group – i.e., a hockey player likes to be around other hockey players. Mathematically, an agent is satisfied if the number of people around him is greater than &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt;. He is dissatisfied if he has fewer people of similar type around him. The smaller the value of &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt;, the more tolerant agents are of other groups.&lt;/p&gt;
+&lt;p&gt;With a similarity threshold of 0.30, a hockey player will move if fewer than 30% of his neighbors are other hockey players. A hockey player will stay if at least 30% of his neighbors are hockey players.&lt;/p&gt;
+&lt;p&gt;Having set the threshold, we now need a function to calculate how many neighbors are hockey players and how many are soccer players. This function spits back the similarity ratio, &lt;span class=&#34;math inline&#34;&gt;\(r_{sim}\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(r_{sim}\)&lt;/span&gt; is a proportion: the number of neighbors of the same group divided by the total number of neighbors.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{equation}
+r_{sim} = \dfrac{n_{same}}{n_{neighbors}}
+\end{equation}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;For a hockey player, the ratio would become&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{equation}
+r_{sim_{hockey}} = \dfrac{n_{hockey}}{n_{neighbors}}
+\end{equation}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Here is an &lt;a href=&#34;https://github.com/ngockatz/Schelling-Segregation&#34;&gt;example&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/content/Computational_Notes/2020-09-08/neighbors.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;If I were a super programmer, I could create a function to do so. I’m not. Instead, I’ll create a function called &lt;code&gt;get_neighbor_coords&lt;/code&gt; that returns the locations of every neighbor for agent &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;. The function takes a vector parameter that houses agent &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;s location (e.g., [2, 13]). Then, it pulls the coordinates of each neighbor under the Moore paradigm (8 surrounding patches - clockwise).&lt;/p&gt;
+&lt;p&gt;The function returns a matrix with the coordinates of the surrounding 8 patches. If I was focused, for example, on agent [2, 3], then the function would return&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;     [,1] [,2]
+[1,]    3    3
+[2,]    3    4
+[3,]    2    4
+[4,]    1    4
+[5,]    1    3
+[6,]    1    2
+[7,]    2    2
+[8,]    3    2&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;which shows that coordinate [3,3] is just below agent &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;, coordinate [3,4] is just below and to the right, and coordinate [2,4] is directly to the right.&lt;/p&gt;
+&lt;p&gt;Now we are ready to iterate across every agent (i.e., every cell in &lt;code&gt;grid&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-08/index_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-08/index_files/figure-html/unnamed-chunk-9-2.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-08/index_files/figure-html/unnamed-chunk-9-3.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-08/index_files/figure-html/unnamed-chunk-9-4.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-08/index_files/figure-html/unnamed-chunk-9-5.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-08/index_files/figure-html/unnamed-chunk-9-6.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-08/index_files/figure-html/unnamed-chunk-9-7.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-08/index_files/figure-html/unnamed-chunk-9-8.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-08/index_files/figure-html/unnamed-chunk-9-9.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-08/index_files/figure-html/unnamed-chunk-9-10.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-08/index_files/figure-html/unnamed-chunk-9-11.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-08/index_files/figure-html/unnamed-chunk-9-12.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-08/index_files/figure-html/unnamed-chunk-9-13.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-08/index_files/figure-html/unnamed-chunk-9-14.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-09-08/index_files/figure-html/unnamed-chunk-9-15.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Host Multiple Pages on GitHub</title>
@@ -145,7 +970,7 @@ ex1_model &amp;lt;- sem(ex1_string, data = df)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;6 - 6 = 0&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex1_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 12 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 13 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -167,7 +992,7 @@ trust ~~ 0*availability
 
 ex1_model_restrict &amp;lt;- sem(ex1_string_restrict, data = df)
 show(ex1_model_restrict) # yup&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 16 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 17 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -177,9 +1002,9 @@ show(ex1_model_restrict) # yup&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 0.571
+##   Test statistic                                 0.009
 ##   Degrees of freedom                                 1
-##   P-value (Chi-square)                           0.450&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.923&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;example-2---common-factor-underlying-6-observed-items&#34; class=&#34;section level1&#34;&gt;
@@ -244,7 +1069,7 @@ ex2_model &amp;lt;- sem(ex2_string, data = df_cf)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;21 - 12 = 9&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex2_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 42 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 51 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -254,9 +1079,9 @@ ex2_model &amp;lt;- sem(ex2_string, data = df_cf)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                11.020
+##   Test statistic                                 3.396
 ##   Degrees of freedom                                 9
-##   P-value (Chi-square)                           0.274&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.947&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -334,7 +1159,7 @@ ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;15 - 13 = 2&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex3_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 172 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 169 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -344,9 +1169,9 @@ ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 4.818
+##   Test statistic                                 2.257
 ##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.186&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.521&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Nope. I’m one off, where did I go wrong?&lt;/p&gt;
 &lt;p&gt;Ah, there is only 1 prediction error because productivity is being predicted. I counted 2 prediction errors because I gave one to both b1 and b2. So, the unknowns should be…&lt;/p&gt;
 &lt;ul&gt;
@@ -364,7 +1189,7 @@ ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;15 - 12 = 3&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex3_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 172 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 169 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -374,9 +1199,9 @@ ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 4.818
+##   Test statistic                                 2.257
 ##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.186&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.521&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -431,7 +1256,7 @@ ex4_model &amp;lt;- sem(ex4_string, data = df_chain)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;10 - 7 = 3&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex4_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 53 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 41 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -441,9 +1266,9 @@ ex4_model &amp;lt;- sem(ex4_string, data = df_chain)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 2.289
+##   Test statistic                                 0.698
 ##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.515&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.874&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -520,7 +1345,7 @@ ex5_model &amp;lt;- sem(ex5_string, data = df5_wide)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;28 - 10 = 18&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex5_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 112 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 102 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -531,9 +1356,9 @@ ex5_model &amp;lt;- sem(ex5_string, data = df5_wide)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                23.298
+##   Test statistic                                22.201
 ##   Degrees of freedom                                18
-##   P-value (Chi-square)                           0.179&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.223&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Why didn’t I estimate a mean for unobserved heterogeneity here? In all of the other examples I estimated the variance (1 parameter) and the mean (1 parameter) of the latent exogenous variable. In this case, unobserved heterogeneity is the latent exogenous variable but I only estimated its variance. That’s because in this model we don’t really care about the mean of unobserved heterogeneity, it’s just a latent variable that we incorporate to account for stable individual differences. In other words, when I estimate latent cog ability and assertiveness as IVs to predict an outcome, I care about their means. Here, unobserved heterogeneity is just an additional factor to account for, not a variable whose mean I really care to know. That said, if I wanted to estimate the mean of unobserved heterogeneity (which would result in one additional estimated parameter and one fewer df) then I would incorporate the following into the model string.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;&amp;#39;
 
@@ -3696,10 +4521,10 @@ SD
 A
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-24.13948
+23.15541
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-0.6504333
+3.653923
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -3707,10 +4532,10 @@ A
 B
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-22.60711
+24.70799
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-3.2052228
+2.055932
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -3718,10 +4543,10 @@ B
 C
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-24.37618
+22.70773
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-1.7090690
+5.097800
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -3767,13 +4592,13 @@ Team C
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-24.14 (0.65)
+23.16 (3.65)
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-22.61 (3.21)
+24.71 (2.06)
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-24.38 (1.71)
+22.71 (5.1)
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -4106,19 +4931,19 @@ df$id &amp;lt;- c(1:N)&lt;/code&gt;&lt;/pre&gt;
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -3.06705 -0.57187 -0.02424  0.58164  2.32951 
+## -3.08991 -0.55881 -0.00581  0.58938  2.53327 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept)  0.03962    0.03799   1.043    0.297    
-## x1           0.29675    0.03767   7.877 2.13e-14 ***
-## x2           0.36051    0.03789   9.514  &amp;lt; 2e-16 ***
+## (Intercept)  0.05653    0.03750   1.507    0.132    
+## x1           0.31849    0.03879   8.210 1.93e-15 ***
+## x2           0.35098    0.03644   9.632  &amp;lt; 2e-16 ***
 ## ---
 ## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
 ## 
-## Residual standard error: 0.8467 on 497 degrees of freedom
-## Multiple R-squared:  0.2509, Adjusted R-squared:  0.2479 
-## F-statistic: 83.24 on 2 and 497 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+## Residual standard error: 0.8373 on 497 degrees of freedom
+## Multiple R-squared:  0.2639, Adjusted R-squared:  0.2609 
+## F-statistic: 89.08 on 2 and 497 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Here’s the kicker: you can think of those weights as optimal functions telling us how to create the composite.&lt;/p&gt;
 &lt;p&gt;Create a composite using the regression weights.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
@@ -4126,7 +4951,7 @@ df &amp;lt;- df %&amp;gt;%
   mutate(composite_x = 0.33*x1 + 0.4*x2)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Those weights provide the maximum correlation between our composite and the outcome.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cor(df$y, df$composite_x)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 0.5009191&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.5132339&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;In other words, the above correlation could not be higher with any other set of weights. Regression found the weights that makes the correlation above as large as it can be.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(lm(y ~ composite_x,
            data = df))&lt;/code&gt;&lt;/pre&gt;
@@ -4136,18 +4961,18 @@ df &amp;lt;- df %&amp;gt;%
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -3.06632 -0.57161 -0.02404  0.58167  2.32941 
+## -3.08219 -0.55664 -0.00256  0.59099  2.53303 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept)  0.03959    0.03791   1.044    0.297    
-## composite_x  0.90043    0.06972  12.916   &amp;lt;2e-16 ***
+## (Intercept)  0.05765    0.03742    1.54    0.124    
+## composite_x  0.91132    0.06829   13.35   &amp;lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
 ## 
-## Residual standard error: 0.8459 on 498 degrees of freedom
-## Multiple R-squared:  0.2509, Adjusted R-squared:  0.2494 
-## F-statistic: 166.8 on 1 and 498 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+## Residual standard error: 0.8367 on 498 degrees of freedom
+## Multiple R-squared:  0.2634, Adjusted R-squared:  0.2619 
+## F-statistic: 178.1 on 1 and 498 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
 </description>
     </item>
@@ -5822,18 +6647,18 @@ sample_df &amp;lt;- df %&amp;gt;%
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -2.94608 -0.62917  0.01259  0.65591  2.88734 
+## -2.56705 -0.64665 -0.04016  0.66100  3.01652 
 ## 
 ## Coefficients:
-##              Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept) -0.044525   0.041324  -1.077    0.282    
-## stress       0.454265   0.008565  53.038   &amp;lt;2e-16 ***
+##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
+## (Intercept) 0.001091   0.039091   0.028    0.978    
+## stress      0.443742   0.007964  55.718   &amp;lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
 ## 
-## Residual standard error: 1.011 on 598 degrees of freedom
-## Multiple R-squared:  0.8247, Adjusted R-squared:  0.8244 
-## F-statistic:  2813 on 1 and 598 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+## Residual standard error: 0.9574 on 598 degrees of freedom
+## Multiple R-squared:  0.8385, Adjusted R-squared:  0.8382 
+## F-statistic:  3104 on 1 and 598 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;b-compute-the-ci&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;2b) Compute the CI&lt;/h3&gt;
@@ -5883,7 +6708,7 @@ for(i in 1:sims){
 &lt;h3&gt;Interpretation&lt;/h3&gt;
 &lt;p&gt;How many computed intervals contain the population parameter?&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sum(all_ci_contains == &amp;#39;yes&amp;#39;) / sims&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 0.9488889&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.9544444&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 </description>
     </item>
@@ -6260,15 +7085,15 @@ mini &amp;lt;- dish %&amp;gt;%
 mini[mini$person == &amp;#39;jimmy&amp;#39;, 2] &amp;lt;- 99
 mini[mini$person == &amp;#39;james&amp;#39;, 2] &amp;lt;- 99&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The original data:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;##   person        v_1       v_2      v_3      v_4
-## 1  jimmy -1.6751058 14.265119 51.33406 11.91507
-## 2  james  1.7589192  5.346161 61.76414 16.65952
-## 3 johnny  0.4789757 10.378004 53.06934 19.88472&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   person         v_1       v_2      v_3        v_4
+## 1  jimmy  1.71270654  8.259468 33.29627 29.8881744
+## 2  james -0.02141998  3.420431 48.58330 32.7618740
+## 3 johnny  0.04063490 11.684427 40.52398 -0.1244784&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;What we changed it to:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;##   person        v_1       v_2
-## 1  jimmy 99.0000000 14.265119
-## 2  james 99.0000000  5.346161
-## 3 johnny  0.4789757 10.378004&lt;/code&gt;&lt;/pre&gt;
+## 1  jimmy 99.0000000  8.259468
+## 2  james 99.0000000  3.420431
+## 3 johnny  0.0406349 11.684427&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Here is the function equivalent:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;impute_99 &amp;lt;- function(data){
   
@@ -6287,9 +7112,9 @@ mini[mini$person == &amp;#39;james&amp;#39;, 2] &amp;lt;- 99&lt;/code&gt;&lt;/pr
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;adjusted_data &amp;lt;- impute_99(dish)
 adjusted_data&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##   person        v_1       v_2
-## 1  jimmy 99.0000000 14.265119
-## 2  james 99.0000000  5.346161
-## 3 johnny  0.4789757 10.378004&lt;/code&gt;&lt;/pre&gt;
+## 1  jimmy 99.0000000  8.259468
+## 2  james 99.0000000  3.420431
+## 3 johnny  0.0406349 11.684427&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;function-with-column-names-as-parameters&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Function with column names as parameters&lt;/h1&gt;
@@ -6311,9 +7136,9 @@ adjusted_data&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cool_data &amp;lt;- impute_99_column_specific(dish, &amp;#39;v_1&amp;#39;, &amp;#39;v_2&amp;#39;)
 cool_data&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##   person        v_1       v_2
-## 1  jimmy 99.0000000 14.265119
-## 2  james 99.0000000  5.346161
-## 3 johnny  0.4789757 10.378004&lt;/code&gt;&lt;/pre&gt;
+## 1  jimmy 99.0000000  8.259468
+## 2  james 99.0000000  3.420431
+## 3 johnny  0.0406349 11.684427&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
 &lt;/div&gt;
 </description>
@@ -8296,7 +9121,7 @@ agent[[1]][1] &amp;lt;- initial_sdo_value
 
 agent&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## $SDO
-## [1] 122.1745
+## [1] 109.4217
 ## 
 ## $Peeps
 ## NULL&lt;/code&gt;&lt;/pre&gt;
@@ -8338,10 +9163,10 @@ agent$Peeps &amp;lt;- c(agent$Peeps, other)
 
 agent&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## $SDO
-## [1] 122.1745 103.1745
+## [1] 109.4217 116.4217
 ## 
 ## $Peeps
-## [1] 72.48468&lt;/code&gt;&lt;/pre&gt;
+## [1] 95.87929&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;the-full-model&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;The Full Model&lt;/h1&gt;

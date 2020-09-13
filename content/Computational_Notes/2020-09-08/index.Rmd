@@ -1,0 +1,479 @@
+---
+title: "Thomas Schelling's Model"
+date: "2020-09-08"
+summary: "-----"
+---
+
+
+
+```{r setup, echo=FALSE, cache=FALSE, warning = F, message = F}
+library(knitr)
+library(rmdformats)
+library(tidyverse)
+library(ggplot2)
+library(reshape2)
+
+## Global options
+options(max.print="75")
+opts_chunk$set(echo=FALSE,
+	             cache=TRUE,
+               prompt=FALSE,
+               tidy=TRUE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE)
+opts_knit$set(width=75)
+```
+
+A replication of Thomas Schelling's model, which was originally published in *The Journal of Mathematical Sociology.* [Yuk Tung Liu](https://ytliu0.github.io/schelling/) offers a great summary. 
+
+> The following map shows the distribution of people with different ethnicity living in the city of Chicago (source: radicalcartography.net):
+
+![](https://github.com/Cdishop/website/raw/master/content/Computational_Notes/2020-09-08/seg.png)
+
+> Segregation may arise from social and economic reasons. However, Thomas Schelling, winner of the 2005 Nobel Memorial Prize in Economic Sciences, pointed out another possible reason. He constructed a simple model and used pennies and nickels on a graph paper to demonstrate that segregation can develop naturally even though each individual is tolerant towards another group. For example, if everyone requires at least half of his neighbors to be of the same color, the final outcome is a high degree of segregation. What Schelling demonstrated was that the “macrobehavior” in a society may not reflect the “micromotives” of its individual members.
+
+> Schelling’s model is an example of an agent-based model for simulating the actions and interactions of autonomous agents (both individual or collective entities such as organizations or groups) on the overall system. Agent-based models are useful in simulating complex systems. An interesting phenomenon that can occur in a complex system is emergence, in which a structure or pattern arises in the system from the bottom up. As you will see, segregation is a result of emergence in the system described by the Schelling model. Members of each group do not consciously choose to live in a certain area, but the collective behavior of the individuals gives rise to segregation. 
+
+# Schelling Model
+
+Let's start by situating people on a grid. The cells of the grid will contain a value, and that value will indicate one of three states: uninhabited (0), inhabited by a hockey player (1), or inhabited by a soccer player (2). Let's use a 51x51 grid with 2000 occupied cells. A 51x51 grid contains 2601 cells in total.
+
+Create a vector with 1000s 1s, 1000 2s, and the remaining 601 slots 0s. 
+
+```{r, cache = T}
+occupied <- 2000
+total_grid_size <- 51*51
+group<-c(rep(1, occupied/2),
+         rep(2, occupied/2),
+         rep(0, total_grid_size - occupied))
+
+table(group)
+
+```
+
+So far, all I have is a vector with a bunch of 1s, 2s, and 0s. 
+
+Now, collate those numbers into a matrix through random sampling.
+
+
+```{r, cache = T}
+
+# example of sampling
+
+sample(group, 4, replace = F) # grab 4 people
+sample(group, 5, replace = F) # grab 5 people
+sample(group, 7, replace = T) # when you grab somone, it doesn't remove him or her from the vector
+
+# create a full 51x51 matrix
+
+grid <- matrix(sample(group, 2601, replace = F), ncol = 51)
+```
+
+Plot with base R
+
+```{r, cache = T}
+par(mfrow = c(1, 2))
+image(grid, col = c("white", "red", "green"), axes = F)
+```
+
+Plot with ggplot2 - requires long data
+
+```{r, cache = T}
+
+plotgrid <- melt(grid)
+
+head(plotgrid)
+
+ggplot(plotgrid, aes(x = Var1, y = Var2, fill = value)) + 
+  geom_tile()
+```
+
+
+The grid is now filled with randomly dispersed hockey players, soccer players, and empty lots. The next step is to introduce a parameter that Schelling used in his original model. The similarity threshold, $z$, takes a value between 0 and 1, and it measures how intolerant an agent is towards other athletes. An agent is satisfied if at least a fraction $z$ of his neighbors belong to the same group -- i.e., a hockey player likes to be around other hockey players. Mathematically, an agent is satisfied if the number of people around him is greater than $z$. He is dissatisfied if he has fewer people of similar type around him. The smaller the value of $z$, the more tolerant agents are of other groups. 
+
+With a similarity threshold of 0.30, a hockey player will move if fewer than 30% of his neighbors are other hockey players. A hockey player will stay if at least 30% of his neighbors are hockey players.
+
+```{r, cache = T}
+alike_preference <- 0.6
+```
+
+Having set the threshold, we now need a function to calculate how many neighbors are hockey players and how many are soccer players. This function spits back the similarity ratio, $r_{sim}$. $r_{sim}$ is a proportion: the number of neighbors of the same group divided by the total number of neighbors.
+
+\begin{equation}
+r_{sim} = \dfrac{n_{same}}{n_{neighbors}}
+\end{equation}
+
+For a hockey player, the ratio would become
+
+\begin{equation}
+r_{sim_{hockey}} = \dfrac{n_{hockey}}{n_{neighbors}}
+\end{equation}
+
+Here is an [example](https://github.com/ngockatz/Schelling-Segregation):
+
+![](https://github.com/Cdishop/website/raw/master/content/Computational_Notes/2020-09-08/neighbors.png)
+
+If I were a super programmer, I could create a function to do so. I'm not. Instead, I'll create a function called `get_neighbor_coords` that returns the locations of every neighbor for agent $i$. The function takes a vector parameter that houses agent $i$s location (e.g., [2, 13]). Then, it pulls the coordinates of each neighbor under the Moore paradigm (8 surrounding patches - clockwise). 
+
+```{r, cache = T}
+
+get_neighbor_coords <-function(agent_xy) {
+  n <- c()
+  
+  # for each neighbor surrounding an agent...
+  for (i in c(1:8)) {
+ 
+    # start with the neighbor just below him
+    if (i == 1) {
+      # save his neighbor's coordinates
+      x<-agent_xy[1] + 1
+      y<-agent_xy[2]
+    }
+
+    # go to the neighbor below and to his right
+    if (i == 2) {
+      # save this neighbor's coordinates
+      x<-agent_xy[1] + 1
+      y<-agent_xy[2] + 1
+    }
+  
+    if (i == 3) {
+      # go to the neighbor directly to his right
+      x<-agent_xy[1]
+      y<-agent_xy[2] + 1
+    }
+    
+    if (i == 4) {
+      x<-agent_xy[1] - 1
+      y<-agent_xy[2] + 1
+    }
+    
+    if (i == 5) {
+      x<-agent_xy[1] - 1
+      y<-agent_xy[2]
+    }
+    
+    if (i == 6) {
+      x<-agent_xy[1] - 1
+      y<-agent_xy[2] - 1
+    }
+   
+    if (i == 7) {
+      x<-agent_xy[1]
+      y<-agent_xy[2] - 1
+    }
+    
+    if (i == 8) {
+      x<-agent_xy[1] + 1
+      y<-agent_xy[2] - 1
+    }
+   
+    
+    # if a neighbor's coordinates were below 1, wrap around
+    if (x < 1) {
+      x<-51
+    }
+    
+    # if a neighbor's coordinates were above 51, wrap around
+    if (x > 51) {
+      x<-1
+    }
+    if (y < 1) {
+      y<-51
+    }
+    if (y > 51) {
+      y<-1
+    }
+    
+    # place the x and y coordinates into a matrix
+    n<-rbind(n, c(x,y))
+  }
+  n
+}
+
+```
+
+The function returns a matrix with the coordinates of the surrounding 8 patches. If I was focused, for example, on agent [2, 3], then the function would return
+
+```{r, cache = T}
+boom <- c(2,3)
+get_neighbor_coords(boom)
+```
+
+which shows that coordinate [3,3] is just below agent $i$, coordinate [3,4] is just below and to the right, and coordinate [2,4] is directly to the right. 
+
+Now we are ready to iterate across every agent (i.e., every cell in `grid`). 
+
+
+
+```{r, cache = T}
+happiness_tracker <- c()
+save_plots <- list()
+save_plot_at_t <- c(seq(from = 4, to = 60, by = 4))
+store_count <- 0
+#grid <- matrix(sample(group, 2601, replace = F), ncol = 51)
+
+
+for (t in c(1:60)) {
+  happy_cells<-c()
+  unhappy_cells<-c()
+  
+  
+  
+  # narrow down to an agent
+  
+  ########################################################################
+  # for each row in grid ...
+  for (j in c(1:51)) {
+    
+    # at a given row in grid
+    # for each column ...
+    for (k in c(1:51)) {
+      
+      # location
+      # x/row (j) and y/column (k) coordinate of the iith agent
+      #current<-c(j,k)
+      agent_xy <- c(j,k)
+      
+      # type
+      # whether agent i's cell is empty, hockey, or soccer
+      #value<-grid[j,k] 
+      agent_type <- grid[j,k]
+  ########################################################################    
+      
+      
+      
+      
+      
+      
+      
+      # narrow down to that agent's neighbors
+      
+      # ########################################################################
+      # if patch i is empty, dont' do anything
+      # if patch i has a soccer or hockey player, then run the following code:
+      if (agent_type > 0) {
+        
+        # initialize variables to count respective neighbors
+        # so, right now the given agent has a score of zero for r_sim and r_total
+        like_neighbors <- 0
+        all_neighbors <- 0
+        
+        # find agent i's neighbors
+        # return a matrix with the 8 surrounding patches of agent i listed in each row
+        neighbors<-get_neighbor_coords(agent_xy)
+        # now we have a matrix listing the 8 surrounding patches
+       # ########################################################################
+        
+        
+        
+        
+        
+        
+        
+        
+            # narrow down to a given neighbor for agent i
+        
+            # ########################################################################
+            
+            # for each neighbor ...
+            for (i in c(1:nrow(neighbors))){
+              # store his x/row coordinate
+                x<-neighbors[i,1]
+              # store his y/column coordinate
+                y<-neighbors[i,2]
+                
+                  
+                  # when the neighbor is not an empty patch
+                  # add 1 to the total count of neighbors
+                   if (grid[x,y] > 0) {
+                      all_neighbors<-all_neighbors + 1
+                   }
+                
+                  # when the neighbor is the same as the agent
+                  # add 1 to the total "similar neighbors" count
+                   if (grid[x,y] == agent_type) {
+                      like_neighbors<-like_neighbors + 1
+                   }
+                
+            }
+            # ########################################################################
+
+        
+        
+        
+        
+                
+        
+        
+        # If agent i has all empty patches surrounding him (unlikely, but could happen)
+        # then all_neighbors would equal 0
+        # we don't want the loop to break because we divide by 0 later on
+        
+        # so, we don't count cells with all empty patches as neighbors
+        
+        # ########################################################################
+        # if a player is surrounded by at least 1 non-empty patch
+        # meaning...
+        # run the code below if the agent isn't surrounded by all empty patches
+        if (is.nan(like_neighbors / all_neighbors)==FALSE) {
+          
+              # if agent i has fewer same neighbors than he prefers
+              # if a hockey player is surrounded by more soccer players than he is comfortable with
+              if ((like_neighbors / all_neighbors) < alike_preference) {
+            
+                # then store the coordinates of the agent in the unhappy cells matrix
+                unhappy_cells<-rbind(unhappy_cells,c(agent_xy[1],agent_xy[2]))
+              }
+          
+              # otherwise
+              # which means the agent is satisfied with his neighbors
+              # a hockey players has a sufficient number of hockey players around him
+              else {
+            
+                # then store the coordinates of the agent in the happy cells matrix
+                happy_cells<-rbind(happy_cells,c(agent_xy[1],agent_xy[2]))
+              }
+            }
+        
+        
+        # run the code below if the agent is indeed surrounded by all empty patches
+        # such an agent is stored in the happy agents matrix
+        else {
+          # store the coordinates of the agent in the happy cells matrix
+          happy_cells<-rbind(happy_cells,c(agent_xy[1],agent_xy[2]))
+        }
+        
+        # ########################################################################
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      }
+    }
+  }
+
+  
+  
+  
+  
+  # store the level of satisfaction with neighbors
+  # here it's called the level of happiness
+  # ########################################################################
+
+  # how many coordinates were saved in the happy cells matrix?
+  # how many coordinates were saved in the unhappy cells matrix?
+  # divide the number of happy coordinates saved by the number of total coordinates saved
+  happiness_tracker<-append(happiness_tracker,length(happy_cells)/(length(happy_cells) + length(unhappy_cells)))
+  # ########################################################################
+  
+  
+  
+  
+  
+  
+  
+  
+
+  # the unsatisfied/unhappy agents then move to a new patch
+  
+  # ########################################################################
+  # create a random vector 
+  # listing every agent who will eventually move
+  rand<-sample(nrow(unhappy_cells))
+  
+  
+      # randomly select a new patch  
+      # ########################################################################
+  # for a given row 
+  for (i in rand) {
+    # pull the coordinates of the agent that is going to move
+    mover<-unhappy_cells[i,]
+    # pull his type (hockey or soccer player)
+    mover_val<-grid[mover[1],mover[2]]
+    # randomly select a new location anywhere in the grid
+    move_to<-c(sample(1:51,1),sample(1:51,1))
+    # what is the current agent type living in the new location?
+    move_to_val<-grid[move_to[1],move_to[2]]
+      # ########################################################################
+    
+    
+    # I now have a randomly selected path that an unhappy agent might move to
+
+    
+    # if the selected patch is empty, 
+    # then skip the code below and change the new patch to occupied by this unhappy agent
+    
+    
+    
+    # if the new patch has a hockey or soccer player
+      # ########################################################################
+    while (move_to_val > 0 ){
+      # then reselect a new random patch
+      move_to<-c(sample(1:51,1),sample(1:51,1))
+      # see which type of agent lives there
+      move_to_val<-grid[move_to[1],move_to[2]]
+      # keep going 
+      # keep randomly selecting patches
+      # until you find one with neither a hockey or soccer player
+    }
+      # ########################################################################
+
+    
+    
+    
+    # change the unhappy agent's original location to empty
+    grid[mover[1],mover[2]]<-0
+    # change the new patch as occupied by the unhappy agent
+    grid[move_to[1],move_to[2]]<-mover_val
+    
+  # ########################################################################
+
+    
+    
+    
+    
+  }
+  
+  # plot it
+  
+if(sum(t == c(save_plot_at_t)) == 1){
+  store_count <- store_count + 1
+  
+    plotgrid <- melt(grid)
+
+    g <- ggplot(plotgrid, aes(x = Var1, y = Var2, fill = value)) + 
+         geom_tile() + 
+         xlab("Locations") + 
+         ylab("Locations") + 
+         theme(legend.position = "none")
+    
+    save_plots[[store_count]] <- g  
+  
+}
+
+    
+
+}
+
+
+```
+
+
+
+```{r, results = 'asis', cache = T}
+for(l in 1:length(save_plot_at_t)){
+  
+  print(save_plots[[l]])
+  
+}
+
+```
+
+Bo$^2$m =)

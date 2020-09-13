@@ -1,0 +1,749 @@
+---
+title: "Thomas Schelling's Model: Long Form"
+date: "2020-09-10"
+summary: "-----"
+---
+
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+
+
+<p>The Schelling model that I created in my last post used matrix operations. It required me to think in terms of patches housed in a matrix. Consider the following 3x3 grid.</p>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    2    1
+## [2,]    1    0    1
+## [3,]    1    1    0</code></pre>
+<p>Each cell can be thought of as a patch. When a given patch is 0, it is unoccupied. When a given patch is 1 or 2, it is occupied by a hockey or soccer player, respectively. When I implement a Schelling model using a matrix, it puts me in a certain frame of mind. I have to consider patches as locations specified by rows and columns. At row 1 column 2, for example, sits patch XXX that is either occupied or unoccupied.</p>
+<p>Another way to implement the Schelling model is to use long data. The same information conveyed in the 3x3 matrix is shown in long form below.</p>
+<pre><code>##   xcoord ycoord type
+## 1      1      1    1
+## 2      2      1    1
+## 3      3      1    1
+## 4      1      2    2
+## 5      2      2    0
+## 6      3      2    1
+## 7      1      3    1
+## 8      2      3    1
+## 9      3      3    0</code></pre>
+<p>Coordinates are now viewed as information that can be stored in respective columns. The <code>type</code> column represents whether the patch is unoccupied (0), houses a hockey player (1), or houses a soccer player (2). The goal of this post is to re-create the Schelling model using long data.</p>
+<p>I’m going to present the code in two sections. The first demonstrates the behavior of 1 agent within a single time point. The second reveals the full model: it iterates over 50 time points using all agents.</p>
+<div id="basic-idea" class="section level2">
+<h2>Basic Idea</h2>
+<p>The model uses two data frames to store (the most important) information. One holds the coordinates of the living location of each agent. Susan, for example, lives at xcoord = 3 &amp; ycoord = 10, whereas Johnny lives at xcoord = 2 &amp; ycoord = 15. The other specifies the object located at each patch on the grid (0 = unoccupied, 1 = hockey player, 2 = soccer player), and this second data frame will be used for plotting.</p>
+<p>To reiterate, one data frame stores agent coordinates:</p>
+<pre class="r"><code>library(kableExtra)
+
+head(agent_df) %&gt;% 
+  kable() %&gt;% 
+  kable_styling()</code></pre>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+xcoord
+</th>
+<th style="text-align:right;">
+ycoord
+</th>
+<th style="text-align:right;">
+type
+</th>
+<th style="text-align:right;">
+agent
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+</tbody>
+</table>
+<p>and the other, which will be used for plotting, stores patch information.</p>
+<pre class="r"><code>head(patch_df) %&gt;% 
+  kable() %&gt;% 
+  kable_styling()</code></pre>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+xcoord
+</th>
+<th style="text-align:right;">
+ycoord
+</th>
+<th style="text-align:right;">
+type
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+<p>The pseudocode for the model is as follows.</p>
+<pre class="r"><code>&quot;
+for each period
+      
+    for each agent i
+                
+        identify i&#39;s 8 surrounding neighbors
+        count the number of similar and dissimilar neighbors
+        -- e.g., if i is a hockey player and is surrounded by soccer players...
+        -- then he has mostly dissimilar neighbors
+        
+        if agent i has more dissimilar neighbors than he desires, then label him as unhappy
+        if agent i has more similar neighbors than he desires, then label him as happy
+        
+        repeat for all agents
+        
+    for each unhappy agent j
+    
+        randomly select a new patch to possibly move to
+        if the patch is unoccupied, move there
+        
+        repeat for all unhappy agents
+        
+    
+    plot the grid of patches for this period
+    save the plot
+    
+end
+&quot;</code></pre>
+<p>Of course, the model is much more complex in syntax. But the basic idea is straightforward: people move if they have many dissimilar neighbors, and they stay if they have similar neighbors. Moreover, new patches, which are selected when agents want to move, are pulled randomly.</p>
+<p>Let’s pretend we are at the first period and are beginning to iterate across agents. The code works as follows.</p>
+<p>Starting with agent 1, identify her coordinates and type (type meaning hockey or soccer player).</p>
+<pre class="r"><code>    agent_coords &lt;- agent_df %&gt;% 
+      filter(agent == 1) %&gt;% 
+      select(xcoord, ycoord)
+    
+    agent_type &lt;- agent_df %&gt;% 
+      filter(agent == 1) %&gt;% 
+      select(type) %&gt;% 
+      pull()
+
+    
+glimpse(agent_coords)</code></pre>
+<pre><code>## Rows: 1
+## Columns: 2
+## $ xcoord &lt;int&gt; 1
+## $ ycoord &lt;int&gt; 1</code></pre>
+<pre class="r"><code>glimpse(agent_type)</code></pre>
+<pre><code>##  num 2</code></pre>
+<p>Using agent i’s coordinates, identify her 8 surrounding neighbors.</p>
+<pre class="r"><code>neigh &lt;- get_neigh(agent_coords)</code></pre>
+<p>The function <code>get_neigh</code> is prespecified (I will show you the syntax below). It’s too complicated to pick apart now. Just know that it returns the coordinates of her 8 surrounding neighbors.</p>
+<pre class="r"><code>neigh %&gt;% kable() %&gt;% kable_styling</code></pre>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+xcoord
+</th>
+<th style="text-align:right;">
+ycoord
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+51
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+51
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+51
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+</tbody>
+</table>
+<p>I’m about to start counting similar neighbors, so I need to initialize a few counters.</p>
+<pre class="r"><code>total_neighs &lt;- 0
+similar_neighs &lt;- 0</code></pre>
+<p>Count similar neighbors. Go through each row in the <code>neigh</code> matrix to find a given neighbor’s coordinates. Use those coordinates to pull all information about neighbor <code>n</code> from the agent data frame. Then, increment <code>similar_neighs</code> by 1 if neighbor <code>n</code> is the same type as agent i. Increment <code>total_neighs</code> if the patch isn’t empty.</p>
+<p>Stated simply, if agent i is a hockey player then count the number of other hockey players. Also count the number of non-empty patches.</p>
+<pre class="r"><code>    for(n in 1:nrow(neigh)){
+    
+      # save neighbor 
+      neigh_agent &lt;- patch_df %&gt;% 
+        filter(xcoord == neigh$xcoord[n],
+               ycoord == neigh$ycoord[n])
+        
+      # increment similar neighbors by 1 if agent is same as neighbor
+      # increment total neighbors by 1 if patch isn&#39;t empty
+      if(agent_type == neigh_agent$type){similar_neighs &lt;- similar_neighs + 1}
+      if(neigh_agent$type != 0){total_neighs &lt;- total_neighs + 1}
+      
+    }</code></pre>
+<p>Now my counters have values.</p>
+<pre class="r"><code>print(
+  paste(&quot;Total Neighbors =&quot;, total_neighs, &quot;\n&quot;,
+        &quot;Similar Neighbors =&quot;, similar_neighs)
+)</code></pre>
+<pre><code>## [1] &quot;Total Neighbors = 5 \n Similar Neighbors = 5&quot;</code></pre>
+<p>Calculate a similarity ratio. Take the number of similar neighbors and divide it by the total number of neighbors (i.e., non-empty patches).</p>
+<pre class="r"><code>sim_ratio &lt;- similar_neighs / total_neighs</code></pre>
+<p>I won’t show the code here, but all of the information calculated so far then gets stored in a master “results” data frame.</p>
+<p>So far, we have identified agent i’s neighbors and calculated her similarity ratio. We now need to determine whether she wants to move. If she does, we then need to find a new place for her to move to.</p>
+<p>Schelling’s original model used inequalities to generate agent happiness (or satisfaction). When one’s similarity ratio is greater than some innate preference for similar others (say, 0.6), then the agent is happy and stays put. When one’s similarity ratio is lower than 0.6, the agent is unhappy and moves. Here is that idea embodied in code.</p>
+<pre class="r"><code>empty &lt;- is.nan(sim_ratio)
+happy &lt;- NULL
+    
+if(empty == TRUE){happy &lt;- TRUE} # if the agent has no neighbors, he is happy
+if(empty == FALSE &amp;&amp; sim_ratio &gt; 0.6){happy &lt;- TRUE}
+if(empty == FALSE &amp;&amp; sim_ratio &lt; 0.6){happy &lt;- FALSE}
+if(empty == FALSE &amp;&amp; sim_ratio == 0.6){happy &lt;- FALSE}</code></pre>
+<p>The inequalities are located in the <code>if</code> statements. What makes the syntax a bit tricky is that I also included an <code>empty</code> object. I did that because not all agents have neighbors. It is possible for an agent to be surrounded by all empty patches. When this (unlikely) case happens, then <code>total_neighs</code> is equal to 0, and we all know that dividing by 0 doesn’t work. So, the code above asks whether <code>sim_ratio</code> has an actual value, and it only moves forward if so. Said differently, <code>empty</code> would equal <code>TRUE</code> when agent i has no neighbors. If the agent is happy, the code moves forward. If the agent is unhappy, she gets stored (not shown).</p>
+<p>The steps above then repeat for every agent. Once it iterates over all agents, storing the unhappy agents when they arise, it finds new patches for the unhappy agents. First, randomly select new coordinates.</p>
+<pre class="r"><code>  new_x &lt;- sample(51, 1)
+  new_y &lt;- sample(51, 1)</code></pre>
+<p>Is the patch located at those coordinates occupied?</p>
+<pre class="r"><code>  agent_type_at_new &lt;- patch_df %&gt;% 
+    filter(xcoord == new_x,
+           ycoord == new_y) %&gt;% 
+    select(type) %&gt;% 
+    pull()
+
+
+  # 0 = unoccupied
+  # 1 = hockey player
+  # 2 = soccer player
+
+  occupied &lt;- FALSE
+  if(agent_type_at_new != 0){occupied &lt;- TRUE}</code></pre>
+<p>If the patch is unoccupied, then we can work with our unhappy agent. If the patch is occupied, we need to continue to sample patches until we find one that is unoccupied.</p>
+<pre class="r"><code>  while(occupied == TRUE){
+    
+    new_x &lt;- sample(51, 1)
+    new_y &lt;- sample(51, 1)
+    agent_type_at_new &lt;- patch_df %&gt;% 
+      filter(xcoord == new_x,
+             ycoord == new_y) %&gt;% 
+      select(type) %&gt;% 
+      pull()
+    
+    if(agent_type_at_new == 0){occupied &lt;- FALSE}
+  }</code></pre>
+<p>Once selected, we change the new patch to occupied within the <code>patch_df</code>, change the old patch to unoccupied within the <code>patch_df</code>, and update the agent data frame with unhappy agent i’s new coordinates. The code to do so is something like the following.</p>
+<pre class="r"><code>  # change new patch to unhappy agent i&#39;s type
+  patch_df[patch_df$xcoord == new_x &amp; patch_df$ycoord == new_y, &quot;type&quot;] &lt;- current_unhappy$type[1]
+  # go to the old patch where unhappy agent i used to live and change it to 0
+  patch_df[patch_df$xcoord == current_unhappy$xcoord[1] &amp; patch_df$ycoord == current_unhappy$ycoord[1], &quot;type&quot;] &lt;- 0
+  
+  # update the agent_df to reflect unhappy agent i&#39;s new coordinates
+  agent_df[agent_df$agent == current_unhappy$agent[1], &quot;xcoord&quot;] &lt;- new_x
+  agent_df[agent_df$agent == current_unhappy$agent[1], &quot;ycoord&quot;] &lt;- new_y</code></pre>
+</div>
+<div id="full-model" class="section level2">
+<h2>Full Model</h2>
+<p>Here is the full model.</p>
+<pre class="r"><code>library(tidyverse)
+library(reshape2)
+library(ggplot2)
+
+# initial grid
+#
+#
+#
+#
+#
+#
+
+
+dims &lt;- 51*51
+empty_patches &lt;- 781
+peeps &lt;- c(rep(1, (dims-empty_patches) / 2),
+           rep(2, (dims-empty_patches) / 2),
+           rep(0, empty_patches))
+
+num_agents &lt;- dims - empty_patches
+
+mat &lt;- matrix(sample(peeps, dims, replace = F), 51, 51, byrow = T)
+
+patch_df &lt;- melt(mat) %&gt;% 
+  mutate(xcoord = Var1,
+         ycoord = Var2,
+         type = value) %&gt;% 
+  select(xcoord, 
+         ycoord,
+         type)
+
+agent_df &lt;- patch_df %&gt;% 
+  filter(type %in% c(1,2)) %&gt;% 
+  mutate(agent = 1:num_agents)
+
+plotfirst &lt;- patch_df
+
+alike_preference &lt;- 0.6
+
+
+
+# get neighbors function
+#
+#
+#
+#
+#
+#
+#
+#
+
+get_neigh &lt;- function(xy){
+  
+  # starting from right and going clockwise, I want neighbors a,b,c,d,e,f,g,h
+  
+  ax &lt;- xy[1 , &quot;xcoord&quot;] + 1
+  ay &lt;- xy[1, &quot;ycoord&quot;]
+  # xcoord, ycoord
+  a &lt;- c(ax, ay)
+  
+  bx &lt;- xy[1 , &quot;xcoord&quot;] + 1
+  by &lt;- xy[1, &quot;ycoord&quot;] - 1
+  # xcoord, ycoord
+  b &lt;- c(bx, by)
+  
+  cx &lt;- xy[1 , &quot;xcoord&quot;]
+  cy &lt;- xy[1, &quot;ycoord&quot;] - 1
+  # xcoord, ycoord
+  c &lt;- c(cx, cy)
+  
+  dx &lt;- xy[1 , &quot;xcoord&quot;] - 1
+  dy &lt;- xy[1, &quot;ycoord&quot;] - 1
+  # xcoord, ycoord
+  d &lt;- c(dx, dy)
+  
+  ex &lt;- xy[1 , &quot;xcoord&quot;] - 1
+  ey &lt;- xy[1, &quot;ycoord&quot;]
+  # xcoord, ycoord
+  e &lt;- c(ex, ey)
+  
+  fx &lt;- xy[1 , &quot;xcoord&quot;] - 1
+  fy &lt;- xy[1, &quot;ycoord&quot;] + 1
+  # xcoord, ycoord
+  f &lt;- c(fx, fy)
+  
+  gx &lt;- xy[1 , &quot;xcoord&quot;]
+  gy &lt;- xy[1, &quot;ycoord&quot;] + 1
+  # xcoord, ycoord
+  g &lt;- c(gx, gy)
+  
+  hx &lt;- xy[1 , &quot;xcoord&quot;] + 1
+  hy &lt;- xy[1, &quot;ycoord&quot;] + 1
+  # xcoord, ycoord
+  h &lt;- c(hx, hy)
+  
+  
+  dff &lt;- data.frame(
+    &#39;xcoord&#39; = c(a[1], b[1], c[1], d[1], e[1], f[1], g[1], h[1]),
+    &#39;ycoord&#39; = c(a[2], b[2], c[2], d[2], e[2], f[2], g[2], h[2])
+  )
+  
+  dff &lt;- dff %&gt;% 
+    mutate(xcoord = ifelse(xcoord == 0, 51, xcoord),
+           xcoord = ifelse(xcoord == 52, 1, xcoord),
+           ycoord = ifelse(ycoord == 0, 51, ycoord),
+           ycoord = ifelse(ycoord == 52, 1, ycoord))
+  
+  return(dff)
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+# initialize stores
+#
+#
+#
+#
+#
+#
+#
+#
+#
+
+time &lt;- 40
+result_df &lt;- data.frame(
+  &quot;time&quot; = numeric(time*num_agents),
+  &quot;agent&quot; = numeric(time*num_agents),
+  &quot;simratio&quot; = numeric(time*num_agents)
+)
+count &lt;- 0
+save_plots &lt;- list()
+
+
+
+
+
+
+
+
+# begin iterations over periods
+#
+#
+#
+#
+#
+#
+#
+for(i in 1:time){
+
+
+unhappy_store &lt;- list()
+unhappy_counter &lt;- 0
+
+
+
+
+# for each agent
+for(ag in 1:num_agents){
+
+    
+  count &lt;- count + 1
+  
+  # save agent&#39;s coords
+  # save agent&#39;s type
+    agent_coords &lt;- agent_df %&gt;% 
+      filter(agent == ag) %&gt;% 
+      select(xcoord, ycoord)
+    
+    agent_type &lt;- agent_df %&gt;% 
+      filter(agent == ag) %&gt;% 
+      select(type) %&gt;% 
+      pull()
+  
+  
+    
+    
+    # identify neighbors - save their coordinates
+    neigh &lt;- get_neigh(agent_coords)
+    total_neighs &lt;- 0
+    similar_neighs &lt;- 0
+
+    # for each neighbor
+    for(n in 1:nrow(neigh)){
+    
+      # save neighbor 
+      neigh_agent &lt;- patch_df %&gt;% 
+        filter(xcoord == neigh$xcoord[n],
+               ycoord == neigh$ycoord[n])
+        
+      # increment similar neighbors by 1 if agent is same as neighbor
+      # increment total neighbors by 1 if patch isn&#39;t empty
+      if(agent_type == neigh_agent$type){similar_neighs &lt;- similar_neighs + 1}
+      if(neigh_agent$type != 0){total_neighs &lt;- total_neighs + 1}
+      
+    }
+    
+    
+    # save his sim/total (time, agent, simratio)
+    sim_ratio &lt;- similar_neighs / total_neighs
+    
+    result_df[count, &quot;time&quot;] &lt;- i
+    result_df[count, &quot;agent&quot;] &lt;- ag
+    result_df[count, &quot;simratio&quot;] &lt;- sim_ratio
+    
+    # if the agent has empty patches around him (is.nan(sim_ratio) == T)
+    # or
+    # if sim/total &gt; then alike_preferences, 
+    # then the agent is happy
+    # otherwise, he is unhappy
+    empty &lt;- is.nan(sim_ratio)
+    happy &lt;- NULL
+    
+    if(empty == TRUE){happy &lt;- TRUE}
+    if(empty == FALSE &amp;&amp; sim_ratio &gt; alike_preference){happy &lt;- TRUE}
+    if(empty == FALSE &amp;&amp; sim_ratio &lt; alike_preference){happy &lt;- FALSE}
+    if(empty == FALSE &amp;&amp; sim_ratio == alike_preference){happy &lt;- FALSE}
+    
+    # if the agent is unhappy, store him
+    if(happy == FALSE){
+      unhappy_counter &lt;- unhappy_counter + 1
+      unhappy_store[[unhappy_counter]] &lt;- ag
+    }
+    
+}
+
+# after going through all agents, have the unhappy agents move
+
+unhappy_agents &lt;- unlist(unhappy_store)
+
+for(q in 1:length(unhappy_agents)){
+  if(is.null(unhappy_agents) == TRUE){break}
+  
+  # randomly select a new patch
+  new_x &lt;- sample(51, 1)
+  new_y &lt;- sample(51, 1)
+  
+  # is the new patch occupied?
+  agent_type_at_new &lt;- patch_df %&gt;% 
+    filter(xcoord == new_x,
+           ycoord == new_y) %&gt;% 
+    select(type) %&gt;% 
+    pull()
+  
+  occupied &lt;- FALSE
+  if(agent_type_at_new != 0){occupied &lt;- TRUE}
+  
+  while(occupied == TRUE){
+    
+    new_x &lt;- sample(51, 1)
+    new_y &lt;- sample(51, 1)
+    agent_type_at_new &lt;- patch_df %&gt;% 
+      filter(xcoord == new_x,
+             ycoord == new_y) %&gt;% 
+      select(type) %&gt;% 
+      pull()
+    
+    if(agent_type_at_new == 0){occupied &lt;- FALSE}
+    
+  }
+  
+  # unhappy agent
+  current_unhappy &lt;- agent_df %&gt;% 
+    filter(agent == unhappy_agents[q])
+  
+  # go to the new x and y position in the patch and place the agent type there
+  patch_df[patch_df$xcoord == new_x &amp; patch_df$ycoord == new_y, &quot;type&quot;] &lt;- current_unhappy$type[1]
+  # go to the old x and y position in the patch and change it to 0
+  patch_df[patch_df$xcoord == current_unhappy$xcoord[1] &amp; patch_df$ycoord == current_unhappy$ycoord[1], &quot;type&quot;] &lt;- 0
+  
+  # change the agent_df to reflect the agent&#39;s new position
+  agent_df[agent_df$agent == current_unhappy$agent[1], &quot;xcoord&quot;] &lt;- new_x
+  agent_df[agent_df$agent == current_unhappy$agent[1], &quot;ycoord&quot;] &lt;- new_y
+  
+
+  
+}
+
+# create plot
+# save and store plot
+
+gp &lt;- ggplot(patch_df, aes(x = xcoord, y = ycoord, fill = type)) + 
+  geom_tile() + 
+  ggtitle(paste(&quot;Period =&quot;, i))
+
+save_plots[[i]] &lt;- gp
+
+
+}</code></pre>
+<pre class="r"><code>ggplot(plotfirst, aes(x = xcoord, y = ycoord, fill = type)) + 
+  geom_tile() +
+  ggtitle(&quot;Period = 0&quot;)</code></pre>
+<p><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<pre class="r"><code>for(l in 1:time){
+  
+  print(save_plots[[l]])
+  
+}</code></pre>
+<p><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-2.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-3.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-4.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-5.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-6.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-7.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-8.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-9.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-10.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-11.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-12.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-13.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-14.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-15.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-16.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-17.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-18.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-19.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-20.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-21.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-22.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-23.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-24.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-25.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-26.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-27.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-28.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-29.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-30.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-31.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-32.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-33.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-34.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-35.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-36.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-37.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-38.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-39.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-40.png" width="672" /><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-41.png" width="672" /></p>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>
+</div>

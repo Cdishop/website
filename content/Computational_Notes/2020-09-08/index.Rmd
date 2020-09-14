@@ -6,7 +6,7 @@ summary: "-----"
 
 
 
-```{r setup, echo=FALSE, cache=FALSE, warning = F, message = F}
+```{r setup, echo=TRUE, cache=FALSE, warning = F, message = F}
 library(knitr)
 library(rmdformats)
 library(tidyverse)
@@ -204,8 +204,6 @@ get_neighbor_coords(boom)
 which shows that coordinate [3,3] is just below agent $i$, coordinate [3,4] is just below and to the right, and coordinate [2,4] is directly to the right. 
 
 Now we are ready to iterate across every agent (i.e., every cell in `grid`). 
-
-
 
 ```{r, cache = T}
 happiness_tracker <- c()

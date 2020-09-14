@@ -6,6 +6,22 @@ summary: "-----"
 
 
 
+<pre class="r"><code>library(knitr)
+library(rmdformats)
+library(tidyverse)
+library(ggplot2)
+library(reshape2)
+
+## Global options
+options(max.print=&quot;75&quot;)
+opts_chunk$set(echo=FALSE,
+                 cache=TRUE,
+               prompt=FALSE,
+               tidy=TRUE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE)
+opts_knit$set(width=75)</code></pre>
 <p>A replication of Thomas Schelling’s model, which was originally published in <em>The Journal of Mathematical Sociology.</em> <a href="https://ytliu0.github.io/schelling/">Yuk Tung Liu</a> offers a great summary.</p>
 <blockquote>
 <p>The following map shows the distribution of people with different ethnicity living in the city of Chicago (source: radicalcartography.net):</p>

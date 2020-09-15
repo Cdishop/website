@@ -264,9 +264,9 @@ Stated simply, if agent i is a hockey player then count the number of other hock
 Now my counters have values.
 
 ```{r, cache = T}
-print(
-  paste("Total Neighbors =", total_neighs, "\n",
-        "Similar Neighbors =", similar_neighs)
+cat(
+  paste("Total Neighbors =", total_neighs,
+        "\nSimilar Neighbors =", similar_neighs)
 )
 ```
 
@@ -655,9 +655,11 @@ for(q in 1:length(unhappy_agents)){
 # create plot
 # save and store plot
 
-gp <- ggplot(patch_df, aes(x = xcoord, y = ycoord, fill = type)) + 
+gp <- ggplot(patch_df, aes(x = xcoord, y = ycoord, fill = factor(type))) + 
   geom_tile() + 
-  ggtitle(paste("Period =", i))
+  ggtitle(paste("Period =", i)) +
+  scale_fill_brewer(palette = "Greens",
+                    name = "Type of Patch")
 
 save_plots[[i]] <- gp
 
@@ -673,10 +675,11 @@ save_plots[[i]] <- gp
 
 ```{r, results = "asis", cache = T}
 
-ggplot(plotfirst, aes(x = xcoord, y = ycoord, fill = type)) + 
+ggplot(plotfirst, aes(x = xcoord, y = ycoord, fill = factor(type))) + 
   geom_tile() +
-  ggtitle("Period = 0")
-
+  ggtitle("Period = 0") +
+  scale_fill_brewer(palette = "Greens",
+                    name = "Type of Patch")
 for(l in 1:time){
   
   print(save_plots[[l]])

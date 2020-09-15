@@ -39,6 +39,8 @@
 
 [B Rodriguez](https://b-rodrigues.github.io/fput/)
 
+[Allie Choate](https://alliechoate.netlify.app/about/)
+
 [Nathaniel D. Phillips](https://bookdown.org/ndphillips/YaRrr/)
 
 [Simon Ejdemyr](https://sejdemyr.github.io)

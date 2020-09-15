@@ -376,11 +376,12 @@ similar_neighs &lt;- 0</code></pre>
       
     }</code></pre>
 <p>Now my counters have values.</p>
-<pre class="r"><code>print(
-  paste(&quot;Total Neighbors =&quot;, total_neighs, &quot;\n&quot;,
-        &quot;Similar Neighbors =&quot;, similar_neighs)
+<pre class="r"><code>cat(
+  paste(&quot;Total Neighbors =&quot;, total_neighs,
+        &quot;\nSimilar Neighbors =&quot;, similar_neighs)
 )</code></pre>
-<pre><code>## [1] &quot;Total Neighbors = 5 \n Similar Neighbors = 5&quot;</code></pre>
+<pre><code>## Total Neighbors = 5 
+## Similar Neighbors = 5</code></pre>
 <p>Calculate a similarity ratio. Take the number of similar neighbors and divide it by the total number of neighbors (i.e., non-empty patches).</p>
 <pre class="r"><code>sim_ratio &lt;- similar_neighs / total_neighs</code></pre>
 <p>I won’t show the code here, but all of the information calculated so far then gets stored in a master “results” data frame.</p>
@@ -727,17 +728,21 @@ for(q in 1:length(unhappy_agents)){
 # create plot
 # save and store plot
 
-gp &lt;- ggplot(patch_df, aes(x = xcoord, y = ycoord, fill = type)) + 
+gp &lt;- ggplot(patch_df, aes(x = xcoord, y = ycoord, fill = factor(type))) + 
   geom_tile() + 
-  ggtitle(paste(&quot;Period =&quot;, i))
+  ggtitle(paste(&quot;Period =&quot;, i)) +
+  scale_fill_brewer(palette = &quot;Greens&quot;,
+                    name = &quot;Type of Patch&quot;)
 
 save_plots[[i]] &lt;- gp
 
 
 }</code></pre>
-<pre class="r"><code>ggplot(plotfirst, aes(x = xcoord, y = ycoord, fill = type)) + 
+<pre class="r"><code>ggplot(plotfirst, aes(x = xcoord, y = ycoord, fill = factor(type))) + 
   geom_tile() +
-  ggtitle(&quot;Period = 0&quot;)</code></pre>
+  ggtitle(&quot;Period = 0&quot;) +
+  scale_fill_brewer(palette = &quot;Greens&quot;,
+                    name = &quot;Type of Patch&quot;)</code></pre>
 <p><img src="/Computational_Notes/2020-09-10/index_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 <pre class="r"><code>for(l in 1:time){
   

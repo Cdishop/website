@@ -33,19 +33,19 @@ df$id &lt;- c(1:N)</code></pre>
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -2.43719 -0.57176  0.04553  0.55169  2.75446 
+## -2.44520 -0.55789  0.03927  0.52103  2.76631 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)  0.02053    0.03713   0.553    0.581    
-## x1           0.33115    0.03660   9.047   &lt;2e-16 ***
-## x2           0.38107    0.03682  10.348   &lt;2e-16 ***
+## (Intercept)  0.05096    0.03735   1.365    0.173    
+## x1           0.31181    0.03902   7.992 9.37e-15 ***
+## x2           0.35033    0.03702   9.463  &lt; 2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 0.8296 on 497 degrees of freedom
-## Multiple R-squared:  0.3015, Adjusted R-squared:  0.2987 
-## F-statistic: 107.3 on 2 and 497 DF,  p-value: &lt; 2.2e-16</code></pre>
+## Residual standard error: 0.8331 on 497 degrees of freedom
+## Multiple R-squared:  0.255,  Adjusted R-squared:  0.252 
+## F-statistic: 85.07 on 2 and 497 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Here’s the kicker: you can think of those weights as optimal functions telling us how to create the composite.</p>
 <p>Create a composite using the regression weights.</p>
 <pre class="r"><code>library(tidyverse)
@@ -53,7 +53,7 @@ df &lt;- df %&gt;%
   mutate(composite_x = 0.33*x1 + 0.4*x2)</code></pre>
 <p>Those weights provide the maximum correlation between our composite and the outcome.</p>
 <pre class="r"><code>cor(df$y, df$composite_x)</code></pre>
-<pre><code>## [1] 0.5489796</code></pre>
+<pre><code>## [1] 0.5047174</code></pre>
 <p>In other words, the above correlation could not be higher with any other set of weights. Regression found the weights that makes the correlation above as large as it can be.</p>
 <pre class="r"><code>summary(lm(y ~ composite_x,
            data = df))</code></pre>
@@ -63,16 +63,16 @@ df &lt;- df %&gt;%
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -2.45096 -0.56756  0.04246  0.54200  2.75680 
+## -2.44605 -0.56010  0.05434  0.51680  2.77042 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)  0.02014    0.03708   0.543    0.587    
-## composite_x  0.97389    0.06644  14.657   &lt;2e-16 ***
+## (Intercept)  0.05053    0.03730   1.354    0.176    
+## composite_x  0.90280    0.06920  13.047   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 0.8289 on 498 degrees of freedom
-## Multiple R-squared:  0.3014, Adjusted R-squared:    0.3 
-## F-statistic: 214.8 on 1 and 498 DF,  p-value: &lt; 2.2e-16</code></pre>
+## Residual standard error: 0.8325 on 498 degrees of freedom
+## Multiple R-squared:  0.2547, Adjusted R-squared:  0.2532 
+## F-statistic: 170.2 on 1 and 498 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Bo<span class="math inline">\(^2\)</span>m =)</p>

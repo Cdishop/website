@@ -38,5 +38,5 @@ social:
 superuser: false
 ---
 
-I'm an organizational scientist, which means that I study problems related to work behavior: What makes people productive? How do you ask for help effectively? What promotes cooperation among a collective? The research groups that I'm lucky enough to work with try to represent simple mechanisms that reveal how people work together to create the wonderful complexity that we see in the world. I also work in the quantitative areas of dynamics and computational modeling.
+I'm an organizational scientist, which means that I study behavior in the workplace: What makes people productive? How do you ask for help effectively? What promotes cooperation among a collective? The research groups that I'm lucky enough to work with try to represent simple mechanisms that reveal how people work together to create the wonderful complexity that we see in the world. I also work in the quantitative areas of dynamics and computational modeling.
 

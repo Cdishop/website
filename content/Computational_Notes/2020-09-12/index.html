@@ -1,0 +1,239 @@
+---
+title: "Unequal Time Stamps"
+summary: '-----'
+date: '2020-09-12'
+---
+
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+
+
+<p>Quick note on adding a “time” column when participants differ in the number of responses they offer. Let’s say my data are as follows:</p>
+<pre class="r"><code>library(tidyverse)
+library(kableExtra)
+
+df &lt;- data.frame(
+  &#39;id&#39; = c(1, 1, 2, 2, 2, 3, 4, 4),
+  &#39;score&#39; = c(6, 5, 3, 4, 2, 8, 7, 7)
+)
+
+head(df, 8) %&gt;% 
+  kable() %&gt;% 
+  kable_styling()</code></pre>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+id
+</th>
+<th style="text-align:right;">
+score
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+</tbody>
+</table>
+<p>where person 1 responded twice, person 2 three times, person 3 once, and person 4 twice. I want to add another column indicating that idea.</p>
+<p>Identify the number of times each id appears in the dataframe.</p>
+<pre class="r"><code>table(df$id)</code></pre>
+<pre><code>## 
+## 1 2 3 4 
+## 2 3 1 2</code></pre>
+<p>Save the values.</p>
+<pre class="r"><code>id_appear_times &lt;- unname(table(df$id))</code></pre>
+<p>Create a sequence from 1 to i for each i in the vector.</p>
+<pre class="r"><code>timer &lt;- c()
+for(i in id_appear_times){
+  
+  new_time &lt;- c(1:i)
+  timer &lt;- c(timer, new_time)
+
+}</code></pre>
+<p>Add it to my data.</p>
+<pre class="r"><code>head(df, 8) %&gt;% 
+  mutate(time = timer) %&gt;% 
+  select(time, id, everything()) %&gt;% 
+  kable() %&gt;% 
+  kable_styling()</code></pre>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+time
+</th>
+<th style="text-align:right;">
+id
+</th>
+<th style="text-align:right;">
+score
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+</tbody>
+</table>
+<div id="miscellaneous-afterthought" class="section level3">
+<h3>Miscellaneous Afterthought</h3>
+<p>While playing with the code above, I considered how to generate the id column with <code>rep</code> or <code>seq</code>. Here’s how:</p>
+<pre class="r"><code>rep_each &lt;- function(x, times) {
+  times &lt;- rep(times, length.out = length(x))
+  rep(x, times = times)
+}
+
+time_vec &lt;- rep_each(c(1,2,3,4), times = id_appear_times)
+time_vec</code></pre>
+<pre><code>## [1] 1 1 2 2 2 3 4 4</code></pre>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>
+</div>

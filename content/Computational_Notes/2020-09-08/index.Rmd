@@ -6,7 +6,7 @@ summary: "-----"
 
 
 
-```{r setup, echo=TRUE, cache=FALSE, warning = F, message = F}
+```{r setup, echo=F, cache=FALSE, warning = F, message = F}
 library(knitr)
 library(rmdformats)
 library(tidyverse)

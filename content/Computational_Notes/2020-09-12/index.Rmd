@@ -1,0 +1,82 @@
+---
+title: "Unequal Time Stamps"
+summary: '-----'
+date: '2020-09-12'
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
+```
+
+Quick note on adding a "time" column when participants differ in the number of responses they offer. Let's say my data are as follows:
+
+```{r}
+
+library(tidyverse)
+library(kableExtra)
+
+df <- data.frame(
+  'id' = c(1, 1, 2, 2, 2, 3, 4, 4),
+  'score' = c(6, 5, 3, 4, 2, 8, 7, 7)
+)
+
+head(df, 8) %>% 
+  kable() %>% 
+  kable_styling()
+```
+
+where person 1 responded twice, person 2 three times, person 3 once, and person 4 twice. I want to add another column indicating that idea. 
+
+Identify the number of times each id appears in the dataframe.
+
+```{r}
+table(df$id)
+```
+
+Save the values.
+
+```{r}
+id_appear_times <- unname(table(df$id))
+```
+
+Create a sequence from 1 to i for each i in the vector.
+
+```{r}
+timer <- c()
+for(i in id_appear_times){
+  
+  new_time <- c(1:i)
+  timer <- c(timer, new_time)
+
+}
+```
+
+Add it to my data.
+
+```{r}
+head(df, 8) %>% 
+  mutate(time = timer) %>% 
+  select(time, id, everything()) %>% 
+  kable() %>% 
+  kable_styling()
+```
+
+
+### Miscellaneous Afterthought
+
+While playing with the code above, I considered how to generate the id column with `rep` or `seq`. Here's how:
+
+```{r}
+
+rep_each <- function(x, times) {
+  times <- rep(times, length.out = length(x))
+  rep(x, times = times)
+}
+
+time_vec <- rep_each(c(1,2,3,4), times = id_appear_times)
+time_vec
+```
+
+
+Bo$^2$m =)

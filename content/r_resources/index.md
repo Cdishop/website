@@ -127,6 +127,12 @@
 
 [Psych Networks Winter School Resources](https://osf.io/2emja/)
 
+[Rmarkdown Themes 1](https://www.datadreaming.org/post/r-markdown-theme-gallery/)
+
+[Rmarkdown Themes 2](https://github.com/hrbrmstr/markdowntemplates)
+
+[Rmarkdown Themes 3](https://prettydoc.statr.me/themes.html)
+
 [Top 50 ggplot2 Visualizations](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
 
 ### DAGS

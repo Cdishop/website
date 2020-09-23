@@ -37,6 +37,14 @@ Dmitry A. Kondrashov
 
 
 
+
+
+
+
+
+
+
+
 &nbsp;
 
 
@@ -55,6 +63,17 @@ William Zinsser
 
 ------
 ------
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -92,6 +111,14 @@ Thomas Gilovich
 
 
 
+
+
+
+
+
+
+
+
 &nbsp;
 
 <div align="center">
@@ -107,6 +134,12 @@ Melanie Mitchell
 
 ------
 ------
+
+
+
+
+
+
 
 
 
@@ -155,6 +188,13 @@ Leonard Mlodinow
 
 
 
+
+
+
+
+
+
+
 &nbsp;
 
 <div align="center">
@@ -170,6 +210,13 @@ Carlo Rovelli
 
 ------
 ------
+
+
+
+
+
+
+
 
 
 
@@ -220,6 +267,12 @@ Joseph Bizup
 
 
 
+
+
+
+
+
+
 &nbsp;
 
 <div align="center">
@@ -234,6 +287,12 @@ Peter Singer
 
 ------
 ------
+
+
+
+
+
+
 
 
 
@@ -285,6 +344,10 @@ David Salsburg
 
 
 
+
+
+
+
 &nbsp;
 
 <div align="center">
@@ -299,6 +362,9 @@ Daniel T. Willingham
 
 ------
 ------
+
+
+
 
 
 
@@ -354,14 +420,48 @@ John H. Miller
 &nbsp;
 
 <div align="center">
-Digital Minimalism
+Reclaiming Conversation
 </div>
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/digital_min.png)
+![](https://github.com/Cdishop/website/raw/master/misc/books/conversation.png)
 
-Cal Newport
+Sherry Turkle
 
-[Click here for link](https://www.amazon.com/Digital-Minimalism-Choosing-Focused-Noisy/dp/0525536515/ref=sr_1_1?keywords=digital+minimalism&qid=1565453149&s=gateway&sr=8-1)
+[Click here for link](https://www.amazon.com/Reclaiming-Conversation-Power-Talk-Digital/dp/0143109790/ref=sr_1_1?keywords=reclaiming+conversation&qid=1565453094&s=gateway&sr=8-1)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Humble Pie: A Comedy of Maths Errors
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/humble_pie.png)
+
+Matt Parker
+
+[Click here for link](https://www.amazon.com/Humble-Pi-Comedy-Maths-Errors/dp/0241360234/ref=sr_1_fkmr0_1?keywords=humble+pie+maths+errors&qid=1565453048&s=gateway&sr=8-1-fkmr0)
 
 ------
 ------
@@ -412,6 +512,12 @@ Geoffrey West
 
 
 
+
+
+
+
+
+
 &nbsp;
 
 <div align="center">
@@ -426,6 +532,15 @@ Peter Singer
 
 ------
 ------
+
+
+
+
+
+
+
+
+
 
 
 
@@ -468,20 +583,6 @@ Christopher Gandrud
 
 
 
-&nbsp;
-
-<div align="center">
-Reclaiming Conversation
-</div>
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/conversation.png)
-
-Sherry Turkle
-
-[Click here for link](https://www.amazon.com/Reclaiming-Conversation-Power-Talk-Digital/dp/0143109790/ref=sr_1_1?keywords=reclaiming+conversation&qid=1565453094&s=gateway&sr=8-1)
-
-------
-------
 
 
 
@@ -523,6 +624,13 @@ Mary Roach
 
 
 
+
+
+
+
+
+
+
 &nbsp;
 
 <div align="center">
@@ -551,20 +659,31 @@ Valentino Braitenberg
 
 
 
+
+
+
+
+
 &nbsp;
 
 <div align="center">
-Statistical Rethinking: A Bayesian Course with Examples in R and Stan
+The Lessons of History
 </div>
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/mcelreath_rethinking.png)
+![](https://github.com/Cdishop/website/raw/master/misc/books/history.png)
 
-Richard McElreath
+Will Durant
 
-[Click here for link](https://www.amazon.com/Statistical-Rethinking-Bayesian-Examples-Chapman/dp/1482253445/ref=sr_1_1?s=books&ie=UTF8&qid=1524678418&sr=1-1&keywords=statistical+rethinking)
+Ariel Durant
+
+[Click here for link](https://www.amazon.com/Lessons-History-Will-Durant/dp/143914995X/ref=sr_1_1?dchild=1&keywords=will+durant+thinkers&qid=1599076729&sr=8-1)
 
 ------
 ------
+
+
+
+
 
 
 
@@ -624,6 +743,9 @@ Dana Mackenzie
 
 ------
 ------
+
+
+
 
 
 
@@ -784,6 +906,9 @@ Roger Highfield
 
 ------
 ------
+
+
+
 
 
 
@@ -1671,6 +1796,48 @@ Charles Wheelan
 
 
 
+
+
+&nbsp;
+
+<div align="center">
+Statistical Rethinking: A Bayesian Course with Examples in R and Stan
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/mcelreath_rethinking.png)
+
+Richard McElreath
+
+[Click here for link](https://www.amazon.com/Statistical-Rethinking-Bayesian-Examples-Chapman/dp/1482253445/ref=sr_1_1?s=books&ie=UTF8&qid=1524678418&sr=1-1&keywords=statistical+rethinking)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 &nbsp;
 
 <div align="center">
@@ -1731,24 +1898,6 @@ Max Shron
 
 
 
-
-
-
-
-&nbsp;
-
-<div align="center">
-Structural Equations With Latent Variables
-</div>
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/SEM.png)
-
-Kenneth A. Bollen
-
-[Click here for link](https://www.amazon.com/Structural-Equations-Latent-Variables-Kenneth/dp/0471011711/ref=sr_1_1?s=books&ie=UTF8&qid=1524679315&sr=1-1&keywords=structural+equations+latent+variables)
-
-------
-------
 
 
 
@@ -1817,6 +1966,11 @@ Larry S. Liebovitch
 
 ------
 ------
+
+
+
+
+
 
 
 
@@ -2032,24 +2186,6 @@ Dean Buonomano
 
 
 
-&nbsp;
-
-<div align="center">
-Quantitative Social Science: An Introduction
-</div>
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/quant_ss.png)
-
-Kosuke Imai
-
-[Click here for link](https://www.amazon.com/Quantitative-Social-Science-Kosuke-Imai/dp/0691175462/ref=sr_1_1?ie=UTF8&qid=1530631848&sr=8-1&keywords=quantitative+social+science)
-
-------
-------
-
-
-
-
 
 
 
@@ -2078,6 +2214,13 @@ Steven H. Strogatz
 
 ------
 ------
+
+
+
+
+
+
+
 
 
 
@@ -2426,6 +2569,15 @@ Ian Stewart
 
 
 
+
+
+
+
+
+
+
+
+
 &nbsp;
 
 <div align="center">
@@ -2655,20 +2807,17 @@ Ted Stewart
 
 
 
-
 &nbsp;
 
 <div align="center">
-The Lessons of History
+Digital Minimalism
 </div>
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/history.png)
+![](https://github.com/Cdishop/website/raw/master/misc/books/digital_min.png)
 
-Will Durant
+Cal Newport
 
-Ariel Durant
-
-[Click here for link](https://www.amazon.com/Lessons-History-Will-Durant/dp/143914995X/ref=sr_1_1?dchild=1&keywords=will+durant+thinkers&qid=1599076729&sr=8-1)
+[Click here for link](https://www.amazon.com/Digital-Minimalism-Choosing-Focused-Noisy/dp/0525536515/ref=sr_1_1?keywords=digital+minimalism&qid=1565453149&s=gateway&sr=8-1)
 
 ------
 ------
@@ -2684,32 +2833,6 @@ Ariel Durant
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-&nbsp;
-
-<div align="center">
-Humble Pie: A Comedy of Maths Errors
-</div>
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/humble_pie.png)
-
-Matt Parker
-
-[Click here for link](https://www.amazon.com/Humble-Pi-Comedy-Maths-Errors/dp/0241360234/ref=sr_1_fkmr0_1?keywords=humble+pie+maths+errors&qid=1565453048&s=gateway&sr=8-1-fkmr0)
-
-------
-------
 
 
 

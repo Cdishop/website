@@ -1056,6 +1056,28 @@ Steve Strogatz
 
 
 
+&nbsp;
+
+<div align="center">
+The Coddling of the American Mind
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/coddling.png)
+
+Greg Lukianoff
+
+Jonathan Haidt
+
+[Click here for link](https://www.amazon.com/Coddling-American-Mind-Intentions-Generation/dp/0735224897)
+
+------
+------
+
+
+
+
+
+
 
 
 
@@ -1668,6 +1690,27 @@ Atul Gawande
 
 
 
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Discrimination and Disparities
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/disparity.png)
+
+Thomas Sowell
+
+[Click here for link](https://www.amazon.com/Discrimination-Disparities-Thomas-Sowell/dp/154164560X)
+
+------
+------
 
 
 

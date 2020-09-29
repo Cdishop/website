@@ -1,0 +1,76 @@
+---
+title: "Credential Update After Password Change"
+date: "2018-02-21"
+summary: "-----"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F, message = F)
+```
+
+Quick note on updating your credentials after you change your password on GitHub. 
+
+Steps
+
+* search for keychain access in spotlight
+
+* delete the old github credentials
+
+* clone and adjust a repo
+
+* trigger the credential helper
+
+* push changes to repo
+
+
+
+Search for "keychain access" in spotlight.
+
+![](spotlight.png)
+
+Enter "github" into the search bar. Delete all github password entries.
+
+![](keychain.png)
+
+Clone a repo and make some changes.
+
+```{r, eval = F}
+
+cd Desktop
+
+git clone https://github.com/Cdishop/website.git
+
+cd website
+
+echo "some change" >> README.md
+
+```
+
+Activate keychain.
+
+```{r, eval = F}
+
+git credential-osxkeychain
+
+git config --global credential.helper osxkeychain
+
+```
+
+Trigger a username/password entry by pushing to remote.
+
+```{r, eval = F}
+
+git add .
+
+git commit -m "commit for keychain change"
+
+git push -u origin master
+
+[enter credentials]
+
+git push
+
+```
+
+
+Bo$^2$m =)

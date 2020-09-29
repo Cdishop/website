@@ -1,0 +1,44 @@
+---
+title: "Credential Update After Password Change"
+date: "2018-02-21"
+summary: "-----"
+---
+
+
+
+<p>Quick note on updating your credentials after you change your password on GitHub.</p>
+<p>Steps</p>
+<ul>
+<li><p>search for keychain access in spotlight</p></li>
+<li><p>delete the old github credentials</p></li>
+<li><p>clone and adjust a repo</p></li>
+<li><p>trigger the credential helper</p></li>
+<li><p>push changes to repo</p></li>
+</ul>
+<p>Search for “keychain access” in spotlight.</p>
+<p><img src="spotlight.png" /></p>
+<p>Enter “github” into the search bar. Delete all github password entries.</p>
+<p><img src="keychain.png" /></p>
+<p>Clone a repo and make some changes.</p>
+<pre class="r"><code>cd Desktop
+
+git clone https://github.com/Cdishop/website.git
+
+cd website
+
+echo &quot;some change&quot; &gt;&gt; README.md</code></pre>
+<p>Activate keychain.</p>
+<pre class="r"><code>git credential-osxkeychain
+
+git config --global credential.helper osxkeychain</code></pre>
+<p>Trigger a username/password entry by pushing to remote.</p>
+<pre class="r"><code>git add .
+
+git commit -m &quot;commit for keychain change&quot;
+
+git push -u origin master
+
+[enter credentials]
+
+git push</code></pre>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>

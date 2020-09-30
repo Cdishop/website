@@ -1,21 +1,21 @@
 [0] Config.pm:302> INFO - This is Biber 2.11
 [0] Config.pm:305> INFO - Logfile is 'cv-llt.blg'
-[42] biber-darwin:313> INFO - === Wed Sep 30, 2020, 09:14:50
-[66] Biber.pm:371> INFO - Reading 'cv-llt.bcf'
-[146] Biber.pm:854> INFO - Using all citekeys in bib section 0
-[161] Biber.pm:3976> INFO - Processing section 0
-[171] Biber.pm:4136> INFO - Looking for bibtex format file 'own-bib.bib' for section 0
-[173] bibtex.pm:1500> INFO - LaTeX decoding ...
-[201] bibtex.pm:1316> INFO - Found BibTeX data source 'own-bib.bib'
-[202] Utils.pm:193> WARN - Duplicate entry key: 'dc97' in file 'own-bib.bib', skipping ...
-[202] Utils.pm:193> WARN - Duplicate entry key: 'dd3' in file 'own-bib.bib', skipping ...
-[304] Utils.pm:193> WARN - year field 'In press' in entry 'critical' is not an integer - this will probably not sort properly.
-[349] Utils.pm:193> WARN - BibTeX subsystem: warning: comma(s) at end of name (removing)
-[349] Utils.pm:193> WARN - BibTeX subsystem: author, warning: comma(s) at end of name (removing)
-[401] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'variable = shifted' with 'variable = non-ignorable'
-[401] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[402] Biber.pm:3804> INFO - Sorting list 'ymdnt/global//global/global' of type 'entry' with template 'ymdnt' and locale 'en-GB'
-[402] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-GB'
-[428] bbl.pm:617> INFO - Writing 'cv-llt.bbl' with encoding 'UTF-8'
-[452] bbl.pm:720> INFO - Output to cv-llt.bbl
-[452] Biber.pm:110> INFO - WARNINGS: 5
+[33] biber-darwin:313> INFO - === Wed Sep 30, 2020, 09:36:19
+[52] Biber.pm:371> INFO - Reading 'cv-llt.bcf'
+[134] Biber.pm:854> INFO - Using all citekeys in bib section 0
+[145] Biber.pm:3976> INFO - Processing section 0
+[154] Biber.pm:4136> INFO - Looking for bibtex format file 'own-bib.bib' for section 0
+[156] bibtex.pm:1500> INFO - LaTeX decoding ...
+[184] bibtex.pm:1316> INFO - Found BibTeX data source 'own-bib.bib'
+[185] Utils.pm:193> WARN - Duplicate entry key: 'dc97' in file 'own-bib.bib', skipping ...
+[186] Utils.pm:193> WARN - Duplicate entry key: 'dd3' in file 'own-bib.bib', skipping ...
+[291] Utils.pm:193> WARN - year field 'In press' in entry 'critical' is not an integer - this will probably not sort properly.
+[324] Utils.pm:193> WARN - BibTeX subsystem: warning: comma(s) at end of name (removing)
+[324] Utils.pm:193> WARN - BibTeX subsystem: author, warning: comma(s) at end of name (removing)
+[373] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'variable = shifted' with 'variable = non-ignorable'
+[373] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[373] Biber.pm:3804> INFO - Sorting list 'ymdnt/global//global/global' of type 'entry' with template 'ymdnt' and locale 'en-GB'
+[373] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-GB'
+[397] bbl.pm:617> INFO - Writing 'cv-llt.bbl' with encoding 'UTF-8'
+[421] bbl.pm:720> INFO - Output to cv-llt.bbl
+[421] Biber.pm:110> INFO - WARNINGS: 5

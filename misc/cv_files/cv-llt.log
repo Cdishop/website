@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  4 SEP 2020 12:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  30 SEP 2020 09:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1651,10 +1651,10 @@ Package logreq Info: Writing requests to 'cv-llt.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31060 strings out of 492649
- 593169 string characters out of 6129622
- 1142615 words of memory out of 5000000
- 34195 multiletter control sequences out of 15000+600000
+ 31087 strings out of 492649
+ 593522 string characters out of 6129622
+ 1143731 words of memory out of 5000000
+ 34221 multiletter control sequences out of 15000+600000
  130388 words of font info for 86 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  100i,11n,163p,1151b,7066s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1670,10 +1670,10 @@ xmf-dist/fonts/type1/public/fontawesome/FontAwesome.pfb></usr/local/texlive/201
 xlive/2018/texmf-dist/fonts/type1/public/fbb/fbb-Bold.pfb></usr/local/texlive/2
 018/texmf-dist/fonts/type1/public/fbb/fbb-Italic.pfb></usr/local/texlive/2018/t
 exmf-dist/fonts/type1/public/fbb/fbb-Regular.pfb>
-Output written on cv-llt.pdf (3 pages, 220300 bytes).
+Output written on cv-llt.pdf (3 pages, 220795 bytes).
 PDF statistics:
- 122 PDF objects out of 1000 (max. 8388607)
- 92 compressed objects within 1 object stream
- 33 named destinations out of 1000 (max. 500000)
+ 124 PDF objects out of 1000 (max. 8388607)
+ 94 compressed objects within 1 object stream
+ 34 named destinations out of 1000 (max. 500000)
  22136 words of extra memory for PDF output out of 24883 (max. 10000000)
 

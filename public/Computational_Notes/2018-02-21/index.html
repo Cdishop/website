@@ -578,7 +578,17 @@ git push -u origin master
 [enter credentials]
 
 git push</code></pre>
+<div id="route-2---no-keychain" class="section level2">
+<h2>Route 2 - No Keychain</h2>
+<p>You may not see a saved password in your keychain. If that’s the case, then you can allow your push to fail and then reset your credentials in the terminal.</p>
+<p>Clone, adjust, and then push a repository. After pushing, you will see a “fatal” error.</p>
+<p>Enter</p>
+<pre class="r"><code>git config --global user.email &quot;Your email&quot;
+
+git config --global user.name &quot;Your Name&quot;</code></pre>
+<p>Then push again. You will be asked for a username and password. All subsequent repository pushes should then be automatic.</p>
 <p>Bo<span class="math inline">\(^2\)</span>m =)</p>
+</div>
 
     </div>
 

@@ -263,7 +263,7 @@ time_vec&lt;/code&gt;&lt;/pre&gt;
 &lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
 
 
-&lt;p&gt;The Schelling model that I created in my last post used matrix operations. It required me to think in terms of patches housed in a matrix. Consider the following 3x3 grid.&lt;/p&gt;
+&lt;p&gt;The Schelling model that I created in my last script used matrix operations. It required me to think in terms of patches housed in a matrix. Consider the following 3x3 grid.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;##      [,1] [,2] [,3]
 ## [1,]    1    2    1
 ## [2,]    1    0    1
@@ -1217,7 +1217,7 @@ ex1_model &amp;lt;- sem(ex1_string, data = df)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;6 - 6 = 0&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex1_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 16 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 13 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -1239,7 +1239,7 @@ trust ~~ 0*availability
 
 ex1_model_restrict &amp;lt;- sem(ex1_string_restrict, data = df)
 show(ex1_model_restrict) # yup&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 17 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 16 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -1249,9 +1249,9 @@ show(ex1_model_restrict) # yup&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 0.284
+##   Test statistic                                 0.027
 ##   Degrees of freedom                                 1
-##   P-value (Chi-square)                           0.594&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.868&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;example-2---common-factor-underlying-6-observed-items&#34; class=&#34;section level1&#34;&gt;
@@ -1316,7 +1316,7 @@ ex2_model &amp;lt;- sem(ex2_string, data = df_cf)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;21 - 12 = 9&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex2_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 42 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 54 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -1326,9 +1326,9 @@ ex2_model &amp;lt;- sem(ex2_string, data = df_cf)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 5.920
+##   Test statistic                                10.821
 ##   Degrees of freedom                                 9
-##   P-value (Chi-square)                           0.748&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.288&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1406,7 +1406,7 @@ ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;15 - 13 = 2&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex3_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 165 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 197 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -1416,9 +1416,9 @@ ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 6.280
+##   Test statistic                                 6.623
 ##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.099&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.085&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Nope. I’m one off, where did I go wrong?&lt;/p&gt;
 &lt;p&gt;Ah, there is only 1 prediction error because productivity is being predicted. I counted 2 prediction errors because I gave one to both b1 and b2. So, the unknowns should be…&lt;/p&gt;
 &lt;ul&gt;
@@ -1436,7 +1436,7 @@ ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;15 - 12 = 3&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex3_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 165 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 197 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -1446,9 +1446,9 @@ ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 6.280
+##   Test statistic                                 6.623
 ##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.099&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.085&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1503,7 +1503,7 @@ ex4_model &amp;lt;- sem(ex4_string, data = df_chain)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;10 - 7 = 3&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex4_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 58 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 53 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -1513,9 +1513,9 @@ ex4_model &amp;lt;- sem(ex4_string, data = df_chain)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 1.551
+##   Test statistic                                 1.099
 ##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.671&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.777&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1592,7 +1592,7 @@ ex5_model &amp;lt;- sem(ex5_string, data = df5_wide)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;28 - 10 = 18&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex5_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 124 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 121 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -1603,9 +1603,9 @@ ex5_model &amp;lt;- sem(ex5_string, data = df5_wide)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                17.114
+##   Test statistic                                21.373
 ##   Degrees of freedom                                18
-##   P-value (Chi-square)                           0.515&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.261&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Why didn’t I estimate a mean for unobserved heterogeneity here? In all of the other examples I estimated the variance (1 parameter) and the mean (1 parameter) of the latent exogenous variable. In this case, unobserved heterogeneity is the latent exogenous variable but I only estimated its variance. That’s because in this model we don’t really care about the mean of unobserved heterogeneity, it’s just a latent variable that we incorporate to account for stable individual differences. In other words, when I estimate latent cog ability and assertiveness as IVs to predict an outcome, I care about their means. Here, unobserved heterogeneity is just an additional factor to account for, not a variable whose mean I really care to know. That said, if I wanted to estimate the mean of unobserved heterogeneity (which would result in one additional estimated parameter and one fewer df) then I would incorporate the following into the model string.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;&amp;#39;
 
@@ -4768,10 +4768,10 @@ SD
 A
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-23.84603
+21.00513
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-4.6517874
+2.910863
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -4779,10 +4779,10 @@ A
 B
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-24.28671
+23.27578
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-0.5029433
+5.013386
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -4790,10 +4790,10 @@ B
 C
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-22.69993
+24.56087
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-3.6629161
+2.263409
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -4839,13 +4839,13 @@ Team C
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-23.85 (4.65)
+21.01 (2.91)
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-24.29 (0.5)
+23.28 (5.01)
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-22.7 (3.66)
+24.56 (2.26)
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -5178,19 +5178,19 @@ df$id &amp;lt;- c(1:N)&lt;/code&gt;&lt;/pre&gt;
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -3.0137 -0.5603 -0.0141  0.5768  3.1925 
+## -2.4789 -0.5403  0.0095  0.5213  3.2168 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept) -0.05295    0.03856  -1.373     0.17    
-## x1           0.43685    0.03827  11.415   &amp;lt;2e-16 ***
-## x2           0.45193    0.03727  12.127   &amp;lt;2e-16 ***
+## (Intercept)  0.02138    0.03713   0.576    0.565    
+## x1           0.35510    0.03705   9.585   &amp;lt;2e-16 ***
+## x2           0.38420    0.03566  10.775   &amp;lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
 ## 
-## Residual standard error: 0.8613 on 497 degrees of freedom
-## Multiple R-squared:  0.3751, Adjusted R-squared:  0.3726 
-## F-statistic: 149.2 on 2 and 497 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+## Residual standard error: 0.8282 on 497 degrees of freedom
+## Multiple R-squared:  0.3226, Adjusted R-squared:  0.3199 
+## F-statistic: 118.4 on 2 and 497 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Here’s the kicker: you can think of those weights as optimal functions telling us how to create the composite.&lt;/p&gt;
 &lt;p&gt;Create a composite using the regression weights.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
@@ -5198,7 +5198,7 @@ df &amp;lt;- df %&amp;gt;%
   mutate(composite_x = 0.33*x1 + 0.4*x2)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Those weights provide the maximum correlation between our composite and the outcome.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cor(df$y, df$composite_x)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 0.6108328&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.5673049&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;In other words, the above correlation could not be higher with any other set of weights. Regression found the weights that makes the correlation above as large as it can be.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(lm(y ~ composite_x,
            data = df))&lt;/code&gt;&lt;/pre&gt;
@@ -5208,18 +5208,18 @@ df &amp;lt;- df %&amp;gt;%
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -2.9706 -0.5627  0.0112  0.5858  3.1678 
+## -2.4408 -0.5265  0.0191  0.5268  3.2003 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept) -0.05236    0.03858  -1.357    0.175    
-## composite_x  1.20726    0.07012  17.216   &amp;lt;2e-16 ***
+## (Intercept)  0.01950    0.03703   0.527    0.599    
+## composite_x  1.00657    0.06548  15.373   &amp;lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
 ## 
-## Residual standard error: 0.8618 on 498 degrees of freedom
-## Multiple R-squared:  0.3731, Adjusted R-squared:  0.3719 
-## F-statistic: 296.4 on 1 and 498 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+## Residual standard error: 0.8278 on 498 degrees of freedom
+## Multiple R-squared:  0.3218, Adjusted R-squared:  0.3205 
+## F-statistic: 236.3 on 1 and 498 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
 </description>
     </item>
@@ -6894,18 +6894,18 @@ sample_df &amp;lt;- df %&amp;gt;%
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -2.75693 -0.67108 -0.01385  0.65328  2.74911 
+## -2.70904 -0.70353  0.01858  0.64438  3.07162 
 ## 
 ## Coefficients:
-##              Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept) -0.067203   0.039605  -1.697   0.0902 .  
-## stress       0.441306   0.007831  56.351   &amp;lt;2e-16 ***
+##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
+## (Intercept) 0.009443   0.041027    0.23    0.818    
+## stress      0.432981   0.008139   53.20   &amp;lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
 ## 
-## Residual standard error: 0.9693 on 598 degrees of freedom
-## Multiple R-squared:  0.8415, Adjusted R-squared:  0.8413 
-## F-statistic:  3175 on 1 and 598 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+## Residual standard error: 1.004 on 598 degrees of freedom
+## Multiple R-squared:  0.8256, Adjusted R-squared:  0.8253 
+## F-statistic:  2830 on 1 and 598 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;b-compute-the-ci&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;2b) Compute the CI&lt;/h3&gt;
@@ -6930,7 +6930,7 @@ if(se_lower &amp;lt;= stress_performance_coefficient &amp;amp;&amp;amp; se_upper
 }
 
 contain_parameter&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;yes&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;no&amp;quot;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;What did we do? We sampled the population, ran a regression to relate stress to performance, and then calculated a CI on the slope term. The interpretation of a CI, however, is across infinite samples. Now we need to run through the sample, regress, and calculate CI procedure again and again and again – Monte Carlo.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;re-sample-and-repeat&#34; class=&#34;section level3&#34;&gt;
@@ -6955,7 +6955,7 @@ for(i in 1:sims){
 &lt;h3&gt;Interpretation&lt;/h3&gt;
 &lt;p&gt;How many computed intervals contain the population parameter?&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sum(all_ci_contains == &amp;#39;yes&amp;#39;) / sims&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 0.9488889&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.9466667&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 </description>
     </item>
@@ -7378,15 +7378,15 @@ mini &amp;lt;- dish %&amp;gt;%
 mini[mini$person == &amp;#39;jimmy&amp;#39;, 2] &amp;lt;- 99
 mini[mini$person == &amp;#39;james&amp;#39;, 2] &amp;lt;- 99&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The original data:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;##   person        v_1       v_2      v_3      v_4
-## 1  jimmy -1.0914549  8.296709 48.31316  8.03264
-## 2  james  1.5347009 10.602395 37.12063 22.79315
-## 3 johnny -0.3131231 13.828188 28.98519 28.62864&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   person         v_1       v_2      v_3      v_4
+## 1  jimmy -0.43257483 11.567321 55.11768 18.90967
+## 2  james -0.02258931  5.346487 52.95132 19.09466
+## 3 johnny  0.30388097  9.959681 43.46922 36.63362&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;What we changed it to:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;##   person        v_1       v_2
-## 1  jimmy 99.0000000  8.296709
-## 2  james 99.0000000 10.602395
-## 3 johnny -0.3131231 13.828188&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   person       v_1       v_2
+## 1  jimmy 99.000000 11.567321
+## 2  james 99.000000  5.346487
+## 3 johnny  0.303881  9.959681&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Here is the function equivalent:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;impute_99 &amp;lt;- function(data){
   
@@ -7404,10 +7404,10 @@ mini[mini$person == &amp;#39;james&amp;#39;, 2] &amp;lt;- 99&lt;/code&gt;&lt;/pr
 &lt;p&gt;Our result:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;adjusted_data &amp;lt;- impute_99(dish)
 adjusted_data&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##   person        v_1       v_2
-## 1  jimmy 99.0000000  8.296709
-## 2  james 99.0000000 10.602395
-## 3 johnny -0.3131231 13.828188&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   person       v_1       v_2
+## 1  jimmy 99.000000 11.567321
+## 2  james 99.000000  5.346487
+## 3 johnny  0.303881  9.959681&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;function-with-column-names-as-parameters&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Function with column names as parameters&lt;/h1&gt;
@@ -7428,10 +7428,10 @@ adjusted_data&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Fortunately the correction is simple, just put quotes around the column names:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cool_data &amp;lt;- impute_99_column_specific(dish, &amp;#39;v_1&amp;#39;, &amp;#39;v_2&amp;#39;)
 cool_data&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##   person        v_1       v_2
-## 1  jimmy 99.0000000  8.296709
-## 2  james 99.0000000 10.602395
-## 3 johnny -0.3131231 13.828188&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   person       v_1       v_2
+## 1  jimmy 99.000000 11.567321
+## 2  james 99.000000  5.346487
+## 3 johnny  0.303881  9.959681&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
 &lt;/div&gt;
 </description>
@@ -9414,7 +9414,7 @@ agent[[1]][1] &amp;lt;- initial_sdo_value
 
 agent&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## $SDO
-## [1] 94.19546
+## [1] 111.0397
 ## 
 ## $Peeps
 ## NULL&lt;/code&gt;&lt;/pre&gt;
@@ -9456,10 +9456,10 @@ agent$Peeps &amp;lt;- c(agent$Peeps, other)
 
 agent&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## $SDO
-## [1] 94.19546 79.19546
+## [1] 111.0397 114.0397
 ## 
 ## $Peeps
-## [1] 95.57113&lt;/code&gt;&lt;/pre&gt;
+## [1] 123.782&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;the-full-model&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;The Full Model&lt;/h1&gt;
@@ -9632,7 +9632,17 @@ git push -u origin master
 [enter credentials]
 
 git push&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;route-2---no-keychain&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Route 2 - No Keychain&lt;/h2&gt;
+&lt;p&gt;You may not see a saved password in your keychain. If that’s the case, then you can allow your push to fail and then reset your credentials in the terminal.&lt;/p&gt;
+&lt;p&gt;Clone, adjust, and then push a repository. After pushing, you will see a “fatal” error.&lt;/p&gt;
+&lt;p&gt;Enter&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;git config --global user.email &amp;quot;Your email&amp;quot;
+
+git config --global user.name &amp;quot;Your Name&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then push again. You will be asked for a username and password. All subsequent repository pushes should then be automatic.&lt;/p&gt;
 &lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
+&lt;/div&gt;
 </description>
     </item>
     

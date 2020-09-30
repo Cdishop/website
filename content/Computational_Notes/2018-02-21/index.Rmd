@@ -72,5 +72,23 @@ git push
 
 ```
 
+## Route 2 - No Keychain
+
+You may not see a saved password in your keychain. If that's the case, then you can allow your push to fail and then reset your credentials in the terminal.
+
+Clone, adjust, and then push a repository. After pushing, you will see a "fatal" error.
+
+Enter
+
+```{r, eval = F}
+
+git config --global user.email "Your email"
+
+git config --global user.name "Your Name"
+
+
+```
+
+Then push again. You will be asked for a username and password. All subsequent repository pushes should then be automatic. 
 
 Bo$^2$m =)

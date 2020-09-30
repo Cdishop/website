@@ -73,7 +73,7 @@ get_neigh <- function(xy){
 ```
 
 
-The Schelling model that I created in my last post used matrix operations. It required me to think in terms of patches housed in a matrix. Consider the following 3x3 grid.
+The Schelling model that I created in my last script used matrix operations. It required me to think in terms of patches housed in a matrix. Consider the following 3x3 grid.
 
 ```{r, echo = F, cache = T}
 

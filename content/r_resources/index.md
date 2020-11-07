@@ -17,6 +17,8 @@
 
 [UVA Data Science Resources](https://data.library.virginia.edu/statlab/data-science-resources/)
 
+[Learning-R-Resources](https://github.com/Joscelinrocha/Learning-R-Resources)
+
 ### People with helpful individual websites
 
 [Emily C. Zabor](https://www.emilyzabor.com/tutorials/rmarkdown_websites_tutorial.html)
@@ -82,6 +84,8 @@
 [Probability and Statistics with Simulations](https://github.com/jrgant/prob-stats)
 
 [Penn State Quant Developmental Systems](https://quantdev.ssri.psu.edu/resources)
+
+[UO Psych R Bootcamp](https://uopsych-r-bootcamp-2020.netlify.app/)
 
 ### Random
 
@@ -169,6 +173,10 @@
 
 [Learning Statistics with R](https://learningstatisticswithr.com/)
 
+[Data Analysis and Visualization in R for Ecologists](https://datacarpentry.org/R-ecology-lesson/index.html)
+
+[Statistics: The Story of Numbers](https://aupsychology.github.io/statsbook/)
+
 [R for Data Science](https://r4ds.had.co.nz)
 
 [Beginning Computer Science with R](https://homerhanumat.github.io/r-notes/index.html)
@@ -178,6 +186,8 @@
 [Intro to Quant Methods](https://bookdown.org/ejvanholm/Textbook/)
 
 [Introduction to Data Science](https://rafalab.github.io/dsbook/)
+
+[Introduction to Data Science at Edinburgh](https://www.introds.org/)
 
 [Introduction to Computational Data for Biology](https://biol607.github.io/schedule.html)
 

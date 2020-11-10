@@ -1085,545 +1085,10 @@ r_{sim_{hockey}} = \dfrac{n_{hockey}}{n_{neighbors}}
     </item>
     
     <item>
-      <title>Host Multiple Pages on GitHub</title>
-      <link>https://christopherdishop.netlify.app/computational_notes/2020-08-02/</link>
-      <pubDate>Sun, 02 Aug 2020 00:00:00 +0000</pubDate>
-      <guid>https://christopherdishop.netlify.app/computational_notes/2020-08-02/</guid>
-      <description>
-
-
-&lt;p&gt;GitHub allows you to host one static website per repository. Here’s how to do it:&lt;/p&gt;
-&lt;p&gt;Steps:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Create a repository&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Create a ‘gh-pages’ branch&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/content/Computational_Notes/github_images/ghpages.png&#34; width=&#34;500&#34; /&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Make the ‘gh-pages’ branch your default&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/content/Computational_Notes/github_images/default.png&#34; width=&#34;500&#34; /&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Delete the old ‘master’ branch&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Clone the repo to your local computer&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Create an index using whatever source-code you prefer&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/content/Computational_Notes/github_images/index.png&#34; width=&#34;500&#34; /&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Commit and push the files&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;GitHub will automatically render the site after a few moments&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Anonymous Push on GitHub</title>
-      <link>https://christopherdishop.netlify.app/computational_notes/2020-08-01/</link>
-      <pubDate>Sat, 01 Aug 2020 00:00:00 +0000</pubDate>
-      <guid>https://christopherdishop.netlify.app/computational_notes/2020-08-01/</guid>
-      <description>
-
-
-&lt;p&gt;Quick note on cloning, committing, and pushing anonymously on GitHub.&lt;/p&gt;
-&lt;p&gt;Steps:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Create an anonymous account and repo on GitHub&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Clone repo to local computer&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Navigate to it&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Configure anonymous username and email&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;git add .
-git commit -m &amp;quot;initial commit&amp;quot;
-git pull&lt;/code&gt;&lt;/pre&gt;
-&lt;ul&gt;
-&lt;li&gt;Push using full specification&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# replace username, password, and repository:
-
-git push &amp;#39;https://username:password@github.com/username/repository.git&amp;#39;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Counting Degrees of Freedom</title>
-      <link>https://christopherdishop.netlify.app/computational_notes/2017-07-13-dfs/</link>
-      <pubDate>Wed, 27 May 2020 00:00:00 +0000</pubDate>
-      <guid>https://christopherdishop.netlify.app/computational_notes/2017-07-13-dfs/</guid>
-      <description>
-
-
-&lt;p&gt;This post contains a bunch of examples where I practice counting dfs. In each example, I generate the data, estimate the parameters using SEM, count the dfs, and then compare my count to what the model spits back. To count dfs, I need to know the number of knowns and unknowns in my system:&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{equation}
-\textrm{DFs} = \textrm{knowns - unknowns}
-\end{equation}\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;To count the number of knowns, I need to know the number of observed variables, &lt;em&gt;p&lt;/em&gt;:&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{equation}
-\textrm{knowns} = p*(p+1) / 2
-\end{equation}\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;To count the number of unknowns, I count the number of parameters that my model estimates. Now for the examples.&lt;/p&gt;
-&lt;div id=&#34;example-1---trust-and-availability-cause-helping&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Example 1 - Trust and availability cause helping&lt;/h1&gt;
-&lt;div id=&#34;dgp&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;DGP&lt;/h3&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;people &amp;lt;- 400
-trust &amp;lt;- rnorm(people, 40, 2)
-availability &amp;lt;- rnorm(people, 20, 5)
-error &amp;lt;- rnorm(people, 0, 2)
-
-helping &amp;lt;- 3 + 0.2*trust + 0.7*availability + error&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;sem&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;SEM&lt;/h3&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
-library(lavaan)
-
-df &amp;lt;- data.frame(
-  &amp;#39;id&amp;#39; = c(1:people),
-  &amp;#39;trust&amp;#39; = c(trust),
-  &amp;#39;availability&amp;#39; = c(availability),
-  &amp;#39;helping&amp;#39; = c(helping)
-)
-
-ex1_string &amp;lt;- &amp;#39;
-
-helping ~ b1*trust + b2*availability
-
-&amp;#39;
-
-ex1_model &amp;lt;- sem(ex1_string, data = df)&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;count-dfs&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Count dfs&lt;/h1&gt;
-&lt;div id=&#34;knowns-count-the-observed-variables&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;Knowns (count the observed variables)&lt;/h4&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# p*(p + 1) / 2
-
-3*(3+1) / 2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 6&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;unknowns-count-the-estimated-parameters&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;Unknowns (count the estimated parameters)&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;1 for b1&lt;/li&gt;
-&lt;li&gt;1 for b2&lt;/li&gt;
-&lt;li&gt;1 for the variance of trust&lt;/li&gt;
-&lt;li&gt;1 for the variance of availability&lt;/li&gt;
-&lt;li&gt;1 for the covariance of trust and availability&lt;/li&gt;
-&lt;li&gt;1 for the prediction error on helping&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;total = 6&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;6 - 6 = 0&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex1_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 13 iterations
-## 
-##   Estimator                                         ML
-##   Optimization method                           NLMINB
-##   Number of free parameters                          3
-##                                                       
-##   Number of observations                           400
-##                                                       
-## Model Test User Model:
-##                                                       
-##   Test statistic                                 0.000
-##   Degrees of freedom                                 0&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Now if I restrict the covariance of trust and availability to be zero I should have 1 df&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ex1_string_restrict &amp;lt;- &amp;#39;
-
-helping ~ b1*trust + b2*availability
-trust ~~ 0*availability
-
-&amp;#39;
-
-ex1_model_restrict &amp;lt;- sem(ex1_string_restrict, data = df)
-show(ex1_model_restrict) # yup&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 17 iterations
-## 
-##   Estimator                                         ML
-##   Optimization method                           NLMINB
-##   Number of free parameters                          5
-##                                                       
-##   Number of observations                           400
-##                                                       
-## Model Test User Model:
-##                                                       
-##   Test statistic                                 0.025
-##   Degrees of freedom                                 1
-##   P-value (Chi-square)                           0.874&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;example-2---common-factor-underlying-6-observed-items&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Example 2 - Common factor underlying 6 observed items&lt;/h1&gt;
-&lt;div id=&#34;dgp-1&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;DGP&lt;/h3&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;common_factor &amp;lt;- rnorm(people, 30, 2)
-error_cf &amp;lt;- rnorm(people, 0, 2)
-item1 &amp;lt;- 0.35*common_factor + error_cf
-item2 &amp;lt;- 0.22*common_factor + error_cf
-item3 &amp;lt;- 0.18*common_factor + error_cf
-item4 &amp;lt;- 0.24*common_factor + error_cf
-item5 &amp;lt;- 0.31*common_factor + error_cf
-item6 &amp;lt;- 0.44*common_factor + error_cf
-
-# nope, that approach is wrong. If I do above then my errors are not independent
-# prediction errors (in this case measurement) should be independent
-
-item1 &amp;lt;- 0.35*common_factor + rnorm(people, 0, 2)
-item2 &amp;lt;- 0.22*common_factor + rnorm(people, 0, 2)
-item3 &amp;lt;- 0.18*common_factor + rnorm(people, 0, 2)
-item4 &amp;lt;- 0.24*common_factor + rnorm(people, 0, 2)
-item5 &amp;lt;- 0.31*common_factor + rnorm(people, 0, 2)
-item6 &amp;lt;- 0.44*common_factor + rnorm(people, 0, 2)
-
-df_cf &amp;lt;- data.frame(
-  &amp;#39;id&amp;#39; = c(1:people),
-  &amp;#39;item1&amp;#39; = c(item1),
-  &amp;#39;item2&amp;#39; = c(item2),
-  &amp;#39;item3&amp;#39; = c(item3),
-  &amp;#39;item4&amp;#39; = c(item4),
-  &amp;#39;item5&amp;#39; = c(item5),
-  &amp;#39;item6&amp;#39; = c(item6)
-)&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;sem-1&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;SEM&lt;/h3&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ex2_string &amp;lt;- &amp;#39;
-
-com_factor =~ 1*item1 + fl2*item2 + fl3*item3 + fl4*item4 + fl5*item5 + fl6*item6
-&amp;#39;
-
-ex2_model &amp;lt;- sem(ex2_string, data = df_cf)&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;count-dfs-1&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Count dfs&lt;/h3&gt;
-&lt;div id=&#34;knowns-count-the-observed-variables-1&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;knowns (count the observed variables)&lt;/h4&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# p*(p + 1) / 2
-
-6*(6 + 1) / 2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 21&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;unknowns-count-the-estimated-parameters-1&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;unknowns (count the estimated parameters)&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;6 factor loadings, but I constrained the first one to be 1 (I have to to estimate the latent variable), so 5 parameters&lt;/li&gt;
-&lt;li&gt;5 measurement errors for the 5 factor loadings&lt;/li&gt;
-&lt;li&gt;1 variance for the latent exogenous variable&lt;/li&gt;
-&lt;li&gt;1 mean for the latent exogenous variable&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;total = 12&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;21 - 12 = 9&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex2_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 61 iterations
-## 
-##   Estimator                                         ML
-##   Optimization method                           NLMINB
-##   Number of free parameters                         12
-##                                                       
-##   Number of observations                           400
-##                                                       
-## Model Test User Model:
-##                                                       
-##   Test statistic                                 8.261
-##   Degrees of freedom                                 9
-##   P-value (Chi-square)                           0.508&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;example-3---two-latent-variables-predict-one-observed-outcome&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Example 3 - Two latent variables predict one observed outcome&lt;/h1&gt;
-&lt;p&gt;Cognitive ability (latent variable 1) and assertiveness (latent variable 2) predict productivity. Cognitive ability and assertiveness are both captured with 2 manifest items/variables.&lt;/p&gt;
-&lt;div id=&#34;dgp-2&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;DGP&lt;/h3&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# cog ability (latent exogenous variable 1)
-cog_ability &amp;lt;- rnorm(people, 100, 15)
-ca_item1 &amp;lt;- 0.78*cog_ability + rnorm(people, 0, 1)
-ca_item2 &amp;lt;- 0.11*cog_ability + rnorm(people, 0, 1)
-
-# assertiveness (latent exogenous variable 2)
-assertive &amp;lt;- rnorm(people, 30, 8)
-ass_item1 &amp;lt;- 0.81*assertive + rnorm(people, 0, 1)
-ass_item2 &amp;lt;- 0.34*assertive + rnorm(people, 0, 1)
-
-# productivity (observed outcome)
-
-productivity &amp;lt;- 0.55*cog_ability + 0.82*assertive + rnorm(people, 0, 5)
-
-# data
-
-df_3 &amp;lt;- data.frame(
-  &amp;#39;id&amp;#39; = c(1:people),
-  &amp;#39;ca_item1&amp;#39; = c(ca_item1),
-  &amp;#39;ca_item2&amp;#39; = c(ca_item2),
-  &amp;#39;ass_item1&amp;#39; = c(ass_item1),
-  &amp;#39;ass_item2&amp;#39; = c(ass_item2),
-  &amp;#39;productivity&amp;#39; = c(productivity)
-  
-  )&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;sem-2&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;SEM&lt;/h3&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ex3_string &amp;lt;- &amp;#39;
-
-cog_ability =~ 1*ca_item1 + fl2*ca_item2
-assertiveness =~ 1*ass_item1 + fla*ass_item2
-
-cog_ability ~~ cog_ability
-assertiveness ~~ assertiveness
-cog_ability ~~ assertiveness
-
-productivity ~ b1*cog_ability + b2*assertiveness
-
-&amp;#39;
-
-ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;count-dfs-2&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Count dfs&lt;/h3&gt;
-&lt;div id=&#34;knowns-count-the-observed-variables-2&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;knowns (count the observed variables)&lt;/h4&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# p*(p+1) / 2
-
-5*(5+1) / 2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 15&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;unknowns-count-the-estimated-parameters-2&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;unknowns (count the estimated parameters)&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;4 factor loadings but I constrained 2 of them, so 2 factor loadings&lt;/li&gt;
-&lt;li&gt;2 measurement errors (4 items, but constrained 2 of them)&lt;/li&gt;
-&lt;li&gt;1 variance on cog ability&lt;/li&gt;
-&lt;li&gt;1 mean on cog ability&lt;/li&gt;
-&lt;li&gt;1 variance on assertiveness&lt;/li&gt;
-&lt;li&gt;1 mean on assertiveness&lt;/li&gt;
-&lt;li&gt;1 covariance among cog ability and assertiveness&lt;/li&gt;
-&lt;li&gt;b1&lt;/li&gt;
-&lt;li&gt;b2&lt;/li&gt;
-&lt;li&gt;2 prediction errors&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;total = 13&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;15 - 13 = 2&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex3_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 155 iterations
-## 
-##   Estimator                                         ML
-##   Optimization method                           NLMINB
-##   Number of free parameters                         12
-##                                                       
-##   Number of observations                           400
-##                                                       
-## Model Test User Model:
-##                                                       
-##   Test statistic                                 4.615
-##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.202&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Nope. I’m one off, where did I go wrong?&lt;/p&gt;
-&lt;p&gt;Ah, there is only 1 prediction error because productivity is being predicted. I counted 2 prediction errors because I gave one to both b1 and b2. So, the unknowns should be…&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;4 factor loadings but I constrained 2 of them, so 2 factor loadings&lt;/li&gt;
-&lt;li&gt;2 measurement errors (4 items, but constrained 2 of them)&lt;/li&gt;
-&lt;li&gt;1 variance on cog ability&lt;/li&gt;
-&lt;li&gt;1 mean on cog ability&lt;/li&gt;
-&lt;li&gt;1 variance on assertiveness&lt;/li&gt;
-&lt;li&gt;1 mean on assertiveness&lt;/li&gt;
-&lt;li&gt;1 covariance among cog ability and assertiveness&lt;/li&gt;
-&lt;li&gt;b1&lt;/li&gt;
-&lt;li&gt;b2&lt;/li&gt;
-&lt;li&gt;1 prediction error&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;total = 12&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;15 - 12 = 3&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex3_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 155 iterations
-## 
-##   Estimator                                         ML
-##   Optimization method                           NLMINB
-##   Number of free parameters                         12
-##                                                       
-##   Number of observations                           400
-##                                                       
-## Model Test User Model:
-##                                                       
-##   Test statistic                                 4.615
-##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.202&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;example-4---a-causes-b-which-causes-c-which-causes-d&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Example 4 - a causes b, which causes c, which causes d&lt;/h1&gt;
-&lt;div id=&#34;dgp-3&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;DGP&lt;/h3&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;a &amp;lt;- rnorm(people, 300, 3)
-b &amp;lt;- 0.67*a + rnorm(people, 0, 1)
-c &amp;lt;- 0.99*b + rnorm(people, 0, 10)
-d &amp;lt;- 4 + 4*c + rnorm(people, 0, 4)
-
-df_chain &amp;lt;- data.frame(
-  &amp;#39;id&amp;#39; = c(1:people),
-  &amp;#39;a&amp;#39; = c(a),
-  &amp;#39;b&amp;#39; = c(b),
-  &amp;#39;c&amp;#39; = c(c),
-  &amp;#39;d&amp;#39; = c(d)
-)&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;sem-3&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;SEM&lt;/h3&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ex4_string &amp;lt;- &amp;#39;
-
-b ~ b1*a
-c ~ b2*b
-d ~ b3*c
-
-a ~~ a
-
-&amp;#39;
-
-ex4_model &amp;lt;- sem(ex4_string, data = df_chain)&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;count-dfs-3&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Count dfs&lt;/h3&gt;
-&lt;div id=&#34;knowns-count-the-observed-variables-3&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;knowns (count the observed variables)&lt;/h4&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# p*(p+1) / 2
-4*(4+1) / 2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 10&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;unknowns-count-the-estimated-parameters-3&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;unknowns (count the estimated parameters)&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;b1&lt;/li&gt;
-&lt;li&gt;b2&lt;/li&gt;
-&lt;li&gt;b3&lt;/li&gt;
-&lt;li&gt;3 prediction errors&lt;/li&gt;
-&lt;li&gt;1 variance for the lone exogenous variable (a)&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;total = 7&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;10 - 7 = 3&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex4_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 61 iterations
-## 
-##   Estimator                                         ML
-##   Optimization method                           NLMINB
-##   Number of free parameters                          7
-##                                                       
-##   Number of observations                           400
-##                                                       
-## Model Test User Model:
-##                                                       
-##   Test statistic                                 1.149
-##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.765&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;example-5---observed-affect-over-7-time-points&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Example 5 - Observed affect over 7 time points&lt;/h1&gt;
-&lt;div id=&#34;dgp-4&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;DGP&lt;/h3&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;time &amp;lt;- 7
-affect_store &amp;lt;- matrix(, ncol = 3, nrow = time*people)
-count &amp;lt;- 0
-for(i in 1:people){
-  
-  unob_het &amp;lt;- rnorm(1, 0, 3)
-  
-  for(j in 1:time){
-    count &amp;lt;- count + 1
-    
-    if(j == 1){
-      affect_store[count, 1] &amp;lt;- i
-      affect_store[count, 2] &amp;lt;- j
-      affect_store[count, 3] &amp;lt;- unob_het + 50 + rnorm(1, 0, 1)
-    }else{
-      affect_store[count, 1] &amp;lt;- i
-      affect_store[count, 2] &amp;lt;- j
-      affect_store[count, 3] &amp;lt;- 0.8*affect_store[count - 1, 3] + unob_het + rnorm(1, 0, 1)
-      
-    }
-  }
-  
-}
-df5 &amp;lt;- data.frame(affect_store)
-names(df5) &amp;lt;- c(&amp;#39;id&amp;#39;, &amp;#39;time&amp;#39;, &amp;#39;affect&amp;#39;)
-library(reshape2)
-df5_wide &amp;lt;- reshape(df5, idvar = &amp;#39;id&amp;#39;, timevar = &amp;#39;time&amp;#39;, direction = &amp;#39;wide&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;sem-4&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;SEM&lt;/h3&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ex5_string &amp;lt;- &amp;#39;
-
-unob_het =~ 1*affect.2 + 1*affect.3 + 1*affect.4 + 1*affect.5 + 1*affect.6 + 1*affect.7
-
-affect.2 ~ ar*affect.1
-affect.3 ~ ar*affect.2
-affect.4 ~ ar*affect.3
-affect.5 ~ ar*affect.4
-affect.6 ~ ar*affect.5
-affect.7 ~ ar*affect.6
-
-affect.1 ~~ affect.1
-unob_het ~~ unob_het
-affect.1 ~~ unob_het
-
-&amp;#39;
-
-ex5_model &amp;lt;- sem(ex5_string, data = df5_wide)&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;count-dfs-4&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Count dfs&lt;/h3&gt;
-&lt;div id=&#34;knowns-count-the-observed-variables-4&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;knowns (count the observed variables)&lt;/h4&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# p*(p+1) / 2
-7*(7+1) / 2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 28&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;unknowns-count-the-estimated-parameters-4&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;unknowns (count the estimated parameters)&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;ar is 1 estimated parameter&lt;/li&gt;
-&lt;li&gt;1 variance of unobserved heterogeneity&lt;/li&gt;
-&lt;li&gt;1 variance of affect.1&lt;/li&gt;
-&lt;li&gt;1 covariance among affect.1 and unobserved heterogeneity&lt;/li&gt;
-&lt;li&gt;6 prediction errors&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;total = 10&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;28 - 10 = 18&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex5_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 115 iterations
-## 
-##   Estimator                                         ML
-##   Optimization method                           NLMINB
-##   Number of free parameters                         15
-##   Number of equality constraints                     5
-##                                                       
-##   Number of observations                           400
-##                                                       
-## Model Test User Model:
-##                                                       
-##   Test statistic                                19.233
-##   Degrees of freedom                                18
-##   P-value (Chi-square)                           0.378&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Why didn’t I estimate a mean for unobserved heterogeneity here? In all of the other examples I estimated the variance (1 parameter) and the mean (1 parameter) of the latent exogenous variable. In this case, unobserved heterogeneity is the latent exogenous variable but I only estimated its variance. That’s because in this model we don’t really care about the mean of unobserved heterogeneity, it’s just a latent variable that we incorporate to account for stable individual differences. In other words, when I estimate latent cog ability and assertiveness as IVs to predict an outcome, I care about their means. Here, unobserved heterogeneity is just an additional factor to account for, not a variable whose mean I really care to know. That said, if I wanted to estimate the mean of unobserved heterogeneity (which would result in one additional estimated parameter and one fewer df) then I would incorporate the following into the model string.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;&amp;#39;
-
-unob_het ~ 1 # lavaan code for estimating the mean of a latent variable
-
-&amp;#39;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Bivariate Latent Dual Change Model</title>
-      <link>https://christopherdishop.netlify.app/computational_notes/2020-05-26/</link>
-      <pubDate>Tue, 26 May 2020 00:00:00 +0000</pubDate>
-      <guid>https://christopherdishop.netlify.app/computational_notes/2020-05-26/</guid>
+      <link>https://christopherdishop.netlify.app/computational_notes/2020-08-10/</link>
+      <pubDate>Mon, 10 Aug 2020 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2020-08-10/</guid>
       <description>
 
 
@@ -1702,7 +1167,7 @@ ggplot(df, aes(x = time, y = y, group = id)) +
   geom_line(color = &amp;#39;grey85&amp;#39;) + 
   geom_point(data = df_sample, aes(x = time, y = y, group = id)) + 
   geom_line(data = df_sample, aes(x = time, y = y, group = id))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-05-26/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-08-10/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Values of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; over time.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot_single_response &amp;lt;- function(y_axis){
   
@@ -1716,7 +1181,7 @@ ggplot(df, aes(x = time, y = y, group = id)) +
 }
 
 plot_single_response(quo(x))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-05-26/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-08-10/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Three randomly selected individuals with &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; plotted simultaneously.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;three_cases &amp;lt;- df %&amp;gt;%
   filter(id == 4 | id == 500 | id == 322) %&amp;gt;%
@@ -1726,7 +1191,7 @@ ggplot(three_cases, aes(x = time, y = response, color = variable)) +
   geom_point() + 
   geom_line() + 
   facet_wrap(~id)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-05-26/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-08-10/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;dual-change-model-on-y&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Dual Change Model on Y&lt;/h1&gt;
@@ -1839,7 +1304,7 @@ cy5 ~~ 0*cy6
 
 dc_y_model &amp;lt;- sem(dual_change_y_string, data = df_wide_y)
 summary(dc_y_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 57 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 58 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -1850,40 +1315,40 @@ summary(dc_y_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                              6389.847
+##   Test statistic                              6013.624
 ##   Degrees of freedom                                20
 ##   P-value (Chi-square)                           0.000
 ## 
 ## Model Test Baseline Model:
 ## 
-##   Test statistic                              8286.339
+##   Test statistic                              7894.574
 ##   Degrees of freedom                                15
 ##   P-value                                        0.000
 ## 
 ## User Model versus Baseline Model:
 ## 
-##   Comparative Fit Index (CFI)                    0.230
-##   Tucker-Lewis Index (TLI)                       0.422
+##   Comparative Fit Index (CFI)                    0.239
+##   Tucker-Lewis Index (TLI)                       0.430
 ## 
 ## Loglikelihood and Information Criteria:
 ## 
-##   Loglikelihood user model (H0)             -11708.642
-##   Loglikelihood unrestricted model (H1)      -8513.718
+##   Loglikelihood user model (H0)             -11419.008
+##   Loglikelihood unrestricted model (H1)      -8412.196
 ##                                                       
-##   Akaike (AIC)                               23431.283
-##   Bayesian (BIC)                             23463.141
-##   Sample-size adjusted Bayesian (BIC)        23440.914
+##   Akaike (AIC)                               22852.015
+##   Bayesian (BIC)                             22883.873
+##   Sample-size adjusted Bayesian (BIC)        22861.647
 ## 
 ## Root Mean Square Error of Approximation:
 ## 
-##   RMSEA                                          0.675
-##   90 Percent confidence interval - lower         0.661
-##   90 Percent confidence interval - upper         0.688
+##   RMSEA                                          0.654
+##   90 Percent confidence interval - lower         0.640
+##   90 Percent confidence interval - upper         0.668
 ##   P-value RMSEA &amp;lt;= 0.05                          0.000
 ## 
 ## Standardized Root Mean Square Residual:
 ## 
-##   SRMR                                           2.363
+##   SRMR                                           2.155
 ## 
 ## Parameter Estimates:
 ## 
@@ -1937,20 +1402,20 @@ summary(dc_y_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ##   ly6 ~                                               
 ##     ly5               1.000                           
 ##   cy2 ~                                               
-##     ly1     (prop)    0.250    0.019   13.327    0.000
+##     ly1     (prop)    0.357    0.020   17.489    0.000
 ##   cy3 ~                                               
-##     ly2     (prop)    0.250    0.019   13.327    0.000
+##     ly2     (prop)    0.357    0.020   17.489    0.000
 ##   cy4 ~                                               
-##     ly3     (prop)    0.250    0.019   13.327    0.000
+##     ly3     (prop)    0.357    0.020   17.489    0.000
 ##   cy5 ~                                               
-##     ly4     (prop)    0.250    0.019   13.327    0.000
+##     ly4     (prop)    0.357    0.020   17.489    0.000
 ##   cy6 ~                                               
-##     ly5     (prop)    0.250    0.019   13.327    0.000
+##     ly5     (prop)    0.357    0.020   17.489    0.000
 ## 
 ## Covariances:
 ##                    Estimate  Std.Err  z-value  P(&amp;gt;|z|)
 ##   l_intercept ~~                                      
-##     l_slope          -1.394    0.223   -6.256    0.000
+##     l_slope          -2.441    0.242  -10.076    0.000
 ##  .cy2 ~~                                              
 ##    .cy3               0.000                           
 ##    .cy4               0.000                           
@@ -1968,8 +1433,8 @@ summary(dc_y_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ## 
 ## Intercepts:
 ##                    Estimate  Std.Err  z-value  P(&amp;gt;|z|)
-##     l_slope          -3.285    0.213  -15.445    0.000
-##     l_intercept      11.707    0.114  102.723    0.000
+##     l_slope          -4.362    0.222  -19.637    0.000
+##     l_intercept      11.318    0.114   99.667    0.000
 ##    .ly1               0.000                           
 ##    .ly2               0.000                           
 ##    .ly3               0.000                           
@@ -1990,8 +1455,8 @@ summary(dc_y_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ## 
 ## Variances:
 ##                    Estimate  Std.Err  z-value  P(&amp;gt;|z|)
-##     l_ntrcp           5.916    0.485   12.193    0.000
-##     l_slope           2.273    0.201   11.307    0.000
+##     l_ntrcp           6.500    0.478   13.586    0.000
+##     l_slope           2.050    0.148   13.872    0.000
 ##    .ly1               0.000                           
 ##    .ly2               0.000                           
 ##    .ly3               0.000                           
@@ -2003,12 +1468,12 @@ summary(dc_y_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ##    .cy4               0.000                           
 ##    .cy5               0.000                           
 ##    .cy6               0.000                           
-##    .y.1     (rs_v)    7.123    0.190   37.417    0.000
-##    .y.2     (rs_v)    7.123    0.190   37.417    0.000
-##    .y.3     (rs_v)    7.123    0.190   37.417    0.000
-##    .y.4     (rs_v)    7.123    0.190   37.417    0.000
-##    .y.5     (rs_v)    7.123    0.190   37.417    0.000
-##    .y.6     (rs_v)    7.123    0.190   37.417    0.000&lt;/code&gt;&lt;/pre&gt;
+##    .y.1     (rs_v)    5.999    0.160   37.417    0.000
+##    .y.2     (rs_v)    5.999    0.160   37.417    0.000
+##    .y.3     (rs_v)    5.999    0.160   37.417    0.000
+##    .y.4     (rs_v)    5.999    0.160   37.417    0.000
+##    .y.5     (rs_v)    5.999    0.160   37.417    0.000
+##    .y.6     (rs_v)    5.999    0.160   37.417    0.000&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Code to change the &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;’s in the string to &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;’s without manually deleting and inserting &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; into the string above. All you have to do is paste the string into a .txt document and save the file as “y_file.txt”&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(readr)
 
@@ -2128,7 +1593,7 @@ cx5 ~~ 0*cx6
 
 dc_x_model &amp;lt;- sem(dual_change_x_string, data = df_wide_x)
 summary(dc_x_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 64 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 51 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -2139,40 +1604,40 @@ summary(dc_x_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                              4424.279
+##   Test statistic                              3877.757
 ##   Degrees of freedom                                20
 ##   P-value (Chi-square)                           0.000
 ## 
 ## Model Test Baseline Model:
 ## 
-##   Test statistic                             11743.090
+##   Test statistic                             11713.929
 ##   Degrees of freedom                                15
 ##   P-value                                        0.000
 ## 
 ## User Model versus Baseline Model:
 ## 
-##   Comparative Fit Index (CFI)                    0.624
-##   Tucker-Lewis Index (TLI)                       0.718
+##   Comparative Fit Index (CFI)                    0.670
+##   Tucker-Lewis Index (TLI)                       0.753
 ## 
 ## Loglikelihood and Information Criteria:
 ## 
-##   Loglikelihood user model (H0)             -10266.470
-##   Loglikelihood unrestricted model (H1)      -8054.331
+##   Loglikelihood user model (H0)              -9986.030
+##   Loglikelihood unrestricted model (H1)      -8047.152
 ##                                                       
-##   Akaike (AIC)                               20546.941
-##   Bayesian (BIC)                             20578.798
-##   Sample-size adjusted Bayesian (BIC)        20556.572
+##   Akaike (AIC)                               19986.061
+##   Bayesian (BIC)                             20017.918
+##   Sample-size adjusted Bayesian (BIC)        19995.692
 ## 
 ## Root Mean Square Error of Approximation:
 ## 
-##   RMSEA                                          0.561
-##   90 Percent confidence interval - lower         0.547
-##   90 Percent confidence interval - upper         0.575
+##   RMSEA                                          0.525
+##   90 Percent confidence interval - lower         0.511
+##   90 Percent confidence interval - upper         0.539
 ##   P-value RMSEA &amp;lt;= 0.05                          0.000
 ## 
 ## Standardized Root Mean Square Residual:
 ## 
-##   SRMR                                           0.901
+##   SRMR                                           0.684
 ## 
 ## Parameter Estimates:
 ## 
@@ -2226,20 +1691,20 @@ summary(dc_x_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ##   lx6 ~                                               
 ##     lx5               1.000                           
 ##   cx2 ~                                               
-##     lx1     (prop)    0.157    0.004   35.120    0.000
+##     lx1     (prop)    0.151    0.004   35.904    0.000
 ##   cx3 ~                                               
-##     lx2     (prop)    0.157    0.004   35.120    0.000
+##     lx2     (prop)    0.151    0.004   35.904    0.000
 ##   cx4 ~                                               
-##     lx3     (prop)    0.157    0.004   35.120    0.000
+##     lx3     (prop)    0.151    0.004   35.904    0.000
 ##   cx5 ~                                               
-##     lx4     (prop)    0.157    0.004   35.120    0.000
+##     lx4     (prop)    0.151    0.004   35.904    0.000
 ##   cx6 ~                                               
-##     lx5     (prop)    0.157    0.004   35.120    0.000
+##     lx5     (prop)    0.151    0.004   35.904    0.000
 ## 
 ## Covariances:
 ##                    Estimate  Std.Err  z-value  P(&amp;gt;|z|)
 ##   l_intercept ~~                                      
-##     l_slope          -0.838    0.257   -3.259    0.001
+##     l_slope          -1.210    0.252   -4.810    0.000
 ##  .cx2 ~~                                              
 ##    .cx3               0.000                           
 ##    .cx4               0.000                           
@@ -2257,8 +1722,8 @@ summary(dc_x_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ## 
 ## Intercepts:
 ##                    Estimate  Std.Err  z-value  P(&amp;gt;|z|)
-##     l_slope          -3.550    0.122  -29.197    0.000
-##     l_intercept      10.396    0.079  131.733    0.000
+##     l_slope          -3.238    0.125  -25.985    0.000
+##     l_intercept      10.187    0.073  139.173    0.000
 ##    .lx1               0.000                           
 ##    .lx2               0.000                           
 ##    .lx3               0.000                           
@@ -2279,8 +1744,8 @@ summary(dc_x_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ## 
 ## Variances:
 ##                    Estimate  Std.Err  z-value  P(&amp;gt;|z|)
-##     l_ntrcp           3.105    0.224   13.844    0.000
-##     l_slope           9.678    0.559   17.306    0.000
+##     l_ntrcp           2.714    0.195   13.909    0.000
+##     l_slope          10.246    0.585   17.527    0.000
 ##    .lx1               0.000                           
 ##    .lx2               0.000                           
 ##    .lx3               0.000                           
@@ -2292,12 +1757,12 @@ summary(dc_x_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ##    .cx4               0.000                           
 ##    .cx5               0.000                           
 ##    .cx6               0.000                           
-##    .x.1     (rs_v)    2.309    0.062   37.417    0.000
-##    .x.2     (rs_v)    2.309    0.062   37.417    0.000
-##    .x.3     (rs_v)    2.309    0.062   37.417    0.000
-##    .x.4     (rs_v)    2.309    0.062   37.417    0.000
-##    .x.5     (rs_v)    2.309    0.062   37.417    0.000
-##    .x.6     (rs_v)    2.309    0.062   37.417    0.000&lt;/code&gt;&lt;/pre&gt;
+##    .x.1     (rs_v)    1.957    0.052   37.417    0.000
+##    .x.2     (rs_v)    1.957    0.052   37.417    0.000
+##    .x.3     (rs_v)    1.957    0.052   37.417    0.000
+##    .x.4     (rs_v)    1.957    0.052   37.417    0.000
+##    .x.5     (rs_v)    1.957    0.052   37.417    0.000
+##    .x.6     (rs_v)    1.957    0.052   37.417    0.000&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;bivariate-dual-change-model&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Bivariate Dual Change Model&lt;/h1&gt;
@@ -2545,7 +2010,7 @@ df_both &amp;lt;- df %&amp;gt;%
 
 bi_dc_model &amp;lt;- sem(bi_dc_string, data = df_both)
 summary(bi_dc_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 123 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 114 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -2556,40 +2021,40 @@ summary(bi_dc_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                              1546.104
+##   Test statistic                              1346.904
 ##   Degrees of freedom                                70
 ##   P-value (Chi-square)                           0.000
 ## 
 ## Model Test Baseline Model:
 ## 
-##   Test statistic                             24109.208
+##   Test statistic                             23629.246
 ##   Degrees of freedom                                66
 ##   P-value                                        0.000
 ## 
 ## User Model versus Baseline Model:
 ## 
-##   Comparative Fit Index (CFI)                    0.939
-##   Tucker-Lewis Index (TLI)                       0.942
+##   Comparative Fit Index (CFI)                    0.946
+##   Tucker-Lewis Index (TLI)                       0.949
 ## 
 ## Loglikelihood and Information Criteria:
 ## 
-##   Loglikelihood user model (H0)             -15301.211
-##   Loglikelihood unrestricted model (H1)     -14528.159
+##   Loglikelihood user model (H0)             -15122.428
+##   Loglikelihood unrestricted model (H1)     -14448.976
 ##                                                       
-##   Akaike (AIC)                               30642.422
-##   Bayesian (BIC)                             30733.444
-##   Sample-size adjusted Bayesian (BIC)        30669.940
+##   Akaike (AIC)                               30284.856
+##   Bayesian (BIC)                             30375.877
+##   Sample-size adjusted Bayesian (BIC)        30312.373
 ## 
 ## Root Mean Square Error of Approximation:
 ## 
-##   RMSEA                                          0.174
-##   90 Percent confidence interval - lower         0.166
-##   90 Percent confidence interval - upper         0.181
+##   RMSEA                                          0.161
+##   90 Percent confidence interval - lower         0.154
+##   90 Percent confidence interval - upper         0.169
 ##   P-value RMSEA &amp;lt;= 0.05                          0.000
 ## 
 ## Standardized Root Mean Square Residual:
 ## 
-##   SRMR                                           0.102
+##   SRMR                                           0.080
 ## 
 ## Parameter Estimates:
 ## 
@@ -2673,15 +2138,15 @@ summary(bi_dc_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ##   ly6 ~                                               
 ##     ly5               1.000                           
 ##   cy2 ~                                               
-##     ly1     (prop)   -0.315    0.004  -77.421    0.000
+##     ly1     (prop)   -0.318    0.004  -72.134    0.000
 ##   cy3 ~                                               
-##     ly2     (prop)   -0.315    0.004  -77.421    0.000
+##     ly2     (prop)   -0.318    0.004  -72.134    0.000
 ##   cy4 ~                                               
-##     ly3     (prop)   -0.315    0.004  -77.421    0.000
+##     ly3     (prop)   -0.318    0.004  -72.134    0.000
 ##   cy5 ~                                               
-##     ly4     (prop)   -0.315    0.004  -77.421    0.000
+##     ly4     (prop)   -0.318    0.004  -72.134    0.000
 ##   cy6 ~                                               
-##     ly5     (prop)   -0.315    0.004  -77.421    0.000
+##     ly5     (prop)   -0.318    0.004  -72.134    0.000
 ##   lx2 ~                                               
 ##     lx1               1.000                           
 ##   lx3 ~                                               
@@ -2693,40 +2158,40 @@ summary(bi_dc_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ##   lx6 ~                                               
 ##     lx5               1.000                           
 ##   cx2 ~                                               
-##     lx1     (prpx)    0.221    0.002  100.363    0.000
+##     lx1     (prpx)    0.222    0.002   96.827    0.000
 ##   cx3 ~                                               
-##     lx2     (prpx)    0.221    0.002  100.363    0.000
+##     lx2     (prpx)    0.222    0.002   96.827    0.000
 ##   cx4 ~                                               
-##     lx3     (prpx)    0.221    0.002  100.363    0.000
+##     lx3     (prpx)    0.222    0.002   96.827    0.000
 ##   cx5 ~                                               
-##     lx4     (prpx)    0.221    0.002  100.363    0.000
+##     lx4     (prpx)    0.222    0.002   96.827    0.000
 ##   cx6 ~                                               
-##     lx5     (prpx)    0.221    0.002  100.363    0.000
+##     lx5     (prpx)    0.222    0.002   96.827    0.000
 ##   cy2 ~                                               
-##     lx1       (xy)    0.402    0.002  188.751    0.000
+##     lx1       (xy)    0.401    0.002  185.563    0.000
 ##   cy3 ~                                               
-##     lx2       (xy)    0.402    0.002  188.751    0.000
+##     lx2       (xy)    0.401    0.002  185.563    0.000
 ##   cy4 ~                                               
-##     lx3       (xy)    0.402    0.002  188.751    0.000
+##     lx3       (xy)    0.401    0.002  185.563    0.000
 ##   cy5 ~                                               
-##     lx4       (xy)    0.402    0.002  188.751    0.000
+##     lx4       (xy)    0.401    0.002  185.563    0.000
 ##   cy6 ~                                               
-##     lx5       (xy)    0.402    0.002  188.751    0.000
+##     lx5       (xy)    0.401    0.002  185.563    0.000
 ##   cx2 ~                                               
-##     ly1       (yx)   -0.428    0.004 -101.317    0.000
+##     ly1       (yx)   -0.429    0.005  -91.566    0.000
 ##   cx3 ~                                               
-##     ly2       (yx)   -0.428    0.004 -101.317    0.000
+##     ly2       (yx)   -0.429    0.005  -91.566    0.000
 ##   cx4 ~                                               
-##     ly3       (yx)   -0.428    0.004 -101.317    0.000
+##     ly3       (yx)   -0.429    0.005  -91.566    0.000
 ##   cx5 ~                                               
-##     ly4       (yx)   -0.428    0.004 -101.317    0.000
+##     ly4       (yx)   -0.429    0.005  -91.566    0.000
 ##   cx6 ~                                               
-##     ly5       (yx)   -0.428    0.004 -101.317    0.000
+##     ly5       (yx)   -0.429    0.005  -91.566    0.000
 ## 
 ## Covariances:
 ##                    Estimate  Std.Err  z-value  P(&amp;gt;|z|)
 ##   l_intercept ~~                                      
-##     l_slope           0.324    0.149    2.167    0.030
+##     l_slope           0.247    0.135    1.829    0.067
 ##  .cy2 ~~                                              
 ##    .cy3               0.000                           
 ##    .cy4               0.000                           
@@ -2742,7 +2207,7 @@ summary(bi_dc_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ##  .cy5 ~~                                              
 ##    .cy6               0.000                           
 ##   lx_intercept ~~                                     
-##     lx_slope          0.113    0.129    0.877    0.381
+##     lx_slope         -0.175    0.129   -1.364    0.173
 ##  .cx2 ~~                                              
 ##    .cx3               0.000                           
 ##    .cx4               0.000                           
@@ -2758,16 +2223,16 @@ summary(bi_dc_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ##  .cx5 ~~                                              
 ##    .cx6               0.000                           
 ##   l_intercept ~~                                      
-##     lx_intercept     -0.227    0.051   -4.436    0.000
-##     lx_slope          0.088    0.144    0.609    0.543
+##     lx_intercept     -0.140    0.050   -2.785    0.005
+##     lx_slope         -0.086    0.135   -0.633    0.527
 ##   l_slope ~~                                          
-##     lx_intercept     -0.071    0.135   -0.524    0.601
-##     lx_slope          0.483    0.358    1.348    0.178
+##     lx_intercept     -0.125    0.129   -0.965    0.334
+##     lx_slope         -0.368    0.326   -1.131    0.258
 ## 
 ## Intercepts:
 ##                    Estimate  Std.Err  z-value  P(&amp;gt;|z|)
-##     l_slope           0.605    0.124    4.892    0.000
-##     l_intercept      10.055    0.047  214.190    0.000
+##     l_slope           0.332    0.117    2.840    0.005
+##     l_intercept      10.022    0.045  222.443    0.000
 ##    .ly1               0.000                           
 ##    .ly2               0.000                           
 ##    .ly3               0.000                           
@@ -2785,8 +2250,8 @@ summary(bi_dc_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ##    .y.4               0.000                           
 ##    .y.5               0.000                           
 ##    .y.6               0.000                           
-##     lx_slope          0.857    0.122    7.050    0.000
-##     lx_intercept      9.975    0.042  235.419    0.000
+##     lx_slope          0.924    0.120    7.727    0.000
+##     lx_intercept      9.881    0.043  228.893    0.000
 ##    .lx1               0.000                           
 ##    .lx2               0.000                           
 ##    .lx3               0.000                           
@@ -2807,8 +2272,8 @@ summary(bi_dc_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ## 
 ## Variances:
 ##                    Estimate  Std.Err  z-value  P(&amp;gt;|z|)
-##     l_ntr             1.069    0.080   13.399    0.000
-##     l_slp             9.410    0.520   18.097    0.000
+##     l_ntr             0.989    0.074   13.310    0.000
+##     l_slp             8.201    0.455   18.007    0.000
 ##    .ly1               0.000                           
 ##    .ly2               0.000                           
 ##    .ly3               0.000                           
@@ -2820,14 +2285,14 @@ summary(bi_dc_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ##    .cy4               0.000                           
 ##    .cy5               0.000                           
 ##    .cy6               0.000                           
-##    .y.1   (res_vr)    0.729    0.020   37.350    0.000
-##    .y.2   (res_vr)    0.729    0.020   37.350    0.000
-##    .y.3   (res_vr)    0.729    0.020   37.350    0.000
-##    .y.4   (res_vr)    0.729    0.020   37.350    0.000
-##    .y.5   (res_vr)    0.729    0.020   37.350    0.000
-##    .y.6   (res_vr)    0.729    0.020   37.350    0.000
-##     lx_nt             1.022    0.065   15.701    0.000
-##     lx_sl             8.955    0.489   18.297    0.000
+##    .y.1   (res_vr)    0.681    0.018   37.293    0.000
+##    .y.2   (res_vr)    0.681    0.018   37.293    0.000
+##    .y.3   (res_vr)    0.681    0.018   37.293    0.000
+##    .y.4   (res_vr)    0.681    0.018   37.293    0.000
+##    .y.5   (res_vr)    0.681    0.018   37.293    0.000
+##    .y.6   (res_vr)    0.681    0.018   37.293    0.000
+##     lx_nt             1.082    0.068   15.894    0.000
+##     lx_sl             8.477    0.463   18.293    0.000
 ##    .lx1               0.000                           
 ##    .lx2               0.000                           
 ##    .lx3               0.000                           
@@ -2839,12 +2304,12 @@ summary(bi_dc_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ##    .cx4               0.000                           
 ##    .cx5               0.000                           
 ##    .cx6               0.000                           
-##    .x.1   (rs_vrx)    0.432    0.012   36.464    0.000
-##    .x.2   (rs_vrx)    0.432    0.012   36.464    0.000
-##    .x.3   (rs_vrx)    0.432    0.012   36.464    0.000
-##    .x.4   (rs_vrx)    0.432    0.012   36.464    0.000
-##    .x.5   (rs_vrx)    0.432    0.012   36.464    0.000
-##    .x.6   (rs_vrx)    0.432    0.012   36.464    0.000&lt;/code&gt;&lt;/pre&gt;
+##    .x.1   (rs_vrx)    0.430    0.012   36.496    0.000
+##    .x.2   (rs_vrx)    0.430    0.012   36.496    0.000
+##    .x.3   (rs_vrx)    0.430    0.012   36.496    0.000
+##    .x.4   (rs_vrx)    0.430    0.012   36.496    0.000
+##    .x.5   (rs_vrx)    0.430    0.012   36.496    0.000
+##    .x.6   (rs_vrx)    0.430    0.012   36.496    0.000&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
 &lt;/div&gt;
 </description>
@@ -2852,9 +2317,9 @@ summary(bi_dc_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Latent Dual Change Models</title>
-      <link>https://christopherdishop.netlify.app/computational_notes/2020-05-24/</link>
-      <pubDate>Sun, 24 May 2020 00:00:00 +0000</pubDate>
-      <guid>https://christopherdishop.netlify.app/computational_notes/2020-05-24/</guid>
+      <link>https://christopherdishop.netlify.app/computational_notes/2020-08-09/</link>
+      <pubDate>Sun, 09 Aug 2020 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2020-08-09/</guid>
       <description>
 
 
@@ -2915,7 +2380,7 @@ ggplot(df, aes(x = time, y = y, group = id)) +
   geom_line(color = &amp;#39;grey85&amp;#39;) + 
   geom_point(data = sample_df, aes(x = time, y = y, group = id)) + 
   geom_line(data = sample_df, aes(x = time, y = y, group = id))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-05-24/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-08-09/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Change the data to wide and load &lt;code&gt;lavaan&lt;/code&gt; before we start modeling.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_wide &amp;lt;- reshape(df, idvar = &amp;#39;id&amp;#39;, timevar = &amp;#39;time&amp;#39;, direction = &amp;#39;wide&amp;#39;)
 library(lavaan)&lt;/code&gt;&lt;/pre&gt;
@@ -3017,7 +2482,7 @@ latent_intercept ~~ 0*lc_y2 + 0*lc_y3 + 0*lc_y4 + 0*lc_y5 + 0*lc_y6
 
 int_only_model &amp;lt;- sem(int_only_string, data = df_wide)
 summary(int_only_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 15 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 28 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -3028,40 +2493,40 @@ summary(int_only_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                              2390.340
+##   Test statistic                              2464.019
 ##   Degrees of freedom                                24
 ##   P-value (Chi-square)                           0.000
 ## 
 ## Model Test Baseline Model:
 ## 
-##   Test statistic                              6222.069
+##   Test statistic                              6402.982
 ##   Degrees of freedom                                15
 ##   P-value                                        0.000
 ## 
 ## User Model versus Baseline Model:
 ## 
-##   Comparative Fit Index (CFI)                    0.619
-##   Tucker-Lewis Index (TLI)                       0.762
+##   Comparative Fit Index (CFI)                    0.618
+##   Tucker-Lewis Index (TLI)                       0.761
 ## 
 ## Loglikelihood and Information Criteria:
 ## 
-##   Loglikelihood user model (H0)              -6280.597
-##   Loglikelihood unrestricted model (H1)      -5085.427
+##   Loglikelihood user model (H0)              -6355.181
+##   Loglikelihood unrestricted model (H1)      -5123.171
 ##                                                       
-##   Akaike (AIC)                               12567.195
-##   Bayesian (BIC)                             12579.839
-##   Sample-size adjusted Bayesian (BIC)        12570.316
+##   Akaike (AIC)                               12716.361
+##   Bayesian (BIC)                             12729.005
+##   Sample-size adjusted Bayesian (BIC)        12719.483
 ## 
 ## Root Mean Square Error of Approximation:
 ## 
-##   RMSEA                                          0.444
-##   90 Percent confidence interval - lower         0.429
-##   90 Percent confidence interval - upper         0.459
+##   RMSEA                                          0.451
+##   90 Percent confidence interval - lower         0.436
+##   90 Percent confidence interval - upper         0.466
 ##   P-value RMSEA &amp;lt;= 0.05                          0.000
 ## 
 ## Standardized Root Mean Square Residual:
 ## 
-##   SRMR                                           0.603
+##   SRMR                                           0.601
 ## 
 ## Parameter Estimates:
 ## 
@@ -3138,7 +2603,7 @@ summary(int_only_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ## 
 ## Intercepts:
 ##                    Estimate  Std.Err  z-value  P(&amp;gt;|z|)
-##     latent_intrcpt    0.507    0.167    3.036    0.002
+##     latent_intrcpt    0.293    0.175    1.676    0.094
 ##    .l_y1              0.000                           
 ##    .l_y2              0.000                           
 ##    .l_y3              0.000                           
@@ -3159,7 +2624,7 @@ summary(int_only_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ## 
 ## Variances:
 ##                    Estimate  Std.Err  z-value  P(&amp;gt;|z|)
-##     ltnt_nt          13.614    0.883   15.417    0.000
+##     ltnt_nt          14.948    0.968   15.437    0.000
 ##    .l_y1              0.000                           
 ##    .l_y2              0.000                           
 ##    .l_y3              0.000                           
@@ -3171,12 +2636,12 @@ summary(int_only_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ##     lc_y4             0.000                           
 ##     lc_y5             0.000                           
 ##     lc_y6             0.000                           
-##    .y.1     (rs_v)    2.082    0.059   35.355    0.000
-##    .y.2     (rs_v)    2.082    0.059   35.355    0.000
-##    .y.3     (rs_v)    2.082    0.059   35.355    0.000
-##    .y.4     (rs_v)    2.082    0.059   35.355    0.000
-##    .y.5     (rs_v)    2.082    0.059   35.355    0.000
-##    .y.6     (rs_v)    2.082    0.059   35.355    0.000&lt;/code&gt;&lt;/pre&gt;
+##    .y.1     (rs_v)    2.170    0.061   35.355    0.000
+##    .y.2     (rs_v)    2.170    0.061   35.355    0.000
+##    .y.3     (rs_v)    2.170    0.061   35.355    0.000
+##    .y.4     (rs_v)    2.170    0.061   35.355    0.000
+##    .y.5     (rs_v)    2.170    0.061   35.355    0.000
+##    .y.6     (rs_v)    2.170    0.061   35.355    0.000&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;proportion-change-model&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Proportion Change Model&lt;/h1&gt;
@@ -3283,7 +2748,7 @@ latent_intercept ~~ 0*lc_y2 + 0*lc_y3 + 0*lc_y4 + 0*lc_y5 + 0*lc_y6
 
 proportion_model &amp;lt;- sem(proportion_string, data = df_wide)
 summary(proportion_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 22 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 20 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -3294,40 +2759,40 @@ summary(proportion_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                              1030.636
+##   Test statistic                               949.368
 ##   Degrees of freedom                                23
 ##   P-value (Chi-square)                           0.000
 ## 
 ## Model Test Baseline Model:
 ## 
-##   Test statistic                              6222.069
+##   Test statistic                              6402.982
 ##   Degrees of freedom                                15
 ##   P-value                                        0.000
 ## 
 ## User Model versus Baseline Model:
 ## 
-##   Comparative Fit Index (CFI)                    0.838
-##   Tucker-Lewis Index (TLI)                       0.894
+##   Comparative Fit Index (CFI)                    0.855
+##   Tucker-Lewis Index (TLI)                       0.905
 ## 
 ## Loglikelihood and Information Criteria:
 ## 
-##   Loglikelihood user model (H0)              -5600.745
-##   Loglikelihood unrestricted model (H1)      -5085.427
+##   Loglikelihood user model (H0)              -5597.855
+##   Loglikelihood unrestricted model (H1)      -5123.171
 ##                                                       
-##   Akaike (AIC)                               11209.491
-##   Bayesian (BIC)                             11226.349
-##   Sample-size adjusted Bayesian (BIC)        11213.653
+##   Akaike (AIC)                               11203.710
+##   Bayesian (BIC)                             11220.569
+##   Sample-size adjusted Bayesian (BIC)        11207.872
 ## 
 ## Root Mean Square Error of Approximation:
 ## 
-##   RMSEA                                          0.296
-##   90 Percent confidence interval - lower         0.281
-##   90 Percent confidence interval - upper         0.312
+##   RMSEA                                          0.284
+##   90 Percent confidence interval - lower         0.269
+##   90 Percent confidence interval - upper         0.299
 ##   P-value RMSEA &amp;lt;= 0.05                          0.000
 ## 
 ## Standardized Root Mean Square Residual:
 ## 
-##   SRMR                                           0.228
+##   SRMR                                           0.214
 ## 
 ## Parameter Estimates:
 ## 
@@ -3375,15 +2840,15 @@ summary(proportion_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ##   l_y6 ~                                              
 ##     l_y5              1.000                           
 ##   lc_y2 ~                                             
-##     l_y1      (b2)    0.138    0.004   37.203    0.000
+##     l_y1      (b2)    0.141    0.004   39.913    0.000
 ##   lc_y3 ~                                             
-##     l_y2      (b2)    0.138    0.004   37.203    0.000
+##     l_y2      (b2)    0.141    0.004   39.913    0.000
 ##   lc_y4 ~                                             
-##     l_y3      (b2)    0.138    0.004   37.203    0.000
+##     l_y3      (b2)    0.141    0.004   39.913    0.000
 ##   lc_y5 ~                                             
-##     l_y4      (b2)    0.138    0.004   37.203    0.000
+##     l_y4      (b2)    0.141    0.004   39.913    0.000
 ##   lc_y6 ~                                             
-##     l_y5      (b2)    0.138    0.004   37.203    0.000
+##     l_y5      (b2)    0.141    0.004   39.913    0.000
 ## 
 ## Covariances:
 ##                    Estimate  Std.Err  z-value  P(&amp;gt;|z|)
@@ -3414,7 +2879,7 @@ summary(proportion_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ## 
 ## Intercepts:
 ##                    Estimate  Std.Err  z-value  P(&amp;gt;|z|)
-##     latent_intrcpt    0.373    0.118    3.153    0.002
+##     latent_intrcpt    0.220    0.123    1.791    0.073
 ##    .l_y1              0.000                           
 ##    .l_y2              0.000                           
 ##    .l_y3              0.000                           
@@ -3435,7 +2900,7 @@ summary(proportion_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ## 
 ## Variances:
 ##                    Estimate  Std.Err  z-value  P(&amp;gt;|z|)
-##     ltnt_nt           6.900    0.466   14.823    0.000
+##     ltnt_nt           7.462    0.501   14.907    0.000
 ##    .l_y1              0.000                           
 ##    .l_y2              0.000                           
 ##    .l_y3              0.000                           
@@ -3447,12 +2912,12 @@ summary(proportion_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ##    .lc_y4             0.000                           
 ##    .lc_y5             0.000                           
 ##    .lc_y6             0.000                           
-##    .y.1     (rs_v)    1.197    0.034   35.355    0.000
-##    .y.2     (rs_v)    1.197    0.034   35.355    0.000
-##    .y.3     (rs_v)    1.197    0.034   35.355    0.000
-##    .y.4     (rs_v)    1.197    0.034   35.355    0.000
-##    .y.5     (rs_v)    1.197    0.034   35.355    0.000
-##    .y.6     (rs_v)    1.197    0.034   35.355    0.000&lt;/code&gt;&lt;/pre&gt;
+##    .y.1     (rs_v)    1.172    0.033   35.355    0.000
+##    .y.2     (rs_v)    1.172    0.033   35.355    0.000
+##    .y.3     (rs_v)    1.172    0.033   35.355    0.000
+##    .y.4     (rs_v)    1.172    0.033   35.355    0.000
+##    .y.5     (rs_v)    1.172    0.033   35.355    0.000
+##    .y.6     (rs_v)    1.172    0.033   35.355    0.000&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;latent-constant-change&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Latent Constant Change&lt;/h1&gt;
@@ -3564,7 +3029,7 @@ latent_intercept ~~ 0*lc_y2 + 0*lc_y3 + 0*lc_y4 + 0*lc_y5 + 0*lc_y6
 
 constant_change_model &amp;lt;- sem(constant_change_string, data = df_wide)
 summary(constant_change_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 37 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 35 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -3575,40 +3040,40 @@ summary(constant_change_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                               744.579
+##   Test statistic                               657.980
 ##   Degrees of freedom                                21
 ##   P-value (Chi-square)                           0.000
 ## 
 ## Model Test Baseline Model:
 ## 
-##   Test statistic                              6222.069
+##   Test statistic                              6402.982
 ##   Degrees of freedom                                15
 ##   P-value                                        0.000
 ## 
 ## User Model versus Baseline Model:
 ## 
-##   Comparative Fit Index (CFI)                    0.883
-##   Tucker-Lewis Index (TLI)                       0.917
+##   Comparative Fit Index (CFI)                    0.900
+##   Tucker-Lewis Index (TLI)                       0.929
 ## 
 ## Loglikelihood and Information Criteria:
 ## 
-##   Loglikelihood user model (H0)              -5457.717
-##   Loglikelihood unrestricted model (H1)      -5085.427
+##   Loglikelihood user model (H0)              -5452.161
+##   Loglikelihood unrestricted model (H1)      -5123.171
 ##                                                       
-##   Akaike (AIC)                               10927.433
-##   Bayesian (BIC)                             10952.721
-##   Sample-size adjusted Bayesian (BIC)        10933.676
+##   Akaike (AIC)                               10916.322
+##   Bayesian (BIC)                             10941.610
+##   Sample-size adjusted Bayesian (BIC)        10922.565
 ## 
 ## Root Mean Square Error of Approximation:
 ## 
-##   RMSEA                                          0.263
-##   90 Percent confidence interval - lower         0.247
-##   90 Percent confidence interval - upper         0.279
+##   RMSEA                                          0.246
+##   90 Percent confidence interval - lower         0.230
+##   90 Percent confidence interval - upper         0.263
 ##   P-value RMSEA &amp;lt;= 0.05                          0.000
 ## 
 ## Standardized Root Mean Square Residual:
 ## 
-##   SRMR                                           0.177
+##   SRMR                                           0.159
 ## 
 ## Parameter Estimates:
 ## 
@@ -3665,7 +3130,7 @@ summary(constant_change_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ## Covariances:
 ##                       Estimate  Std.Err  z-value  P(&amp;gt;|z|)
 ##   latent_intercept ~~                                    
-##     latent_slope         1.122    0.083   13.532    0.000
+##     latent_slope         1.271    0.091   13.962    0.000
 ##  .lc_y2 ~~                                               
 ##    .lc_y3                0.000                           
 ##    .lc_y4                0.000                           
@@ -3693,8 +3158,8 @@ summary(constant_change_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ## 
 ## Intercepts:
 ##                    Estimate  Std.Err  z-value  P(&amp;gt;|z|)
-##     latent_intrcpt    0.189    0.116    1.627    0.104
-##     latent_slope      0.127    0.027    4.721    0.000
+##     latent_intrcpt    0.044    0.119    0.371    0.710
+##     latent_slope      0.100    0.028    3.527    0.000
 ##    .l_y1              0.000                           
 ##    .l_y2              0.000                           
 ##    .l_y3              0.000                           
@@ -3715,8 +3180,8 @@ summary(constant_change_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ## 
 ## Variances:
 ##                    Estimate  Std.Err  z-value  P(&amp;gt;|z|)
-##     ltnt_nt           6.258    0.427   14.647    0.000
-##     ltnt_sl           0.310    0.023   13.435    0.000
+##     ltnt_nt           6.641    0.451   14.726    0.000
+##     ltnt_sl           0.345    0.025   13.680    0.000
 ##    .l_y1              0.000                           
 ##    .l_y2              0.000                           
 ##    .l_y3              0.000                           
@@ -3728,12 +3193,12 @@ summary(constant_change_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ##    .lc_y4             0.000                           
 ##    .lc_y5             0.000                           
 ##    .lc_y6             0.000                           
-##    .y.1     (rs_v)    0.941    0.030   31.623    0.000
-##    .y.2     (rs_v)    0.941    0.030   31.623    0.000
-##    .y.3     (rs_v)    0.941    0.030   31.623    0.000
-##    .y.4     (rs_v)    0.941    0.030   31.623    0.000
-##    .y.5     (rs_v)    0.941    0.030   31.623    0.000
-##    .y.6     (rs_v)    0.941    0.030   31.623    0.000&lt;/code&gt;&lt;/pre&gt;
+##    .y.1     (rs_v)    0.926    0.029   31.623    0.000
+##    .y.2     (rs_v)    0.926    0.029   31.623    0.000
+##    .y.3     (rs_v)    0.926    0.029   31.623    0.000
+##    .y.4     (rs_v)    0.926    0.029   31.623    0.000
+##    .y.5     (rs_v)    0.926    0.029   31.623    0.000
+##    .y.6     (rs_v)    0.926    0.029   31.623    0.000&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;dual-change-model&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Dual Change Model&lt;/h1&gt;
@@ -3853,7 +3318,7 @@ lc_y5 ~~ 0*lc_y6
 
 dual_change_model &amp;lt;- sem(dual_c_string, data = df_wide)
 summary(dual_change_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 48 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 45 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -3864,40 +3329,40 @@ summary(dual_change_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                               329.427
+##   Test statistic                               267.497
 ##   Degrees of freedom                                20
 ##   P-value (Chi-square)                           0.000
 ## 
 ## Model Test Baseline Model:
 ## 
-##   Test statistic                              6222.069
+##   Test statistic                              6402.982
 ##   Degrees of freedom                                15
 ##   P-value                                        0.000
 ## 
 ## User Model versus Baseline Model:
 ## 
-##   Comparative Fit Index (CFI)                    0.950
-##   Tucker-Lewis Index (TLI)                       0.963
+##   Comparative Fit Index (CFI)                    0.961
+##   Tucker-Lewis Index (TLI)                       0.971
 ## 
 ## Loglikelihood and Information Criteria:
 ## 
-##   Loglikelihood user model (H0)              -5250.141
-##   Loglikelihood unrestricted model (H1)      -5085.427
+##   Loglikelihood user model (H0)              -5256.919
+##   Loglikelihood unrestricted model (H1)      -5123.171
 ##                                                       
-##   Akaike (AIC)                               10514.282
-##   Bayesian (BIC)                             10543.784
-##   Sample-size adjusted Bayesian (BIC)        10521.566
+##   Akaike (AIC)                               10527.839
+##   Bayesian (BIC)                             10557.341
+##   Sample-size adjusted Bayesian (BIC)        10535.123
 ## 
 ## Root Mean Square Error of Approximation:
 ## 
-##   RMSEA                                          0.176
-##   90 Percent confidence interval - lower         0.159
-##   90 Percent confidence interval - upper         0.193
+##   RMSEA                                          0.157
+##   90 Percent confidence interval - lower         0.141
+##   90 Percent confidence interval - upper         0.174
 ##   P-value RMSEA &amp;lt;= 0.05                          0.000
 ## 
 ## Standardized Root Mean Square Residual:
 ## 
-##   SRMR                                           0.028
+##   SRMR                                           0.024
 ## 
 ## Parameter Estimates:
 ## 
@@ -3951,20 +3416,20 @@ summary(dual_change_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ##   l_y6 ~                                              
 ##     l_y5              1.000                           
 ##   lc_y2 ~                                             
-##     l_y1       (b)   -0.412    0.017  -24.735    0.000
+##     l_y1       (b)   -0.378    0.016  -23.497    0.000
 ##   lc_y3 ~                                             
-##     l_y2       (b)   -0.412    0.017  -24.735    0.000
+##     l_y2       (b)   -0.378    0.016  -23.497    0.000
 ##   lc_y4 ~                                             
-##     l_y3       (b)   -0.412    0.017  -24.735    0.000
+##     l_y3       (b)   -0.378    0.016  -23.497    0.000
 ##   lc_y5 ~                                             
-##     l_y4       (b)   -0.412    0.017  -24.735    0.000
+##     l_y4       (b)   -0.378    0.016  -23.497    0.000
 ##   lc_y6 ~                                             
-##     l_y5       (b)   -0.412    0.017  -24.735    0.000
+##     l_y5       (b)   -0.378    0.016  -23.497    0.000
 ## 
 ## Covariances:
 ##                       Estimate  Std.Err  z-value  P(&amp;gt;|z|)
 ##   latent_intercept ~~                                    
-##     latent_slope         3.729    0.269   13.852    0.000
+##     latent_slope         3.898    0.279   13.948    0.000
 ##  .lc_y2 ~~                                               
 ##    .lc_y3                0.000                           
 ##    .lc_y4                0.000                           
@@ -3982,8 +3447,8 @@ summary(dual_change_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ## 
 ## Intercepts:
 ##                    Estimate  Std.Err  z-value  P(&amp;gt;|z|)
-##     latent_intrcpt    0.064    0.098    0.653    0.514
-##     latent_slope      0.325    0.091    3.578    0.000
+##     latent_intrcpt   -0.046    0.102   -0.457    0.648
+##     latent_slope      0.202    0.089    2.263    0.024
 ##    .l_y1              0.000                           
 ##    .l_y2              0.000                           
 ##    .l_y3              0.000                           
@@ -4004,8 +3469,8 @@ summary(dual_change_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ## 
 ## Variances:
 ##                    Estimate  Std.Err  z-value  P(&amp;gt;|z|)
-##     ltnt_nt           4.157    0.307   13.549    0.000
-##     ltnt_sl           4.030    0.352   11.460    0.000
+##     ltnt_nt           4.563    0.332   13.755    0.000
+##     ltnt_sl           3.927    0.346   11.345    0.000
 ##    .l_y1              0.000                           
 ##    .l_y2              0.000                           
 ##    .l_y3              0.000                           
@@ -4017,17 +3482,552 @@ summary(dual_change_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
 ##    .lc_y4             0.000                           
 ##    .lc_y5             0.000                           
 ##    .lc_y6             0.000                           
-##    .y.1     (rs_v)    0.793    0.025   31.623    0.000
-##    .y.2     (rs_v)    0.793    0.025   31.623    0.000
-##    .y.3     (rs_v)    0.793    0.025   31.623    0.000
-##    .y.4     (rs_v)    0.793    0.025   31.623    0.000
-##    .y.5     (rs_v)    0.793    0.025   31.623    0.000
-##    .y.6     (rs_v)    0.793    0.025   31.623    0.000&lt;/code&gt;&lt;/pre&gt;
+##    .y.1     (rs_v)    0.784    0.025   31.623    0.000
+##    .y.2     (rs_v)    0.784    0.025   31.623    0.000
+##    .y.3     (rs_v)    0.784    0.025   31.623    0.000
+##    .y.4     (rs_v)    0.784    0.025   31.623    0.000
+##    .y.5     (rs_v)    0.784    0.025   31.623    0.000
+##    .y.6     (rs_v)    0.784    0.025   31.623    0.000&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The estimate of the constant change (called “latent slope” in my string syntax; &lt;span class=&#34;math inline&#34;&gt;\(b_1\)&lt;/span&gt;) is close to 0.3 and the estimate of the proportion change (&lt;span class=&#34;math inline&#34;&gt;\(b_2\)&lt;/span&gt;) is close to -0.4. Not bad.&lt;/p&gt;
 &lt;div id=&#34;a-note-on-interpreting&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;A Note On Interpreting&lt;/h2&gt;
 &lt;p&gt;These models predict complex change patterns. It is difficult to know the expected curvilinear pattern that the models expect without computing expected scores and plotting them. I did not do that here.&lt;/p&gt;
 &lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Host Multiple Pages on GitHub</title>
+      <link>https://christopherdishop.netlify.app/computational_notes/2020-08-02/</link>
+      <pubDate>Sun, 02 Aug 2020 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2020-08-02/</guid>
+      <description>
+
+
+&lt;p&gt;GitHub allows you to host one static website per repository. Here’s how to do it:&lt;/p&gt;
+&lt;p&gt;Steps:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Create a repository&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Create a ‘gh-pages’ branch&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/content/Computational_Notes/github_images/ghpages.png&#34; width=&#34;500&#34; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Make the ‘gh-pages’ branch your default&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/content/Computational_Notes/github_images/default.png&#34; width=&#34;500&#34; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Delete the old ‘master’ branch&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Clone the repo to your local computer&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Create an index using whatever source-code you prefer&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/content/Computational_Notes/github_images/index.png&#34; width=&#34;500&#34; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Commit and push the files&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;GitHub will automatically render the site after a few moments&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Anonymous Push on GitHub</title>
+      <link>https://christopherdishop.netlify.app/computational_notes/2020-08-01/</link>
+      <pubDate>Sat, 01 Aug 2020 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2020-08-01/</guid>
+      <description>
+
+
+&lt;p&gt;Quick note on cloning, committing, and pushing anonymously on GitHub.&lt;/p&gt;
+&lt;p&gt;Steps:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Create an anonymous account and repo on GitHub&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Clone repo to local computer&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Navigate to it&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Configure anonymous username and email&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;git add .
+git commit -m &amp;quot;initial commit&amp;quot;
+git pull&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Push using full specification&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# replace username, password, and repository:
+
+git push &amp;#39;https://username:password@github.com/username/repository.git&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Counting Degrees of Freedom</title>
+      <link>https://christopherdishop.netlify.app/computational_notes/2017-07-13-dfs/</link>
+      <pubDate>Wed, 27 May 2020 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2017-07-13-dfs/</guid>
+      <description>
+
+
+&lt;p&gt;This post contains a bunch of examples where I practice counting dfs. In each example, I generate the data, estimate the parameters using SEM, count the dfs, and then compare my count to what the model spits back. To count dfs, I need to know the number of knowns and unknowns in my system:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{equation}
+\textrm{DFs} = \textrm{knowns - unknowns}
+\end{equation}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;To count the number of knowns, I need to know the number of observed variables, &lt;em&gt;p&lt;/em&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{equation}
+\textrm{knowns} = p*(p+1) / 2
+\end{equation}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;To count the number of unknowns, I count the number of parameters that my model estimates. Now for the examples.&lt;/p&gt;
+&lt;div id=&#34;example-1---trust-and-availability-cause-helping&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Example 1 - Trust and availability cause helping&lt;/h1&gt;
+&lt;div id=&#34;dgp&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;DGP&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;people &amp;lt;- 400
+trust &amp;lt;- rnorm(people, 40, 2)
+availability &amp;lt;- rnorm(people, 20, 5)
+error &amp;lt;- rnorm(people, 0, 2)
+
+helping &amp;lt;- 3 + 0.2*trust + 0.7*availability + error&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;sem&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;SEM&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+library(lavaan)
+
+df &amp;lt;- data.frame(
+  &amp;#39;id&amp;#39; = c(1:people),
+  &amp;#39;trust&amp;#39; = c(trust),
+  &amp;#39;availability&amp;#39; = c(availability),
+  &amp;#39;helping&amp;#39; = c(helping)
+)
+
+ex1_string &amp;lt;- &amp;#39;
+
+helping ~ b1*trust + b2*availability
+
+&amp;#39;
+
+ex1_model &amp;lt;- sem(ex1_string, data = df)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;count-dfs&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Count dfs&lt;/h1&gt;
+&lt;div id=&#34;knowns-count-the-observed-variables&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Knowns (count the observed variables)&lt;/h4&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# p*(p + 1) / 2
+
+3*(3+1) / 2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 6&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;unknowns-count-the-estimated-parameters&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Unknowns (count the estimated parameters)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;1 for b1&lt;/li&gt;
+&lt;li&gt;1 for b2&lt;/li&gt;
+&lt;li&gt;1 for the variance of trust&lt;/li&gt;
+&lt;li&gt;1 for the variance of availability&lt;/li&gt;
+&lt;li&gt;1 for the covariance of trust and availability&lt;/li&gt;
+&lt;li&gt;1 for the prediction error on helping&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;total = 6&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;6 - 6 = 0&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex1_model)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 12 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                          3
+##                                                       
+##   Number of observations                           400
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 0.000
+##   Degrees of freedom                                 0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now if I restrict the covariance of trust and availability to be zero I should have 1 df&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ex1_string_restrict &amp;lt;- &amp;#39;
+
+helping ~ b1*trust + b2*availability
+trust ~~ 0*availability
+
+&amp;#39;
+
+ex1_model_restrict &amp;lt;- sem(ex1_string_restrict, data = df)
+show(ex1_model_restrict) # yup&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 15 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                          5
+##                                                       
+##   Number of observations                           400
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 0.473
+##   Degrees of freedom                                 1
+##   P-value (Chi-square)                           0.492&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;example-2---common-factor-underlying-6-observed-items&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Example 2 - Common factor underlying 6 observed items&lt;/h1&gt;
+&lt;div id=&#34;dgp-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;DGP&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;common_factor &amp;lt;- rnorm(people, 30, 2)
+error_cf &amp;lt;- rnorm(people, 0, 2)
+item1 &amp;lt;- 0.35*common_factor + error_cf
+item2 &amp;lt;- 0.22*common_factor + error_cf
+item3 &amp;lt;- 0.18*common_factor + error_cf
+item4 &amp;lt;- 0.24*common_factor + error_cf
+item5 &amp;lt;- 0.31*common_factor + error_cf
+item6 &amp;lt;- 0.44*common_factor + error_cf
+
+# nope, that approach is wrong. If I do above then my errors are not independent
+# prediction errors (in this case measurement) should be independent
+
+item1 &amp;lt;- 0.35*common_factor + rnorm(people, 0, 2)
+item2 &amp;lt;- 0.22*common_factor + rnorm(people, 0, 2)
+item3 &amp;lt;- 0.18*common_factor + rnorm(people, 0, 2)
+item4 &amp;lt;- 0.24*common_factor + rnorm(people, 0, 2)
+item5 &amp;lt;- 0.31*common_factor + rnorm(people, 0, 2)
+item6 &amp;lt;- 0.44*common_factor + rnorm(people, 0, 2)
+
+df_cf &amp;lt;- data.frame(
+  &amp;#39;id&amp;#39; = c(1:people),
+  &amp;#39;item1&amp;#39; = c(item1),
+  &amp;#39;item2&amp;#39; = c(item2),
+  &amp;#39;item3&amp;#39; = c(item3),
+  &amp;#39;item4&amp;#39; = c(item4),
+  &amp;#39;item5&amp;#39; = c(item5),
+  &amp;#39;item6&amp;#39; = c(item6)
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;sem-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;SEM&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ex2_string &amp;lt;- &amp;#39;
+
+com_factor =~ 1*item1 + fl2*item2 + fl3*item3 + fl4*item4 + fl5*item5 + fl6*item6
+&amp;#39;
+
+ex2_model &amp;lt;- sem(ex2_string, data = df_cf)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;count-dfs-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Count dfs&lt;/h3&gt;
+&lt;div id=&#34;knowns-count-the-observed-variables-1&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;knowns (count the observed variables)&lt;/h4&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# p*(p + 1) / 2
+
+6*(6 + 1) / 2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 21&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;unknowns-count-the-estimated-parameters-1&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;unknowns (count the estimated parameters)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;6 factor loadings, but I constrained the first one to be 1 (I have to to estimate the latent variable), so 5 parameters&lt;/li&gt;
+&lt;li&gt;5 measurement errors for the 5 factor loadings&lt;/li&gt;
+&lt;li&gt;1 variance for the latent exogenous variable&lt;/li&gt;
+&lt;li&gt;1 mean for the latent exogenous variable&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;total = 12&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;21 - 12 = 9&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex2_model)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 71 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                         12
+##                                                       
+##   Number of observations                           400
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 3.788
+##   Degrees of freedom                                 9
+##   P-value (Chi-square)                           0.925&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;example-3---two-latent-variables-predict-one-observed-outcome&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Example 3 - Two latent variables predict one observed outcome&lt;/h1&gt;
+&lt;p&gt;Cognitive ability (latent variable 1) and assertiveness (latent variable 2) predict productivity. Cognitive ability and assertiveness are both captured with 2 manifest items/variables.&lt;/p&gt;
+&lt;div id=&#34;dgp-2&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;DGP&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# cog ability (latent exogenous variable 1)
+cog_ability &amp;lt;- rnorm(people, 100, 15)
+ca_item1 &amp;lt;- 0.78*cog_ability + rnorm(people, 0, 1)
+ca_item2 &amp;lt;- 0.11*cog_ability + rnorm(people, 0, 1)
+
+# assertiveness (latent exogenous variable 2)
+assertive &amp;lt;- rnorm(people, 30, 8)
+ass_item1 &amp;lt;- 0.81*assertive + rnorm(people, 0, 1)
+ass_item2 &amp;lt;- 0.34*assertive + rnorm(people, 0, 1)
+
+# productivity (observed outcome)
+
+productivity &amp;lt;- 0.55*cog_ability + 0.82*assertive + rnorm(people, 0, 5)
+
+# data
+
+df_3 &amp;lt;- data.frame(
+  &amp;#39;id&amp;#39; = c(1:people),
+  &amp;#39;ca_item1&amp;#39; = c(ca_item1),
+  &amp;#39;ca_item2&amp;#39; = c(ca_item2),
+  &amp;#39;ass_item1&amp;#39; = c(ass_item1),
+  &amp;#39;ass_item2&amp;#39; = c(ass_item2),
+  &amp;#39;productivity&amp;#39; = c(productivity)
+  
+  )&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;sem-2&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;SEM&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ex3_string &amp;lt;- &amp;#39;
+
+cog_ability =~ 1*ca_item1 + fl2*ca_item2
+assertiveness =~ 1*ass_item1 + fla*ass_item2
+
+cog_ability ~~ cog_ability
+assertiveness ~~ assertiveness
+cog_ability ~~ assertiveness
+
+productivity ~ b1*cog_ability + b2*assertiveness
+
+&amp;#39;
+
+ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;count-dfs-2&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Count dfs&lt;/h3&gt;
+&lt;div id=&#34;knowns-count-the-observed-variables-2&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;knowns (count the observed variables)&lt;/h4&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# p*(p+1) / 2
+
+5*(5+1) / 2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 15&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;unknowns-count-the-estimated-parameters-2&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;unknowns (count the estimated parameters)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;4 factor loadings but I constrained 2 of them, so 2 factor loadings&lt;/li&gt;
+&lt;li&gt;2 measurement errors (4 items, but constrained 2 of them)&lt;/li&gt;
+&lt;li&gt;1 variance on cog ability&lt;/li&gt;
+&lt;li&gt;1 mean on cog ability&lt;/li&gt;
+&lt;li&gt;1 variance on assertiveness&lt;/li&gt;
+&lt;li&gt;1 mean on assertiveness&lt;/li&gt;
+&lt;li&gt;1 covariance among cog ability and assertiveness&lt;/li&gt;
+&lt;li&gt;b1&lt;/li&gt;
+&lt;li&gt;b2&lt;/li&gt;
+&lt;li&gt;2 prediction errors&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;total = 13&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;15 - 13 = 2&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex3_model)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 171 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                         12
+##                                                       
+##   Number of observations                           400
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 3.239
+##   Degrees of freedom                                 3
+##   P-value (Chi-square)                           0.356&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Nope. I’m one off, where did I go wrong?&lt;/p&gt;
+&lt;p&gt;Ah, there is only 1 prediction error because productivity is being predicted. I counted 2 prediction errors because I gave one to both b1 and b2. So, the unknowns should be…&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;4 factor loadings but I constrained 2 of them, so 2 factor loadings&lt;/li&gt;
+&lt;li&gt;2 measurement errors (4 items, but constrained 2 of them)&lt;/li&gt;
+&lt;li&gt;1 variance on cog ability&lt;/li&gt;
+&lt;li&gt;1 mean on cog ability&lt;/li&gt;
+&lt;li&gt;1 variance on assertiveness&lt;/li&gt;
+&lt;li&gt;1 mean on assertiveness&lt;/li&gt;
+&lt;li&gt;1 covariance among cog ability and assertiveness&lt;/li&gt;
+&lt;li&gt;b1&lt;/li&gt;
+&lt;li&gt;b2&lt;/li&gt;
+&lt;li&gt;1 prediction error&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;total = 12&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;15 - 12 = 3&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex3_model)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 171 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                         12
+##                                                       
+##   Number of observations                           400
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 3.239
+##   Degrees of freedom                                 3
+##   P-value (Chi-square)                           0.356&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;example-4---a-causes-b-which-causes-c-which-causes-d&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Example 4 - a causes b, which causes c, which causes d&lt;/h1&gt;
+&lt;div id=&#34;dgp-3&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;DGP&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;a &amp;lt;- rnorm(people, 300, 3)
+b &amp;lt;- 0.67*a + rnorm(people, 0, 1)
+c &amp;lt;- 0.99*b + rnorm(people, 0, 10)
+d &amp;lt;- 4 + 4*c + rnorm(people, 0, 4)
+
+df_chain &amp;lt;- data.frame(
+  &amp;#39;id&amp;#39; = c(1:people),
+  &amp;#39;a&amp;#39; = c(a),
+  &amp;#39;b&amp;#39; = c(b),
+  &amp;#39;c&amp;#39; = c(c),
+  &amp;#39;d&amp;#39; = c(d)
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;sem-3&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;SEM&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ex4_string &amp;lt;- &amp;#39;
+
+b ~ b1*a
+c ~ b2*b
+d ~ b3*c
+
+a ~~ a
+
+&amp;#39;
+
+ex4_model &amp;lt;- sem(ex4_string, data = df_chain)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;count-dfs-3&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Count dfs&lt;/h3&gt;
+&lt;div id=&#34;knowns-count-the-observed-variables-3&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;knowns (count the observed variables)&lt;/h4&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# p*(p+1) / 2
+4*(4+1) / 2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 10&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;unknowns-count-the-estimated-parameters-3&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;unknowns (count the estimated parameters)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;b1&lt;/li&gt;
+&lt;li&gt;b2&lt;/li&gt;
+&lt;li&gt;b3&lt;/li&gt;
+&lt;li&gt;3 prediction errors&lt;/li&gt;
+&lt;li&gt;1 variance for the lone exogenous variable (a)&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;total = 7&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;10 - 7 = 3&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex4_model)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 51 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                          7
+##                                                       
+##   Number of observations                           400
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 4.466
+##   Degrees of freedom                                 3
+##   P-value (Chi-square)                           0.215&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;example-5---observed-affect-over-7-time-points&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Example 5 - Observed affect over 7 time points&lt;/h1&gt;
+&lt;div id=&#34;dgp-4&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;DGP&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;time &amp;lt;- 7
+affect_store &amp;lt;- matrix(, ncol = 3, nrow = time*people)
+count &amp;lt;- 0
+for(i in 1:people){
+  
+  unob_het &amp;lt;- rnorm(1, 0, 3)
+  
+  for(j in 1:time){
+    count &amp;lt;- count + 1
+    
+    if(j == 1){
+      affect_store[count, 1] &amp;lt;- i
+      affect_store[count, 2] &amp;lt;- j
+      affect_store[count, 3] &amp;lt;- unob_het + 50 + rnorm(1, 0, 1)
+    }else{
+      affect_store[count, 1] &amp;lt;- i
+      affect_store[count, 2] &amp;lt;- j
+      affect_store[count, 3] &amp;lt;- 0.8*affect_store[count - 1, 3] + unob_het + rnorm(1, 0, 1)
+      
+    }
+  }
+  
+}
+df5 &amp;lt;- data.frame(affect_store)
+names(df5) &amp;lt;- c(&amp;#39;id&amp;#39;, &amp;#39;time&amp;#39;, &amp;#39;affect&amp;#39;)
+library(reshape2)
+df5_wide &amp;lt;- reshape(df5, idvar = &amp;#39;id&amp;#39;, timevar = &amp;#39;time&amp;#39;, direction = &amp;#39;wide&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;sem-4&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;SEM&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ex5_string &amp;lt;- &amp;#39;
+
+unob_het =~ 1*affect.2 + 1*affect.3 + 1*affect.4 + 1*affect.5 + 1*affect.6 + 1*affect.7
+
+affect.2 ~ ar*affect.1
+affect.3 ~ ar*affect.2
+affect.4 ~ ar*affect.3
+affect.5 ~ ar*affect.4
+affect.6 ~ ar*affect.5
+affect.7 ~ ar*affect.6
+
+affect.1 ~~ affect.1
+unob_het ~~ unob_het
+affect.1 ~~ unob_het
+
+&amp;#39;
+
+ex5_model &amp;lt;- sem(ex5_string, data = df5_wide)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;count-dfs-4&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Count dfs&lt;/h3&gt;
+&lt;div id=&#34;knowns-count-the-observed-variables-4&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;knowns (count the observed variables)&lt;/h4&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# p*(p+1) / 2
+7*(7+1) / 2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 28&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;unknowns-count-the-estimated-parameters-4&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;unknowns (count the estimated parameters)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;ar is 1 estimated parameter&lt;/li&gt;
+&lt;li&gt;1 variance of unobserved heterogeneity&lt;/li&gt;
+&lt;li&gt;1 variance of affect.1&lt;/li&gt;
+&lt;li&gt;1 covariance among affect.1 and unobserved heterogeneity&lt;/li&gt;
+&lt;li&gt;6 prediction errors&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;total = 10&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;28 - 10 = 18&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex5_model)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 105 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                         15
+##   Number of equality constraints                     5
+##                                                       
+##   Number of observations                           400
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                12.612
+##   Degrees of freedom                                18
+##   P-value (Chi-square)                           0.814&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Why didn’t I estimate a mean for unobserved heterogeneity here? In all of the other examples I estimated the variance (1 parameter) and the mean (1 parameter) of the latent exogenous variable. In this case, unobserved heterogeneity is the latent exogenous variable but I only estimated its variance. That’s because in this model we don’t really care about the mean of unobserved heterogeneity, it’s just a latent variable that we incorporate to account for stable individual differences. In other words, when I estimate latent cog ability and assertiveness as IVs to predict an outcome, I care about their means. Here, unobserved heterogeneity is just an additional factor to account for, not a variable whose mean I really care to know. That said, if I wanted to estimate the mean of unobserved heterogeneity (which would result in one additional estimated parameter and one fewer df) then I would incorporate the following into the model string.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;&amp;#39;
+
+unob_het ~ 1 # lavaan code for estimating the mean of a latent variable
+
+&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>
@@ -4768,10 +4768,10 @@ SD
 A
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-24.39297
+21.83207
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-2.779697
+1.365784
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -4779,10 +4779,10 @@ A
 B
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-23.39539
+22.94421
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-2.371774
+1.267288
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -4790,10 +4790,10 @@ B
 C
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-25.44350
+23.75272
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-5.224924
+1.998019
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -4839,13 +4839,13 @@ Team C
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-24.39 (2.78)
+21.83 (1.37)
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-23.4 (2.37)
+22.94 (1.27)
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-25.44 (5.22)
+23.75 (2)
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -5178,19 +5178,19 @@ df$id &amp;lt;- c(1:N)&lt;/code&gt;&lt;/pre&gt;
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -2.94942 -0.53491  0.03304  0.54323  1.99373 
+## -2.39792 -0.56525 -0.02062  0.62291  2.16344 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept)  0.01822    0.03664   0.497    0.619    
-## x1           0.39266    0.03651  10.756   &amp;lt;2e-16 ***
-## x2           0.31169    0.03633   8.580   &amp;lt;2e-16 ***
+## (Intercept)  0.02015    0.03842   0.524      0.6    
+## x1           0.34089    0.03825   8.913   &amp;lt;2e-16 ***
+## x2           0.40865    0.03996  10.227   &amp;lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
 ## 
-## Residual standard error: 0.8186 on 497 degrees of freedom
-## Multiple R-squared:  0.3015, Adjusted R-squared:  0.2987 
-## F-statistic: 107.3 on 2 and 497 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+## Residual standard error: 0.8588 on 497 degrees of freedom
+## Multiple R-squared:  0.2944, Adjusted R-squared:  0.2915 
+## F-statistic: 103.7 on 2 and 497 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Here’s the kicker: you can think of those weights as optimal functions telling us how to create the composite.&lt;/p&gt;
 &lt;p&gt;Create a composite using the regression weights.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
@@ -5198,7 +5198,7 @@ df &amp;lt;- df %&amp;gt;%
   mutate(composite_x = 0.33*x1 + 0.4*x2)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Those weights provide the maximum correlation between our composite and the outcome.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cor(df$y, df$composite_x)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 0.5395955&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.5425513&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;In other words, the above correlation could not be higher with any other set of weights. Regression found the weights that makes the correlation above as large as it can be.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(lm(y ~ composite_x,
            data = df))&lt;/code&gt;&lt;/pre&gt;
@@ -5207,19 +5207,19 @@ df &amp;lt;- df %&amp;gt;%
 ## lm(formula = y ~ composite_x, data = df)
 ## 
 ## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -2.8879 -0.5564  0.0250  0.5423  2.1468 
+##      Min       1Q   Median       3Q      Max 
+## -2.40029 -0.56785 -0.01893  0.62179  2.16068 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept)  0.01427    0.03684   0.387    0.699    
-## composite_x  0.94879    0.06634  14.302   &amp;lt;2e-16 ***
+## (Intercept)  0.02018    0.03838   0.526    0.599    
+## composite_x  1.02656    0.07122  14.413   &amp;lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
 ## 
-## Residual standard error: 0.8238 on 498 degrees of freedom
-## Multiple R-squared:  0.2912, Adjusted R-squared:  0.2897 
-## F-statistic: 204.6 on 1 and 498 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+## Residual standard error: 0.8579 on 498 degrees of freedom
+## Multiple R-squared:  0.2944, Adjusted R-squared:  0.2929 
+## F-statistic: 207.7 on 1 and 498 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
 </description>
     </item>
@@ -6894,18 +6894,18 @@ sample_df &amp;lt;- df %&amp;gt;%
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -3.4142 -0.6509  0.0047  0.6104  3.3027 
+## -3.7343 -0.6716  0.0004  0.6671  3.0279 
 ## 
 ## Coefficients:
 ##              Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept) -0.003943   0.039717  -0.099    0.921    
-## stress       0.464302   0.007742  59.971   &amp;lt;2e-16 ***
+## (Intercept) -0.009872   0.040775  -0.242    0.809    
+## stress       0.446435   0.008008  55.749   &amp;lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
 ## 
-## Residual standard error: 0.972 on 598 degrees of freedom
-## Multiple R-squared:  0.8574, Adjusted R-squared:  0.8572 
-## F-statistic:  3597 on 1 and 598 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+## Residual standard error: 0.998 on 598 degrees of freedom
+## Multiple R-squared:  0.8386, Adjusted R-squared:  0.8384 
+## F-statistic:  3108 on 1 and 598 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;b-compute-the-ci&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;2b) Compute the CI&lt;/h3&gt;
@@ -6955,7 +6955,7 @@ for(i in 1:sims){
 &lt;h3&gt;Interpretation&lt;/h3&gt;
 &lt;p&gt;How many computed intervals contain the population parameter?&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sum(all_ci_contains == &amp;#39;yes&amp;#39;) / sims&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 0.9566667&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.9488889&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 </description>
     </item>
@@ -7332,15 +7332,15 @@ mini &amp;lt;- dish %&amp;gt;%
 mini[mini$person == &amp;#39;jimmy&amp;#39;, 2] &amp;lt;- 99
 mini[mini$person == &amp;#39;james&amp;#39;, 2] &amp;lt;- 99&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The original data:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;##   person        v_1       v_2      v_3      v_4
-## 1  jimmy -1.9976118 10.176904 49.48520 11.47466
-## 2  james  0.3496105 14.677073 66.07872 32.91737
-## 3 johnny  0.1594686  7.806994 44.18905 11.71528&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   person       v_1        v_2      v_3       v_4
+## 1  jimmy 1.0459060 18.8484970 48.37118  35.27688
+## 2  james 1.7212941 14.3870557 50.04224  12.20929
+## 3 johnny 0.6937105  0.4258305 56.42306 -10.28723&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;What we changed it to:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;##   person        v_1       v_2
-## 1  jimmy 99.0000000 10.176904
-## 2  james 99.0000000 14.677073
-## 3 johnny  0.1594686  7.806994&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   person        v_1        v_2
+## 1  jimmy 99.0000000 18.8484970
+## 2  james 99.0000000 14.3870557
+## 3 johnny  0.6937105  0.4258305&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Here is the function equivalent:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;impute_99 &amp;lt;- function(data){
   
@@ -7358,10 +7358,10 @@ mini[mini$person == &amp;#39;james&amp;#39;, 2] &amp;lt;- 99&lt;/code&gt;&lt;/pr
 &lt;p&gt;Our result:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;adjusted_data &amp;lt;- impute_99(dish)
 adjusted_data&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##   person        v_1       v_2
-## 1  jimmy 99.0000000 10.176904
-## 2  james 99.0000000 14.677073
-## 3 johnny  0.1594686  7.806994&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   person        v_1        v_2
+## 1  jimmy 99.0000000 18.8484970
+## 2  james 99.0000000 14.3870557
+## 3 johnny  0.6937105  0.4258305&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;function-with-column-names-as-parameters&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Function with column names as parameters&lt;/h1&gt;
@@ -7382,10 +7382,10 @@ adjusted_data&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Fortunately the correction is simple, just put quotes around the column names:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cool_data &amp;lt;- impute_99_column_specific(dish, &amp;#39;v_1&amp;#39;, &amp;#39;v_2&amp;#39;)
 cool_data&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##   person        v_1       v_2
-## 1  jimmy 99.0000000 10.176904
-## 2  james 99.0000000 14.677073
-## 3 johnny  0.1594686  7.806994&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   person        v_1        v_2
+## 1  jimmy 99.0000000 18.8484970
+## 2  james 99.0000000 14.3870557
+## 3 johnny  0.6937105  0.4258305&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
 &lt;/div&gt;
 </description>
@@ -9368,7 +9368,7 @@ agent[[1]][1] &amp;lt;- initial_sdo_value
 
 agent&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## $SDO
-## [1] 104.1913
+## [1] 91.653
 ## 
 ## $Peeps
 ## NULL&lt;/code&gt;&lt;/pre&gt;
@@ -9410,10 +9410,10 @@ agent$Peeps &amp;lt;- c(agent$Peeps, other)
 
 agent&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## $SDO
-## [1] 104.1913 121.1913
+## [1]  91.653 110.653
 ## 
 ## $Peeps
-## [1] 105.0313&lt;/code&gt;&lt;/pre&gt;
+## [1] 100.246&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;the-full-model&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;The Full Model&lt;/h1&gt;

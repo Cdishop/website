@@ -87,6 +87,8 @@
 
 [UO Psych R Bootcamp](https://uopsych-r-bootcamp-2020.netlify.app/)
 
+[Brendan Cullen Courses](https://bcullen.rbind.io/courses/)
+
 ### Random
 
 [R Markdown Themes](https://www.datadreaming.org/post/r-markdown-theme-gallery/)

@@ -30,15 +30,15 @@ mini &lt;- dish %&gt;%
 mini[mini$person == &#39;jimmy&#39;, 2] &lt;- 99
 mini[mini$person == &#39;james&#39;, 2] &lt;- 99</code></pre>
 <p>The original data:</p>
-<pre><code>##   person       v_1        v_2      v_3       v_4
-## 1  jimmy 1.0459060 18.8484970 48.37118  35.27688
-## 2  james 1.7212941 14.3870557 50.04224  12.20929
-## 3 johnny 0.6937105  0.4258305 56.42306 -10.28723</code></pre>
+<pre><code>##   person        v_1       v_2      v_3       v_4
+## 1  jimmy -2.4563867 10.893246 51.35893 18.340794
+## 2  james -1.2613807  8.616979 72.69125  9.560354
+## 3 johnny  0.2107208 12.370921 52.40060 34.423024</code></pre>
 <p>What we changed it to:</p>
-<pre><code>##   person        v_1        v_2
-## 1  jimmy 99.0000000 18.8484970
-## 2  james 99.0000000 14.3870557
-## 3 johnny  0.6937105  0.4258305</code></pre>
+<pre><code>##   person        v_1       v_2
+## 1  jimmy 99.0000000 10.893246
+## 2  james 99.0000000  8.616979
+## 3 johnny  0.2107208 12.370921</code></pre>
 <p>Here is the function equivalent:</p>
 <pre class="r"><code>impute_99 &lt;- function(data){
   
@@ -56,10 +56,10 @@ mini[mini$person == &#39;james&#39;, 2] &lt;- 99</code></pre>
 <p>Our result:</p>
 <pre class="r"><code>adjusted_data &lt;- impute_99(dish)
 adjusted_data</code></pre>
-<pre><code>##   person        v_1        v_2
-## 1  jimmy 99.0000000 18.8484970
-## 2  james 99.0000000 14.3870557
-## 3 johnny  0.6937105  0.4258305</code></pre>
+<pre><code>##   person        v_1       v_2
+## 1  jimmy 99.0000000 10.893246
+## 2  james 99.0000000  8.616979
+## 3 johnny  0.2107208 12.370921</code></pre>
 </div>
 <div id="function-with-column-names-as-parameters" class="section level1">
 <h1>Function with column names as parameters</h1>
@@ -80,9 +80,9 @@ adjusted_data</code></pre>
 <p>Fortunately the correction is simple, just put quotes around the column names:</p>
 <pre class="r"><code>cool_data &lt;- impute_99_column_specific(dish, &#39;v_1&#39;, &#39;v_2&#39;)
 cool_data</code></pre>
-<pre><code>##   person        v_1        v_2
-## 1  jimmy 99.0000000 18.8484970
-## 2  james 99.0000000 14.3870557
-## 3 johnny  0.6937105  0.4258305</code></pre>
+<pre><code>##   person        v_1       v_2
+## 1  jimmy 99.0000000 10.893246
+## 2  james 99.0000000  8.616979
+## 3 johnny  0.2107208 12.370921</code></pre>
 <p>Bo<span class="math inline">\(^2\)</span>m =)</p>
 </div>

@@ -6,7 +6,7 @@ education:
   courses:
   - course: PhD in Organizational Psychology
     institution: Michigan State University
-    year: 2020 (Expected)
+    year: 2020
   - course: MA in Organizational Psychology
     institution: Michigan State University
     year: 2019
@@ -24,7 +24,7 @@ name: Christopher R. Dishop
 organizations:
 - name: Michigan State University
   url: https://psychology.msu.edu/
-role: PhD Candidate
+role: PhD
 social:
 - icon: github
   icon_pack: fab

@@ -89,6 +89,8 @@
 
 [Brendan Cullen Courses](https://bcullen.rbind.io/courses/)
 
+[NICAR 2018](https://paldhous.github.io/NICAR/2018/r-analysis.html)
+
 ### Random
 
 [R Markdown Themes](https://www.datadreaming.org/post/r-markdown-theme-gallery/)
@@ -173,6 +175,8 @@
 
 [Beginner Concepts for Reproducible Science](https://psyteachr.github.io/msc-data-skills/)
 
+[Data Wrangling with R](https://cengel.github.io/R-data-wrangling/)
+
 [Learning Statistics with R](https://learningstatisticswithr.com/)
 
 [Data Analysis and Visualization in R for Ecologists](https://datacarpentry.org/R-ecology-lesson/index.html)
@@ -204,6 +208,8 @@
 [Advanced time series](https://www.economodel.com/time-series-analysis)
 
 [Data Visualization](https://serialmentor.com/dataviz/)
+
+[Animated Data Visualization](https://paldhous.github.io/ucb/2018/dataviz/index.html)
 
 [Statistical ReThinking with Tidyverse](https://bookdown.org/content/4857/)
 

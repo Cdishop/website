@@ -1277,6 +1277,168 @@ Ben Orlin
 
 
 
+
+
+
+&nbsp;
+
+<div align="center">
+The American Dream Is Not Dead (But Populism Could Kill It)
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/american-dream.png)
+
+Michael R. Strain
+
+[Click here for link](https://www.amazon.com/American-Dream-Not-Dead-Populism-ebook/dp/B0846QHK7K/ref=sr_1_1?dchild=1&keywords=the+american+dream+is+not+dead&qid=1607206251&sr=8-1)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Invisible Solutions: 25 Lenses that Reframe and Help Solve Difficult Business Problems
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/invisible.png)
+
+Stephen Shapiro
+
+[Click here for link](https://www.amazon.com/Invisible-Solutions-Difficult-Business-Problems-ebook/dp/B0855C79BS/ref=sr_1_3?dchild=1&keywords=invisible+solutions&qid=1607206366&sr=8-3)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Maths on the Back of an Envelope: Clever ways to (roughly) calculate anything
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/envelope.png)
+
+Rob Eastaway
+
+[Click here for link](https://www.amazon.com/Maths-Back-Envelope-calculate-anything-ebook/dp/B07Q1YY1C5/ref=sr_1_2?dchild=1&keywords=maths+on+the+back+of+an+envelope&qid=1607206543&sr=8-2)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Fear Your Future: How the Deck is Stacked against Millennials and Why Socialism Would Make It Worse
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/fear-future.png)
+
+Philip Klein
+
+[Click here for link](https://www.amazon.com/Fear-Your-Future-Millennials-Socialism-ebook/dp/B07ZHB3YPN/ref=sr_1_2?dchild=1&keywords=fear+your+future+how+the+deck&qid=1607206657&sr=8-2)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 &nbsp;
 
 <div align="center">

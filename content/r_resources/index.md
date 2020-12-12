@@ -183,6 +183,8 @@
 
 [Statistics: The Story of Numbers](https://aupsychology.github.io/statsbook/)
 
+[Handbook of Regression Modeling in People Analytics](http://peopleanalytics-regression-book.org/index.html)
+
 [R for Data Science](https://r4ds.had.co.nz)
 
 [Beginning Computer Science with R](https://homerhanumat.github.io/r-notes/index.html)

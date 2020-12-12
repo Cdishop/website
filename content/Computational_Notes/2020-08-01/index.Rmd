@@ -23,6 +23,13 @@ Steps:
 * Configure anonymous username and email
 
 ```{r, eval = F}
+git config user.name 'Anonymous'
+git config user.email '<>'
+```
+
+* Commit and pull
+
+```{r, eval = F}
 
 git add .
 git commit -m "initial commit"

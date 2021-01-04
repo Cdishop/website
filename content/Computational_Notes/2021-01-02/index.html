@@ -1,0 +1,459 @@
+---
+title: "Tidy Evaluation & Data Masking"
+summary: '-----'
+date: '2021-01-02'
+---
+
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+
+
+<p>Quick note on <code>quo</code>, <code>enquo</code>, and <code>{{var}}</code> commands when using a function that calls a dataframe in R. For Hadley’s documentation, see <a href="https://tidyeval.tidyverse.org/sec-up-to-speed.html">this website</a>, or <a href="https://dplyr.tidyverse.org/articles/programming.html">this one</a>.</p>
+<p>Here is the data.</p>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+id
+</th>
+<th style="text-align:right;">
+others
+</th>
+<th style="text-align:right;">
+pressure
+</th>
+<th style="text-align:right;">
+performance
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+6.134445
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+8.956932
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+8.435113
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+13.820419
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+15.473562
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+5.466076
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+10.331524
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+7.717611
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+7.990309
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+10.823559
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+6.930184
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4.541806
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+7.996631
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+9.822106
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+12.640498
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+10.805539
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+9.941262
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+8.425159
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+5.772006
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4.498032
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+9.525057
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+12.263280
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+7.263611
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+12.399793
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+14.471659
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+6.710794
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+8.397338
+</td>
+</tr>
+</tbody>
+</table>
+<p>I want to take the commands below</p>
+<pre class="r"><code>ggplot(df %&gt;% filter(pressure == 0), aes(x = as.factor(others), y = performance)) + 
+  geom_violin(trim = F) + 
+  theme_classic() + 
+  xlab(&quot;Others Watching&quot;) + 
+  ylab(&quot;Performance&quot;) + 
+  theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank()) + 
+  ggtitle(&quot;Pressure = 0&quot;)</code></pre>
+<p><img src="/Computational_Notes/2021-01-02/index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>and create a function. Here it is:</p>
+<pre class="r"><code>boxfunc &lt;- function(col, title){
+  col &lt;- enquo(col)
+  
+  # use !! here
+  ggplot(df %&gt;% filter(pressure == !!col), aes(x = as.factor(others), y = performance)) + 
+  geom_violin(trim = F) + 
+  theme_classic() + 
+  xlab(&quot;Others Watching&quot;) + 
+  ylab(&quot;Performance&quot;) + 
+  theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank()) + 
+  # use parameter here
+  ggtitle(paste(&quot;Pressure =&quot;, title, sep = &quot; &quot;))
+  
+}</code></pre>
+<p>Now use it.</p>
+<pre class="r"><code>boxfunc(0, 1)</code></pre>
+<p><img src="/Computational_Notes/2021-01-02/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre class="r"><code>boxfunc(1, 2)</code></pre>
+<p><img src="/Computational_Notes/2021-01-02/index_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
+<p>Note that I can’t use <code>boxfunc(quo(0),1)</code> because R functions can’t handle a <code>quo</code> alongside a second parameter. Instead, I had to use <code>enquo</code> within the function.</p>
+<p>You could also use a <code>{{var}}</code> approach:</p>
+<pre class="r"><code>varfunc &lt;- function(col, title){
+  
+  # use {{var}} here
+  ggplot(df %&gt;% filter(pressure == {{col}}), aes(x = as.factor(others), y = performance)) + 
+  geom_violin(trim = F) + 
+  theme_classic() + 
+  xlab(&quot;Others Watching&quot;) + 
+  ylab(&quot;Performance&quot;) + 
+  theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank()) + 
+  # use parameter here
+  ggtitle(paste(&quot;Pressure =&quot;, title, sep = &quot; &quot;))
+  
+}</code></pre>
+<pre class="r"><code>varfunc(0, 1)</code></pre>
+<p><img src="/Computational_Notes/2021-01-02/index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>

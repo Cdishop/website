@@ -7,16 +7,16 @@ date: '2021-01-02'
 
 ```{r setup, include=FALSE, cache = T}
 knitr::opts_chunk$set(echo = TRUE, message = F, warning = F, cache = T)
-library(tidyverse)
-library(ggplot2)
-library(kableExtra)
 ```
 
 Quick note on `quo`, `enquo`, and `{{var}}` commands when using a function that calls a dataframe in R. For Hadley's documentation, see [this website](https://tidyeval.tidyverse.org/sec-up-to-speed.html), or [this one](https://dplyr.tidyverse.org/articles/programming.html).
 
 Here is the data.
 
-```{r, echo = F}
+```{r, echo = F, message = F, warning = F}
+library(tidyverse)
+library(ggplot2)
+library(kableExtra)
 set.seed(30)
 others <- c(0,1,2)
 pressure <- c(0,1,2)

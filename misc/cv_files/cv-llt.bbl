@@ -19,6 +19,38 @@
 
 \refsection{0}
   \datalist[entry]{ymdnt/global//global/global}
+    \entry{dishopbb}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%
+           family={Dishop},
+           familyi={D\bibinitperiod},
+           given={Christopher\bibnamedelima R},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=640bff6bc37424ceb9a8ee580af99127}{%
+           family={DeShon},
+           familyi={D\bibinitperiod},
+           given={Richard\bibnamedelima P},
+           giveni={R\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{0cc09653fd796f3c830d5c6ddb3edba0}
+      \strng{fullhash}{0cc09653fd796f3c830d5c6ddb3edba0}
+      \strng{bibnamehash}{0cc09653fd796f3c830d5c6ddb3edba0}
+      \strng{authorbibnamehash}{0cc09653fd796f3c830d5c6ddb3edba0}
+      \strng{authornamehash}{0cc09653fd796f3c830d5c6ddb3edba0}
+      \strng{authorfullhash}{0cc09653fd796f3c830d5c6ddb3edba0}
+      \field{sortinit}{7}
+      \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Psychological Methods}
+      \field{note}{\href{https://psyarxiv.com/jnmxr}{\textcolor{aogreen}{Link}}}
+      \field{title}{A tutorial on \uppercase{B}ollen and \uppercase{B}rand's technique to modeling dynamics while attending to dynamic panel bias}
+      \field{year}{In Press}
+    \endentry
     \entry{dcxx7}{booklet}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=c8fe28d689bd437108386244656b6e94}{%

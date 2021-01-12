@@ -143,6 +143,8 @@
 
 [Top 50 ggplot2 Visualizations](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
 
+[R for Graduate Students](https://bookdown.org/yih_huynh/Guide-to-R-Book/)
+
 ### DAGS
 
 [Dags using LaTex](https://github.com/jrgant/causalgraphs_latex/blob/master/graphical-models-causal.pdf)

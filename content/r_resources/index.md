@@ -55,6 +55,8 @@
 
 [John Flournoy](https://jflournoy.github.io)
 
+[Riinu Filtering NA](https://www.riinu.me/2020/02/r-filtering-with-na-values/?fbclid=IwAR0blmIQPiuyb_yifl5k_xe28-7UMNZPohfcuudW5tebK0X3cxsDWABxFpY)
+
 [UC R Guide](http://uc-r.github.io/introduction)
 
 [Crump Lab](https://crumplab.github.io/Courses.html)

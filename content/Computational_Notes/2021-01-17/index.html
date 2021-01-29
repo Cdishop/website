@@ -1,0 +1,123 @@
+---
+title: "Approximating Differential Equations"
+summary: '-----'
+date: '2021-01-17'
+---
+
+
+
+<p>Here’s how to approximate a differential equation using discrete simulations in R. Differential equations will be presented in the form</p>
+<p><span class="math display">\[\begin{equation}
+\frac{dx}{dt}
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(dx\)</span> is the change in whatever stock <span class="math inline">\(x\)</span> represents and <span class="math inline">\(dt\)</span> is the length of the time step. Any differential equation can be rearranged as</p>
+<p><span class="math display">\[\begin{equation}
+dx = f() * dt.
+\end{equation}\]</span></p>
+<p>where some function is multiplied by the time step <span class="math inline">\(dt\)</span>. In R, you could make this time step 0.000001, which is close enough to continuous that it often approximates functions well. Once you calculate <span class="math inline">\(dx\)</span>, or the change in <span class="math inline">\(x\)</span> over a small time step (i.e., 0.000001), then you can add this change to the current value of <span class="math inline">\(x\)</span>:</p>
+<p><span class="math display">\[\begin{equation}
+x_{new} = x + dx
+\end{equation}\]</span></p>
+<p>Rinse and repeat. Here is an example using the famous Lotka-Volterra Equations. Predator-Prey dynamics can be modeled with:</p>
+<p><span class="math display">\[\begin{equation}
+\frac{dx}{dt} = Ax - Bxy
+\end{equation}\]</span></p>
+<p><span class="math display">\[\begin{equation}
+\frac{dy}{dt} = Cxy - Dy
+\end{equation}\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(x\)</span> is the number of prey</li>
+<li><span class="math inline">\(y\)</span> is the number of predators</li>
+<li><span class="math inline">\(A\)</span> is the birth rate of prey</li>
+<li><span class="math inline">\(B\)</span> is the contact rate between predators and prey</li>
+<li><span class="math inline">\(C\)</span> can either be equivalent to <span class="math inline">\(B\)</span>, or it can be thought of as the predator birth rate due to the presence of prey</li>
+<li><span class="math inline">\(D\)</span> is the death rate of predators in the absence of prey</li>
+<li><span class="math inline">\(dx\)</span> is the change in number of prey</li>
+<li><span class="math inline">\(dy\)</span> is the change in the number of predators</li>
+<li><span class="math inline">\(dt\)</span> is the time step (not number of time points).</li>
+</ul>
+<p>We can numerically approximate these equations by multiplying each equation by <span class="math inline">\(dt\)</span> and then simulating with a small time step (e.g., 0.0001).</p>
+<p>A discrete time version would be:</p>
+<pre class="r"><code>dx &lt;- (Ax - Bxy) * small_step
+dy &lt;- (Cxy - Dy) * small_step
+
+x_new &lt;- x + dx
+y_new &lt;- y + dy
+
+repeat many times...</code></pre>
+<p>Let’s run it.</p>
+<pre class="r"><code>step &lt;- 0.1
+time &lt;- seq(from = step, to = 100, by = step)
+x &lt;- numeric(length(time))
+y &lt;- numeric(length(time))
+x[1] &lt;- 3
+y[1] &lt;- 5
+A &lt;- 1
+B &lt;- 0.2
+C &lt;- 0.04
+D &lt;- 0.5
+
+count &lt;- 0
+for(i in time){
+  count &lt;- count + 1
+  
+  
+  dx &lt;- (A*x[count] - B*x[count]*y[count]) * step
+  dy &lt;- (C*x[count]*y[count] - D*y[count]) * step
+  
+  x_new &lt;- x[count] + dx
+  y_new &lt;- y[count] + dy
+  
+  x[count + 1] &lt;- x_new
+  y[count + 1] &lt;- y_new
+  
+  
+}</code></pre>
+<pre class="r"><code>library(tidyverse)
+library(ggplot2)
+library(hrbrthemes)
+
+df &lt;- data.frame(
+  &#39;time&#39; = c(time, time),
+  &#39;val&#39; = c(x[1:length(time)], y[1:length(time)]),
+  &#39;var&#39; = c(rep(&quot;Prey&quot;, length(time)),
+            rep(&quot;Predator&quot;, length(time)))
+)
+
+
+ggplot(df, aes(x = time, y = val, color = var)) + 
+  geom_line() + 
+  theme_ipsum()</code></pre>
+<p><img src="/Computational_Notes/2021-01-17/index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Cool. The ever-growing size of the spikes is an artifact of approximation. Let’s use an even smaller step:</p>
+<pre class="r"><code>step &lt;- 0.001</code></pre>
+<p>Here is the output:</p>
+<p><img src="/Computational_Notes/2021-01-17/index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>In these simulations, I used what I call a “push forward” approach (i.e., generate x at t + 1 from x current). Sometimes, I prefer to use a “look backward” approach (i.e., generate x from x at t - 1). Here is the second approach:</p>
+<pre class="r"><code>step &lt;- 0.001
+time &lt;- 1000
+x &lt;- numeric(length(time))
+y &lt;- numeric(length(time))
+x[1] &lt;- 3
+y[1] &lt;- 5
+A &lt;- 1
+B &lt;- 0.2
+C &lt;- 0.04
+D &lt;- 0.5
+
+for(i in 2:time){
+
+  
+  dx &lt;- (A*x[i - 1] - B*x[i - 1]*y[i - 1]) * step
+  dy &lt;- (C*x[i - 1]*y[i - 1] - D*y[i - 1]) * step
+  
+  x_new &lt;- x[i - 1] + dx
+  y_new &lt;- y[i - 1] + dy
+  
+  x[i] &lt;- x_new
+  y[i] &lt;- y_new
+  
+  
+}</code></pre>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>

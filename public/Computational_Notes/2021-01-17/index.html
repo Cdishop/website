@@ -1,0 +1,827 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="-----">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://christopherdishop.netlify.app/computational_notes/2021-01-17/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#06805E">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/tomorrow.min.css" crossorigin="anonymous" title="hl-light">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/tomorrow.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+      
+    
+
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400i%7CKarla:400,400i,700,700i%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-99209585-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'UA-99209585-1', {});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hua7ddb50eead73fc737c5c3187aff8cf9_17132_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hua7ddb50eead73fc737c5c3187aff8cf9_17132_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="https://christopherdishop.netlify.app/computational_notes/2021-01-17/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@apreshill">
+  <meta property="twitter:creator" content="@apreshill">
+  
+  <meta property="og:site_name" content="Christopher R. Dishop">
+  <meta property="og:url" content="https://christopherdishop.netlify.app/computational_notes/2021-01-17/">
+  <meta property="og:title" content="Approximating Differential Equations | Christopher R. Dishop">
+  <meta property="og:description" content="-----"><meta property="og:image" content="https://christopherdishop.netlify.app/img/pom-card.png">
+  <meta property="twitter:image" content="https://christopherdishop.netlify.app/img/pom-card.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2021-01-17T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2021-01-17T00:00:00&#43;00:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Approximating Differential Equations | Christopher R. Dishop</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">Christopher R. Dishop</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
+        
+        
+        
+          
+            
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="https://raw.githubusercontent.com/Cdishop/website/master/misc/CV.pdf" target="_blank" rel="noopener"><span>CV</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/computational_notes"><span>Computation</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/r_resources"><span>R Resources</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/rec_reading"><span>Recommended</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+
+        
+
+        
+
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Approximating Differential Equations</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 17, 2021
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+
+<p>Here’s how to approximate a differential equation using discrete simulations in R. Differential equations will be presented in the form</p>
+<p><span class="math display">\[\begin{equation}
+\frac{dx}{dt}
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(dx\)</span> is the change in whatever stock <span class="math inline">\(x\)</span> represents and <span class="math inline">\(dt\)</span> is the length of the time step. Any differential equation can be rearranged as</p>
+<p><span class="math display">\[\begin{equation}
+dx = f() * dt.
+\end{equation}\]</span></p>
+<p>where some function is multiplied by the time step <span class="math inline">\(dt\)</span>. In R, you could make this time step 0.000001, which is close enough to continuous that it often approximates functions well. Once you calculate <span class="math inline">\(dx\)</span>, or the change in <span class="math inline">\(x\)</span> over a small time step (i.e., 0.000001), then you can add this change to the current value of <span class="math inline">\(x\)</span>:</p>
+<p><span class="math display">\[\begin{equation}
+x_{new} = x + dx
+\end{equation}\]</span></p>
+<p>Rinse and repeat. Here is an example using the famous Lotka-Volterra Equations. Predator-Prey dynamics can be modeled with:</p>
+<p><span class="math display">\[\begin{equation}
+\frac{dx}{dt} = Ax - Bxy
+\end{equation}\]</span></p>
+<p><span class="math display">\[\begin{equation}
+\frac{dy}{dt} = Cxy - Dy
+\end{equation}\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(x\)</span> is the number of prey</li>
+<li><span class="math inline">\(y\)</span> is the number of predators</li>
+<li><span class="math inline">\(A\)</span> is the birth rate of prey</li>
+<li><span class="math inline">\(B\)</span> is the contact rate between predators and prey</li>
+<li><span class="math inline">\(C\)</span> can either be equivalent to <span class="math inline">\(B\)</span>, or it can be thought of as the predator birth rate due to the presence of prey</li>
+<li><span class="math inline">\(D\)</span> is the death rate of predators in the absence of prey</li>
+<li><span class="math inline">\(dx\)</span> is the change in number of prey</li>
+<li><span class="math inline">\(dy\)</span> is the change in the number of predators</li>
+<li><span class="math inline">\(dt\)</span> is the time step (not number of time points).</li>
+</ul>
+<p>We can numerically approximate these equations by multiplying each equation by <span class="math inline">\(dt\)</span> and then simulating with a small time step (e.g., 0.0001).</p>
+<p>A discrete time version would be:</p>
+<pre class="r"><code>dx &lt;- (Ax - Bxy) * small_step
+dy &lt;- (Cxy - Dy) * small_step
+
+x_new &lt;- x + dx
+y_new &lt;- y + dy
+
+repeat many times...</code></pre>
+<p>Let’s run it.</p>
+<pre class="r"><code>step &lt;- 0.1
+time &lt;- seq(from = step, to = 100, by = step)
+x &lt;- numeric(length(time))
+y &lt;- numeric(length(time))
+x[1] &lt;- 3
+y[1] &lt;- 5
+A &lt;- 1
+B &lt;- 0.2
+C &lt;- 0.04
+D &lt;- 0.5
+
+count &lt;- 0
+for(i in time){
+  count &lt;- count + 1
+  
+  
+  dx &lt;- (A*x[count] - B*x[count]*y[count]) * step
+  dy &lt;- (C*x[count]*y[count] - D*y[count]) * step
+  
+  x_new &lt;- x[count] + dx
+  y_new &lt;- y[count] + dy
+  
+  x[count + 1] &lt;- x_new
+  y[count + 1] &lt;- y_new
+  
+  
+}</code></pre>
+<pre class="r"><code>library(tidyverse)
+library(ggplot2)
+library(hrbrthemes)
+
+df &lt;- data.frame(
+  &#39;time&#39; = c(time, time),
+  &#39;val&#39; = c(x[1:length(time)], y[1:length(time)]),
+  &#39;var&#39; = c(rep(&quot;Prey&quot;, length(time)),
+            rep(&quot;Predator&quot;, length(time)))
+)
+
+
+ggplot(df, aes(x = time, y = val, color = var)) + 
+  geom_line() + 
+  theme_ipsum()</code></pre>
+<p><img src="/Computational_Notes/2021-01-17/index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Cool. The ever-growing size of the spikes is an artifact of approximation. Let’s use an even smaller step:</p>
+<pre class="r"><code>step &lt;- 0.001</code></pre>
+<p>Here is the output:</p>
+<p><img src="/Computational_Notes/2021-01-17/index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>In these simulations, I used what I call a “push forward” approach (i.e., generate x at t + 1 from x current). Sometimes, I prefer to use a “look backward” approach (i.e., generate x from x at t - 1). Here is the second approach:</p>
+<pre class="r"><code>step &lt;- 0.001
+time &lt;- 1000
+x &lt;- numeric(length(time))
+y &lt;- numeric(length(time))
+x[1] &lt;- 3
+y[1] &lt;- 5
+A &lt;- 1
+B &lt;- 0.2
+C &lt;- 0.04
+D &lt;- 0.5
+
+for(i in 2:time){
+
+  
+  dx &lt;- (A*x[i - 1] - B*x[i - 1]*y[i - 1]) * step
+  dy &lt;- (C*x[i - 1]*y[i - 1] - D*y[i - 1]) * step
+  
+  x_new &lt;- x[i - 1] + dx
+  y_new &lt;- y[i - 1] + dy
+  
+  x[i] &lt;- x_new
+  y[i] &lt;- y_new
+  
+  
+}</code></pre>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="/js/academic.min.6f7ce8be710290b8c431bbc97f405d15.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+
+
+  <p class="powered-by">
+    © Christopher Dishop 2021 &middot; 
+
+    Made with <a href="https://cran.r-project.org/" target="_blank" rel="noopener"><i class="fab fa-r-project"></i> </a><a href="https://github.com/rstudio/blogdown" target="_blank" rel="noopener">blogdown</a>,
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>, and
+    <a href="https://github.com/rbind/apreshill" target="_blank" rel="noopener">Alison's Hill's</a> wonderful template.
+
+    
+
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -568,14 +568,14 @@ mini[mini$person == &#39;jimmy&#39;, 2] &lt;- 99
 mini[mini$person == &#39;james&#39;, 2] &lt;- 99</code></pre>
 <p>The original data:</p>
 <pre><code>##   person        v_1       v_2      v_3       v_4
-## 1  jimmy  0.4459355  8.860039 42.18930 48.134601
-## 2  james -0.9507457 12.006218 39.05815 26.049584
-## 3 johnny -0.8191655 13.756367 54.19614  9.198395</code></pre>
+## 1  jimmy -0.9154733  7.744281 49.51770  5.884693
+## 2  james  0.4381705 15.494271 66.24865 28.908806
+## 3 johnny  0.7894355  3.022337 39.65228 18.454489</code></pre>
 <p>What we changed it to:</p>
 <pre><code>##   person        v_1       v_2
-## 1  jimmy 99.0000000  8.860039
-## 2  james 99.0000000 12.006218
-## 3 johnny -0.8191655 13.756367</code></pre>
+## 1  jimmy 99.0000000  7.744281
+## 2  james 99.0000000 15.494271
+## 3 johnny  0.7894355  3.022337</code></pre>
 <p>Here is the function equivalent:</p>
 <pre class="r"><code>impute_99 &lt;- function(data){
   
@@ -594,9 +594,9 @@ mini[mini$person == &#39;james&#39;, 2] &lt;- 99</code></pre>
 <pre class="r"><code>adjusted_data &lt;- impute_99(dish)
 adjusted_data</code></pre>
 <pre><code>##   person        v_1       v_2
-## 1  jimmy 99.0000000  8.860039
-## 2  james 99.0000000 12.006218
-## 3 johnny -0.8191655 13.756367</code></pre>
+## 1  jimmy 99.0000000  7.744281
+## 2  james 99.0000000 15.494271
+## 3 johnny  0.7894355  3.022337</code></pre>
 </div>
 <div id="function-with-column-names-as-parameters" class="section level1">
 <h1>Function with column names as parameters</h1>
@@ -618,9 +618,9 @@ adjusted_data</code></pre>
 <pre class="r"><code>cool_data &lt;- impute_99_column_specific(dish, &#39;v_1&#39;, &#39;v_2&#39;)
 cool_data</code></pre>
 <pre><code>##   person        v_1       v_2
-## 1  jimmy 99.0000000  8.860039
-## 2  james 99.0000000 12.006218
-## 3 johnny -0.8191655 13.756367</code></pre>
+## 1  jimmy 99.0000000  7.744281
+## 2  james 99.0000000 15.494271
+## 3 johnny  0.7894355  3.022337</code></pre>
 <p>Bo<span class="math inline">\(^2\)</span>m =)</p>
 </div>
 

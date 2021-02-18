@@ -145,7 +145,11 @@
 
 [Top 50 ggplot2 Visualizations](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
 
-[R for Graduate Students](https://bookdown.org/yih_huynh/Guide-to-R-Book/)
+[Ref Guide on Common GGplot2 Issues](https://ivelasq.rbind.io/blog/things-i-google/)
+
+[Dynamic Systems and Differential Equations](https://quantdev.ssri.psu.edu/tutorials/introductory-odes)
+
+[IRT](https://quantdev.ssri.psu.edu/tutorials/introduction-irt-modeling)
 
 ### DAGS
 
@@ -179,6 +183,8 @@
 
 [Beginner Concepts for Reproducible Science](https://psyteachr.github.io/msc-data-skills/)
 
+[R for Graduate Students](https://bookdown.org/yih_huynh/Guide-to-R-Book/)
+
 [Data Wrangling with R](https://cengel.github.io/R-data-wrangling/)
 
 [Learning Statistics with R](https://learningstatisticswithr.com/)
@@ -202,6 +208,10 @@
 [Introduction to Data Science at Edinburgh](https://www.introds.org/)
 
 [Introduction to Computational Data for Biology](https://biol607.github.io/schedule.html)
+
+[Data Science in Education Using R](https://datascienceineducation.com/c11.html)
+
+[McElreath's Bayesian Course](https://github.com/rmcelreath/stat_rethinking_2020#calendar--topical-outline)
 
 [Regression](https://leanpub.com/regmods/read)
 

@@ -185,6 +185,8 @@
 
 [R for Graduate Students](https://bookdown.org/yih_huynh/Guide-to-R-Book/)
 
+[R for Researchers](https://tysonbarrett.com/Rstats/index.html)
+
 [Data Wrangling with R](https://cengel.github.io/R-data-wrangling/)
 
 [Learning Statistics with R](https://learningstatisticswithr.com/)

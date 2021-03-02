@@ -1,0 +1,95 @@
+---
+title: "Reminder Cleaning Commands - Longitudinal"
+summary: '-----'
+date: '2021-03-01'
+---
+
+
+```{r setup, include=FALSE, cache = T}
+knitr::opts_chunk$set(echo = TRUE, message = F, warning = F, cache = T)
+```
+
+A few reminders for longitudinal wrangling:
+
+1) creating file names
+
+2) advanced filtering
+
+3) find people with full data
+
+4) reshape issues
+
+### Creating File Names
+
+* "wave1.dta"
+* "wave2.dta"
+* "wave3.dta"
+* etc...
+
+```{r, eval = F}
+
+# file names
+files <- paste0("wave", 1:10, ".dta")
+
+# which can then be used in a function
+
+combine_files <- function(x){
+  
+  df <- read_dta(paste0("../data/another-folder/", x))
+
+}
+
+# ...and iterated over
+combine_files(files[1])
+
+```
+
+### Advanced Filtering
+
+Let's say I'm iterating over multiple data frames. For each data frame, I want to filter to include only people who are currently employed (1 = yes, 0 = no). The question asking whether a respondent is employed is "wave1_emp" in the first data set, "wave2_emp" in the second data set, "wave3_emp" in the third data set, etc. 
+```{r, eval = F}
+
+df %>% 
+  filter_at(vars(contains("_emp")), all_vars(. == 1))
+
+```
+
+This command is robust across the different q formats within various waves, or across various waves.
+
+### Find People With Full Data
+
+Make the df wide. Drop NAs. Pull unique ids. Filter original long df to include only those ids from previous step.
+
+```{r, eval = F}
+
+df_wide <- df_wide %>% 
+  select_at(vars(contains(c("work", "sat", "cond", "time", "id")))) %>% 
+  drop_na()
+
+use_ids <- unique(df_wide$id)
+
+# use long, not wide df here
+df_no_missing <- df_long %>% 
+  filter(id %in% use_ids)
+
+```
+
+### Reshape Issue
+
+I prefer `reshape` over `pivot_wider` / `pivot_longer`. Unfortunately, the function does not work well with tibbles.
+
+```{r, eval = F}
+
+# no good
+df_wide <- reshape(df_tibble, idvar = "id", timevar = "time", direction = "wide")
+
+# that'll work
+df <- as.data.frame(df_tibble)
+df_wide <- reshape(df, idvar = "id", timevar = "time", direction = "wide")
+
+```
+
+
+
+
+Bo$^2$m =)

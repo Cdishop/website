@@ -2858,6 +2858,97 @@ Rolf Dobelli
 
 
 
+&nbsp;
+
+<div align="center">
+So Good They Can't Ignore You: Why Skills Trump Passion in the Question for Work You Love
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/ignore.png)
+
+Cal Newport
+
+[Click here for link](https://www.amazon.com/Good-They-Cant-Ignore-You-ebook/dp/B0076DDBJ6)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Think Like a Rocket Scientist
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/think_rocket.png)
+
+Ozan Varol
+
+[Click here for link](https://www.amazon.com/Think-Like-Rocket-Scientist-Strategies-ebook/dp/B07W53SV45/ref=sr_1_1?dchild=1&keywords=think+rocket+scientist&qid=1614652415&sr=8-1)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 &nbsp;
 

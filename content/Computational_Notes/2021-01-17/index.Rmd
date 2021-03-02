@@ -97,7 +97,7 @@ for(i in time){
 }
 ```
 
-```{r}
+```{r, warning = F, message = F}
 library(tidyverse)
 library(ggplot2)
 library(hrbrthemes)
@@ -123,7 +123,7 @@ step <- 0.001
 
 Here is the output:
 
-```{r, echo = F}
+```{r, echo = F, message = F, warning = F}
 
 
 step <- 0.001

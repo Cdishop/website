@@ -1,0 +1,68 @@
+---
+title: "Reminder Cleaning Commands - Longitudinal"
+summary: '-----'
+date: '2021-03-01'
+---
+
+
+
+<p>A few reminders for longitudinal wrangling:</p>
+<ol style="list-style-type: decimal">
+<li><p>creating file names</p></li>
+<li><p>advanced filtering</p></li>
+<li><p>find people with full data</p></li>
+<li><p>reshape issues</p></li>
+</ol>
+<div id="creating-file-names" class="section level3">
+<h3>Creating File Names</h3>
+<ul>
+<li>“wave1.dta”</li>
+<li>“wave2.dta”</li>
+<li>“wave3.dta”</li>
+<li>etc…</li>
+</ul>
+<pre class="r"><code># file names
+files &lt;- paste0(&quot;wave&quot;, 1:10, &quot;.dta&quot;)
+
+# which can then be used in a function
+
+combine_files &lt;- function(x){
+  
+  df &lt;- read_dta(paste0(&quot;../data/another-folder/&quot;, x))
+
+}
+
+# ...and iterated over
+combine_files(files[1])</code></pre>
+</div>
+<div id="advanced-filtering" class="section level3">
+<h3>Advanced Filtering</h3>
+<p>Let’s say I’m iterating over multiple data frames. For each data frame, I want to filter to include only people who are currently employed (1 = yes, 0 = no). The question asking whether a respondent is employed is “wave1_emp” in the first data set, “wave2_emp” in the second data set, “wave3_emp” in the third data set, etc.</p>
+<pre class="r"><code>df %&gt;% 
+  filter_at(vars(contains(&quot;_emp&quot;)), all_vars(. == 1))</code></pre>
+<p>This command is robust across the different q formats within various waves, or across various waves.</p>
+</div>
+<div id="find-people-with-full-data" class="section level3">
+<h3>Find People With Full Data</h3>
+<p>Make the df wide. Drop NAs. Pull unique ids. Filter original long df to include only those ids from previous step.</p>
+<pre class="r"><code>df_wide &lt;- df_wide %&gt;% 
+  select_at(vars(contains(c(&quot;work&quot;, &quot;sat&quot;, &quot;cond&quot;, &quot;time&quot;, &quot;id&quot;)))) %&gt;% 
+  drop_na()
+
+use_ids &lt;- unique(df_wide$id)
+
+# use long, not wide df here
+df_no_missing &lt;- df_long %&gt;% 
+  filter(id %in% use_ids)</code></pre>
+</div>
+<div id="reshape-issue" class="section level3">
+<h3>Reshape Issue</h3>
+<p>I prefer <code>reshape</code> over <code>pivot_wider</code> / <code>pivot_longer</code>. Unfortunately, the function does not work well with tibbles.</p>
+<pre class="r"><code># no good
+df_wide &lt;- reshape(df_tibble, idvar = &quot;id&quot;, timevar = &quot;time&quot;, direction = &quot;wide&quot;)
+
+# that&#39;ll work
+df &lt;- as.data.frame(df_tibble)
+df_wide &lt;- reshape(df, idvar = &quot;id&quot;, timevar = &quot;time&quot;, direction = &quot;wide&quot;)</code></pre>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>
+</div>

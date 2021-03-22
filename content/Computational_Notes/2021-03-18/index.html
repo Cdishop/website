@@ -1,0 +1,14 @@
+---
+title: "Translucent ggplot background for powerpoint"
+summary: '-----'
+date: '2021-03-18'
+---
+
+
+
+<p>The following parameters will render a translucent ggplot. When pasted into powerpoint, the background will not appear, leaving only the powerpoint template.</p>
+<pre class="r"><code>ggplot() + 
+  theme_minimal() +
+  theme(panel.grid = element_blank())</code></pre>
+<p>Unfortunately, this doesn’t work with <code>theme_bw()</code> or <code>theme_classic()</code>.</p>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>

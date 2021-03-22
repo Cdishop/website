@@ -1,0 +1,25 @@
+---
+title: "Translucent ggplot background for powerpoint"
+summary: '-----'
+date: '2021-03-18'
+---
+
+
+```{r setup, include=FALSE, cache = T}
+knitr::opts_chunk$set(echo = TRUE, message = F, warning = F, cache = T)
+```
+
+The following parameters will render a translucent ggplot. When pasted into powerpoint, the background will not appear, leaving only the powerpoint template.
+
+```{r, eval = F}
+
+ggplot() + 
+  theme_minimal() +
+  theme(panel.grid = element_blank())
+
+```
+
+Unfortunately, this doesn't work with `theme_bw()` or `theme_classic()`. 
+
+
+Bo$^2$m =)

@@ -93,6 +93,12 @@
 
 [NICAR 2018](https://paldhous.github.io/NICAR/2018/r-analysis.html)
 
+[Adventures in R](https://www.adventures-in-r.com/#logistics)
+
+[Teacup Giraffes R](https://tinystats.github.io/teacups-giraffes-and-statistics/00_narrative.html)
+
+[RYouWithMe](https://rladiessydney.org/courses/ryouwithme/)
+
 ### Random
 
 [R Markdown Themes](https://www.datadreaming.org/post/r-markdown-theme-gallery/)
@@ -212,6 +218,8 @@
 [Introduction to Computational Data for Biology](https://biol607.github.io/schedule.html)
 
 [Data Science in Education Using R](https://datascienceineducation.com/c11.html)
+
+[Causal Modeling in R](https://user2020.lucymcgowan.com/#1)
 
 [McElreath's Bayesian Course](https://github.com/rmcelreath/stat_rethinking_2020#calendar--topical-outline)
 

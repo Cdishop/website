@@ -689,4 +689,8 @@ for(l in 1:time){
 
 ```
 
+
+ps, [here](https://github.com/hrbrmstr/waffle) is a ggplot tool for creating waffle plots.
+
+
 Bo$^2$m =)

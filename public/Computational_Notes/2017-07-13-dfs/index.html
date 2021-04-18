@@ -606,7 +606,7 @@ ex1_model &lt;- sem(ex1_string, data = df)</code></pre>
 <li><p>6 - 6 = 0</p></li>
 </ul>
 <pre class="r"><code>show(ex1_model)</code></pre>
-<pre><code>## lavaan 0.6-6 ended normally after 12 iterations
+<pre><code>## lavaan 0.6-6 ended normally after 16 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -638,9 +638,9 @@ show(ex1_model_restrict) # yup</code></pre>
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 2.408
+##   Test statistic                                 2.588
 ##   Degrees of freedom                                 1
-##   P-value (Chi-square)                           0.121</code></pre>
+##   P-value (Chi-square)                           0.108</code></pre>
 </div>
 </div>
 <div id="example-2---common-factor-underlying-6-observed-items" class="section level1">
@@ -705,7 +705,7 @@ ex2_model &lt;- sem(ex2_string, data = df_cf)</code></pre>
 <li><p>21 - 12 = 9</p></li>
 </ul>
 <pre class="r"><code>show(ex2_model)</code></pre>
-<pre><code>## lavaan 0.6-6 ended normally after 53 iterations
+<pre><code>## lavaan 0.6-6 ended normally after 58 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -715,9 +715,9 @@ ex2_model &lt;- sem(ex2_string, data = df_cf)</code></pre>
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 6.131
+##   Test statistic                                15.507
 ##   Degrees of freedom                                 9
-##   P-value (Chi-square)                           0.727</code></pre>
+##   P-value (Chi-square)                           0.078</code></pre>
 </div>
 </div>
 </div>
@@ -795,7 +795,7 @@ ex3_model &lt;- sem(ex3_string, data = df_3)</code></pre>
 <li><p>15 - 13 = 2</p></li>
 </ul>
 <pre class="r"><code>show(ex3_model)</code></pre>
-<pre><code>## lavaan 0.6-6 ended normally after 171 iterations
+<pre><code>## lavaan 0.6-6 ended normally after 172 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -805,9 +805,9 @@ ex3_model &lt;- sem(ex3_string, data = df_3)</code></pre>
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 2.784
+##   Test statistic                                 2.237
 ##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.426</code></pre>
+##   P-value (Chi-square)                           0.525</code></pre>
 <p>Nope. I’m one off, where did I go wrong?</p>
 <p>Ah, there is only 1 prediction error because productivity is being predicted. I counted 2 prediction errors because I gave one to both b1 and b2. So, the unknowns should be…</p>
 <ul>
@@ -825,7 +825,7 @@ ex3_model &lt;- sem(ex3_string, data = df_3)</code></pre>
 <li><p>15 - 12 = 3</p></li>
 </ul>
 <pre class="r"><code>show(ex3_model)</code></pre>
-<pre><code>## lavaan 0.6-6 ended normally after 171 iterations
+<pre><code>## lavaan 0.6-6 ended normally after 172 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -835,9 +835,9 @@ ex3_model &lt;- sem(ex3_string, data = df_3)</code></pre>
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 2.784
+##   Test statistic                                 2.237
 ##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.426</code></pre>
+##   P-value (Chi-square)                           0.525</code></pre>
 </div>
 </div>
 </div>
@@ -892,7 +892,7 @@ ex4_model &lt;- sem(ex4_string, data = df_chain)</code></pre>
 <li><p>10 - 7 = 3</p></li>
 </ul>
 <pre class="r"><code>show(ex4_model)</code></pre>
-<pre><code>## lavaan 0.6-6 ended normally after 55 iterations
+<pre><code>## lavaan 0.6-6 ended normally after 42 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -902,9 +902,9 @@ ex4_model &lt;- sem(ex4_string, data = df_chain)</code></pre>
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 5.091
+##   Test statistic                                 4.520
 ##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.165</code></pre>
+##   P-value (Chi-square)                           0.211</code></pre>
 </div>
 </div>
 </div>
@@ -981,7 +981,7 @@ ex5_model &lt;- sem(ex5_string, data = df5_wide)</code></pre>
 <li><p>28 - 10 = 18</p></li>
 </ul>
 <pre class="r"><code>show(ex5_model)</code></pre>
-<pre><code>## lavaan 0.6-6 ended normally after 116 iterations
+<pre><code>## lavaan 0.6-6 ended normally after 107 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -992,9 +992,9 @@ ex5_model &lt;- sem(ex5_string, data = df5_wide)</code></pre>
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                17.055
+##   Test statistic                                17.587
 ##   Degrees of freedom                                18
-##   P-value (Chi-square)                           0.519</code></pre>
+##   P-value (Chi-square)                           0.483</code></pre>
 <p>Why didn’t I estimate a mean for unobserved heterogeneity here? In all of the other examples I estimated the variance (1 parameter) and the mean (1 parameter) of the latent exogenous variable. In this case, unobserved heterogeneity is the latent exogenous variable but I only estimated its variance. That’s because in this model we don’t really care about the mean of unobserved heterogeneity, it’s just a latent variable that we incorporate to account for stable individual differences. In other words, when I estimate latent cog ability and assertiveness as IVs to predict an outcome, I care about their means. Here, unobserved heterogeneity is just an additional factor to account for, not a variable whose mean I really care to know. That said, if I wanted to estimate the mean of unobserved heterogeneity (which would result in one additional estimated parameter and one fewer df) then I would incorporate the following into the model string.</p>
 <pre class="r"><code>&#39;
 

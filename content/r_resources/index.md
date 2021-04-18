@@ -19,6 +19,8 @@
 
 [Learning-R-Resources](https://github.com/Joscelinrocha/Learning-R-Resources)
 
+[R For Data Science Tutorials](https://github.com/ujjwalkarn/DataScienceR)
+
 ### People with helpful individual websites
 
 [Emily C. Zabor](https://www.emilyzabor.com/tutorials/rmarkdown_websites_tutorial.html)
@@ -156,6 +158,10 @@
 [Dynamic Systems and Differential Equations](https://quantdev.ssri.psu.edu/tutorials/introductory-odes)
 
 [IRT](https://quantdev.ssri.psu.edu/tutorials/introduction-irt-modeling)
+
+[Git and GitHub](https://aosmith16.github.io/spring-r-topics/materials.html)
+
+[Text Mining](https://juliasilge.shinyapps.io/learntidytext/#section-introduction)
 
 ### DAGS
 

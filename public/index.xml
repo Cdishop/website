@@ -5,7 +5,7 @@
     <link>https://christopherdishop.netlify.app/</link>
       <atom:link href="https://christopherdishop.netlify.app/index.xml" rel="self" type="application/rss+xml" />
     <description>Christopher R. Dishop</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Christopher Dishop 2021</copyright><lastBuildDate>Thu, 18 Mar 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Christopher Dishop 2021</copyright><lastBuildDate>Sat, 01 May 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://christopherdishop.netlify.app/img/pom-card.png</url>
       <title>Christopher R. Dishop</title>
@@ -13,11 +13,1035 @@
     </image>
     
     <item>
+      <title>Systems Zoo</title>
+      <link>https://christopherdishop.netlify.app/computational_notes/2021-05-01/</link>
+      <pubDate>Sat, 01 May 2021 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2021-05-01/</guid>
+      <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;Some practice simulating stock and flow models. The first example set uses discrete time. The second uses continuous time differential equations. I include some text from Donella Meadows’ book, “Thinking in Systems” to explain some of the examples.&lt;/p&gt;
+&lt;div id=&#34;example-1-bath-tub&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Example 1: Bath Tub&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;images/bathtub.png&#34; style=&#34;width:50.0%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;“Imagine a bathtub filled with water, with its drain plugged up and its faucets turned off—an unchanging, undynamic, boring system. Now mentally pull the plug. The water runs out, of course. The level of water in the tub goes down until the tub is empty.” (p. 19).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
+library(hrbrthemes)
+
+# time
+time &amp;lt;- 10
+
+# stock storehouses - start and end for each stock
+## water in tub
+startwater &amp;lt;- numeric(time)
+endwater &amp;lt;- numeric(time)
+
+# initial conditions in each stock
+## water in tub
+startwater[1] &amp;lt;- 10
+endwater[1] &amp;lt;- startwater[1]
+
+# constants
+## outflow (gallons exiting the tub per minute)
+outflow &amp;lt;- 1
+## inflow (gallons entering the tub per minute)
+inflow &amp;lt;- 0
+
+# iterate
+for(i in 2:time){
+  
+  # start stocks at period i are ending stocks at period i-1
+  startwater[i] &amp;lt;- endwater[i - 1]
+  
+  # model system
+  endwater[i] &amp;lt;- startwater[i] + inflow - outflow
+  
+}
+
+dftub1 &amp;lt;- data.frame(
+  &amp;quot;gallons&amp;quot; = c(endwater),
+  &amp;quot;minutes&amp;quot; = c(1:time)
+)
+
+ggplot(dftub1, aes(x = minutes, y = gallons)) + 
+  geom_line() + 
+  theme_classic()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;“Now imagine starting again with a full tub, and again open the drain, but this time, when the tub is about half empty, turn on the inflow faucet so the rate of water flowing in is just equal to that flowing out. What happens? The amount of water in the tub stays constant at whatever level it had reached when the inflow became equal to the outflow. It is in a state of dynamic equilibrium – its level does not change, although water is continuously flowing through it.” (p. 21).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# time
+time &amp;lt;- 10
+
+# stock storehouses - start and end for each stock
+## water in tub
+startwater &amp;lt;- numeric(time)
+endwater &amp;lt;- numeric(time)
+
+# initial conditions in each stock
+## water in tub
+startwater[1] &amp;lt;- 10
+endwater[1] &amp;lt;- startwater[1]
+
+# constants
+## none - flows change midway through the process
+
+# iterate
+for(i in 2:time){
+  
+  # start stocks at period i are ending stocks at period i-1
+  startwater[i] &amp;lt;- endwater[i - 1]
+  
+  # model system
+  
+  ## open the drain
+  if(i &amp;lt; 5){
+    inflow &amp;lt;- 0
+    outflow &amp;lt;- 1
+  ## then, turn on the faucet so water flows into the tub
+  }else{
+    inflow &amp;lt;- 1
+    outflow &amp;lt;- 1
+  }
+  
+  endwater[i] &amp;lt;- startwater[i] + inflow - outflow
+  
+}
+
+dftub2 &amp;lt;- data.frame(
+  &amp;quot;gallons&amp;quot; = c(endwater),
+  &amp;quot;minutes&amp;quot; = c(1:time)
+)
+
+ggplot(dftub2, aes(x = minutes, y = gallons)) + 
+  geom_line() + 
+  theme_classic() + 
+  ylim(0, 10)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;example-2-coffee-temperature&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Example 2: Coffee Temperature&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;images/coffee.png&#34; style=&#34;width:50.0%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;“A hot cup of coffee will gradually cool down to room temperature. Its rate of cooling depends on the difference between the temperature of the coffee and the temperature of the room. The greater the difference, the faster the coffee will cool. The loop works the other way too – if you make iced coffee on a hot day, it will warm up until it has the same temperature as the room. The function of this system is to bring the discrepancy between coffee’s temperature and room’s temperature to zero, no matter what the direction of the discrepancy. Whatever the initial value of the system stock (coffee temperature in this case), whether it is above or below the ‘goal’ (room temperature), the feedback loop brings it toward the goal. The change is faster at first, and then slower, as the discrepancy between the stock and the goal decreases.” (p. 29).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# time
+time &amp;lt;- 4
+
+# stock storehouses - start and end for each stock
+## coffee
+startcoffee &amp;lt;- numeric(time)
+endcoffee &amp;lt;- numeric(time)
+
+## iced coffee
+startic &amp;lt;- numeric(time)
+endic &amp;lt;- numeric(time)
+
+# initial conditions in each stock
+## temperature of coffee
+startcoffee[1] &amp;lt;- 96
+endcoffee[1] &amp;lt;- startcoffee[1]
+
+## temperature of iced coffee
+startic[1] &amp;lt;- 34
+endic[1] &amp;lt;- startic[1]
+
+# constants
+## room temperature
+room_temp &amp;lt;- 71
+
+# iterate
+for(i in 2:time){
+  
+  # start stocks at period i are ending stocks at period i-1
+  startcoffee[i] &amp;lt;- endcoffee[i - 1]
+  startic[i] &amp;lt;- endic[i - 1]
+  
+  # model system
+  
+  ## system for hot coffee
+  difference_coffee &amp;lt;- abs(room_temp - startcoffee[i])
+  cooling &amp;lt;- difference_coffee
+  endcoffee[i] &amp;lt;- startcoffee[i] - cooling
+  
+  ## system for iced coffee
+  difference_ic &amp;lt;- room_temp - startic[i]
+  heating &amp;lt;- difference_ic
+  endic[i] &amp;lt;- startic[i] + heating
+  
+}
+
+dfcoffee &amp;lt;- data.frame(
+  &amp;quot;var&amp;quot; = c(rep(&amp;#39;Hot Coffee&amp;#39;, time),
+            rep(&amp;#39;Iced Coffee&amp;#39;, time)),
+  &amp;quot;temperature&amp;quot; = c(endcoffee,
+                    endic),
+  &amp;quot;minutes&amp;quot; = c(c(1:time),
+                c(1:time))
+)
+
+ggplot(dfcoffee, aes(x = minutes, y = temperature, linetype = var)) + 
+  geom_line() + 
+  geom_hline(yintercept = room_temp, linetype = &amp;quot;dashed&amp;quot;, color = &amp;#39;red&amp;#39;) + 
+  geom_text(aes(x = 1.3, y = room_temp + 1.8, label = &amp;quot;Room Temperature&amp;quot;), color = &amp;quot;darkred&amp;quot;) + 
+  theme(legend.title = element_blank())&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;The sampling window isn’t small enough to capture the gradual decay/growth of temperature. I can artificially slow the process down by making the effects weaker.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# time
+time &amp;lt;- 20
+
+# stock storehouses - start and end for each stock
+## coffee
+startcoffee &amp;lt;- numeric(time)
+endcoffee &amp;lt;- numeric(time)
+
+## iced coffee
+startic &amp;lt;- numeric(time)
+endic &amp;lt;- numeric(time)
+
+# initial conditions in each stock
+## temperature of coffee
+startcoffee[1] &amp;lt;- 96
+endcoffee[1] &amp;lt;- startcoffee[1]
+
+## temperature of iced coffee
+startic[1] &amp;lt;- 34
+endic[1] &amp;lt;- startic[1]
+
+# constants
+## room temperature
+room_temp &amp;lt;- 71
+
+# iterate
+for(i in 2:time){
+  
+  # start stocks at period i are ending stocks at period i-1
+  startcoffee[i] &amp;lt;- endcoffee[i - 1]
+  startic[i] &amp;lt;- endic[i - 1]
+  
+  # model system
+  
+  ## system for hot coffee
+  difference_coffee &amp;lt;- abs(room_temp - startcoffee[i])
+  #### HERE IS THE CHANGE
+  cooling &amp;lt;- 0.2*difference_coffee
+  endcoffee[i] &amp;lt;- startcoffee[i] - cooling
+  
+  ## system for iced coffee
+  difference_ic &amp;lt;- room_temp - startic[i]
+  #### HERE IS THE CHANGE
+  heating &amp;lt;- 0.2*difference_ic
+  endic[i] &amp;lt;- startic[i] + heating
+  
+}
+
+dfcoffee &amp;lt;- data.frame(
+  &amp;quot;var&amp;quot; = c(rep(&amp;#39;Hot Coffee&amp;#39;, time),
+            rep(&amp;#39;Iced Coffee&amp;#39;, time)),
+  &amp;quot;temperature&amp;quot; = c(endcoffee,
+                    endic),
+  &amp;quot;minutes&amp;quot; = c(c(1:time),
+                c(1:time))
+)
+
+ggplot(dfcoffee, aes(x = minutes, y = temperature, linetype = var)) + 
+  geom_line() + 
+  geom_hline(yintercept = room_temp, linetype = &amp;quot;dashed&amp;quot;, color = &amp;#39;red&amp;#39;) + 
+  geom_text(aes(x = 5, y = room_temp + 1.8, label = &amp;quot;Room Temperature&amp;quot;), color = &amp;quot;darkred&amp;quot;) + 
+  theme(legend.title = element_blank())&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;example-3-investing&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Example 3: Investing&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;images/interest.png&#34; style=&#34;width:50.0%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;“The more money you have in the bank, the more interest you earn, which is added to the money already in the bank, where it earns even more interest. Consider how this reinforcing loop multiplies money, starting
+with $100 in the bank, and assuming no deposits and no withdrawals over a period of ten years.” (p. 32).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# time
+time &amp;lt;- 10
+
+# stock storehouses - start and end for each stock
+## money in bank
+startmoney &amp;lt;- numeric(time)
+endmoney &amp;lt;- numeric(time)
+
+# initial conditions in each stock
+## money in bank
+startmoney[1] &amp;lt;- 100
+endmoney[1] &amp;lt;- startmoney[1]
+
+# constants
+## interest rate
+interest_rate &amp;lt;- 0.05
+## money from income (zero)
+money_from_income &amp;lt;- 0
+
+# iterate
+for(i in 2:time){
+  
+  # start stocks at period i are ending stocks at period i-1
+  startmoney[i] &amp;lt;- endmoney[i - 1]
+  
+  # model system
+  money_from_interest &amp;lt;- startmoney[i] * interest_rate
+  money_added &amp;lt;- money_from_income + money_from_interest
+  endmoney[i] &amp;lt;- startmoney[i] + money_added
+  
+}
+
+dfmoney &amp;lt;- data.frame(
+  &amp;quot;money&amp;quot; = c(endmoney),
+  &amp;quot;years&amp;quot; = c(1:time),
+  &amp;quot;interest_rate&amp;quot; = c(rep(interest_rate, time))
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Repeat for different interest rates.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dplyr)
+dfint2 &amp;lt;- run_interest(1.0)
+dfint3 &amp;lt;- run_interest(1.5)
+dfmoney &amp;lt;- bind_rows(dfmoney, dfint2)
+dfmoney &amp;lt;- bind_rows(dfmoney, dfint3)
+
+ggplot(dfmoney, aes(x = years, y = money, linetype = factor(interest_rate))) + 
+  geom_line() + 
+  theme_classic() + 
+  labs(linetype = &amp;quot;Interest Rate&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;example-4-room-temperature&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Example 4: Room Temperature&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;images/furnace.png&#34; style=&#34;width:50.0%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&#34;What happens if there are two such loops, trying to drag a single stock toward two different goals? One example of such a system is the thermostat mechanism that regulates the heating of your room (or cooling, if it is connected to an air conditioner instead of a furnace). Whenever the room temperature falls below the thermostat setting, the thermostat detects a discrepancy and sends a signal that turns on the heat
+fl ow from the furnace, warming the room. When the room temperature rises again, the thermostat turns off the heat fl ow. This is a straightforward, stock-maintaining, balancing feedback loop. However, this is not the only loop in the system. Heat also leaks to the outside. The outflow of heat is governed by the second balancing feedback loop. It is always trying to make the room temperature equal to the outside, just like a coffee cup cooling.&lt;/p&gt;
+&lt;p&gt;At first, both the room and the outside temperatures are cool. The inflow of heat from the furnace exceeds the leak to the outside, and the room warms up. For an hour or two, the outside is mild enough that the furnace replaces most of the heat that’s lost to the outside,and the room temperature stays near the desired temperature. But as the outside temperature falls and the heat leak increases, the furnace cannot replace the heat fast enough. Because the furnace is generating less heat than is leaking out, the room temperature falls. Finally, the outside temperature rises again, the heat leak slows, and the furnace, still operating at full tilt, finally can pull ahead and start to warm the room again. Just as in the rules for the bathtub, whenever the furnace is putting in more heat than is leaking out, the room temperature rises. Whenever the inflow rate falls behind the outflow rate, the temperature falls.&#34; (p. 41)&lt;/p&gt;
+&lt;p&gt;First, use a cosine function to create data mimicking the idea that “temperature outside drops throughout the night and then increases in the morning.”&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;points &amp;lt;- 1:51
+outside &amp;lt;- cos(0.11 * points)
+plot(outside)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# time
+time &amp;lt;- 51
+
+# stock storehouses - start and end for each stock
+## room temperature
+startroom &amp;lt;- numeric(time)
+endroom &amp;lt;- numeric(time)
+
+# initial conditions in each stock
+## room temperature
+startroom[1] &amp;lt;- 0.4
+endroom[1] &amp;lt;- startroom[1]
+
+# constants
+## thermostat setting
+thermostat &amp;lt;- 2
+
+# iterate
+for(i in 2:time){
+  
+  # start stocks at period i are ending stocks at period i-1
+  startroom[i] &amp;lt;- endroom[i - 1]
+  
+  # model system
+  difference_outroom &amp;lt;- abs(outside[i] - startroom[i])
+  heatloss &amp;lt;- difference_outroom
+  
+  difference_thermoroom &amp;lt;- thermostat - startroom[i]
+  heatin &amp;lt;- difference_thermoroom
+  
+  endroom[i] &amp;lt;- startroom[i] + heatin - heatloss
+  
+}
+
+dffurnace &amp;lt;- data.frame(
+  &amp;quot;temperature&amp;quot; = c(endroom,
+                    rep(thermostat, time),
+                    outside),
+  &amp;quot;time&amp;quot; = c(1:time,
+             1:time,
+             1:time),
+  &amp;quot;var&amp;quot; = c(rep(&amp;quot;Room Temperature&amp;quot;, time),
+            rep(&amp;quot;Thermostat&amp;quot;, time),
+            rep(&amp;quot;Outside Temperature&amp;quot;, time))
+)
+
+
+
+ggplot(dffurnace, aes(x = time, y = temperature, color = var)) + 
+  geom_line() + 
+  theme_classic() + 
+  theme(axis.text.y = element_blank()) + 
+  labs(color = &amp;quot;&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Once again, I can smooth the process by weakening the effects.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# time
+time &amp;lt;- 51
+
+# stock storehouses - start and end for each stock
+## room temperature
+startroom &amp;lt;- numeric(time)
+endroom &amp;lt;- numeric(time)
+
+# initial conditions in each stock
+## room temperature
+startroom[1] &amp;lt;- 0.4
+endroom[1] &amp;lt;- startroom[1]
+
+# constants
+## thermostat setting
+thermostat &amp;lt;- 2
+
+# iterate
+for(i in 2:time){
+  
+  # start stocks at period i are ending stocks at period i-1
+  startroom[i] &amp;lt;- endroom[i - 1]
+  
+  # model system
+  difference_outroom &amp;lt;- abs(outside[i] - startroom[i])
+  heatloss &amp;lt;- 0.5*difference_outroom
+  
+  difference_thermoroom &amp;lt;- thermostat - startroom[i]
+  heatin &amp;lt;- 0.5*difference_thermoroom
+  
+  endroom[i] &amp;lt;- startroom[i] + heatin - heatloss
+  
+}
+
+dffurnace &amp;lt;- data.frame(
+  &amp;quot;temperature&amp;quot; = c(endroom,
+                    rep(thermostat, time),
+                    outside),
+  &amp;quot;time&amp;quot; = c(1:time,
+             1:time,
+             1:time),
+  &amp;quot;var&amp;quot; = c(rep(&amp;quot;Room Temperature&amp;quot;, time),
+            rep(&amp;quot;Thermostat&amp;quot;, time),
+            rep(&amp;quot;Outside Temperature&amp;quot;, time))
+)
+
+
+
+ggplot(dffurnace, aes(x = time, y = temperature, color = var)) + 
+  geom_line() + 
+  theme_classic() + 
+  theme(axis.text.y = element_blank()) + 
+  labs(color = &amp;quot;&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;example-5-car-inventory-with-delays&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Example 5: Car Inventory With Delays&lt;/h1&gt;
+&lt;p&gt;My stock and flow diagram is different from Fig 31 in “Thinking in Systems” because I like to include an additional “things in process / things in queue” stock when modeling delays.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/cars.png&#34; style=&#34;width:50.0%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;“This system is a version of the thermostat system—one balancing loop of sales draining the inventory stock and a competing balancing loop maintaining the inventory by resupplying what is lost in sales. Although this system still consists of just two balancing loops, like the simplified thermostat system, it doesn’t behave like the thermostat system. Look at what happens, for example, when the business experiences the same permanent 10-percent jump in sales from an increase in customer demand. Oscillations! A single step up in sales causes inventory to drop. The car dealer watches long enough to be sure the higher sales rate is going to last. Then she begins to order more cars to both cover the new rate of sales and
+bring the inventory up. But it takes time for the orders to come in. During that time inventory drops further, so orders have to go up a little more, to bring inventory back up to ten days’ coverage. Eventually, the larger volume of orders starts arriving, and inventory recovers—and more than recovers, because during the time of uncertainty about the actual trend, the owner has ordered too much. She now sees her mistake, and cuts back, but there are still high past orders coming in, so she orders even less. In fact, almost inevitably, since she still can’t be sure of what is going to happen next, she orders too little. Inventory gets too low again. And so forth, through a series of oscillations around the new desired inventory level.” (p. 54).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# time
+time &amp;lt;- 25
+
+# stock storehouses - start and end for each stock
+## cars in inventory
+startcars &amp;lt;- numeric(time)
+endcars &amp;lt;- numeric(time)
+## cars in queue
+startque &amp;lt;- numeric(time)
+endque &amp;lt;- numeric(time)
+
+# initial conditions in each stock
+## cars in inventory
+startcars[1] &amp;lt;- 78
+endcars[1] &amp;lt;- startcars[1]
+## cars in queue
+startque[1] &amp;lt;- 0
+endque[1] &amp;lt;- startque[1]
+
+# constants
+## desired inventory of cars in lot
+desired_inventory &amp;lt;- 100
+## time to ship (3 days)
+time_to_ship &amp;lt;- 3
+## time to receive order (half a day)
+time_to_receive &amp;lt;- 0.5
+## sales each day
+sales &amp;lt;- 18
+
+# iterate
+for(i in 2:time){
+  
+  # start stocks at period i are ending stocks at period i-1
+  startcars[i] &amp;lt;- endcars[i - 1]
+  startque[i] &amp;lt;- endque[i - 1]
+  
+  # model system
+  need_for_cars &amp;lt;- desired_inventory - startcars[i]
+  building &amp;lt;- need_for_cars / time_to_receive
+  arrivals &amp;lt;- startque[i] / time_to_ship
+  
+  endque[i] &amp;lt;- startque[i] + building - arrivals
+  endcars[i] &amp;lt;- startcars[i] + arrivals - sales
+  
+}
+
+dfcars &amp;lt;- data.frame(
+  &amp;quot;cars&amp;quot; = c(endcars),
+  &amp;quot;days&amp;quot; = c(1:time)
+)
+
+library(hrbrthemes)
+ggplot(dfcars, aes(x = days, y = cars)) + 
+  geom_line() + 
+  theme_ipsum()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;example-6-house-inventory&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Example 6: House Inventory&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=xN4EGAOksFc&#34;&gt;Find lecture online&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/houses.png&#34; style=&#34;width:50.0%&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# time
+time = 50
+
+# stocks
+starthouses = numeric(time)
+starthouses[1] = 1000
+endhouses = numeric(time)
+endhouses[1] = 1000
+
+# constants
+goal_houses = 10000
+## if there is a gap of 8000 houses (goal of 10000 but currently 2000)
+## then they will resolve that gap in 9 periods
+timetoresolve = 9
+
+
+for(i in 2:time){
+  
+  starthouses[i] = endhouses[i-1]
+  
+  need_for_houses = goal_houses - starthouses[i]
+  
+  building = need_for_houses / timetoresolve
+  
+  endhouses[i] = starthouses[i] + building 
+  
+}
+dfhouses &amp;lt;- data.frame(
+  &amp;quot;time&amp;quot; = c(1:time),
+  &amp;quot;houses&amp;quot; = c(endhouses)
+)
+
+ggplot(dfhouses, aes(x = time, y = houses)) + 
+  geom_point()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;example-7-house-inventory-with-muliple-delays&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Example 7: House Inventory With Muliple Delays&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=JSm6-uPSbKc&#34;&gt;Find lecture online&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/house-delay.png&#34; style=&#34;width:50.0%&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# time
+time = 100
+
+# stocks
+## houses in process (works in progress)
+startwip = numeric(time)
+startwip[1] = 0
+endwip = numeric(time)
+endwip[1] = 0
+
+## completed houses
+starthouses = numeric(time)
+starthouses[1] = 1000
+endhouses = numeric(time)
+endhouses[1] = 1000
+
+# constants
+goal_houses = 10000
+timetostartbuild = 3
+timetocomplete = 12
+
+
+for(i in 2:time){
+  
+  startwip[i] = endwip[i - 1]
+  starthouses[i] = endhouses[i - 1]
+  
+  needforhouses = goal_houses - starthouses[i]
+  building = needforhouses / timetostartbuild
+  finishing = startwip[i] / timetocomplete
+  endwip[i] = startwip[i] + building - finishing
+  
+  
+  endhouses[i] = starthouses[i] + finishing
+  
+}
+
+
+df &amp;lt;- data.frame(
+  &amp;quot;houses&amp;quot; = c(endhouses),
+  &amp;quot;time&amp;quot; = c(1:time)
+)
+
+ggplot(df, aes(x = time, y = houses)) + 
+  geom_point() + 
+  theme_ipsum()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-13-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;example-8-customers-in-store&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Example 8: Customers In Store&lt;/h1&gt;
+&lt;p&gt;Similar example to money in the bank, but now both the inflow and outflow (not just the inflow) will be proportional to the level of the stock.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/customers.png&#34; style=&#34;width:50.0%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Growth Fraction:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;7%, then 3%, then 1%&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Decline Fraction:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;3% throughout&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# time
+time &amp;lt;- 30
+
+# stock storehouses - start and end for each stock
+## customers
+startcustomers &amp;lt;- numeric(time)
+endcustomers &amp;lt;- numeric(time)
+
+# initial conditions in each stock
+## customers
+startcustomers[1] &amp;lt;- 5
+endcustomers[1] &amp;lt;- startcustomers[1]
+
+# constants
+## decline fraction
+decline &amp;lt;- 0.03
+
+
+
+# iterate
+for(i in 2:time){
+  
+  # start stocks at period i are ending stocks at period i-1
+  startcustomers[i] &amp;lt;- endcustomers[i - 1]
+  
+  # model system
+  if(i &amp;lt; 11){
+    growth &amp;lt;- 0.07
+  }else if(i &amp;gt; 10 &amp;amp;&amp;amp; i &amp;lt; 21){
+    growth &amp;lt;- 0.03
+  }else{
+    growth &amp;lt;- 0.01
+  }
+  
+  losses &amp;lt;- startcustomers[i]*decline
+  recruits &amp;lt;- startcustomers[i]*growth
+  
+  endcustomers[i] &amp;lt;- startcustomers[i] + recruits - losses
+  
+  
+}
+
+dfcustomers &amp;lt;- data.frame(
+  &amp;quot;customers&amp;quot; = c(endcustomers),
+  &amp;quot;minutes&amp;quot; = c(1:time)
+)
+
+ggplot(dfcustomers, aes(x = minutes, y = customers)) + 
+  geom_line() + 
+  theme_ipsum()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-14-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;example-9-sir-disease-model&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Example 9: SIR Disease Model&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;images/sir.png&#34; style=&#34;width:50.0%&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# time
+time &amp;lt;- 100
+
+# stock storehouses - start and end for each stock
+## susceptible
+starts &amp;lt;- numeric(time)
+ends &amp;lt;- numeric(time)
+## infected
+starti &amp;lt;- numeric(time)
+endi &amp;lt;- numeric(time)
+## recovered
+startr &amp;lt;- numeric(time)
+endr &amp;lt;- numeric(time)
+
+# initial conditions in each stock
+## susceptible
+starts[1] &amp;lt;- 99
+ends[1] &amp;lt;- starts[1]
+## infected
+starti[1] &amp;lt;- 1
+endi[1] &amp;lt;- starti[1]
+## recovered
+startr[1] &amp;lt;- 0
+endr[1] &amp;lt;- 0
+
+# constants
+## infection rate, or fraction infected from contact
+infectionrate &amp;lt;- 0.8
+## contact rate, or fraction of people (infected and susceptible) who touch
+contactrate &amp;lt;- 0.5
+## recovery rate
+recoveryrate &amp;lt;- 0.3
+## delay
+delay &amp;lt;- 2
+
+# iterate
+for(i in 2:time){
+  
+  # start stocks at period i are ending stocks at period i-1
+  starts[i] &amp;lt;- ends[i - 1]
+  starti[i] &amp;lt;- endi[i - 1]
+  startr[i] &amp;lt;- endr[i - 1]
+  
+  # model system
+  totalpopulation &amp;lt;- starts[i] + starti[i]
+  fractionofpopulationinfected &amp;lt;- totalpopulation / starti[i]
+  contacts &amp;lt;- (fractionofpopulationinfected + starts[i])*contactrate
+  fractioninfected &amp;lt;- contacts*infectionrate
+  catch_disease &amp;lt;- 0.2*fractioninfected
+  recovering &amp;lt;- 0.2*(starti[i]*recoveryrate / delay)
+  
+  ends[i] &amp;lt;- starts[i] - catch_disease
+  endi[i] &amp;lt;- starti[i] - recovering + catch_disease
+  endr[i] &amp;lt;- startr[i] + recovering
+  
+}
+
+dfsir &amp;lt;- data.frame(
+  &amp;quot;people&amp;quot; = c(ends,
+               endi,
+               endr),
+  &amp;quot;time&amp;quot; = c(1:time),
+  &amp;quot;var&amp;quot; = c(rep(&amp;quot;Suseptible&amp;quot;, time),
+            rep(&amp;quot;Infected&amp;quot;, time),
+            rep(&amp;quot;Recovered&amp;quot;, time))
+)
+
+ggplot(dfsir, aes(x = time, y = people, color = var)) + 
+  geom_point() +
+  labs(color = &amp;quot;&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;examples-using-continuous-time-modeling&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Examples Using Continuous Time Modeling&lt;/h1&gt;
+&lt;p&gt;Room Temperature&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(deSolve)
+
+start &amp;lt;- 0
+finish &amp;lt;- 51
+step &amp;lt;- 0.25
+simtime &amp;lt;- seq(start, finish, by = step)
+
+stocks &amp;lt;- c(room = 0.4)
+
+auxs &amp;lt;- c(thermostat = 2)
+
+model &amp;lt;- function(time, stocks, auxs){
+  
+  with(as.list(c(stocks, auxs)), {
+    
+    outside &amp;lt;- cos(0.11*time)
+    difference_outroom &amp;lt;- abs(outside - room)
+    heatloss &amp;lt;- difference_outroom
+    
+    difference_thermoroom &amp;lt;- thermostat - room
+    heatin &amp;lt;- difference_thermoroom
+    
+    droom &amp;lt;- heatin - heatloss
+    
+    return(list(c(droom),
+           out = outside,
+           thermostat = thermostat))
+    
+    
+  })
+  
+  
+}
+
+o &amp;lt;- data.frame(ode(y = stocks, times = simtime, 
+                    func = model,
+                    parms = auxs,
+                    method = &amp;quot;euler&amp;quot;))
+
+library(ggplot2)
+library(tidyverse)
+
+o &amp;lt;- o %&amp;gt;% 
+  pivot_longer(cols = c(room, out, thermostat),
+               names_to = &amp;quot;var&amp;quot;,
+               values_to = &amp;quot;temperature&amp;quot;)
+
+ggplot(o, aes(x = time, y = temperature, color = var)) + 
+  geom_line()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-16-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Car Inventory&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(deSolve)
+
+start &amp;lt;- 0
+finish &amp;lt;- 3
+step &amp;lt;- 0.25
+simtime &amp;lt;- seq(start, finish, by = step)
+
+stocks &amp;lt;- c(
+  cars = 78,
+  que = 0)
+
+auxs &amp;lt;- c(
+  desired_inventory = 100,
+  time_to_ship = 1,
+  time_to_recieve = 0.1,
+  sales &amp;lt;- 18
+)
+
+model &amp;lt;- function(time, stocks, auxs){
+  
+  with(as.list(c(stocks, auxs)), {
+    
+    need_for_cars &amp;lt;- desired_inventory - cars
+    building &amp;lt;- need_for_cars / time_to_recieve
+    arrivals &amp;lt;- que / time_to_ship
+    
+    dcars &amp;lt;- building - arrivals
+    dque &amp;lt;- arrivals - sales
+    
+    return(list(c(dcars, dque)))
+    
+    
+    
+    
+    
+  })
+  
+  
+}
+
+
+o &amp;lt;- data.frame(ode(y = stocks, times = simtime, 
+                    func = model, parms = auxs, method = &amp;quot;euler&amp;quot;))
+
+library(ggplot2)
+ggplot(o, aes(x = time, y = cars)) + 
+  geom_line()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Customers in Store&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(deSolve)
+
+start &amp;lt;- 0
+finish &amp;lt;- 10
+step &amp;lt;- 0.25
+simtime &amp;lt;- seq(start, finish, by = step)
+
+stocks &amp;lt;- c(customers = 5)
+
+auxs &amp;lt;- c(decline = 0.03)
+
+model &amp;lt;- function(time, stocks, auxs){
+  
+  with(as.list(c(stocks, auxs)), {
+    
+    if(time &amp;lt; 3){
+      growth &amp;lt;- 0.07
+    }else if (time &amp;gt; 2 &amp;amp;&amp;amp; time &amp;lt; 6) {
+      growth &amp;lt;- 0.03
+    }else{
+      growth &amp;lt;- 0.01
+    }
+    
+    losses &amp;lt;- customers*decline
+    recruits &amp;lt;- customers*growth
+    
+    dcustomers &amp;lt;- recruits - losses
+    
+    return(list(c(dcustomers)))
+    
+    
+  })
+  
+  
+}
+
+o &amp;lt;- data.frame(ode(y = stocks, times = simtime, 
+                    func = model, parms = auxs, method = &amp;quot;euler&amp;quot;))
+
+
+library(ggplot2)
+ggplot(o, aes(x = time, y = customers)) + 
+  geom_point()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-18-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Disease Contagion SIR Model&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(deSolve)
+
+start &amp;lt;- 0
+finish &amp;lt;- 25
+step &amp;lt;- 0.1
+simtime &amp;lt;- seq(start, finish, by = step)
+
+stocks &amp;lt;- c(susceptible = 99,
+            infected = 1,
+            recovered = 0)
+
+auxs &amp;lt;- c(contactrate = 0.5,
+          infectionrate = 0.8,
+          recoveryrate = 0.3,
+          delay = 2)
+
+model &amp;lt;- function(time, stocks, auxs){
+  
+  with(as.list(c(stocks, auxs)), {
+    
+    totalpopulation &amp;lt;- susceptible + infected
+    fractionofpopulationinfected &amp;lt;- totalpopulation / infected
+    contacts &amp;lt;- (fractionofpopulationinfected + susceptible)*contactrate
+    fractioninfected &amp;lt;- contacts*infectionrate
+    catchdisease &amp;lt;- fractioninfected
+    recovering &amp;lt;- infected*recoveryrate / delay
+    
+    dsusceptible &amp;lt;- -catchdisease
+    dinfected &amp;lt;- catchdisease - recovering
+    drecovered &amp;lt;- recovering
+    
+    return(list(c(dsusceptible, 
+                  dinfected,
+                  drecovered)))
+    
+    
+  })
+  
+  
+  
+}
+
+
+o &amp;lt;- data.frame(ode(y = stocks, times = simtime,
+                    func = model,
+                    parms = auxs,
+                    method = &amp;quot;euler&amp;quot;))
+
+library(ggplot2)
+library(tidyverse)
+o &amp;lt;- o %&amp;gt;% 
+  pivot_longer(cols = c(susceptible, 
+                        infected,
+                        recovered),
+               names_to = &amp;quot;var&amp;quot;,
+               values_to = &amp;quot;val&amp;quot;)
+
+ggplot(o, aes(x = time, y = val, color = var)) + 
+  geom_point()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-19-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Multiple Goal Self-Regulation&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(deSolve)
+
+start &amp;lt;- 0
+finish &amp;lt;- 5
+step &amp;lt;- 1
+simtime &amp;lt;- seq(start, finish, by = step)
+
+stocks &amp;lt;- c(
+  g1_performance = 23,
+  g2_performance = 1
+)
+
+auxs &amp;lt;- c(
+  g1_desire = 25,
+  g2_desire = 25
+)
+
+model &amp;lt;- function(time, stocks, auxs){
+  
+  with(as.list(c(stocks, auxs)), {
+    
+    differenceg1 &amp;lt;- g1_desire - g1_performance
+    differenceg2 &amp;lt;- g2_desire - g2_performance
+    
+    behavioral_choice = NULL
+    if(differenceg1 &amp;gt; differenceg2){
+      behavioral_choice &amp;lt;- &amp;quot;g1&amp;quot;
+    }else{
+      behavioral_choice &amp;lt;- &amp;quot;g2&amp;quot;
+    }
+    
+    inputg1 &amp;lt;- 0
+    inputg2 &amp;lt;- 0
+    if(behavioral_choice == &amp;quot;g1&amp;quot;){
+      inputg1 &amp;lt;- differenceg1 * 0.5 + rnorm(1, 0, 0.1)
+    }else{
+      inputg2 &amp;lt;- differenceg2 * 0.5 + rnorm(1, 0, 0.1)
+    }
+    
+    dg1_performance = inputg1
+    dg2_performance = inputg2
+    
+    return(list(c(dg1_performance, dg2_performance)))
+    
+    
+  })
+  
+  
+  
+}
+
+o &amp;lt;- data.frame(ode(y = stocks, times = simtime,
+                    func = model, 
+                    parms = auxs,
+                    method = &amp;quot;euler&amp;quot;))
+
+
+library(ggplot2)
+library(tidyverse)
+o &amp;lt;- o %&amp;gt;% 
+  pivot_longer(cols = c(g1_performance, g2_performance),
+               names_to = &amp;quot;var&amp;quot;,
+               values_to = &amp;quot;performance&amp;quot;)
+
+ggplot(o, aes(x = time, y = performance, color = var)) + 
+  geom_point()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;summary-steps&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Summary Steps&lt;/h1&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://app.diagrams.net/&#34;&gt;Build Image&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Save image with a file size of 500%&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;When rendering Rmarkdown, use &lt;code&gt;![](images/file.png){width=50%}&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Write simulation code&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# time
+
+# stocks
+start
+end
+
+# constants
+
+# iterate
+for(i in 2:time)
+  
+  ## begin loop with stock connections
+  start[i] &amp;lt;- end[i - 1]
+
+# model system notes
+## rates are multiplied
+## delays are divisors
+
+# always plot the end stock&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;drawing-stock-and-flow-diagrams&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Drawing Stock and Flow Diagrams&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Odd number of negative relationships in the loop = balancing&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;If an effect is proportional to the stock’s level, then draw an arrow from the stock to that effect&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;When modeling delays, sometimes it is easier to include an “in queue” stock rather than a node effect&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Translucent ggplot background for powerpoint</title>
       <link>https://christopherdishop.netlify.app/computational_notes/2021-03-18/</link>
       <pubDate>Thu, 18 Mar 2021 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2021-03-18/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;The following parameters will render a translucent ggplot. When pasted into powerpoint, the background will not appear, leaving only the powerpoint template.&lt;/p&gt;
@@ -35,6 +1059,7 @@
       <pubDate>Mon, 01 Mar 2021 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2021-03-01/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;A few reminders for longitudinal wrangling:&lt;/p&gt;
@@ -106,6 +1131,7 @@ df_wide &amp;lt;- reshape(df, idvar = &amp;quot;id&amp;quot;, timevar = &amp;quo
       <pubDate>Sun, 17 Jan 2021 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2021-01-17/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Here’s how to approximate a differential equation using discrete simulations in R. Differential equations will be presented in the form&lt;/p&gt;
@@ -232,6 +1258,7 @@ for(i in 2:time){
       <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2021-01-02/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
 
 
@@ -694,6 +1721,7 @@ performance
       <pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2020-09-12/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
 
 
@@ -936,6 +1964,7 @@ time_vec&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Thu, 10 Sep 2020 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2020-09-10/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
 
 
@@ -1694,6 +2723,7 @@ save_plots[[i]] &amp;lt;- gp
       <pubDate>Tue, 08 Sep 2020 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2020-09-08/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;A replication of Thomas Schelling’s model, which was originally published in &lt;em&gt;The Journal of Mathematical Sociology.&lt;/em&gt; &lt;a href=&#34;https://ytliu0.github.io/schelling/&#34;&gt;Yuk Tung Liu&lt;/a&gt; offers a great summary.&lt;/p&gt;
@@ -1767,6 +2797,7 @@ r_{sim_{hockey}} = \dfrac{n_{hockey}}{n_{neighbors}}
       <pubDate>Mon, 10 Aug 2020 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2020-08-10/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;My last post demonstrated a dual change model for one variable, now I want to demonstrate a bivariate dual change model. A SEM path diagram for a bivariate dual change model is below, taken from &lt;a href=&#34;https://www-annualreviews-org.proxy2.cl.msu.edu/doi/pdf/10.1146%2Fannurev-orgpsych-041015-062553&#34;&gt;Wang, Zhou, and Zhang (2016)&lt;/a&gt;&lt;/p&gt;
@@ -2998,6 +4029,7 @@ summary(bi_dc_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Sun, 09 Aug 2020 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2020-08-09/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;I begin with an intercept-only model in a latent change framework and then build to a full dual change model. SEM images in this post come from a lecture by &lt;a href=&#34;https://hdfs.msu.edu/people/faculty/nuttall-amy-k-phd&#34;&gt;Amy Nuttall&lt;/a&gt;. Two notes about the models and code below. First, the initial models will not fit well because they are too simple. The DGP uses both constant and proportion change (hence, “dual-change”) whereas the first few models only estimate an intercept. Second, I use the &lt;code&gt;sem&lt;/code&gt; rather than &lt;code&gt;growth&lt;/code&gt; command in &lt;code&gt;lavaan&lt;/code&gt; because it forces me to specify the entire model. I do not like using commands that make automatic constraints for me – if you do, you are much more likely to make a mistake or not know what your model is doing.&lt;/p&gt;
@@ -4181,6 +5213,7 @@ summary(dual_change_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Sun, 02 Aug 2020 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2020-08-02/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;GitHub allows you to host one static website per repository. Here’s how to do it:&lt;/p&gt;
@@ -4214,6 +5247,7 @@ summary(dual_change_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Sat, 01 Aug 2020 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2020-08-01/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Quick note on cloning, committing, and pushing anonymously on GitHub.&lt;/p&gt;
@@ -4248,6 +5282,7 @@ git push &amp;#39;https://username:password@github.com/username/repository.git&a
       <pubDate>Wed, 27 May 2020 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2017-07-13-dfs/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;This post contains a bunch of examples where I practice counting dfs. In each example, I generate the data, estimate the parameters using SEM, count the dfs, and then compare my count to what the model spits back. To count dfs, I need to know the number of knowns and unknowns in my system:&lt;/p&gt;
@@ -4303,17 +5338,17 @@ ex1_model &amp;lt;- sem(ex1_string, data = df)&lt;/code&gt;&lt;/pre&gt;
 &lt;div id=&#34;unknowns-count-the-estimated-parameters&#34; class=&#34;section level4&#34;&gt;
 &lt;h4&gt;Unknowns (count the estimated parameters)&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;1 for b1&lt;/li&gt;
-&lt;li&gt;1 for b2&lt;/li&gt;
-&lt;li&gt;1 for the variance of trust&lt;/li&gt;
-&lt;li&gt;1 for the variance of availability&lt;/li&gt;
-&lt;li&gt;1 for the covariance of trust and availability&lt;/li&gt;
-&lt;li&gt;1 for the prediction error on helping&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;1 for b1&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;1 for b2&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;1 for the variance of trust&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;1 for the variance of availability&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;1 for the covariance of trust and availability&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;1 for the prediction error on helping&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;total = 6&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;6 - 6 = 0&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex1_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 16 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 15 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -4335,7 +5370,7 @@ trust ~~ 0*availability
 
 ex1_model_restrict &amp;lt;- sem(ex1_string_restrict, data = df)
 show(ex1_model_restrict) # yup&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 16 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 17 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -4345,9 +5380,9 @@ show(ex1_model_restrict) # yup&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 2.588
+##   Test statistic                                 0.001
 ##   Degrees of freedom                                 1
-##   P-value (Chi-square)                           0.108&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.976&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;example-2---common-factor-underlying-6-observed-items&#34; class=&#34;section level1&#34;&gt;
@@ -4404,15 +5439,15 @@ ex2_model &amp;lt;- sem(ex2_string, data = df_cf)&lt;/code&gt;&lt;/pre&gt;
 &lt;div id=&#34;unknowns-count-the-estimated-parameters-1&#34; class=&#34;section level4&#34;&gt;
 &lt;h4&gt;unknowns (count the estimated parameters)&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;6 factor loadings, but I constrained the first one to be 1 (I have to to estimate the latent variable), so 5 parameters&lt;/li&gt;
-&lt;li&gt;5 measurement errors for the 5 factor loadings&lt;/li&gt;
-&lt;li&gt;1 variance for the latent exogenous variable&lt;/li&gt;
-&lt;li&gt;1 mean for the latent exogenous variable&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;6 factor loadings, but I constrained the first one to be 1 (I have to to estimate the latent variable), so 5 parameters&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;5 measurement errors for the 5 factor loadings&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;1 variance for the latent exogenous variable&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;1 mean for the latent exogenous variable&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;total = 12&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;21 - 12 = 9&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex2_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 58 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 42 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -4422,9 +5457,9 @@ ex2_model &amp;lt;- sem(ex2_string, data = df_cf)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                15.507
+##   Test statistic                                13.951
 ##   Degrees of freedom                                 9
-##   P-value (Chi-square)                           0.078&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.124&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -4488,21 +5523,21 @@ ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
 &lt;div id=&#34;unknowns-count-the-estimated-parameters-2&#34; class=&#34;section level4&#34;&gt;
 &lt;h4&gt;unknowns (count the estimated parameters)&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;4 factor loadings but I constrained 2 of them, so 2 factor loadings&lt;/li&gt;
-&lt;li&gt;2 measurement errors (4 items, but constrained 2 of them)&lt;/li&gt;
-&lt;li&gt;1 variance on cog ability&lt;/li&gt;
-&lt;li&gt;1 mean on cog ability&lt;/li&gt;
-&lt;li&gt;1 variance on assertiveness&lt;/li&gt;
-&lt;li&gt;1 mean on assertiveness&lt;/li&gt;
-&lt;li&gt;1 covariance among cog ability and assertiveness&lt;/li&gt;
-&lt;li&gt;b1&lt;/li&gt;
-&lt;li&gt;b2&lt;/li&gt;
-&lt;li&gt;2 prediction errors&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;4 factor loadings but I constrained 2 of them, so 2 factor loadings&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;2 measurement errors (4 items, but constrained 2 of them)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;1 variance on cog ability&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;1 mean on cog ability&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;1 variance on assertiveness&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;1 mean on assertiveness&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;1 covariance among cog ability and assertiveness&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;b1&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;b2&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;2 prediction errors&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;total = 13&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;15 - 13 = 2&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex3_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 172 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 198 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -4512,27 +5547,27 @@ ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 2.237
+##   Test statistic                                 4.353
 ##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.525&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.226&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Nope. I’m one off, where did I go wrong?&lt;/p&gt;
 &lt;p&gt;Ah, there is only 1 prediction error because productivity is being predicted. I counted 2 prediction errors because I gave one to both b1 and b2. So, the unknowns should be…&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;4 factor loadings but I constrained 2 of them, so 2 factor loadings&lt;/li&gt;
-&lt;li&gt;2 measurement errors (4 items, but constrained 2 of them)&lt;/li&gt;
-&lt;li&gt;1 variance on cog ability&lt;/li&gt;
-&lt;li&gt;1 mean on cog ability&lt;/li&gt;
-&lt;li&gt;1 variance on assertiveness&lt;/li&gt;
-&lt;li&gt;1 mean on assertiveness&lt;/li&gt;
-&lt;li&gt;1 covariance among cog ability and assertiveness&lt;/li&gt;
-&lt;li&gt;b1&lt;/li&gt;
-&lt;li&gt;b2&lt;/li&gt;
-&lt;li&gt;1 prediction error&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;4 factor loadings but I constrained 2 of them, so 2 factor loadings&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;2 measurement errors (4 items, but constrained 2 of them)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;1 variance on cog ability&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;1 mean on cog ability&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;1 variance on assertiveness&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;1 mean on assertiveness&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;1 covariance among cog ability and assertiveness&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;b1&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;b2&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;1 prediction error&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;total = 12&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;15 - 12 = 3&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex3_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 172 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 198 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -4542,9 +5577,9 @@ ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 2.237
+##   Test statistic                                 4.353
 ##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.525&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.226&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -4590,16 +5625,16 @@ ex4_model &amp;lt;- sem(ex4_string, data = df_chain)&lt;/code&gt;&lt;/pre&gt;
 &lt;div id=&#34;unknowns-count-the-estimated-parameters-3&#34; class=&#34;section level4&#34;&gt;
 &lt;h4&gt;unknowns (count the estimated parameters)&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;b1&lt;/li&gt;
-&lt;li&gt;b2&lt;/li&gt;
-&lt;li&gt;b3&lt;/li&gt;
-&lt;li&gt;3 prediction errors&lt;/li&gt;
-&lt;li&gt;1 variance for the lone exogenous variable (a)&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;b1&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;b2&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;b3&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;3 prediction errors&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;1 variance for the lone exogenous variable (a)&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;total = 7&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;10 - 7 = 3&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex4_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 42 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 53 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -4609,9 +5644,9 @@ ex4_model &amp;lt;- sem(ex4_string, data = df_chain)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 4.520
+##   Test statistic                                 1.928
 ##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.211&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.587&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -4679,16 +5714,16 @@ ex5_model &amp;lt;- sem(ex5_string, data = df5_wide)&lt;/code&gt;&lt;/pre&gt;
 &lt;div id=&#34;unknowns-count-the-estimated-parameters-4&#34; class=&#34;section level4&#34;&gt;
 &lt;h4&gt;unknowns (count the estimated parameters)&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;ar is 1 estimated parameter&lt;/li&gt;
-&lt;li&gt;1 variance of unobserved heterogeneity&lt;/li&gt;
-&lt;li&gt;1 variance of affect.1&lt;/li&gt;
-&lt;li&gt;1 covariance among affect.1 and unobserved heterogeneity&lt;/li&gt;
-&lt;li&gt;6 prediction errors&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ar is 1 estimated parameter&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;1 variance of unobserved heterogeneity&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;1 variance of affect.1&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;1 covariance among affect.1 and unobserved heterogeneity&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;6 prediction errors&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;total = 10&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;28 - 10 = 18&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex5_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 107 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 134 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -4699,9 +5734,9 @@ ex5_model &amp;lt;- sem(ex5_string, data = df5_wide)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                17.587
+##   Test statistic                                28.742
 ##   Degrees of freedom                                18
-##   P-value (Chi-square)                           0.483&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.052&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Why didn’t I estimate a mean for unobserved heterogeneity here? In all of the other examples I estimated the variance (1 parameter) and the mean (1 parameter) of the latent exogenous variable. In this case, unobserved heterogeneity is the latent exogenous variable but I only estimated its variance. That’s because in this model we don’t really care about the mean of unobserved heterogeneity, it’s just a latent variable that we incorporate to account for stable individual differences. In other words, when I estimate latent cog ability and assertiveness as IVs to predict an outcome, I care about their means. Here, unobserved heterogeneity is just an additional factor to account for, not a variable whose mean I really care to know. That said, if I wanted to estimate the mean of unobserved heterogeneity (which would result in one additional estimated parameter and one fewer df) then I would incorporate the following into the model string.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;&amp;#39;
 
@@ -4721,6 +5756,7 @@ unob_het ~ 1 # lavaan code for estimating the mean of a latent variable
       <pubDate>Sat, 23 May 2020 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2020-05-23/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;I started using &lt;a href=&#34;https://github.com/JuliaLang/julia&#34;&gt;Julia&lt;/a&gt; for my computational models and recently created a cheat sheet to house all of my common commands.&lt;/p&gt;
@@ -4735,6 +5771,7 @@ unob_het ~ 1 # lavaan code for estimating the mean of a latent variable
       <pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2020-05-22/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;If you fill a matrix cell with a character, R will convert the entire matrix into character values…so be careful = )&lt;/p&gt;
@@ -4795,6 +5832,7 @@ df_mat&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2020-04-03/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Calculate the independence of two events using both analytic and empirical techniques. I’m trying to assess whether the probability of having a meal classified as “dinner” depends on whether that meal includes “chicken” as its main dish.&lt;/p&gt;
@@ -4872,7 +5910,7 @@ tally_count / nrow(possible_meals)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Cool, &lt;code&gt;p(dinner &amp;amp; chicken)&lt;/code&gt; = 0.2777. Now I can calculate the conditional probability.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;code&gt;p(dinner | chicken) = p(dinner &amp;amp; chicken) / p(chicken)&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;X = 0.2777 / 0.333&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;X = 0.2777 / 0.333&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;code&gt;X = 0.83&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;X does not equal &lt;code&gt;p(b)&lt;/code&gt;, so the two are dependent. How about the empirical solution?&lt;/p&gt;
@@ -4927,6 +5965,7 @@ prob_cd / prob_c&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Thu, 02 Apr 2020 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2020-04-02/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
 
 
@@ -5071,6 +6110,7 @@ c
       <pubDate>Sun, 22 Mar 2020 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2020-03-22/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Quick command to compile all links for a website that numbers its pages. Image I want to go to a website that contains 100 pages of reviews, the first 10 on page 1, the second 10 on page 2, the third 10 on page 3, etc. The first step is to create a vector or list of links to navigate to, one for each page.&lt;/p&gt;
@@ -5149,6 +6189,7 @@ head(all_webs)&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Sat, 21 Mar 2020 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2020-03-21/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;I’ve written about quosures in previous posts. They can be used in functions to specify column names. But what if a column name is pulled from a loop and the value is a character? In that case, surround the value with &lt;code&gt;sym()&lt;/code&gt;.&lt;/p&gt;
@@ -5194,7 +6235,7 @@ for(i in 1:1){
   )
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2020-03-21/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;Also note that I had to include &lt;code&gt;results = &amp;quot;asis&amp;quot;&lt;/code&gt; in the Rmarkdown document and put the function within a print command to get the output to render.&lt;/p&gt;
+&lt;p&gt;Also note that I had to include &lt;code&gt;results = &#34;asis&#34;&lt;/code&gt; in the Rmarkdown document and put the function within a print command to get the output to render.&lt;/p&gt;
 &lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
 </description>
     </item>
@@ -5205,6 +6246,7 @@ for(i in 1:1){
       <pubDate>Fri, 20 Mar 2020 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2020-03-20/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Dipping my feet into the world of websraping using &lt;code&gt;rvest&lt;/code&gt;. The first few examples are pulled from &lt;a href=&#34;https://journals.sagepub.com/doi/abs/10.1177/2515245919859535&#34;&gt;Alex Bradley’s and Richard James’ 2019 article&lt;/a&gt;.&lt;/p&gt;
@@ -5357,6 +6399,7 @@ review&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Wed, 04 Mar 2020 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2020-03-04/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;I recently created my first slide deck using &lt;a href=&#34;https://github.com/gadenbuie&#34;&gt;Garrick Aden-Buie&lt;/a&gt;’s awesome template called “Gentle Ggplot2.” You can find the presentation &lt;a href=&#34;https://cdishop.github.io/methods_with_others/#1&#34;&gt;here&lt;/a&gt; and the &lt;a href=&#34;https://github.com/Cdishop/methods_with_others&#34;&gt;source code on my GitHub page&lt;/a&gt;.&lt;/p&gt;
@@ -5370,6 +6413,7 @@ review&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Tue, 14 Jan 2020 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2020-01-14/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
 
 
@@ -5450,10 +6494,10 @@ SD
 A
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-23.98197
+25.03667
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-2.024866
+1.609287
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -5461,10 +6505,10 @@ A
 B
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-22.10826
+21.05056
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-2.628771
+5.216875
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -5472,10 +6516,10 @@ B
 C
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-21.83688
+23.57457
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-4.478950
+2.912307
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -5521,13 +6565,13 @@ Team C
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-23.98 (2.02)
+25.04 (1.61)
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-22.11 (2.63)
+21.05 (5.22)
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-21.84 (4.48)
+23.57 (2.91)
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -5554,6 +6598,7 @@ Team C
       <pubDate>Fri, 10 Jan 2020 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2020-01-10/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;I recently created a course skeleton for a research methods or statistics course. The website allows you to incorporate Rmarkdown and dynamic documents to better demonstrate interactive coding.&lt;/p&gt;
@@ -5568,6 +6613,7 @@ Team C
       <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2019-12-10/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Simulating dynamic processes is slow in &lt;code&gt;R&lt;/code&gt;. Using the &lt;code&gt;Rcpp&lt;/code&gt; function, we can incorporate C++ code to improve performance.&lt;/p&gt;
@@ -5831,6 +6877,7 @@ head(df)&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2019-12-01/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;One way to think about regression is as a tool that takes a set of predictors and creates a weighted, linear composite that maximally correlates with the response variable. It finds a way to combine multiple predictors into a single thing, using regression weights, and the weights are chosen such that, once the single composite is formed, it maximally correlates with the outcome.&lt;/p&gt;
@@ -5860,19 +6907,19 @@ df$id &amp;lt;- c(1:N)&lt;/code&gt;&lt;/pre&gt;
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -2.19240 -0.55653 -0.00696  0.57033  2.18964 
+## -3.04149 -0.55336 -0.00343  0.58953  2.76948 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept) -0.03058    0.03671  -0.833    0.405    
-## x1           0.34881    0.03812   9.151   &amp;lt;2e-16 ***
-## x2           0.31486    0.03575   8.806   &amp;lt;2e-16 ***
+## (Intercept)  0.02285    0.03930   0.581    0.561    
+## x1           0.33422    0.03951   8.459 3.04e-16 ***
+## x2           0.39712    0.04156   9.554  &amp;lt; 2e-16 ***
 ## ---
 ## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
 ## 
-## Residual standard error: 0.8207 on 497 degrees of freedom
-## Multiple R-squared:  0.2516, Adjusted R-squared:  0.2486 
-## F-statistic: 83.56 on 2 and 497 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+## Residual standard error: 0.8768 on 497 degrees of freedom
+## Multiple R-squared:  0.2786, Adjusted R-squared:  0.2757 
+## F-statistic: 95.96 on 2 and 497 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Here’s the kicker: you can think of those weights as optimal functions telling us how to create the composite.&lt;/p&gt;
 &lt;p&gt;Create a composite using the regression weights.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
@@ -5880,7 +6927,7 @@ df &amp;lt;- df %&amp;gt;%
   mutate(composite_x = 0.33*x1 + 0.4*x2)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Those weights provide the maximum correlation between our composite and the outcome.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cor(df$y, df$composite_x)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 0.4966612&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.5277891&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;In other words, the above correlation could not be higher with any other set of weights. Regression found the weights that makes the correlation above as large as it can be.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(lm(y ~ composite_x,
            data = df))&lt;/code&gt;&lt;/pre&gt;
@@ -5889,19 +6936,19 @@ df &amp;lt;- df %&amp;gt;%
 ## lm(formula = y ~ composite_x, data = df)
 ## 
 ## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -2.23541 -0.57056 -0.01677  0.59092  2.14659 
+##     Min      1Q  Median      3Q     Max 
+## -3.0383 -0.5499 -0.0054  0.5849  2.7639 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept) -0.03010    0.03679  -0.818    0.414    
-## composite_x  0.88933    0.06964  12.770   &amp;lt;2e-16 ***
+## (Intercept)  0.02261    0.03920   0.577    0.564    
+## composite_x  1.00157    0.07223  13.867   &amp;lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
 ## 
-## Residual standard error: 0.8226 on 498 degrees of freedom
-## Multiple R-squared:  0.2467, Adjusted R-squared:  0.2452 
-## F-statistic: 163.1 on 1 and 498 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+## Residual standard error: 0.8759 on 498 degrees of freedom
+## Multiple R-squared:  0.2786, Adjusted R-squared:  0.2771 
+## F-statistic: 192.3 on 1 and 498 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
 </description>
     </item>
@@ -5912,6 +6959,7 @@ df &amp;lt;- df %&amp;gt;%
       <pubDate>Sun, 15 Sep 2019 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2019-09-15/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;I’m taking comps pretty soon so this is my summary document regarding meta-analysis.&lt;/p&gt;
@@ -5954,9 +7002,9 @@ df &amp;lt;- df %&amp;gt;%
 &lt;li&gt;&lt;p&gt;Calculate the variance in our MA effect estimate&lt;/p&gt;
 &lt;p&gt;Within each study gathered from our literature review…&lt;/p&gt;
 &lt;ol start=&#34;4&#34; style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;Compute a correction factor for unreliability on X&lt;/li&gt;
-&lt;li&gt;Compute a correction factor for unreliability on Y&lt;/li&gt;
-&lt;li&gt;Compute a correction factor for range restriction&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Compute a correction factor for unreliability on X&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Compute a correction factor for unreliability on Y&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Compute a correction factor for range restriction&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Combine all of those together&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Compute the error variance for a given observed correlation and correct it using the combined correction factor. This step produces the sampling error correction&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Calculate the average sampling error from the sampling error corrections&lt;/p&gt;&lt;/li&gt;
@@ -6177,6 +7225,7 @@ upper_ci&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Wed, 26 Jun 2019 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2019-06-26/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;In many research methods or statistics courses you come across the idea that correlated errors signal a third variable. In other words, you have a missing, relevant variable that induces correlation among your residuals. That’s a tough idea to wrap your head around, but it is easier to consider with respect to a given topic: cheating on exams. This post builds intuition for “correlated errors with respect to missing third variables” in the context of college exams and cheating.&lt;/p&gt;
@@ -6216,6 +7265,7 @@ upper_ci&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Fri, 14 Jun 2019 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2019-06-14/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Inspired by Bill Burr’s Monday Morning Podcast, episode 6-6-19.&lt;/p&gt;
@@ -6347,6 +7397,7 @@ ggplot(df_plot, aes(x = time, y = value, color = variable)) +
       <pubDate>Sat, 04 May 2019 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2019-05-04/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Quick note about calculating the mean of a column with &lt;code&gt;dplyr&lt;/code&gt; in &lt;code&gt;R&lt;/code&gt;. It’s surprisingly easy to screw up, and the culprit is forgetting to change the name of the column storing the new calculation.&lt;/p&gt;
@@ -6394,6 +7445,7 @@ df %&amp;gt;%
       <pubDate>Fri, 03 May 2019 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2019-05-03/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Think about what it would mean to explain something to a friend. How would you explain why the Patriot’s won the Superbowl? How would you explain why you are feeling happy or sad? How would you explain tying a shoe to a toddler? How would you explain why eating lots of donuts tends to increase a person’s weight? How would you explain the timeline of Game of Thrones to someone who hadn’t seen it?&lt;/p&gt;
@@ -6435,6 +7487,7 @@ df %&amp;gt;%
       <pubDate>Thu, 02 May 2019 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2019-05-02/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;A growth curve model written in lavaan and MPLUS as a syntax reference guide. Imagine a latent growth curve on affect across 4 time points. First, &lt;code&gt;lavaan&lt;/code&gt; code:&lt;/p&gt;
@@ -6511,6 +7564,7 @@ affect.4 ~~ res_var*affect.4
       <pubDate>Wed, 01 May 2019 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2019-05-01/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;This post is about building intuition for degrees of freedom. There are two ways to think about it, the “information” way and the “line” way.&lt;/p&gt;
@@ -6567,6 +7621,7 @@ y = mx + 2 \textrm{;} \textrm{ with 10 pieces of information and 1 estimated par
       <pubDate>Fri, 19 Apr 2019 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2019-04-19/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;In regression, everything is partialled from everything. Let’s work through that notion with images and code. Imagine that emotion and ability cause an outcome, &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;.&lt;/p&gt;
@@ -6649,6 +7704,7 @@ df$emotion_with_ability_removed &amp;lt;- emotion_with_ability_removed&lt;/code&
       <pubDate>Wed, 10 Apr 2019 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2019-04-10/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Quick piece of code that turns all selected columns to numeric in R.&lt;/p&gt;
@@ -6666,6 +7722,7 @@ df$emotion_with_ability_removed &amp;lt;- emotion_with_ability_removed&lt;/code&
       <pubDate>Tue, 29 Jan 2019 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2019-01-29/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Two ways to simulate a moving average process. A moving average is a linear combination of concurrent and historic noises:&lt;/p&gt;
@@ -6744,6 +7801,7 @@ ggplot(df2, aes(x = time, y = yt)) +
       <pubDate>Tue, 15 Jan 2019 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2019-01-15/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Longitudinal data of a group or team often have missing days. For example, only Bob reports a stress score on January 3rd even though Joe and Sam are also part of the sample.&lt;/p&gt;
@@ -6825,6 +7883,7 @@ original_df$day &amp;lt;- time_vec&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Mon, 14 Jan 2019 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2019-01-14/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;There are two code variations I use to generate time indexes. If I need time cycles&lt;/p&gt;
@@ -6863,6 +7922,7 @@ original_df$day &amp;lt;- time_vec&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Sun, 13 Jan 2019 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2019-01-13/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Sometimes I store every result in my initialized vector/matrix.&lt;/p&gt;
@@ -6934,6 +7994,7 @@ use_days&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Fri, 11 Jan 2019 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2019-01-11/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;No explanation for this set of notes, just a few reminders when spreading and gathering.&lt;/p&gt;
@@ -7026,6 +8087,7 @@ cd_try&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Thu, 10 Jan 2019 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2019-01-10/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Longitudinal data sets often have hidden NAs when they are in long-form. For example, in the data set below Zoe is missing on days 2 and 4, but it isn’t obvious because there are no specific “NA’s” within the data.&lt;/p&gt;
@@ -7118,6 +8180,7 @@ cd %&amp;gt;%
       <pubDate>Tue, 08 Jan 2019 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2019-01-08/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;A replication of Patricia Cohen’s wonderful, “problem of the premature covariate” (chapter 2 in Collins &amp;amp; Horn, 1991). Here is a simple version of the problem. Imagine that we want to know the influence of a life event, like meeting a friend, on happiness. We conduct a study where we measure people’s happiness at time one, wait two weeks, and then measure their happiness again along with whether or not they met a friend since we last observed them. To assess the relationship between meeting a friend and happiness, we regress post happiness on both pre happiness and whether or not they met a friend. That is, our regression takes the form:&lt;/p&gt;
@@ -7412,6 +8475,7 @@ summary(lm(happy_post ~ happy_pre + met_friend,
       <pubDate>Sun, 06 Jan 2019 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2019-01-06/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Another example of using column names as parameters with &lt;code&gt;quo&lt;/code&gt;, this time within &lt;code&gt;ggplot2&lt;/code&gt;. A snippet of the data:&lt;/p&gt;
@@ -7453,6 +8517,7 @@ ggplot(df, aes(x = day, y = stress, color = id)) +
       <pubDate>Sat, 05 Jan 2019 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2019-01-05/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Creating item totals with a data set containing NAs is surprisingly difficult. Here is the data.&lt;/p&gt;
@@ -7520,6 +8585,7 @@ cd&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Fri, 04 Jan 2019 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2019-01-04/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;div id=&#34;purpose&#34; class=&#34;section level3&#34;&gt;
@@ -7576,18 +8642,18 @@ sample_df &amp;lt;- df %&amp;gt;%
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -3.1513 -0.6429 -0.0012  0.6903  3.3091 
+## -3.4777 -0.7455 -0.0300  0.7539  3.0909 
 ## 
 ## Coefficients:
 ##              Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept) -0.012817   0.041474  -0.309    0.757    
-## stress       0.450271   0.008504  52.949   &amp;lt;2e-16 ***
+## (Intercept) -0.022569   0.043938  -0.514    0.608    
+## stress       0.446702   0.008471  52.734   &amp;lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
 ## 
-## Residual standard error: 1.014 on 598 degrees of freedom
-## Multiple R-squared:  0.8242, Adjusted R-squared:  0.8239 
-## F-statistic:  2804 on 1 and 598 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+## Residual standard error: 1.076 on 598 degrees of freedom
+## Multiple R-squared:  0.823,  Adjusted R-squared:  0.8227 
+## F-statistic:  2781 on 1 and 598 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;b-compute-the-ci&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;2b) Compute the CI&lt;/h3&gt;
@@ -7637,7 +8703,7 @@ for(i in 1:sims){
 &lt;h3&gt;Interpretation&lt;/h3&gt;
 &lt;p&gt;How many computed intervals contain the population parameter?&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sum(all_ci_contains == &amp;#39;yes&amp;#39;) / sims&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 0.9488889&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.9588889&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 </description>
     </item>
@@ -7680,6 +8746,7 @@ for(i in 1:sims){
       <pubDate>Thu, 06 Sep 2018 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2018-09-06/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Use &lt;code&gt;quo&lt;/code&gt; or &lt;code&gt;enquo&lt;/code&gt; when you want to include column names as parameters in a function. For example, a function like the following would not work:&lt;/p&gt;
@@ -7778,6 +8845,7 @@ adder2(a)&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Sun, 12 Aug 2018 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2018-08-12/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Monte Carlo helps us understand processes that we can describe but don’t yet have analytic solutions for. Here are two examples: the birthday problem and the tasting tea problem.&lt;/p&gt;
@@ -7917,6 +8985,7 @@ for(i in 1:iterations){
       <pubDate>Wed, 04 Jul 2018 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2018-07-04/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;A few random notes about plotting, describing, and thinking about trajectories.&lt;/p&gt;
@@ -7991,7 +9060,7 @@ plot5&lt;/code&gt;&lt;/pre&gt;
 Panel C: No between person differences in level (intercept) but there are between person differences in variability.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id=&#34;main-effects-and-interactions-cross-sectional-vs.over-time&#34; class=&#34;section level1&#34;&gt;
+&lt;div id=&#34;main-effects-and-interactions-cross-sectional-vs.-over-time&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Main Effects and Interactions (Cross Sectional vs. Over Time)&lt;/h1&gt;
 &lt;p&gt;Imagine we re-test the main and interaction effects from a cross-sectional study several times. If the results are stable across time, what would they look like?&lt;/p&gt;
 &lt;div id=&#34;main-effect&#34; class=&#34;section level3&#34;&gt;
@@ -8034,6 +9103,7 @@ For females: Group B (vague goals) higher performance than group B (difficult, s
       <pubDate>Sat, 02 Jun 2018 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2018-06-02/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;I always forget how to use column names as function parameters, so here is an example.&lt;/p&gt;
@@ -8060,15 +9130,15 @@ mini &amp;lt;- dish %&amp;gt;%
 mini[mini$person == &amp;#39;jimmy&amp;#39;, 2] &amp;lt;- 99
 mini[mini$person == &amp;#39;james&amp;#39;, 2] &amp;lt;- 99&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The original data:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;##   person         v_1      v_2      v_3      v_4
-## 1  jimmy -0.56183478 16.66502 56.70222 34.22752
-## 2  james  2.18798175 11.12700 37.33030 17.82798
-## 3 johnny -0.06221208 16.77299 70.08005 14.48253&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   person        v_1       v_2      v_3      v_4
+## 1  jimmy -1.2949216  7.431139 53.19589 29.74286
+## 2  james  1.0350524 11.025432 52.19264 34.75883
+## 3 johnny -0.2899457  6.816367 59.15836 22.21335&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;What we changed it to:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;##   person         v_1      v_2
-## 1  jimmy 99.00000000 16.66502
-## 2  james 99.00000000 11.12700
-## 3 johnny -0.06221208 16.77299&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   person        v_1       v_2
+## 1  jimmy 99.0000000  7.431139
+## 2  james 99.0000000 11.025432
+## 3 johnny -0.2899457  6.816367&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Here is the function equivalent:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;impute_99 &amp;lt;- function(data){
   
@@ -8086,10 +9156,10 @@ mini[mini$person == &amp;#39;james&amp;#39;, 2] &amp;lt;- 99&lt;/code&gt;&lt;/pr
 &lt;p&gt;Our result:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;adjusted_data &amp;lt;- impute_99(dish)
 adjusted_data&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##   person         v_1      v_2
-## 1  jimmy 99.00000000 16.66502
-## 2  james 99.00000000 11.12700
-## 3 johnny -0.06221208 16.77299&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   person        v_1       v_2
+## 1  jimmy 99.0000000  7.431139
+## 2  james 99.0000000 11.025432
+## 3 johnny -0.2899457  6.816367&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;function-with-column-names-as-parameters&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Function with column names as parameters&lt;/h1&gt;
@@ -8110,10 +9180,10 @@ adjusted_data&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Fortunately the correction is simple, just put quotes around the column names:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cool_data &amp;lt;- impute_99_column_specific(dish, &amp;#39;v_1&amp;#39;, &amp;#39;v_2&amp;#39;)
 cool_data&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##   person         v_1      v_2
-## 1  jimmy 99.00000000 16.66502
-## 2  james 99.00000000 11.12700
-## 3 johnny -0.06221208 16.77299&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   person        v_1       v_2
+## 1  jimmy 99.0000000  7.431139
+## 2  james 99.0000000 11.025432
+## 3 johnny -0.2899457  6.816367&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
 &lt;/div&gt;
 </description>
@@ -8125,6 +9195,7 @@ cool_data&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Sat, 05 May 2018 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2018-05-05/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;A few spline models (also known as piecewise models). As in previous posts, ‘affect’ is the name given to values of &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; throughout.&lt;/p&gt;
@@ -9213,6 +10284,7 @@ slope3_affect =~ 0*affect.1 + 0*affect.2 + 0*affect.3 + 0*affect.4 +
       <pubDate>Sun, 15 Apr 2018 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2018-04-15/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;div id=&#34;latent-growth-curves&#34; class=&#34;section level1&#34;&gt;
@@ -10017,6 +11089,7 @@ summary(lb_model, fit.measures = T)&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Fri, 30 Mar 2018 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2018-03-30/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;I built the following simple computational model for an individual differences class in the Spring of 2018 to demonstrate how to incorporate explantory elements for trait development into a computational framework. This model assumes that an individual’s trait development depends on 1) the environment and 2) interactions with others inside and outside of the individual’s social group. Moreover, the model assumes traits are somewhat stable and exhibit self-similarity across time. The main properties I am trying to capture, therefore, include:&lt;/p&gt;
@@ -10096,7 +11169,7 @@ agent[[1]][1] &amp;lt;- initial_sdo_value
 
 agent&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## $SDO
-## [1] 106.0294
+## [1] 92.74915
 ## 
 ## $Peeps
 ## NULL&lt;/code&gt;&lt;/pre&gt;
@@ -10138,10 +11211,10 @@ agent$Peeps &amp;lt;- c(agent$Peeps, other)
 
 agent&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## $SDO
-## [1] 106.0294 113.0294
+## [1] 92.74915 81.74915
 ## 
 ## $Peeps
-## [1] 120.908&lt;/code&gt;&lt;/pre&gt;
+## [1] 112.7107&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;the-full-model&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;The Full Model&lt;/h1&gt;
@@ -10277,6 +11350,7 @@ ggplot(new_data, aes(x = Time, y = SDO)) +
       <pubDate>Wed, 21 Feb 2018 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2018-02-21/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Quick note on updating your credentials after you change your password on GitHub.&lt;/p&gt;
@@ -10334,6 +11408,7 @@ git config --global user.name &amp;quot;Your Name&amp;quot;&lt;/code&gt;&lt;/pre
       <pubDate>Sun, 18 Feb 2018 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2018-02-18/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# restart session
@@ -10351,6 +11426,7 @@ remove(list = ls())&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Fri, 16 Feb 2018 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2018-02-16/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;div id=&#34;integration&#34; class=&#34;section level1&#34;&gt;
@@ -10614,6 +11690,7 @@ g_plot_2&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Wed, 17 Jan 2018 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2018-01-17/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;I always forget how to make the y-axis horizontal in &lt;code&gt;ggplot2&lt;/code&gt;. Here’s a note.&lt;/p&gt;
@@ -10628,6 +11705,7 @@ g_plot_2&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Thu, 11 Jan 2018 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2018-01-11/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/plotly-binding/plotly.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/typedarray/typedarray.min.js&#34;&gt;&lt;/script&gt;
@@ -10732,6 +11810,7 @@ plot_ly(rw_3, x = ~step, y = ~Dim_1, z = ~Dim_2, type = &amp;#39;scatter3d&amp;#
       <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2018-01-03/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;A couple quick pieces of code to assist any time I need to work with many CSV files.&lt;/p&gt;
@@ -10778,6 +11857,7 @@ data_set &amp;lt;- do.call(cbind,
       <pubDate>Tue, 02 Jan 2018 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2018-01-02/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Here is a quick piece of code to create numeric response scores when data are read in as strings (e.g., “Strongly Agree, Agree, Neutral”).&lt;/p&gt;
@@ -10814,6 +11894,7 @@ recode_df &amp;lt;- df %&amp;gt;%
       <pubDate>Sat, 23 Dec 2017 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2017-12-23/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
 
 
@@ -11045,6 +12126,7 @@ group
       <pubDate>Wed, 15 Nov 2017 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2017-11-15/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;A fun simulation by McClelland and Judd (1993) in &lt;em&gt;Psychological Bulletin&lt;/em&gt; that demonstrates why detecting interactions outside the lab (i.e., in field studies) is difficult. In experiments, scores on the independent variables are located at the extremes of their respective distributions because we manipulate conditions. The distribution of scores across all of the independent variables in field studies, conversely, is typically assumed to be normal. By creating “extreme groups” in experiments, therefore, it becomes easier to detect interactions.&lt;/p&gt;
@@ -11246,6 +12328,7 @@ for(i in 1:sims){
       <pubDate>Tue, 22 Aug 2017 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2017-08-22/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;We can model the states of a system by applying a transition matrix to values represented in an initial distribution and repeating it until we reach an equilibrium.&lt;/p&gt;
@@ -11341,6 +12424,7 @@ ggplot(data_f, aes(x = Time, y = Proportion, color = Position)) +
       <pubDate>Wed, 12 Jul 2017 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2017-07-12-art/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;I like to think of Monte Carlo as a counting method. If a condition is satisfied we make a note (e.g., 1), and if the condition is not satisfied we make a different note (e.g., 0). We then iterate and evaluate the pattern of 1’s and 0’s to learn about our process. Art can be described in a similar way: if a condition is satisfied we use a color, and if a condition is not satisfied we use a different color. After many iterations, we have an image.&lt;/p&gt;
@@ -11412,6 +12496,7 @@ points_over_y &amp;lt;- points_above[!is.na(points_above[,2]),2]&lt;/code&gt;&lt
       <pubDate>Sat, 24 Jun 2017 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2017-06-24/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Some tidyverse commands I came across and hadn’t seen before. Thought it would be useful to store them here.&lt;/p&gt;
@@ -11465,7 +12550,7 @@ df %&amp;gt;%
   select_all(any_vars(str_detect(., pattern = &amp;quot;Mu&amp;quot;)))&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;if-with-is-at-with-vars&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;If with “is” At with &amp;quot;vars&lt;/h3&gt;
+&lt;h3&gt;If with “is” At with &#34;vars&lt;/h3&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mutate_if(is.numeric)
 
 mutate_at(vars(contains(&amp;quot;Q&amp;quot;)))&lt;/code&gt;&lt;/pre&gt;
@@ -11480,6 +12565,7 @@ mutate_at(vars(contains(&amp;quot;Q&amp;quot;)))&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Sun, 09 Apr 2017 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2017-04-09/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;A quick piece of code that reads a text file, changes something, saves a new text file, and iterates that process for every text file in that folder.&lt;/p&gt;
@@ -11511,6 +12597,7 @@ for(i in 1:length(all_files)){
       <pubDate>Fri, 07 Apr 2017 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2017-04-07/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Great &lt;a href=&#34;https://www.programmingwithr.com/how-to-make-your-facet-wrap-facet-grid-ggplots-span-across-multiple-pages-in-pdf/&#34;&gt;discussion of extending a facet wrap across several pages&lt;/a&gt;.&lt;/p&gt;
@@ -11532,6 +12619,7 @@ for(i in 1:length(all_files)){
       <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
       <guid>https://christopherdishop.netlify.app/computational_notes/2017-01-01/</guid>
       <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Effect sizes provide information about the magnitude of an effect. Unfortunately, they can be difficult to interpret or appear “small” to anyone unfamiliar with the typical effect sizes in a given research field. &lt;a href=&#34;https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C23&amp;amp;q=Effect+Sizes%3A+Pearson%27s+Correlation%2C+Its+Display+Via+the+BESD%2C+and+Alternative+Indices&amp;amp;btnG=&#34;&gt;Rosenthal and Rubin (1992)&lt;/a&gt; provide an intuitive effect size, called the Binomial Effect Size Display, that captures the change in success rate due to a treatment.&lt;/p&gt;

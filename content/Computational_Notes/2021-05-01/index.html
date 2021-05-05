@@ -1,0 +1,1020 @@
+---
+title: "Systems Zoo"
+summary: '-----'
+date: '2021-05-01'
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<p>Some practice simulating stock and flow models. The first example set uses discrete time. The second uses continuous time differential equations. I include some text from Donella Meadows’ book, “Thinking in Systems” to explain some of the examples.</p>
+<div id="example-1-bath-tub" class="section level1">
+<h1>Example 1: Bath Tub</h1>
+<p><img src="images/bathtub.png" style="width:50.0%" /></p>
+<p>“Imagine a bathtub filled with water, with its drain plugged up and its faucets turned off—an unchanging, undynamic, boring system. Now mentally pull the plug. The water runs out, of course. The level of water in the tub goes down until the tub is empty.” (p. 19).</p>
+<pre class="r"><code>library(ggplot2)
+library(hrbrthemes)
+
+# time
+time &lt;- 10
+
+# stock storehouses - start and end for each stock
+## water in tub
+startwater &lt;- numeric(time)
+endwater &lt;- numeric(time)
+
+# initial conditions in each stock
+## water in tub
+startwater[1] &lt;- 10
+endwater[1] &lt;- startwater[1]
+
+# constants
+## outflow (gallons exiting the tub per minute)
+outflow &lt;- 1
+## inflow (gallons entering the tub per minute)
+inflow &lt;- 0
+
+# iterate
+for(i in 2:time){
+  
+  # start stocks at period i are ending stocks at period i-1
+  startwater[i] &lt;- endwater[i - 1]
+  
+  # model system
+  endwater[i] &lt;- startwater[i] + inflow - outflow
+  
+}
+
+dftub1 &lt;- data.frame(
+  &quot;gallons&quot; = c(endwater),
+  &quot;minutes&quot; = c(1:time)
+)
+
+ggplot(dftub1, aes(x = minutes, y = gallons)) + 
+  geom_line() + 
+  theme_classic()</code></pre>
+<p><img src="/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>“Now imagine starting again with a full tub, and again open the drain, but this time, when the tub is about half empty, turn on the inflow faucet so the rate of water flowing in is just equal to that flowing out. What happens? The amount of water in the tub stays constant at whatever level it had reached when the inflow became equal to the outflow. It is in a state of dynamic equilibrium – its level does not change, although water is continuously flowing through it.” (p. 21).</p>
+<pre class="r"><code># time
+time &lt;- 10
+
+# stock storehouses - start and end for each stock
+## water in tub
+startwater &lt;- numeric(time)
+endwater &lt;- numeric(time)
+
+# initial conditions in each stock
+## water in tub
+startwater[1] &lt;- 10
+endwater[1] &lt;- startwater[1]
+
+# constants
+## none - flows change midway through the process
+
+# iterate
+for(i in 2:time){
+  
+  # start stocks at period i are ending stocks at period i-1
+  startwater[i] &lt;- endwater[i - 1]
+  
+  # model system
+  
+  ## open the drain
+  if(i &lt; 5){
+    inflow &lt;- 0
+    outflow &lt;- 1
+  ## then, turn on the faucet so water flows into the tub
+  }else{
+    inflow &lt;- 1
+    outflow &lt;- 1
+  }
+  
+  endwater[i] &lt;- startwater[i] + inflow - outflow
+  
+}
+
+dftub2 &lt;- data.frame(
+  &quot;gallons&quot; = c(endwater),
+  &quot;minutes&quot; = c(1:time)
+)
+
+ggplot(dftub2, aes(x = minutes, y = gallons)) + 
+  geom_line() + 
+  theme_classic() + 
+  ylim(0, 10)</code></pre>
+<p><img src="/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+<div id="example-2-coffee-temperature" class="section level1">
+<h1>Example 2: Coffee Temperature</h1>
+<p><img src="images/coffee.png" style="width:50.0%" /></p>
+<p>“A hot cup of coffee will gradually cool down to room temperature. Its rate of cooling depends on the difference between the temperature of the coffee and the temperature of the room. The greater the difference, the faster the coffee will cool. The loop works the other way too – if you make iced coffee on a hot day, it will warm up until it has the same temperature as the room. The function of this system is to bring the discrepancy between coffee’s temperature and room’s temperature to zero, no matter what the direction of the discrepancy. Whatever the initial value of the system stock (coffee temperature in this case), whether it is above or below the ‘goal’ (room temperature), the feedback loop brings it toward the goal. The change is faster at first, and then slower, as the discrepancy between the stock and the goal decreases.” (p. 29).</p>
+<pre class="r"><code># time
+time &lt;- 4
+
+# stock storehouses - start and end for each stock
+## coffee
+startcoffee &lt;- numeric(time)
+endcoffee &lt;- numeric(time)
+
+## iced coffee
+startic &lt;- numeric(time)
+endic &lt;- numeric(time)
+
+# initial conditions in each stock
+## temperature of coffee
+startcoffee[1] &lt;- 96
+endcoffee[1] &lt;- startcoffee[1]
+
+## temperature of iced coffee
+startic[1] &lt;- 34
+endic[1] &lt;- startic[1]
+
+# constants
+## room temperature
+room_temp &lt;- 71
+
+# iterate
+for(i in 2:time){
+  
+  # start stocks at period i are ending stocks at period i-1
+  startcoffee[i] &lt;- endcoffee[i - 1]
+  startic[i] &lt;- endic[i - 1]
+  
+  # model system
+  
+  ## system for hot coffee
+  difference_coffee &lt;- abs(room_temp - startcoffee[i])
+  cooling &lt;- difference_coffee
+  endcoffee[i] &lt;- startcoffee[i] - cooling
+  
+  ## system for iced coffee
+  difference_ic &lt;- room_temp - startic[i]
+  heating &lt;- difference_ic
+  endic[i] &lt;- startic[i] + heating
+  
+}
+
+dfcoffee &lt;- data.frame(
+  &quot;var&quot; = c(rep(&#39;Hot Coffee&#39;, time),
+            rep(&#39;Iced Coffee&#39;, time)),
+  &quot;temperature&quot; = c(endcoffee,
+                    endic),
+  &quot;minutes&quot; = c(c(1:time),
+                c(1:time))
+)
+
+ggplot(dfcoffee, aes(x = minutes, y = temperature, linetype = var)) + 
+  geom_line() + 
+  geom_hline(yintercept = room_temp, linetype = &quot;dashed&quot;, color = &#39;red&#39;) + 
+  geom_text(aes(x = 1.3, y = room_temp + 1.8, label = &quot;Room Temperature&quot;), color = &quot;darkred&quot;) + 
+  theme(legend.title = element_blank())</code></pre>
+<p><img src="/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>The sampling window isn’t small enough to capture the gradual decay/growth of temperature. I can artificially slow the process down by making the effects weaker.</p>
+<pre class="r"><code># time
+time &lt;- 20
+
+# stock storehouses - start and end for each stock
+## coffee
+startcoffee &lt;- numeric(time)
+endcoffee &lt;- numeric(time)
+
+## iced coffee
+startic &lt;- numeric(time)
+endic &lt;- numeric(time)
+
+# initial conditions in each stock
+## temperature of coffee
+startcoffee[1] &lt;- 96
+endcoffee[1] &lt;- startcoffee[1]
+
+## temperature of iced coffee
+startic[1] &lt;- 34
+endic[1] &lt;- startic[1]
+
+# constants
+## room temperature
+room_temp &lt;- 71
+
+# iterate
+for(i in 2:time){
+  
+  # start stocks at period i are ending stocks at period i-1
+  startcoffee[i] &lt;- endcoffee[i - 1]
+  startic[i] &lt;- endic[i - 1]
+  
+  # model system
+  
+  ## system for hot coffee
+  difference_coffee &lt;- abs(room_temp - startcoffee[i])
+  #### HERE IS THE CHANGE
+  cooling &lt;- 0.2*difference_coffee
+  endcoffee[i] &lt;- startcoffee[i] - cooling
+  
+  ## system for iced coffee
+  difference_ic &lt;- room_temp - startic[i]
+  #### HERE IS THE CHANGE
+  heating &lt;- 0.2*difference_ic
+  endic[i] &lt;- startic[i] + heating
+  
+}
+
+dfcoffee &lt;- data.frame(
+  &quot;var&quot; = c(rep(&#39;Hot Coffee&#39;, time),
+            rep(&#39;Iced Coffee&#39;, time)),
+  &quot;temperature&quot; = c(endcoffee,
+                    endic),
+  &quot;minutes&quot; = c(c(1:time),
+                c(1:time))
+)
+
+ggplot(dfcoffee, aes(x = minutes, y = temperature, linetype = var)) + 
+  geom_line() + 
+  geom_hline(yintercept = room_temp, linetype = &quot;dashed&quot;, color = &#39;red&#39;) + 
+  geom_text(aes(x = 5, y = room_temp + 1.8, label = &quot;Room Temperature&quot;), color = &quot;darkred&quot;) + 
+  theme(legend.title = element_blank())</code></pre>
+<p><img src="/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="example-3-investing" class="section level1">
+<h1>Example 3: Investing</h1>
+<p><img src="images/interest.png" style="width:50.0%" /></p>
+<p>“The more money you have in the bank, the more interest you earn, which is added to the money already in the bank, where it earns even more interest. Consider how this reinforcing loop multiplies money, starting
+with $100 in the bank, and assuming no deposits and no withdrawals over a period of ten years.” (p. 32).</p>
+<pre class="r"><code># time
+time &lt;- 10
+
+# stock storehouses - start and end for each stock
+## money in bank
+startmoney &lt;- numeric(time)
+endmoney &lt;- numeric(time)
+
+# initial conditions in each stock
+## money in bank
+startmoney[1] &lt;- 100
+endmoney[1] &lt;- startmoney[1]
+
+# constants
+## interest rate
+interest_rate &lt;- 0.05
+## money from income (zero)
+money_from_income &lt;- 0
+
+# iterate
+for(i in 2:time){
+  
+  # start stocks at period i are ending stocks at period i-1
+  startmoney[i] &lt;- endmoney[i - 1]
+  
+  # model system
+  money_from_interest &lt;- startmoney[i] * interest_rate
+  money_added &lt;- money_from_income + money_from_interest
+  endmoney[i] &lt;- startmoney[i] + money_added
+  
+}
+
+dfmoney &lt;- data.frame(
+  &quot;money&quot; = c(endmoney),
+  &quot;years&quot; = c(1:time),
+  &quot;interest_rate&quot; = c(rep(interest_rate, time))
+)</code></pre>
+<p>Repeat for different interest rates.</p>
+<pre class="r"><code>library(dplyr)
+dfint2 &lt;- run_interest(1.0)
+dfint3 &lt;- run_interest(1.5)
+dfmoney &lt;- bind_rows(dfmoney, dfint2)
+dfmoney &lt;- bind_rows(dfmoney, dfint3)
+
+ggplot(dfmoney, aes(x = years, y = money, linetype = factor(interest_rate))) + 
+  geom_line() + 
+  theme_classic() + 
+  labs(linetype = &quot;Interest Rate&quot;)</code></pre>
+<p><img src="/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>
+<div id="example-4-room-temperature" class="section level1">
+<h1>Example 4: Room Temperature</h1>
+<p><img src="images/furnace.png" style="width:50.0%" /></p>
+<p>"What happens if there are two such loops, trying to drag a single stock toward two different goals? One example of such a system is the thermostat mechanism that regulates the heating of your room (or cooling, if it is connected to an air conditioner instead of a furnace). Whenever the room temperature falls below the thermostat setting, the thermostat detects a discrepancy and sends a signal that turns on the heat
+fl ow from the furnace, warming the room. When the room temperature rises again, the thermostat turns off the heat fl ow. This is a straightforward, stock-maintaining, balancing feedback loop. However, this is not the only loop in the system. Heat also leaks to the outside. The outflow of heat is governed by the second balancing feedback loop. It is always trying to make the room temperature equal to the outside, just like a coffee cup cooling.</p>
+<p>At first, both the room and the outside temperatures are cool. The inflow of heat from the furnace exceeds the leak to the outside, and the room warms up. For an hour or two, the outside is mild enough that the furnace replaces most of the heat that’s lost to the outside,and the room temperature stays near the desired temperature. But as the outside temperature falls and the heat leak increases, the furnace cannot replace the heat fast enough. Because the furnace is generating less heat than is leaking out, the room temperature falls. Finally, the outside temperature rises again, the heat leak slows, and the furnace, still operating at full tilt, finally can pull ahead and start to warm the room again. Just as in the rules for the bathtub, whenever the furnace is putting in more heat than is leaking out, the room temperature rises. Whenever the inflow rate falls behind the outflow rate, the temperature falls." (p. 41)</p>
+<p>First, use a cosine function to create data mimicking the idea that “temperature outside drops throughout the night and then increases in the morning.”</p>
+<pre class="r"><code>points &lt;- 1:51
+outside &lt;- cos(0.11 * points)
+plot(outside)</code></pre>
+<p><img src="/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<pre class="r"><code># time
+time &lt;- 51
+
+# stock storehouses - start and end for each stock
+## room temperature
+startroom &lt;- numeric(time)
+endroom &lt;- numeric(time)
+
+# initial conditions in each stock
+## room temperature
+startroom[1] &lt;- 0.4
+endroom[1] &lt;- startroom[1]
+
+# constants
+## thermostat setting
+thermostat &lt;- 2
+
+# iterate
+for(i in 2:time){
+  
+  # start stocks at period i are ending stocks at period i-1
+  startroom[i] &lt;- endroom[i - 1]
+  
+  # model system
+  difference_outroom &lt;- abs(outside[i] - startroom[i])
+  heatloss &lt;- difference_outroom
+  
+  difference_thermoroom &lt;- thermostat - startroom[i]
+  heatin &lt;- difference_thermoroom
+  
+  endroom[i] &lt;- startroom[i] + heatin - heatloss
+  
+}
+
+dffurnace &lt;- data.frame(
+  &quot;temperature&quot; = c(endroom,
+                    rep(thermostat, time),
+                    outside),
+  &quot;time&quot; = c(1:time,
+             1:time,
+             1:time),
+  &quot;var&quot; = c(rep(&quot;Room Temperature&quot;, time),
+            rep(&quot;Thermostat&quot;, time),
+            rep(&quot;Outside Temperature&quot;, time))
+)
+
+
+
+ggplot(dffurnace, aes(x = time, y = temperature, color = var)) + 
+  geom_line() + 
+  theme_classic() + 
+  theme(axis.text.y = element_blank()) + 
+  labs(color = &quot;&quot;)</code></pre>
+<p><img src="/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>Once again, I can smooth the process by weakening the effects.</p>
+<pre class="r"><code># time
+time &lt;- 51
+
+# stock storehouses - start and end for each stock
+## room temperature
+startroom &lt;- numeric(time)
+endroom &lt;- numeric(time)
+
+# initial conditions in each stock
+## room temperature
+startroom[1] &lt;- 0.4
+endroom[1] &lt;- startroom[1]
+
+# constants
+## thermostat setting
+thermostat &lt;- 2
+
+# iterate
+for(i in 2:time){
+  
+  # start stocks at period i are ending stocks at period i-1
+  startroom[i] &lt;- endroom[i - 1]
+  
+  # model system
+  difference_outroom &lt;- abs(outside[i] - startroom[i])
+  heatloss &lt;- 0.5*difference_outroom
+  
+  difference_thermoroom &lt;- thermostat - startroom[i]
+  heatin &lt;- 0.5*difference_thermoroom
+  
+  endroom[i] &lt;- startroom[i] + heatin - heatloss
+  
+}
+
+dffurnace &lt;- data.frame(
+  &quot;temperature&quot; = c(endroom,
+                    rep(thermostat, time),
+                    outside),
+  &quot;time&quot; = c(1:time,
+             1:time,
+             1:time),
+  &quot;var&quot; = c(rep(&quot;Room Temperature&quot;, time),
+            rep(&quot;Thermostat&quot;, time),
+            rep(&quot;Outside Temperature&quot;, time))
+)
+
+
+
+ggplot(dffurnace, aes(x = time, y = temperature, color = var)) + 
+  geom_line() + 
+  theme_classic() + 
+  theme(axis.text.y = element_blank()) + 
+  labs(color = &quot;&quot;)</code></pre>
+<p><img src="/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+</div>
+<div id="example-5-car-inventory-with-delays" class="section level1">
+<h1>Example 5: Car Inventory With Delays</h1>
+<p>My stock and flow diagram is different from Fig 31 in “Thinking in Systems” because I like to include an additional “things in process / things in queue” stock when modeling delays.</p>
+<p><img src="images/cars.png" style="width:50.0%" /></p>
+<p>“This system is a version of the thermostat system—one balancing loop of sales draining the inventory stock and a competing balancing loop maintaining the inventory by resupplying what is lost in sales. Although this system still consists of just two balancing loops, like the simplified thermostat system, it doesn’t behave like the thermostat system. Look at what happens, for example, when the business experiences the same permanent 10-percent jump in sales from an increase in customer demand. Oscillations! A single step up in sales causes inventory to drop. The car dealer watches long enough to be sure the higher sales rate is going to last. Then she begins to order more cars to both cover the new rate of sales and
+bring the inventory up. But it takes time for the orders to come in. During that time inventory drops further, so orders have to go up a little more, to bring inventory back up to ten days’ coverage. Eventually, the larger volume of orders starts arriving, and inventory recovers—and more than recovers, because during the time of uncertainty about the actual trend, the owner has ordered too much. She now sees her mistake, and cuts back, but there are still high past orders coming in, so she orders even less. In fact, almost inevitably, since she still can’t be sure of what is going to happen next, she orders too little. Inventory gets too low again. And so forth, through a series of oscillations around the new desired inventory level.” (p. 54).</p>
+<pre class="r"><code># time
+time &lt;- 25
+
+# stock storehouses - start and end for each stock
+## cars in inventory
+startcars &lt;- numeric(time)
+endcars &lt;- numeric(time)
+## cars in queue
+startque &lt;- numeric(time)
+endque &lt;- numeric(time)
+
+# initial conditions in each stock
+## cars in inventory
+startcars[1] &lt;- 78
+endcars[1] &lt;- startcars[1]
+## cars in queue
+startque[1] &lt;- 0
+endque[1] &lt;- startque[1]
+
+# constants
+## desired inventory of cars in lot
+desired_inventory &lt;- 100
+## time to ship (3 days)
+time_to_ship &lt;- 3
+## time to receive order (half a day)
+time_to_receive &lt;- 0.5
+## sales each day
+sales &lt;- 18
+
+# iterate
+for(i in 2:time){
+  
+  # start stocks at period i are ending stocks at period i-1
+  startcars[i] &lt;- endcars[i - 1]
+  startque[i] &lt;- endque[i - 1]
+  
+  # model system
+  need_for_cars &lt;- desired_inventory - startcars[i]
+  building &lt;- need_for_cars / time_to_receive
+  arrivals &lt;- startque[i] / time_to_ship
+  
+  endque[i] &lt;- startque[i] + building - arrivals
+  endcars[i] &lt;- startcars[i] + arrivals - sales
+  
+}
+
+dfcars &lt;- data.frame(
+  &quot;cars&quot; = c(endcars),
+  &quot;days&quot; = c(1:time)
+)
+
+library(hrbrthemes)
+ggplot(dfcars, aes(x = days, y = cars)) + 
+  geom_line() + 
+  theme_ipsum()</code></pre>
+<p><img src="/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+</div>
+<div id="example-6-house-inventory" class="section level1">
+<h1>Example 6: House Inventory</h1>
+<p><a href="https://www.youtube.com/watch?v=xN4EGAOksFc">Find lecture online</a>.</p>
+<p><img src="images/houses.png" style="width:50.0%" /></p>
+<pre class="r"><code># time
+time = 50
+
+# stocks
+starthouses = numeric(time)
+starthouses[1] = 1000
+endhouses = numeric(time)
+endhouses[1] = 1000
+
+# constants
+goal_houses = 10000
+## if there is a gap of 8000 houses (goal of 10000 but currently 2000)
+## then they will resolve that gap in 9 periods
+timetoresolve = 9
+
+
+for(i in 2:time){
+  
+  starthouses[i] = endhouses[i-1]
+  
+  need_for_houses = goal_houses - starthouses[i]
+  
+  building = need_for_houses / timetoresolve
+  
+  endhouses[i] = starthouses[i] + building 
+  
+}
+dfhouses &lt;- data.frame(
+  &quot;time&quot; = c(1:time),
+  &quot;houses&quot; = c(endhouses)
+)
+
+ggplot(dfhouses, aes(x = time, y = houses)) + 
+  geom_point()</code></pre>
+<p><img src="/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+</div>
+<div id="example-7-house-inventory-with-muliple-delays" class="section level1">
+<h1>Example 7: House Inventory With Muliple Delays</h1>
+<p><a href="https://www.youtube.com/watch?v=JSm6-uPSbKc">Find lecture online</a>.</p>
+<p><img src="images/house-delay.png" style="width:50.0%" /></p>
+<pre class="r"><code># time
+time = 100
+
+# stocks
+## houses in process (works in progress)
+startwip = numeric(time)
+startwip[1] = 0
+endwip = numeric(time)
+endwip[1] = 0
+
+## completed houses
+starthouses = numeric(time)
+starthouses[1] = 1000
+endhouses = numeric(time)
+endhouses[1] = 1000
+
+# constants
+goal_houses = 10000
+timetostartbuild = 3
+timetocomplete = 12
+
+
+for(i in 2:time){
+  
+  startwip[i] = endwip[i - 1]
+  starthouses[i] = endhouses[i - 1]
+  
+  needforhouses = goal_houses - starthouses[i]
+  building = needforhouses / timetostartbuild
+  finishing = startwip[i] / timetocomplete
+  endwip[i] = startwip[i] + building - finishing
+  
+  
+  endhouses[i] = starthouses[i] + finishing
+  
+}
+
+
+df &lt;- data.frame(
+  &quot;houses&quot; = c(endhouses),
+  &quot;time&quot; = c(1:time)
+)
+
+ggplot(df, aes(x = time, y = houses)) + 
+  geom_point() + 
+  theme_ipsum()</code></pre>
+<p><img src="/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+</div>
+<div id="example-8-customers-in-store" class="section level1">
+<h1>Example 8: Customers In Store</h1>
+<p>Similar example to money in the bank, but now both the inflow and outflow (not just the inflow) will be proportional to the level of the stock.</p>
+<p><img src="images/customers.png" style="width:50.0%" /></p>
+<p>Growth Fraction:</p>
+<ul>
+<li>7%, then 3%, then 1%</li>
+</ul>
+<p>Decline Fraction:</p>
+<ul>
+<li>3% throughout</li>
+</ul>
+<pre class="r"><code># time
+time &lt;- 30
+
+# stock storehouses - start and end for each stock
+## customers
+startcustomers &lt;- numeric(time)
+endcustomers &lt;- numeric(time)
+
+# initial conditions in each stock
+## customers
+startcustomers[1] &lt;- 5
+endcustomers[1] &lt;- startcustomers[1]
+
+# constants
+## decline fraction
+decline &lt;- 0.03
+
+
+
+# iterate
+for(i in 2:time){
+  
+  # start stocks at period i are ending stocks at period i-1
+  startcustomers[i] &lt;- endcustomers[i - 1]
+  
+  # model system
+  if(i &lt; 11){
+    growth &lt;- 0.07
+  }else if(i &gt; 10 &amp;&amp; i &lt; 21){
+    growth &lt;- 0.03
+  }else{
+    growth &lt;- 0.01
+  }
+  
+  losses &lt;- startcustomers[i]*decline
+  recruits &lt;- startcustomers[i]*growth
+  
+  endcustomers[i] &lt;- startcustomers[i] + recruits - losses
+  
+  
+}
+
+dfcustomers &lt;- data.frame(
+  &quot;customers&quot; = c(endcustomers),
+  &quot;minutes&quot; = c(1:time)
+)
+
+ggplot(dfcustomers, aes(x = minutes, y = customers)) + 
+  geom_line() + 
+  theme_ipsum()</code></pre>
+<p><img src="/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+</div>
+<div id="example-9-sir-disease-model" class="section level1">
+<h1>Example 9: SIR Disease Model</h1>
+<p><img src="images/sir.png" style="width:50.0%" /></p>
+<pre class="r"><code># time
+time &lt;- 100
+
+# stock storehouses - start and end for each stock
+## susceptible
+starts &lt;- numeric(time)
+ends &lt;- numeric(time)
+## infected
+starti &lt;- numeric(time)
+endi &lt;- numeric(time)
+## recovered
+startr &lt;- numeric(time)
+endr &lt;- numeric(time)
+
+# initial conditions in each stock
+## susceptible
+starts[1] &lt;- 99
+ends[1] &lt;- starts[1]
+## infected
+starti[1] &lt;- 1
+endi[1] &lt;- starti[1]
+## recovered
+startr[1] &lt;- 0
+endr[1] &lt;- 0
+
+# constants
+## infection rate, or fraction infected from contact
+infectionrate &lt;- 0.8
+## contact rate, or fraction of people (infected and susceptible) who touch
+contactrate &lt;- 0.5
+## recovery rate
+recoveryrate &lt;- 0.3
+## delay
+delay &lt;- 2
+
+# iterate
+for(i in 2:time){
+  
+  # start stocks at period i are ending stocks at period i-1
+  starts[i] &lt;- ends[i - 1]
+  starti[i] &lt;- endi[i - 1]
+  startr[i] &lt;- endr[i - 1]
+  
+  # model system
+  totalpopulation &lt;- starts[i] + starti[i]
+  fractionofpopulationinfected &lt;- totalpopulation / starti[i]
+  contacts &lt;- (fractionofpopulationinfected + starts[i])*contactrate
+  fractioninfected &lt;- contacts*infectionrate
+  catch_disease &lt;- 0.2*fractioninfected
+  recovering &lt;- 0.2*(starti[i]*recoveryrate / delay)
+  
+  ends[i] &lt;- starts[i] - catch_disease
+  endi[i] &lt;- starti[i] - recovering + catch_disease
+  endr[i] &lt;- startr[i] + recovering
+  
+}
+
+dfsir &lt;- data.frame(
+  &quot;people&quot; = c(ends,
+               endi,
+               endr),
+  &quot;time&quot; = c(1:time),
+  &quot;var&quot; = c(rep(&quot;Suseptible&quot;, time),
+            rep(&quot;Infected&quot;, time),
+            rep(&quot;Recovered&quot;, time))
+)
+
+ggplot(dfsir, aes(x = time, y = people, color = var)) + 
+  geom_point() +
+  labs(color = &quot;&quot;)</code></pre>
+<p><img src="/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+</div>
+<div id="examples-using-continuous-time-modeling" class="section level1">
+<h1>Examples Using Continuous Time Modeling</h1>
+<p>Room Temperature</p>
+<pre class="r"><code>library(deSolve)
+
+start &lt;- 0
+finish &lt;- 51
+step &lt;- 0.25
+simtime &lt;- seq(start, finish, by = step)
+
+stocks &lt;- c(room = 0.4)
+
+auxs &lt;- c(thermostat = 2)
+
+model &lt;- function(time, stocks, auxs){
+  
+  with(as.list(c(stocks, auxs)), {
+    
+    outside &lt;- cos(0.11*time)
+    difference_outroom &lt;- abs(outside - room)
+    heatloss &lt;- difference_outroom
+    
+    difference_thermoroom &lt;- thermostat - room
+    heatin &lt;- difference_thermoroom
+    
+    droom &lt;- heatin - heatloss
+    
+    return(list(c(droom),
+           out = outside,
+           thermostat = thermostat))
+    
+    
+  })
+  
+  
+}
+
+o &lt;- data.frame(ode(y = stocks, times = simtime, 
+                    func = model,
+                    parms = auxs,
+                    method = &quot;euler&quot;))
+
+library(ggplot2)
+library(tidyverse)
+
+o &lt;- o %&gt;% 
+  pivot_longer(cols = c(room, out, thermostat),
+               names_to = &quot;var&quot;,
+               values_to = &quot;temperature&quot;)
+
+ggplot(o, aes(x = time, y = temperature, color = var)) + 
+  geom_line()</code></pre>
+<p><img src="/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p>Car Inventory</p>
+<pre class="r"><code>library(deSolve)
+
+start &lt;- 0
+finish &lt;- 3
+step &lt;- 0.25
+simtime &lt;- seq(start, finish, by = step)
+
+stocks &lt;- c(
+  cars = 78,
+  que = 0)
+
+auxs &lt;- c(
+  desired_inventory = 100,
+  time_to_ship = 1,
+  time_to_recieve = 0.1,
+  sales &lt;- 18
+)
+
+model &lt;- function(time, stocks, auxs){
+  
+  with(as.list(c(stocks, auxs)), {
+    
+    need_for_cars &lt;- desired_inventory - cars
+    building &lt;- need_for_cars / time_to_recieve
+    arrivals &lt;- que / time_to_ship
+    
+    dcars &lt;- building - arrivals
+    dque &lt;- arrivals - sales
+    
+    return(list(c(dcars, dque)))
+    
+    
+    
+    
+    
+  })
+  
+  
+}
+
+
+o &lt;- data.frame(ode(y = stocks, times = simtime, 
+                    func = model, parms = auxs, method = &quot;euler&quot;))
+
+library(ggplot2)
+ggplot(o, aes(x = time, y = cars)) + 
+  geom_line()</code></pre>
+<p><img src="/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p>Customers in Store</p>
+<pre class="r"><code>library(deSolve)
+
+start &lt;- 0
+finish &lt;- 10
+step &lt;- 0.25
+simtime &lt;- seq(start, finish, by = step)
+
+stocks &lt;- c(customers = 5)
+
+auxs &lt;- c(decline = 0.03)
+
+model &lt;- function(time, stocks, auxs){
+  
+  with(as.list(c(stocks, auxs)), {
+    
+    if(time &lt; 3){
+      growth &lt;- 0.07
+    }else if (time &gt; 2 &amp;&amp; time &lt; 6) {
+      growth &lt;- 0.03
+    }else{
+      growth &lt;- 0.01
+    }
+    
+    losses &lt;- customers*decline
+    recruits &lt;- customers*growth
+    
+    dcustomers &lt;- recruits - losses
+    
+    return(list(c(dcustomers)))
+    
+    
+  })
+  
+  
+}
+
+o &lt;- data.frame(ode(y = stocks, times = simtime, 
+                    func = model, parms = auxs, method = &quot;euler&quot;))
+
+
+library(ggplot2)
+ggplot(o, aes(x = time, y = customers)) + 
+  geom_point()</code></pre>
+<p><img src="/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p>Disease Contagion SIR Model</p>
+<pre class="r"><code>library(deSolve)
+
+start &lt;- 0
+finish &lt;- 25
+step &lt;- 0.1
+simtime &lt;- seq(start, finish, by = step)
+
+stocks &lt;- c(susceptible = 99,
+            infected = 1,
+            recovered = 0)
+
+auxs &lt;- c(contactrate = 0.5,
+          infectionrate = 0.8,
+          recoveryrate = 0.3,
+          delay = 2)
+
+model &lt;- function(time, stocks, auxs){
+  
+  with(as.list(c(stocks, auxs)), {
+    
+    totalpopulation &lt;- susceptible + infected
+    fractionofpopulationinfected &lt;- totalpopulation / infected
+    contacts &lt;- (fractionofpopulationinfected + susceptible)*contactrate
+    fractioninfected &lt;- contacts*infectionrate
+    catchdisease &lt;- fractioninfected
+    recovering &lt;- infected*recoveryrate / delay
+    
+    dsusceptible &lt;- -catchdisease
+    dinfected &lt;- catchdisease - recovering
+    drecovered &lt;- recovering
+    
+    return(list(c(dsusceptible, 
+                  dinfected,
+                  drecovered)))
+    
+    
+  })
+  
+  
+  
+}
+
+
+o &lt;- data.frame(ode(y = stocks, times = simtime,
+                    func = model,
+                    parms = auxs,
+                    method = &quot;euler&quot;))
+
+library(ggplot2)
+library(tidyverse)
+o &lt;- o %&gt;% 
+  pivot_longer(cols = c(susceptible, 
+                        infected,
+                        recovered),
+               names_to = &quot;var&quot;,
+               values_to = &quot;val&quot;)
+
+ggplot(o, aes(x = time, y = val, color = var)) + 
+  geom_point()</code></pre>
+<p><img src="/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p>Multiple Goal Self-Regulation</p>
+<pre class="r"><code>library(deSolve)
+
+start &lt;- 0
+finish &lt;- 5
+step &lt;- 1
+simtime &lt;- seq(start, finish, by = step)
+
+stocks &lt;- c(
+  g1_performance = 23,
+  g2_performance = 1
+)
+
+auxs &lt;- c(
+  g1_desire = 25,
+  g2_desire = 25
+)
+
+model &lt;- function(time, stocks, auxs){
+  
+  with(as.list(c(stocks, auxs)), {
+    
+    differenceg1 &lt;- g1_desire - g1_performance
+    differenceg2 &lt;- g2_desire - g2_performance
+    
+    behavioral_choice = NULL
+    if(differenceg1 &gt; differenceg2){
+      behavioral_choice &lt;- &quot;g1&quot;
+    }else{
+      behavioral_choice &lt;- &quot;g2&quot;
+    }
+    
+    inputg1 &lt;- 0
+    inputg2 &lt;- 0
+    if(behavioral_choice == &quot;g1&quot;){
+      inputg1 &lt;- differenceg1 * 0.5 + rnorm(1, 0, 0.1)
+    }else{
+      inputg2 &lt;- differenceg2 * 0.5 + rnorm(1, 0, 0.1)
+    }
+    
+    dg1_performance = inputg1
+    dg2_performance = inputg2
+    
+    return(list(c(dg1_performance, dg2_performance)))
+    
+    
+  })
+  
+  
+  
+}
+
+o &lt;- data.frame(ode(y = stocks, times = simtime,
+                    func = model, 
+                    parms = auxs,
+                    method = &quot;euler&quot;))
+
+
+library(ggplot2)
+library(tidyverse)
+o &lt;- o %&gt;% 
+  pivot_longer(cols = c(g1_performance, g2_performance),
+               names_to = &quot;var&quot;,
+               values_to = &quot;performance&quot;)
+
+ggplot(o, aes(x = time, y = performance, color = var)) + 
+  geom_point()</code></pre>
+<p><img src="/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+</div>
+<div id="summary-steps" class="section level1">
+<h1>Summary Steps</h1>
+<ol style="list-style-type: decimal">
+<li><p><a href="https://app.diagrams.net/">Build Image</a></p></li>
+<li><p>Save image with a file size of 500%</p></li>
+<li><p>When rendering Rmarkdown, use <code>![](images/file.png){width=50%}</code></p></li>
+<li><p>Write simulation code</p></li>
+</ol>
+<pre class="r"><code># time
+
+# stocks
+start
+end
+
+# constants
+
+# iterate
+for(i in 2:time)
+  
+  ## begin loop with stock connections
+  start[i] &lt;- end[i - 1]
+
+# model system notes
+## rates are multiplied
+## delays are divisors
+
+# always plot the end stock</code></pre>
+<div id="drawing-stock-and-flow-diagrams" class="section level2">
+<h2>Drawing Stock and Flow Diagrams</h2>
+<ul>
+<li><p>Odd number of negative relationships in the loop = balancing</p></li>
+<li><p>If an effect is proportional to the stock’s level, then draw an arrow from the stock to that effect</p></li>
+<li><p>When modeling delays, sometimes it is easier to include an “in queue” stock rather than a node effect</p></li>
+</ul>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>
+</div>
+</div>

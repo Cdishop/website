@@ -4,6 +4,7 @@ date: "2018-06-02"
 summary: "-----"
 ---
 
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
 <p>I always forget how to use column names as function parameters, so here is an example.</p>
@@ -30,15 +31,15 @@ mini &lt;- dish %&gt;%
 mini[mini$person == &#39;jimmy&#39;, 2] &lt;- 99
 mini[mini$person == &#39;james&#39;, 2] &lt;- 99</code></pre>
 <p>The original data:</p>
-<pre><code>##   person         v_1      v_2      v_3      v_4
-## 1  jimmy -0.56183478 16.66502 56.70222 34.22752
-## 2  james  2.18798175 11.12700 37.33030 17.82798
-## 3 johnny -0.06221208 16.77299 70.08005 14.48253</code></pre>
+<pre><code>##   person        v_1       v_2      v_3      v_4
+## 1  jimmy -1.2949216  7.431139 53.19589 29.74286
+## 2  james  1.0350524 11.025432 52.19264 34.75883
+## 3 johnny -0.2899457  6.816367 59.15836 22.21335</code></pre>
 <p>What we changed it to:</p>
-<pre><code>##   person         v_1      v_2
-## 1  jimmy 99.00000000 16.66502
-## 2  james 99.00000000 11.12700
-## 3 johnny -0.06221208 16.77299</code></pre>
+<pre><code>##   person        v_1       v_2
+## 1  jimmy 99.0000000  7.431139
+## 2  james 99.0000000 11.025432
+## 3 johnny -0.2899457  6.816367</code></pre>
 <p>Here is the function equivalent:</p>
 <pre class="r"><code>impute_99 &lt;- function(data){
   
@@ -56,10 +57,10 @@ mini[mini$person == &#39;james&#39;, 2] &lt;- 99</code></pre>
 <p>Our result:</p>
 <pre class="r"><code>adjusted_data &lt;- impute_99(dish)
 adjusted_data</code></pre>
-<pre><code>##   person         v_1      v_2
-## 1  jimmy 99.00000000 16.66502
-## 2  james 99.00000000 11.12700
-## 3 johnny -0.06221208 16.77299</code></pre>
+<pre><code>##   person        v_1       v_2
+## 1  jimmy 99.0000000  7.431139
+## 2  james 99.0000000 11.025432
+## 3 johnny -0.2899457  6.816367</code></pre>
 </div>
 <div id="function-with-column-names-as-parameters" class="section level1">
 <h1>Function with column names as parameters</h1>
@@ -80,9 +81,9 @@ adjusted_data</code></pre>
 <p>Fortunately the correction is simple, just put quotes around the column names:</p>
 <pre class="r"><code>cool_data &lt;- impute_99_column_specific(dish, &#39;v_1&#39;, &#39;v_2&#39;)
 cool_data</code></pre>
-<pre><code>##   person         v_1      v_2
-## 1  jimmy 99.00000000 16.66502
-## 2  james 99.00000000 11.12700
-## 3 johnny -0.06221208 16.77299</code></pre>
+<pre><code>##   person        v_1       v_2
+## 1  jimmy 99.0000000  7.431139
+## 2  james 99.0000000 11.025432
+## 3 johnny -0.2899457  6.816367</code></pre>
 <p>Bo<span class="math inline">\(^2\)</span>m =)</p>
 </div>

@@ -4,6 +4,7 @@ date: "2020-08-09"
 summary: "-----"
 ---
 
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
 <p>I begin with an intercept-only model in a latent change framework and then build to a full dual change model. SEM images in this post come from a lecture by <a href="https://hdfs.msu.edu/people/faculty/nuttall-amy-k-phd">Amy Nuttall</a>. Two notes about the models and code below. First, the initial models will not fit well because they are too simple. The DGP uses both constant and proportion change (hence, “dual-change”) whereas the first few models only estimate an intercept. Second, I use the <code>sem</code> rather than <code>growth</code> command in <code>lavaan</code> because it forces me to specify the entire model. I do not like using commands that make automatic constraints for me – if you do, you are much more likely to make a mistake or not know what your model is doing.</p>

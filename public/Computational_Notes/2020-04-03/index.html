@@ -541,6 +541,7 @@
 
     <div class="article-style">
       
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
 <p>Calculate the independence of two events using both analytic and empirical techniques. I’m trying to assess whether the probability of having a meal classified as “dinner” depends on whether that meal includes “chicken” as its main dish.</p>
@@ -618,7 +619,7 @@ tally_count / nrow(possible_meals)</code></pre>
 <p>Cool, <code>p(dinner &amp; chicken)</code> = 0.2777. Now I can calculate the conditional probability.</p>
 <ul>
 <li><p><code>p(dinner | chicken) = p(dinner &amp; chicken) / p(chicken)</code></p></li>
-<li><code>X = 0.2777 / 0.333</code></li>
+<li><p><code>X = 0.2777 / 0.333</code></p></li>
 <li><p><code>X = 0.83</code></p></li>
 </ul>
 <p>X does not equal <code>p(b)</code>, so the two are dependent. How about the empirical solution?</p>

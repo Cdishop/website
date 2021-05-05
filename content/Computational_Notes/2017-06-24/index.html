@@ -4,6 +4,7 @@ date: "2017-06-24"
 summary: "-----"
 ---
 
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
 <p>Some tidyverse commands I came across and hadn’t seen before. Thought it would be useful to store them here.</p>
@@ -57,7 +58,7 @@ df %&gt;%
   select_all(any_vars(str_detect(., pattern = &quot;Mu&quot;)))</code></pre>
 </div>
 <div id="if-with-is-at-with-vars" class="section level3">
-<h3>If with “is” At with &quot;vars</h3>
+<h3>If with “is” At with "vars</h3>
 <pre class="r"><code>mutate_if(is.numeric)
 
 mutate_at(vars(contains(&quot;Q&quot;)))</code></pre>

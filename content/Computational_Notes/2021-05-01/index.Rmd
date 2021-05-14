@@ -13,7 +13,7 @@ Some practice simulating stock and flow models. The first example set uses discr
 
 # Example 1: Bath Tub
 
-![](images/bathtub.png){width=50%}
+![](images/bathtub.png){width=80%}
 
 "Imagine a bathtub filled with water, with its drain plugged up and its faucets turned off—an unchanging, undynamic, boring system. Now mentally pull the plug. The water runs out, of course. The level of water in the tub goes down until the tub is empty." (p. 19). 
 
@@ -118,7 +118,7 @@ ggplot(dftub2, aes(x = minutes, y = gallons)) +
 
 # Example 2: Coffee Temperature
 
-![](images/coffee.png){width=50%}
+![](images/coffee.png){width=80%}
 
 
 "A hot cup of coffee will gradually cool down to room temperature. Its rate of cooling depends on the difference between the temperature of the coffee and the temperature of the room. The greater the difference, the faster the coffee will cool. The loop works the other way too -- if you make iced coffee on a hot day, it will warm up until it has the same temperature as the room. The function of this system is to bring the discrepancy between coffee's temperature and room's temperature to zero, no matter what the direction of the discrepancy. Whatever the initial value of the system stock (coffee temperature in this case), whether it is above or below the 'goal' (room temperature), the feedback loop brings it toward the goal. The change is faster at first, and then slower, as the discrepancy between the stock and the goal decreases." (p. 29). 
@@ -262,7 +262,7 @@ ggplot(dfcoffee, aes(x = minutes, y = temperature, linetype = var)) +
 
 # Example 3: Investing
 
-![](images/interest.png){width=50%}
+![](images/interest.png){width=80%}
 
 "The more money you have in the bank, the more interest you earn, which is added to the money already in the bank, where it earns even more interest. Consider how this reinforcing loop multiplies money, starting
 with $100 in the bank, and assuming no deposits and no withdrawals over a period of ten years." (p. 32). 
@@ -377,7 +377,7 @@ ggplot(dfmoney, aes(x = years, y = money, linetype = factor(interest_rate))) +
 
 # Example 4: Room Temperature
 
-![](images/furnace.png){width=50%}
+![](images/furnace.png){width=80%}
 
 "What happens if there are two such loops, trying to drag a single stock toward two different goals? One example of such a system is the thermostat mechanism that regulates the heating of your room (or cooling, if it is connected to an air conditioner instead of a furnace). Whenever the room temperature falls below the thermostat setting, the thermostat detects a discrepancy and sends a signal that turns on the heat
 fl ow from the furnace, warming the room. When the room temperature rises again, the thermostat turns off the heat fl ow. This is a straightforward, stock-maintaining, balancing feedback loop. However, this is not the only loop in the system. Heat also leaks to the outside. The outflow of heat is governed by the second balancing feedback loop. It is always trying to make the room temperature equal to the outside, just like a coffee cup cooling.
@@ -518,7 +518,7 @@ ggplot(dffurnace, aes(x = time, y = temperature, color = var)) +
 
 My stock and flow diagram is different from Fig 31 in "Thinking in Systems" because I like to include an additional "things in process / things in queue" stock when modeling delays.
 
-![](images/cars.png){width=50%}
+![](images/cars.png){width=80%}
 
 "This system is a version of the thermostat system—one balancing loop of sales draining the inventory stock and a competing balancing loop maintaining the inventory by resupplying what is lost in sales. Although this system still consists of just two balancing loops, like the simplified thermostat system, it doesn’t behave like the thermostat system. Look at what happens, for example, when the business experiences the same permanent 10-percent jump in sales from an increase in customer demand. Oscillations! A single step up in sales causes inventory to drop. The car dealer watches long enough to be sure the higher sales rate is going to last. Then she begins to order more cars to both cover the new rate of sales and
 bring the inventory up. But it takes time for the orders to come in. During that time inventory drops further, so orders have to go up a little more, to bring inventory back up to ten days’ coverage. Eventually, the larger volume of orders starts arriving, and inventory recovers—and more than recovers, because during the time of uncertainty about the actual trend, the owner has ordered too much. She now sees her mistake, and cuts back, but there are still high past orders coming in, so she orders even less. In fact, almost inevitably, since she still can’t be sure of what is going to happen next, she orders too little. Inventory gets too low again. And so forth, through a series of oscillations around the new desired inventory level." (p. 54). 
@@ -589,7 +589,7 @@ ggplot(dfcars, aes(x = days, y = cars)) +
 
 [Find lecture online](https://www.youtube.com/watch?v=xN4EGAOksFc). 
 
-![](images/houses.png){width=50%}
+![](images/houses.png){width=80%}
 
 ```{r}
 
@@ -639,7 +639,7 @@ ggplot(dfhouses, aes(x = time, y = houses)) +
 
 [Find lecture online](https://www.youtube.com/watch?v=JSm6-uPSbKc). 
 
-![](images/house-delay.png){width=50%}
+![](images/house-delay.png){width=80%}
 
 ```{r}
 
@@ -696,7 +696,7 @@ ggplot(df, aes(x = time, y = houses)) +
 
 Similar example to money in the bank, but now both the inflow and outflow (not just the inflow) will be proportional to the level of the stock.
 
-![](images/customers.png){width=50%}
+![](images/customers.png){width=80%}
 
 Growth Fraction:
 
@@ -762,7 +762,7 @@ ggplot(dfcustomers, aes(x = minutes, y = customers)) +
 
 # Example 9: SIR Disease Model
 
-![](images/sir.png){width=50%}
+![](images/sir.png){width=80%}
 
 
 ```{r}
@@ -1146,7 +1146,7 @@ ggplot(o, aes(x = time, y = performance, color = var)) +
 
 2. Save image with a file size of 500%
 
-3. When rendering Rmarkdown, use `![](images/file.png){width=50%}`
+3. When rendering Rmarkdown, use `![](images/file.png){width=80%}`
 
 4. Write simulation code
 

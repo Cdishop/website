@@ -24,7 +24,7 @@
 &lt;p&gt;Some practice simulating stock and flow models. The first example set uses discrete time. The second uses continuous time differential equations. I include some text from Donella Meadows’ book, “Thinking in Systems” to explain some of the examples.&lt;/p&gt;
 &lt;div id=&#34;example-1-bath-tub&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Example 1: Bath Tub&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;images/bathtub.png&#34; style=&#34;width:50.0%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/bathtub.png&#34; style=&#34;width:80.0%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;“Imagine a bathtub filled with water, with its drain plugged up and its faucets turned off—an unchanging, undynamic, boring system. Now mentally pull the plug. The water runs out, of course. The level of water in the tub goes down until the tub is empty.” (p. 19).&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
 library(hrbrthemes)
@@ -120,7 +120,7 @@ ggplot(dftub2, aes(x = minutes, y = gallons)) +
 &lt;/div&gt;
 &lt;div id=&#34;example-2-coffee-temperature&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Example 2: Coffee Temperature&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;images/coffee.png&#34; style=&#34;width:50.0%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/coffee.png&#34; style=&#34;width:80.0%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;“A hot cup of coffee will gradually cool down to room temperature. Its rate of cooling depends on the difference between the temperature of the coffee and the temperature of the room. The greater the difference, the faster the coffee will cool. The loop works the other way too – if you make iced coffee on a hot day, it will warm up until it has the same temperature as the room. The function of this system is to bring the discrepancy between coffee’s temperature and room’s temperature to zero, no matter what the direction of the discrepancy. Whatever the initial value of the system stock (coffee temperature in this case), whether it is above or below the ‘goal’ (room temperature), the feedback loop brings it toward the goal. The change is faster at first, and then slower, as the discrepancy between the stock and the goal decreases.” (p. 29).&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# time
 time &amp;lt;- 4
@@ -250,7 +250,7 @@ ggplot(dfcoffee, aes(x = minutes, y = temperature, linetype = var)) +
 &lt;/div&gt;
 &lt;div id=&#34;example-3-investing&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Example 3: Investing&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;images/interest.png&#34; style=&#34;width:50.0%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/interest.png&#34; style=&#34;width:80.0%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;“The more money you have in the bank, the more interest you earn, which is added to the money already in the bank, where it earns even more interest. Consider how this reinforcing loop multiplies money, starting
 with $100 in the bank, and assuming no deposits and no withdrawals over a period of ten years.” (p. 32).&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# time
@@ -305,7 +305,7 @@ ggplot(dfmoney, aes(x = years, y = money, linetype = factor(interest_rate))) +
 &lt;/div&gt;
 &lt;div id=&#34;example-4-room-temperature&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Example 4: Room Temperature&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;images/furnace.png&#34; style=&#34;width:50.0%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/furnace.png&#34; style=&#34;width:80.0%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&#34;What happens if there are two such loops, trying to drag a single stock toward two different goals? One example of such a system is the thermostat mechanism that regulates the heating of your room (or cooling, if it is connected to an air conditioner instead of a furnace). Whenever the room temperature falls below the thermostat setting, the thermostat detects a discrepancy and sends a signal that turns on the heat
 fl ow from the furnace, warming the room. When the room temperature rises again, the thermostat turns off the heat fl ow. This is a straightforward, stock-maintaining, balancing feedback loop. However, this is not the only loop in the system. Heat also leaks to the outside. The outflow of heat is governed by the second balancing feedback loop. It is always trying to make the room temperature equal to the outside, just like a coffee cup cooling.&lt;/p&gt;
 &lt;p&gt;At first, both the room and the outside temperatures are cool. The inflow of heat from the furnace exceeds the leak to the outside, and the room warms up. For an hour or two, the outside is mild enough that the furnace replaces most of the heat that’s lost to the outside,and the room temperature stays near the desired temperature. But as the outside temperature falls and the heat leak increases, the furnace cannot replace the heat fast enough. Because the furnace is generating less heat than is leaking out, the room temperature falls. Finally, the outside temperature rises again, the heat leak slows, and the furnace, still operating at full tilt, finally can pull ahead and start to warm the room again. Just as in the rules for the bathtub, whenever the furnace is putting in more heat than is leaking out, the room temperature rises. Whenever the inflow rate falls behind the outflow rate, the temperature falls.&#34; (p. 41)&lt;/p&gt;
@@ -427,7 +427,7 @@ ggplot(dffurnace, aes(x = time, y = temperature, color = var)) +
 &lt;div id=&#34;example-5-car-inventory-with-delays&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Example 5: Car Inventory With Delays&lt;/h1&gt;
 &lt;p&gt;My stock and flow diagram is different from Fig 31 in “Thinking in Systems” because I like to include an additional “things in process / things in queue” stock when modeling delays.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/cars.png&#34; style=&#34;width:50.0%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/cars.png&#34; style=&#34;width:80.0%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;“This system is a version of the thermostat system—one balancing loop of sales draining the inventory stock and a competing balancing loop maintaining the inventory by resupplying what is lost in sales. Although this system still consists of just two balancing loops, like the simplified thermostat system, it doesn’t behave like the thermostat system. Look at what happens, for example, when the business experiences the same permanent 10-percent jump in sales from an increase in customer demand. Oscillations! A single step up in sales causes inventory to drop. The car dealer watches long enough to be sure the higher sales rate is going to last. Then she begins to order more cars to both cover the new rate of sales and
 bring the inventory up. But it takes time for the orders to come in. During that time inventory drops further, so orders have to go up a little more, to bring inventory back up to ten days’ coverage. Eventually, the larger volume of orders starts arriving, and inventory recovers—and more than recovers, because during the time of uncertainty about the actual trend, the owner has ordered too much. She now sees her mistake, and cuts back, but there are still high past orders coming in, so she orders even less. In fact, almost inevitably, since she still can’t be sure of what is going to happen next, she orders too little. Inventory gets too low again. And so forth, through a series of oscillations around the new desired inventory level.” (p. 54).&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# time
@@ -490,7 +490,7 @@ ggplot(dfcars, aes(x = days, y = cars)) +
 &lt;div id=&#34;example-6-house-inventory&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Example 6: House Inventory&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=xN4EGAOksFc&#34;&gt;Find lecture online&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/houses.png&#34; style=&#34;width:50.0%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/houses.png&#34; style=&#34;width:80.0%&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# time
 time = 50
 
@@ -530,7 +530,7 @@ ggplot(dfhouses, aes(x = time, y = houses)) +
 &lt;div id=&#34;example-7-house-inventory-with-muliple-delays&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Example 7: House Inventory With Muliple Delays&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=JSm6-uPSbKc&#34;&gt;Find lecture online&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/house-delay.png&#34; style=&#34;width:50.0%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/house-delay.png&#34; style=&#34;width:80.0%&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# time
 time = 100
 
@@ -582,7 +582,7 @@ ggplot(df, aes(x = time, y = houses)) +
 &lt;div id=&#34;example-8-customers-in-store&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Example 8: Customers In Store&lt;/h1&gt;
 &lt;p&gt;Similar example to money in the bank, but now both the inflow and outflow (not just the inflow) will be proportional to the level of the stock.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/customers.png&#34; style=&#34;width:50.0%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/customers.png&#34; style=&#34;width:80.0%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Growth Fraction:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;7%, then 3%, then 1%&lt;/li&gt;
@@ -645,7 +645,7 @@ ggplot(dfcustomers, aes(x = minutes, y = customers)) +
 &lt;/div&gt;
 &lt;div id=&#34;example-9-sir-disease-model&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Example 9: SIR Disease Model&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;images/sir.png&#34; style=&#34;width:50.0%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/sir.png&#34; style=&#34;width:80.0%&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# time
 time &amp;lt;- 100
 
@@ -1000,7 +1000,7 @@ ggplot(o, aes(x = time, y = performance, color = var)) +
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://app.diagrams.net/&#34;&gt;Build Image&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Save image with a file size of 500%&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;When rendering Rmarkdown, use &lt;code&gt;![](images/file.png){width=50%}&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;When rendering Rmarkdown, use &lt;code&gt;![](images/file.png){width=80%}&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Write simulation code&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# time
@@ -5370,7 +5370,7 @@ trust ~~ 0*availability
 
 ex1_model_restrict &amp;lt;- sem(ex1_string_restrict, data = df)
 show(ex1_model_restrict) # yup&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 17 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 15 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -5380,9 +5380,9 @@ show(ex1_model_restrict) # yup&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 0.001
+##   Test statistic                                 0.034
 ##   Degrees of freedom                                 1
-##   P-value (Chi-square)                           0.976&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.853&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;example-2---common-factor-underlying-6-observed-items&#34; class=&#34;section level1&#34;&gt;
@@ -5447,7 +5447,7 @@ ex2_model &amp;lt;- sem(ex2_string, data = df_cf)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;21 - 12 = 9&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex2_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 42 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 49 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -5457,9 +5457,9 @@ ex2_model &amp;lt;- sem(ex2_string, data = df_cf)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                13.951
+##   Test statistic                                10.138
 ##   Degrees of freedom                                 9
-##   P-value (Chi-square)                           0.124&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.339&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -5537,7 +5537,7 @@ ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;15 - 13 = 2&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex3_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 198 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 230 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -5547,9 +5547,9 @@ ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 4.353
+##   Test statistic                                 1.430
 ##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.226&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.699&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Nope. I’m one off, where did I go wrong?&lt;/p&gt;
 &lt;p&gt;Ah, there is only 1 prediction error because productivity is being predicted. I counted 2 prediction errors because I gave one to both b1 and b2. So, the unknowns should be…&lt;/p&gt;
 &lt;ul&gt;
@@ -5567,7 +5567,7 @@ ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;15 - 12 = 3&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex3_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 198 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 230 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -5577,9 +5577,9 @@ ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 4.353
+##   Test statistic                                 1.430
 ##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.226&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.699&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -5634,7 +5634,7 @@ ex4_model &amp;lt;- sem(ex4_string, data = df_chain)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;10 - 7 = 3&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex4_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 53 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 66 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -5644,9 +5644,9 @@ ex4_model &amp;lt;- sem(ex4_string, data = df_chain)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 1.928
+##   Test statistic                                 6.892
 ##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.587&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.075&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -5723,7 +5723,7 @@ ex5_model &amp;lt;- sem(ex5_string, data = df5_wide)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;28 - 10 = 18&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex5_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 134 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 97 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -5734,9 +5734,9 @@ ex5_model &amp;lt;- sem(ex5_string, data = df5_wide)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                28.742
+##   Test statistic                                19.901
 ##   Degrees of freedom                                18
-##   P-value (Chi-square)                           0.052&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.338&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Why didn’t I estimate a mean for unobserved heterogeneity here? In all of the other examples I estimated the variance (1 parameter) and the mean (1 parameter) of the latent exogenous variable. In this case, unobserved heterogeneity is the latent exogenous variable but I only estimated its variance. That’s because in this model we don’t really care about the mean of unobserved heterogeneity, it’s just a latent variable that we incorporate to account for stable individual differences. In other words, when I estimate latent cog ability and assertiveness as IVs to predict an outcome, I care about their means. Here, unobserved heterogeneity is just an additional factor to account for, not a variable whose mean I really care to know. That said, if I wanted to estimate the mean of unobserved heterogeneity (which would result in one additional estimated parameter and one fewer df) then I would incorporate the following into the model string.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;&amp;#39;
 
@@ -6494,10 +6494,10 @@ SD
 A
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-25.03667
+20.10237
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-1.609287
+4.1257466
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -6505,10 +6505,10 @@ A
 B
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-21.05056
+23.96089
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-5.216875
+2.6471276
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -6516,10 +6516,10 @@ B
 C
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-23.57457
+23.34834
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-2.912307
+0.6671623
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -6565,13 +6565,13 @@ Team C
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-25.04 (1.61)
+20.1 (4.13)
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-21.05 (5.22)
+23.96 (2.65)
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-23.57 (2.91)
+23.35 (0.67)
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -6907,19 +6907,19 @@ df$id &amp;lt;- c(1:N)&lt;/code&gt;&lt;/pre&gt;
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -3.04149 -0.55336 -0.00343  0.58953  2.76948 
+## -2.61371 -0.60809  0.03232  0.56285  2.74067 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept)  0.02285    0.03930   0.581    0.561    
-## x1           0.33422    0.03951   8.459 3.04e-16 ***
-## x2           0.39712    0.04156   9.554  &amp;lt; 2e-16 ***
+## (Intercept) -0.09243    0.03936  -2.348   0.0192 *  
+## x1           0.37585    0.04193   8.964   &amp;lt;2e-16 ***
+## x2           0.40038    0.04116   9.726   &amp;lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
 ## 
-## Residual standard error: 0.8768 on 497 degrees of freedom
-## Multiple R-squared:  0.2786, Adjusted R-squared:  0.2757 
-## F-statistic: 95.96 on 2 and 497 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+## Residual standard error: 0.8753 on 497 degrees of freedom
+## Multiple R-squared:  0.3022, Adjusted R-squared:  0.2994 
+## F-statistic: 107.6 on 2 and 497 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Here’s the kicker: you can think of those weights as optimal functions telling us how to create the composite.&lt;/p&gt;
 &lt;p&gt;Create a composite using the regression weights.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
@@ -6927,7 +6927,7 @@ df &amp;lt;- df %&amp;gt;%
   mutate(composite_x = 0.33*x1 + 0.4*x2)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Those weights provide the maximum correlation between our composite and the outcome.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cor(df$y, df$composite_x)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 0.5277891&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.5489863&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;In other words, the above correlation could not be higher with any other set of weights. Regression found the weights that makes the correlation above as large as it can be.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(lm(y ~ composite_x,
            data = df))&lt;/code&gt;&lt;/pre&gt;
@@ -6936,19 +6936,19 @@ df &amp;lt;- df %&amp;gt;%
 ## lm(formula = y ~ composite_x, data = df)
 ## 
 ## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -3.0383 -0.5499 -0.0054  0.5849  2.7639 
+##      Min       1Q   Median       3Q      Max 
+## -2.59241 -0.60704  0.03958  0.56509  2.78729 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept)  0.02261    0.03920   0.577    0.564    
-## composite_x  1.00157    0.07223  13.867   &amp;lt;2e-16 ***
+## (Intercept) -0.08988    0.03920  -2.293   0.0223 *  
+## composite_x  1.05784    0.07217  14.657   &amp;lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
 ## 
-## Residual standard error: 0.8759 on 498 degrees of freedom
-## Multiple R-squared:  0.2786, Adjusted R-squared:  0.2771 
-## F-statistic: 192.3 on 1 and 498 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+## Residual standard error: 0.8749 on 498 degrees of freedom
+## Multiple R-squared:  0.3014, Adjusted R-squared:    0.3 
+## F-statistic: 214.8 on 1 and 498 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
 </description>
     </item>
@@ -8642,18 +8642,18 @@ sample_df &amp;lt;- df %&amp;gt;%
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -3.4777 -0.7455 -0.0300  0.7539  3.0909 
+## -3.2816 -0.6587  0.0133  0.6847  2.9068 
 ## 
 ## Coefficients:
 ##              Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept) -0.022569   0.043938  -0.514    0.608    
-## stress       0.446702   0.008471  52.734   &amp;lt;2e-16 ***
+## (Intercept) -0.034619   0.040116  -0.863    0.388    
+## stress       0.450105   0.007905  56.938   &amp;lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
 ## 
-## Residual standard error: 1.076 on 598 degrees of freedom
-## Multiple R-squared:  0.823,  Adjusted R-squared:  0.8227 
-## F-statistic:  2781 on 1 and 598 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+## Residual standard error: 0.9826 on 598 degrees of freedom
+## Multiple R-squared:  0.8443, Adjusted R-squared:  0.844 
+## F-statistic:  3242 on 1 and 598 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;b-compute-the-ci&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;2b) Compute the CI&lt;/h3&gt;
@@ -8703,7 +8703,7 @@ for(i in 1:sims){
 &lt;h3&gt;Interpretation&lt;/h3&gt;
 &lt;p&gt;How many computed intervals contain the population parameter?&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sum(all_ci_contains == &amp;#39;yes&amp;#39;) / sims&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 0.9588889&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.9488889&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 </description>
     </item>
@@ -9130,15 +9130,15 @@ mini &amp;lt;- dish %&amp;gt;%
 mini[mini$person == &amp;#39;jimmy&amp;#39;, 2] &amp;lt;- 99
 mini[mini$person == &amp;#39;james&amp;#39;, 2] &amp;lt;- 99&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The original data:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;##   person        v_1       v_2      v_3      v_4
-## 1  jimmy -1.2949216  7.431139 53.19589 29.74286
-## 2  james  1.0350524 11.025432 52.19264 34.75883
-## 3 johnny -0.2899457  6.816367 59.15836 22.21335&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   person         v_1        v_2      v_3      v_4
+## 1  jimmy -1.23020040 15.1316119 57.22602 20.01190
+## 2  james -1.49907353 -0.5327797 56.76144 29.70301
+## 3 johnny  0.02415141 10.8345380 65.18304 16.87603&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;What we changed it to:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;##   person        v_1       v_2
-## 1  jimmy 99.0000000  7.431139
-## 2  james 99.0000000 11.025432
-## 3 johnny -0.2899457  6.816367&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   person         v_1        v_2
+## 1  jimmy 99.00000000 15.1316119
+## 2  james 99.00000000 -0.5327797
+## 3 johnny  0.02415141 10.8345380&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Here is the function equivalent:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;impute_99 &amp;lt;- function(data){
   
@@ -9156,10 +9156,10 @@ mini[mini$person == &amp;#39;james&amp;#39;, 2] &amp;lt;- 99&lt;/code&gt;&lt;/pr
 &lt;p&gt;Our result:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;adjusted_data &amp;lt;- impute_99(dish)
 adjusted_data&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##   person        v_1       v_2
-## 1  jimmy 99.0000000  7.431139
-## 2  james 99.0000000 11.025432
-## 3 johnny -0.2899457  6.816367&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   person         v_1        v_2
+## 1  jimmy 99.00000000 15.1316119
+## 2  james 99.00000000 -0.5327797
+## 3 johnny  0.02415141 10.8345380&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;function-with-column-names-as-parameters&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Function with column names as parameters&lt;/h1&gt;
@@ -9180,10 +9180,10 @@ adjusted_data&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Fortunately the correction is simple, just put quotes around the column names:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cool_data &amp;lt;- impute_99_column_specific(dish, &amp;#39;v_1&amp;#39;, &amp;#39;v_2&amp;#39;)
 cool_data&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##   person        v_1       v_2
-## 1  jimmy 99.0000000  7.431139
-## 2  james 99.0000000 11.025432
-## 3 johnny -0.2899457  6.816367&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   person         v_1        v_2
+## 1  jimmy 99.00000000 15.1316119
+## 2  james 99.00000000 -0.5327797
+## 3 johnny  0.02415141 10.8345380&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
 &lt;/div&gt;
 </description>
@@ -11169,7 +11169,7 @@ agent[[1]][1] &amp;lt;- initial_sdo_value
 
 agent&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## $SDO
-## [1] 92.74915
+## [1] 91.8436
 ## 
 ## $Peeps
 ## NULL&lt;/code&gt;&lt;/pre&gt;
@@ -11211,10 +11211,10 @@ agent$Peeps &amp;lt;- c(agent$Peeps, other)
 
 agent&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## $SDO
-## [1] 92.74915 81.74915
+## [1]  91.8436 110.8436
 ## 
 ## $Peeps
-## [1] 112.7107&lt;/code&gt;&lt;/pre&gt;
+## [1] 83.47674&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;the-full-model&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;The Full Model&lt;/h1&gt;
@@ -12828,14 +12828,12 @@ Sigma &amp;lt;- matrix(c(1.0, 0.23,
 &lt;p&gt;
 &lt;a href=&#34;http://www.flutterbys.com.au/stats/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Show Us Your R&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;
-&lt;a href=&#34;http://www.econometricsbysimulation.com/2012/10/using-simulations-to-maximize.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Econometrics Simulations&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;
 &lt;a href=&#34;https://data.library.virginia.edu/statlab/data-science-resources/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;UVA Data Science Resources&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;
-&lt;a href=&#34;https://github.com/Joscelinrocha/Learning-R-Resources&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Learning-R-Resources&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;
 &lt;a href=&#34;https://github.com/ujjwalkarn/DataScienceR&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;R For Data Science Tutorials&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;people-with-helpful-individual-websites&#34;&gt;People with helpful individual websites&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;http://www.econometricsbysimulation.com/p/r.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Econometrics By Simulation&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;people-with-helpful-websites&#34;&gt;People with Helpful Websites&lt;/h3&gt;
 &lt;p&gt;
 &lt;a href=&#34;https://www.emilyzabor.com/tutorials/rmarkdown_websites_tutorial.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Emily C. Zabor&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -12974,28 +12972,6 @@ Sigma &amp;lt;- matrix(c(1.0, 0.23,
 &lt;a href=&#34;https://aosmith16.github.io/spring-r-topics/materials.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Git and GitHub&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;
 &lt;a href=&#34;https://juliasilge.shinyapps.io/learntidytext/#section-introduction&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Text Mining&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;dags&#34;&gt;DAGS&lt;/h3&gt;
-&lt;p&gt;
-&lt;a href=&#34;https://github.com/jrgant/causalgraphs_latex/blob/master/graphical-models-causal.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Dags using LaTex&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;
-&lt;a href=&#34;https://github.com/jrgant/quickdag&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;QuickDag&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;
-&lt;a href=&#34;https://rich-iannone.github.io/DiagrammeR/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DiagrammeR&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;
-&lt;a href=&#34;https://ggdag.netlify.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GGdag&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;
-&lt;a href=&#34;https://sgfin.github.io/2019/06/19/Causal-Inference-Book-All-DAGs/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;All DAGS from Hernan and Robins - Sam Finlayson&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;structural-equations-modeling&#34;&gt;Structural Equations Modeling&lt;/h3&gt;
-&lt;p&gt;
-&lt;a href=&#34;http://lavaan.ugent.be&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;lavaan homepage&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;
-&lt;a href=&#34;https://groups.google.com/forum/#!topic/lavaan/oKwP0_6-i1g&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Measurement Equivalence&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;
-&lt;a href=&#34;https://github.com/osofr/simcausal&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;sims package&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;
-&lt;a href=&#34;https://www.draw.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Draw SEMs&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;
-&lt;a href=&#34;https://github.com/brandmaier/onyxR&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;onyxR for SEM diagrams with lavaan&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;progressing-through-stats-with-r&#34;&gt;Progressing Through Stats with R&lt;/h3&gt;
 &lt;p&gt;
 &lt;a href=&#34;https://ismayc.github.io/rbasics-book/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Basics of R and R Markdown&lt;/a&gt;&lt;/p&gt;
@@ -13055,9 +13031,6 @@ Sigma &amp;lt;- matrix(c(1.0, 0.23,
 &lt;a href=&#34;https://bookdown.org/content/4857/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Statistical ReThinking with Tidyverse&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;
 &lt;a href=&#34;https://www.tidytextmining.com/nasa.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Text Analysis&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;scraping-packages&#34;&gt;Scraping Packages&lt;/h3&gt;
-&lt;p&gt;
-&lt;a href=&#34;https://github.com/mguideng/gdscrapeR&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Scrape Glass Door&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;commands-and-help-for-non-r-programming&#34;&gt;Commands and help for non-R programming&lt;/h3&gt;
 &lt;p&gt;
 &lt;a href=&#34;https://www.markomedia.com.au/compress-pdf-on-os-x-in-terminal/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Compress pdf in terminal&lt;/a&gt;&lt;/p&gt;
@@ -13256,16 +13229,6 @@ The Most Good You Can Do
 &lt;hr&gt;
 &lt;p&gt; &lt;/p&gt;
 &lt;div align=&#34;center&#34;&gt;
-Reproducible Research with R and R Studio
-&lt;/div&gt;
-&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/reproducible_research.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Christopher Gandrud&lt;/p&gt;
-&lt;p&gt;
-&lt;a href=&#34;https://www.amazon.com/Reproducible-Research-Studio-Chapman-Hall/dp/1498715370/ref=sr_1_1?ie=UTF8&amp;amp;qid=1534110087&amp;amp;sr=8-1&amp;amp;keywords=reproducible&amp;#43;research&amp;#43;with&amp;#43;r&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;hr&gt;
-&lt;p&gt; &lt;/p&gt;
-&lt;div align=&#34;center&#34;&gt;
 Stiff: The Curious Lives of Human Cadavers
 &lt;/div&gt;
 &lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/stiff.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
@@ -13286,6 +13249,16 @@ Vehicles: Experiments in Synthetic Psychology
 &lt;hr&gt;
 &lt;p&gt; &lt;/p&gt;
 &lt;div align=&#34;center&#34;&gt;
+Nature&#39;s Nether Regions: What the Sex Lives of Bugs, Birds, and Beasts Tell Us About Evolution, Biodiversity, and Ourselves
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/nature_nether.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Menno Schilthuizen&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Natures-Nether-Regions-Schilthuizen-2015-04-28/dp/B01FKSKGY6/ref=sr_1_2?keywords=natures&amp;#43;nether&amp;#43;regions&amp;amp;qid=1569771217&amp;amp;s=gateway&amp;amp;sr=8-2&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;div align=&#34;center&#34;&gt;
 The Lessons of History
 &lt;/div&gt;
 &lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/history.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
@@ -13293,6 +13266,36 @@ The Lessons of History
 &lt;p&gt;Ariel Durant&lt;/p&gt;
 &lt;p&gt;
 &lt;a href=&#34;https://www.amazon.com/Lessons-History-Will-Durant/dp/143914995X/ref=sr_1_1?dchild=1&amp;amp;keywords=will&amp;#43;durant&amp;#43;thinkers&amp;amp;qid=1599076729&amp;amp;sr=8-1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;div align=&#34;center&#34;&gt;
+Discrimination and Disparities
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/disparity.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Thomas Sowell&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Discrimination-Disparities-Thomas-Sowell/dp/1541645634/ref=sr_1_1?dchild=1&amp;amp;keywords=thomas&amp;#43;sowell&amp;amp;qid=1620953769&amp;amp;sr=8-1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;div align=&#34;center&#34;&gt;
+Real Education: Four Simple Truths for Bringing America&#39;s Schools Back to Reality
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/realeducation.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Charles Murray&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Real-Education-Bringing-Americas-Schools/dp/0307405397/ref=sr_1_1?dchild=1&amp;amp;keywords=real&amp;#43;education&amp;#43;murray&amp;amp;qid=1620953875&amp;amp;sr=8-1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;div align=&#34;center&#34;&gt;
+Can Medicine Be Cured? The Corruption of a Profession
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/cured.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Seamus O&amp;rsquo;Mahony&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Can-Medicine-Cured-Corruption-Profession-ebook/dp/B07DKKVBL4&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;hr&gt;
 &lt;p&gt; &lt;/p&gt;
@@ -13307,6 +13310,47 @@ The Death of Expertise: The Campaign against Established Knowledge and Why it Ma
 &lt;hr&gt;
 &lt;p&gt; &lt;/p&gt;
 &lt;div align=&#34;center&#34;&gt;
+Retire Before Mom and Dad: The Simple Numbers Behind A Lifetime of Financial Freedom
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/retire.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Rob Berger&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Retire-Before-Mom-Dad-Financial/dp/1733914501/ref=sr_1_1_sspa?dchild=1&amp;amp;keywords=retire&amp;#43;before&amp;#43;mom&amp;#43;and&amp;#43;dad&amp;amp;qid=1599077168&amp;amp;sr=8-1-spons&amp;amp;psc=1&amp;amp;spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEySUlMWExPS1FBWVZQJmVuY3J5cHRlZElkPUEwNjgzNjQzMlExSFI0UThYV0FJUCZlbmNyeXB0ZWRBZElkPUExMDIyNzYyMjZJWkJTNUpRQjhPVCZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;div align=&#34;center&#34;&gt;
+7 Tipping Points That Saved the World
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/saved.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Chris Stewart&lt;/p&gt;
+&lt;p&gt;Ted Stewart&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Tipping-Points-That-Saved-World/dp/160641951X/ref=sr_1_1?dchild=1&amp;amp;keywords=7&amp;#43;tipping&amp;#43;points&amp;#43;that&amp;#43;saved&amp;#43;the&amp;#43;world&amp;amp;qid=1599076908&amp;amp;sr=8-1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;div align=&#34;center&#34;&gt;
+Digital Minimalism
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/digital_min.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Cal Newport&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Digital-Minimalism-Choosing-Focused-Noisy/dp/0525536515/ref=sr_1_1?keywords=digital&amp;#43;minimalism&amp;amp;qid=1565453149&amp;amp;s=gateway&amp;amp;sr=8-1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;div align=&#34;center&#34;&gt;
+The Tyranny of Metrics
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/tyranny_metrics.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Jerry Muller&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Tyranny-Metrics-Jerry-Muller/dp/0691174954/ref=sr_1_1?ie=UTF8&amp;amp;qid=1529323708&amp;amp;sr=8-1&amp;amp;keywords=the&amp;#43;tyranny&amp;#43;of&amp;#43;metrics&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;div align=&#34;center&#34;&gt;
 The Book of Why
 &lt;/div&gt;
 &lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/book_why.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
@@ -13314,16 +13358,6 @@ The Book of Why
 &lt;p&gt;Dana Mackenzie&lt;/p&gt;
 &lt;p&gt;
 &lt;a href=&#34;https://www.amazon.com/Book-Why-Science-Cause-Effect/dp/046509760X/ref=sr_1_1?ie=UTF8&amp;amp;qid=1527948151&amp;amp;sr=8-1&amp;amp;keywords=the&amp;#43;book&amp;#43;of&amp;#43;why&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;hr&gt;
-&lt;p&gt; &lt;/p&gt;
-&lt;div align=&#34;center&#34;&gt;
-Naked Statistics: Stripping The Dread From The Data
-&lt;/div&gt;
-&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/nakedstats.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Charles Wheelan&lt;/p&gt;
-&lt;p&gt;
-&lt;a href=&#34;https://www.amazon.com/Naked-Statistics-Stripping-Dread-Data/dp/B00CH7FWWU/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524678465&amp;amp;sr=1-1&amp;amp;keywords=naked&amp;#43;statistics&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;hr&gt;
 &lt;p&gt; &lt;/p&gt;
@@ -13381,16 +13415,6 @@ Mathematics for the Life Sciences
 &lt;hr&gt;
 &lt;p&gt; &lt;/p&gt;
 &lt;div align=&#34;center&#34;&gt;
-Nature&#39;s Nether Regions: What the Sex Lives of Bugs, Birds, and Beasts Tell Us About Evolution, Biodiversity, and Ourselves
-&lt;/div&gt;
-&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/nature_nether.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Menno Schilthuizen&lt;/p&gt;
-&lt;p&gt;
-&lt;a href=&#34;https://www.amazon.com/Natures-Nether-Regions-Schilthuizen-2015-04-28/dp/B01FKSKGY6/ref=sr_1_2?keywords=natures&amp;#43;nether&amp;#43;regions&amp;amp;qid=1569771217&amp;amp;s=gateway&amp;amp;sr=8-2&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;hr&gt;
-&lt;p&gt; &lt;/p&gt;
-&lt;div align=&#34;center&#34;&gt;
 Algorithms To Live By: The Computer Science Of Human Decisions
 &lt;/div&gt;
 &lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/alglive.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
@@ -13432,6 +13456,16 @@ Mindwise: How We Understand What Others Think, Believe, Feel, and Want
 &lt;hr&gt;
 &lt;p&gt; &lt;/p&gt;
 &lt;div align=&#34;center&#34;&gt;
+Taboo: 10 Facts You Can&#39;t Talk About
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/taboo.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Wilfred Reilly&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Taboo-Facts-Cant-Talk-About/dp/162157928X/ref=sr_1_1?dchild=1&amp;amp;keywords=taboo&amp;#43;riley&amp;amp;qid=1620953814&amp;amp;sr=8-1&amp;amp;asin=162157928X&amp;amp;revisionId=&amp;amp;format=4&amp;amp;depth=1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;div align=&#34;center&#34;&gt;
 This Will Change Everything: Ideas That Will Shape The Future
 &lt;/div&gt;
 &lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/brockmaneverything.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
@@ -13449,16 +13483,6 @@ Sex At Dawn: How We Mate, Why We Stay, and What It Means for Modern Relationship
 &lt;p&gt;Cacilda Jetha&lt;/p&gt;
 &lt;p&gt;
 &lt;a href=&#34;https://www.amazon.com/SEX-AT-DAWN-STRAY-MEANS/dp/B00KEVTNSK/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524678957&amp;amp;sr=1-1&amp;amp;keywords=sex&amp;#43;at&amp;#43;dawn&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;hr&gt;
-&lt;p&gt; &lt;/p&gt;
-&lt;div align=&#34;center&#34;&gt;
-Can Medicine Be Cured? The Corruption of a Profession
-&lt;/div&gt;
-&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/cured.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Seamus O&amp;rsquo;Mahony&lt;/p&gt;
-&lt;p&gt;
-&lt;a href=&#34;https://www.amazon.com/Can-Medicine-Cured-Corruption-Profession-ebook/dp/B07DKKVBL4&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;hr&gt;
 &lt;p&gt; &lt;/p&gt;
@@ -13636,6 +13660,16 @@ The Checklist Manifesto: How to Get Things Right
 &lt;hr&gt;
 &lt;p&gt; &lt;/p&gt;
 &lt;div align=&#34;center&#34;&gt;
+Naked Statistics: Stripping The Dread From The Data
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/nakedstats.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Charles Wheelan&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Naked-Statistics-Stripping-Dread-Data/dp/B00CH7FWWU/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524678465&amp;amp;sr=1-1&amp;amp;keywords=naked&amp;#43;statistics&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;div align=&#34;center&#34;&gt;
 The Joy of x: A Guided Tour of Math, from One to Infinity
 &lt;/div&gt;
 &lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/joy_x.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
@@ -13682,6 +13716,16 @@ Thinking with Data: How to Turn Information into Insights
 &lt;p&gt;Max Shron&lt;/p&gt;
 &lt;p&gt;
 &lt;a href=&#34;https://www.amazon.com/Thinking-Data-Turn-Information-Insights/dp/1449362931/ref=sr_1_1?ie=UTF8&amp;amp;qid=1547762669&amp;amp;sr=8-1&amp;amp;keywords=thinking&amp;#43;with&amp;#43;data&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;div align=&#34;center&#34;&gt;
+Economic Facts and Fallacies
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/facts-fallacies.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Thomas Sowell&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Economic-Facts-Fallacies-Thomas-Sowell/dp/0465022030/ref=sr_1_8?dchild=1&amp;amp;keywords=thomas&amp;#43;sowell&amp;amp;qid=1620953769&amp;amp;sr=8-8&amp;amp;asin=0465022030&amp;amp;revisionId=&amp;amp;format=4&amp;amp;depth=1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;hr&gt;
 &lt;p&gt; &lt;/p&gt;
@@ -13750,6 +13794,16 @@ Introduction To Scientific Programming and Simulation Using R
 &lt;hr&gt;
 &lt;p&gt; &lt;/p&gt;
 &lt;div align=&#34;center&#34;&gt;
+The Diversity Delusion: How Race and Gender Pandering Corrupt the University and Undermine Our Culture
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/diversity-delusion.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Heather Mac Donald&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Diversity-Delusion-Pandering-University-Undermine/dp/1250307775/ref=sr_1_1?dchild=1&amp;amp;keywords=heather&amp;#43;mcdonald&amp;#43;diversity&amp;amp;qid=1620953800&amp;amp;sr=8-1&amp;amp;asin=1250307775&amp;amp;revisionId=&amp;amp;format=4&amp;amp;depth=1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;div align=&#34;center&#34;&gt;
 Stumbling on Happiness
 &lt;/div&gt;
 &lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/gilberthappy.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
@@ -13780,6 +13834,26 @@ Sync
 &lt;hr&gt;
 &lt;p&gt; &lt;/p&gt;
 &lt;div align=&#34;center&#34;&gt;
+Reproducible Research with R and R Studio
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/reproducible_research.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Christopher Gandrud&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Reproducible-Research-Studio-Chapman-Hall/dp/1498715370/ref=sr_1_1?ie=UTF8&amp;amp;qid=1534110087&amp;amp;sr=8-1&amp;amp;keywords=reproducible&amp;#43;research&amp;#43;with&amp;#43;r&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;div align=&#34;center&#34;&gt;
+Human Diversity: The Biology of Gender, Race, and Class
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/murray-diversity.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Charles Murray&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Human-Diversity-Biology-Gender-Class/dp/1538744015/ref=sr_1_2?dchild=1&amp;amp;keywords=human&amp;#43;diversity&amp;#43;murray&amp;amp;qid=1620953896&amp;amp;sr=8-2&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;div align=&#34;center&#34;&gt;
 This Idea Is Brilliant
 &lt;/div&gt;
 &lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/brilliant.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
@@ -13800,12 +13874,32 @@ How to Do Nothing: Resisting the Attention Economy
 &lt;hr&gt;
 &lt;p&gt; &lt;/p&gt;
 &lt;div align=&#34;center&#34;&gt;
+First Principles
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/first-principles.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Thomas E. Ricks&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/First-Principles-Americas-Founders-Learned/dp/0062997459/ref=sr_1_1?dchild=1&amp;amp;keywords=first&amp;#43;principles&amp;#43;thomas&amp;#43;ricks&amp;amp;qid=1620953860&amp;amp;sr=8-1&amp;amp;asin=B084VRH86P&amp;amp;revisionId=&amp;amp;format=2&amp;amp;depth=1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;div align=&#34;center&#34;&gt;
 How Not to Be Wrong: The Power of Mathematical Thinking
 &lt;/div&gt;
 &lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/not_wrong.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Jordan Ellenberg&lt;/p&gt;
 &lt;p&gt;
 &lt;a href=&#34;https://www.amazon.com/How-Not-Be-Wrong-Mathematical/dp/0143127535/ref=sr_1_2?ie=UTF8&amp;amp;qid=1544905443&amp;amp;sr=8-2&amp;amp;keywords=how&amp;#43;not&amp;#43;to&amp;#43;be&amp;#43;wrong&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;div align=&#34;center&#34;&gt;
+The Vision of the Annointed: Self-Congratulation as a Basis for Social Policy
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/vision-annointed.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Thomas Sowell&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Vision-Anointed-Self-Congratulation-Social-Policy/dp/046508995X/ref=sr_1_11?dchild=1&amp;amp;keywords=thomas&amp;#43;sowell&amp;amp;qid=1620953769&amp;amp;sr=8-11&amp;amp;asin=046508995X&amp;amp;revisionId=&amp;amp;format=4&amp;amp;depth=1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;hr&gt;
 &lt;p&gt; &lt;/p&gt;
@@ -13850,17 +13944,6 @@ The Passionate State of Mind
 &lt;hr&gt;
 &lt;p&gt; &lt;/p&gt;
 &lt;div align=&#34;center&#34;&gt;
-Big Data: A Revolution That Will Transform How We Live, Work, and Think
-&lt;/div&gt;
-&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/bigdata.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Viktor Mayer-Schonberger&lt;/p&gt;
-&lt;p&gt;Kenneth Cukier&lt;/p&gt;
-&lt;p&gt;
-&lt;a href=&#34;https://www.amazon.com/Big-Data-Revolution-Transform-Think/dp/1848547900/ref=sr_1_10?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524678890&amp;amp;sr=1-10&amp;amp;keywords=big&amp;#43;data&amp;#43;a&amp;#43;revolution&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;hr&gt;
-&lt;p&gt; &lt;/p&gt;
-&lt;div align=&#34;center&#34;&gt;
 An Introduction to Models in the Social Sciences
 &lt;/div&gt;
 &lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/socialmodels.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
@@ -13868,16 +13951,6 @@ An Introduction to Models in the Social Sciences
 &lt;p&gt;James G. March&lt;/p&gt;
 &lt;p&gt;
 &lt;a href=&#34;https://www.amazon.com/Introduction-Models-Social-Sciences/dp/0819183814&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;hr&gt;
-&lt;p&gt; &lt;/p&gt;
-&lt;div align=&#34;center&#34;&gt;
-In Pursuit of the Unknown: 17 Equations That Changed the World
-&lt;/div&gt;
-&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/unknown.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Ian Stewart&lt;/p&gt;
-&lt;p&gt;
-&lt;a href=&#34;https://www.amazon.com/Pursuit-Equations-That-Changed-World/dp/0465085989/ref=sr_1_1?ie=UTF8&amp;amp;qid=1529323656&amp;amp;sr=8-1&amp;amp;keywords=17&amp;#43;equations&amp;#43;that&amp;#43;changed&amp;#43;the&amp;#43;world&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;hr&gt;
 &lt;p&gt; &lt;/p&gt;
@@ -13898,6 +13971,16 @@ The Greatest Minds and Ideas of All Time
 &lt;p&gt;Will Durant&lt;/p&gt;
 &lt;p&gt;
 &lt;a href=&#34;https://www.amazon.com/Greatest-Minds-Ideas-All-Time/dp/0743235533/ref=sr_1_2?dchild=1&amp;amp;keywords=will&amp;#43;durant&amp;#43;thinkers&amp;amp;qid=1599076729&amp;amp;sr=8-2&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;div align=&#34;center&#34;&gt;
+Charter Schools and Their Enemies
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/charter-enemies.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Thomas Sowell&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Charter-Schools-Enemies-Thomas-Sowell/dp/1541675134/ref=sr_1_10?dchild=1&amp;amp;keywords=thomas&amp;#43;sowell&amp;amp;qid=1620953769&amp;amp;sr=8-10&amp;amp;asin=1541675134&amp;amp;revisionId=&amp;amp;format=4&amp;amp;depth=1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;hr&gt;
 &lt;p&gt; &lt;/p&gt;
@@ -13942,53 +14025,33 @@ So Good They Can&#39;t Ignore You: Why Skills Trump Passion in the Question for 
 &lt;hr&gt;
 &lt;p&gt; &lt;/p&gt;
 &lt;div align=&#34;center&#34;&gt;
+The Boy Crisis
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/boy.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Warren Farrell&lt;/p&gt;
+&lt;p&gt;John Gray&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Boy-Crisis-Boys-Struggling-About/dp/1948836130/ref=sr_1_1?dchild=1&amp;amp;keywords=boy&amp;#43;crisis&amp;amp;qid=1620953845&amp;amp;sr=8-1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;div align=&#34;center&#34;&gt;
+Seeing the Forest for the Trees: A Manager&#39;s Guide to Applying Systems Thinking
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/forest-trees.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Dennis Sherwood&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Seeing-Forest-Trees-Managers-Applying-ebook/dp/B004GCK63Y/ref=sr_1_fkmr0_1?dchild=1&amp;amp;keywords=seeing&amp;#43;the&amp;#43;forest&amp;#43;through&amp;#43;the&amp;#43;trees&amp;#43;systems&amp;amp;qid=1620953829&amp;amp;sr=8-1-fkmr0&amp;amp;asin=B004GCK63Y&amp;amp;revisionId=&amp;amp;format=2&amp;amp;depth=1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;div align=&#34;center&#34;&gt;
 Think Like a Rocket Scientist
 &lt;/div&gt;
 &lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/think_rocket.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Ozan Varol&lt;/p&gt;
 &lt;p&gt;
 &lt;a href=&#34;https://www.amazon.com/Think-Like-Rocket-Scientist-Strategies-ebook/dp/B07W53SV45/ref=sr_1_1?dchild=1&amp;amp;keywords=think&amp;#43;rocket&amp;#43;scientist&amp;amp;qid=1614652415&amp;amp;sr=8-1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;hr&gt;
-&lt;p&gt; &lt;/p&gt;
-&lt;div align=&#34;center&#34;&gt;
-Retire Before Mom and Dad: The Simple Numbers Behind A Lifetime of Financial Freedom
-&lt;/div&gt;
-&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/retire.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Rob Berger&lt;/p&gt;
-&lt;p&gt;
-&lt;a href=&#34;https://www.amazon.com/Retire-Before-Mom-Dad-Financial/dp/1733914501/ref=sr_1_1_sspa?dchild=1&amp;amp;keywords=retire&amp;#43;before&amp;#43;mom&amp;#43;and&amp;#43;dad&amp;amp;qid=1599077168&amp;amp;sr=8-1-spons&amp;amp;psc=1&amp;amp;spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEySUlMWExPS1FBWVZQJmVuY3J5cHRlZElkPUEwNjgzNjQzMlExSFI0UThYV0FJUCZlbmNyeXB0ZWRBZElkPUExMDIyNzYyMjZJWkJTNUpRQjhPVCZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;hr&gt;
-&lt;p&gt; &lt;/p&gt;
-&lt;div align=&#34;center&#34;&gt;
-7 Tipping Points That Saved the World
-&lt;/div&gt;
-&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/saved.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Chris Stewart&lt;/p&gt;
-&lt;p&gt;Ted Stewart&lt;/p&gt;
-&lt;p&gt;
-&lt;a href=&#34;https://www.amazon.com/Tipping-Points-That-Saved-World/dp/160641951X/ref=sr_1_1?dchild=1&amp;amp;keywords=7&amp;#43;tipping&amp;#43;points&amp;#43;that&amp;#43;saved&amp;#43;the&amp;#43;world&amp;amp;qid=1599076908&amp;amp;sr=8-1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;hr&gt;
-&lt;p&gt; &lt;/p&gt;
-&lt;div align=&#34;center&#34;&gt;
-Digital Minimalism
-&lt;/div&gt;
-&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/digital_min.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Cal Newport&lt;/p&gt;
-&lt;p&gt;
-&lt;a href=&#34;https://www.amazon.com/Digital-Minimalism-Choosing-Focused-Noisy/dp/0525536515/ref=sr_1_1?keywords=digital&amp;#43;minimalism&amp;amp;qid=1565453149&amp;amp;s=gateway&amp;amp;sr=8-1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;hr&gt;
-&lt;p&gt; &lt;/p&gt;
-&lt;div align=&#34;center&#34;&gt;
-The Tyranny of Metrics
-&lt;/div&gt;
-&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/tyranny_metrics.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Jerry Muller&lt;/p&gt;
-&lt;p&gt;
-&lt;a href=&#34;https://www.amazon.com/Tyranny-Metrics-Jerry-Muller/dp/0691174954/ref=sr_1_1?ie=UTF8&amp;amp;qid=1529323708&amp;amp;sr=8-1&amp;amp;keywords=the&amp;#43;tyranny&amp;#43;of&amp;#43;metrics&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;hr&gt;
 &lt;p&gt; &lt;/p&gt;

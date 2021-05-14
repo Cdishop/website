@@ -24,7 +24,7 @@
 &lt;p&gt;Some practice simulating stock and flow models. The first example set uses discrete time. The second uses continuous time differential equations. I include some text from Donella Meadows’ book, “Thinking in Systems” to explain some of the examples.&lt;/p&gt;
 &lt;div id=&#34;example-1-bath-tub&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Example 1: Bath Tub&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;images/bathtub.png&#34; style=&#34;width:50.0%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/bathtub.png&#34; style=&#34;width:80.0%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;“Imagine a bathtub filled with water, with its drain plugged up and its faucets turned off—an unchanging, undynamic, boring system. Now mentally pull the plug. The water runs out, of course. The level of water in the tub goes down until the tub is empty.” (p. 19).&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
 library(hrbrthemes)
@@ -120,7 +120,7 @@ ggplot(dftub2, aes(x = minutes, y = gallons)) +
 &lt;/div&gt;
 &lt;div id=&#34;example-2-coffee-temperature&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Example 2: Coffee Temperature&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;images/coffee.png&#34; style=&#34;width:50.0%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/coffee.png&#34; style=&#34;width:80.0%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;“A hot cup of coffee will gradually cool down to room temperature. Its rate of cooling depends on the difference between the temperature of the coffee and the temperature of the room. The greater the difference, the faster the coffee will cool. The loop works the other way too – if you make iced coffee on a hot day, it will warm up until it has the same temperature as the room. The function of this system is to bring the discrepancy between coffee’s temperature and room’s temperature to zero, no matter what the direction of the discrepancy. Whatever the initial value of the system stock (coffee temperature in this case), whether it is above or below the ‘goal’ (room temperature), the feedback loop brings it toward the goal. The change is faster at first, and then slower, as the discrepancy between the stock and the goal decreases.” (p. 29).&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# time
 time &amp;lt;- 4
@@ -250,7 +250,7 @@ ggplot(dfcoffee, aes(x = minutes, y = temperature, linetype = var)) +
 &lt;/div&gt;
 &lt;div id=&#34;example-3-investing&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Example 3: Investing&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;images/interest.png&#34; style=&#34;width:50.0%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/interest.png&#34; style=&#34;width:80.0%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;“The more money you have in the bank, the more interest you earn, which is added to the money already in the bank, where it earns even more interest. Consider how this reinforcing loop multiplies money, starting
 with $100 in the bank, and assuming no deposits and no withdrawals over a period of ten years.” (p. 32).&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# time
@@ -305,7 +305,7 @@ ggplot(dfmoney, aes(x = years, y = money, linetype = factor(interest_rate))) +
 &lt;/div&gt;
 &lt;div id=&#34;example-4-room-temperature&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Example 4: Room Temperature&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;images/furnace.png&#34; style=&#34;width:50.0%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/furnace.png&#34; style=&#34;width:80.0%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&#34;What happens if there are two such loops, trying to drag a single stock toward two different goals? One example of such a system is the thermostat mechanism that regulates the heating of your room (or cooling, if it is connected to an air conditioner instead of a furnace). Whenever the room temperature falls below the thermostat setting, the thermostat detects a discrepancy and sends a signal that turns on the heat
 fl ow from the furnace, warming the room. When the room temperature rises again, the thermostat turns off the heat fl ow. This is a straightforward, stock-maintaining, balancing feedback loop. However, this is not the only loop in the system. Heat also leaks to the outside. The outflow of heat is governed by the second balancing feedback loop. It is always trying to make the room temperature equal to the outside, just like a coffee cup cooling.&lt;/p&gt;
 &lt;p&gt;At first, both the room and the outside temperatures are cool. The inflow of heat from the furnace exceeds the leak to the outside, and the room warms up. For an hour or two, the outside is mild enough that the furnace replaces most of the heat that’s lost to the outside,and the room temperature stays near the desired temperature. But as the outside temperature falls and the heat leak increases, the furnace cannot replace the heat fast enough. Because the furnace is generating less heat than is leaking out, the room temperature falls. Finally, the outside temperature rises again, the heat leak slows, and the furnace, still operating at full tilt, finally can pull ahead and start to warm the room again. Just as in the rules for the bathtub, whenever the furnace is putting in more heat than is leaking out, the room temperature rises. Whenever the inflow rate falls behind the outflow rate, the temperature falls.&#34; (p. 41)&lt;/p&gt;
@@ -427,7 +427,7 @@ ggplot(dffurnace, aes(x = time, y = temperature, color = var)) +
 &lt;div id=&#34;example-5-car-inventory-with-delays&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Example 5: Car Inventory With Delays&lt;/h1&gt;
 &lt;p&gt;My stock and flow diagram is different from Fig 31 in “Thinking in Systems” because I like to include an additional “things in process / things in queue” stock when modeling delays.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/cars.png&#34; style=&#34;width:50.0%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/cars.png&#34; style=&#34;width:80.0%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;“This system is a version of the thermostat system—one balancing loop of sales draining the inventory stock and a competing balancing loop maintaining the inventory by resupplying what is lost in sales. Although this system still consists of just two balancing loops, like the simplified thermostat system, it doesn’t behave like the thermostat system. Look at what happens, for example, when the business experiences the same permanent 10-percent jump in sales from an increase in customer demand. Oscillations! A single step up in sales causes inventory to drop. The car dealer watches long enough to be sure the higher sales rate is going to last. Then she begins to order more cars to both cover the new rate of sales and
 bring the inventory up. But it takes time for the orders to come in. During that time inventory drops further, so orders have to go up a little more, to bring inventory back up to ten days’ coverage. Eventually, the larger volume of orders starts arriving, and inventory recovers—and more than recovers, because during the time of uncertainty about the actual trend, the owner has ordered too much. She now sees her mistake, and cuts back, but there are still high past orders coming in, so she orders even less. In fact, almost inevitably, since she still can’t be sure of what is going to happen next, she orders too little. Inventory gets too low again. And so forth, through a series of oscillations around the new desired inventory level.” (p. 54).&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# time
@@ -490,7 +490,7 @@ ggplot(dfcars, aes(x = days, y = cars)) +
 &lt;div id=&#34;example-6-house-inventory&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Example 6: House Inventory&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=xN4EGAOksFc&#34;&gt;Find lecture online&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/houses.png&#34; style=&#34;width:50.0%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/houses.png&#34; style=&#34;width:80.0%&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# time
 time = 50
 
@@ -530,7 +530,7 @@ ggplot(dfhouses, aes(x = time, y = houses)) +
 &lt;div id=&#34;example-7-house-inventory-with-muliple-delays&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Example 7: House Inventory With Muliple Delays&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=JSm6-uPSbKc&#34;&gt;Find lecture online&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/house-delay.png&#34; style=&#34;width:50.0%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/house-delay.png&#34; style=&#34;width:80.0%&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# time
 time = 100
 
@@ -582,7 +582,7 @@ ggplot(df, aes(x = time, y = houses)) +
 &lt;div id=&#34;example-8-customers-in-store&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Example 8: Customers In Store&lt;/h1&gt;
 &lt;p&gt;Similar example to money in the bank, but now both the inflow and outflow (not just the inflow) will be proportional to the level of the stock.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/customers.png&#34; style=&#34;width:50.0%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/customers.png&#34; style=&#34;width:80.0%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Growth Fraction:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;7%, then 3%, then 1%&lt;/li&gt;
@@ -645,7 +645,7 @@ ggplot(dfcustomers, aes(x = minutes, y = customers)) +
 &lt;/div&gt;
 &lt;div id=&#34;example-9-sir-disease-model&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Example 9: SIR Disease Model&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;images/sir.png&#34; style=&#34;width:50.0%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/sir.png&#34; style=&#34;width:80.0%&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# time
 time &amp;lt;- 100
 
@@ -1000,7 +1000,7 @@ ggplot(o, aes(x = time, y = performance, color = var)) +
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://app.diagrams.net/&#34;&gt;Build Image&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Save image with a file size of 500%&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;When rendering Rmarkdown, use &lt;code&gt;![](images/file.png){width=50%}&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;When rendering Rmarkdown, use &lt;code&gt;![](images/file.png){width=80%}&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Write simulation code&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# time
@@ -5370,7 +5370,7 @@ trust ~~ 0*availability
 
 ex1_model_restrict &amp;lt;- sem(ex1_string_restrict, data = df)
 show(ex1_model_restrict) # yup&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 17 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 15 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -5380,9 +5380,9 @@ show(ex1_model_restrict) # yup&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 0.001
+##   Test statistic                                 0.034
 ##   Degrees of freedom                                 1
-##   P-value (Chi-square)                           0.976&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.853&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;example-2---common-factor-underlying-6-observed-items&#34; class=&#34;section level1&#34;&gt;
@@ -5447,7 +5447,7 @@ ex2_model &amp;lt;- sem(ex2_string, data = df_cf)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;21 - 12 = 9&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex2_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 42 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 49 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -5457,9 +5457,9 @@ ex2_model &amp;lt;- sem(ex2_string, data = df_cf)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                13.951
+##   Test statistic                                10.138
 ##   Degrees of freedom                                 9
-##   P-value (Chi-square)                           0.124&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.339&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -5537,7 +5537,7 @@ ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;15 - 13 = 2&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex3_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 198 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 230 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -5547,9 +5547,9 @@ ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 4.353
+##   Test statistic                                 1.430
 ##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.226&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.699&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Nope. I’m one off, where did I go wrong?&lt;/p&gt;
 &lt;p&gt;Ah, there is only 1 prediction error because productivity is being predicted. I counted 2 prediction errors because I gave one to both b1 and b2. So, the unknowns should be…&lt;/p&gt;
 &lt;ul&gt;
@@ -5567,7 +5567,7 @@ ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;15 - 12 = 3&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex3_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 198 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 230 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -5577,9 +5577,9 @@ ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 4.353
+##   Test statistic                                 1.430
 ##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.226&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.699&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -5634,7 +5634,7 @@ ex4_model &amp;lt;- sem(ex4_string, data = df_chain)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;10 - 7 = 3&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex4_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 53 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 66 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -5644,9 +5644,9 @@ ex4_model &amp;lt;- sem(ex4_string, data = df_chain)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 1.928
+##   Test statistic                                 6.892
 ##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.587&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.075&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -5723,7 +5723,7 @@ ex5_model &amp;lt;- sem(ex5_string, data = df5_wide)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;28 - 10 = 18&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex5_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 134 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 97 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -5734,9 +5734,9 @@ ex5_model &amp;lt;- sem(ex5_string, data = df5_wide)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                28.742
+##   Test statistic                                19.901
 ##   Degrees of freedom                                18
-##   P-value (Chi-square)                           0.052&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.338&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Why didn’t I estimate a mean for unobserved heterogeneity here? In all of the other examples I estimated the variance (1 parameter) and the mean (1 parameter) of the latent exogenous variable. In this case, unobserved heterogeneity is the latent exogenous variable but I only estimated its variance. That’s because in this model we don’t really care about the mean of unobserved heterogeneity, it’s just a latent variable that we incorporate to account for stable individual differences. In other words, when I estimate latent cog ability and assertiveness as IVs to predict an outcome, I care about their means. Here, unobserved heterogeneity is just an additional factor to account for, not a variable whose mean I really care to know. That said, if I wanted to estimate the mean of unobserved heterogeneity (which would result in one additional estimated parameter and one fewer df) then I would incorporate the following into the model string.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;&amp;#39;
 
@@ -6494,10 +6494,10 @@ SD
 A
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-25.03667
+20.10237
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-1.609287
+4.1257466
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -6505,10 +6505,10 @@ A
 B
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-21.05056
+23.96089
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-5.216875
+2.6471276
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -6516,10 +6516,10 @@ B
 C
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-23.57457
+23.34834
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-2.912307
+0.6671623
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -6565,13 +6565,13 @@ Team C
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-25.04 (1.61)
+20.1 (4.13)
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-21.05 (5.22)
+23.96 (2.65)
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-23.57 (2.91)
+23.35 (0.67)
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -6907,19 +6907,19 @@ df$id &amp;lt;- c(1:N)&lt;/code&gt;&lt;/pre&gt;
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -3.04149 -0.55336 -0.00343  0.58953  2.76948 
+## -2.61371 -0.60809  0.03232  0.56285  2.74067 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept)  0.02285    0.03930   0.581    0.561    
-## x1           0.33422    0.03951   8.459 3.04e-16 ***
-## x2           0.39712    0.04156   9.554  &amp;lt; 2e-16 ***
+## (Intercept) -0.09243    0.03936  -2.348   0.0192 *  
+## x1           0.37585    0.04193   8.964   &amp;lt;2e-16 ***
+## x2           0.40038    0.04116   9.726   &amp;lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
 ## 
-## Residual standard error: 0.8768 on 497 degrees of freedom
-## Multiple R-squared:  0.2786, Adjusted R-squared:  0.2757 
-## F-statistic: 95.96 on 2 and 497 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+## Residual standard error: 0.8753 on 497 degrees of freedom
+## Multiple R-squared:  0.3022, Adjusted R-squared:  0.2994 
+## F-statistic: 107.6 on 2 and 497 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Here’s the kicker: you can think of those weights as optimal functions telling us how to create the composite.&lt;/p&gt;
 &lt;p&gt;Create a composite using the regression weights.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
@@ -6927,7 +6927,7 @@ df &amp;lt;- df %&amp;gt;%
   mutate(composite_x = 0.33*x1 + 0.4*x2)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Those weights provide the maximum correlation between our composite and the outcome.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cor(df$y, df$composite_x)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 0.5277891&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.5489863&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;In other words, the above correlation could not be higher with any other set of weights. Regression found the weights that makes the correlation above as large as it can be.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(lm(y ~ composite_x,
            data = df))&lt;/code&gt;&lt;/pre&gt;
@@ -6936,19 +6936,19 @@ df &amp;lt;- df %&amp;gt;%
 ## lm(formula = y ~ composite_x, data = df)
 ## 
 ## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -3.0383 -0.5499 -0.0054  0.5849  2.7639 
+##      Min       1Q   Median       3Q      Max 
+## -2.59241 -0.60704  0.03958  0.56509  2.78729 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept)  0.02261    0.03920   0.577    0.564    
-## composite_x  1.00157    0.07223  13.867   &amp;lt;2e-16 ***
+## (Intercept) -0.08988    0.03920  -2.293   0.0223 *  
+## composite_x  1.05784    0.07217  14.657   &amp;lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
 ## 
-## Residual standard error: 0.8759 on 498 degrees of freedom
-## Multiple R-squared:  0.2786, Adjusted R-squared:  0.2771 
-## F-statistic: 192.3 on 1 and 498 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+## Residual standard error: 0.8749 on 498 degrees of freedom
+## Multiple R-squared:  0.3014, Adjusted R-squared:    0.3 
+## F-statistic: 214.8 on 1 and 498 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
 </description>
     </item>
@@ -8642,18 +8642,18 @@ sample_df &amp;lt;- df %&amp;gt;%
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -3.4777 -0.7455 -0.0300  0.7539  3.0909 
+## -3.2816 -0.6587  0.0133  0.6847  2.9068 
 ## 
 ## Coefficients:
 ##              Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept) -0.022569   0.043938  -0.514    0.608    
-## stress       0.446702   0.008471  52.734   &amp;lt;2e-16 ***
+## (Intercept) -0.034619   0.040116  -0.863    0.388    
+## stress       0.450105   0.007905  56.938   &amp;lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
 ## 
-## Residual standard error: 1.076 on 598 degrees of freedom
-## Multiple R-squared:  0.823,  Adjusted R-squared:  0.8227 
-## F-statistic:  2781 on 1 and 598 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+## Residual standard error: 0.9826 on 598 degrees of freedom
+## Multiple R-squared:  0.8443, Adjusted R-squared:  0.844 
+## F-statistic:  3242 on 1 and 598 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;b-compute-the-ci&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;2b) Compute the CI&lt;/h3&gt;
@@ -8703,7 +8703,7 @@ for(i in 1:sims){
 &lt;h3&gt;Interpretation&lt;/h3&gt;
 &lt;p&gt;How many computed intervals contain the population parameter?&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sum(all_ci_contains == &amp;#39;yes&amp;#39;) / sims&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 0.9588889&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.9488889&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 </description>
     </item>
@@ -9084,15 +9084,15 @@ mini &amp;lt;- dish %&amp;gt;%
 mini[mini$person == &amp;#39;jimmy&amp;#39;, 2] &amp;lt;- 99
 mini[mini$person == &amp;#39;james&amp;#39;, 2] &amp;lt;- 99&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The original data:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;##   person        v_1       v_2      v_3      v_4
-## 1  jimmy -1.2949216  7.431139 53.19589 29.74286
-## 2  james  1.0350524 11.025432 52.19264 34.75883
-## 3 johnny -0.2899457  6.816367 59.15836 22.21335&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   person         v_1        v_2      v_3      v_4
+## 1  jimmy -1.23020040 15.1316119 57.22602 20.01190
+## 2  james -1.49907353 -0.5327797 56.76144 29.70301
+## 3 johnny  0.02415141 10.8345380 65.18304 16.87603&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;What we changed it to:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;##   person        v_1       v_2
-## 1  jimmy 99.0000000  7.431139
-## 2  james 99.0000000 11.025432
-## 3 johnny -0.2899457  6.816367&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   person         v_1        v_2
+## 1  jimmy 99.00000000 15.1316119
+## 2  james 99.00000000 -0.5327797
+## 3 johnny  0.02415141 10.8345380&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Here is the function equivalent:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;impute_99 &amp;lt;- function(data){
   
@@ -9110,10 +9110,10 @@ mini[mini$person == &amp;#39;james&amp;#39;, 2] &amp;lt;- 99&lt;/code&gt;&lt;/pr
 &lt;p&gt;Our result:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;adjusted_data &amp;lt;- impute_99(dish)
 adjusted_data&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##   person        v_1       v_2
-## 1  jimmy 99.0000000  7.431139
-## 2  james 99.0000000 11.025432
-## 3 johnny -0.2899457  6.816367&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   person         v_1        v_2
+## 1  jimmy 99.00000000 15.1316119
+## 2  james 99.00000000 -0.5327797
+## 3 johnny  0.02415141 10.8345380&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;function-with-column-names-as-parameters&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Function with column names as parameters&lt;/h1&gt;
@@ -9134,10 +9134,10 @@ adjusted_data&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Fortunately the correction is simple, just put quotes around the column names:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cool_data &amp;lt;- impute_99_column_specific(dish, &amp;#39;v_1&amp;#39;, &amp;#39;v_2&amp;#39;)
 cool_data&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##   person        v_1       v_2
-## 1  jimmy 99.0000000  7.431139
-## 2  james 99.0000000 11.025432
-## 3 johnny -0.2899457  6.816367&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   person         v_1        v_2
+## 1  jimmy 99.00000000 15.1316119
+## 2  james 99.00000000 -0.5327797
+## 3 johnny  0.02415141 10.8345380&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
 &lt;/div&gt;
 </description>
@@ -11123,7 +11123,7 @@ agent[[1]][1] &amp;lt;- initial_sdo_value
 
 agent&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## $SDO
-## [1] 92.74915
+## [1] 91.8436
 ## 
 ## $Peeps
 ## NULL&lt;/code&gt;&lt;/pre&gt;
@@ -11165,10 +11165,10 @@ agent$Peeps &amp;lt;- c(agent$Peeps, other)
 
 agent&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## $SDO
-## [1] 92.74915 81.74915
+## [1]  91.8436 110.8436
 ## 
 ## $Peeps
-## [1] 112.7107&lt;/code&gt;&lt;/pre&gt;
+## [1] 83.47674&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;the-full-model&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;The Full Model&lt;/h1&gt;

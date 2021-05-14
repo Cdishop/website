@@ -13,15 +13,13 @@
 
 [Show Us Your R](http://www.flutterbys.com.au/stats/index.html)
 
-[Econometrics Simulations](http://www.econometricsbysimulation.com/2012/10/using-simulations-to-maximize.html)
-
 [UVA Data Science Resources](https://data.library.virginia.edu/statlab/data-science-resources/)
-
-[Learning-R-Resources](https://github.com/Joscelinrocha/Learning-R-Resources)
 
 [R For Data Science Tutorials](https://github.com/ujjwalkarn/DataScienceR)
 
-### People with helpful individual websites
+[Econometrics By Simulation](http://www.econometricsbysimulation.com/p/r.html)
+
+### People with Helpful Websites
 
 [Emily C. Zabor](https://www.emilyzabor.com/tutorials/rmarkdown_websites_tutorial.html)
 
@@ -163,30 +161,6 @@
 
 [Text Mining](https://juliasilge.shinyapps.io/learntidytext/#section-introduction)
 
-### DAGS
-
-[Dags using LaTex](https://github.com/jrgant/causalgraphs_latex/blob/master/graphical-models-causal.pdf)
-
-[QuickDag](https://github.com/jrgant/quickdag)
-
-[DiagrammeR](https://rich-iannone.github.io/DiagrammeR/)
-
-[GGdag](https://ggdag.netlify.com)
-
-[All DAGS from Hernan and Robins - Sam Finlayson](https://sgfin.github.io/2019/06/19/Causal-Inference-Book-All-DAGs/)
-
-### Structural Equations Modeling
-
-[lavaan homepage](http://lavaan.ugent.be)
-
-[Measurement Equivalence](https://groups.google.com/forum/#!topic/lavaan/oKwP0_6-i1g)
-
-[sims package](https://github.com/osofr/simcausal)
-
-[Draw SEMs](https://www.draw.io/)
-
-[onyxR for SEM diagrams with lavaan](https://github.com/brandmaier/onyxR)
-
 ### Progressing Through Stats with R
 
 [Basics of R and R Markdown](https://ismayc.github.io/rbasics-book/index.html)
@@ -246,10 +220,6 @@
 [Statistical ReThinking with Tidyverse](https://bookdown.org/content/4857/)
 
 [Text Analysis](https://www.tidytextmining.com/nasa.html)
-
-### Scraping Packages
-
-[Scrape Glass Door](https://github.com/mguideng/gdscrapeR)
 
 ### Commands and help for non-R programming
 

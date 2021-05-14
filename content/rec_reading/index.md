@@ -119,6 +119,11 @@ Thomas Gilovich
 
 
 
+
+
+
+
+
 &nbsp;
 
 <div align="center">
@@ -550,53 +555,6 @@ Peter Singer
 
 
 
-
-
-
-
-&nbsp;
-
-<div align="center">
-Reproducible Research with R and R Studio
-</div>
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/reproducible_research.png)
-
-Christopher Gandrud
-
-[Click here for link](https://www.amazon.com/Reproducible-Research-Studio-Chapman-Hall/dp/1498715370/ref=sr_1_1?ie=UTF8&qid=1534110087&sr=8-1&keywords=reproducible+research+with+r)
-
-------
-------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 &nbsp;
 
 <div align="center">
@@ -664,6 +622,39 @@ Valentino Braitenberg
 
 
 
+
+
+&nbsp;
+
+<div align="center">
+Nature's Nether Regions: What the Sex Lives of Bugs, Birds, and Beasts Tell Us About Evolution, Biodiversity, and Ourselves
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/nature_nether.png)
+
+Menno Schilthuizen
+
+[Click here for link](https://www.amazon.com/Natures-Nether-Regions-Schilthuizen-2015-04-28/dp/B01FKSKGY6/ref=sr_1_2?keywords=natures+nether+regions&qid=1569771217&s=gateway&sr=8-2)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 &nbsp;
 
 <div align="center">
@@ -680,6 +671,112 @@ Ariel Durant
 
 ------
 ------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Discrimination and Disparities
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/disparity.png)
+
+Thomas Sowell
+
+[Click here for link](https://www.amazon.com/Discrimination-Disparities-Thomas-Sowell/dp/1541645634/ref=sr_1_1?dchild=1&keywords=thomas+sowell&qid=1620953769&sr=8-1)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Real Education: Four Simple Truths for Bringing America's Schools Back to Reality
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/realeducation.png)
+
+Charles Murray
+
+[Click here for link](https://www.amazon.com/Real-Education-Bringing-Americas-Schools/dp/0307405397/ref=sr_1_1?dchild=1&keywords=real+education+murray&qid=1620953875&sr=8-1)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Can Medicine Be Cured? The Corruption of a Profession
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/cured.png)
+
+Seamus O'Mahony
+
+[Click here for link](https://www.amazon.com/Can-Medicine-Cured-Corruption-Profession-ebook/dp/B07DKKVBL4)
+
+------
+------
+
+
+
+
+
 
 
 
@@ -727,6 +824,184 @@ Thomas M Nichols
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Retire Before Mom and Dad: The Simple Numbers Behind A Lifetime of Financial Freedom
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/retire.png)
+
+Rob Berger
+
+[Click here for link](https://www.amazon.com/Retire-Before-Mom-Dad-Financial/dp/1733914501/ref=sr_1_1_sspa?dchild=1&keywords=retire+before+mom+and+dad&qid=1599077168&sr=8-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEySUlMWExPS1FBWVZQJmVuY3J5cHRlZElkPUEwNjgzNjQzMlExSFI0UThYV0FJUCZlbmNyeXB0ZWRBZElkPUExMDIyNzYyMjZJWkJTNUpRQjhPVCZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+7 Tipping Points That Saved the World
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/saved.png)
+
+Chris Stewart
+
+Ted Stewart
+
+[Click here for link](https://www.amazon.com/Tipping-Points-That-Saved-World/dp/160641951X/ref=sr_1_1?dchild=1&keywords=7+tipping+points+that+saved+the+world&qid=1599076908&sr=8-1)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Digital Minimalism
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/digital_min.png)
+
+Cal Newport
+
+[Click here for link](https://www.amazon.com/Digital-Minimalism-Choosing-Focused-Noisy/dp/0525536515/ref=sr_1_1?keywords=digital+minimalism&qid=1565453149&s=gateway&sr=8-1)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+The Tyranny of Metrics
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/tyranny_metrics.png)
+
+Jerry Muller
+
+[Click here for link](https://www.amazon.com/Tyranny-Metrics-Jerry-Muller/dp/0691174954/ref=sr_1_1?ie=UTF8&qid=1529323708&sr=8-1&keywords=the+tyranny+of+metrics)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 &nbsp;
 
 <div align="center">
@@ -753,28 +1028,6 @@ Dana Mackenzie
 
 
 
-
-
-
-
-
-
-
-
-&nbsp;
-
-<div align="center">
-Naked Statistics: Stripping The Dread From The Data
-</div>
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/nakedstats.png)
-
-Charles Wheelan
-
-[Click here for link](https://www.amazon.com/Naked-Statistics-Stripping-Dread-Data/dp/B00CH7FWWU/ref=sr_1_1?s=books&ie=UTF8&qid=1524678465&sr=1-1&keywords=naked+statistics)
-
-------
-------
 
 
 
@@ -890,6 +1143,11 @@ Daniel Shiffman
 
 
 
+
+
+
+
+
 &nbsp;
 
 <div align="center">
@@ -906,6 +1164,14 @@ Roger Highfield
 
 ------
 ------
+
+
+
+
+
+
+
+
 
 
 
@@ -948,29 +1214,6 @@ Louis J. Gross
 
 
 
-
-
-
-
-
-
-
-
-
-&nbsp;
-
-<div align="center">
-Nature's Nether Regions: What the Sex Lives of Bugs, Birds, and Beasts Tell Us About Evolution, Biodiversity, and Ourselves
-</div>
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/nature_nether.png)
-
-Menno Schilthuizen
-
-[Click here for link](https://www.amazon.com/Natures-Nether-Regions-Schilthuizen-2015-04-28/dp/B01FKSKGY6/ref=sr_1_2?keywords=natures+nether+regions&qid=1569771217&s=gateway&sr=8-2)
-
-------
-------
 
 
 
@@ -1137,6 +1380,52 @@ Nicholas Epley
 
 
 
+&nbsp;
+
+<div align="center">
+Taboo: 10 Facts You Can't Talk About
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/taboo.png)
+
+Wilfred Reilly
+
+[Click here for link](https://www.amazon.com/Taboo-Facts-Cant-Talk-About/dp/162157928X/ref=sr_1_1?dchild=1&keywords=taboo+riley&qid=1620953814&sr=8-1&asin=162157928X&revisionId=&format=4&depth=1)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1210,22 +1499,6 @@ Cacilda Jetha
 
 
 
-
-
-&nbsp;
-
-<div align="center">
-Can Medicine Be Cured? The Corruption of a Profession
-</div>
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/cured.png)
-
-Seamus O'Mahony
-
-[Click here for link](https://www.amazon.com/Can-Medicine-Cured-Corruption-Profession-ebook/dp/B07DKKVBL4)
-
-------
-------
 
 
 
@@ -1841,6 +2114,47 @@ Atul Gawande
 
 
 
+&nbsp;
+
+<div align="center">
+Naked Statistics: Stripping The Dread From The Data
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/nakedstats.png)
+
+Charles Wheelan
+
+[Click here for link](https://www.amazon.com/Naked-Statistics-Stripping-Dread-Data/dp/B00CH7FWWU/ref=sr_1_1?s=books&ie=UTF8&qid=1524678465&sr=1-1&keywords=naked+statistics)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2005,6 +2319,53 @@ Max Shron
 
 ------
 ------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Economic Facts and Fallacies
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/facts-fallacies.png)
+
+Thomas Sowell
+
+[Click here for link](https://www.amazon.com/Economic-Facts-Fallacies-Thomas-Sowell/dp/0465022030/ref=sr_1_8?dchild=1&keywords=thomas+sowell&qid=1620953769&sr=8-8&asin=0465022030&revisionId=&format=4&depth=1)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2238,6 +2599,52 @@ Andrew Robinson
 
 
 
+&nbsp;
+
+<div align="center">
+The Diversity Delusion: How Race and Gender Pandering Corrupt the University and Undermine Our Culture
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/diversity-delusion.png)
+
+Heather Mac Donald
+
+[Click here for link](https://www.amazon.com/Diversity-Delusion-Pandering-University-Undermine/dp/1250307775/ref=sr_1_1?dchild=1&keywords=heather+mcdonald+diversity&qid=1620953800&sr=8-1&asin=1250307775&revisionId=&format=4&depth=1)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 &nbsp;
@@ -2354,6 +2761,89 @@ Steven H. Strogatz
 
 
 
+
+
+
+
+&nbsp;
+
+<div align="center">
+Reproducible Research with R and R Studio
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/reproducible_research.png)
+
+Christopher Gandrud
+
+[Click here for link](https://www.amazon.com/Reproducible-Research-Studio-Chapman-Hall/dp/1498715370/ref=sr_1_1?ie=UTF8&qid=1534110087&sr=8-1&keywords=reproducible+research+with+r)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Human Diversity: The Biology of Gender, Race, and Class
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/murray-diversity.png)
+
+Charles Murray
+
+[Click here for link](https://www.amazon.com/Human-Diversity-Biology-Gender-Class/dp/1538744015/ref=sr_1_2?dchild=1&keywords=human+diversity+murray&qid=1620953896&sr=8-2)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 &nbsp;
 
 <div align="center">
@@ -2423,6 +2913,47 @@ Jenny Odell
 
 
 
+
+
+&nbsp;
+
+<div align="center">
+First Principles
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/first-principles.png)
+
+Thomas E. Ricks
+
+[Click here for link](https://www.amazon.com/First-Principles-Americas-Founders-Learned/dp/0062997459/ref=sr_1_1?dchild=1&keywords=first+principles+thomas+ricks&qid=1620953860&sr=8-1&asin=B084VRH86P&revisionId=&format=2&depth=1)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 &nbsp;
 
 <div align="center">
@@ -2438,6 +2969,50 @@ Jordan Ellenberg
 
 ------
 ------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+The Vision of the Annointed: Self-Congratulation as a Basis for Social Policy
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/vision-annointed.png)
+
+Thomas Sowell
+
+[Click here for link](https://www.amazon.com/Vision-Anointed-Self-Congratulation-Social-Policy/dp/046508995X/ref=sr_1_11?dchild=1&keywords=thomas+sowell&qid=1620953769&sr=8-11&asin=046508995X&revisionId=&format=4&depth=1)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2593,33 +3168,6 @@ Eric Hoffer
 
 
 
-&nbsp;
-
-<div align="center">
-Big Data: A Revolution That Will Transform How We Live, Work, and Think
-</div>
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/bigdata.png)
-
-Viktor Mayer-Schonberger
-
-Kenneth Cukier
-
-[Click here for link](https://www.amazon.com/Big-Data-Revolution-Transform-Think/dp/1848547900/ref=sr_1_10?s=books&ie=UTF8&qid=1524678890&sr=1-10&keywords=big+data+a+revolution)
-
-------
-------
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2651,30 +3199,6 @@ James G. March
 
 
 
-
-
-
-
-
-
-
-
-
-
-&nbsp;
-
-<div align="center">
-In Pursuit of the Unknown: 17 Equations That Changed the World
-</div>
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/unknown.png)
-
-Ian Stewart
-
-[Click here for link](https://www.amazon.com/Pursuit-Equations-That-Changed-World/dp/0465085989/ref=sr_1_1?ie=UTF8&qid=1529323656&sr=8-1&keywords=17+equations+that+changed+the+world)
-
-------
-------
 
 
 
@@ -2741,6 +3265,55 @@ Will Durant
 
 ------
 ------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Charter Schools and Their Enemies
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/charter-enemies.png)
+
+Thomas Sowell
+
+[Click here for link](https://www.amazon.com/Charter-Schools-Enemies-Thomas-Sowell/dp/1541675134/ref=sr_1_10?dchild=1&keywords=thomas+sowell&qid=1620953769&sr=8-10&asin=1541675134&revisionId=&format=4&depth=1)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2891,44 +3464,25 @@ Cal Newport
 
 
 
+
+
+
 &nbsp;
 
 <div align="center">
-Think Like a Rocket Scientist
+The Boy Crisis
 </div>
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/think_rocket.png)
+![](https://github.com/Cdishop/website/raw/master/misc/books/boy.png)
 
-Ozan Varol
+Warren Farrell
 
-[Click here for link](https://www.amazon.com/Think-Like-Rocket-Scientist-Strategies-ebook/dp/B07W53SV45/ref=sr_1_1?dchild=1&keywords=think+rocket+scientist&qid=1614652415&sr=8-1)
+John Gray
+
+[Click here for link](https://www.amazon.com/Boy-Crisis-Boys-Struggling-About/dp/1948836130/ref=sr_1_1?dchild=1&keywords=boy+crisis&qid=1620953845&sr=8-1)
 
 ------
 ------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2953,50 +3507,14 @@ Ozan Varol
 &nbsp;
 
 <div align="center">
-Retire Before Mom and Dad: The Simple Numbers Behind A Lifetime of Financial Freedom
+Seeing the Forest for the Trees: A Manager's Guide to Applying Systems Thinking
 </div>
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/retire.png)
+![](https://github.com/Cdishop/website/raw/master/misc/books/forest-trees.png)
 
-Rob Berger
+Dennis Sherwood
 
-[Click here for link](https://www.amazon.com/Retire-Before-Mom-Dad-Financial/dp/1733914501/ref=sr_1_1_sspa?dchild=1&keywords=retire+before+mom+and+dad&qid=1599077168&sr=8-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEySUlMWExPS1FBWVZQJmVuY3J5cHRlZElkPUEwNjgzNjQzMlExSFI0UThYV0FJUCZlbmNyeXB0ZWRBZElkPUExMDIyNzYyMjZJWkJTNUpRQjhPVCZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=)
-
-------
-------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-&nbsp;
-
-<div align="center">
-7 Tipping Points That Saved the World
-</div>
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/saved.png)
-
-Chris Stewart
-
-Ted Stewart
-
-[Click here for link](https://www.amazon.com/Tipping-Points-That-Saved-World/dp/160641951X/ref=sr_1_1?dchild=1&keywords=7+tipping+points+that+saved+the+world&qid=1599076908&sr=8-1)
+[Click here for link](https://www.amazon.com/Seeing-Forest-Trees-Managers-Applying-ebook/dp/B004GCK63Y/ref=sr_1_fkmr0_1?dchild=1&keywords=seeing+the+forest+through+the+trees+systems&qid=1620953829&sr=8-1-fkmr0&asin=B004GCK63Y&revisionId=&format=2&depth=1)
 
 ------
 ------
@@ -3006,31 +3524,6 @@ Ted Stewart
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-&nbsp;
-
-<div align="center">
-Digital Minimalism
-</div>
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/digital_min.png)
-
-Cal Newport
-
-[Click here for link](https://www.amazon.com/Digital-Minimalism-Choosing-Focused-Noisy/dp/0525536515/ref=sr_1_1?keywords=digital+minimalism&qid=1565453149&s=gateway&sr=8-1)
-
-------
-------
 
 
 
@@ -3063,17 +3556,29 @@ Cal Newport
 &nbsp;
 
 <div align="center">
-The Tyranny of Metrics
+Think Like a Rocket Scientist
 </div>
 
-![](https://github.com/Cdishop/website/raw/master/misc/books/tyranny_metrics.png)
+![](https://github.com/Cdishop/website/raw/master/misc/books/think_rocket.png)
 
-Jerry Muller
+Ozan Varol
 
-[Click here for link](https://www.amazon.com/Tyranny-Metrics-Jerry-Muller/dp/0691174954/ref=sr_1_1?ie=UTF8&qid=1529323708&sr=8-1&keywords=the+tyranny+of+metrics)
+[Click here for link](https://www.amazon.com/Think-Like-Rocket-Scientist-Strategies-ebook/dp/B07W53SV45/ref=sr_1_1?dchild=1&keywords=think+rocket+scientist&qid=1614652415&sr=8-1)
 
 ------
 ------
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

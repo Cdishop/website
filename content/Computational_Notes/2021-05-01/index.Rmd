@@ -846,6 +846,8 @@ ggplot(dfsir, aes(x = time, y = people, color = var)) +
 
 Room Temperature
 
+![](images/furnace.png){width=80%}
+
 ```{r, message = F, warning = F}
 library(deSolve)
 
@@ -901,6 +903,8 @@ ggplot(o, aes(x = time, y = temperature, color = var)) +
 
 Car Inventory
 
+![](images/cars.png){width=80%}
+
 ```{r, warning = F, message = F}
 library(deSolve)
 
@@ -953,6 +957,8 @@ ggplot(o, aes(x = time, y = cars)) +
 
 Customers in Store
 
+![](images/customers.png){width=80%}
+
 ```{r, warning = F, message = F}
 library(deSolve)
 
@@ -1000,6 +1006,8 @@ ggplot(o, aes(x = time, y = customers)) +
 ```
 
 Disease Contagion SIR Model
+
+![](images/sir.png){width=80%}
 
 ```{r, warning = F, message = F}
 library(deSolve)
@@ -1064,6 +1072,8 @@ ggplot(o, aes(x = time, y = val, color = var)) +
 ```
 
 Multiple Goal Self-Regulation
+
+![](images/multiple-goals.png){width=80%}
 
 ```{r, warning = F, message = F}
 

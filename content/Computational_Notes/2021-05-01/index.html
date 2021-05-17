@@ -707,6 +707,7 @@ ggplot(dfsir, aes(x = time, y = people, color = var)) +
 <div id="examples-using-continuous-time-modeling" class="section level1">
 <h1>Examples Using Continuous Time Modeling</h1>
 <p>Room Temperature</p>
+<p><img src="images/furnace.png" style="width:80.0%" /></p>
 <pre class="r"><code>library(deSolve)
 
 start &lt;- 0
@@ -758,6 +759,7 @@ ggplot(o, aes(x = time, y = temperature, color = var)) +
   geom_line()</code></pre>
 <p><img src="/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <p>Car Inventory</p>
+<p><img src="images/cars.png" style="width:80.0%" /></p>
 <pre class="r"><code>library(deSolve)
 
 start &lt;- 0
@@ -807,6 +809,7 @@ ggplot(o, aes(x = time, y = cars)) +
   geom_line()</code></pre>
 <p><img src="/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <p>Customers in Store</p>
+<p><img src="images/customers.png" style="width:80.0%" /></p>
 <pre class="r"><code>library(deSolve)
 
 start &lt;- 0
@@ -852,6 +855,7 @@ ggplot(o, aes(x = time, y = customers)) +
   geom_point()</code></pre>
 <p><img src="/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 <p>Disease Contagion SIR Model</p>
+<p><img src="images/sir.png" style="width:80.0%" /></p>
 <pre class="r"><code>library(deSolve)
 
 start &lt;- 0
@@ -913,6 +917,7 @@ ggplot(o, aes(x = time, y = val, color = var)) +
   geom_point()</code></pre>
 <p><img src="/Computational_Notes/2021-05-01/index_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <p>Multiple Goal Self-Regulation</p>
+<p><img src="images/multiple-goals.png" style="width:80.0%" /></p>
 <pre class="r"><code>library(deSolve)
 
 start &lt;- 0

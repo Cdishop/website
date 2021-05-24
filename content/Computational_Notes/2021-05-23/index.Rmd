@@ -1,0 +1,224 @@
+---
+title: "Simulating Network Diffusion"
+summary: '-----'
+date: '2021-05-23'
+---
+
+
+```{r setup, include=FALSE, cache = T}
+knitr::opts_chunk$set(echo = TRUE, message = F, warning = F, cache = T)
+```
+
+Some practice simulating network diffusion. Inspired by [Cheng-jun's example](https://chengjunwang.com/post/en/2014-03-09-simulate-network-diffusion-with-r/). 
+
+I'll start by explaining one iteration through the code before showing the full model. The steps include:
+
+* generate a network
+
+* seed it with infected individuals
+
+* find the nearest neighbors of the infected individual(s)
+
+* the neighbors become infected with probability p
+
+* add all of the newly infected individuals to a store list
+
+* find the nearest neighbors of the infected individual(s)
+
+* ... continue until the entire network is infected
+
+
+Create network.
+
+```{r, warning = F, message = F}
+library(igraph)
+library(animation)
+library(tidyverse)
+
+
+
+# create network
+net_size <- 50
+gstar <- graph.star(net_size)
+plot(gstar)
+
+```
+
+Seed it, meaning place an infected individual into it. 
+
+```{r}
+
+number_initially_infected <- 1
+first_infected <- sample(V(gstar), number_initially_infected)
+## change this graph object to a pure number
+first_infected <- as_ids(first_infected)
+first_infected
+
+```
+
+Place the first infected individual into a list.
+
+```{r}
+infected <- list()
+infected[[1]] <- first_infected
+i <- 1
+```
+
+Find the neighbors of those who are infected.
+
+```{r}
+# find neighbors of those who are infected
+neighbor <- unlist(neighborhood(gstar, 1, unlist(infected)))
+# remove from this list people who are already infected
+neighbor <- neighbor[!neighbor %in% c(unlist(infected))]
+neighbor
+```
+
+For each neighbor, flip a coin to see if he or she becomes infected. Doing so will give me a series of 1s and 0s. 1 means infected. 0 means fine.
+
+```{r}
+infects <- rbinom(length(neighbor), 1, prob = 0.8)
+
+```
+
+Combine these 1s and 0s with the neighbor identifiers.
+
+```{r}
+allneighbors <- data.frame(
+    "infected" = c(infects),
+    "neighbor" = c(neighbor)
+  )
+
+allneighbors
+```
+
+Filter to only those who are infected. Save their identifiers.
+
+```{r}
+infectedneighbors <- allneighbors %>% 
+    filter(infected == 1) %>% 
+    pull(neighbor)
+
+```
+
+Place these newly infected individuals into my store list.
+
+```{r}
+infected[[i + 1]] <- infectedneighbors
+```
+
+Let's do one more iteration.
+
+```{r}
+i <- i + 1
+```
+
+
+Find neighbors of all those currently infected.
+
+```{r}
+# find neighbors of those who are infected
+neighbor <- unlist(neighborhood(gstar, 1, unlist(infected)))
+# remove from this list people who are already infected
+neighbor <- neighbor[!neighbor %in% c(unlist(infected))]
+neighbor
+```
+
+For each neighbor, flip a coin to see if he or she becomes infected. Doing so will give me a series of 1s and 0s. 1 means infected. 0 means fine.
+
+```{r}
+infects <- rbinom(length(neighbor), 1, prob = 0.8)
+
+```
+
+Combine these 1s and 0s with the neighbor identifiers.
+
+```{r}
+allneighbors <- data.frame(
+    "infected" = c(infects),
+    "neighbor" = c(neighbor)
+  )
+
+allneighbors
+```
+
+Filter to only those who are infected. Save their identifiers.
+
+```{r}
+infectedneighbors <- allneighbors %>% 
+    filter(infected == 1) %>% 
+    pull(neighbor)
+
+```
+
+Place these newly infected individuals into my store list.
+
+```{r}
+infected[[i + 1]] <- infectedneighbors
+```
+
+
+Plot the infected individuals.
+
+```{r}
+V(gstar)$color[V(gstar)%in%unlist(infected)] <- "red"
+plot(gstar)
+```
+
+
+# Full Model
+
+I'll plot the network at each iteration so we can see it update. 
+
+```{r}
+library(igraph)
+library(animation)
+library(tidyverse)
+# infection probability
+prob <- 0.8 
+
+
+# create network
+net_size <- 50
+gstar <- graph.star(net_size)
+plot(gstar)
+
+# seed it, meaning place an infected individual (or individuals) into it
+number_initially_infected <- 1
+first_infected <- sample(V(gstar), number_initially_infected)
+first_infected <- as_ids(first_infected)
+infected <- list()
+infected[[1]] <- first_infected
+
+
+# iterate network dynamics
+
+i <- 1
+total_infected <- unlist(infected)
+V(gstar)$color[V(gstar)%in%total_infected] <- "red"
+plot(gstar)
+
+while(length(total_infected) < net_size){
+  
+  neighbor <- unlist(neighborhood(gstar, 1, unlist(infected)))
+  neighbor <- neighbor[!neighbor %in% c(unlist(infected))]
+  infects <- rbinom(length(neighbor), 1, prob = prob)
+  allneighbors <- data.frame(
+    "infected" = c(infects),
+    "neighbor" = c(neighbor)
+  )
+  infectedneighbors <- allneighbors %>% 
+    filter(infected == 1) %>% 
+    pull(neighbor)
+  infected[[i + 1]] <- infectedneighbors
+  total_infected <- unlist(infected)
+  i <- i + 1
+  
+  V(gstar)$color[V(gstar)%in%total_infected] <- "red"
+  plot(gstar)
+}
+```
+
+
+
+Bo$^2$m =)

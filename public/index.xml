@@ -5,12 +5,212 @@
     <link>https://christopherdishop.netlify.app/</link>
       <atom:link href="https://christopherdishop.netlify.app/index.xml" rel="self" type="application/rss+xml" />
     <description>Christopher R. Dishop</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Christopher Dishop 2021</copyright><lastBuildDate>Sat, 01 May 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Christopher Dishop 2021</copyright><lastBuildDate>Sun, 23 May 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://christopherdishop.netlify.app/img/pom-card.png</url>
       <title>Christopher R. Dishop</title>
       <link>https://christopherdishop.netlify.app/</link>
     </image>
+    
+    <item>
+      <title>Simulating Network Diffusion</title>
+      <link>https://christopherdishop.netlify.app/computational_notes/2021-05-23/</link>
+      <pubDate>Sun, 23 May 2021 00:00:00 +0000</pubDate>
+      <guid>https://christopherdishop.netlify.app/computational_notes/2021-05-23/</guid>
+      <description>
+&lt;script src=&#34;https://christopherdishop.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;Some practice simulating network diffusion. Inspired by &lt;a href=&#34;https://chengjunwang.com/post/en/2014-03-09-simulate-network-diffusion-with-r/&#34;&gt;Cheng-jun’s example&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I’ll start by explaining one iteration through the code before showing the full model. The steps include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;generate a network&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;seed it with infected individuals&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;find the nearest neighbors of the infected individual(s)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;the neighbors become infected with probability p&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;add all of the newly infected individuals to a store list&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;find the nearest neighbors of the infected individual(s)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;… continue until the entire network is infected&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Create network.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(igraph)
+library(animation)
+library(tidyverse)
+
+
+
+# create network
+net_size &amp;lt;- 50
+gstar &amp;lt;- graph.star(net_size)
+plot(gstar)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2021-05-23/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Seed it, meaning place an infected individual into it.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;number_initially_infected &amp;lt;- 1
+first_infected &amp;lt;- sample(V(gstar), number_initially_infected)
+## change this graph object to a pure number
+first_infected &amp;lt;- as_ids(first_infected)
+first_infected&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 15&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Place the first infected individual into a list.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;infected &amp;lt;- list()
+infected[[1]] &amp;lt;- first_infected
+i &amp;lt;- 1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Find the neighbors of those who are infected.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# find neighbors of those who are infected
+neighbor &amp;lt;- unlist(neighborhood(gstar, 1, unlist(infected)))
+# remove from this list people who are already infected
+neighbor &amp;lt;- neighbor[!neighbor %in% c(unlist(infected))]
+neighbor&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For each neighbor, flip a coin to see if he or she becomes infected. Doing so will give me a series of 1s and 0s. 1 means infected. 0 means fine.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;infects &amp;lt;- rbinom(length(neighbor), 1, prob = 0.8)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Combine these 1s and 0s with the neighbor identifiers.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;allneighbors &amp;lt;- data.frame(
+    &amp;quot;infected&amp;quot; = c(infects),
+    &amp;quot;neighbor&amp;quot; = c(neighbor)
+  )
+
+allneighbors&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   infected neighbor
+## 1        1        1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Filter to only those who are infected. Save their identifiers.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;infectedneighbors &amp;lt;- allneighbors %&amp;gt;% 
+    filter(infected == 1) %&amp;gt;% 
+    pull(neighbor)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Place these newly infected individuals into my store list.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;infected[[i + 1]] &amp;lt;- infectedneighbors&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Let’s do one more iteration.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;i &amp;lt;- i + 1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Find neighbors of all those currently infected.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# find neighbors of those who are infected
+neighbor &amp;lt;- unlist(neighborhood(gstar, 1, unlist(infected)))
+# remove from this list people who are already infected
+neighbor &amp;lt;- neighbor[!neighbor %in% c(unlist(infected))]
+neighbor&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  [1]  2  3  4  5  6  7  8  9 10 11 12 13 14 16 17 18 19 20 21 22 23 24 25 26 27
+## [26] 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For each neighbor, flip a coin to see if he or she becomes infected. Doing so will give me a series of 1s and 0s. 1 means infected. 0 means fine.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;infects &amp;lt;- rbinom(length(neighbor), 1, prob = 0.8)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Combine these 1s and 0s with the neighbor identifiers.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;allneighbors &amp;lt;- data.frame(
+    &amp;quot;infected&amp;quot; = c(infects),
+    &amp;quot;neighbor&amp;quot; = c(neighbor)
+  )
+
+allneighbors&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    infected neighbor
+## 1         1        2
+## 2         1        3
+## 3         1        4
+## 4         1        5
+## 5         1        6
+## 6         1        7
+## 7         1        8
+## 8         1        9
+## 9         0       10
+## 10        1       11
+## 11        0       12
+## 12        1       13
+## 13        1       14
+## 14        0       16
+## 15        1       17
+## 16        1       18
+## 17        1       19
+## 18        1       20
+## 19        1       21
+## 20        1       22
+## 21        1       23
+## 22        0       24
+## 23        1       25
+## 24        1       26
+## 25        1       27
+## 26        1       28
+## 27        1       29
+## 28        1       30
+## 29        0       31
+## 30        1       32
+## 31        1       33
+## 32        1       34
+## 33        1       35
+## 34        1       36
+## 35        1       37
+## 36        1       38
+## 37        1       39
+## 38        1       40
+## 39        1       41
+## 40        1       42
+## 41        1       43
+## 42        1       44
+## 43        1       45
+## 44        1       46
+## 45        1       47
+## 46        1       48
+## 47        1       49
+## 48        1       50&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Filter to only those who are infected. Save their identifiers.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;infectedneighbors &amp;lt;- allneighbors %&amp;gt;% 
+    filter(infected == 1) %&amp;gt;% 
+    pull(neighbor)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Place these newly infected individuals into my store list.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;infected[[i + 1]] &amp;lt;- infectedneighbors&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Plot the infected individuals.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;V(gstar)$color[V(gstar)%in%unlist(infected)] &amp;lt;- &amp;quot;red&amp;quot;
+plot(gstar)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2021-05-23/index_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;div id=&#34;full-model&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Full Model&lt;/h1&gt;
+&lt;p&gt;I’ll plot the network at each iteration so we can see it update.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(igraph)
+library(animation)
+library(tidyverse)
+# infection probability
+prob &amp;lt;- 0.8 
+
+
+# create network
+net_size &amp;lt;- 50
+gstar &amp;lt;- graph.star(net_size)
+plot(gstar)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2021-05-23/index_files/figure-html/unnamed-chunk-16-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# seed it, meaning place an infected individual (or individuals) into it
+number_initially_infected &amp;lt;- 1
+first_infected &amp;lt;- sample(V(gstar), number_initially_infected)
+first_infected &amp;lt;- as_ids(first_infected)
+infected &amp;lt;- list()
+infected[[1]] &amp;lt;- first_infected
+
+
+# iterate network dynamics
+
+i &amp;lt;- 1
+total_infected &amp;lt;- unlist(infected)
+V(gstar)$color[V(gstar)%in%total_infected] &amp;lt;- &amp;quot;red&amp;quot;
+plot(gstar)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2021-05-23/index_files/figure-html/unnamed-chunk-16-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;while(length(total_infected) &amp;lt; net_size){
+  
+  neighbor &amp;lt;- unlist(neighborhood(gstar, 1, unlist(infected)))
+  neighbor &amp;lt;- neighbor[!neighbor %in% c(unlist(infected))]
+  infects &amp;lt;- rbinom(length(neighbor), 1, prob = prob)
+  allneighbors &amp;lt;- data.frame(
+    &amp;quot;infected&amp;quot; = c(infects),
+    &amp;quot;neighbor&amp;quot; = c(neighbor)
+  )
+  infectedneighbors &amp;lt;- allneighbors %&amp;gt;% 
+    filter(infected == 1) %&amp;gt;% 
+    pull(neighbor)
+  infected[[i + 1]] &amp;lt;- infectedneighbors
+  total_infected &amp;lt;- unlist(infected)
+  i &amp;lt;- i + 1
+  
+  V(gstar)$color[V(gstar)%in%total_infected] &amp;lt;- &amp;quot;red&amp;quot;
+  plot(gstar)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2021-05-23/index_files/figure-html/unnamed-chunk-16-3.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2021-05-23/index_files/figure-html/unnamed-chunk-16-4.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2021-05-23/index_files/figure-html/unnamed-chunk-16-5.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2021-05-23/index_files/figure-html/unnamed-chunk-16-6.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://christopherdishop.netlify.app/Computational_Notes/2021-05-23/index_files/figure-html/unnamed-chunk-16-7.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Systems Zoo</title>
@@ -5375,7 +5575,7 @@ trust ~~ 0*availability
 
 ex1_model_restrict &amp;lt;- sem(ex1_string_restrict, data = df)
 show(ex1_model_restrict) # yup&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 16 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 17 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -5385,9 +5585,9 @@ show(ex1_model_restrict) # yup&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 5.322
+##   Test statistic                                 0.586
 ##   Degrees of freedom                                 1
-##   P-value (Chi-square)                           0.021&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.444&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;example-2---common-factor-underlying-6-observed-items&#34; class=&#34;section level1&#34;&gt;
@@ -5452,7 +5652,7 @@ ex2_model &amp;lt;- sem(ex2_string, data = df_cf)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;21 - 12 = 9&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex2_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 55 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 65 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -5462,9 +5662,9 @@ ex2_model &amp;lt;- sem(ex2_string, data = df_cf)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 5.763
+##   Test statistic                                13.450
 ##   Degrees of freedom                                 9
-##   P-value (Chi-square)                           0.763&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.143&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -5542,7 +5742,7 @@ ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;15 - 13 = 2&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex3_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 180 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 183 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -5552,9 +5752,9 @@ ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 3.418
+##   Test statistic                                 0.908
 ##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.332&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.823&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Nope. I’m one off, where did I go wrong?&lt;/p&gt;
 &lt;p&gt;Ah, there is only 1 prediction error because productivity is being predicted. I counted 2 prediction errors because I gave one to both b1 and b2. So, the unknowns should be…&lt;/p&gt;
 &lt;ul&gt;
@@ -5572,7 +5772,7 @@ ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;15 - 12 = 3&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex3_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 180 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 183 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -5582,9 +5782,9 @@ ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 3.418
+##   Test statistic                                 0.908
 ##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.332&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.823&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -5639,7 +5839,7 @@ ex4_model &amp;lt;- sem(ex4_string, data = df_chain)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;10 - 7 = 3&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex4_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 38 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 56 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -5649,9 +5849,9 @@ ex4_model &amp;lt;- sem(ex4_string, data = df_chain)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 1.496
+##   Test statistic                                 6.268
 ##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.683&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.099&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -5728,7 +5928,7 @@ ex5_model &amp;lt;- sem(ex5_string, data = df5_wide)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;28 - 10 = 18&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex5_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 116 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 118 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -5739,9 +5939,9 @@ ex5_model &amp;lt;- sem(ex5_string, data = df5_wide)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                25.293
+##   Test statistic                                22.212
 ##   Degrees of freedom                                18
-##   P-value (Chi-square)                           0.117&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.223&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Why didn’t I estimate a mean for unobserved heterogeneity here? In all of the other examples I estimated the variance (1 parameter) and the mean (1 parameter) of the latent exogenous variable. In this case, unobserved heterogeneity is the latent exogenous variable but I only estimated its variance. That’s because in this model we don’t really care about the mean of unobserved heterogeneity, it’s just a latent variable that we incorporate to account for stable individual differences. In other words, when I estimate latent cog ability and assertiveness as IVs to predict an outcome, I care about their means. Here, unobserved heterogeneity is just an additional factor to account for, not a variable whose mean I really care to know. That said, if I wanted to estimate the mean of unobserved heterogeneity (which would result in one additional estimated parameter and one fewer df) then I would incorporate the following into the model string.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;&amp;#39;
 
@@ -6499,10 +6699,10 @@ SD
 A
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-26.38684
+23.84669
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-0.9449852
+2.116931
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -6510,10 +6710,10 @@ A
 B
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-22.92615
+22.79864
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-3.4411983
+3.243925
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -6521,10 +6721,10 @@ B
 C
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-22.63088
+22.26416
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-4.9486419
+3.597897
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -6570,13 +6770,13 @@ Team C
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-26.39 (0.94)
+23.85 (2.12)
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-22.93 (3.44)
+22.8 (3.24)
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-22.63 (4.95)
+22.26 (3.6)
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -6912,19 +7112,19 @@ df$id &amp;lt;- c(1:N)&lt;/code&gt;&lt;/pre&gt;
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -2.41055 -0.54944  0.00154  0.54427  2.06760 
+## -2.51326 -0.59531  0.01122  0.60935  2.24742 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept) 0.001545   0.036559   0.042    0.966    
-## x1          0.363130   0.037269   9.743  &amp;lt; 2e-16 ***
-## x2          0.303986   0.037502   8.106  4.1e-15 ***
+## (Intercept) -0.03018    0.03777  -0.799    0.425    
+## x1           0.38041    0.03882   9.798   &amp;lt;2e-16 ***
+## x2           0.41922    0.03855  10.876   &amp;lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
 ## 
-## Residual standard error: 0.8169 on 497 degrees of freedom
-## Multiple R-squared:  0.2608, Adjusted R-squared:  0.2579 
-## F-statistic: 87.69 on 2 and 497 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+## Residual standard error: 0.8446 on 497 degrees of freedom
+## Multiple R-squared:  0.3319, Adjusted R-squared:  0.3292 
+## F-statistic: 123.4 on 2 and 497 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Here’s the kicker: you can think of those weights as optimal functions telling us how to create the composite.&lt;/p&gt;
 &lt;p&gt;Create a composite using the regression weights.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
@@ -6932,7 +7132,7 @@ df &amp;lt;- df %&amp;gt;%
   mutate(composite_x = 0.33*x1 + 0.4*x2)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Those weights provide the maximum correlation between our composite and the outcome.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cor(df$y, df$composite_x)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 0.5034366&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.5756004&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;In other words, the above correlation could not be higher with any other set of weights. Regression found the weights that makes the correlation above as large as it can be.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(lm(y ~ composite_x,
            data = df))&lt;/code&gt;&lt;/pre&gt;
@@ -6942,18 +7142,18 @@ df &amp;lt;- df %&amp;gt;%
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -2.43477 -0.54265  0.00545  0.54868  1.95832 
+## -2.48768 -0.58752  0.01465  0.62069  2.29251 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept) 0.003357   0.036695   0.091    0.927    
-## composite_x 0.901276   0.069315  13.003   &amp;lt;2e-16 ***
+## (Intercept) -0.03018    0.03775  -0.799    0.424    
+## composite_x  1.09128    0.06947  15.708   &amp;lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
 ## 
-## Residual standard error: 0.8201 on 498 degrees of freedom
-## Multiple R-squared:  0.2534, Adjusted R-squared:  0.2519 
-## F-statistic: 169.1 on 1 and 498 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+## Residual standard error: 0.8441 on 498 degrees of freedom
+## Multiple R-squared:  0.3313, Adjusted R-squared:   0.33 
+## F-statistic: 246.7 on 1 and 498 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
 </description>
     </item>
@@ -8647,18 +8847,18 @@ sample_df &amp;lt;- df %&amp;gt;%
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -3.3140 -0.5796  0.0134  0.6185  3.0474 
+## -3.7617 -0.6885 -0.0629  0.6725  3.2472 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept) -0.08017    0.03999  -2.005   0.0454 *  
-## stress       0.45493    0.00800  56.865   &amp;lt;2e-16 ***
+## (Intercept) 0.027625   0.041250    0.67    0.503    
+## stress      0.429675   0.007939   54.12   &amp;lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
 ## 
-## Residual standard error: 0.977 on 598 degrees of freedom
-## Multiple R-squared:  0.8439, Adjusted R-squared:  0.8437 
-## F-statistic:  3234 on 1 and 598 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+## Residual standard error: 1.01 on 598 degrees of freedom
+## Multiple R-squared:  0.8305, Adjusted R-squared:  0.8302 
+## F-statistic:  2929 on 1 and 598 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;b-compute-the-ci&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;2b) Compute the CI&lt;/h3&gt;
@@ -8683,7 +8883,7 @@ if(se_lower &amp;lt;= stress_performance_coefficient &amp;amp;&amp;amp; se_upper
 }
 
 contain_parameter&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;yes&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;no&amp;quot;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;What did we do? We sampled the population, ran a regression to relate stress to performance, and then calculated a CI on the slope term. The interpretation of a CI, however, is across infinite samples. Now we need to run through the sample, regress, and calculate CI procedure again and again and again – Monte Carlo.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;re-sample-and-repeat&#34; class=&#34;section level3&#34;&gt;
@@ -8708,7 +8908,7 @@ for(i in 1:sims){
 &lt;h3&gt;Interpretation&lt;/h3&gt;
 &lt;p&gt;How many computed intervals contain the population parameter?&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sum(all_ci_contains == &amp;#39;yes&amp;#39;) / sims&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 0.9466667&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.9433333&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 </description>
     </item>
@@ -9135,15 +9335,15 @@ mini &amp;lt;- dish %&amp;gt;%
 mini[mini$person == &amp;#39;jimmy&amp;#39;, 2] &amp;lt;- 99
 mini[mini$person == &amp;#39;james&amp;#39;, 2] &amp;lt;- 99&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The original data:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;##   person        v_1       v_2      v_3       v_4
-## 1  jimmy -0.5013786 17.394506 41.27726 14.687163
-## 2  james  1.1420581  3.431909 41.10013  6.109700
-## 3 johnny  1.5608404  6.041946 38.90425  3.081284&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   person        v_1       v_2      v_3      v_4
+## 1  jimmy  1.6468192 15.146462 48.55781 19.76143
+## 2  james  0.6658161 12.913937 38.06754 25.73500
+## 3 johnny -1.0173292  8.916583 68.87945 15.06437&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;What we changed it to:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;##   person      v_1       v_2
-## 1  jimmy 99.00000 17.394506
-## 2  james 99.00000  3.431909
-## 3 johnny  1.56084  6.041946&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   person       v_1       v_2
+## 1  jimmy 99.000000 15.146462
+## 2  james 99.000000 12.913937
+## 3 johnny -1.017329  8.916583&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Here is the function equivalent:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;impute_99 &amp;lt;- function(data){
   
@@ -9161,10 +9361,10 @@ mini[mini$person == &amp;#39;james&amp;#39;, 2] &amp;lt;- 99&lt;/code&gt;&lt;/pr
 &lt;p&gt;Our result:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;adjusted_data &amp;lt;- impute_99(dish)
 adjusted_data&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##   person      v_1       v_2
-## 1  jimmy 99.00000 17.394506
-## 2  james 99.00000  3.431909
-## 3 johnny  1.56084  6.041946&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   person       v_1       v_2
+## 1  jimmy 99.000000 15.146462
+## 2  james 99.000000 12.913937
+## 3 johnny -1.017329  8.916583&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;function-with-column-names-as-parameters&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Function with column names as parameters&lt;/h1&gt;
@@ -9185,10 +9385,10 @@ adjusted_data&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Fortunately the correction is simple, just put quotes around the column names:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cool_data &amp;lt;- impute_99_column_specific(dish, &amp;#39;v_1&amp;#39;, &amp;#39;v_2&amp;#39;)
 cool_data&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##   person      v_1       v_2
-## 1  jimmy 99.00000 17.394506
-## 2  james 99.00000  3.431909
-## 3 johnny  1.56084  6.041946&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   person       v_1       v_2
+## 1  jimmy 99.000000 15.146462
+## 2  james 99.000000 12.913937
+## 3 johnny -1.017329  8.916583&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
 &lt;/div&gt;
 </description>
@@ -11174,7 +11374,7 @@ agent[[1]][1] &amp;lt;- initial_sdo_value
 
 agent&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## $SDO
-## [1] 92.76602
+## [1] 88.50501
 ## 
 ## $Peeps
 ## NULL&lt;/code&gt;&lt;/pre&gt;
@@ -11216,10 +11416,10 @@ agent$Peeps &amp;lt;- c(agent$Peeps, other)
 
 agent&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## $SDO
-## [1] 92.76602 80.76602
+## [1] 88.50501 70.50501
 ## 
 ## $Peeps
-## [1] 98.53156&lt;/code&gt;&lt;/pre&gt;
+## [1] 102.1187&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;the-full-model&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;The Full Model&lt;/h1&gt;

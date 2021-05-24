@@ -598,18 +598,18 @@ sample_df &lt;- df %&gt;%
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -3.3140 -0.5796  0.0134  0.6185  3.0474 
+## -3.7617 -0.6885 -0.0629  0.6725  3.2472 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) -0.08017    0.03999  -2.005   0.0454 *  
-## stress       0.45493    0.00800  56.865   &lt;2e-16 ***
+## (Intercept) 0.027625   0.041250    0.67    0.503    
+## stress      0.429675   0.007939   54.12   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 0.977 on 598 degrees of freedom
-## Multiple R-squared:  0.8439, Adjusted R-squared:  0.8437 
-## F-statistic:  3234 on 1 and 598 DF,  p-value: &lt; 2.2e-16</code></pre>
+## Residual standard error: 1.01 on 598 degrees of freedom
+## Multiple R-squared:  0.8305, Adjusted R-squared:  0.8302 
+## F-statistic:  2929 on 1 and 598 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <div id="b-compute-the-ci" class="section level3">
 <h3>2b) Compute the CI</h3>
@@ -634,7 +634,7 @@ if(se_lower &lt;= stress_performance_coefficient &amp;&amp; se_upper &gt;= stres
 }
 
 contain_parameter</code></pre>
-<pre><code>## [1] &quot;yes&quot;</code></pre>
+<pre><code>## [1] &quot;no&quot;</code></pre>
 <p>What did we do? We sampled the population, ran a regression to relate stress to performance, and then calculated a CI on the slope term. The interpretation of a CI, however, is across infinite samples. Now we need to run through the sample, regress, and calculate CI procedure again and again and again – Monte Carlo.</p>
 </div>
 <div id="re-sample-and-repeat" class="section level3">
@@ -659,7 +659,7 @@ for(i in 1:sims){
 <h3>Interpretation</h3>
 <p>How many computed intervals contain the population parameter?</p>
 <pre class="r"><code>sum(all_ci_contains == &#39;yes&#39;) / sims</code></pre>
-<pre><code>## [1] 0.9466667</code></pre>
+<pre><code>## [1] 0.9433333</code></pre>
 </div>
 
     </div>

@@ -1,0 +1,54 @@
+---
+title: "Extra Rows After Merging"
+summary: '-----'
+date: '2021-06-02'
+---
+
+
+```{r setup, include=FALSE, cache = T}
+knitr::opts_chunk$set(echo = TRUE, message = F, warning = F, cache = T)
+```
+
+After merging data, you will generate extra rows if one source has repeated IDs. See below.
+
+No ID repetitions = join successful. 
+
+```{r, warning = F, message = F}
+df1 <- data.frame(
+  'id' = c(1, 2, 3),
+  'y' = c(20, 30, 40)
+)
+
+df2 <- data.frame(
+  'id' = c(1, 2, 3),
+  'x' = c(rnorm(3, 30, 5))
+)
+
+library(tidyverse)
+
+df <- left_join(df1, df2)
+df
+```
+
+ID repetitions = join unsuccessful
+
+```{r, warning = F, message = F}
+
+data1 <- data.frame(
+  'id' = c(1, 2, 3),
+  'y' = c(20, 23, 40)
+)
+
+data2 <- data.frame(
+  'id' = c(1, 2, 2), # repeated id
+  'x' = c(60, 70, 80)
+)
+
+library(tidyverse)
+
+dataf <- left_join(data1, data2)
+dataf # has 4 rows rather than 3
+```
+
+
+Bo$^2$m =)

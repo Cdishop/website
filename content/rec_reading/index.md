@@ -3249,6 +3249,39 @@ Yuval Noah Harari
 
 
 
+&nbsp;
+
+<div align="center">
+Giving Kids A Fair Chance
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/kids.png)
+
+James J. Heckman
+
+[Click here for link](https://www.amazon.com/Giving-Chance-Boston-Review-Books-ebook/dp/B08BSXCVZR/ref=sr_1_2?dchild=1&keywords=james+heckman&qid=1623605157&sr=8-2)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 &nbsp;

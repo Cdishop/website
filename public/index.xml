@@ -38,9 +38,9 @@ library(tidyverse)
 df &amp;lt;- left_join(df1, df2)
 df&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##   id  y        x
-## 1  1 20 30.38385
-## 2  2 30 28.50287
-## 3  3 40 35.80595&lt;/code&gt;&lt;/pre&gt;
+## 1  1 20 33.43785
+## 2  2 30 26.99238
+## 3  3 40 31.10569&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;ID repetitions = join unsuccessful&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data1 &amp;lt;- data.frame(
   &amp;#39;id&amp;#39; = c(1, 2, 3),
@@ -153,52 +153,52 @@ neighbor&lt;/code&gt;&lt;/pre&gt;
 allneighbors&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##    infected neighbor
 ## 1         1        2
-## 2         1        3
-## 3         1        4
-## 4         0        5
-## 5         0        6
+## 2         0        3
+## 3         0        4
+## 4         1        5
+## 5         1        6
 ## 6         1        7
-## 7         1        8
+## 7         0        8
 ## 8         1        9
 ## 9         1       10
-## 10        0       11
-## 11        0       12
+## 10        1       11
+## 11        1       12
 ## 12        1       13
 ## 13        1       14
-## 14        1       15
+## 14        0       15
 ## 15        1       16
 ## 16        1       17
 ## 17        1       18
 ## 18        1       19
 ## 19        1       20
-## 20        1       21
+## 20        0       21
 ## 21        1       22
 ## 22        1       23
 ## 23        1       24
 ## 24        1       25
-## 25        0       26
+## 25        1       26
 ## 26        1       28
 ## 27        1       29
 ## 28        1       30
 ## 29        1       31
-## 30        0       32
-## 31        0       33
+## 30        1       32
+## 31        1       33
 ## 32        1       34
 ## 33        1       35
 ## 34        1       36
-## 35        0       37
-## 36        0       38
-## 37        0       39
+## 35        1       37
+## 36        1       38
+## 37        1       39
 ## 38        1       40
 ## 39        1       41
 ## 40        1       42
-## 41        0       43
+## 41        1       43
 ## 42        1       44
-## 43        1       45
+## 43        0       45
 ## 44        1       46
 ## 45        1       47
-## 46        0       48
-## 47        0       49
+## 46        1       48
+## 47        1       49
 ## 48        1       50&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Filter to only those who are infected. Save their identifiers.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;infectedneighbors &amp;lt;- allneighbors %&amp;gt;% 
@@ -5606,7 +5606,7 @@ ex1_model &amp;lt;- sem(ex1_string, data = df)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;6 - 6 = 0&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex1_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 13 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 16 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -5638,9 +5638,9 @@ show(ex1_model_restrict) # yup&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 0.387
+##   Test statistic                                 0.552
 ##   Degrees of freedom                                 1
-##   P-value (Chi-square)                           0.534&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.458&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;example-2---common-factor-underlying-6-observed-items&#34; class=&#34;section level1&#34;&gt;
@@ -5705,7 +5705,7 @@ ex2_model &amp;lt;- sem(ex2_string, data = df_cf)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;21 - 12 = 9&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex2_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 51 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 44 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -5715,9 +5715,9 @@ ex2_model &amp;lt;- sem(ex2_string, data = df_cf)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                16.724
+##   Test statistic                                13.745
 ##   Degrees of freedom                                 9
-##   P-value (Chi-square)                           0.053&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.132&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -5795,7 +5795,7 @@ ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;15 - 13 = 2&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex3_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 186 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 194 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -5805,9 +5805,9 @@ ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 0.339
+##   Test statistic                                 3.796
 ##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.953&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.284&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Nope. I’m one off, where did I go wrong?&lt;/p&gt;
 &lt;p&gt;Ah, there is only 1 prediction error because productivity is being predicted. I counted 2 prediction errors because I gave one to both b1 and b2. So, the unknowns should be…&lt;/p&gt;
 &lt;ul&gt;
@@ -5825,7 +5825,7 @@ ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;15 - 12 = 3&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex3_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 186 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 194 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -5835,9 +5835,9 @@ ex3_model &amp;lt;- sem(ex3_string, data = df_3)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 0.339
+##   Test statistic                                 3.796
 ##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.953&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.284&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -5892,7 +5892,7 @@ ex4_model &amp;lt;- sem(ex4_string, data = df_chain)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;10 - 7 = 3&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex4_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 34 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 47 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -5902,9 +5902,9 @@ ex4_model &amp;lt;- sem(ex4_string, data = df_chain)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 2.557
+##   Test statistic                                 4.141
 ##   Degrees of freedom                                 3
-##   P-value (Chi-square)                           0.465&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.247&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -5981,7 +5981,7 @@ ex5_model &amp;lt;- sem(ex5_string, data = df5_wide)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;28 - 10 = 18&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show(ex5_model)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 99 iterations
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-6 ended normally after 117 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -5992,9 +5992,9 @@ ex5_model &amp;lt;- sem(ex5_string, data = df5_wide)&lt;/code&gt;&lt;/pre&gt;
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                11.276
+##   Test statistic                                17.525
 ##   Degrees of freedom                                18
-##   P-value (Chi-square)                           0.882&lt;/code&gt;&lt;/pre&gt;
+##   P-value (Chi-square)                           0.487&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Why didn’t I estimate a mean for unobserved heterogeneity here? In all of the other examples I estimated the variance (1 parameter) and the mean (1 parameter) of the latent exogenous variable. In this case, unobserved heterogeneity is the latent exogenous variable but I only estimated its variance. That’s because in this model we don’t really care about the mean of unobserved heterogeneity, it’s just a latent variable that we incorporate to account for stable individual differences. In other words, when I estimate latent cog ability and assertiveness as IVs to predict an outcome, I care about their means. Here, unobserved heterogeneity is just an additional factor to account for, not a variable whose mean I really care to know. That said, if I wanted to estimate the mean of unobserved heterogeneity (which would result in one additional estimated parameter and one fewer df) then I would incorporate the following into the model string.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;&amp;#39;
 
@@ -6752,10 +6752,10 @@ SD
 A
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-24.55709
+22.78481
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-1.837133
+2.3475975
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -6763,10 +6763,10 @@ A
 B
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-23.99630
+20.51288
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-1.501993
+0.4690539
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -6774,10 +6774,10 @@ B
 C
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-21.57224
+25.60739
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-5.848579
+2.2210134
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -6823,13 +6823,13 @@ Team C
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-24.56 (1.84)
+22.78 (2.35)
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-24 (1.5)
+20.51 (0.47)
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-21.57 (5.85)
+25.61 (2.22)
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -7165,19 +7165,19 @@ df$id &amp;lt;- c(1:N)&lt;/code&gt;&lt;/pre&gt;
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -2.34550 -0.57760  0.01186  0.53808  2.48792 
+## -2.19252 -0.59671 -0.01432  0.62284  2.01974 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept) -0.01829    0.03627  -0.504    0.614    
-## x1           0.32783    0.03646   8.990   &amp;lt;2e-16 ***
-## x2           0.36588    0.03586  10.203   &amp;lt;2e-16 ***
+## (Intercept) 0.008355   0.037087   0.225    0.822    
+## x1          0.354265   0.037339   9.488   &amp;lt;2e-16 ***
+## x2          0.278095   0.037907   7.336    9e-13 ***
 ## ---
 ## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
 ## 
-## Residual standard error: 0.8014 on 497 degrees of freedom
-## Multiple R-squared:  0.3046, Adjusted R-squared:  0.3018 
-## F-statistic: 108.9 on 2 and 497 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+## Residual standard error: 0.8275 on 497 degrees of freedom
+## Multiple R-squared:  0.2432, Adjusted R-squared:  0.2402 
+## F-statistic: 79.87 on 2 and 497 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Here’s the kicker: you can think of those weights as optimal functions telling us how to create the composite.&lt;/p&gt;
 &lt;p&gt;Create a composite using the regression weights.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
@@ -7185,7 +7185,7 @@ df &amp;lt;- df %&amp;gt;%
   mutate(composite_x = 0.33*x1 + 0.4*x2)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Those weights provide the maximum correlation between our composite and the outcome.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cor(df$y, df$composite_x)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 0.5515945&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.4838796&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;In other words, the above correlation could not be higher with any other set of weights. Regression found the weights that makes the correlation above as large as it can be.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(lm(y ~ composite_x,
            data = df))&lt;/code&gt;&lt;/pre&gt;
@@ -7195,18 +7195,18 @@ df &amp;lt;- df %&amp;gt;%
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -2.33361 -0.57885  0.01475  0.53036  2.46757 
+## -2.24546 -0.58908 -0.02062  0.59005  2.08223 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept) -0.01625    0.03603  -0.451    0.652    
-## composite_x  0.94700    0.06417  14.757   &amp;lt;2e-16 ***
+## (Intercept) 0.006794   0.037266   0.182    0.855    
+## composite_x 0.854234   0.069231  12.339   &amp;lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
 ## 
-## Residual standard error: 0.8008 on 498 degrees of freedom
-## Multiple R-squared:  0.3043, Adjusted R-squared:  0.3029 
-## F-statistic: 217.8 on 1 and 498 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+## Residual standard error: 0.8316 on 498 degrees of freedom
+## Multiple R-squared:  0.2341, Adjusted R-squared:  0.2326 
+## F-statistic: 152.2 on 1 and 498 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
 </description>
     </item>
@@ -8900,18 +8900,18 @@ sample_df &amp;lt;- df %&amp;gt;%
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -2.5775 -0.6576 -0.0302  0.6819  3.3733 
+## -3.5297 -0.6483  0.0235  0.6597  3.2425 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept) 0.028464   0.040690    0.70    0.484    
-## stress      0.453462   0.008003   56.66   &amp;lt;2e-16 ***
+## (Intercept) 0.012220   0.042576   0.287    0.774    
+## stress      0.456017   0.008786  51.904   &amp;lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
 ## 
-## Residual standard error: 0.9964 on 598 degrees of freedom
-## Multiple R-squared:  0.843,  Adjusted R-squared:  0.8427 
-## F-statistic:  3210 on 1 and 598 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+## Residual standard error: 1.043 on 598 degrees of freedom
+## Multiple R-squared:  0.8183, Adjusted R-squared:  0.818 
+## F-statistic:  2694 on 1 and 598 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;b-compute-the-ci&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;2b) Compute the CI&lt;/h3&gt;
@@ -8961,7 +8961,7 @@ for(i in 1:sims){
 &lt;h3&gt;Interpretation&lt;/h3&gt;
 &lt;p&gt;How many computed intervals contain the population parameter?&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sum(all_ci_contains == &amp;#39;yes&amp;#39;) / sims&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 0.9388889&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.9611111&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 </description>
     </item>
@@ -9388,15 +9388,15 @@ mini &amp;lt;- dish %&amp;gt;%
 mini[mini$person == &amp;#39;jimmy&amp;#39;, 2] &amp;lt;- 99
 mini[mini$person == &amp;#39;james&amp;#39;, 2] &amp;lt;- 99&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The original data:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;##   person         v_1       v_2      v_3        v_4
-## 1  jimmy -0.01518493 12.081362 37.91547  0.3430385
-## 2  james  0.56741616 17.150852 68.37713 23.0852205
-## 3 johnny  1.59128265  5.028765 32.94859 53.9208138&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   person         v_1       v_2      v_3       v_4
+## 1  jimmy  0.05717643 14.943243 42.67482 38.643286
+## 2  james -1.27255870  5.314860 60.41553 36.713726
+## 3 johnny -0.64313783  1.000411 73.08230  7.718255&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;What we changed it to:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;##   person       v_1       v_2
-## 1  jimmy 99.000000 12.081362
-## 2  james 99.000000 17.150852
-## 3 johnny  1.591283  5.028765&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   person        v_1       v_2
+## 1  jimmy 99.0000000 14.943243
+## 2  james 99.0000000  5.314860
+## 3 johnny -0.6431378  1.000411&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Here is the function equivalent:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;impute_99 &amp;lt;- function(data){
   
@@ -9414,10 +9414,10 @@ mini[mini$person == &amp;#39;james&amp;#39;, 2] &amp;lt;- 99&lt;/code&gt;&lt;/pr
 &lt;p&gt;Our result:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;adjusted_data &amp;lt;- impute_99(dish)
 adjusted_data&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##   person       v_1       v_2
-## 1  jimmy 99.000000 12.081362
-## 2  james 99.000000 17.150852
-## 3 johnny  1.591283  5.028765&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   person        v_1       v_2
+## 1  jimmy 99.0000000 14.943243
+## 2  james 99.0000000  5.314860
+## 3 johnny -0.6431378  1.000411&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;function-with-column-names-as-parameters&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Function with column names as parameters&lt;/h1&gt;
@@ -9438,10 +9438,10 @@ adjusted_data&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Fortunately the correction is simple, just put quotes around the column names:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cool_data &amp;lt;- impute_99_column_specific(dish, &amp;#39;v_1&amp;#39;, &amp;#39;v_2&amp;#39;)
 cool_data&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##   person       v_1       v_2
-## 1  jimmy 99.000000 12.081362
-## 2  james 99.000000 17.150852
-## 3 johnny  1.591283  5.028765&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   person        v_1       v_2
+## 1  jimmy 99.0000000 14.943243
+## 2  james 99.0000000  5.314860
+## 3 johnny -0.6431378  1.000411&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Bo&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;m =)&lt;/p&gt;
 &lt;/div&gt;
 </description>
@@ -11427,7 +11427,7 @@ agent[[1]][1] &amp;lt;- initial_sdo_value
 
 agent&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## $SDO
-## [1] 83.76905
+## [1] 100.579
 ## 
 ## $Peeps
 ## NULL&lt;/code&gt;&lt;/pre&gt;
@@ -11469,10 +11469,10 @@ agent$Peeps &amp;lt;- c(agent$Peeps, other)
 
 agent&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## $SDO
-## [1] 83.76905 73.76905
+## [1] 100.579  81.579
 ## 
 ## $Peeps
-## [1] 101.9249&lt;/code&gt;&lt;/pre&gt;
+## [1] 109.6203&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;the-full-model&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;The Full Model&lt;/h1&gt;
@@ -14068,6 +14068,38 @@ Stumbling on Happiness
 &lt;p&gt;Daniel Gilbert&lt;/p&gt;
 &lt;p&gt;
 &lt;a href=&#34;https://www.amazon.com/Stumbling-Happiness-Daniel-Gilbert/dp/1400077427/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1524679419&amp;amp;sr=1-1&amp;amp;keywords=stumbling&amp;#43;on&amp;#43;happiness&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;div align=&#34;center&#34;&gt;
+Factfulness
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/factfulness.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Hans Rosling&lt;/p&gt;
+&lt;p&gt;Ola Rosling&lt;/p&gt;
+&lt;p&gt;Anna Rosling&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Factfulness-Reasons-World-Things-Better/dp/1250107814/ref=tmm_hrd_swatch_0?_encoding=UTF8&amp;amp;qid=1624369435&amp;amp;sr=8-1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;div align=&#34;center&#34;&gt;
+The Curmudgeon&#39;s Guide to Getting Ahead
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/curmudge.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Charles Murray&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Curmudgeons-Guide-Getting-Ahead-Behavior/dp/0804141444/ref=sr_1_1?dchild=1&amp;amp;keywords=charles&amp;#43;murray&amp;#43;guide&amp;amp;qid=1624369639&amp;amp;sr=8-1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;div align=&#34;center&#34;&gt;
+The Road to Character
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Cdishop/website/raw/master/misc/books/character.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;David Brooks&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.amazon.com/Road-Character-David-Brooks/dp/0812983416/ref=sr_1_1?dchild=1&amp;amp;keywords=the&amp;#43;road&amp;#43;to&amp;#43;character&amp;amp;qid=1624369450&amp;amp;sr=8-1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click here for link&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;hr&gt;
 &lt;p&gt; &lt;/p&gt;

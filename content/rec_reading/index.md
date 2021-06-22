@@ -2680,6 +2680,148 @@ Daniel Gilbert
 
 
 
+
+
+
+
+&nbsp;
+
+<div align="center">
+Factfulness
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/factfulness.png)
+
+Hans Rosling
+
+Ola Rosling
+
+Anna Rosling
+
+[Click here for link](https://www.amazon.com/Factfulness-Reasons-World-Things-Better/dp/1250107814/ref=tmm_hrd_swatch_0?_encoding=UTF8&qid=1624369435&sr=8-1)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+The Curmudgeon's Guide to Getting Ahead
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/curmudge.png)
+
+Charles Murray
+
+[Click here for link](https://www.amazon.com/Curmudgeons-Guide-Getting-Ahead-Behavior/dp/0804141444/ref=sr_1_1?dchild=1&keywords=charles+murray+guide&qid=1624369639&sr=8-1)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+The Road to Character
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/character.png)
+
+David Brooks
+
+[Click here for link](https://www.amazon.com/Road-Character-David-Brooks/dp/0812983416/ref=sr_1_1?dchild=1&keywords=the+road+to+character&qid=1624369450&sr=8-1)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 &nbsp;
 
 <div align="center">

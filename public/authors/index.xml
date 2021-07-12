@@ -2,14 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Authors | Christopher R. Dishop</title>
-    <link>https://christopherdishop.netlify.app/authors/</link>
-      <atom:link href="https://christopherdishop.netlify.app/authors/index.xml" rel="self" type="application/rss+xml" />
+    <link>/authors/</link>
+      <atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
     <description>Authors</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Christopher Dishop 2021</copyright><lastBuildDate>Wed, 20 Dec 2017 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://christopherdishop.netlify.app/img/pom-card.png</url>
+      <url>/img/pom-card.png</url>
       <title>Authors</title>
-      <link>https://christopherdishop.netlify.app/authors/</link>
+      <link>/authors/</link>
     </image>
     
   </channel>

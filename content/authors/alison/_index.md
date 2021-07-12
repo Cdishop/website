@@ -22,7 +22,7 @@ interests:
 
 name: Christopher R. Dishop
 organizations:
-- name: Army Research Institute
+- name: 
   url: https://psychology.msu.edu/
 role: Research Fellow
 social:

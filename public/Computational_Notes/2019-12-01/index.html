@@ -26,7 +26,7 @@
   <meta name="description" content="-----">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://christopherdishop.netlify.app/computational_notes/2019-12-01/">
+  <link rel="alternate" hreflang="en-us" href="/computational_notes/2019-12-01/">
 
   
 
@@ -250,7 +250,7 @@
   <link rel="icon" type="image/png" href="/images/icon_hua7ddb50eead73fc737c5c3187aff8cf9_17132_32x32_fill_lanczos_center_2.png">
   <link rel="apple-touch-icon" type="image/png" href="/images/icon_hua7ddb50eead73fc737c5c3187aff8cf9_17132_192x192_fill_lanczos_center_2.png">
 
-  <link rel="canonical" href="https://christopherdishop.netlify.app/computational_notes/2019-12-01/">
+  <link rel="canonical" href="/computational_notes/2019-12-01/">
 
   
   
@@ -268,10 +268,10 @@
   <meta property="twitter:creator" content="@apreshill">
   
   <meta property="og:site_name" content="Christopher R. Dishop">
-  <meta property="og:url" content="https://christopherdishop.netlify.app/computational_notes/2019-12-01/">
+  <meta property="og:url" content="/computational_notes/2019-12-01/">
   <meta property="og:title" content="Regression Creates Weighted Linear Composites | Christopher R. Dishop">
-  <meta property="og:description" content="-----"><meta property="og:image" content="https://christopherdishop.netlify.app/img/pom-card.png">
-  <meta property="twitter:image" content="https://christopherdishop.netlify.app/img/pom-card.png"><meta property="og:locale" content="en-us">
+  <meta property="og:description" content="-----"><meta property="og:image" content="/img/pom-card.png">
+  <meta property="twitter:image" content="/img/pom-card.png"><meta property="og:locale" content="en-us">
   
     
       <meta property="article:published_time" content="2019-12-01T00:00:00&#43;00:00">
@@ -571,19 +571,19 @@ df$id &lt;- c(1:N)</code></pre>
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -2.19252 -0.59671 -0.01432  0.62284  2.01974 
+## -2.64183 -0.60840 -0.02694  0.53039  2.89369 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) 0.008355   0.037087   0.225    0.822    
-## x1          0.354265   0.037339   9.488   &lt;2e-16 ***
-## x2          0.278095   0.037907   7.336    9e-13 ***
+## (Intercept) 0.007956   0.038881   0.205    0.838    
+## x1          0.321841   0.038439   8.373 5.77e-16 ***
+## x2          0.327061   0.039257   8.331 7.85e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 0.8275 on 497 degrees of freedom
-## Multiple R-squared:  0.2432, Adjusted R-squared:  0.2402 
-## F-statistic: 79.87 on 2 and 497 DF,  p-value: &lt; 2.2e-16</code></pre>
+## Residual standard error: 0.8672 on 497 degrees of freedom
+## Multiple R-squared:  0.2304, Adjusted R-squared:  0.2273 
+## F-statistic: 74.41 on 2 and 497 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Here’s the kicker: you can think of those weights as optimal functions telling us how to create the composite.</p>
 <p>Create a composite using the regression weights.</p>
 <pre class="r"><code>library(tidyverse)
@@ -591,7 +591,7 @@ df &lt;- df %&gt;%
   mutate(composite_x = 0.33*x1 + 0.4*x2)</code></pre>
 <p>Those weights provide the maximum correlation between our composite and the outcome.</p>
 <pre class="r"><code>cor(df$y, df$composite_x)</code></pre>
-<pre><code>## [1] 0.4838796</code></pre>
+<pre><code>## [1] 0.4784108</code></pre>
 <p>In other words, the above correlation could not be higher with any other set of weights. Regression found the weights that makes the correlation above as large as it can be.</p>
 <pre class="r"><code>summary(lm(y ~ composite_x,
            data = df))</code></pre>
@@ -601,18 +601,18 @@ df &lt;- df %&gt;%
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -2.24546 -0.58908 -0.02062  0.59005  2.08223 
+## -2.63882 -0.61724 -0.03121  0.53077  2.98031 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) 0.006794   0.037266   0.182    0.855    
-## composite_x 0.854234   0.069231  12.339   &lt;2e-16 ***
+## (Intercept) 0.007124   0.038873   0.183    0.855    
+## composite_x 0.883868   0.072700  12.158   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 0.8316 on 498 degrees of freedom
-## Multiple R-squared:  0.2341, Adjusted R-squared:  0.2326 
-## F-statistic: 152.2 on 1 and 498 DF,  p-value: &lt; 2.2e-16</code></pre>
+## Residual standard error: 0.8672 on 498 degrees of freedom
+## Multiple R-squared:  0.2289, Adjusted R-squared:  0.2273 
+## F-statistic: 147.8 on 1 and 498 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Bo<span class="math inline">\(^2\)</span>m =)</p>
 
     </div>

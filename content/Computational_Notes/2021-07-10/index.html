@@ -1,0 +1,129 @@
+---
+title: "Bias From Measurement Error"
+summary: '-----'
+date: '2021-07-10'
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<div id="the-problem" class="section level2">
+<h2>The Problem</h2>
+<p>Consider the notion of incremental validity:</p>
+<ul>
+<li>“If measurements of construct X correlate significantly with outcome Y even when controlling for existing measure(s) Z, then X is a useful predictor of Y, over and above Z.”</li>
+</ul>
+<p>The issue is that measurement error leads to spurious inferences of incremental validity. To be confident that an incremental validity argument is sound, one needs to either ensure perfect measurement reliability or formally account for unreliability in one’s model.</p>
+</div>
+<div id="example" class="section level2">
+<h2>Example</h2>
+<p>Suppose heat is a common cause of swimming pool deaths and ice cream sales.</p>
+<pre class="r"><code>heat &lt;- 1:100
+swimmingdeaths &lt;- 0.6*heat + rnorm(100, 0, 3)
+creamsales &lt;- 0.5*heat + rnorm(100, 0, 4)
+
+df &lt;- data.frame(
+  &#39;heat&#39; = c(heat),
+  &#39;swimmingdeaths&#39; = c(swimmingdeaths),
+  &#39;creamsales&#39; = c(creamsales)
+)</code></pre>
+<p>If I regress ice cream sales on swimming pool deaths, I (spuriously) conclude that swimming pool deaths predict ice cream sales.</p>
+<pre class="r"><code>round(summary(lm(
+  creamsales ~ swimmingdeaths,
+  data = df
+))$coefficients, 2)</code></pre>
+<pre><code>##                Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)        0.59       0.97    0.61     0.54
+## swimmingdeaths     0.80       0.03   29.33     0.00</code></pre>
+<p>If instead I control for heat as a common cause, then the relationship between swimming pool deaths and ice cream sales goes away.</p>
+<pre class="r"><code>round(summary(lm(
+  creamsales ~ swimmingdeaths + heat,
+  data = df
+))$coefficients, 2)</code></pre>
+<pre><code>##                Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)       -0.14       0.87   -0.16     0.88
+## swimmingdeaths     0.05       0.14    0.35     0.73
+## heat               0.47       0.09    5.39     0.00</code></pre>
+<p>What if heat is subjectively measured?</p>
+<pre class="r"><code>heatperceptions &lt;- heat + rnorm(100, 0, 5)
+
+library(tidyverse)
+
+df &lt;- df %&gt;% 
+  mutate(heatperceptions = heatperceptions)</code></pre>
+<p>Now, even when I control for heat perceptions, the spurious relationship between swimming pool deaths and ice cream sales will return.</p>
+<pre class="r"><code>round(summary(lm(
+  creamsales ~ swimmingdeaths + heatperceptions,
+  data = df
+))$coefficients, 2)</code></pre>
+<pre><code>##                 Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)        -0.01       0.91   -0.01     0.99
+## swimmingdeaths      0.35       0.11    3.20     0.00
+## heatperceptions     0.28       0.07    4.20     0.00</code></pre>
+<p>What is the solution? Use SEM to control for measurement error.</p>
+<p>Let’s assume that heat is measured with three subjective indicators.</p>
+<pre class="r"><code>perception1 &lt;- 0.6*heat + rnorm(100, 0, 3)
+perception2 &lt;- 0.3*heat + rnorm(100, 0, 3)
+perception3 &lt;- 1*heat + rnorm(100, 0, 3)
+
+df &lt;- df %&gt;% 
+  mutate(hp1 = perception1,
+         hp2 = perception2,
+         hp3 = perception3)</code></pre>
+<p>Now use SEM. The perceptions are caused by a latent heat factor, and then we regress ice cream sales on swimming pool deaths and the latent heat factor.</p>
+<pre class="r"><code>library(lavaan)
+
+modelstring &lt;- &#39;
+
+latentheat =~ fl1*hp1 + fl2*hp2 + fl3*hp3
+
+creamsales ~ b1*swimmingdeaths + b2*latentheat
+
+&#39;
+
+model &lt;- sem(modelstring, data = df)
+summary(model)</code></pre>
+<pre><code>## lavaan 0.6-6 ended normally after 175 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                          9
+##                                                       
+##   Number of observations                           100
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                               334.725
+##   Degrees of freedom                                 5
+##   P-value (Chi-square)                           0.000
+## 
+## Parameter Estimates:
+## 
+##   Standard errors                             Standard
+##   Information                                 Expected
+##   Information saturated (h1) model          Structured
+## 
+## Latent Variables:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##   latentheat =~                                       
+##     hp1      (fl1)    1.000                           
+##     hp2      (fl2)    0.501    0.019   26.838    0.000
+##     hp3      (fl3)    1.747    0.039   44.680    0.000
+## 
+## Regressions:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##   creamsales ~                                        
+##     swmmngdth (b1)    0.246    0.024   10.038    0.000
+##     latenthet (b2)    0.597    0.029   20.746    0.000
+## 
+## Variances:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##    .hp1              13.738    2.413    5.694    0.000
+##    .hp2               6.579    0.997    6.599    0.000
+##    .hp3              -0.086    4.367   -0.020    0.984
+##    .creamsales       18.953    2.728    6.948    0.000
+##     latentheat      287.909   42.639    6.752    0.000</code></pre>
+<p>Why is the relationship between swimming pool deaths and ice cream sales still significant?</p>
+<p>See Jacob Westfall’s (original paper)[<a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0152719" class="uri">https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0152719</a>] on this issue.</p>
+<p>Bo<span class="math inline">\(^2\)</span>m =)</p>
+</div>

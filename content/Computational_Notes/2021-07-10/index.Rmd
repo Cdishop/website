@@ -1,0 +1,113 @@
+---
+title: "Bias From Measurement Error"
+summary: '-----'
+date: '2021-07-10'
+---
+
+
+```{r setup, include=FALSE, cache = T}
+knitr::opts_chunk$set(echo = TRUE, message = F, warning = F, cache = T)
+```
+
+## The Problem
+
+Consider the notion of incremental validity:
+
+* “If measurements of construct X correlate significantly with outcome Y even when controlling for existing measure(s) Z, then X is a useful predictor of Y, over and above Z.”
+
+The issue is that measurement error leads to spurious inferences of incremental validity. To be confident that an incremental validity argument is sound, one needs to either ensure perfect measurement reliability or formally account for unreliability in one's model. 
+
+## Example
+
+Suppose heat is a common cause of swimming pool deaths and ice cream sales. 
+
+```{r}
+heat <- 1:100
+swimmingdeaths <- 0.6*heat + rnorm(100, 0, 3)
+creamsales <- 0.5*heat + rnorm(100, 0, 4)
+
+df <- data.frame(
+  'heat' = c(heat),
+  'swimmingdeaths' = c(swimmingdeaths),
+  'creamsales' = c(creamsales)
+)
+```
+
+If I regress ice cream sales on swimming pool deaths, I (spuriously) conclude that swimming pool deaths predict ice cream sales.
+
+```{r}
+round(summary(lm(
+  creamsales ~ swimmingdeaths,
+  data = df
+))$coefficients, 2)
+```
+
+If instead I control for heat as a common cause, then the relationship between swimming pool deaths and ice cream sales goes away.
+
+```{r}
+round(summary(lm(
+  creamsales ~ swimmingdeaths + heat,
+  data = df
+))$coefficients, 2)
+
+```
+
+What if heat is subjectively measured?
+
+```{r, warning = F, message = F}
+
+heatperceptions <- heat + rnorm(100, 0, 5)
+
+library(tidyverse)
+
+df <- df %>% 
+  mutate(heatperceptions = heatperceptions)
+```
+
+Now, even when I control for heat perceptions, the spurious relationship between swimming pool deaths and ice cream sales will return.
+
+```{r}
+round(summary(lm(
+  creamsales ~ swimmingdeaths + heatperceptions,
+  data = df
+))$coefficients, 2)
+```
+
+What is the solution? Use SEM to control for measurement error. 
+
+Let's assume that heat is measured with three subjective indicators.
+
+```{r}
+perception1 <- 0.6*heat + rnorm(100, 0, 3)
+perception2 <- 0.3*heat + rnorm(100, 0, 3)
+perception3 <- 1*heat + rnorm(100, 0, 3)
+
+df <- df %>% 
+  mutate(hp1 = perception1,
+         hp2 = perception2,
+         hp3 = perception3)
+```
+
+Now use SEM. The perceptions are caused by a latent heat factor, and then we regress ice cream sales on swimming pool deaths and the latent heat factor. 
+
+```{r, warning = F, message = F}
+
+library(lavaan)
+
+modelstring <- '
+
+latentheat =~ fl1*hp1 + fl2*hp2 + fl3*hp3
+
+creamsales ~ b1*swimmingdeaths + b2*latentheat
+
+'
+
+model <- sem(modelstring, data = df)
+summary(model)
+```
+
+Why is the relationship between swimming pool deaths and ice cream sales still significant?
+
+See Jacob Westfall's (original paper)[https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0152719] on this issue.
+
+Bo$^2$m =)

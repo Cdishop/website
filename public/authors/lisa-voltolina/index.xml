@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Lisa Voltolina | Christopher R. Dishop</title>
-    <link>/authors/lisa-voltolina/</link>
-      <atom:link href="/authors/lisa-voltolina/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://christopherdishop.netlify.app/authors/lisa-voltolina/</link>
+      <atom:link href="https://christopherdishop.netlify.app/authors/lisa-voltolina/index.xml" rel="self" type="application/rss+xml" />
     <description>Lisa Voltolina</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Christopher Dishop 2021</copyright><lastBuildDate>Sun, 02 Feb 2014 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/img/pom-card.png</url>
+      <url>https://christopherdishop.netlify.app/img/pom-card.png</url>
       <title>Lisa Voltolina</title>
-      <link>/authors/lisa-voltolina/</link>
+      <link>https://christopherdishop.netlify.app/authors/lisa-voltolina/</link>
     </image>
     
     <item>
       <title>Overweight and Obesity: Prevalence and Correlates in a Large Clinical Sample of Children with Autism Spectrum Disorder</title>
-      <link>/publication/2014-obesity-in-asd-oregon/</link>
+      <link>https://christopherdishop.netlify.app/publication/2014-obesity-in-asd-oregon/</link>
       <pubDate>Sun, 02 Feb 2014 00:00:00 +0000</pubDate>
-      <guid>/publication/2014-obesity-in-asd-oregon/</guid>
+      <guid>https://christopherdishop.netlify.app/publication/2014-obesity-in-asd-oregon/</guid>
       <description></description>
     </item>
     

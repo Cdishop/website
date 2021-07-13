@@ -2,14 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories | Christopher R. Dishop</title>
-    <link>/categories/</link>
-      <atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://christopherdishop.netlify.app/categories/</link>
+      <atom:link href="https://christopherdishop.netlify.app/categories/index.xml" rel="self" type="application/rss+xml" />
     <description>Categories</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Christopher Dishop 2021</copyright>
     <image>
-      <url>/img/pom-card.png</url>
+      <url>https://christopherdishop.netlify.app/img/pom-card.png</url>
       <title>Categories</title>
-      <link>/categories/</link>
+      <link>https://christopherdishop.netlify.app/categories/</link>
     </image>
     
   </channel>

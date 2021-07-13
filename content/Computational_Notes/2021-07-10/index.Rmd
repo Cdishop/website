@@ -108,6 +108,6 @@ summary(model)
 
 Why is the relationship between swimming pool deaths and ice cream sales still significant?
 
-See Jacob Westfall's (original paper)[https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0152719] on this issue.
+See Jacob Westfall's [original paper](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0152719) for more on this issue.
 
 Bo$^2$m =)

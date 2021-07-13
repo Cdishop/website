@@ -73,6 +73,8 @@
 
 [Francis L. Huang](https://francish.netlify.app/#posts)
 
+[Michael Clark](https://m-clark.github.io/documents.html)
+
 ### Courses
 
 [Applied Statistical Computing Course](http://had.co.nz/stat480.1.html)

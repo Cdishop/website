@@ -33,17 +33,17 @@ df &lt;- data.frame(
   data = df
 ))$coefficients, 2)</code></pre>
 <pre><code>##                Estimate Std. Error t value Pr(&gt;|t|)
-## (Intercept)        0.59       0.97    0.61     0.54
-## swimmingdeaths     0.80       0.03   29.33     0.00</code></pre>
+## (Intercept)        2.14       0.93    2.31     0.02
+## swimmingdeaths     0.77       0.03   29.07     0.00</code></pre>
 <p>If instead I control for heat as a common cause, then the relationship between swimming pool deaths and ice cream sales goes away.</p>
 <pre class="r"><code>round(summary(lm(
   creamsales ~ swimmingdeaths + heat,
   data = df
 ))$coefficients, 2)</code></pre>
 <pre><code>##                Estimate Std. Error t value Pr(&gt;|t|)
-## (Intercept)       -0.14       0.87   -0.16     0.88
-## swimmingdeaths     0.05       0.14    0.35     0.73
-## heat               0.47       0.09    5.39     0.00</code></pre>
+## (Intercept)        1.09       0.72    1.51     0.13
+## swimmingdeaths    -0.14       0.11   -1.26     0.21
+## heat               0.57       0.07    8.42     0.00</code></pre>
 <p>What if heat is subjectively measured?</p>
 <pre class="r"><code>heatperceptions &lt;- heat + rnorm(100, 0, 5)
 
@@ -57,9 +57,9 @@ df &lt;- df %&gt;%
   data = df
 ))$coefficients, 2)</code></pre>
 <pre><code>##                 Estimate Std. Error t value Pr(&gt;|t|)
-## (Intercept)        -0.01       0.91   -0.01     0.99
-## swimmingdeaths      0.35       0.11    3.20     0.00
-## heatperceptions     0.28       0.07    4.20     0.00</code></pre>
+## (Intercept)         1.70       0.80    2.14     0.03
+## swimmingdeaths      0.21       0.09    2.27     0.03
+## heatperceptions     0.35       0.06    6.13     0.00</code></pre>
 <p>What is the solution? Use SEM to control for measurement error.</p>
 <p>Let’s assume that heat is measured with three subjective indicators.</p>
 <pre class="r"><code>perception1 &lt;- 0.6*heat + rnorm(100, 0, 3)
@@ -83,7 +83,7 @@ creamsales ~ b1*swimmingdeaths + b2*latentheat
 
 model &lt;- sem(modelstring, data = df)
 summary(model)</code></pre>
-<pre><code>## lavaan 0.6-6 ended normally after 175 iterations
+<pre><code>## lavaan 0.6-6 ended normally after 85 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -93,7 +93,7 @@ summary(model)</code></pre>
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                               334.725
+##   Test statistic                               309.692
 ##   Degrees of freedom                                 5
 ##   P-value (Chi-square)                           0.000
 ## 
@@ -107,23 +107,23 @@ summary(model)</code></pre>
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
 ##   latentheat =~                                       
 ##     hp1      (fl1)    1.000                           
-##     hp2      (fl2)    0.501    0.019   26.838    0.000
-##     hp3      (fl3)    1.747    0.039   44.680    0.000
+##     hp2      (fl2)    0.543    0.020   27.232    0.000
+##     hp3      (fl3)    1.621    0.030   53.426    0.000
 ## 
 ## Regressions:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
 ##   creamsales ~                                        
-##     swmmngdth (b1)    0.246    0.024   10.038    0.000
-##     latenthet (b2)    0.597    0.029   20.746    0.000
+##     swmmngdth (b1)    0.106    0.022    4.836    0.000
+##     latenthet (b2)    0.694    0.024   29.359    0.000
 ## 
 ## Variances:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
-##    .hp1              13.738    2.413    5.694    0.000
-##    .hp2               6.579    0.997    6.599    0.000
-##    .hp3              -0.086    4.367   -0.020    0.984
-##    .creamsales       18.953    2.728    6.948    0.000
-##     latentheat      287.909   42.639    6.752    0.000</code></pre>
+##    .hp1               6.254    1.609    3.888    0.000
+##    .hp2              10.088    1.523    6.625    0.000
+##    .hp3              10.073    3.779    2.666    0.008
+##    .creamsales       13.727    2.102    6.532    0.000
+##     latentheat      302.596   43.690    6.926    0.000</code></pre>
 <p>Why is the relationship between swimming pool deaths and ice cream sales still significant?</p>
-<p>See Jacob Westfall’s (original paper)[<a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0152719" class="uri">https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0152719</a>] on this issue.</p>
+<p>See Jacob Westfall’s <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0152719">original paper</a> for more on this issue.</p>
 <p>Bo<span class="math inline">\(^2\)</span>m =)</p>
 </div>

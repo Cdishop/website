@@ -1,0 +1,81 @@
+---
+title: "The Rule of 5"
+summary: '-----'
+date: '2021-08-02'
+---
+
+
+```{r setup, include=FALSE, cache = T}
+knitr::opts_chunk$set(echo = TRUE, message = F, warning = F, cache = T)
+```
+
+Douglas Hubbard's Rule of 5: There is a 93.8% chance that the median of a population is between the smallest and largest values in any random sample of five from that population.
+
+We could derive 93.8 by using equations, or we could run monte carlo simulations.
+
+One sample of 5 from a distribution: 
+
+```{r}
+
+n <- 1000
+mean <- 300
+sd <- 24
+population <- rnorm(n, mean, sd)
+
+draw <- sample(population, size = 5, replace = F)
+low <- min(draw)
+high <- max(draw)
+
+contains_true <- NULL
+
+if(low < mean & high > mean){
+  contains_true <- 'yes'
+}else{
+  contains_true <- 'no'
+}
+
+print(c(low, 
+        high,
+        contains_true))
+
+```
+
+Now iterate the same scheme many times. Does the median fall between the low and high values 93% of the time?
+
+```{r}
+
+simulations <- 5000
+storeit <- numeric(simulations)
+
+for(i in 1:simulations){
+  
+  n <- 1000
+  mean <- 300
+  sd <- 24
+  population <- rnorm(n, mean, sd)
+  
+  draw <- sample(population, size = 5, replace = F)
+  low <- min(draw)
+  high <- max(draw)
+  
+  contains_true <- NULL
+  
+  if(low < mean & high > mean){
+    contains_true <- 'yes'
+  }else{
+    contains_true <- 'no'
+  }
+  
+  storeit[i] <- contains_true
+  
+}
+
+sum(storeit == 'yes') / simulations
+
+
+```
+
+Yes.
+
+
+Bo$^2$m =)

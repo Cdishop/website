@@ -183,6 +183,8 @@
 
 [Statistics: The Story of Numbers](https://aupsychology.github.io/statsbook/)
 
+[Descriptive Statistics in R](https://www.linkedin.com/learning/r-essential-training-part-2-modeling-data/conducting-an-item-analysis)
+
 [Handbook of Regression Modeling in People Analytics](http://peopleanalytics-regression-book.org/index.html)
 
 [R for Data Science](https://r4ds.had.co.nz)

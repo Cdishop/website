@@ -30,7 +30,7 @@ if(low &lt; mean &amp; high &gt; mean){
 print(c(low, 
         high,
         contains_true))</code></pre>
-<pre><code>## [1] &quot;274.374796839558&quot; &quot;327.695238973413&quot; &quot;yes&quot;</code></pre>
+<pre><code>## [1] &quot;265.144538291382&quot; &quot;328.61579699431&quot;  &quot;yes&quot;</code></pre>
 <p>Now iterate the same scheme many times. Does the median fall between the low and high values 93% of the time?</p>
 <pre class="r"><code>simulations &lt;- 5000
 storeit &lt;- numeric(simulations)
@@ -59,6 +59,6 @@ for(i in 1:simulations){
 }
 
 sum(storeit == &#39;yes&#39;) / simulations</code></pre>
-<pre><code>## [1] 0.939</code></pre>
+<pre><code>## [1] 0.935</code></pre>
 <p>Yes.</p>
 <p>Bo<span class="math inline">\(^2\)</span>m =)</p>

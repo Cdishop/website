@@ -15,10 +15,9 @@ education:
     year: 2016
 email: ""
 interests:
-- Cooperation
-- Motivation
+- Organizational Science
+- Computational Science
 - Dynamics
-- Computational Modeling
 
 name: Christopher R. Dishop
 organizations:

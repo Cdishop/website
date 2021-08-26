@@ -36,7 +36,7 @@ first_infected &lt;- sample(V(gstar), number_initially_infected)
 ## change this graph object to a pure number
 first_infected &lt;- as_ids(first_infected)
 first_infected</code></pre>
-<pre><code>## [1] 46</code></pre>
+<pre><code>## [1] 11</code></pre>
 <p>Place the first infected individual into a list.</p>
 <pre class="r"><code>infected &lt;- list()
 infected[[1]] &lt;- first_infected
@@ -73,8 +73,8 @@ neighbor &lt;- unlist(neighborhood(gstar, 1, unlist(infected)))
 # remove from this list people who are already infected
 neighbor &lt;- neighbor[!neighbor %in% c(unlist(infected))]
 neighbor</code></pre>
-<pre><code>##  [1]  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
-## [26] 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 47 48 49 50</code></pre>
+<pre><code>##  [1]  2  3  4  5  6  7  8  9 10 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27
+## [26] 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50</code></pre>
 <p>For each neighbor, flip a coin to see if he or she becomes infected. Doing so will give me a series of 1s and 0s. 1 means infected. 0 means fine.</p>
 <pre class="r"><code>infects &lt;- rbinom(length(neighbor), 1, prob = 0.8)</code></pre>
 <p>Combine these 1s and 0s with the neighbor identifiers.</p>
@@ -92,43 +92,43 @@ allneighbors</code></pre>
 ## 5         1        6
 ## 6         1        7
 ## 7         1        8
-## 8         0        9
-## 9         0       10
-## 10        1       11
-## 11        1       12
-## 12        1       13
-## 13        0       14
-## 14        1       15
-## 15        1       16
-## 16        1       17
-## 17        1       18
-## 18        1       19
-## 19        1       20
-## 20        1       21
-## 21        1       22
-## 22        1       23
-## 23        1       24
-## 24        1       25
-## 25        1       26
-## 26        1       27
-## 27        1       28
-## 28        1       29
-## 29        0       30
-## 30        1       31
-## 31        1       32
-## 32        0       33
-## 33        0       34
-## 34        0       35
-## 35        0       36
-## 36        1       37
-## 37        1       38
-## 38        1       39
-## 39        1       40
-## 40        1       41
-## 41        0       42
-## 42        1       43
-## 43        1       44
-## 44        1       45
+## 8         1        9
+## 9         1       10
+## 10        0       12
+## 11        1       13
+## 12        1       14
+## 13        1       15
+## 14        1       16
+## 15        0       17
+## 16        1       18
+## 17        1       19
+## 18        1       20
+## 19        1       21
+## 20        1       22
+## 21        1       23
+## 22        0       24
+## 23        1       25
+## 24        1       26
+## 25        1       27
+## 26        1       28
+## 27        0       29
+## 28        0       30
+## 29        1       31
+## 30        1       32
+## 31        0       33
+## 32        0       34
+## 33        1       35
+## 34        1       36
+## 35        1       37
+## 36        0       38
+## 37        1       39
+## 38        1       40
+## 39        1       41
+## 40        0       42
+## 41        1       43
+## 42        0       44
+## 43        1       45
+## 44        1       46
 ## 45        0       47
 ## 46        1       48
 ## 47        1       49

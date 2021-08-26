@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>5 | Christopher R. Dishop</title>
-    <link>/publication_types/5/</link>
-      <atom:link href="/publication_types/5/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://christopherdishop.netlify.app/publication_types/5/</link>
+      <atom:link href="https://christopherdishop.netlify.app/publication_types/5/index.xml" rel="self" type="application/rss+xml" />
     <description>5</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Christopher Dishop 2021</copyright><lastBuildDate>Thu, 14 Dec 2017 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/img/pom-card.png</url>
+      <url>https://christopherdishop.netlify.app/img/pom-card.png</url>
       <title>5</title>
-      <link>/publication_types/5/</link>
+      <link>https://christopherdishop.netlify.app/publication_types/5/</link>
     </image>
     
     <item>
       <title>blogdown: Creating Websites with R Markdown</title>
-      <link>/publication/2017-blogdown/</link>
+      <link>https://christopherdishop.netlify.app/publication/2017-blogdown/</link>
       <pubDate>Thu, 14 Dec 2017 00:00:00 +0000</pubDate>
-      <guid>/publication/2017-blogdown/</guid>
+      <guid>https://christopherdishop.netlify.app/publication/2017-blogdown/</guid>
       <description></description>
     </item>
     

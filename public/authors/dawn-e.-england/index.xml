@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Dawn E. England | Christopher R. Dishop</title>
-    <link>/authors/dawn-e.-england/</link>
-      <atom:link href="/authors/dawn-e.-england/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://christopherdishop.netlify.app/authors/dawn-e.-england/</link>
+      <atom:link href="https://christopherdishop.netlify.app/authors/dawn-e.-england/index.xml" rel="self" type="application/rss+xml" />
     <description>Dawn E. England</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Christopher Dishop 2021</copyright><lastBuildDate>Tue, 08 Feb 2011 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/img/pom-card.png</url>
+      <url>https://christopherdishop.netlify.app/img/pom-card.png</url>
       <title>Dawn E. England</title>
-      <link>/authors/dawn-e.-england/</link>
+      <link>https://christopherdishop.netlify.app/authors/dawn-e.-england/</link>
     </image>
     
     <item>
       <title>‘It’s Not That We Hate You’: Understanding Children’s Gender Attitudes and Expectancies About Peer Relationships</title>
-      <link>/publication/2011-gender-attitudes/</link>
+      <link>https://christopherdishop.netlify.app/publication/2011-gender-attitudes/</link>
       <pubDate>Tue, 08 Feb 2011 00:00:00 +0000</pubDate>
-      <guid>/publication/2011-gender-attitudes/</guid>
+      <guid>https://christopherdishop.netlify.app/publication/2011-gender-attitudes/</guid>
       <description></description>
     </item>
     

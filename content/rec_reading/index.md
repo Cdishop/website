@@ -1112,6 +1112,38 @@ Peter Singer
 
 
 
+&nbsp;
+
+<div align="center">
+Reflections on the Human Condition
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/reflections.png)
+
+Eric Hoffer
+
+[Click here for link](https://www.amazon.com/Reflections-Human-Condition-Eric-Hoffer/dp/1933435143/ref=sr_1_2?dchild=1&keywords=eric+hoffer+reflections+of+the+human&qid=1598629438&sr=8-2)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1706,6 +1738,40 @@ Philip Klein
 
 
 
+&nbsp;
+
+<div align="center">
+The Vision of the Anointed: Self-Congratulation as a Basis for Social Policy
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/vision-annointed.png)
+
+Thomas Sowell
+
+[Click here for link](https://www.amazon.com/Vision-Anointed-Self-Congratulation-Social-Policy/dp/046508995X/ref=sr_1_11?dchild=1&keywords=thomas+sowell&qid=1620953769&sr=8-11&asin=046508995X&revisionId=&format=4&depth=1)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2251,40 +2317,6 @@ Richard McElreath
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-&nbsp;
-
-<div align="center">
-Reflections on the Human Condition
-</div>
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/reflections.png)
-
-Eric Hoffer
-
-[Click here for link](https://www.amazon.com/Reflections-Human-Condition-Eric-Hoffer/dp/1933435143/ref=sr_1_2?dchild=1&keywords=eric+hoffer+reflections+of+the+human&qid=1598629438&sr=8-2)
-
-------
-------
 
 
 
@@ -2978,6 +3010,53 @@ Christopher Gandrud
 
 
 
+
+
+
+
+
+
+&nbsp;
+
+<div align="center">
+Common Sense Economics
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/common-sense.png)
+
+James D. Gwartney
+
+Richard L. Stroup
+
+Dwight R. Lee
+
+Tawni Hunt Ferrarini
+
+[Click here for link](https://www.amazon.com/Common-Sense-Economics-Everyone-Prosperity/dp/125010694X/ref=sr_1_1?dchild=1&keywords=common+sense+economics&qid=1629998483&sr=8-1)
+
+------
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 &nbsp;
 
 <div align="center">
@@ -3149,38 +3228,6 @@ Jordan Ellenberg
 
 ------
 ------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-&nbsp;
-
-<div align="center">
-The Vision of the Annointed: Self-Congratulation as a Basis for Social Policy
-</div>
-
-![](https://github.com/Cdishop/website/raw/master/misc/books/vision-annointed.png)
-
-Thomas Sowell
-
-[Click here for link](https://www.amazon.com/Vision-Anointed-Self-Congratulation-Social-Policy/dp/046508995X/ref=sr_1_11?dchild=1&keywords=thomas+sowell&qid=1620953769&sr=8-11&asin=046508995X&revisionId=&format=4&depth=1)
-
-------
-------
-
-
-
-
 
 
 
@@ -3377,6 +3424,24 @@ James G. March
 
 
 
+
+
+
+
+&nbsp;
+
+<div align="center">
+Naked Economics: Undressing the Dismal Science
+</div>
+
+![](https://github.com/Cdishop/website/raw/master/misc/books/naked-economics.png)
+
+Charles Wheelan
+
+[Click here for link](https://www.amazon.com/Naked-Economics-Undressing-Dismal-Science/dp/0393356493/ref=sr_1_1?dchild=1&keywords=naked+economics&qid=1629998471&sr=8-1)
+
+------
+------
 
 
 

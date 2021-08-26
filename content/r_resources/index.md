@@ -127,6 +127,8 @@
 
 [Functions with columns as parameters 2](https://www.brodrigues.co/blog/2016-07-18-data-frame-columns-as-arguments-to-dplyr-functions/)
 
+[Using purrr::map](https://aosmith.rbind.io/2019/07/22/automate-model-fitting-with-loops/)
+
 [Kable Extra](http://haozhu233.github.io/kableExtra/awesome_table_in_html.html)
 
 [Data.Table](https://github.com/Rdatatable/data.table/wiki/Getting-started)
@@ -176,6 +178,8 @@
 [R for Researchers](https://tysonbarrett.com/Rstats/index.html)
 
 [Data Wrangling with R](https://cengel.github.io/R-data-wrangling/)
+
+[Tidyverse](https://bookdown.org/ansellbr/WEHI_tidyR_course_book/#before-we-begin)
 
 [Learning Statistics with R](https://learningstatisticswithr.com/)
 

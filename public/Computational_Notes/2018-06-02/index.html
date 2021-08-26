@@ -26,7 +26,7 @@
   <meta name="description" content="-----">
 
   
-  <link rel="alternate" hreflang="en-us" href="/computational_notes/2018-06-02/">
+  <link rel="alternate" hreflang="en-us" href="https://christopherdishop.netlify.app/computational_notes/2018-06-02/">
 
   
 
@@ -250,7 +250,7 @@
   <link rel="icon" type="image/png" href="/images/icon_hua7ddb50eead73fc737c5c3187aff8cf9_17132_32x32_fill_lanczos_center_2.png">
   <link rel="apple-touch-icon" type="image/png" href="/images/icon_hua7ddb50eead73fc737c5c3187aff8cf9_17132_192x192_fill_lanczos_center_2.png">
 
-  <link rel="canonical" href="/computational_notes/2018-06-02/">
+  <link rel="canonical" href="https://christopherdishop.netlify.app/computational_notes/2018-06-02/">
 
   
   
@@ -268,10 +268,10 @@
   <meta property="twitter:creator" content="@apreshill">
   
   <meta property="og:site_name" content="Christopher R. Dishop">
-  <meta property="og:url" content="/computational_notes/2018-06-02/">
+  <meta property="og:url" content="https://christopherdishop.netlify.app/computational_notes/2018-06-02/">
   <meta property="og:title" content="Column Names As Parameters | Christopher R. Dishop">
-  <meta property="og:description" content="-----"><meta property="og:image" content="/img/pom-card.png">
-  <meta property="twitter:image" content="/img/pom-card.png"><meta property="og:locale" content="en-us">
+  <meta property="og:description" content="-----"><meta property="og:image" content="https://christopherdishop.netlify.app/img/pom-card.png">
+  <meta property="twitter:image" content="https://christopherdishop.netlify.app/img/pom-card.png"><meta property="og:locale" content="en-us">
   
     
       <meta property="article:published_time" content="2018-06-02T00:00:00&#43;00:00">
@@ -568,15 +568,15 @@ mini &lt;- dish %&gt;%
 mini[mini$person == &#39;jimmy&#39;, 2] &lt;- 99
 mini[mini$person == &#39;james&#39;, 2] &lt;- 99</code></pre>
 <p>The original data:</p>
-<pre><code>##   person        v_1       v_2      v_3       v_4
-## 1  jimmy -0.3756269 15.163360 62.47913 12.843686
-## 2  james  0.1766871 11.921723 36.73675  8.704086
-## 3 johnny  0.1270860  8.603635 53.10021 52.211091</code></pre>
+<pre><code>##   person       v_1      v_2      v_3       v_4
+## 1  jimmy  1.213657 14.29155 64.57433 32.881848
+## 2  james -3.129416 11.74132 42.24969  8.056276
+## 3 johnny  1.248934 15.78211 41.77107 41.227984</code></pre>
 <p>What we changed it to:</p>
-<pre><code>##   person       v_1       v_2
-## 1  jimmy 99.000000 15.163360
-## 2  james 99.000000 11.921723
-## 3 johnny  0.127086  8.603635</code></pre>
+<pre><code>##   person       v_1      v_2
+## 1  jimmy 99.000000 14.29155
+## 2  james 99.000000 11.74132
+## 3 johnny  1.248934 15.78211</code></pre>
 <p>Here is the function equivalent:</p>
 <pre class="r"><code>impute_99 &lt;- function(data){
   
@@ -594,10 +594,10 @@ mini[mini$person == &#39;james&#39;, 2] &lt;- 99</code></pre>
 <p>Our result:</p>
 <pre class="r"><code>adjusted_data &lt;- impute_99(dish)
 adjusted_data</code></pre>
-<pre><code>##   person       v_1       v_2
-## 1  jimmy 99.000000 15.163360
-## 2  james 99.000000 11.921723
-## 3 johnny  0.127086  8.603635</code></pre>
+<pre><code>##   person       v_1      v_2
+## 1  jimmy 99.000000 14.29155
+## 2  james 99.000000 11.74132
+## 3 johnny  1.248934 15.78211</code></pre>
 </div>
 <div id="function-with-column-names-as-parameters" class="section level1">
 <h1>Function with column names as parameters</h1>
@@ -618,10 +618,10 @@ adjusted_data</code></pre>
 <p>Fortunately the correction is simple, just put quotes around the column names:</p>
 <pre class="r"><code>cool_data &lt;- impute_99_column_specific(dish, &#39;v_1&#39;, &#39;v_2&#39;)
 cool_data</code></pre>
-<pre><code>##   person       v_1       v_2
-## 1  jimmy 99.000000 15.163360
-## 2  james 99.000000 11.921723
-## 3 johnny  0.127086  8.603635</code></pre>
+<pre><code>##   person       v_1      v_2
+## 1  jimmy 99.000000 14.29155
+## 2  james 99.000000 11.74132
+## 3 johnny  1.248934 15.78211</code></pre>
 <p>Bo<span class="math inline">\(^2\)</span>m =)</p>
 </div>
 

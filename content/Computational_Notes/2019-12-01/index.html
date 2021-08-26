@@ -33,20 +33,20 @@ df$id &lt;- c(1:N)</code></pre>
 ## lm(formula = y ~ x1 + x2, data = df)
 ## 
 ## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -3.5130 -0.5479 -0.0133  0.5357  2.5006 
+##      Min       1Q   Median       3Q      Max 
+## -3.07513 -0.58006  0.03023  0.56239  2.54200 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) -0.05067    0.03898  -1.300    0.194    
-## x1           0.25609    0.03968   6.454 2.59e-10 ***
-## x2           0.39262    0.04068   9.651  &lt; 2e-16 ***
+## (Intercept)  0.02712    0.03805   0.713    0.476    
+## x1           0.33172    0.04004   8.284 1.11e-15 ***
+## x2           0.36913    0.03812   9.683  &lt; 2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 0.8705 on 497 degrees of freedom
-## Multiple R-squared:  0.2261, Adjusted R-squared:  0.223 
-## F-statistic: 72.62 on 2 and 497 DF,  p-value: &lt; 2.2e-16</code></pre>
+## Residual standard error: 0.8491 on 497 degrees of freedom
+## Multiple R-squared:  0.2576, Adjusted R-squared:  0.2547 
+## F-statistic: 86.24 on 2 and 497 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Here’s the kicker: you can think of those weights as optimal functions telling us how to create the composite.</p>
 <p>Create a composite using the regression weights.</p>
 <pre class="r"><code>library(tidyverse)
@@ -54,7 +54,7 @@ df &lt;- df %&gt;%
   mutate(composite_x = 0.33*x1 + 0.4*x2)</code></pre>
 <p>Those weights provide the maximum correlation between our composite and the outcome.</p>
 <pre class="r"><code>cor(df$y, df$composite_x)</code></pre>
-<pre><code>## [1] 0.4729473</code></pre>
+<pre><code>## [1] 0.5071857</code></pre>
 <p>In other words, the above correlation could not be higher with any other set of weights. Regression found the weights that makes the correlation above as large as it can be.</p>
 <pre class="r"><code>summary(lm(y ~ composite_x,
            data = df))</code></pre>
@@ -63,17 +63,17 @@ df &lt;- df %&gt;%
 ## lm(formula = y ~ composite_x, data = df)
 ## 
 ## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -3.5775 -0.5314  0.0078  0.5406  2.5707 
+##      Min       1Q   Median       3Q      Max 
+## -3.04495 -0.58094  0.02399  0.55185  2.53172 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) -0.05300    0.03895   -1.36    0.174    
-## composite_x  0.89463    0.07469   11.98   &lt;2e-16 ***
+## (Intercept)  0.02784    0.03800   0.733    0.464    
+## composite_x  0.95479    0.07270  13.133   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 0.871 on 498 degrees of freedom
-## Multiple R-squared:  0.2237, Adjusted R-squared:  0.2221 
-## F-statistic: 143.5 on 1 and 498 DF,  p-value: &lt; 2.2e-16</code></pre>
+## Residual standard error: 0.8484 on 498 degrees of freedom
+## Multiple R-squared:  0.2572, Adjusted R-squared:  0.2557 
+## F-statistic: 172.5 on 1 and 498 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Bo<span class="math inline">\(^2\)</span>m =)</p>
